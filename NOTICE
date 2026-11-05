@@ -1,0 +1,25 @@
+Agent Resilience Lab
+Copyright 2026 Agent Resilience Lab contributors
+
+Original project code and original documentation are offered under Apache-2.0.
+Implementation was AI-assisted with Codex under the project owner's direction;
+see docs/INTERVIEW_GUIDE.md for the actual contribution boundary.
+
+Third-party research excerpts and retained licenses remain subject to their
+original terms, not relicensed by this project's Apache-2.0 grant. No third-party
+runtime implementation or external executable is bundled in agent_lab.
+See THIRD_PARTY_NOTICES.md, docs/licenses/, and evidence source manifests.
+
+The following upstream notice accompanies retained OpenAI Codex research excerpts:
+
+OpenAI Codex
+Copyright 2025 OpenAI
+
+This project includes code derived from Ratatui (https://github.com/ratatui/ratatui),
+licensed under the MIT license.
+Copyright (c) 2016-2022 Florian Dehau
+Copyright (c) 2023-2025 The Ratatui Developers
+
+The Ratatui attribution above belongs to upstream Codex's notice; it is not a
+claim that this Python project implements or distributes Codex's Rust TUI.
+OpenAI, Anthropic, DeepSeek and other referenced products do not endorse this project.
