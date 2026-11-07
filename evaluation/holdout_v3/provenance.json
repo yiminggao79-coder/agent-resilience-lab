@@ -1,0 +1,17 @@
+{
+  "agent_harness_executed": false,
+  "authoring_date": "2026-11-08",
+  "commit_source": "coordinator supplied full git rev-parse result; author did not execute Git",
+  "declared_runtime_commit": "324e457897914d5b6007a87a86829650da68c439",
+  "future_evaluation": "must record its own actual committed runtime/evaluator hashes before exposure; no implicit model-run authorization",
+  "independence": "Independently authored in the same AI environment; not external statistical independence.",
+  "model_requests": 0,
+  "pinned_tree_source_hashes_verified": false,
+  "runtime_changed_by_author": false,
+  "v2_private_candidates_read": false,
+  "workspace_reads_at_authoring_not_claimed_as_pinned_tree": {
+    "agent_lab/sandbox.py": "420fdb8e3c3ff8c02cb09f543f014e4f90efff7ddd9eafbd42953abb7a8f3027",
+    "scripts/evaluate_acceptance.py": "ff89b8dc0e606b18f0f213979c0569374bdb500b73b190bdb7c87b30d92e9597",
+    "tests/dev/test_acceptance_runner.py": "bbd1fb4d22a02f13d0c571fbc4aa9a92459087e4f66b776f982d424d9fdd6e31"
+  }
+}

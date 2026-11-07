@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "command_backend": "confined-fork",
+  "allow_workspace_executables": true,
+  "tool_executables": {
+    "cc": "/Library/Developer/CommandLineTools/usr/bin/clang",
+    "linker": "/Library/Developer/CommandLineTools/usr/bin/ld"
+  },
+  "tool_read_paths": [
+    "/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk",
+    "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0",
+    "/Library/Developer/CommandLineTools/usr/lib/libtapi.dylib",
+    "/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib",
+    "/Library/Developer/CommandLineTools/usr/lib/libswiftDemangle.dylib"
+  ],
+  "tool_sysctl_read": ["hw.pagesize_compat"],
+  "read_only_paths": ["tests"]
+}

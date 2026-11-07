@@ -1,0 +1,570 @@
+{
+  "cases": [
+    {
+      "id": "v2-transfer-ranges",
+      "workspace_dir": "workspaces/transfer_ranges",
+      "task": "Repair this small Python project according to README.md, preserving its public API. The README gives the complete behavior contract. README.md and test_ranges.py are immutable byte-for-byte: do not modify, replace, rename, or delete them. Add any new tests as new files. Implementation files may be edited and new files added. Use Python 3.9 standard library only. Run python3 -m unittest discover -v to verify the supplied tests. No external service or dependency is needed.",
+      "immutable_files": [
+        "README.md",
+        "test_ranges.py"
+      ],
+      "oracle": {
+        "module": "ranges",
+        "function": "select_ranges",
+        "inputs": [
+          [
+            null,
+            7,
+            2
+          ],
+          [
+            "bytes=-1",
+            1,
+            1
+          ],
+          [
+            "bytes=-20",
+            8,
+            1
+          ],
+          [
+            "bytes=2-99",
+            6,
+            1
+          ],
+          [
+            "bytes=0-0,1-1,2-2",
+            4,
+            1
+          ],
+          [
+            "bytes=0-0,2-2",
+            4,
+            1
+          ],
+          [
+            " bytes= 0002-0003 , 8- ",
+            10,
+            2
+          ],
+          [
+            "bytes=4-6,1-8,3-4,1-8",
+            10,
+            1
+          ],
+          [
+            "bytes=40-,8-3,-0",
+            10,
+            3
+          ],
+          [
+            "bytes=0-0,0-0",
+            1,
+            1
+          ],
+          [
+            "bytes=0-1,\u0662-3",
+            5,
+            2
+          ],
+          [
+            "Bytes=0-1",
+            5,
+            2
+          ],
+          [
+            "bytes=--1",
+            0,
+            2
+          ],
+          [
+            "bytes=-5,0-",
+            0,
+            2
+          ],
+          [
+            "bytes=9-,0-1,-2",
+            10,
+            2
+          ],
+          [
+            "bytes=",
+            3,
+            1
+          ]
+        ],
+        "expected": [
+          {
+            "status": 200,
+            "ranges": [
+              [
+                0,
+                6
+              ]
+            ],
+            "selected_bytes": 7
+          },
+          {
+            "status": 206,
+            "ranges": [
+              [
+                0,
+                0
+              ]
+            ],
+            "selected_bytes": 1
+          },
+          {
+            "status": 206,
+            "ranges": [
+              [
+                0,
+                7
+              ]
+            ],
+            "selected_bytes": 8
+          },
+          {
+            "status": 206,
+            "ranges": [
+              [
+                2,
+                5
+              ]
+            ],
+            "selected_bytes": 4
+          },
+          {
+            "status": 206,
+            "ranges": [
+              [
+                0,
+                2
+              ]
+            ],
+            "selected_bytes": 3
+          },
+          {
+            "status": 200,
+            "ranges": [
+              [
+                0,
+                3
+              ]
+            ],
+            "selected_bytes": 4
+          },
+          {
+            "status": 206,
+            "ranges": [
+              [
+                2,
+                3
+              ],
+              [
+                8,
+                9
+              ]
+            ],
+            "selected_bytes": 4
+          },
+          {
+            "status": 206,
+            "ranges": [
+              [
+                1,
+                8
+              ]
+            ],
+            "selected_bytes": 8
+          },
+          {
+            "status": 416,
+            "ranges": [],
+            "selected_bytes": 0
+          },
+          {
+            "status": 206,
+            "ranges": [
+              [
+                0,
+                0
+              ]
+            ],
+            "selected_bytes": 1
+          },
+          {
+            "status": 200,
+            "ranges": [
+              [
+                0,
+                4
+              ]
+            ],
+            "selected_bytes": 5
+          },
+          {
+            "status": 200,
+            "ranges": [
+              [
+                0,
+                4
+              ]
+            ],
+            "selected_bytes": 5
+          },
+          {
+            "status": 200,
+            "ranges": [],
+            "selected_bytes": 0
+          },
+          {
+            "status": 416,
+            "ranges": [],
+            "selected_bytes": 0
+          },
+          {
+            "status": 206,
+            "ranges": [
+              [
+                0,
+                1
+              ],
+              [
+                8,
+                9
+              ]
+            ],
+            "selected_bytes": 4
+          },
+          {
+            "status": 200,
+            "ranges": [
+              [
+                0,
+                2
+              ]
+            ],
+            "selected_bytes": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "v2-build-queue",
+      "workspace_dir": "workspaces/build_queue",
+      "task": "Repair this small Python project according to README.md, preserving its public API. The README gives the complete behavior contract. README.md and test_planner.py are immutable byte-for-byte: do not modify, replace, rename, or delete them. Add any new tests as new files. Implementation files may be edited and new files added. Use Python 3.9 standard library only. Run python3 -m unittest discover -v to verify the supplied tests. No external service or dependency is needed.",
+      "immutable_files": [
+        "README.md",
+        "test_planner.py"
+      ],
+      "oracle": {
+        "module": "planner",
+        "function": "plan_build",
+        "inputs": [
+          [
+            {
+              "unused": [
+                "unused"
+              ]
+            },
+            [],
+            []
+          ],
+          [
+            {
+              "target": [
+                "old"
+              ],
+              "old": [
+                "bad"
+              ],
+              "bad": [
+                "bad"
+              ]
+            },
+            [
+              "target"
+            ],
+            [
+              "target"
+            ]
+          ],
+          [
+            {
+              "app": [
+                "cache",
+                "extra"
+              ],
+              "cache": [
+                "old"
+              ],
+              "old": [],
+              "extra": [
+                "old"
+              ]
+            },
+            [
+              "app"
+            ],
+            [
+              "cache"
+            ]
+          ],
+          [
+            {
+              "z": [],
+              "b": [],
+              "a": [
+                "b"
+              ],
+              "c": [
+                "a"
+              ]
+            },
+            [
+              "z",
+              "c"
+            ],
+            []
+          ],
+          [
+            {
+              "root": [
+                "x",
+                "x",
+                "y"
+              ],
+              "x": [],
+              "y": [
+                "x",
+                "x"
+              ]
+            },
+            [
+              "root",
+              "root"
+            ],
+            []
+          ],
+          [
+            {
+              "a": [
+                "a"
+              ],
+              "b": [
+                "a"
+              ],
+              "c": []
+            },
+            [
+              "a",
+              "b",
+              "c"
+            ],
+            []
+          ],
+          [
+            {
+              "a": [
+                "b"
+              ],
+              "b": [
+                "a"
+              ],
+              "c": [
+                "a"
+              ],
+              "d": [
+                "e"
+              ],
+              "e": [],
+              "junk": []
+            },
+            [
+              "c",
+              "d"
+            ],
+            []
+          ],
+          [
+            {
+              "a": [
+                "b"
+              ],
+              "b": [
+                "a"
+              ],
+              "c": [
+                "a"
+              ]
+            },
+            [
+              "c"
+            ],
+            [
+              "b",
+              "b"
+            ]
+          ],
+          [
+            {
+              "x": [
+                "y"
+              ],
+              "y": [],
+              "unused": [
+                "unused"
+              ]
+            },
+            [
+              "x",
+              "y"
+            ],
+            [
+              "y"
+            ]
+          ],
+          [
+            {
+              "a": [
+                "b"
+              ],
+              "b": [],
+              "c": [
+                "b"
+              ]
+            },
+            [
+              "c",
+              "a"
+            ],
+            [
+              "b"
+            ]
+          ],
+          [
+            {
+              "z": [],
+              "A": [],
+              "a": [],
+              "a-1": [
+                "A"
+              ]
+            },
+            [
+              "z",
+              "a",
+              "a-1"
+            ],
+            []
+          ],
+          [
+            {
+              "pkg": [
+                "dep"
+              ],
+              "dep": []
+            },
+            [
+              "pkg",
+              "pkg"
+            ],
+            [
+              "pkg",
+              "dep"
+            ]
+          ]
+        ],
+        "expected": [
+          {
+            "order": [],
+            "blocked": []
+          },
+          {
+            "order": [],
+            "blocked": []
+          },
+          {
+            "order": [
+              "old",
+              "extra",
+              "app"
+            ],
+            "blocked": []
+          },
+          {
+            "order": [
+              "b",
+              "a",
+              "c",
+              "z"
+            ],
+            "blocked": []
+          },
+          {
+            "order": [
+              "x",
+              "y",
+              "root"
+            ],
+            "blocked": []
+          },
+          {
+            "order": [
+              "c"
+            ],
+            "blocked": [
+              "a",
+              "b"
+            ]
+          },
+          {
+            "order": [
+              "e",
+              "d"
+            ],
+            "blocked": [
+              "a",
+              "b",
+              "c"
+            ]
+          },
+          {
+            "order": [
+              "a",
+              "c"
+            ],
+            "blocked": []
+          },
+          {
+            "order": [
+              "x"
+            ],
+            "blocked": []
+          },
+          {
+            "order": [
+              "a",
+              "c"
+            ],
+            "blocked": []
+          },
+          {
+            "order": [
+              "A",
+              "a",
+              "a-1",
+              "z"
+            ],
+            "blocked": []
+          },
+          {
+            "order": [],
+            "blocked": []
+          }
+        ]
+      }
+    }
+  ]
+}

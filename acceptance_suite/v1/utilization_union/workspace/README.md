@@ -1,0 +1,7 @@
+# Device utilization report
+
+A device utilization report started undercounting busy time and sometimes overcounting separate busy spans after a range-coalescing refactor. Reproduce the failures with python3 -m unittest discover -s tests -v, trace the call path, and repair the calculation. Keep the public entry point usage_report.report_usage(records, window_start, window_end) and do not edit public tests.
+
+Each record has device, start, and end. Timestamps are ISO 8601 strings with explicit UTC offsets (Z is allowed), whole-second precision, and must be compared as instants. The report window is a valid positive-duration half-open interval. Ignore any record whose end instant is no later than its start. Clip every other record to the report window; discard empty intersections. Within each device, compute the union of the clipped intervals so overlapping time is counted once. Touching intervals belong to the same busy span. Nested intervals must never shorten an existing span. Input records can be unsorted, duplicated, and interleaved across devices.
+
+Return a list sorted by device string. Each item is {device: <original device string>, busy_seconds: <integer duration of the union>, span_count: <number of disjoint busy spans>}. Omit devices with no positive coverage and do not mutate the inputs. Device strings are case-sensitive. Preserve the existing multi-module structure; timestamp decoding and window clipping already have their own helpers.

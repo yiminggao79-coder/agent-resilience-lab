@@ -1,0 +1,621 @@
+{
+  "version": 3,
+  "kind": "sealed_offline_author_validation",
+  "model_or_api_calls": 0,
+  "cases": [
+    {
+      "id": "case_01",
+      "baseline_originals_detected": true,
+      "baseline": {
+        "passed": false,
+        "protected_bytes_unchanged": true,
+        "original_tests": {
+          "passed": false,
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "FF........\n======================================================================\nFAIL: test_difference_precedes_goals (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v3-author-l1muoe0a/case_01/tests/test_original.py\", line 20, in test_difference_precedes_goals\n    self.assertEqual([r['team'] for r in rank(table(rows))], ['A','C','D','B'])\nAssertionError: Lists differ: ['C', 'A', 'D', 'B'] != ['A', 'C', 'D', 'B']\n\nFirst differing element 0:\n'C'\n'A'\n\n- ['C', 'A', 'D', 'B']\n?       -----\n\n+ ['A', 'C', 'D', 'B']\n?  +++++\n\n\n======================================================================\nFAIL: test_draw_credit (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v3-author-l1muoe0a/case_01/tests/test_original.py\", line 17, in test_draw_credit\n    self.assertEqual([r['points'] for r in table([match(hg=2,ag=2)])], [1,1])\nAssertionError: Lists differ: [0, 0] != [1, 1]\n\nFirst differing element 0:\n0\n1\n\n- [0, 0]\n+ [1, 1]\n\n----------------------------------------------------------------------\nRan 10 tests in 0.002s\n\nFAILED (failures=2)\n"
+        },
+        "oracles": {
+          "passed": false,
+          "count": 7,
+          "actual_count": 7,
+          "mismatches": [
+            {
+              "index": 1,
+              "expected": {
+                "value": {
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 1,
+                      "lost": 0,
+                      "goals_for": 1,
+                      "goals_against": 1,
+                      "difference": 0,
+                      "points": 1
+                    },
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 1,
+                      "lost": 0,
+                      "goals_for": 1,
+                      "goals_against": 1,
+                      "difference": 0,
+                      "points": 1
+                    },
+                    {
+                      "team": "C",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    }
+                  ],
+                  "summary": {
+                    "games": 1,
+                    "teams": 3,
+                    "goals": 2
+                  }
+                },
+                "input_intact": true
+              },
+              "actual": {
+                "value": {
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 1,
+                      "lost": 0,
+                      "goals_for": 1,
+                      "goals_against": 1,
+                      "difference": 0,
+                      "points": 0
+                    },
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 1,
+                      "lost": 0,
+                      "goals_for": 1,
+                      "goals_against": 1,
+                      "difference": 0,
+                      "points": 0
+                    },
+                    {
+                      "team": "C",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    }
+                  ],
+                  "summary": {
+                    "games": 1,
+                    "teams": 3,
+                    "goals": 2
+                  }
+                },
+                "input_intact": true
+              }
+            },
+            {
+              "index": 3,
+              "expected": {
+                "value": {
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 2,
+                      "goals_against": 0,
+                      "difference": 2,
+                      "points": 3
+                    },
+                    {
+                      "team": "C",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 4,
+                      "goals_against": 3,
+                      "difference": 1,
+                      "points": 3
+                    },
+                    {
+                      "team": "D",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 3,
+                      "goals_against": 4,
+                      "difference": -1,
+                      "points": 0
+                    },
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 0,
+                      "goals_against": 2,
+                      "difference": -2,
+                      "points": 0
+                    }
+                  ],
+                  "summary": {
+                    "games": 2,
+                    "teams": 4,
+                    "goals": 9
+                  }
+                },
+                "input_intact": true
+              },
+              "actual": {
+                "value": {
+                  "standings": [
+                    {
+                      "team": "C",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 4,
+                      "goals_against": 3,
+                      "difference": 1,
+                      "points": 3
+                    },
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 2,
+                      "goals_against": 0,
+                      "difference": 2,
+                      "points": 3
+                    },
+                    {
+                      "team": "D",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 3,
+                      "goals_against": 4,
+                      "difference": -1,
+                      "points": 0
+                    },
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 0,
+                      "goals_against": 2,
+                      "difference": -2,
+                      "points": 0
+                    }
+                  ],
+                  "summary": {
+                    "games": 2,
+                    "teams": 4,
+                    "goals": 9
+                  }
+                },
+                "input_intact": true
+              }
+            }
+          ]
+        }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 7,
+            "actual_count": 7,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 2,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.003s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 14,
+            "actual_count": 14,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 3,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 21,
+            "actual_count": 21,
+            "mismatches": []
+          }
+        }
+      ],
+      "negative_controls": [
+        {
+          "control": "unsupported_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage1_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage1_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage1_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage1_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage2_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage2_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage2_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage2_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage3_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage3_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage3_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage3_adapter_byte_edit",
+          "detected": true
+        }
+      ]
+    },
+    {
+      "id": "case_02",
+      "baseline_originals_detected": true,
+      "baseline": {
+        "passed": false,
+        "protected_bytes_unchanged": true,
+        "original_tests": {
+          "passed": false,
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "..EEE..F..\n======================================================================\nERROR: test_empty_fields (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v3-author-l1muoe0a/case_02/tests/test_original.py\", line 13, in test_empty_fields\n    self.assertEqual(decode_line('a||\\n'),{'tag':'a','value':'','unit':''})\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v3-author-l1muoe0a/case_02/wire.py\", line 13, in decode_line\n    raise ValueError('expected three fields')\nValueError: expected three fields\n\n======================================================================\nERROR: test_escaped_backslash_and_newline (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v3-author-l1muoe0a/case_02/tests/test_original.py\", line 19, in test_escaped_backslash_and_newline\n    self.assertEqual(decode_line(encode_record(row)),row)\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v3-author-l1muoe0a/case_02/wire.py\", line 10, in decode_line\n    raise ValueError('expected one terminated physical line')\nValueError: expected one terminated physical line\n\n======================================================================\nERROR: test_escaped_pipe (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v3-author-l1muoe0a/case_02/tests/test_original.py\", line 16, in test_escaped_pipe\n    self.assertEqual(decode_line(encode_record(row)),row)\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v3-author-l1muoe0a/case_02/wire.py\", line 13, in decode_line\n    raise ValueError('expected three fields')\nValueError: expected three fields\n\n======================================================================\nFAIL: test_reject_unknown_escape (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v3-author-l1muoe0a/case_02/tests/test_original.py\", line 25, in test_reject_unknown_escape\n    decode_line('a|\\\\q|u\\n')\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 10 tests in 0.004s\n\nFAILED (failures=1, errors=3)\n"
+        },
+        "oracles": {
+          "passed": false,
+          "count": 7,
+          "actual_count": 7,
+          "mismatches": [
+            {
+              "index": 1,
+              "expected": {
+                "value": {
+                  "encoded": "s\\|x|a\\\\b\\nc|\n",
+                  "decoded": {
+                    "tag": "s|x",
+                    "value": "a\\b\nc",
+                    "unit": ""
+                  },
+                  "batch": [
+                    {
+                      "tag": "s|x",
+                      "value": "a\\b\nc",
+                      "unit": ""
+                    }
+                  ],
+                  "counts": {
+                    "s|x": 1
+                  }
+                },
+                "input_intact": true
+              },
+              "actual": {
+                "value": {
+                  "encoded": "s|x|a\\b\nc|\n",
+                  "decoded": {
+                    "tag": "s\\",
+                    "value": "x",
+                    "unit": "a\\\\b\\nc"
+                  },
+                  "batch": [
+                    {
+                      "tag": "s\\",
+                      "value": "x",
+                      "unit": "a\\\\b\\nc"
+                    }
+                  ],
+                  "counts": {
+                    "s\\": 1
+                  }
+                },
+                "input_intact": true
+              }
+            },
+            {
+              "index": 2,
+              "expected": {
+                "value": {
+                  "encoded": "t||\n",
+                  "decoded": {
+                    "tag": "t",
+                    "value": "",
+                    "unit": ""
+                  },
+                  "batch": [],
+                  "counts": {}
+                },
+                "input_intact": true
+              },
+              "actual": {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              }
+            },
+            {
+              "index": 4,
+              "expected": {
+                "value": {
+                  "encoded": "r|\\\\|\\|\n",
+                  "decoded": {
+                    "tag": "r",
+                    "value": "\\",
+                    "unit": "|"
+                  },
+                  "batch": [
+                    {
+                      "tag": "r",
+                      "value": "\\",
+                      "unit": "|"
+                    },
+                    {
+                      "tag": "r",
+                      "value": "2",
+                      "unit": "u"
+                    }
+                  ],
+                  "counts": {
+                    "r": 2
+                  }
+                },
+                "input_intact": true
+              },
+              "actual": {
+                "value": {
+                  "encoded": "r|\\||\n",
+                  "decoded": {
+                    "tag": "r",
+                    "value": "\\\\",
+                    "unit": "\\"
+                  },
+                  "batch": [
+                    {
+                      "tag": "r",
+                      "value": "\\\\",
+                      "unit": "\\"
+                    },
+                    {
+                      "tag": "r",
+                      "value": "2",
+                      "unit": "u"
+                    }
+                  ],
+                  "counts": {
+                    "r": 2
+                  }
+                },
+                "input_intact": true
+              }
+            },
+            {
+              "index": 5,
+              "expected": {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              },
+              "actual": {
+                "value": {
+                  "encoded": "t|1|u\n",
+                  "decoded": {
+                    "tag": "t",
+                    "value": "\\q",
+                    "unit": "u"
+                  },
+                  "batch": [],
+                  "counts": {}
+                },
+                "input_intact": true
+              }
+            }
+          ]
+        }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 7,
+            "actual_count": 7,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 2,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.002s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 14,
+            "actual_count": 14,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 3,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 24,
+            "actual_count": 24,
+            "mismatches": []
+          }
+        }
+      ],
+      "negative_controls": [
+        {
+          "control": "unsupported_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage1_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage1_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage1_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage1_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage2_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage2_snapshot_aliasing",
+          "detected": true
+        },
+        {
+          "control": "stage2_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage2_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage3_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage3_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage3_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage3_adapter_byte_edit",
+          "detected": true
+        }
+      ]
+    }
+  ],
+  "all_passed": true
+}

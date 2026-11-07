@@ -1,0 +1,79 @@
+{
+  "case_01": [
+    {
+      "id": "unclipped_end",
+      "path": "intervals.py",
+      "old": "right = min(stop, record[\"end\"])",
+      "new": "right = record[\"end\"]"
+    },
+    {
+      "id": "cancelled_included",
+      "path": "intervals.py",
+      "old": "if record.get(\"cancelled\", False):",
+      "new": "if False:"
+    },
+    {
+      "id": "unclipped_start",
+      "path": "intervals.py",
+      "old": "left = max(start, record[\"start\"])",
+      "new": "left = record[\"start\"]"
+    },
+    {
+      "id": "duplicate_union_counted",
+      "path": "totals.py",
+      "old": "busy += when - previous",
+      "new": "busy += (when - previous) * active"
+    },
+    {
+      "id": "room_order_reversed",
+      "path": "totals.py",
+      "old": "for room in sorted(groups):",
+      "new": "for room in sorted(groups, reverse=True):"
+    },
+    {
+      "id": "peak_lost",
+      "path": "totals.py",
+      "old": "peak = max(peak, active)",
+      "new": "peak = min(1, max(peak, active))"
+    }
+  ],
+  "case_02": [
+    {
+      "id": "same_wave_dependency",
+      "path": "planner.py",
+      "old": "ready = sorted(name for name in pending if dependencies[name] <= finished)",
+      "new": "ready = sorted(name for name in pending if dependencies[name] <= (finished | pending))"
+    },
+    {
+      "id": "unknown_treated_finished",
+      "path": "planner.py",
+      "old": "dependencies = dependency_map(jobs)",
+      "new": "dependencies = {name: deps & set(jobs) for name, deps in dependency_map(jobs).items()}"
+    },
+    {
+      "id": "completed_ignored",
+      "path": "planner.py",
+      "old": "finished = set(completed or [])",
+      "new": "finished = set()"
+    },
+    {
+      "id": "blocked_omitted",
+      "path": "planner.py",
+      "old": "\"blocked\": sorted(pending)",
+      "new": "\"blocked\": []"
+    },
+    {
+      "id": "batches_reversed",
+      "path": "planner.py",
+      "old": "\"batches\": group_ranks(ranks)",
+      "new": "\"batches\": list(reversed(group_ranks(ranks)))"
+    },
+    {
+      "id": "input_mutated",
+      "path": "planner.py",
+      "old": "dependencies = dependency_map(jobs)",
+      "new": "dependencies = dependency_map(jobs)\\n    jobs.clear()"
+    }
+  ]
+}
+

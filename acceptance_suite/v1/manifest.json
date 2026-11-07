@@ -1,0 +1,562 @@
+{
+  "suite_version": 1,
+  "cases": [
+    {
+      "id": "warehouse_atomic",
+      "workspace_dir": "warehouse_atomic/workspace",
+      "task": "Finish the small warehouse dispatch planner. Its entry point is dispatch.plan_dispatch(stock, orders). Stock is a mapping of canonical uppercase SKU strings to nonnegative integer quantities. Orders arrive in priority order and have a unique order_id plus a nonempty lines list of {sku, quantity}; quantities are positive integers. You may assume all inputs satisfy those types.\n\nNormalize each requested SKU by stripping surrounding whitespace and uppercasing it, then combine duplicate SKU lines within that order. Process orders in their input order. Reserve an entire order only if every combined quantity is available. An unknown SKU has availability zero. If any SKU is short, reject the entire order without consuming any stock; include every shortage, not just the first. A later order must see only stock consumed by earlier successful orders. Do not mutate either input.\n\nReturn {remaining: <stock mapping>, orders: <result list>}. Keep every original stock SKU in remaining, including zero quantities, and never add unknown SKUs. Each result must contain order_id, status (reserved or rejected), items, and shortages. items is the normalized, combined request, represented as a SKU-sorted list of {sku, quantity}. shortages is a SKU-sorted list of {sku, requested, available}; it is empty for a reserved order. Preserve input order for the order results. The existing modules divide normalization, reservation, and orchestration; complete the behavior while keeping this public entry point and schema. Run python3 -m unittest discover -s tests -v. Public tests are immutable.",
+      "immutable_files": [
+        "README.md",
+        "tests/__init__.py",
+        "tests/test_dispatch.py"
+      ],
+      "oracle": {
+        "module": "dispatch",
+        "function": "plan_dispatch",
+        "inputs": [
+          [
+            {
+              "TEA": 7,
+              "MUG": 3
+            },
+            [
+              {
+                "order_id": "a",
+                "lines": [
+                  {
+                    "sku": " tea ",
+                    "quantity": 2
+                  },
+                  {
+                    "sku": "TEA",
+                    "quantity": 1
+                  },
+                  {
+                    "sku": "mug",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "order_id": "b",
+                "lines": [
+                  {
+                    "sku": "TEA",
+                    "quantity": 5
+                  },
+                  {
+                    "sku": "MUG",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "order_id": "c",
+                "lines": [
+                  {
+                    "sku": "tea",
+                    "quantity": 4
+                  },
+                  {
+                    "sku": " MUG ",
+                    "quantity": 2
+                  }
+                ]
+              }
+            ]
+          ],
+          [
+            {
+              "A": 2,
+              "B": 0
+            },
+            [
+              {
+                "order_id": "large",
+                "lines": [
+                  {
+                    "sku": "Z",
+                    "quantity": 1
+                  },
+                  {
+                    "sku": "B",
+                    "quantity": 1
+                  },
+                  {
+                    "sku": "A",
+                    "quantity": 3
+                  }
+                ]
+              },
+              {
+                "order_id": "fits",
+                "lines": [
+                  {
+                    "sku": "a",
+                    "quantity": 2
+                  }
+                ]
+              }
+            ]
+          ],
+          [
+            {
+              "WIDGET": 5,
+              "GADGET": 4
+            },
+            [
+              {
+                "order_id": "x",
+                "lines": [
+                  {
+                    "sku": "widget",
+                    "quantity": 2
+                  },
+                  {
+                    "sku": " WIDGET",
+                    "quantity": 3
+                  }
+                ]
+              },
+              {
+                "order_id": "y",
+                "lines": [
+                  {
+                    "sku": "GADGET",
+                    "quantity": 2
+                  },
+                  {
+                    "sku": "missing",
+                    "quantity": 1
+                  }
+                ]
+              },
+              {
+                "order_id": "z",
+                "lines": [
+                  {
+                    "sku": "gadget",
+                    "quantity": 4
+                  }
+                ]
+              }
+            ]
+          ],
+          [
+            {},
+            [
+              {
+                "order_id": "unknown",
+                "lines": [
+                  {
+                    "sku": " ghost ",
+                    "quantity": 2
+                  },
+                  {
+                    "sku": "GHOST",
+                    "quantity": 3
+                  }
+                ]
+              }
+            ]
+          ],
+          [
+            {
+              "ZERO": 0,
+              "SPARE": 11
+            },
+            []
+          ]
+        ],
+        "expected": [
+          {
+            "remaining": {
+              "TEA": 0,
+              "MUG": 0
+            },
+            "orders": [
+              {
+                "order_id": "a",
+                "status": "reserved",
+                "items": [
+                  {
+                    "sku": "MUG",
+                    "quantity": 1
+                  },
+                  {
+                    "sku": "TEA",
+                    "quantity": 3
+                  }
+                ],
+                "shortages": []
+              },
+              {
+                "order_id": "b",
+                "status": "rejected",
+                "items": [
+                  {
+                    "sku": "MUG",
+                    "quantity": 1
+                  },
+                  {
+                    "sku": "TEA",
+                    "quantity": 5
+                  }
+                ],
+                "shortages": [
+                  {
+                    "sku": "TEA",
+                    "requested": 5,
+                    "available": 4
+                  }
+                ]
+              },
+              {
+                "order_id": "c",
+                "status": "reserved",
+                "items": [
+                  {
+                    "sku": "MUG",
+                    "quantity": 2
+                  },
+                  {
+                    "sku": "TEA",
+                    "quantity": 4
+                  }
+                ],
+                "shortages": []
+              }
+            ]
+          },
+          {
+            "remaining": {
+              "A": 0,
+              "B": 0
+            },
+            "orders": [
+              {
+                "order_id": "large",
+                "status": "rejected",
+                "items": [
+                  {
+                    "sku": "A",
+                    "quantity": 3
+                  },
+                  {
+                    "sku": "B",
+                    "quantity": 1
+                  },
+                  {
+                    "sku": "Z",
+                    "quantity": 1
+                  }
+                ],
+                "shortages": [
+                  {
+                    "sku": "A",
+                    "requested": 3,
+                    "available": 2
+                  },
+                  {
+                    "sku": "B",
+                    "requested": 1,
+                    "available": 0
+                  },
+                  {
+                    "sku": "Z",
+                    "requested": 1,
+                    "available": 0
+                  }
+                ]
+              },
+              {
+                "order_id": "fits",
+                "status": "reserved",
+                "items": [
+                  {
+                    "sku": "A",
+                    "quantity": 2
+                  }
+                ],
+                "shortages": []
+              }
+            ]
+          },
+          {
+            "remaining": {
+              "WIDGET": 0,
+              "GADGET": 0
+            },
+            "orders": [
+              {
+                "order_id": "x",
+                "status": "reserved",
+                "items": [
+                  {
+                    "sku": "WIDGET",
+                    "quantity": 5
+                  }
+                ],
+                "shortages": []
+              },
+              {
+                "order_id": "y",
+                "status": "rejected",
+                "items": [
+                  {
+                    "sku": "GADGET",
+                    "quantity": 2
+                  },
+                  {
+                    "sku": "MISSING",
+                    "quantity": 1
+                  }
+                ],
+                "shortages": [
+                  {
+                    "sku": "MISSING",
+                    "requested": 1,
+                    "available": 0
+                  }
+                ]
+              },
+              {
+                "order_id": "z",
+                "status": "reserved",
+                "items": [
+                  {
+                    "sku": "GADGET",
+                    "quantity": 4
+                  }
+                ],
+                "shortages": []
+              }
+            ]
+          },
+          {
+            "remaining": {},
+            "orders": [
+              {
+                "order_id": "unknown",
+                "status": "rejected",
+                "items": [
+                  {
+                    "sku": "GHOST",
+                    "quantity": 5
+                  }
+                ],
+                "shortages": [
+                  {
+                    "sku": "GHOST",
+                    "requested": 5,
+                    "available": 0
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "remaining": {
+              "ZERO": 0,
+              "SPARE": 11
+            },
+            "orders": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "utilization_union",
+      "workspace_dir": "utilization_union/workspace",
+      "task": "A device utilization report started undercounting busy time and sometimes overcounting separate busy spans after a range-coalescing refactor. Reproduce the failures with python3 -m unittest discover -s tests -v, trace the call path, and repair the calculation. Keep the public entry point usage_report.report_usage(records, window_start, window_end) and do not edit public tests.\n\nEach record has device, start, and end. Timestamps are ISO 8601 strings with explicit UTC offsets (Z is allowed), whole-second precision, and must be compared as instants. The report window is a valid positive-duration half-open interval. Ignore any record whose end instant is no later than its start. Clip every other record to the report window; discard empty intersections. Within each device, compute the union of the clipped intervals so overlapping time is counted once. Touching intervals belong to the same busy span. Nested intervals must never shorten an existing span. Input records can be unsorted, duplicated, and interleaved across devices.\n\nReturn a list sorted by device string. Each item is {device: <original device string>, busy_seconds: <integer duration of the union>, span_count: <number of disjoint busy spans>}. Omit devices with no positive coverage and do not mutate the inputs. Device strings are case-sensitive. Preserve the existing multi-module structure; timestamp decoding and window clipping already have their own helpers.",
+      "immutable_files": [
+        "README.md",
+        "tests/__init__.py",
+        "tests/test_usage_report.py"
+      ],
+      "oracle": {
+        "module": "usage_report",
+        "function": "report_usage",
+        "inputs": [
+          [
+            [
+              {
+                "device": "alpha",
+                "start": "2025-03-04T09:45:00Z",
+                "end": "2025-03-04T10:15:00Z"
+              },
+              {
+                "device": "alpha",
+                "start": "2025-03-04T09:00:00Z",
+                "end": "2025-03-04T10:00:00Z"
+              },
+              {
+                "device": "alpha",
+                "start": "2025-03-04T09:15:00Z",
+                "end": "2025-03-04T09:30:00Z"
+              }
+            ],
+            "2025-03-04T08:00:00Z",
+            "2025-03-04T11:00:00Z"
+          ],
+          [
+            [
+              {
+                "device": "beta",
+                "start": "2025-03-04T08:30:00Z",
+                "end": "2025-03-04T09:20:00Z"
+              },
+              {
+                "device": "beta",
+                "start": "2025-03-04T09:20:00Z",
+                "end": "2025-03-04T09:50:00Z"
+              },
+              {
+                "device": "beta",
+                "start": "2025-03-04T09:50:00Z",
+                "end": "2025-03-04T10:30:00Z"
+              },
+              {
+                "device": "beta",
+                "start": "2025-03-04T11:00:00Z",
+                "end": "2025-03-04T12:00:00Z"
+              }
+            ],
+            "2025-03-04T09:00:00Z",
+            "2025-03-04T11:30:00Z"
+          ],
+          [
+            [
+              {
+                "device": "offset",
+                "start": "2025-03-04T02:00:00+02:00",
+                "end": "2025-03-04T02:20:00+02:00"
+              },
+              {
+                "device": "offset",
+                "start": "2025-03-03T19:10:00-05:00",
+                "end": "2025-03-03T19:15:00-05:00"
+              },
+              {
+                "device": "offset",
+                "start": "2025-03-04T00:20:00Z",
+                "end": "2025-03-04T00:40:00Z"
+              }
+            ],
+            "2025-03-03T23:50:00Z",
+            "2025-03-04T00:30:00Z"
+          ],
+          [
+            [
+              {
+                "device": "z",
+                "start": "2025-03-04T00:00:00Z",
+                "end": "2025-03-04T00:00:10Z"
+              },
+              {
+                "device": "A",
+                "start": "2025-03-04T00:00:20Z",
+                "end": "2025-03-04T00:00:30Z"
+              },
+              {
+                "device": "z",
+                "start": "2025-03-04T00:00:03Z",
+                "end": "2025-03-04T00:00:04Z"
+              },
+              {
+                "device": "z",
+                "start": "2025-03-04T00:00:00Z",
+                "end": "2025-03-04T00:00:10Z"
+              },
+              {
+                "device": "A",
+                "start": "2025-03-04T00:00:40Z",
+                "end": "2025-03-04T00:00:45Z"
+              },
+              {
+                "device": "a",
+                "start": "2025-03-04T00:00:50Z",
+                "end": "2025-03-04T00:00:55Z"
+              }
+            ],
+            "2025-03-04T00:00:00Z",
+            "2025-03-04T00:01:00Z"
+          ],
+          [
+            [
+              {
+                "device": "outside",
+                "start": "2025-03-04T00:00:00Z",
+                "end": "2025-03-04T01:00:00Z"
+              },
+              {
+                "device": "zero",
+                "start": "2025-03-04T01:30:00Z",
+                "end": "2025-03-04T01:30:00Z"
+              },
+              {
+                "device": "reverse",
+                "start": "2025-03-04T02:00:00Z",
+                "end": "2025-03-04T01:30:00Z"
+              },
+              {
+                "device": "later",
+                "start": "2025-03-04T02:00:00Z",
+                "end": "2025-03-04T03:00:00Z"
+              }
+            ],
+            "2025-03-04T01:00:00Z",
+            "2025-03-04T02:00:00Z"
+          ],
+          [
+            [],
+            "2025-03-04T01:00:00+01:00",
+            "2025-03-04T01:00:01+01:00"
+          ]
+        ],
+        "expected": [
+          [
+            {
+              "device": "alpha",
+              "busy_seconds": 4500,
+              "span_count": 1
+            }
+          ],
+          [
+            {
+              "device": "beta",
+              "busy_seconds": 7200,
+              "span_count": 2
+            }
+          ],
+          [
+            {
+              "device": "offset",
+              "busy_seconds": 1800,
+              "span_count": 1
+            }
+          ],
+          [
+            {
+              "device": "A",
+              "busy_seconds": 15,
+              "span_count": 2
+            },
+            {
+              "device": "a",
+              "busy_seconds": 5,
+              "span_count": 1
+            },
+            {
+              "device": "z",
+              "busy_seconds": 10,
+              "span_count": 1
+            }
+          ],
+          [],
+          []
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+The repaired codec now needs incremental input. Add stream.py with a Decoder class exposing feed(chunk), finish(), snapshot(). Preserve Turn 1 behavior and the protected original tests/observe.py.
+
+A fresh Decoder starts with no pending text, zero accepted_chars, zero records_seen and closed=False. feed accepts a string chunk, combines it with pending text, decodes every complete PHYSICAL line using the repaired decoder, and retains an incomplete tail. Escapes may straddle chunk boundaries. Return the decoded record list. accepted_chars counts Python string characters in successfully accepted chunks, not encoded bytes; records_seen counts emitted records. snapshot returns a fresh {"accepted_chars":int, "pending":raw_tail_string, "records_seen":int, "closed":bool}.
+
+Each feed is transactional: if any complete line is invalid, raise ValueError, emit nothing, and leave all state exactly as before that feed, even if earlier lines in that chunk were valid. A later feed starts from the unchanged old tail. Non-string chunks and feeding after close (including empty chunks) raise ValueError without state changes.
+
+finish raises ValueError without state changes when pending is nonempty. Otherwise it closes the decoder and returns []; repeated finish calls are harmless and return []. It never synthesizes a missing newline. Preserve caller objects and ensure returned snapshots/records do not share mutable internal state. Add tests for split escapes, multiple lines, failure rollback, incomplete finish/recovery and close behavior.

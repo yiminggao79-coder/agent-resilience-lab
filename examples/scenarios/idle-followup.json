@@ -1,0 +1,15 @@
+{
+  "kind": "real_multi_turn_development_scenario",
+  "task": "Extend report_usage with an optional include_idle=False parameter. Preserve the exact current default behavior and all existing tests. When include_idle=True, each device already included by the current report must also have idle_seconds equal to the reporting window duration minus that device's union busy_seconds. Keep timezone and cross-day behavior correct. Add regression tests without changing existing test files, execute the tests, inspect real feedback, and verify the saved implementation.",
+  "preserve_case": "utilization_union",
+  "oracle": {
+    "module": "usage_report",
+    "function": "report_usage",
+    "inputs": [
+      [[{"device":"alpha","start":"2026-01-01T00:10:00Z","end":"2026-01-01T00:25:00Z"},{"device":"alpha","start":"2026-01-01T00:20:00Z","end":"2026-01-01T00:40:00Z"}],"2026-01-01T00:00:00Z","2026-01-01T01:00:00Z",true],
+      [[{"device":"beta","start":"2025-12-31T23:00:00-01:00","end":"2026-01-01T01:30:00Z"}],"2026-01-01T00:00:00Z","2026-01-01T01:00:00Z",true],
+      [[{"device":"gamma","start":"2026-01-02T00:00:00Z","end":"2026-01-02T00:30:00Z"}],"2026-01-01T23:00:00Z","2026-01-02T01:00:00Z",true]
+    ],
+    "expected": [[{"device":"alpha","busy_seconds":1800,"span_count":1,"idle_seconds":1800}],[{"device":"beta","busy_seconds":3600,"span_count":1,"idle_seconds":0}],[{"device":"gamma","busy_seconds":1800,"span_count":1,"idle_seconds":5400}]]
+  }
+}

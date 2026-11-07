@@ -1,0 +1,36 @@
+{
+  "id": "invoice_patch_development",
+  "workspace_dir": "workspace",
+  "task": "Read this invoice project and implement README.md. Use update_plan to track your own work and apply_patch_text for source changes, including the helper move, new validation module and legacy deletion. Existing tests/test_public.py is host read-only and must remain byte unchanged; add regression tests in new files only. Run the fixed run_tests tool after the final change, inspect feedback and continue until verified. Do not request general commands.",
+  "immutable_files": ["tests/test_public.py"],
+  "oracle": {
+    "module": "reporting",
+    "function": "report",
+    "inputs": [
+      [[]],
+      [[{"unit_price": "0.105", "qty": 1}]],
+      [[{"unit_price": "0.1", "qty": 3}, {"unit_price": " 0.20 ", "qty": 1}]],
+      [[{"unit_price": "0.004", "qty": 1}, {"unit_price": "0.004", "qty": 1}]],
+      [[{"unit_price": "7.90", "qty": 0, "note": "ignored"}]],
+      [[{"unit_price": "NaN", "qty": 1}]],
+      [[{"unit_price": "1", "qty": true}]],
+      [[{"unit_price": "-1", "qty": 1}]],
+      [[{"unit_price": "1", "qty": "2"}]],
+      [{"unit_price": "1", "qty": 2}],
+      [[{"qty": 1}]]
+    ],
+    "expected": [
+      {"total": "0.00", "quantity": 0, "lines": 0},
+      {"total": "0.11", "quantity": 1, "lines": 1},
+      {"total": "0.50", "quantity": 4, "lines": 2},
+      {"total": "0.01", "quantity": 2, "lines": 2},
+      {"total": "0.00", "quantity": 0, "lines": 1},
+      {"error": "invalid_input"},
+      {"error": "invalid_input"},
+      {"error": "invalid_input"},
+      {"error": "invalid_input"},
+      {"error": "invalid_input"},
+      {"error": "invalid_input"}
+    ]
+  }
+}

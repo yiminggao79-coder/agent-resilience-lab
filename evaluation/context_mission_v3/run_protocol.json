@@ -1,0 +1,55 @@
+{
+  "version": 3,
+  "manifest_schema_version": 1,
+  "attempts_per_case": 1,
+  "cases": 2,
+  "turns_per_case": 3,
+  "max_model_calls_per_turn": 50,
+  "turn_timeout_seconds": 900,
+  "max_output_tokens": 4096,
+  "active_context_max_bytes": 48000,
+  "limits_apply_to_every_turn": true,
+  "model_condition": "Runner_default_Flash_non_thinking_exact_profile_and_real_quality_not_measured_by_author",
+  "stdlib_only": true,
+  "task_field": "UTF8_task_file_path_relative_to_manifest_directory",
+  "candidate_lifecycle": "copy_once_per_case_preserve_candidate_changes_across_all_three_natural_user_turns",
+  "original_test_command": ["python3", "-B", "-m", "unittest", "discover", "-s", "tests", "-p", "test_original.py"],
+  "oracle_contract": {
+    "inputs": "one_positional_argument_list_per_observation",
+    "expected": "one_external_expected_JSON_value_per_input_in_order",
+    "execution": "import_from_current_candidate_root_call_named_function",
+    "transport": "inputs_via_trusted_observation_subprocess_stdin_expected_only_in_trusted_parent",
+    "preservation": "caller_payload_equality_observed_on_success_and_declared_errors",
+    "absence_of_expected_answers_in_workspace": true
+  },
+  "scoring": {
+    "per_stage": "all_current_and_prior_oracles_pass_protected_original_tests_execute_and_pass_and_all_original_protected_bytes_match",
+    "per_case": "all_three_original_stage_results_pass",
+    "overall_quality": "both_cases_pass",
+    "later_repairs": "never_erase_or_replace_an_earlier_stage_failure",
+    "claims_and_tool_order": "not_score_inputs",
+    "unknown_missing_crashed": "null_never_pass",
+    "new_tests": "allowed_separate_files_do_not_replace_originals",
+    "protected_semantically_equivalent_edits": "fail_exact_bytes",
+    "failed_attempts": "preserve_all_original_records_and_scores_no_post_run_task_or_oracle_changes"
+  },
+  "independent_runner_gates": {
+    "real_model_selects_tools": true,
+    "automatic_summary_installed_before_final_coding_each_case": true,
+    "new_pid_across_user_turns": true,
+    "runtime_snapshot_fixed_before_first_semantic_exposure": true,
+    "same_limits_all_turns": true,
+    "no_case_recognition_or_scripted_actions": true,
+    "no_padding_or_prescribed_tool_order_in_tasks": true,
+    "offline_reference_success_not_live_success": true
+  },
+  "exposure": {
+    "coding_model_allowed": ["current_synthetic_candidate_workspace", "current_natural_task_text"],
+    "coding_model_denied": ["finite_oracle_inputs", "expected_outputs", "reference_overlays", "author_sources", "author_validation_records"],
+    "runtime_implementer_before_freeze_and_acceptance": ["public_interface", "public_receipt_counts_and_hashes"],
+    "project_subprocess_credentials": "none_no_DEEPSEEK_API_KEY_inheritance"
+  },
+  "authorship_independence": "role_separation_same_AI_environment_not_external_statistical_independence",
+  "provenance": "fresh_synthetic_domains_and_APIs_no_previous_suite_runtime_private_or_diagnostic_reads_no_live_calls_no_difficulty_reduction_from_prior_failures",
+  "after_freeze": "stop_authoring_preserve_workspace_no_Git_commit"
+}

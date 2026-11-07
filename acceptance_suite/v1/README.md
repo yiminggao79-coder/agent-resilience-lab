@@ -1,0 +1,13 @@
+# Independent coding acceptance snapshot, version 1
+
+This is a newly authored independent acceptance snapshot. The author did not inspect the implementation under `agent_lab/`, existing tests or answers, or credentials. The fixtures require only Python's standard library. They contain no subprocess, fork, network, file-write, or external-service behavior.
+
+`manifest.json` is controller-only material. Only the selected case's `workspace_dir` contents and `task` text may be provided to a candidate. Do not copy the containing case directory, suite directory, manifest, verification record, or another case into that workspace. `immutable_files` entries are relative to the workspace. Preserve their bytes.
+
+The controller copies the complete candidate workspace into a separate isolated observation sandbox, then invokes `observe_function(module, function, inputs)` using the case's oracle fields. Each `inputs` element is a positional argument list for one call. Every call returns a JSON-compatible value. Compare the returned list against `expected` structurally, preserving list order while ignoring dictionary key order. Expected values are fixed external data derived from the requirements; candidate-controlled test assertions are not the acceptance oracle. Use a fresh workspace copy for each case and import modules from that copy. The entry modules are top-level Python identifiers and import local helpers.
+
+Run each initial fixture's public baseline from its own workspace with `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v`. These failures are intentional. The public tests are also useful candidate feedback, but passing them alone is insufficient. Initial hidden observations and the public-test results are summarized in `verification.json`; that record contains no expected answers.
+
+All suite files other than `FREEZE.json` itself are recorded in that file's `files` SHA-256 map, relative to this directory. The SHA-256 of `FREEZE.json` is the snapshot freeze identifier. `FREEZE_REVISIONS.json` records the metadata-only revision from the preliminary local manifest freeze; fixture bytes, task text, oracle inputs, and expected values did not change. After freezing, do not change any snapshot file. A discovered specification defect requires a separately recorded revision rather than a silent update.
+
+This small snapshot measures two concrete coding workflows. It is not a formal proof against malicious candidates, introspection, oracle exposure, or all possible defects. Isolation, controller confidentiality, and immutable-file enforcement remain responsibilities of the generic runner.

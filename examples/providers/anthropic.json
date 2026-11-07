@@ -1,0 +1,5 @@
+{
+  "provider": "anthropic",
+  "model": "REPLACE_WITH_AVAILABLE_MODEL",
+  "stream": true
+}

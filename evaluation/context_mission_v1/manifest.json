@@ -1,0 +1,1716 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "case_01",
+      "workspace_dir": "cases/case_01/workspace",
+      "immutable_files": [
+        "tests/test_original.py",
+        "observe.py"
+      ],
+      "turns": [
+        {
+          "task": "cases/case_01/turn1.md",
+          "oracle": {
+            "module": "observe",
+            "function": "stage1",
+            "inputs": [
+              [
+                {
+                  "rows": [
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "09:00",
+                      "end": "10:00",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "day": "2027-05-10"
+                }
+              ],
+              [
+                {
+                  "rows": [
+                    {
+                      "id": "z",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:15",
+                      "end": "08:45",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "c",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:30",
+                      "end": "09:30",
+                      "attendees": 1
+                    }
+                  ],
+                  "day": "2027-05-10"
+                }
+              ],
+              [
+                {
+                  "rows": [
+                    {
+                      "id": "x",
+                      "room": " SIDE ",
+                      "day": "2027-05-10",
+                      "start": "23:00",
+                      "end": "24:00",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "08:10",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "q",
+                      "room": "side",
+                      "day": "2027-05-11",
+                      "start": "08:00",
+                      "end": "08:10",
+                      "attendees": 1
+                    }
+                  ],
+                  "day": "2027-05-10"
+                }
+              ],
+              [
+                {
+                  "rows": [
+                    {
+                      "id": "bad",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "09:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "day": "2027-05-10"
+                }
+              ],
+              [
+                {
+                  "rows": [
+                    {
+                      "id": "x",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "08:30",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "x",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "10:00",
+                      "end": "11:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "day": "2027-05-10"
+                }
+              ],
+              [
+                {
+                  "rows": [],
+                  "day": "2027-05-10"
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "conflicts": [],
+                  "report": {
+                    "day": "2027-05-10",
+                    "rooms": {
+                      "main": {
+                        "minutes": 120,
+                        "ids": [
+                          "a",
+                          "b"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "conflicts": [
+                    [
+                      "a",
+                      "c"
+                    ],
+                    [
+                      "a",
+                      "z"
+                    ],
+                    [
+                      "c",
+                      "z"
+                    ]
+                  ],
+                  "report": {
+                    "day": "2027-05-10",
+                    "rooms": {
+                      "main": {
+                        "minutes": 90,
+                        "ids": [
+                          "a",
+                          "z",
+                          "c"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "conflicts": [],
+                  "report": {
+                    "day": "2027-05-10",
+                    "rooms": {
+                      "main": {
+                        "minutes": 10,
+                        "ids": [
+                          "b"
+                        ]
+                      },
+                      "side": {
+                        "minutes": 60,
+                        "ids": [
+                          "x"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "conflicts": [],
+                  "report": {
+                    "day": "2027-05-10",
+                    "rooms": {}
+                  }
+                },
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_01/turn2.md",
+          "oracle": {
+            "module": "observe",
+            "function": "stage2",
+            "inputs": [
+              [
+                {
+                  "existing": [
+                    {
+                      "id": "e",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "09:00",
+                      "end": "10:00",
+                      "attendees": 2
+                    }
+                  ],
+                  "requests": [
+                    {
+                      "id": "low",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "09:30",
+                      "end": "10:30",
+                      "attendees": 2
+                    },
+                    {
+                      "id": "high",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "09:30",
+                      "end": "10:30",
+                      "attendees": 1,
+                      "priority": 5
+                    }
+                  ],
+                  "capacities": {
+                    "MAIN": 3
+                  }
+                }
+              ],
+              [
+                {
+                  "existing": [],
+                  "requests": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "09:00",
+                      "end": "10:00",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "c",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:30",
+                      "end": "09:30",
+                      "attendees": 1
+                    }
+                  ],
+                  "capacities": {}
+                }
+              ],
+              [
+                {
+                  "existing": [],
+                  "requests": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "09:00",
+                      "end": "10:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "capacities": {
+                    "main": 1
+                  },
+                  "blocks": [
+                    {
+                      "room": " Main ",
+                      "day": "2027-05-10",
+                      "start": "08:30",
+                      "end": "09:00"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "existing": [
+                    {
+                      "id": "e",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "requests": [
+                    {
+                      "id": "e",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "10:00",
+                      "end": "11:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "capacities": {}
+                }
+              ],
+              [
+                {
+                  "existing": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 2
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "09:00",
+                      "end": "10:00",
+                      "attendees": 2
+                    }
+                  ],
+                  "requests": [
+                    {
+                      "id": "c",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:30",
+                      "end": "09:30",
+                      "attendees": 1
+                    }
+                  ],
+                  "capacities": {
+                    "main": 3
+                  }
+                }
+              ],
+              [
+                {
+                  "existing": [],
+                  "requests": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1,
+                      "priority": true
+                    }
+                  ],
+                  "capacities": {}
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "accepted": [
+                    "high"
+                  ],
+                  "rejected": [
+                    {
+                      "id": "low",
+                      "reason": "capacity"
+                    }
+                  ],
+                  "schedule": [
+                    {
+                      "id": "e",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 540,
+                      "end": 600,
+                      "attendees": 2
+                    },
+                    {
+                      "id": "high",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 570,
+                      "end": 630,
+                      "attendees": 1
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "accepted": [
+                    "a",
+                    "b"
+                  ],
+                  "rejected": [
+                    {
+                      "id": "c",
+                      "reason": "capacity"
+                    }
+                  ],
+                  "schedule": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 480,
+                      "end": 540,
+                      "attendees": 1
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 540,
+                      "end": 600,
+                      "attendees": 1
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "accepted": [
+                    "b"
+                  ],
+                  "rejected": [
+                    {
+                      "id": "a",
+                      "reason": "blocked"
+                    }
+                  ],
+                  "schedule": [
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 540,
+                      "end": 600,
+                      "attendees": 1
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "accepted": [
+                    "c"
+                  ],
+                  "rejected": [],
+                  "schedule": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 480,
+                      "end": 540,
+                      "attendees": 2
+                    },
+                    {
+                      "id": "c",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 510,
+                      "end": 570,
+                      "attendees": 1
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 540,
+                      "end": 600,
+                      "attendees": 2
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_01/turn3.md",
+          "oracle": {
+            "module": "observe",
+            "function": "stage3",
+            "inputs": [
+              [
+                {
+                  "existing": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "09:00",
+                      "end": "10:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "groups": [
+                    {
+                      "id": "move",
+                      "remove": [
+                        "a"
+                      ],
+                      "add": [
+                        {
+                          "id": "a",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "09:30",
+                          "end": "10:30",
+                          "attendees": 1
+                        }
+                      ]
+                    },
+                    {
+                      "id": "cancel",
+                      "remove": [
+                        "a"
+                      ]
+                    },
+                    {
+                      "id": "reuse",
+                      "add": [
+                        {
+                          "id": "a",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "08:30",
+                          "end": "09:00",
+                          "attendees": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "capacities": {}
+                }
+              ],
+              [
+                {
+                  "existing": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "groups": [
+                    {
+                      "id": "swap",
+                      "remove": [
+                        "a"
+                      ],
+                      "add": [
+                        {
+                          "id": "a",
+                          "room": "annex",
+                          "day": "2027-05-10",
+                          "start": "08:00",
+                          "end": "09:00",
+                          "attendees": 1
+                        },
+                        {
+                          "id": "b",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "08:00",
+                          "end": "09:00",
+                          "attendees": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "capacities": {}
+                }
+              ],
+              [
+                {
+                  "existing": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "groups": [
+                    {
+                      "id": "missing",
+                      "remove": [
+                        "z",
+                        "q"
+                      ],
+                      "add": [
+                        {
+                          "id": "a",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "08:00",
+                          "end": "09:00",
+                          "attendees": 1
+                        }
+                      ]
+                    },
+                    {
+                      "id": "duplicate",
+                      "add": [
+                        {
+                          "id": "b",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "10:00",
+                          "end": "11:00",
+                          "attendees": 1
+                        },
+                        {
+                          "id": "b",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "11:00",
+                          "end": "12:00",
+                          "attendees": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "capacities": {}
+                }
+              ],
+              [
+                {
+                  "existing": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "groups": [
+                    {
+                      "id": "change",
+                      "remove": [
+                        "a"
+                      ],
+                      "add": [
+                        {
+                          "id": "a",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "10:00",
+                          "end": "11:00",
+                          "attendees": 1
+                        },
+                        {
+                          "id": "b",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "10:30",
+                          "end": "11:30",
+                          "attendees": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "capacities": {},
+                  "blocks": [
+                    {
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "10:15",
+                      "end": "10:20"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "existing": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "groups": [
+                    {
+                      "id": "first",
+                      "remove": [
+                        "a"
+                      ]
+                    },
+                    {
+                      "id": "bad",
+                      "add": [
+                        {
+                          "id": "b",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "12:00",
+                          "end": "11:00",
+                          "attendees": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "capacities": {}
+                }
+              ],
+              [
+                {
+                  "existing": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 3
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": "08:00",
+                      "end": "09:00",
+                      "attendees": 1
+                    }
+                  ],
+                  "groups": [
+                    {
+                      "id": "cancel",
+                      "remove": [
+                        "b"
+                      ]
+                    },
+                    {
+                      "id": "other",
+                      "add": [
+                        {
+                          "id": "c",
+                          "room": "main",
+                          "day": "2027-05-10",
+                          "start": "10:00",
+                          "end": "11:00",
+                          "attendees": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "capacities": {}
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "accepted": [
+                    "cancel",
+                    "reuse"
+                  ],
+                  "rejected": [
+                    {
+                      "id": "move",
+                      "reason": "capacity"
+                    }
+                  ],
+                  "schedule": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 510,
+                      "end": 540,
+                      "attendees": 1
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 540,
+                      "end": 600,
+                      "attendees": 1
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "accepted": [
+                    "swap"
+                  ],
+                  "rejected": [],
+                  "schedule": [
+                    {
+                      "id": "a",
+                      "room": "annex",
+                      "day": "2027-05-10",
+                      "start": 480,
+                      "end": 540,
+                      "attendees": 1
+                    },
+                    {
+                      "id": "b",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 480,
+                      "end": 540,
+                      "attendees": 1
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "accepted": [],
+                  "rejected": [
+                    {
+                      "id": "missing",
+                      "reason": "missing:z"
+                    },
+                    {
+                      "id": "duplicate",
+                      "reason": "duplicate:b"
+                    }
+                  ],
+                  "schedule": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 480,
+                      "end": 540,
+                      "attendees": 1
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "accepted": [],
+                  "rejected": [
+                    {
+                      "id": "change",
+                      "reason": "blocked"
+                    }
+                  ],
+                  "schedule": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 480,
+                      "end": 540,
+                      "attendees": 1
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "accepted": [
+                    "cancel",
+                    "other"
+                  ],
+                  "rejected": [],
+                  "schedule": [
+                    {
+                      "id": "a",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 480,
+                      "end": 540,
+                      "attendees": 3
+                    },
+                    {
+                      "id": "c",
+                      "room": "main",
+                      "day": "2027-05-10",
+                      "start": 600,
+                      "end": 660,
+                      "attendees": 1
+                    }
+                  ]
+                },
+                "preserved": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "case_02",
+      "workspace_dir": "cases/case_02/workspace",
+      "immutable_files": [
+        "tests/test_original.py",
+        "observe.py"
+      ],
+      "turns": [
+        {
+          "task": "cases/case_02/turn1.md",
+          "oracle": {
+            "module": "observe",
+            "function": "stage1",
+            "inputs": [
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "z",
+                      "title": "",
+                      "body": "Red, blue red!"
+                    },
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "red blue"
+                    },
+                    {
+                      "id": "b",
+                      "title": "",
+                      "body": "red"
+                    }
+                  ],
+                  "query": "RED red, blue"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "L’été l'été Straße STRASSE, can't can’t"
+                    },
+                    {
+                      "id": "y",
+                      "title": "l'été",
+                      "body": "strasse"
+                    }
+                  ],
+                  "query": "l’été STRASSE"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "'red' blue_green 42"
+                    }
+                  ],
+                  "query": "_---_"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "z",
+                      "title": "",
+                      "body": "alpha"
+                    },
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "alpha"
+                    }
+                  ],
+                  "query": "alpha"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "a"
+                    },
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "b"
+                    }
+                  ],
+                  "query": "a"
+                }
+              ],
+              [
+                {
+                  "documents": [],
+                  "query": "missing"
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "hits": [
+                    {
+                      "id": "z",
+                      "score": 3,
+                      "terms": {
+                        "red": 2,
+                        "blue": 1
+                      }
+                    },
+                    {
+                      "id": "a",
+                      "score": 2,
+                      "terms": {
+                        "red": 1,
+                        "blue": 1
+                      }
+                    }
+                  ],
+                  "metrics": {
+                    "documents": 3,
+                    "terms": 2,
+                    "tokens": 6
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "hits": [
+                    {
+                      "id": "x",
+                      "score": 4,
+                      "terms": {
+                        "l'été": 2,
+                        "strasse": 2
+                      }
+                    }
+                  ],
+                  "metrics": {
+                    "documents": 2,
+                    "terms": 3,
+                    "tokens": 7
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "hits": [],
+                  "metrics": {
+                    "documents": 1,
+                    "terms": 4,
+                    "tokens": 4
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "hits": [
+                    {
+                      "id": "a",
+                      "score": 1,
+                      "terms": {
+                        "alpha": 1
+                      }
+                    },
+                    {
+                      "id": "z",
+                      "score": 1,
+                      "terms": {
+                        "alpha": 1
+                      }
+                    }
+                  ],
+                  "metrics": {
+                    "documents": 2,
+                    "terms": 1,
+                    "tokens": 2
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "hits": [],
+                  "metrics": {
+                    "documents": 0,
+                    "terms": 0,
+                    "tokens": 0
+                  }
+                },
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_02/turn2.md",
+          "oracle": {
+            "module": "observe",
+            "function": "stage2",
+            "inputs": [
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "z",
+                      "title": "",
+                      "body": "red x blue red blue"
+                    },
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "blue red"
+                    },
+                    {
+                      "id": "b",
+                      "title": "",
+                      "body": "red blue blue"
+                    }
+                  ],
+                  "phrase": "red blue",
+                  "slop": 0
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "a x b y c a b c"
+                    }
+                  ],
+                  "phrase": "a b c",
+                  "slop": 1
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "a a a a"
+                    }
+                  ],
+                  "phrase": "a a",
+                  "slop": 2
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "a x b y c a b c"
+                    }
+                  ],
+                  "phrase": "a b c",
+                  "slop": 2
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "a"
+                    }
+                  ],
+                  "phrase": "a",
+                  "slop": true
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "Can't! can’t?"
+                    },
+                    {
+                      "id": "y",
+                      "title": "can't",
+                      "body": "x"
+                    }
+                  ],
+                  "phrase": "CAN’T"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "x",
+                      "title": "",
+                      "body": "a"
+                    }
+                  ],
+                  "phrase": "---",
+                  "slop": 0
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": [
+                  {
+                    "id": "b",
+                    "starts": [
+                      0
+                    ]
+                  },
+                  {
+                    "id": "z",
+                    "starts": [
+                      3
+                    ]
+                  }
+                ],
+                "preserved": true
+              },
+              {
+                "result": [
+                  {
+                    "id": "x",
+                    "starts": [
+                      5
+                    ]
+                  }
+                ],
+                "preserved": true
+              },
+              {
+                "result": [
+                  {
+                    "id": "x",
+                    "starts": [
+                      0,
+                      1,
+                      2
+                    ]
+                  }
+                ],
+                "preserved": true
+              },
+              {
+                "result": [
+                  {
+                    "id": "x",
+                    "starts": [
+                      0,
+                      5
+                    ]
+                  }
+                ],
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": [
+                  {
+                    "id": "x",
+                    "starts": [
+                      0,
+                      1
+                    ]
+                  }
+                ],
+                "preserved": true
+              },
+              {
+                "result": [],
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_02/turn3.md",
+          "oracle": {
+            "module": "observe",
+            "function": "stage3",
+            "inputs": [
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "old red"
+                    },
+                    {
+                      "id": "b",
+                      "title": "",
+                      "body": "blue red"
+                    }
+                  ],
+                  "edits": [
+                    {
+                      "op": "upsert",
+                      "document": {
+                        "id": "a",
+                        "title": "",
+                        "body": "new blue blue"
+                      }
+                    },
+                    {
+                      "op": "delete",
+                      "id": "b"
+                    },
+                    {
+                      "op": "upsert",
+                      "document": {
+                        "id": "c",
+                        "title": "",
+                        "body": "blue green"
+                      }
+                    }
+                  ],
+                  "query": "blue",
+                  "phrase": "blue blue"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "red"
+                    },
+                    {
+                      "id": "b",
+                      "title": "",
+                      "body": "blue"
+                    }
+                  ],
+                  "edits": [
+                    {
+                      "op": "delete",
+                      "id": "a"
+                    },
+                    {
+                      "op": "upsert",
+                      "document": {
+                        "id": "a",
+                        "title": "",
+                        "body": "green"
+                      }
+                    },
+                    {
+                      "op": "upsert",
+                      "document": {
+                        "id": "b",
+                        "title": "",
+                        "body": "green green"
+                      }
+                    }
+                  ],
+                  "query": "green"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "red"
+                    }
+                  ],
+                  "edits": [
+                    {
+                      "op": "upsert",
+                      "document": {
+                        "id": "a",
+                        "title": "",
+                        "body": "blue"
+                      }
+                    },
+                    {
+                      "op": "delete",
+                      "id": "absent"
+                    }
+                  ],
+                  "query": "blue"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "red"
+                    }
+                  ],
+                  "edits": [
+                    {
+                      "op": "upsert",
+                      "document": {
+                        "id": "a",
+                        "title": "",
+                        "body": "blue"
+                      }
+                    },
+                    {
+                      "op": "upsert",
+                      "document": {
+                        "id": "a",
+                        "title": "",
+                        "body": "green green"
+                      }
+                    }
+                  ],
+                  "query": "red",
+                  "phrase": "green green"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "red"
+                    }
+                  ],
+                  "edits": [
+                    {
+                      "op": "upsert",
+                      "document": {
+                        "id": "b",
+                        "title": "bad",
+                        "body": 8
+                      }
+                    }
+                  ],
+                  "query": "red"
+                }
+              ],
+              [
+                {
+                  "documents": [
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "red"
+                    }
+                  ],
+                  "edits": [],
+                  "query": "red",
+                  "phrase": "red",
+                  "slop": -1
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "documents": [
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "new blue blue"
+                    },
+                    {
+                      "id": "c",
+                      "title": "",
+                      "body": "blue green"
+                    }
+                  ],
+                  "hits": [
+                    {
+                      "id": "a",
+                      "score": 2,
+                      "terms": {
+                        "blue": 2
+                      }
+                    },
+                    {
+                      "id": "c",
+                      "score": 1,
+                      "terms": {
+                        "blue": 1
+                      }
+                    }
+                  ],
+                  "phrases": [
+                    {
+                      "id": "a",
+                      "starts": [
+                        1
+                      ]
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "documents": [
+                    {
+                      "id": "b",
+                      "title": "",
+                      "body": "green green"
+                    },
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "green"
+                    }
+                  ],
+                  "hits": [
+                    {
+                      "id": "b",
+                      "score": 2,
+                      "terms": {
+                        "green": 2
+                      }
+                    },
+                    {
+                      "id": "a",
+                      "score": 1,
+                      "terms": {
+                        "green": 1
+                      }
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "documents": [
+                    {
+                      "id": "a",
+                      "title": "",
+                      "body": "green green"
+                    }
+                  ],
+                  "hits": [],
+                  "phrases": [
+                    {
+                      "id": "a",
+                      "starts": [
+                        0
+                      ]
+                    }
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

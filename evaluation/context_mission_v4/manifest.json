@@ -1,0 +1,3267 @@
+{
+  "version": 1,
+  "runtime_profile": {
+    "experiment_profile": "thinking128k",
+    "model": "deepseek-flash"
+  },
+  "cases": [
+    {
+      "id": "case_01",
+      "workspace_dir": "cases/case_01/workspace",
+      "immutable_files": [
+        "tests/test_original.py",
+        "observe.py"
+      ],
+      "turns": [
+        {
+          "task": "cases/case_01/turn1.md",
+          "oracle": {
+            "module": "observe",
+            "function": "first",
+            "inputs": [
+              [
+                {
+                  "expression": "1/2+1/3",
+                  "values": {}
+                }
+              ],
+              [
+                {
+                  "expression": "-2^2+(-2)^2",
+                  "values": {}
+                }
+              ],
+              [
+                {
+                  "expression": "x/3-y",
+                  "values": {
+                    "x": [
+                      3,
+                      2
+                    ],
+                    "y": [
+                      -1,
+                      4
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "expression": "8/4/2",
+                  "values": {}
+                }
+              ],
+              [
+                {
+                  "expression": "--x^-2",
+                  "values": {
+                    "x": 2
+                  }
+                }
+              ],
+              [
+                {
+                  "expression": "1/(x-x)",
+                  "values": {
+                    "x": 2
+                  }
+                }
+              ],
+              [
+                {
+                  "expression": "x^13",
+                  "values": {
+                    "x": 1
+                  }
+                }
+              ],
+              [
+                {
+                  "expression": "x",
+                  "values": {
+                    "x": true
+                  }
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "canonical": "((1/2)+(1/3))",
+                  "value": [
+                    5,
+                    6
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "canonical": "((-(2^2))+((-2)^2))",
+                  "value": [
+                    0,
+                    1
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "canonical": "((x/3)-y)",
+                  "value": [
+                    3,
+                    4
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "canonical": "((8/4)/2)",
+                  "value": [
+                    1,
+                    1
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "canonical": "(-(-(x^-2)))",
+                  "value": [
+                    1,
+                    4
+                  ]
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_01/turn2.md",
+          "oracle": {
+            "module": "observe",
+            "function": "second",
+            "inputs": [
+              [
+                {
+                  "expression": "x*x+3*x",
+                  "values": {
+                    "x": 2
+                  },
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "x/y",
+                  "values": {
+                    "x": 3,
+                    "y": 2
+                  },
+                  "variable": "y"
+                }
+              ],
+              [
+                {
+                  "expression": "x^-2",
+                  "values": {
+                    "x": 2
+                  },
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "(x+1)^3",
+                  "values": {
+                    "x": 1
+                  },
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "x+2",
+                  "values": {
+                    "x": [
+                      1,
+                      2
+                    ]
+                  },
+                  "variable": "z"
+                }
+              ],
+              [
+                {
+                  "expression": "x^-12",
+                  "values": {
+                    "x": 1
+                  },
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "(1/0)^0",
+                  "values": {},
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "x",
+                  "values": {},
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "x",
+                  "values": {
+                    "x": 1
+                  },
+                  "variable": "bad-name"
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "report": {
+                    "value": [
+                      10,
+                      1
+                    ],
+                    "slope": [
+                      7,
+                      1
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "value": [
+                      3,
+                      2
+                    ],
+                    "slope": [
+                      -3,
+                      4
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "value": [
+                      1,
+                      4
+                    ],
+                    "slope": [
+                      -1,
+                      4
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "value": [
+                      8,
+                      1
+                    ],
+                    "slope": [
+                      12,
+                      1
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "value": [
+                      5,
+                      2
+                    ],
+                    "slope": [
+                      0,
+                      1
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "value": [
+                      1,
+                      1
+                    ],
+                    "slope": [
+                      -12,
+                      1
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_01/turn3.md",
+          "oracle": {
+            "module": "observe",
+            "function": "third",
+            "inputs": [
+              [
+                {
+                  "expression": "((x+0)*1)/1",
+                  "values": {
+                    "x": 3
+                  },
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "1/2+1/3",
+                  "values": {},
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "--x+x^1",
+                  "values": {
+                    "x": 4
+                  },
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "x*0",
+                  "values": {
+                    "x": 7
+                  },
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "x^0",
+                  "values": {
+                    "x": 2
+                  },
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "0*(1/0)",
+                  "values": {},
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "x*0",
+                  "values": {},
+                  "variable": "x"
+                }
+              ],
+              [
+                {
+                  "expression": "x/1",
+                  "values": {
+                    "x": [
+                      1,
+                      0
+                    ]
+                  },
+                  "variable": "x"
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "report": {
+                    "canonical": "x",
+                    "variables": [
+                      "x"
+                    ],
+                    "value": [
+                      3,
+                      1
+                    ],
+                    "slope": [
+                      1,
+                      1
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "canonical": "(5/6)",
+                    "variables": [],
+                    "value": [
+                      5,
+                      6
+                    ],
+                    "slope": [
+                      0,
+                      1
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "canonical": "(x+x)",
+                    "variables": [
+                      "x"
+                    ],
+                    "value": [
+                      8,
+                      1
+                    ],
+                    "slope": [
+                      2,
+                      1
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "canonical": "(x*0)",
+                    "variables": [
+                      "x"
+                    ],
+                    "value": [
+                      0,
+                      1
+                    ],
+                    "slope": [
+                      0,
+                      1
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "canonical": "(x^0)",
+                    "variables": [
+                      "x"
+                    ],
+                    "value": [
+                      1,
+                      1
+                    ],
+                    "slope": [
+                      0,
+                      1
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_01/turn4.md",
+          "oracle": {
+            "module": "observe",
+            "function": "fourth",
+            "inputs": [
+              [
+                {
+                  "formulas": {
+                    "a": "x*x",
+                    "b": "a+3*x"
+                  },
+                  "inputs": {
+                    "x": 2
+                  },
+                  "outputs": [
+                    "b",
+                    "a",
+                    "x"
+                  ],
+                  "wrt": "x"
+                }
+              ],
+              [
+                {
+                  "formulas": {
+                    "z": "x+0",
+                    "a": "y*1",
+                    "m": "z/a"
+                  },
+                  "inputs": {
+                    "x": 3,
+                    "y": 2
+                  },
+                  "outputs": [
+                    "m"
+                  ],
+                  "wrt": "x"
+                }
+              ],
+              [
+                {
+                  "formulas": {
+                    "b": "x+1",
+                    "c": "x-1",
+                    "a": "b*c"
+                  },
+                  "inputs": {
+                    "x": 3
+                  },
+                  "outputs": [
+                    "a"
+                  ],
+                  "wrt": "x"
+                }
+              ],
+              [
+                {
+                  "formulas": {},
+                  "inputs": {
+                    "x": [
+                      1,
+                      2
+                    ],
+                    "y": 7
+                  },
+                  "outputs": [
+                    "y",
+                    "x"
+                  ],
+                  "wrt": "x"
+                }
+              ],
+              [
+                {
+                  "formulas": {
+                    "a": "x^-1",
+                    "b": "a*a"
+                  },
+                  "inputs": {
+                    "x": 2
+                  },
+                  "outputs": [
+                    "b"
+                  ],
+                  "wrt": "x"
+                }
+              ],
+              [
+                {
+                  "formulas": {
+                    "a": "b+1",
+                    "b": "a+1"
+                  },
+                  "inputs": {
+                    "x": 1
+                  },
+                  "outputs": [],
+                  "wrt": "x"
+                }
+              ],
+              [
+                {
+                  "formulas": {
+                    "unused": "missing+1"
+                  },
+                  "inputs": {
+                    "x": 1
+                  },
+                  "outputs": [
+                    "x"
+                  ],
+                  "wrt": "x"
+                }
+              ],
+              [
+                {
+                  "formulas": {
+                    "unused": "1/0"
+                  },
+                  "inputs": {
+                    "x": 1
+                  },
+                  "outputs": [
+                    "x"
+                  ],
+                  "wrt": "x"
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "report": {
+                    "order": [
+                      "a",
+                      "b"
+                    ],
+                    "results": [
+                      {
+                        "name": "b",
+                        "value": [
+                          10,
+                          1
+                        ],
+                        "derivative": [
+                          7,
+                          1
+                        ]
+                      },
+                      {
+                        "name": "a",
+                        "value": [
+                          4,
+                          1
+                        ],
+                        "derivative": [
+                          4,
+                          1
+                        ]
+                      },
+                      {
+                        "name": "x",
+                        "value": [
+                          2,
+                          1
+                        ],
+                        "derivative": [
+                          1,
+                          1
+                        ]
+                      }
+                    ],
+                    "expressions": {
+                      "a": "(x*x)",
+                      "b": "(a+(3*x))"
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "order": [
+                      "a",
+                      "z",
+                      "m"
+                    ],
+                    "results": [
+                      {
+                        "name": "m",
+                        "value": [
+                          3,
+                          2
+                        ],
+                        "derivative": [
+                          1,
+                          2
+                        ]
+                      }
+                    ],
+                    "expressions": {
+                      "a": "y",
+                      "m": "(z/a)",
+                      "z": "x"
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "order": [
+                      "b",
+                      "c",
+                      "a"
+                    ],
+                    "results": [
+                      {
+                        "name": "a",
+                        "value": [
+                          8,
+                          1
+                        ],
+                        "derivative": [
+                          6,
+                          1
+                        ]
+                      }
+                    ],
+                    "expressions": {
+                      "a": "(b*c)",
+                      "b": "(x+1)",
+                      "c": "(x-1)"
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "order": [],
+                    "results": [
+                      {
+                        "name": "y",
+                        "value": [
+                          7,
+                          1
+                        ],
+                        "derivative": [
+                          0,
+                          1
+                        ]
+                      },
+                      {
+                        "name": "x",
+                        "value": [
+                          1,
+                          2
+                        ],
+                        "derivative": [
+                          1,
+                          1
+                        ]
+                      }
+                    ],
+                    "expressions": {}
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "order": [
+                      "a",
+                      "b"
+                    ],
+                    "results": [
+                      {
+                        "name": "b",
+                        "value": [
+                          1,
+                          4
+                        ],
+                        "derivative": [
+                          -1,
+                          4
+                        ]
+                      }
+                    ],
+                    "expressions": {
+                      "a": "(x^-1)",
+                      "b": "(a*a)"
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "case_02",
+      "workspace_dir": "cases/case_02/workspace",
+      "immutable_files": [
+        "tests/test_original.py",
+        "observe.py"
+      ],
+      "turns": [
+        {
+          "task": "cases/case_02/turn1.md",
+          "oracle": {
+            "module": "observe",
+            "function": "first",
+            "inputs": [
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "a",
+                      "quantity": 1
+                    },
+                    {
+                      "sku": "b",
+                      "quantity": 1
+                    },
+                    {
+                      "sku": "a",
+                      "quantity": 1
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "c",
+                      "quantity": 3
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": []
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "z",
+                      "weight": 7,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "a",
+                      "weight": 1,
+                      "volume": 5
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "z",
+                      "quantity": 1
+                    },
+                    {
+                      "sku": "a",
+                      "quantity": 2
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [],
+                  "lines": []
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "unknown",
+                      "quantity": 1
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "a",
+                      "quantity": true
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    },
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    }
+                  ],
+                  "lines": []
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "items": [
+                    {
+                      "sku": "a",
+                      "quantity": 2,
+                      "weight": 8,
+                      "volume": 4
+                    },
+                    {
+                      "sku": "b",
+                      "quantity": 1,
+                      "weight": 2,
+                      "volume": 3
+                    }
+                  ],
+                  "totals": {
+                    "units": 3,
+                    "weight": 10,
+                    "volume": 7
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "items": [
+                    {
+                      "sku": "c",
+                      "quantity": 3,
+                      "weight": 3,
+                      "volume": 3
+                    }
+                  ],
+                  "totals": {
+                    "units": 3,
+                    "weight": 3,
+                    "volume": 3
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "items": [],
+                  "totals": {
+                    "units": 0,
+                    "weight": 0,
+                    "volume": 0
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "items": [
+                    {
+                      "sku": "a",
+                      "quantity": 2,
+                      "weight": 2,
+                      "volume": 10
+                    },
+                    {
+                      "sku": "z",
+                      "quantity": 1,
+                      "weight": 7,
+                      "volume": 2
+                    }
+                  ],
+                  "totals": {
+                    "units": 3,
+                    "weight": 9,
+                    "volume": 12
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "items": [],
+                  "totals": {
+                    "units": 0,
+                    "weight": 0,
+                    "volume": 0
+                  }
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_02/turn2.md",
+          "oracle": {
+            "module": "observe",
+            "function": "second",
+            "inputs": [
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "a",
+                      "quantity": 2
+                    },
+                    {
+                      "sku": "b",
+                      "quantity": 1
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "b",
+                      "quantity": 3
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "c",
+                      "quantity": 3
+                    },
+                    {
+                      "sku": "a",
+                      "quantity": 1
+                    },
+                    {
+                      "sku": "b",
+                      "quantity": 1
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "a",
+                      "quantity": 1
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "A",
+                      "max_weight": 9,
+                      "max_volume": 6
+                    },
+                    {
+                      "code": "Z",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [],
+                  "boxes": []
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "a",
+                      "quantity": 1
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "T",
+                      "max_weight": 3,
+                      "max_volume": 9
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [],
+                  "boxes": [
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 9,
+                      "max_volume": 9
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [],
+                  "boxes": [
+                    {
+                      "code": "T",
+                      "max_weight": true,
+                      "max_volume": 9
+                    }
+                  ]
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "report": {
+                    "items": [
+                      {
+                        "sku": "a",
+                        "quantity": 2,
+                        "weight": 8,
+                        "volume": 4
+                      },
+                      {
+                        "sku": "b",
+                        "quantity": 1,
+                        "weight": 2,
+                        "volume": 3
+                      }
+                    ],
+                    "totals": {
+                      "units": 3,
+                      "weight": 10,
+                      "volume": 7
+                    },
+                    "cartons": [
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "a",
+                            "quantity": 1
+                          },
+                          {
+                            "sku": "b",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 6,
+                        "volume": 5
+                      },
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "a",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 4,
+                        "volume": 2
+                      }
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "items": [
+                      {
+                        "sku": "b",
+                        "quantity": 3,
+                        "weight": 6,
+                        "volume": 9
+                      }
+                    ],
+                    "totals": {
+                      "units": 3,
+                      "weight": 6,
+                      "volume": 9
+                    },
+                    "cartons": [
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "b",
+                            "quantity": 2
+                          }
+                        ],
+                        "weight": 4,
+                        "volume": 6
+                      },
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "b",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 2,
+                        "volume": 3
+                      }
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "items": [
+                      {
+                        "sku": "a",
+                        "quantity": 1,
+                        "weight": 4,
+                        "volume": 2
+                      },
+                      {
+                        "sku": "b",
+                        "quantity": 1,
+                        "weight": 2,
+                        "volume": 3
+                      },
+                      {
+                        "sku": "c",
+                        "quantity": 3,
+                        "weight": 3,
+                        "volume": 3
+                      }
+                    ],
+                    "totals": {
+                      "units": 5,
+                      "weight": 9,
+                      "volume": 8
+                    },
+                    "cartons": [
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "a",
+                            "quantity": 1
+                          },
+                          {
+                            "sku": "b",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 6,
+                        "volume": 5
+                      },
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "c",
+                            "quantity": 3
+                          }
+                        ],
+                        "weight": 3,
+                        "volume": 3
+                      }
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "items": [
+                      {
+                        "sku": "a",
+                        "quantity": 1,
+                        "weight": 4,
+                        "volume": 2
+                      }
+                    ],
+                    "totals": {
+                      "units": 1,
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    "cartons": [
+                      {
+                        "box": "Z",
+                        "items": [
+                          {
+                            "sku": "a",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 4,
+                        "volume": 2
+                      }
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "items": [],
+                    "totals": {
+                      "units": 0,
+                      "weight": 0,
+                      "volume": 0
+                    },
+                    "cartons": []
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_02/turn3.md",
+          "oracle": {
+            "module": "observe",
+            "function": "third",
+            "inputs": [
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "a",
+                      "quantity": 1
+                    },
+                    {
+                      "sku": "b",
+                      "quantity": 1
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ],
+                  "policy": {
+                    "incompatible": [
+                      [
+                        "a",
+                        "b"
+                      ],
+                      [
+                        "b",
+                        "a"
+                      ]
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "c",
+                      "quantity": 3
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ],
+                  "policy": {
+                    "max_units": 1
+                  }
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "a",
+                      "quantity": 1
+                    },
+                    {
+                      "sku": "b",
+                      "quantity": 1
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ],
+                  "policy": {
+                    "fixed_box": {
+                      "a": "L"
+                    }
+                  }
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "a",
+                      "quantity": 1
+                    },
+                    {
+                      "sku": "b",
+                      "quantity": 1
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ],
+                  "policy": {
+                    "fixed_box": {
+                      "a": "S",
+                      "b": "L"
+                    }
+                  }
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "sku": "b",
+                      "quantity": 2
+                    },
+                    {
+                      "sku": "a",
+                      "quantity": 1
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ],
+                  "policy": {}
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ],
+                  "policy": {
+                    "incompatible": [
+                      [
+                        "a",
+                        "z"
+                      ]
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ],
+                  "policy": {
+                    "fixed_box": {
+                      "a": "missing"
+                    }
+                  }
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "lines": [],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ],
+                  "policy": {
+                    "max_units": 0
+                  }
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "report": {
+                    "items": [
+                      {
+                        "sku": "a",
+                        "quantity": 1,
+                        "weight": 4,
+                        "volume": 2
+                      },
+                      {
+                        "sku": "b",
+                        "quantity": 1,
+                        "weight": 2,
+                        "volume": 3
+                      }
+                    ],
+                    "totals": {
+                      "units": 2,
+                      "weight": 6,
+                      "volume": 5
+                    },
+                    "cartons": [
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "a",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 4,
+                        "volume": 2
+                      },
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "b",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 2,
+                        "volume": 3
+                      }
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "items": [
+                      {
+                        "sku": "c",
+                        "quantity": 3,
+                        "weight": 3,
+                        "volume": 3
+                      }
+                    ],
+                    "totals": {
+                      "units": 3,
+                      "weight": 3,
+                      "volume": 3
+                    },
+                    "cartons": [
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "c",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 1,
+                        "volume": 1
+                      },
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "c",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 1,
+                        "volume": 1
+                      },
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "c",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 1,
+                        "volume": 1
+                      }
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "items": [
+                      {
+                        "sku": "a",
+                        "quantity": 1,
+                        "weight": 4,
+                        "volume": 2
+                      },
+                      {
+                        "sku": "b",
+                        "quantity": 1,
+                        "weight": 2,
+                        "volume": 3
+                      }
+                    ],
+                    "totals": {
+                      "units": 2,
+                      "weight": 6,
+                      "volume": 5
+                    },
+                    "cartons": [
+                      {
+                        "box": "L",
+                        "items": [
+                          {
+                            "sku": "a",
+                            "quantity": 1
+                          },
+                          {
+                            "sku": "b",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 6,
+                        "volume": 5
+                      }
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "items": [
+                      {
+                        "sku": "a",
+                        "quantity": 1,
+                        "weight": 4,
+                        "volume": 2
+                      },
+                      {
+                        "sku": "b",
+                        "quantity": 1,
+                        "weight": 2,
+                        "volume": 3
+                      }
+                    ],
+                    "totals": {
+                      "units": 2,
+                      "weight": 6,
+                      "volume": 5
+                    },
+                    "cartons": [
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "a",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 4,
+                        "volume": 2
+                      },
+                      {
+                        "box": "L",
+                        "items": [
+                          {
+                            "sku": "b",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 2,
+                        "volume": 3
+                      }
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "items": [
+                      {
+                        "sku": "a",
+                        "quantity": 1,
+                        "weight": 4,
+                        "volume": 2
+                      },
+                      {
+                        "sku": "b",
+                        "quantity": 2,
+                        "weight": 4,
+                        "volume": 6
+                      }
+                    ],
+                    "totals": {
+                      "units": 3,
+                      "weight": 8,
+                      "volume": 8
+                    },
+                    "cartons": [
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "a",
+                            "quantity": 1
+                          },
+                          {
+                            "sku": "b",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 6,
+                        "volume": 5
+                      },
+                      {
+                        "box": "S",
+                        "items": [
+                          {
+                            "sku": "b",
+                            "quantity": 1
+                          }
+                        ],
+                        "weight": 2,
+                        "volume": 3
+                      }
+                    ]
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_02/turn4.md",
+          "oracle": {
+            "module": "observe",
+            "function": "fourth",
+            "inputs": [
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "stock": {
+                    "a": 2,
+                    "b": 2,
+                    "c": 3
+                  },
+                  "requests": [
+                    {
+                      "id": "low",
+                      "destination": "West",
+                      "lines": [
+                        {
+                          "sku": "a",
+                          "quantity": 2
+                        }
+                      ],
+                      "priority": 0
+                    },
+                    {
+                      "id": "high",
+                      "destination": "East",
+                      "lines": [
+                        {
+                          "sku": "a",
+                          "quantity": 1
+                        },
+                        {
+                          "sku": "b",
+                          "quantity": 1
+                        }
+                      ],
+                      "priority": 5
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "stock": {
+                    "c": 3
+                  },
+                  "requests": [
+                    {
+                      "id": "first",
+                      "destination": "One",
+                      "lines": [
+                        {
+                          "sku": "c",
+                          "quantity": 2
+                        }
+                      ],
+                      "priority": 0
+                    },
+                    {
+                      "id": "second",
+                      "destination": "Two",
+                      "lines": [
+                        {
+                          "sku": "c",
+                          "quantity": 2
+                        }
+                      ],
+                      "priority": 0
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "stock": {
+                    "a": 1,
+                    "b": 1
+                  },
+                  "requests": [
+                    {
+                      "id": "bad",
+                      "destination": "One",
+                      "lines": [
+                        {
+                          "sku": "a",
+                          "quantity": 1
+                        }
+                      ],
+                      "priority": 5
+                    },
+                    {
+                      "id": "good",
+                      "destination": "Two",
+                      "lines": [
+                        {
+                          "sku": "b",
+                          "quantity": 1
+                        }
+                      ],
+                      "priority": 0
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "T",
+                      "max_weight": 3,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "stock": {
+                    "a": 1,
+                    "b": 1
+                  },
+                  "requests": [
+                    {
+                      "id": "mix",
+                      "destination": "One",
+                      "lines": [
+                        {
+                          "sku": "a",
+                          "quantity": 1
+                        },
+                        {
+                          "sku": "b",
+                          "quantity": 1
+                        }
+                      ],
+                      "priority": 0
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ],
+                  "policy": {
+                    "incompatible": [
+                      [
+                        "a",
+                        "b"
+                      ]
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "stock": {},
+                  "requests": [],
+                  "boxes": []
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "stock": {
+                    "a": 1,
+                    "b": 2,
+                    "c": 3
+                  },
+                  "requests": [
+                    {
+                      "id": "low",
+                      "destination": "West",
+                      "lines": [
+                        {
+                          "sku": "b",
+                          "quantity": 1
+                        }
+                      ],
+                      "priority": -1
+                    },
+                    {
+                      "id": "high",
+                      "destination": "East",
+                      "lines": [
+                        {
+                          "sku": "c",
+                          "quantity": 2
+                        }
+                      ],
+                      "priority": 3
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "stock": {
+                    "a": 2
+                  },
+                  "requests": [
+                    {
+                      "id": "same",
+                      "destination": "One",
+                      "lines": [
+                        {
+                          "sku": "a",
+                          "quantity": 1
+                        }
+                      ],
+                      "priority": 0
+                    },
+                    {
+                      "id": "same",
+                      "destination": "Two",
+                      "lines": [
+                        {
+                          "sku": "a",
+                          "quantity": 1
+                        }
+                      ],
+                      "priority": 0
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "stock": {
+                    "a": 2
+                  },
+                  "requests": [
+                    {
+                      "id": "valid",
+                      "destination": "One",
+                      "lines": [
+                        {
+                          "sku": "a",
+                          "quantity": 1
+                        }
+                      ],
+                      "priority": 0
+                    },
+                    {
+                      "id": "bad",
+                      "destination": "Two",
+                      "lines": [
+                        {
+                          "sku": "a",
+                          "quantity": 1
+                        }
+                      ],
+                      "priority": true
+                    }
+                  ],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "catalog": [
+                    {
+                      "sku": "a",
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "weight": 2,
+                      "volume": 3
+                    },
+                    {
+                      "sku": "c",
+                      "weight": 1,
+                      "volume": 1
+                    }
+                  ],
+                  "stock": {
+                    "unknown": 1
+                  },
+                  "requests": [],
+                  "boxes": [
+                    {
+                      "code": "L",
+                      "max_weight": 10,
+                      "max_volume": 12
+                    },
+                    {
+                      "code": "S",
+                      "max_weight": 6,
+                      "max_volume": 6
+                    }
+                  ]
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "result": {
+                  "report": {
+                    "accepted": [
+                      {
+                        "id": "high",
+                        "destination": "East",
+                        "manifest": {
+                          "items": [
+                            {
+                              "sku": "a",
+                              "quantity": 1,
+                              "weight": 4,
+                              "volume": 2
+                            },
+                            {
+                              "sku": "b",
+                              "quantity": 1,
+                              "weight": 2,
+                              "volume": 3
+                            }
+                          ],
+                          "totals": {
+                            "units": 2,
+                            "weight": 6,
+                            "volume": 5
+                          },
+                          "cartons": [
+                            {
+                              "box": "S",
+                              "items": [
+                                {
+                                  "sku": "a",
+                                  "quantity": 1
+                                },
+                                {
+                                  "sku": "b",
+                                  "quantity": 1
+                                }
+                              ],
+                              "weight": 6,
+                              "volume": 5
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "rejected": [
+                      {
+                        "id": "low",
+                        "reason": "stock"
+                      }
+                    ],
+                    "remaining": {
+                      "a": 1,
+                      "b": 1,
+                      "c": 3
+                    },
+                    "totals": {
+                      "units": 2,
+                      "cartons": 1,
+                      "weight": 6,
+                      "volume": 5
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "accepted": [
+                      {
+                        "id": "first",
+                        "destination": "One",
+                        "manifest": {
+                          "items": [
+                            {
+                              "sku": "c",
+                              "quantity": 2,
+                              "weight": 2,
+                              "volume": 2
+                            }
+                          ],
+                          "totals": {
+                            "units": 2,
+                            "weight": 2,
+                            "volume": 2
+                          },
+                          "cartons": [
+                            {
+                              "box": "S",
+                              "items": [
+                                {
+                                  "sku": "c",
+                                  "quantity": 2
+                                }
+                              ],
+                              "weight": 2,
+                              "volume": 2
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "rejected": [
+                      {
+                        "id": "second",
+                        "reason": "stock"
+                      }
+                    ],
+                    "remaining": {
+                      "a": 0,
+                      "b": 0,
+                      "c": 1
+                    },
+                    "totals": {
+                      "units": 2,
+                      "cartons": 1,
+                      "weight": 2,
+                      "volume": 2
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "accepted": [
+                      {
+                        "id": "good",
+                        "destination": "Two",
+                        "manifest": {
+                          "items": [
+                            {
+                              "sku": "b",
+                              "quantity": 1,
+                              "weight": 2,
+                              "volume": 3
+                            }
+                          ],
+                          "totals": {
+                            "units": 1,
+                            "weight": 2,
+                            "volume": 3
+                          },
+                          "cartons": [
+                            {
+                              "box": "T",
+                              "items": [
+                                {
+                                  "sku": "b",
+                                  "quantity": 1
+                                }
+                              ],
+                              "weight": 2,
+                              "volume": 3
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "rejected": [
+                      {
+                        "id": "bad",
+                        "reason": "unpackable"
+                      }
+                    ],
+                    "remaining": {
+                      "a": 1,
+                      "b": 0,
+                      "c": 0
+                    },
+                    "totals": {
+                      "units": 1,
+                      "cartons": 1,
+                      "weight": 2,
+                      "volume": 3
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "accepted": [
+                      {
+                        "id": "mix",
+                        "destination": "One",
+                        "manifest": {
+                          "items": [
+                            {
+                              "sku": "a",
+                              "quantity": 1,
+                              "weight": 4,
+                              "volume": 2
+                            },
+                            {
+                              "sku": "b",
+                              "quantity": 1,
+                              "weight": 2,
+                              "volume": 3
+                            }
+                          ],
+                          "totals": {
+                            "units": 2,
+                            "weight": 6,
+                            "volume": 5
+                          },
+                          "cartons": [
+                            {
+                              "box": "S",
+                              "items": [
+                                {
+                                  "sku": "a",
+                                  "quantity": 1
+                                }
+                              ],
+                              "weight": 4,
+                              "volume": 2
+                            },
+                            {
+                              "box": "S",
+                              "items": [
+                                {
+                                  "sku": "b",
+                                  "quantity": 1
+                                }
+                              ],
+                              "weight": 2,
+                              "volume": 3
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "rejected": [],
+                    "remaining": {
+                      "a": 0,
+                      "b": 0,
+                      "c": 0
+                    },
+                    "totals": {
+                      "units": 2,
+                      "cartons": 2,
+                      "weight": 6,
+                      "volume": 5
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "accepted": [],
+                    "rejected": [],
+                    "remaining": {
+                      "a": 0,
+                      "b": 0,
+                      "c": 0
+                    },
+                    "totals": {
+                      "units": 0,
+                      "cartons": 0,
+                      "weight": 0,
+                      "volume": 0
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "report": {
+                    "accepted": [
+                      {
+                        "id": "high",
+                        "destination": "East",
+                        "manifest": {
+                          "items": [
+                            {
+                              "sku": "c",
+                              "quantity": 2,
+                              "weight": 2,
+                              "volume": 2
+                            }
+                          ],
+                          "totals": {
+                            "units": 2,
+                            "weight": 2,
+                            "volume": 2
+                          },
+                          "cartons": [
+                            {
+                              "box": "S",
+                              "items": [
+                                {
+                                  "sku": "c",
+                                  "quantity": 2
+                                }
+                              ],
+                              "weight": 2,
+                              "volume": 2
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "id": "low",
+                        "destination": "West",
+                        "manifest": {
+                          "items": [
+                            {
+                              "sku": "b",
+                              "quantity": 1,
+                              "weight": 2,
+                              "volume": 3
+                            }
+                          ],
+                          "totals": {
+                            "units": 1,
+                            "weight": 2,
+                            "volume": 3
+                          },
+                          "cartons": [
+                            {
+                              "box": "S",
+                              "items": [
+                                {
+                                  "sku": "b",
+                                  "quantity": 1
+                                }
+                              ],
+                              "weight": 2,
+                              "volume": 3
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "rejected": [],
+                    "remaining": {
+                      "a": 1,
+                      "b": 1,
+                      "c": 1
+                    },
+                    "totals": {
+                      "units": 3,
+                      "cartons": 2,
+                      "weight": 4,
+                      "volume": 5
+                    }
+                  },
+                  "direct_consistent": true
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              },
+              {
+                "result": {
+                  "error": "ValueError"
+                },
+                "preserved": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

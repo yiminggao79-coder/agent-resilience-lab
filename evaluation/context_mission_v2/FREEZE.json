@@ -1,0 +1,185 @@
+{
+  "version": 2,
+  "status": "frozen_before_model_exposure",
+  "frozen_at_utc": "2026-11-08T18:17:27.191293+00:00",
+  "immutable_after_freeze": true,
+  "inventory_encoding": "utf8_json_sort_keys_compact_separators_of_flat_files_list",
+  "inventory_sha256": "23afd03bfe0cff7be5bce747cd752207a1d24642bddba7aa47c7ccdf045055bb",
+  "files": [
+    {
+      "path": "docs/context-mission-v2-acceptance-interface.md",
+      "bytes": 4906,
+      "sha256": "3b4171f1ee8198f76eb6345b0ce545c948a392a3931648f938d010e839a187b1"
+    },
+    {
+      "path": "evaluation/context_mission_v2/PROVENANCE.md",
+      "bytes": 1967,
+      "sha256": "7118a027a11d4029cffec4f5e423ce63f8883679dd7689a90bfe1f11375d919a"
+    },
+    {
+      "path": "evaluation/context_mission_v2/author_suite.py",
+      "bytes": 40837,
+      "sha256": "f6fffad984d481cb5221c364dae10f79db069b25140d5a83321facf4de14e3ed"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/reference/stage1/portions.py",
+      "bytes": 680,
+      "sha256": "7eee1f27e68edf48eee05cc8a42fd27a95cade9e7875cfbfc3bda2ba4af5e6b0"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/reference/stage2/reimburse.py",
+      "bytes": 1750,
+      "sha256": "6cae62ae277d39f585bb6ac14c3ebc629430ed300875fd2ed6d2f45234f7fff7"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/reference/stage3/closeout.py",
+      "bytes": 1026,
+      "sha256": "c945990af97b833d5f2c368e4588efc1ee4ffdb4e33c860daba42526f0c6f899"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/turn1.md",
+      "bytes": 1369,
+      "sha256": "80d56665cc4d6a6f118621bc160eb8b837336c65bede1049bb75971fdf0cf9cf"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/turn2.md",
+      "bytes": 1495,
+      "sha256": "e032bd69c9aedafcbf58f54c383b016753c4502980711033adbfb9a3a3e29e2a"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/turn3.md",
+      "bytes": 1344,
+      "sha256": "5f3fdd247862d5c32f8651d051e5620d7f4128391b1c608cb621395380567baa"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/workspace/README.md",
+      "bytes": 471,
+      "sha256": "66b2ec1c702236e7234e99cbd8b0d87b4aa37ca906c5669c36f9597a38d062d9"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/workspace/ledger.py",
+      "bytes": 1171,
+      "sha256": "9a39cfc854f81e50bbd71f2eb586741bc31f2a9fad9b190eedf05e3913fb6828"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/workspace/observe.py",
+      "bytes": 1057,
+      "sha256": "5794c72fcb9ae0f00003b25ed714404b180194df73e53485332b7828745a78d8"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/workspace/portions.py",
+      "bytes": 388,
+      "sha256": "9125a216bbd9505779a42bf5c70041b15d89b9db70974453f23328ca8133338e"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/workspace/tests/test_original.py",
+      "bytes": 1851,
+      "sha256": "f4188de4805b1f5d44253f813458973ba37f293851ba197e72316f9b735b2da1"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/workspace/validation.py",
+      "bytes": 778,
+      "sha256": "801bd5efc5e0906352825ad245787185288c5101b8ac704a60f9ee185be129e2"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_01/workspace/views.py",
+      "bytes": 397,
+      "sha256": "7d3d2d1a960abbff4f62ce5d1a0290c3488b54e4ca8cda794b70f74c59932304"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/reference/stage1/runs.py",
+      "bytes": 1482,
+      "sha256": "2037e9476ca3b4dc558b1b61c5451988e1f22b9b0f58ea6feb2640e092cfad7b"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/reference/stage2/regions.py",
+      "bytes": 2285,
+      "sha256": "0bd6312e55832a2188a96c40d5107764c915d4728a31e18263f90a1eae58fea4"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/reference/stage3/layers.py",
+      "bytes": 1730,
+      "sha256": "1e7fd43b80f6efcfc35857d1b581b80130ddc51002d085905b3c4e276d3458d3"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/turn1.md",
+      "bytes": 1137,
+      "sha256": "4afd746571a5adda791dc9a355dfe38b09c0db9e7dd5bbc0a36b78637d7bbb4d"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/turn2.md",
+      "bytes": 1415,
+      "sha256": "b589684488dba5af2355bd4672a7ce6aa9f0d656a1486f6de57433cc6a526473"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/turn3.md",
+      "bytes": 1441,
+      "sha256": "609469faae5d5d6e7ca8b422f535d0aa7518d2ff331e24648d2c78d824fe6253"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/workspace/README.md",
+      "bytes": 430,
+      "sha256": "42a8a8a447f59323c1b13cbc77746fd3d46de74b1d88f2db08db51a1cdb808cc"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/workspace/canvas.py",
+      "bytes": 594,
+      "sha256": "bc71c3de169b9acdb842c8fca22c1d468a03aa386a968628b00d66b11f12921f"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/workspace/metrics.py",
+      "bytes": 274,
+      "sha256": "96cfbab3040dd4c99d1d157a644db9acc70994b2d957f15132ecc86baf4d944b"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/workspace/observe.py",
+      "bytes": 1256,
+      "sha256": "578aa7b31deb2333653d70a9b1978f67dcf6434abcaa342b5a5b50fc2fea12ea"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/workspace/palette.py",
+      "bytes": 379,
+      "sha256": "21e3c04a934a5be2b33c668dad3c1fc3daca3f553f7d62c01b2c12f985cd34a4"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/workspace/runs.py",
+      "bytes": 1450,
+      "sha256": "ada0c5fa1578cfaec29f9a0e01f5f32c1363486dad4884c252349af0cd88288c"
+    },
+    {
+      "path": "evaluation/context_mission_v2/cases/case_02/workspace/tests/test_original.py",
+      "bytes": 1731,
+      "sha256": "91126e9bdf8e705d41b582fd45ed563308a185fd4f4856338f7948b4afa94ca9"
+    },
+    {
+      "path": "evaluation/context_mission_v2/manifest.json",
+      "bytes": 54773,
+      "sha256": "d3f924562887ad291d220643bb266feda501ccd4353278d1ae289d35f605f7ab"
+    },
+    {
+      "path": "evaluation/context_mission_v2/run_protocol.json",
+      "bytes": 2633,
+      "sha256": "a18c04fde80ffa73177862d54b75461847412d63648c4e2cdfa9ec23c5ae0501"
+    },
+    {
+      "path": "evaluation/context_mission_v2/validate.py",
+      "bytes": 8490,
+      "sha256": "c3463b554e4221f6f4b45f6d2512f4034750bebb99261611f11e27508aa053db"
+    },
+    {
+      "path": "evaluation/context_mission_v2/validation.json",
+      "bytes": 21614,
+      "sha256": "2588cc3603bbbb26cd5453383de4c71b2e0004f2bbe71330982d01bc83f107a1"
+    },
+    {
+      "path": "evaluation/context_mission_v2/verify_freeze.py",
+      "bytes": 1644,
+      "sha256": "6c2c2c1083487e393184181b3d266eeb74fa3eff4d4c780f3f35d44e2b2aeb9f"
+    }
+  ],
+  "exclusions": [
+    "evaluation/context_mission_v2/FREEZE.json",
+    "evidence/context_mission_v2/freeze-summary.json"
+  ],
+  "validation_sha256": "2588cc3603bbbb26cd5453383de4c71b2e0004f2bbe71330982d01bc83f107a1"
+}

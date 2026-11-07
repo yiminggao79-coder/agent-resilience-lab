@@ -1,0 +1,2172 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "case_01",
+      "workspace_dir": "cases/case_01/workspace",
+      "immutable_files": [
+        "tests/test_original.py",
+        "observe.py"
+      ],
+      "turns": [
+        {
+          "task": "cases/case_01/turn1.md",
+          "oracle": {
+            "module": "observe",
+            "function": "first",
+            "inputs": [
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 2,
+                      "away_goals": 0
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 1,
+                      "away_goals": 1
+                    }
+                  ],
+                  "teams": [
+                    "C"
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "x",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 0,
+                      "away_goals": 1
+                    },
+                    {
+                      "id": "y",
+                      "home": "A",
+                      "away": "C",
+                      "home_goals": 3,
+                      "away_goals": 0
+                    },
+                    {
+                      "id": "z",
+                      "home": "B",
+                      "away": "C",
+                      "home_goals": 0,
+                      "away_goals": 2
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "x",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 2,
+                      "away_goals": 0
+                    },
+                    {
+                      "id": "y",
+                      "home": "C",
+                      "away": "D",
+                      "home_goals": 4,
+                      "away_goals": 3
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [],
+                  "teams": [
+                    "Z",
+                    "A"
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": true,
+                      "away_goals": 0
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 1,
+                      "away_goals": 0
+                    },
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 1,
+                      "away_goals": 0
+                    }
+                  ]
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "value": {
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 2,
+                      "goals_against": 0,
+                      "difference": 2,
+                      "points": 3
+                    },
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 0,
+                      "goals_against": 2,
+                      "difference": -2,
+                      "points": 0
+                    }
+                  ],
+                  "summary": {
+                    "games": 1,
+                    "teams": 2,
+                    "goals": 2
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 1,
+                      "lost": 0,
+                      "goals_for": 1,
+                      "goals_against": 1,
+                      "difference": 0,
+                      "points": 1
+                    },
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 1,
+                      "lost": 0,
+                      "goals_for": 1,
+                      "goals_against": 1,
+                      "difference": 0,
+                      "points": 1
+                    },
+                    {
+                      "team": "C",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    }
+                  ],
+                  "summary": {
+                    "games": 1,
+                    "teams": 3,
+                    "goals": 2
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 2,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 3,
+                      "goals_against": 1,
+                      "difference": 2,
+                      "points": 3
+                    },
+                    {
+                      "team": "C",
+                      "played": 2,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 2,
+                      "goals_against": 3,
+                      "difference": -1,
+                      "points": 3
+                    },
+                    {
+                      "team": "B",
+                      "played": 2,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 1,
+                      "goals_against": 2,
+                      "difference": -1,
+                      "points": 3
+                    }
+                  ],
+                  "summary": {
+                    "games": 3,
+                    "teams": 3,
+                    "goals": 6
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 2,
+                      "goals_against": 0,
+                      "difference": 2,
+                      "points": 3
+                    },
+                    {
+                      "team": "C",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 4,
+                      "goals_against": 3,
+                      "difference": 1,
+                      "points": 3
+                    },
+                    {
+                      "team": "D",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 3,
+                      "goals_against": 4,
+                      "difference": -1,
+                      "points": 0
+                    },
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 0,
+                      "goals_against": 2,
+                      "difference": -2,
+                      "points": 0
+                    }
+                  ],
+                  "summary": {
+                    "games": 2,
+                    "teams": 4,
+                    "goals": 9
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    },
+                    {
+                      "team": "Z",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    }
+                  ],
+                  "summary": {
+                    "games": 0,
+                    "teams": 2,
+                    "goals": 0
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_01/turn2.md",
+          "oracle": {
+            "module": "observe",
+            "function": "second",
+            "inputs": [
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 2,
+                      "away_goals": 0
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "kind": "replace",
+                      "match_id": "m",
+                      "home_goals": 0,
+                      "away_goals": 2
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 1,
+                      "away_goals": 1
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "kind": "void",
+                      "match_id": "m"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "x",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 2,
+                      "away_goals": 0
+                    },
+                    {
+                      "id": "y",
+                      "home": "C",
+                      "away": "D",
+                      "home_goals": 1,
+                      "away_goals": 0
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "kind": "penalty",
+                      "team": "A",
+                      "points": 4
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 2,
+                      "away_goals": 0
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "kind": "penalty",
+                      "team": "A",
+                      "points": 1
+                    },
+                    {
+                      "kind": "penalty",
+                      "team": "A",
+                      "points": 2
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 0,
+                      "away_goals": 0
+                    }
+                  ],
+                  "teams": [
+                    "C"
+                  ],
+                  "actions": [
+                    {
+                      "kind": "replace",
+                      "match_id": "m",
+                      "home_goals": 3,
+                      "away_goals": 1
+                    },
+                    {
+                      "kind": "void",
+                      "match_id": "m"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 1,
+                      "away_goals": 0
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "kind": "void",
+                      "match_id": "missing"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 1,
+                      "away_goals": 0
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "kind": "penalty",
+                      "team": "missing",
+                      "points": 1
+                    }
+                  ]
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "value": {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 0,
+                      "away_goals": 2
+                    }
+                  ],
+                  "standings": [
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 2,
+                      "goals_against": 0,
+                      "difference": 2,
+                      "points": 3
+                    },
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 0,
+                      "goals_against": 2,
+                      "difference": -2,
+                      "points": 0
+                    }
+                  ],
+                  "penalties": {
+                    "A": 0,
+                    "B": 0
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "matches": [],
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    },
+                    {
+                      "team": "B",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    }
+                  ],
+                  "penalties": {
+                    "A": 0,
+                    "B": 0
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "matches": [
+                    {
+                      "id": "x",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 2,
+                      "away_goals": 0
+                    },
+                    {
+                      "id": "y",
+                      "home": "C",
+                      "away": "D",
+                      "home_goals": 1,
+                      "away_goals": 0
+                    }
+                  ],
+                  "standings": [
+                    {
+                      "team": "C",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 1,
+                      "goals_against": 0,
+                      "difference": 1,
+                      "points": 3
+                    },
+                    {
+                      "team": "D",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 0,
+                      "goals_against": 1,
+                      "difference": -1,
+                      "points": 0
+                    },
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 0,
+                      "goals_against": 2,
+                      "difference": -2,
+                      "points": 0
+                    },
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 2,
+                      "goals_against": 0,
+                      "difference": 2,
+                      "points": -1
+                    }
+                  ],
+                  "penalties": {
+                    "A": 4,
+                    "B": 0,
+                    "C": 0,
+                    "D": 0
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 2,
+                      "away_goals": 0
+                    }
+                  ],
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 1,
+                      "won": 1,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 2,
+                      "goals_against": 0,
+                      "difference": 2,
+                      "points": 0
+                    },
+                    {
+                      "team": "B",
+                      "played": 1,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 1,
+                      "goals_for": 0,
+                      "goals_against": 2,
+                      "difference": -2,
+                      "points": 0
+                    }
+                  ],
+                  "penalties": {
+                    "A": 3,
+                    "B": 0
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "matches": [],
+                  "standings": [
+                    {
+                      "team": "A",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    },
+                    {
+                      "team": "B",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    },
+                    {
+                      "team": "C",
+                      "played": 0,
+                      "won": 0,
+                      "drawn": 0,
+                      "lost": 0,
+                      "goals_for": 0,
+                      "goals_against": 0,
+                      "difference": 0,
+                      "points": 0
+                    }
+                  ],
+                  "penalties": {
+                    "A": 0,
+                    "B": 0,
+                    "C": 0
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_01/turn3.md",
+          "oracle": {
+            "module": "observe",
+            "function": "third",
+            "inputs": [
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "x",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 1,
+                      "away_goals": 0
+                    },
+                    {
+                      "id": "y",
+                      "home": "C",
+                      "away": "D",
+                      "home_goals": 0,
+                      "away_goals": 0
+                    }
+                  ],
+                  "actions": [],
+                  "groups": {
+                    "g1": [
+                      "A",
+                      "B"
+                    ],
+                    "g2": [
+                      "C",
+                      "D"
+                    ]
+                  },
+                  "slots": 1,
+                  "wildcards": 1
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "x",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 0,
+                      "away_goals": 1
+                    },
+                    {
+                      "id": "y",
+                      "home": "C",
+                      "away": "D",
+                      "home_goals": 2,
+                      "away_goals": 0
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "kind": "penalty",
+                      "team": "C",
+                      "points": 4
+                    }
+                  ],
+                  "groups": {
+                    "g1": [
+                      "A",
+                      "B"
+                    ],
+                    "g2": [
+                      "C",
+                      "D"
+                    ]
+                  },
+                  "wildcards": 1
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "C",
+                      "home_goals": 9,
+                      "away_goals": 0
+                    }
+                  ],
+                  "actions": [],
+                  "groups": {
+                    "g1": [
+                      "A",
+                      "B"
+                    ],
+                    "g2": [
+                      "C",
+                      "D"
+                    ]
+                  },
+                  "wildcards": 1
+                }
+              ],
+              [
+                {
+                  "matches": [],
+                  "actions": [],
+                  "groups": {
+                    "z": [
+                      "B"
+                    ],
+                    "a": [
+                      "A"
+                    ]
+                  },
+                  "slots": 2,
+                  "wildcards": 9
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 1,
+                      "away_goals": 1
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "kind": "void",
+                      "match_id": "m"
+                    }
+                  ],
+                  "groups": {
+                    "g": [
+                      "A",
+                      "B"
+                    ]
+                  },
+                  "slots": 0,
+                  "wildcards": 1
+                }
+              ],
+              [
+                {
+                  "matches": [],
+                  "actions": [],
+                  "groups": {
+                    "g1": [
+                      "A"
+                    ],
+                    "g2": [
+                      "A"
+                    ]
+                  }
+                }
+              ],
+              [
+                {
+                  "matches": [
+                    {
+                      "id": "m",
+                      "home": "A",
+                      "away": "B",
+                      "home_goals": 1,
+                      "away_goals": 0
+                    }
+                  ],
+                  "actions": [],
+                  "groups": {
+                    "g": [
+                      "A"
+                    ]
+                  }
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "value": {
+                  "groups": {
+                    "g1": [
+                      {
+                        "team": "A",
+                        "played": 1,
+                        "won": 1,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 1,
+                        "goals_against": 0,
+                        "difference": 1,
+                        "points": 3
+                      },
+                      {
+                        "team": "B",
+                        "played": 1,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 1,
+                        "goals_for": 0,
+                        "goals_against": 1,
+                        "difference": -1,
+                        "points": 0
+                      }
+                    ],
+                    "g2": [
+                      {
+                        "team": "C",
+                        "played": 1,
+                        "won": 0,
+                        "drawn": 1,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 1
+                      },
+                      {
+                        "team": "D",
+                        "played": 1,
+                        "won": 0,
+                        "drawn": 1,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 1
+                      }
+                    ]
+                  },
+                  "automatic": [
+                    "A",
+                    "C"
+                  ],
+                  "wildcards": [
+                    "D"
+                  ],
+                  "qualified": [
+                    "A",
+                    "C",
+                    "D"
+                  ]
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "groups": {
+                    "g1": [
+                      {
+                        "team": "B",
+                        "played": 1,
+                        "won": 1,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 1,
+                        "goals_against": 0,
+                        "difference": 1,
+                        "points": 3
+                      },
+                      {
+                        "team": "A",
+                        "played": 1,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 1,
+                        "goals_for": 0,
+                        "goals_against": 1,
+                        "difference": -1,
+                        "points": 0
+                      }
+                    ],
+                    "g2": [
+                      {
+                        "team": "D",
+                        "played": 1,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 1,
+                        "goals_for": 0,
+                        "goals_against": 2,
+                        "difference": -2,
+                        "points": 0
+                      },
+                      {
+                        "team": "C",
+                        "played": 1,
+                        "won": 1,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 2,
+                        "goals_against": 0,
+                        "difference": 2,
+                        "points": -1
+                      }
+                    ]
+                  },
+                  "automatic": [
+                    "B",
+                    "D"
+                  ],
+                  "wildcards": [
+                    "A"
+                  ],
+                  "qualified": [
+                    "A",
+                    "B",
+                    "D"
+                  ]
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "groups": {
+                    "g1": [
+                      {
+                        "team": "A",
+                        "played": 0,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 0
+                      },
+                      {
+                        "team": "B",
+                        "played": 0,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 0
+                      }
+                    ],
+                    "g2": [
+                      {
+                        "team": "C",
+                        "played": 0,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 0
+                      },
+                      {
+                        "team": "D",
+                        "played": 0,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 0
+                      }
+                    ]
+                  },
+                  "automatic": [
+                    "A",
+                    "C"
+                  ],
+                  "wildcards": [
+                    "B"
+                  ],
+                  "qualified": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "groups": {
+                    "a": [
+                      {
+                        "team": "A",
+                        "played": 0,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 0
+                      }
+                    ],
+                    "z": [
+                      {
+                        "team": "B",
+                        "played": 0,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 0
+                      }
+                    ]
+                  },
+                  "automatic": [
+                    "A",
+                    "B"
+                  ],
+                  "wildcards": [],
+                  "qualified": [
+                    "A",
+                    "B"
+                  ]
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "groups": {
+                    "g": [
+                      {
+                        "team": "A",
+                        "played": 0,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 0
+                      },
+                      {
+                        "team": "B",
+                        "played": 0,
+                        "won": 0,
+                        "drawn": 0,
+                        "lost": 0,
+                        "goals_for": 0,
+                        "goals_against": 0,
+                        "difference": 0,
+                        "points": 0
+                      }
+                    ]
+                  },
+                  "automatic": [],
+                  "wildcards": [
+                    "A"
+                  ],
+                  "qualified": [
+                    "A"
+                  ]
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "case_02",
+      "workspace_dir": "cases/case_02/workspace",
+      "immutable_files": [
+        "tests/test_original.py",
+        "observe.py"
+      ],
+      "turns": [
+        {
+          "task": "cases/case_02/turn1.md",
+          "oracle": {
+            "module": "observe",
+            "function": "first",
+            "inputs": [
+              [
+                {
+                  "record": {
+                    "tag": "t",
+                    "value": "1",
+                    "unit": "u"
+                  },
+                  "line": "x|2|v\n",
+                  "batch": "a|3|u\na|4|u\n"
+                }
+              ],
+              [
+                {
+                  "record": {
+                    "tag": "s|x",
+                    "value": "a\\b\nc",
+                    "unit": ""
+                  },
+                  "line": "s\\|x|a\\\\b\\nc|\n",
+                  "batch": "s\\|x|a\\\\b\\nc|\n"
+                }
+              ],
+              [
+                {
+                  "record": {
+                    "tag": "t",
+                    "value": "",
+                    "unit": ""
+                  },
+                  "line": "t||\n",
+                  "batch": ""
+                }
+              ],
+              [
+                {
+                  "record": {
+                    "tag": "温度",
+                    "value": "-2",
+                    "unit": "℃"
+                  },
+                  "line": "温度|-2|℃\n",
+                  "batch": "温度|-2|℃\n湿度|8|%\n"
+                }
+              ],
+              [
+                {
+                  "record": {
+                    "tag": "r",
+                    "value": "\\",
+                    "unit": "|"
+                  },
+                  "line": "r|\\\\|\\|\n",
+                  "batch": "r|\\\\|\\|\nr|2|u\n"
+                }
+              ],
+              [
+                {
+                  "record": {
+                    "tag": "t",
+                    "value": "1",
+                    "unit": "u"
+                  },
+                  "line": "t|\\q|u\n",
+                  "batch": ""
+                }
+              ],
+              [
+                {
+                  "record": {
+                    "tag": "t",
+                    "value": "1",
+                    "unit": "u"
+                  },
+                  "line": "t|1|u\n",
+                  "batch": "t|1|u"
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "value": {
+                  "encoded": "t|1|u\n",
+                  "decoded": {
+                    "tag": "x",
+                    "value": "2",
+                    "unit": "v"
+                  },
+                  "batch": [
+                    {
+                      "tag": "a",
+                      "value": "3",
+                      "unit": "u"
+                    },
+                    {
+                      "tag": "a",
+                      "value": "4",
+                      "unit": "u"
+                    }
+                  ],
+                  "counts": {
+                    "a": 2
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "encoded": "s\\|x|a\\\\b\\nc|\n",
+                  "decoded": {
+                    "tag": "s|x",
+                    "value": "a\\b\nc",
+                    "unit": ""
+                  },
+                  "batch": [
+                    {
+                      "tag": "s|x",
+                      "value": "a\\b\nc",
+                      "unit": ""
+                    }
+                  ],
+                  "counts": {
+                    "s|x": 1
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "encoded": "t||\n",
+                  "decoded": {
+                    "tag": "t",
+                    "value": "",
+                    "unit": ""
+                  },
+                  "batch": [],
+                  "counts": {}
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "encoded": "温度|-2|℃\n",
+                  "decoded": {
+                    "tag": "温度",
+                    "value": "-2",
+                    "unit": "℃"
+                  },
+                  "batch": [
+                    {
+                      "tag": "温度",
+                      "value": "-2",
+                      "unit": "℃"
+                    },
+                    {
+                      "tag": "湿度",
+                      "value": "8",
+                      "unit": "%"
+                    }
+                  ],
+                  "counts": {
+                    "温度": 1,
+                    "湿度": 1
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "encoded": "r|\\\\|\\|\n",
+                  "decoded": {
+                    "tag": "r",
+                    "value": "\\",
+                    "unit": "|"
+                  },
+                  "batch": [
+                    {
+                      "tag": "r",
+                      "value": "\\",
+                      "unit": "|"
+                    },
+                    {
+                      "tag": "r",
+                      "value": "2",
+                      "unit": "u"
+                    }
+                  ],
+                  "counts": {
+                    "r": 2
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_02/turn2.md",
+          "oracle": {
+            "module": "observe",
+            "function": "second",
+            "inputs": [
+              [
+                {
+                  "operations": [
+                    {
+                      "op": "feed",
+                      "text": "a|1|"
+                    },
+                    {
+                      "op": "feed",
+                      "text": "u\n"
+                    },
+                    {
+                      "op": "finish"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "operations": [
+                    {
+                      "op": "feed",
+                      "text": "x|a\\"
+                    },
+                    {
+                      "op": "feed",
+                      "text": "|b|u\n"
+                    },
+                    {
+                      "op": "finish"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "operations": [
+                    {
+                      "op": "feed",
+                      "text": "a|1|u\nbad\n"
+                    },
+                    {
+                      "op": "feed",
+                      "text": "b|2|u\n"
+                    },
+                    {
+                      "op": "finish"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "operations": [
+                    {
+                      "op": "feed",
+                      "text": "t|1|"
+                    },
+                    {
+                      "op": "finish"
+                    },
+                    {
+                      "op": "feed",
+                      "text": "u\n"
+                    },
+                    {
+                      "op": "finish"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "operations": [
+                    {
+                      "op": "feed",
+                      "text": ""
+                    },
+                    {
+                      "op": "finish"
+                    },
+                    {
+                      "op": "finish"
+                    },
+                    {
+                      "op": "feed",
+                      "text": ""
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "operations": [
+                    {
+                      "op": "feed",
+                      "text": "a|1|u\nb|2|v\n"
+                    },
+                    {
+                      "op": "finish"
+                    }
+                  ]
+                }
+              ],
+              [
+                {
+                  "operations": [
+                    {
+                      "op": "feed",
+                      "text": "温|1|℃\n"
+                    },
+                    {
+                      "op": "feed",
+                      "text": ""
+                    },
+                    {
+                      "op": "finish"
+                    }
+                  ]
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "value": {
+                  "trace": [
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 4,
+                        "pending": "a|1|",
+                        "records_seen": 0,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [
+                        {
+                          "tag": "a",
+                          "value": "1",
+                          "unit": "u"
+                        }
+                      ],
+                      "state": {
+                        "accepted_chars": 6,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 6,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": true
+                      }
+                    }
+                  ],
+                  "final": {
+                    "accepted_chars": 6,
+                    "pending": "",
+                    "records_seen": 1,
+                    "closed": true
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "trace": [
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 4,
+                        "pending": "x|a\\",
+                        "records_seen": 0,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [
+                        {
+                          "tag": "x",
+                          "value": "a|b",
+                          "unit": "u"
+                        }
+                      ],
+                      "state": {
+                        "accepted_chars": 9,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 9,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": true
+                      }
+                    }
+                  ],
+                  "final": {
+                    "accepted_chars": 9,
+                    "pending": "",
+                    "records_seen": 1,
+                    "closed": true
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "trace": [
+                    {
+                      "output": {
+                        "error": "ValueError"
+                      },
+                      "state": {
+                        "accepted_chars": 0,
+                        "pending": "",
+                        "records_seen": 0,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [
+                        {
+                          "tag": "b",
+                          "value": "2",
+                          "unit": "u"
+                        }
+                      ],
+                      "state": {
+                        "accepted_chars": 6,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 6,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": true
+                      }
+                    }
+                  ],
+                  "final": {
+                    "accepted_chars": 6,
+                    "pending": "",
+                    "records_seen": 1,
+                    "closed": true
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "trace": [
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 4,
+                        "pending": "t|1|",
+                        "records_seen": 0,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": {
+                        "error": "ValueError"
+                      },
+                      "state": {
+                        "accepted_chars": 4,
+                        "pending": "t|1|",
+                        "records_seen": 0,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [
+                        {
+                          "tag": "t",
+                          "value": "1",
+                          "unit": "u"
+                        }
+                      ],
+                      "state": {
+                        "accepted_chars": 6,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 6,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": true
+                      }
+                    }
+                  ],
+                  "final": {
+                    "accepted_chars": 6,
+                    "pending": "",
+                    "records_seen": 1,
+                    "closed": true
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "trace": [
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 0,
+                        "pending": "",
+                        "records_seen": 0,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 0,
+                        "pending": "",
+                        "records_seen": 0,
+                        "closed": true
+                      }
+                    },
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 0,
+                        "pending": "",
+                        "records_seen": 0,
+                        "closed": true
+                      }
+                    },
+                    {
+                      "output": {
+                        "error": "ValueError"
+                      },
+                      "state": {
+                        "accepted_chars": 0,
+                        "pending": "",
+                        "records_seen": 0,
+                        "closed": true
+                      }
+                    }
+                  ],
+                  "final": {
+                    "accepted_chars": 0,
+                    "pending": "",
+                    "records_seen": 0,
+                    "closed": true
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "trace": [
+                    {
+                      "output": [
+                        {
+                          "tag": "a",
+                          "value": "1",
+                          "unit": "u"
+                        },
+                        {
+                          "tag": "b",
+                          "value": "2",
+                          "unit": "v"
+                        }
+                      ],
+                      "state": {
+                        "accepted_chars": 12,
+                        "pending": "",
+                        "records_seen": 2,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 12,
+                        "pending": "",
+                        "records_seen": 2,
+                        "closed": true
+                      }
+                    }
+                  ],
+                  "final": {
+                    "accepted_chars": 12,
+                    "pending": "",
+                    "records_seen": 2,
+                    "closed": true
+                  }
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "trace": [
+                    {
+                      "output": [
+                        {
+                          "tag": "温",
+                          "value": "1",
+                          "unit": "℃"
+                        }
+                      ],
+                      "state": {
+                        "accepted_chars": 6,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 6,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": false
+                      }
+                    },
+                    {
+                      "output": [],
+                      "state": {
+                        "accepted_chars": 6,
+                        "pending": "",
+                        "records_seen": 1,
+                        "closed": true
+                      }
+                    }
+                  ],
+                  "final": {
+                    "accepted_chars": 6,
+                    "pending": "",
+                    "records_seen": 1,
+                    "closed": true
+                  }
+                },
+                "input_intact": true
+              }
+            ]
+          }
+        },
+        {
+          "task": "cases/case_02/turn3.md",
+          "oracle": {
+            "module": "observe",
+            "function": "third",
+            "inputs": [
+              [
+                {
+                  "chunks": [
+                    "a|1|u\na|3|u\n",
+                    "a|5|u\nb|2|v\n"
+                  ],
+                  "window": 2
+                }
+              ],
+              [
+                {
+                  "chunks": [
+                    "x|2|u\na|-1|u\nmain|4|u\n"
+                  ],
+                  "window": 2,
+                  "aliases": {
+                    "x": "a",
+                    "a": "main"
+                  }
+                }
+              ],
+              [
+                {
+                  "chunks": [],
+                  "window": 3,
+                  "aliases": {}
+                }
+              ],
+              [
+                {
+                  "chunks": [
+                    "temp|0|",
+                    "C\n",
+                    "temp|-2|C\n"
+                  ],
+                  "window": 1
+                }
+              ],
+              [
+                {
+                  "chunks": [
+                    "s\\|x|7|u\n"
+                  ],
+                  "window": 10
+                }
+              ],
+              [
+                {
+                  "chunks": [
+                    "x|1|u\nx|2|v\n"
+                  ],
+                  "window": 1
+                }
+              ],
+              [
+                {
+                  "chunks": [],
+                  "window": 2,
+                  "aliases": {
+                    "x": "y",
+                    "y": "x"
+                  }
+                }
+              ],
+              [
+                {
+                  "chunks": [
+                    "x|01|u\n"
+                  ],
+                  "window": 2
+                }
+              ],
+              [
+                {
+                  "chunks": [
+                    "x|1|u"
+                  ],
+                  "window": 2
+                }
+              ],
+              [
+                {
+                  "chunks": [],
+                  "window": true
+                }
+              ]
+            ],
+            "expected": [
+              {
+                "value": {
+                  "groups": [
+                    {
+                      "tag": "a",
+                      "unit": "u",
+                      "count": 3,
+                      "kept": 2,
+                      "minimum": 3,
+                      "maximum": 5,
+                      "total": 8,
+                      "latest": 5
+                    },
+                    {
+                      "tag": "b",
+                      "unit": "v",
+                      "count": 1,
+                      "kept": 1,
+                      "minimum": 2,
+                      "maximum": 2,
+                      "total": 2,
+                      "latest": 2
+                    }
+                  ],
+                  "records": 4
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "groups": [
+                    {
+                      "tag": "main",
+                      "unit": "u",
+                      "count": 3,
+                      "kept": 2,
+                      "minimum": -1,
+                      "maximum": 4,
+                      "total": 3,
+                      "latest": 4
+                    }
+                  ],
+                  "records": 3
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "groups": [],
+                  "records": 0
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "groups": [
+                    {
+                      "tag": "temp",
+                      "unit": "C",
+                      "count": 2,
+                      "kept": 1,
+                      "minimum": -2,
+                      "maximum": -2,
+                      "total": -2,
+                      "latest": -2
+                    }
+                  ],
+                  "records": 2
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "groups": [
+                    {
+                      "tag": "s|x",
+                      "unit": "u",
+                      "count": 1,
+                      "kept": 1,
+                      "minimum": 7,
+                      "maximum": 7,
+                      "total": 7,
+                      "latest": 7
+                    }
+                  ],
+                  "records": 1
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              },
+              {
+                "value": {
+                  "error": "ValueError"
+                },
+                "input_intact": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

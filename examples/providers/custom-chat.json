@@ -1,0 +1,9 @@
+{
+  "provider": "custom",
+  "model": "REPLACE_WITH_AVAILABLE_MODEL",
+  "base_url": "https://example.invalid/v1",
+  "protocol": "chat",
+  "api_key_env": "CUSTOM_MODEL_API_KEY",
+  "token_parameter": "max_tokens",
+  "parallel_parameter": false
+}

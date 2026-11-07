@@ -1,0 +1,69 @@
+{
+  "version": 4,
+  "manifest_schema_version": 1,
+  "runtime_profile": {"experiment_profile": "thinking128k", "model": "deepseek-flash"},
+  "attempts_per_case": 1,
+  "cases": 2,
+  "turns_per_case": 4,
+  "profile_conditions": {
+    "model": "deepseek-flash",
+    "thinking": "enabled",
+    "reasoning_effort": "low",
+    "transport": "buffered_official_Chat",
+    "max_model_calls_per_turn": 50,
+    "turn_timeout_seconds": 900,
+    "max_output_tokens": 16384,
+    "active_context_max_bytes": 131072,
+    "summary_input_max_bytes": 32000,
+    "automatic_summary_threshold_ratio": 0.8,
+    "max_summaries_per_turn": 6,
+    "model_timeout_seconds": 180,
+    "tool_timeout_seconds": 12,
+    "same_limits_every_turn": true
+  },
+  "profile_check": "Runner_must_reject_command_line_and_frozen_manifest_profile_mismatch_before_any_task_exposure_or_API",
+  "resource_scope": "explicit_practical_profile_revision_not_a_repair_or_rescore_of_legacy48k_stress_results",
+  "stdlib_only": true,
+  "task_field": "UTF8_task_file_path_relative_to_manifest_directory",
+  "workspace_lifecycle": "copy_once_per_case_then_preserve_candidate_changes_across_four_natural_turns",
+  "original_test_command": ["python3", "-B", "-m", "unittest", "discover", "-s", "tests", "-p", "test_original.py"],
+  "all_tests_command": ["python3", "-B", "-m", "unittest", "discover", "-s", "tests", "-p", "test*.py"],
+  "oracle_contract": {
+    "inputs": "one_positional_argument_list_per_observation",
+    "expected": "one_external_expected_JSON_value_per_input_in_order",
+    "execution": "import_from_current_candidate_root_call_named_function",
+    "transport": "inputs_to_trusted_observation_subprocess_stdin_expected_only_in_trusted_parent",
+    "additional_observation": "later_stages_compare_integrated_entry_point_with_required_direct_feature_interface_no_expected_answers_in_adapter",
+    "caller_preservation": "explicit_payload_equality_on_success_and_declared_errors"
+  },
+  "scoring": {
+    "per_stage": "all_current_and_prior_finite_oracles_pass_protected_original_tests_pass_all_candidate_added_tests_pass_and_all_protected_bytes_match",
+    "per_case": "all_four_original_stage_results_pass",
+    "overall_quality": "both_cases_pass",
+    "later_repairs": "never_erase_or_replace_an_earlier_stage_failure",
+    "claims_and_tool_order": "not_score_inputs",
+    "unknown_missing_crashed": "null_never_pass",
+    "new_tests": "allowed_separate_discoverable_files_not_replacements_for_originals",
+    "protected_semantically_equivalent_edits": "fail_exact_bytes",
+    "failed_attempts": "preserve_original_artifacts_and_scores_no_post_run_semantic_revisions"
+  },
+  "additional_runner_gates": {
+    "real_model_selects_tools": true,
+    "automatic_note_visible_in_final_turn_actual_AST_implementation_change_request_each_case": true,
+    "distinct_pids_across_all_four_turns_each_case": true,
+    "fixed_runtime_source_and_profile_before_first_exposure": true,
+    "no_case_recognition_or_scripted_actions": true,
+    "no_filler_forced_tools_or_summary_request_in_tasks": true,
+    "offline_reference_success_not_real_model_success": true
+  },
+  "exposure": {
+    "coding_model_allowed": ["current_synthetic_candidate_workspace", "current_natural_task_text"],
+    "coding_model_denied": ["external_oracle_inputs", "expected_outputs", "reference_overlays", "author_sources", "author_validation_records"],
+    "runtime_implementer_before_freeze_and_first_acceptance": ["public_interface", "public_receipt_counts_hashes_profile"],
+    "project_subprocess_credentials": "none_no_DEEPSEEK_API_KEY_inheritance"
+  },
+  "authorship_independence": "role_separation_same_AI_environment_not_external_statistical_independence",
+  "provenance": "fresh_synthetic_domains_APIs_and_four_necessary_features_per_case_no_previous_suite_runtime_private_or_credential_reads_no_live_calls",
+  "root_runtime_protocol": "separately_maintained_and_pinned_by_Runner_not_in_author_inventory",
+  "after_freeze": "stop_authoring_no_v5_no_Git_commit"
+}

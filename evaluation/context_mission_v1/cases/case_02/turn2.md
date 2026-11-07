@@ -1,0 +1,5 @@
+The repaired index now needs phrase retrieval. Add phrases.py with phrase_search(rows, phrase, slop=0). Preserve all Turn 1 behavior and the protected original tests/observe.py.
+
+Use exactly the existing tokenization and body-only index. A match chooses strictly increasing token positions for the phrase's tokens in order, including repeated tokens. Its gap cost is last_position - first_position - (number_of_phrase_tokens - 1). Accept costs at most slop; slop is a nonnegative integer, booleans invalid. A single word costs zero. Return [] for an empty normalized phrase, but still validate the documents and slop.
+
+Return [{"id": document_id, "starts": [matching starting token positions]}], sorted by document ID and then increasing starts. Count each starting position once even if several later choices form matches. Do not treat term presence alone as a phrase, and do not bridge across documents or index title text. Validate duplicate document IDs and malformed rows as before. Preserve all inputs. Add focused tests for order, repeated terms, gap budgets and multiple possible continuations.

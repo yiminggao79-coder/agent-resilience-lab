@@ -1,0 +1,37 @@
+{
+  "version": "holdout_v3_behavior_immutable_constraints_v1",
+  "cases": 2,
+  "consumed_when": "A task body or candidate workspace is transmitted to an evaluated model, or implementation owner inspects held-out bodies/oracles/references for optimization.",
+  "attempts_per_case": 1,
+  "runtime_reference": "324e457897914d5b6007a87a86829650da68c439",
+  "future_runtime_recording": "Record actual committed runtime and evaluator source hashes separately; reference does not attest mutable authoring workspace.",
+  "limits": {
+    "max_steps": 40,
+    "max_seconds": 900,
+    "model_timeout": 90,
+    "tool_timeout": 12,
+    "max_output_tokens": 4096,
+    "baseline_test_seconds": 10,
+    "final_test_seconds": 12,
+    "oracle_seconds": 12
+  },
+  "success_gates": [
+    "original immutable files retain frozen SHA-256 before and after public tests/oracle",
+    "all original public tests pass using original tests start directory",
+    "complete external observations exactly match frozen expected JSON including input preservation",
+    "declared stdlib-only and byte-immutable constraints hold"
+  ],
+  "observation_only": [
+    "model success claim",
+    "tool call order and coding_cycle",
+    "plan or Skills usage",
+    "elapsed time and token usage",
+    "engine terminal phase when safe to observe"
+  ],
+  "safety_eligibility": "Never execute candidate tests/oracle while effects or native workers are unresolved/running. Report unobserved/blocked distinctly from observed wrong output.",
+  "oracle_correction_after_exposure": "Forbidden for this suite identity. Preserve original evidence and author a separately identified future suite.",
+  "paid_authorization": "None conferred; existing shared budget and future explicit one-shot authorization remain mandatory.",
+  "offline_selfvalidation": "Only authored fixture subprocesses; no agent harness/model run.",
+  "independence": "Independently authored in the same AI environment; not external statistical independence."
+}
+

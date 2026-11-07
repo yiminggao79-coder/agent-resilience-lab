@@ -1,0 +1,673 @@
+{
+  "version": 4,
+  "kind": "sealed_offline_author_validation",
+  "live_model_or_API_calls": 0,
+  "cases": [
+    {
+      "id": "case_01",
+      "baseline_originals_detected": true,
+      "baseline_behavior_detected": true,
+      "baseline": {
+        "passed": false,
+        "protected_bytes_unchanged": true,
+        "original_tests": {
+          "passed": false,
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "F.....F...\n======================================================================\nFAIL: test_exact_division (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_01/tests/test_original.py\", line 8, in test_exact_division\n    self.assertEqual(calculate('1/2+1/3',{})['value'],[5,6])\nAssertionError: Lists differ: [0, 1] != [5, 6]\n\nFirst differing element 0:\n0\n5\n\n- [0, 1]\n+ [5, 6]\n\n======================================================================\nFAIL: test_power_before_unary (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_01/tests/test_original.py\", line 10, in test_power_before_unary\n    self.assertEqual(calculate('-2^2',{}),{'canonical':'(-(2^2))','value':[-4,1]})\nAssertionError: {'canonical': '((-2)^2)', 'value': [4, 1]} != {'canonical': '(-(2^2))', 'value': [-4, 1]}\n- {'canonical': '((-2)^2)', 'value': [4, 1]}\n?                  - -\n\n+ {'canonical': '(-(2^2))', 'value': [-4, 1]}\n?                 +     +             +\n\n\n----------------------------------------------------------------------\nRan 10 tests in 0.005s\n\nFAILED (failures=2)\n"
+        },
+        "all_tests": {
+          "passed": false,
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "F.....F...\n======================================================================\nFAIL: test_exact_division (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_01/tests/test_original.py\", line 8, in test_exact_division\n    self.assertEqual(calculate('1/2+1/3',{})['value'],[5,6])\nAssertionError: Lists differ: [0, 1] != [5, 6]\n\nFirst differing element 0:\n0\n5\n\n- [0, 1]\n+ [5, 6]\n\n======================================================================\nFAIL: test_power_before_unary (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_01/tests/test_original.py\", line 10, in test_power_before_unary\n    self.assertEqual(calculate('-2^2',{}),{'canonical':'(-(2^2))','value':[-4,1]})\nAssertionError: {'canonical': '((-2)^2)', 'value': [4, 1]} != {'canonical': '(-(2^2))', 'value': [-4, 1]}\n- {'canonical': '((-2)^2)', 'value': [4, 1]}\n?                  - -\n\n+ {'canonical': '(-(2^2))', 'value': [-4, 1]}\n?                 +     +             +\n\n\n----------------------------------------------------------------------\nRan 10 tests in 0.009s\n\nFAILED (failures=2)\n"
+        },
+        "oracles": {
+          "passed": false,
+          "count": 8,
+          "actual_count": 8,
+          "mismatches": [
+            {
+              "index": 0,
+              "expected": {
+                "result": {
+                  "canonical": "((1/2)+(1/3))",
+                  "value": [
+                    5,
+                    6
+                  ]
+                },
+                "preserved": true
+              },
+              "actual": {
+                "result": {
+                  "canonical": "((1/2)+(1/3))",
+                  "value": [
+                    0,
+                    1
+                  ]
+                },
+                "preserved": true
+              }
+            },
+            {
+              "index": 1,
+              "expected": {
+                "result": {
+                  "canonical": "((-(2^2))+((-2)^2))",
+                  "value": [
+                    0,
+                    1
+                  ]
+                },
+                "preserved": true
+              },
+              "actual": {
+                "result": {
+                  "canonical": "(((-2)^2)+((-2)^2))",
+                  "value": [
+                    8,
+                    1
+                  ]
+                },
+                "preserved": true
+              }
+            },
+            {
+              "index": 2,
+              "expected": {
+                "result": {
+                  "canonical": "((x/3)-y)",
+                  "value": [
+                    3,
+                    4
+                  ]
+                },
+                "preserved": true
+              },
+              "actual": {
+                "result": {
+                  "canonical": "((x/3)-y)",
+                  "value": [
+                    1,
+                    4
+                  ]
+                },
+                "preserved": true
+              }
+            },
+            {
+              "index": 4,
+              "expected": {
+                "result": {
+                  "canonical": "(-(-(x^-2)))",
+                  "value": [
+                    1,
+                    4
+                  ]
+                },
+                "preserved": true
+              },
+              "actual": {
+                "result": {
+                  "canonical": "((-(-x))^-2)",
+                  "value": [
+                    1,
+                    4
+                  ]
+                },
+                "preserved": true
+              }
+            }
+          ]
+        }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "overlay_implementation_modules": 2,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.005s\n\nOK\n"
+          },
+          "all_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.009s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 8,
+            "actual_count": 8,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 2,
+          "overlay_implementation_modules": 2,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.002s\n\nOK\n"
+          },
+          "all_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.003s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 17,
+            "actual_count": 17,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 3,
+          "overlay_implementation_modules": 2,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.004s\n\nOK\n"
+          },
+          "all_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.006s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 25,
+            "actual_count": 25,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 4,
+          "overlay_implementation_modules": 2,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.002s\n\nOK\n"
+          },
+          "all_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.003s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 33,
+            "actual_count": 33,
+            "mismatches": []
+          }
+        }
+      ],
+      "negative_controls": [
+        {
+          "control": "unsupported_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage1_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage1_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage1_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage1_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage1_added_test_failure_with_originals_green",
+          "detected": true
+        },
+        {
+          "control": "stage2_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage2_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage2_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage2_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage2_added_test_failure_with_originals_green",
+          "detected": true
+        },
+        {
+          "control": "stage3_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage3_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage3_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage3_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage3_added_test_failure_with_originals_green",
+          "detected": true
+        },
+        {
+          "control": "stage4_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage4_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage4_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage4_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage4_added_test_failure_with_originals_green",
+          "detected": true
+        }
+      ]
+    },
+    {
+      "id": "case_02",
+      "baseline_originals_detected": true,
+      "baseline_behavior_detected": true,
+      "baseline": {
+        "passed": false,
+        "protected_bytes_unchanged": true,
+        "original_tests": {
+          "passed": false,
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "..F...F.F.\n======================================================================\nFAIL: test_duplicate_lines_add (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_02/tests/test_original.py\", line 9, in test_duplicate_lines_add\n    self.assertEqual(quantities([{'sku':'a','quantity':2},{'sku':'a','quantity':3}],products(C)),{'a':5})\nAssertionError: {'a': 3} != {'a': 5}\n- {'a': 3}\n?       ^\n\n+ {'a': 5}\n?       ^\n\n\n======================================================================\nFAIL: test_measure_totals (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_02/tests/test_original.py\", line 13, in test_measure_totals\n    self.assertEqual(make(C,[{'sku':'a','quantity':2},{'sku':'b','quantity':1}])['totals'],\nAssertionError: {'units': 2, 'weight': 10, 'volume': 7} != {'units': 3, 'weight': 10, 'volume': 7}\n- {'units': 2, 'volume': 7, 'weight': 10}\n?           ^\n\n+ {'units': 3, 'volume': 7, 'weight': 10}\n?           ^\n\n\n======================================================================\nFAIL: test_units_count (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_02/tests/test_original.py\", line 11, in test_units_count\n    self.assertEqual(make(C,[{'sku':'a','quantity':3}])['totals']['units'],3)\nAssertionError: 1 != 3\n\n----------------------------------------------------------------------\nRan 10 tests in 0.003s\n\nFAILED (failures=3)\n"
+        },
+        "all_tests": {
+          "passed": false,
+          "returncode": 1,
+          "stdout": "",
+          "stderr": "..F...F.F.\n======================================================================\nFAIL: test_duplicate_lines_add (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_02/tests/test_original.py\", line 9, in test_duplicate_lines_add\n    self.assertEqual(quantities([{'sku':'a','quantity':2},{'sku':'a','quantity':3}],products(C)),{'a':5})\nAssertionError: {'a': 3} != {'a': 5}\n- {'a': 3}\n?       ^\n\n+ {'a': 5}\n?       ^\n\n\n======================================================================\nFAIL: test_measure_totals (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_02/tests/test_original.py\", line 13, in test_measure_totals\n    self.assertEqual(make(C,[{'sku':'a','quantity':2},{'sku':'b','quantity':1}])['totals'],\nAssertionError: {'units': 2, 'weight': 10, 'volume': 7} != {'units': 3, 'weight': 10, 'volume': 7}\n- {'units': 2, 'volume': 7, 'weight': 10}\n?           ^\n\n+ {'units': 3, 'volume': 7, 'weight': 10}\n?           ^\n\n\n======================================================================\nFAIL: test_units_count (test_original.OriginalContracts)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/mission-v4-author-kzdpum5v/case_02/tests/test_original.py\", line 11, in test_units_count\n    self.assertEqual(make(C,[{'sku':'a','quantity':3}])['totals']['units'],3)\nAssertionError: 1 != 3\n\n----------------------------------------------------------------------\nRan 10 tests in 0.003s\n\nFAILED (failures=3)\n"
+        },
+        "oracles": {
+          "passed": false,
+          "count": 8,
+          "actual_count": 8,
+          "mismatches": [
+            {
+              "index": 0,
+              "expected": {
+                "result": {
+                  "items": [
+                    {
+                      "sku": "a",
+                      "quantity": 2,
+                      "weight": 8,
+                      "volume": 4
+                    },
+                    {
+                      "sku": "b",
+                      "quantity": 1,
+                      "weight": 2,
+                      "volume": 3
+                    }
+                  ],
+                  "totals": {
+                    "units": 3,
+                    "weight": 10,
+                    "volume": 7
+                  }
+                },
+                "preserved": true
+              },
+              "actual": {
+                "result": {
+                  "items": [
+                    {
+                      "sku": "a",
+                      "quantity": 1,
+                      "weight": 4,
+                      "volume": 2
+                    },
+                    {
+                      "sku": "b",
+                      "quantity": 1,
+                      "weight": 2,
+                      "volume": 3
+                    }
+                  ],
+                  "totals": {
+                    "units": 2,
+                    "weight": 6,
+                    "volume": 5
+                  }
+                },
+                "preserved": true
+              }
+            },
+            {
+              "index": 1,
+              "expected": {
+                "result": {
+                  "items": [
+                    {
+                      "sku": "c",
+                      "quantity": 3,
+                      "weight": 3,
+                      "volume": 3
+                    }
+                  ],
+                  "totals": {
+                    "units": 3,
+                    "weight": 3,
+                    "volume": 3
+                  }
+                },
+                "preserved": true
+              },
+              "actual": {
+                "result": {
+                  "items": [
+                    {
+                      "sku": "c",
+                      "quantity": 3,
+                      "weight": 3,
+                      "volume": 3
+                    }
+                  ],
+                  "totals": {
+                    "units": 1,
+                    "weight": 3,
+                    "volume": 3
+                  }
+                },
+                "preserved": true
+              }
+            },
+            {
+              "index": 3,
+              "expected": {
+                "result": {
+                  "items": [
+                    {
+                      "sku": "a",
+                      "quantity": 2,
+                      "weight": 2,
+                      "volume": 10
+                    },
+                    {
+                      "sku": "z",
+                      "quantity": 1,
+                      "weight": 7,
+                      "volume": 2
+                    }
+                  ],
+                  "totals": {
+                    "units": 3,
+                    "weight": 9,
+                    "volume": 12
+                  }
+                },
+                "preserved": true
+              },
+              "actual": {
+                "result": {
+                  "items": [
+                    {
+                      "sku": "a",
+                      "quantity": 2,
+                      "weight": 2,
+                      "volume": 10
+                    },
+                    {
+                      "sku": "z",
+                      "quantity": 1,
+                      "weight": 7,
+                      "volume": 2
+                    }
+                  ],
+                  "totals": {
+                    "units": 2,
+                    "weight": 9,
+                    "volume": 12
+                  }
+                },
+                "preserved": true
+              }
+            }
+          ]
+        }
+      },
+      "stages": [
+        {
+          "stage": 1,
+          "overlay_implementation_modules": 2,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "all_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 8,
+            "actual_count": 8,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 2,
+          "overlay_implementation_modules": 3,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "all_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 16,
+            "actual_count": 16,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 3,
+          "overlay_implementation_modules": 3,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "all_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.002s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 24,
+            "actual_count": 24,
+            "mismatches": []
+          }
+        },
+        {
+          "stage": 4,
+          "overlay_implementation_modules": 2,
+          "passed": true,
+          "protected_bytes_unchanged": true,
+          "original_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.002s\n\nOK\n"
+          },
+          "all_tests": {
+            "passed": true,
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.001s\n\nOK\n"
+          },
+          "oracles": {
+            "passed": true,
+            "count": 33,
+            "actual_count": 33,
+            "mismatches": []
+          }
+        }
+      ],
+      "negative_controls": [
+        {
+          "control": "unsupported_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage1_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage1_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage1_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage1_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage1_added_test_failure_with_originals_green",
+          "detected": true
+        },
+        {
+          "control": "stage2_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage2_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage2_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage2_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage2_added_test_failure_with_originals_green",
+          "detected": true
+        },
+        {
+          "control": "stage3_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage3_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage3_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage3_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage3_added_test_failure_with_originals_green",
+          "detected": true
+        },
+        {
+          "control": "stage4_wrong_output_with_success_claim",
+          "detected": true
+        },
+        {
+          "control": "stage4_caller_mutation",
+          "detected": true,
+          "preservation_field_detected": true
+        },
+        {
+          "control": "stage4_original_test_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage4_adapter_byte_edit",
+          "detected": true
+        },
+        {
+          "control": "stage4_added_test_failure_with_originals_green",
+          "detected": true
+        }
+      ]
+    }
+  ],
+  "all_passed": true
+}

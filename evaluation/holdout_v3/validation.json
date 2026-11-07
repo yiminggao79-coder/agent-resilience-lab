@@ -1,0 +1,119 @@
+{
+  "cases": [
+    {
+      "baseline": {
+        "oracle_matches": false,
+        "public_tests_pass": false
+      },
+      "id": "case_01",
+      "mutations": [
+        {
+          "expected": "reject",
+          "id": "unclipped_end",
+          "oracle_matches": false,
+          "public_tests_pass": true,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "cancelled_included",
+          "oracle_matches": false,
+          "public_tests_pass": true,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "unclipped_start",
+          "oracle_matches": false,
+          "public_tests_pass": true,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "duplicate_union_counted",
+          "oracle_matches": false,
+          "public_tests_pass": false,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "room_order_reversed",
+          "oracle_matches": false,
+          "public_tests_pass": true,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "peak_lost",
+          "oracle_matches": false,
+          "public_tests_pass": false,
+          "rejected": true
+        }
+      ],
+      "oracle_inputs": 32,
+      "reference": {
+        "oracle_matches": true,
+        "public_tests_pass": true
+      }
+    },
+    {
+      "baseline": {
+        "oracle_matches": false,
+        "public_tests_pass": false
+      },
+      "id": "case_02",
+      "mutations": [
+        {
+          "expected": "reject",
+          "id": "same_wave_dependency",
+          "oracle_matches": false,
+          "public_tests_pass": false,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "unknown_treated_finished",
+          "oracle_matches": false,
+          "public_tests_pass": true,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "completed_ignored",
+          "oracle_matches": false,
+          "public_tests_pass": false,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "blocked_omitted",
+          "oracle_matches": false,
+          "public_tests_pass": true,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "batches_reversed",
+          "oracle_matches": false,
+          "public_tests_pass": false,
+          "rejected": true
+        },
+        {
+          "expected": "reject",
+          "id": "input_mutated",
+          "oracle_matches": false,
+          "public_tests_pass": false,
+          "rejected": true
+        }
+      ],
+      "oracle_inputs": 32,
+      "reference": {
+        "oracle_matches": true,
+        "public_tests_pass": true
+      }
+    }
+  ],
+  "harness_executed": false,
+  "kind": "offline_authored_fixture_selfvalidation",
+  "model_requests": 0
+}

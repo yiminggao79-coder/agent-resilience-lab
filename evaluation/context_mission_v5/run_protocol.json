@@ -1,0 +1,72 @@
+{
+  "version": 5,
+  "manifest_schema_version": 1,
+  "runtime_profile": {"experiment_profile": "thinking128k", "model": "deepseek-flash"},
+  "attempts_per_case": 1,
+  "cases": 2,
+  "turns_per_case": 4,
+  "profile_conditions": {
+    "model": "deepseek-flash",
+    "thinking": "enabled",
+    "reasoning_effort": "low",
+    "transport": "buffered_official_Chat",
+    "max_model_calls_per_turn": 50,
+    "turn_timeout_seconds": 900,
+    "max_output_tokens": 16384,
+    "active_context_max_bytes": 131072,
+    "summary_input_max_bytes": 32000,
+    "automatic_summary_threshold_ratio": 0.8,
+    "max_summaries_per_turn": 6,
+    "model_timeout_seconds": 180,
+    "tool_timeout_seconds": 12,
+    "same_limits_every_turn": true,
+    "same_resources_as_v4": true
+  },
+  "profile_check": "Runner_rejects_command_line_and_frozen_manifest_profile_or_model_mismatch_before_any_task_exposure_or_API",
+  "resource_scope": "no_new_resource_change_no_legacy48k_repair_claim_no_previous_score_replacement",
+  "stdlib_only": true,
+  "task_field": "UTF8_task_file_path_relative_to_manifest_directory",
+  "candidate_lifecycle": "copy_once_per_case_preserve_changes_across_all_four_natural_turns",
+  "original_test_command": ["python3", "-B", "-m", "unittest", "discover", "-s", "tests", "-p", "test_original.py"],
+  "all_tests_command": ["python3", "-B", "-m", "unittest", "discover", "-s", "tests", "-p", "test*.py"],
+  "oracle_contract": {
+    "inputs": "one_positional_argument_list_per_observation",
+    "expected": "one_external_expected_JSON_value_per_input_in_order",
+    "execution": "import_current_candidate_module_call_named_function",
+    "transport": "inputs_to_trusted_observer_subprocess_stdin_expected_only_in_trusted_parent",
+    "integrated_and_direct": "separate_success_or_declared_error_outcomes_compared_so_one_interface_cannot_mask_the_other",
+    "caller_preservation": "payload_value_equality_observed_on_success_and_declared_errors",
+    "mutable_alias": "returned_dict_list_container_ids_disjoint_from_input_container_ids",
+    "adapter_answers": "none_computed_observations_only"
+  },
+  "scoring": {
+    "per_stage": "all_current_and_previous_oracles_pass_original_tests_pass_all_added_tests_pass_and_all_original_protected_bytes_match",
+    "per_case": "all_four_original_stage_results_pass",
+    "overall_quality": "both_cases_pass",
+    "later_repairs": "do_not_erase_or_replace_earlier_stage_failure",
+    "claims_and_tool_order": "not_score_inputs",
+    "unknown_missing_crashed": "null_never_pass",
+    "new_tests": "separate_discoverable_files_allowed_cannot_replace_originals",
+    "equivalent_protected_edits": "fail_exact_byte_identity",
+    "failed_attempts": "preserve_all_original_artifacts_exposure_records_and_scores_no_post_run_semantic_revisions"
+  },
+  "additional_runner_gates": {
+    "real_model_selects_tools": true,
+    "automatic_note_visible_in_final_turn_actual_implementation_AST_change_request_each_case": true,
+    "distinct_PIDs_across_four_turns_each_case": true,
+    "fixed_runtime_source_and_profile_before_first_exposure": true,
+    "no_case_recognition_or_scripted_steps": true,
+    "no_filler_forced_tools_or_manufactured_summary_requests": true,
+    "offline_reference_success_not_live_quality_or_runtime_success": true
+  },
+  "exposure": {
+    "coding_model_allowed": ["current_synthetic_candidate_workspace", "current_natural_task_text"],
+    "coding_model_denied": ["external_finite_inputs", "expected_values", "reference_overlays", "author_sources", "author_validation_records"],
+    "implementer_before_freeze_and_first_acceptance": ["public_interface", "public_receipt_counts_hashes_profile"],
+    "project_subprocess_credentials": "none_no_DEEPSEEK_API_KEY_inheritance"
+  },
+  "authorship_independence": "role_separation_same_AI_environment_not_external_statistical_independence",
+  "provenance": "new_domains_APIs_and_four_substantive_multimodule_features_per_case_no_runtime_old_suite_private_or_credential_reads_no_live_calls",
+  "root_runtime_protocol": "independently_maintained_and_pinned_by_Runner_not_author_inventory",
+  "after_freeze": "stop_this_dispatch_no_automatic_v6_no_Git_commit"
+}

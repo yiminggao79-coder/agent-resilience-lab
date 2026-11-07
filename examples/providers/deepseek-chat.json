@@ -1,0 +1,7 @@
+{
+  "provider": "deepseek_chat",
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "stream": true,
+  "ca_bundle": "/etc/ssl/cert.pem"
+}

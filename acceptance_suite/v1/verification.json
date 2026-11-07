@@ -1,0 +1,26 @@
+{
+  "method": "Plain local stdlib unittest on the trusted initial fixtures; direct top-level function observations against fixed external data. Sanity fixes run only in disposable copies outside fixture workspaces.",
+  "python": "3.9.7",
+  "cases": [
+    {
+      "case_id": "warehouse_atomic",
+      "initial_public_test_count": 3,
+      "initial_public_failures": 2,
+      "initial_public_exit_code": 1,
+      "initial_hidden_observation_count": 5,
+      "initial_hidden_mismatches": 4,
+      "disposable_reference_public_passed": true,
+      "disposable_reference_external_oracle_passed": true
+    },
+    {
+      "case_id": "utilization_union",
+      "initial_public_test_count": 3,
+      "initial_public_failures": 2,
+      "initial_public_exit_code": 1,
+      "initial_hidden_observation_count": 6,
+      "initial_hidden_mismatches": 4,
+      "disposable_reference_public_passed": true,
+      "disposable_reference_external_oracle_passed": true
+    }
+  ]
+}

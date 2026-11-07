@@ -1,0 +1,20 @@
+{
+  "files": {
+    "FREEZE_REVISIONS.json": "dea9359effbed4fdc1999c1d8fc7978d7285da720a3b32c98c2148012549498a",
+    "README.md": "9c592958e5e411ca3479757780197d84ed90733064b72bffa4558054c296d9e3",
+    "manifest.json": "c7f01eae6fff5db8705d8777c3a0fbaeae9baf47b494885d5ce4750131110c94",
+    "utilization_union/workspace/README.md": "95d4cebcfc197ea5beccce892cfcf101b31555cd5c088e397da5daec83202f8c",
+    "utilization_union/workspace/ranges.py": "58594049f1cdd2e5f5f7ebc924843954acf83e849e9748cfcb263ec353fad6bc",
+    "utilization_union/workspace/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "utilization_union/workspace/tests/test_usage_report.py": "310cf02381ba53e65ea289e28b399fa63ac5de138e77f38a06761bdadc1598d1",
+    "utilization_union/workspace/timecodec.py": "712683b91a66ea1b682a3c11b78099465c6082a86bdb9b68495627d153f096fb",
+    "utilization_union/workspace/usage_report.py": "8ec51e083a938acc274b1f581bf4c548c12db7ce62abdb8d1489e70eefef3edd",
+    "verification.json": "28d2b2918a12bbaead5cfb514b35c86bbc9a239bf82eb49f61b271977f5a4fb8",
+    "warehouse_atomic/workspace/README.md": "3a63f4ad17bbb8d22f41411cc059eaeec8da4887c36e680d2ede330e5ff5a3fe",
+    "warehouse_atomic/workspace/catalog.py": "4c6b7fd0b3085287502df98baf870116b25a2ae204ff126d1fc389833e331acb",
+    "warehouse_atomic/workspace/dispatch.py": "944d8de1603de4e23db3a9b267413362830d4a625fb2d9b151f0bacc8e373a2b",
+    "warehouse_atomic/workspace/inventory.py": "4db4328f8397937793f053d685cd240f9568cf3f408188b309cd841703f145d0",
+    "warehouse_atomic/workspace/tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "warehouse_atomic/workspace/tests/test_dispatch.py": "ce511d6688cb713416c44f742595b7c7be71344db378ce7327ff67ab866a63c7"
+  }
+}

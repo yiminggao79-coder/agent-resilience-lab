@@ -1,0 +1,2404 @@
+{
+  "candidate_exposure": "workspace_and_task_only",
+  "case_count": 2,
+  "cases": [
+    {
+      "declared_constraints": {
+        "additional_tests_allowed": true,
+        "caller_inputs_unchanged": true,
+        "observation_adapter_byte_immutable": true,
+        "original_tests_byte_immutable": true,
+        "stdlib_only": true
+      },
+      "id": "case_01",
+      "immutable_files": [
+        "tests/test_public.py",
+        "acceptance_probe.py"
+      ],
+      "immutable_sha256": {
+        "acceptance_probe.py": "3025b37684f319bf4d941cbc5b82b62beadbd66019c1e2af228b62785cbe8431",
+        "tests/test_public.py": "caacaf5faf13b7785a03bd83ee617c600704313ecf8c32c99043f84257f30b69"
+      },
+      "kind": "bugfix",
+      "oracle": {
+        "expected": [
+          {
+            "inputs_unchanged": true,
+            "result": []
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 4,
+                "peak": 1,
+                "room": "a"
+              },
+              {
+                "busy_minutes": 2,
+                "peak": 1,
+                "room": "b"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 7,
+                "peak": 1,
+                "room": "x"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 5,
+                "peak": 2,
+                "room": "x"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": []
+          },
+          {
+            "inputs_unchanged": true,
+            "result": []
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 6,
+                "peak": 2,
+                "room": "x"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": []
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 5,
+                "peak": 1,
+                "room": "cedar"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": []
+          },
+          {
+            "inputs_unchanged": true,
+            "result": []
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 6,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 2,
+                "peak": 1,
+                "room": "birch"
+              },
+              {
+                "busy_minutes": 4,
+                "peak": 1,
+                "room": "cedar"
+              },
+              {
+                "busy_minutes": 7,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "birch"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": []
+          },
+          {
+            "inputs_unchanged": true,
+            "result": []
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 6,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "cedar"
+              },
+              {
+                "busy_minutes": 3,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 4,
+                "peak": 2,
+                "room": "birch"
+              },
+              {
+                "busy_minutes": 5,
+                "peak": 2,
+                "room": "cedar"
+              },
+              {
+                "busy_minutes": 2,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 5,
+                "peak": 1,
+                "room": "birch"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "cedar"
+              },
+              {
+                "busy_minutes": 2,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 4,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "birch"
+              },
+              {
+                "busy_minutes": 3,
+                "peak": 1,
+                "room": "cedar"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 6,
+                "peak": 2,
+                "room": "birch"
+              },
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "cedar"
+              },
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 2,
+                "peak": 1,
+                "room": "cedar"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "birch"
+              },
+              {
+                "busy_minutes": 6,
+                "peak": 2,
+                "room": "cedar"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 5,
+                "peak": 1,
+                "room": "birch"
+              },
+              {
+                "busy_minutes": 4,
+                "peak": 2,
+                "room": "cedar"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "birch"
+              },
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "birch"
+              },
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 2,
+                "peak": 1,
+                "room": "birch"
+              },
+              {
+                "busy_minutes": 4,
+                "peak": 1,
+                "room": "cedar"
+              }
+            ]
+          },
+          {
+            "inputs_unchanged": true,
+            "result": [
+              {
+                "busy_minutes": 5,
+                "peak": 1,
+                "room": "cedar"
+              },
+              {
+                "busy_minutes": 1,
+                "peak": 1,
+                "room": "elm"
+              }
+            ]
+          }
+        ],
+        "function": "observe",
+        "inputs": [
+          [
+            [],
+            0,
+            0
+          ],
+          [
+            [
+              {
+                "end": 2,
+                "room": "b",
+                "start": -4
+              },
+              {
+                "end": 8,
+                "room": "a",
+                "start": 1
+              }
+            ],
+            0,
+            5
+          ],
+          [
+            [
+              {
+                "end": 3,
+                "room": "x",
+                "start": 0
+              },
+              {
+                "end": 7,
+                "room": "x",
+                "start": 3
+              }
+            ],
+            0,
+            7
+          ],
+          [
+            [
+              {
+                "end": 6,
+                "room": "x",
+                "start": 1
+              },
+              {
+                "end": 6,
+                "room": "x",
+                "start": 1
+              }
+            ],
+            0,
+            8
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 9,
+                "room": "x",
+                "start": 0
+              }
+            ],
+            1,
+            5
+          ],
+          [
+            [
+              {
+                "end": 2,
+                "room": "x",
+                "start": 2
+              },
+              {
+                "end": 10,
+                "room": "outside",
+                "start": 8
+              }
+            ],
+            0,
+            5
+          ],
+          [
+            [
+              {
+                "end": 20,
+                "room": "x",
+                "start": -9
+              },
+              {
+                "end": 4,
+                "room": "x",
+                "start": 2
+              }
+            ],
+            0,
+            6
+          ],
+          [
+            [
+              {
+                "end": 4,
+                "room": "q",
+                "start": 0
+              }
+            ],
+            2,
+            2
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 5,
+                "room": "cedar",
+                "start": 1
+              },
+              {
+                "cancelled": false,
+                "end": 0,
+                "room": "elm",
+                "start": -1
+              }
+            ],
+            -4,
+            5
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 12,
+                "room": "elm",
+                "start": 9
+              },
+              {
+                "cancelled": false,
+                "end": 11,
+                "room": "elm",
+                "start": 11
+              },
+              {
+                "cancelled": false,
+                "end": 12,
+                "room": "elm",
+                "start": 9
+              },
+              {
+                "cancelled": false,
+                "end": -3,
+                "room": "elm",
+                "start": -6
+              },
+              {
+                "cancelled": false,
+                "end": -1,
+                "room": "birch",
+                "start": -1
+              },
+              {
+                "cancelled": true,
+                "end": -1,
+                "room": "birch",
+                "start": -7
+              },
+              {
+                "cancelled": false,
+                "end": 2,
+                "room": "cedar",
+                "start": -3
+              },
+              {
+                "cancelled": false,
+                "end": -4,
+                "room": "birch",
+                "start": -8
+              }
+            ],
+            -3,
+            6
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 1,
+                "room": "cedar",
+                "start": -7
+              },
+              {
+                "cancelled": false,
+                "end": 16,
+                "room": "elm",
+                "start": 10
+              },
+              {
+                "cancelled": false,
+                "end": 5,
+                "room": "elm",
+                "start": -1
+              }
+            ],
+            -4,
+            -4
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 4,
+                "room": "elm",
+                "start": -1
+              },
+              {
+                "cancelled": false,
+                "end": 6,
+                "room": "cedar",
+                "start": 5
+              },
+              {
+                "cancelled": false,
+                "end": 7,
+                "room": "elm",
+                "start": 6
+              },
+              {
+                "cancelled": false,
+                "end": 7,
+                "room": "elm",
+                "start": 3
+              },
+              {
+                "cancelled": false,
+                "end": -2,
+                "room": "birch",
+                "start": -7
+              }
+            ],
+            1,
+            2
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 5,
+                "room": "cedar",
+                "start": -2
+              },
+              {
+                "cancelled": false,
+                "end": 7,
+                "room": "elm",
+                "start": 0
+              }
+            ],
+            -1,
+            6
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 5,
+                "room": "elm",
+                "start": 2
+              },
+              {
+                "cancelled": false,
+                "end": 7,
+                "room": "elm",
+                "start": 0
+              },
+              {
+                "cancelled": false,
+                "end": 2,
+                "room": "elm",
+                "start": 2
+              },
+              {
+                "cancelled": false,
+                "end": -6,
+                "room": "cedar",
+                "start": -6
+              },
+              {
+                "cancelled": false,
+                "end": 13,
+                "room": "birch",
+                "start": 7
+              },
+              {
+                "cancelled": true,
+                "end": 13,
+                "room": "elm",
+                "start": 10
+              },
+              {
+                "cancelled": false,
+                "end": 6,
+                "room": "birch",
+                "start": 4
+              },
+              {
+                "cancelled": false,
+                "end": 9,
+                "room": "elm",
+                "start": 7
+              },
+              {
+                "cancelled": false,
+                "end": 1,
+                "room": "cedar",
+                "start": -4
+              }
+            ],
+            -3,
+            7
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": -1,
+                "room": "cedar",
+                "start": -6
+              },
+              {
+                "cancelled": false,
+                "end": 11,
+                "room": "elm",
+                "start": 8
+              },
+              {
+                "cancelled": false,
+                "end": 12,
+                "room": "elm",
+                "start": 11
+              },
+              {
+                "cancelled": false,
+                "end": 1,
+                "room": "birch",
+                "start": -1
+              }
+            ],
+            0,
+            5
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 10,
+                "room": "birch",
+                "start": 2
+              },
+              {
+                "cancelled": false,
+                "end": 7,
+                "room": "elm",
+                "start": 2
+              },
+              {
+                "cancelled": false,
+                "end": 5,
+                "room": "birch",
+                "start": 5
+              },
+              {
+                "cancelled": false,
+                "end": -6,
+                "room": "birch",
+                "start": -8
+              },
+              {
+                "cancelled": false,
+                "end": -2,
+                "room": "cedar",
+                "start": -4
+              },
+              {
+                "cancelled": true,
+                "end": 9,
+                "room": "elm",
+                "start": 6
+              }
+            ],
+            2,
+            2
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": -3,
+                "room": "elm",
+                "start": -6
+              }
+            ],
+            -3,
+            -3
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 1,
+                "room": "cedar",
+                "start": -3
+              },
+              {
+                "cancelled": false,
+                "end": -2,
+                "room": "birch",
+                "start": -4
+              },
+              {
+                "cancelled": false,
+                "end": 5,
+                "room": "elm",
+                "start": -3
+              },
+              {
+                "cancelled": false,
+                "end": 13,
+                "room": "birch",
+                "start": 11
+              },
+              {
+                "cancelled": false,
+                "end": -5,
+                "room": "cedar",
+                "start": -6
+              },
+              {
+                "cancelled": true,
+                "end": -2,
+                "room": "elm",
+                "start": -7
+              },
+              {
+                "cancelled": false,
+                "end": 8,
+                "room": "elm",
+                "start": 6
+              },
+              {
+                "cancelled": false,
+                "end": -2,
+                "room": "elm",
+                "start": -6
+              },
+              {
+                "cancelled": false,
+                "end": 12,
+                "room": "elm",
+                "start": 5
+              },
+              {
+                "cancelled": false,
+                "end": 11,
+                "room": "elm",
+                "start": 5
+              },
+              {
+                "cancelled": true,
+                "end": 14,
+                "room": "birch",
+                "start": 11
+              }
+            ],
+            -1,
+            5
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": -2,
+                "room": "elm",
+                "start": -5
+              },
+              {
+                "cancelled": false,
+                "end": -1,
+                "room": "elm",
+                "start": -5
+              },
+              {
+                "cancelled": false,
+                "end": 6,
+                "room": "elm",
+                "start": 4
+              },
+              {
+                "cancelled": false,
+                "end": 9,
+                "room": "birch",
+                "start": 5
+              },
+              {
+                "cancelled": false,
+                "end": 4,
+                "room": "elm",
+                "start": -1
+              },
+              {
+                "cancelled": true,
+                "end": 14,
+                "room": "cedar",
+                "start": 10
+              },
+              {
+                "cancelled": false,
+                "end": 7,
+                "room": "cedar",
+                "start": 2
+              }
+            ],
+            0,
+            3
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 9,
+                "room": "birch",
+                "start": 0
+              },
+              {
+                "cancelled": false,
+                "end": 2,
+                "room": "cedar",
+                "start": -4
+              },
+              {
+                "cancelled": false,
+                "end": 0,
+                "room": "birch",
+                "start": -8
+              },
+              {
+                "cancelled": false,
+                "end": 6,
+                "room": "cedar",
+                "start": -1
+              },
+              {
+                "cancelled": false,
+                "end": 7,
+                "room": "birch",
+                "start": 3
+              },
+              {
+                "cancelled": true,
+                "end": 16,
+                "room": "cedar",
+                "start": 9
+              },
+              {
+                "cancelled": false,
+                "end": -2,
+                "room": "elm",
+                "start": -2
+              },
+              {
+                "cancelled": false,
+                "end": 6,
+                "room": "birch",
+                "start": 3
+              },
+              {
+                "cancelled": false,
+                "end": 5,
+                "room": "cedar",
+                "start": 2
+              },
+              {
+                "cancelled": false,
+                "end": 3,
+                "room": "elm",
+                "start": -3
+              }
+            ],
+            1,
+            12
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 16,
+                "room": "elm",
+                "start": 11
+              },
+              {
+                "cancelled": false,
+                "end": 2,
+                "room": "birch",
+                "start": -5
+              },
+              {
+                "cancelled": false,
+                "end": 9,
+                "room": "birch",
+                "start": 4
+              }
+            ],
+            -1,
+            6
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": -2,
+                "room": "birch",
+                "start": -4
+              },
+              {
+                "cancelled": false,
+                "end": -5,
+                "room": "birch",
+                "start": -7
+              },
+              {
+                "cancelled": false,
+                "end": 1,
+                "room": "elm",
+                "start": 0
+              },
+              {
+                "cancelled": false,
+                "end": 13,
+                "room": "elm",
+                "start": 9
+              },
+              {
+                "cancelled": false,
+                "end": 0,
+                "room": "cedar",
+                "start": -8
+              }
+            ],
+            -1,
+            10
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 17,
+                "room": "elm",
+                "start": 11
+              },
+              {
+                "cancelled": false,
+                "end": 4,
+                "room": "cedar",
+                "start": 4
+              },
+              {
+                "cancelled": false,
+                "end": -7,
+                "room": "cedar",
+                "start": -7
+              },
+              {
+                "cancelled": false,
+                "end": 5,
+                "room": "elm",
+                "start": -1
+              },
+              {
+                "cancelled": false,
+                "end": 18,
+                "room": "cedar",
+                "start": 9
+              }
+            ],
+            1,
+            7
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 3,
+                "room": "birch",
+                "start": -1
+              },
+              {
+                "cancelled": false,
+                "end": 12,
+                "room": "cedar",
+                "start": 4
+              },
+              {
+                "cancelled": false,
+                "end": -1,
+                "room": "elm",
+                "start": -6
+              },
+              {
+                "cancelled": false,
+                "end": 11,
+                "room": "birch",
+                "start": 6
+              }
+            ],
+            1,
+            7
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": -6,
+                "room": "cedar",
+                "start": -8
+              },
+              {
+                "cancelled": false,
+                "end": -5,
+                "room": "elm",
+                "start": -5
+              },
+              {
+                "cancelled": false,
+                "end": -5,
+                "room": "cedar",
+                "start": -8
+              },
+              {
+                "cancelled": false,
+                "end": 5,
+                "room": "birch",
+                "start": 2
+              },
+              {
+                "cancelled": false,
+                "end": 8,
+                "room": "elm",
+                "start": 6
+              },
+              {
+                "cancelled": true,
+                "end": 2,
+                "room": "birch",
+                "start": 0
+              },
+              {
+                "cancelled": false,
+                "end": 9,
+                "room": "birch",
+                "start": 1
+              },
+              {
+                "cancelled": false,
+                "end": 4,
+                "room": "cedar",
+                "start": 3
+              }
+            ],
+            -3,
+            7
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 1,
+                "room": "birch",
+                "start": -7
+              },
+              {
+                "cancelled": false,
+                "end": -1,
+                "room": "birch",
+                "start": -8
+              },
+              {
+                "cancelled": false,
+                "end": 15,
+                "room": "cedar",
+                "start": 10
+              }
+            ],
+            2,
+            12
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 3,
+                "room": "elm",
+                "start": -4
+              },
+              {
+                "cancelled": false,
+                "end": 12,
+                "room": "birch",
+                "start": 8
+              },
+              {
+                "cancelled": false,
+                "end": 11,
+                "room": "cedar",
+                "start": 5
+              },
+              {
+                "cancelled": false,
+                "end": 0,
+                "room": "cedar",
+                "start": -7
+              },
+              {
+                "cancelled": false,
+                "end": 3,
+                "room": "elm",
+                "start": 3
+              },
+              {
+                "cancelled": true,
+                "end": 3,
+                "room": "cedar",
+                "start": -3
+              },
+              {
+                "cancelled": false,
+                "end": 7,
+                "room": "cedar",
+                "start": 4
+              },
+              {
+                "cancelled": false,
+                "end": 16,
+                "room": "birch",
+                "start": 10
+              }
+            ],
+            -1,
+            9
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 1,
+                "room": "birch",
+                "start": -5
+              },
+              {
+                "cancelled": false,
+                "end": 15,
+                "room": "cedar",
+                "start": 8
+              },
+              {
+                "cancelled": false,
+                "end": 11,
+                "room": "cedar",
+                "start": 5
+              },
+              {
+                "cancelled": false,
+                "end": 7,
+                "room": "birch",
+                "start": -1
+              }
+            ],
+            2,
+            9
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 5,
+                "room": "cedar",
+                "start": 4
+              },
+              {
+                "cancelled": false,
+                "end": 10,
+                "room": "elm",
+                "start": 3
+              },
+              {
+                "cancelled": false,
+                "end": 0,
+                "room": "elm",
+                "start": -3
+              },
+              {
+                "cancelled": false,
+                "end": -2,
+                "room": "cedar",
+                "start": -6
+              },
+              {
+                "cancelled": false,
+                "end": 0,
+                "room": "birch",
+                "start": -4
+              }
+            ],
+            -1,
+            0
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 3,
+                "room": "elm",
+                "start": -4
+              },
+              {
+                "cancelled": false,
+                "end": 2,
+                "room": "birch",
+                "start": -4
+              },
+              {
+                "cancelled": false,
+                "end": 2,
+                "room": "elm",
+                "start": 1
+              },
+              {
+                "cancelled": false,
+                "end": 2,
+                "room": "birch",
+                "start": 2
+              },
+              {
+                "cancelled": false,
+                "end": 0,
+                "room": "cedar",
+                "start": 0
+              }
+            ],
+            1,
+            12
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 11,
+                "room": "elm",
+                "start": 9
+              },
+              {
+                "cancelled": false,
+                "end": 14,
+                "room": "cedar",
+                "start": 10
+              },
+              {
+                "cancelled": false,
+                "end": 4,
+                "room": "cedar",
+                "start": -3
+              },
+              {
+                "cancelled": false,
+                "end": 4,
+                "room": "birch",
+                "start": 2
+              }
+            ],
+            0,
+            4
+          ],
+          [
+            [
+              {
+                "cancelled": true,
+                "end": 15,
+                "room": "cedar",
+                "start": 8
+              },
+              {
+                "cancelled": false,
+                "end": 6,
+                "room": "birch",
+                "start": 5
+              },
+              {
+                "cancelled": false,
+                "end": 8,
+                "room": "cedar",
+                "start": -1
+              },
+              {
+                "cancelled": false,
+                "end": -2,
+                "room": "elm",
+                "start": -4
+              },
+              {
+                "cancelled": false,
+                "end": -2,
+                "room": "cedar",
+                "start": -8
+              }
+            ],
+            -3,
+            3
+          ]
+        ],
+        "module": "acceptance_probe"
+      },
+      "reference_dir": "cases/case_01/reference",
+      "task": "Fix the occupancy report implementation. The API report.summarize(records, start, stop) must report each room's busy_minutes and peak concurrent reservations within the query window.\n\nBoth reservations and query windows are half-open integer-minute intervals [start, end): an interval ending exactly when another starts does not overlap it. Ignore cancelled reservations and zero-length intervals. Clip every reservation to the query window; omit rooms with no positive overlap. busy_minutes is the duration of the union of the clipped reservations, counting any minute only once. peak is the largest number of concurrent clipped reservations, including duplicate reservations as separate reservations. Return a list of {\"room\": string, \"busy_minutes\": integer, \"peak\": integer} sorted by room name ascending.\n\nInputs are valid: room names are strings, times are integers, end >= start, and stop >= start. cancelled is an optional boolean, false by default. Leave the caller's records and their dictionaries unchanged. Preserve the public API and original tests byte-for-byte. You may add new tests and change implementation files. Use only the Python standard library.\nKeep acceptance_probe.py byte-for-byte unchanged; it is a supplied test observation adapter, not implementation code.\n\n",
+      "workspace_dir": "cases/case_01/workspace"
+    },
+    {
+      "declared_constraints": {
+        "additional_tests_allowed": true,
+        "caller_inputs_unchanged": true,
+        "observation_adapter_byte_immutable": true,
+        "original_tests_byte_immutable": true,
+        "stdlib_only": true
+      },
+      "id": "case_02",
+      "immutable_files": [
+        "tests/test_public.py",
+        "acceptance_probe.py"
+      ],
+      "immutable_sha256": {
+        "acceptance_probe.py": "791551fc1316a261991d483a7dd13fc767cad4ea4c7569afc73f663ee3eddcad",
+        "tests/test_public.py": "fedc9415dfcc68eed7292fcc5a925aaa6f37767583f88d4b843dbd817196913e"
+      },
+      "kind": "feature",
+      "oracle": {
+        "expected": [
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "a"
+                ],
+                [
+                  "b",
+                  "c"
+                ],
+                [
+                  "d"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "b"
+                ],
+                [
+                  "c"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "free"
+                ]
+              ],
+              "blocked": [
+                "x",
+                "y"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "d"
+                ]
+              ],
+              "blocked": [
+                "a",
+                "b",
+                "c"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [],
+              "blocked": [
+                "next",
+                "self"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "a"
+                ],
+                [
+                  "b"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "b"
+                ],
+                [
+                  "c"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "a",
+                  "b",
+                  "root"
+                ],
+                [
+                  "z"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task0"
+                ]
+              ],
+              "blocked": [
+                "task1"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task1",
+                  "task4"
+                ],
+                [
+                  "task2",
+                  "task3"
+                ]
+              ],
+              "blocked": [
+                "task0"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task1",
+                  "task4"
+                ]
+              ],
+              "blocked": [
+                "task0",
+                "task2",
+                "task3"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [],
+              "blocked": [
+                "task0"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task0"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task0",
+                  "task3",
+                  "task5"
+                ],
+                [
+                  "task2",
+                  "task4"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [],
+              "blocked": [
+                "task0",
+                "task1"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task0",
+                  "task4"
+                ]
+              ],
+              "blocked": [
+                "task1",
+                "task2",
+                "task3"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task4",
+                  "task6"
+                ]
+              ],
+              "blocked": [
+                "task0",
+                "task1",
+                "task2",
+                "task3",
+                "task5"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [],
+              "blocked": [
+                "task0",
+                "task1",
+                "task2",
+                "task3",
+                "task4"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task0"
+                ]
+              ],
+              "blocked": [
+                "task2",
+                "task3"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [],
+              "blocked": [
+                "task0",
+                "task1",
+                "task2",
+                "task3",
+                "task4",
+                "task5",
+                "task6"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task1"
+                ],
+                [
+                  "task0"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task2",
+                  "task3"
+                ]
+              ],
+              "blocked": [
+                "task4"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task0"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [],
+              "blocked": [
+                "task0"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task0"
+                ]
+              ],
+              "blocked": [
+                "task1",
+                "task2",
+                "task3"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task0",
+                  "task2"
+                ]
+              ],
+              "blocked": [
+                "task1",
+                "task3"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task3",
+                  "task5"
+                ],
+                [
+                  "task0"
+                ],
+                [
+                  "task1"
+                ],
+                [
+                  "task2"
+                ]
+              ],
+              "blocked": []
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task5"
+                ]
+              ],
+              "blocked": [
+                "task0",
+                "task3",
+                "task6"
+              ]
+            }
+          },
+          {
+            "inputs_unchanged": true,
+            "result": {
+              "batches": [
+                [
+                  "task0",
+                  "task3"
+                ],
+                [
+                  "task1"
+                ]
+              ],
+              "blocked": []
+            }
+          }
+        ],
+        "function": "observe",
+        "inputs": [
+          [
+            {},
+            null
+          ],
+          [
+            {
+              "a": [],
+              "b": [
+                "a"
+              ],
+              "c": [
+                "a"
+              ],
+              "d": [
+                "b",
+                "c"
+              ]
+            },
+            null
+          ],
+          [
+            {
+              "a": [],
+              "b": [
+                "a"
+              ],
+              "c": [
+                "b"
+              ]
+            },
+            [
+              "a"
+            ]
+          ],
+          [
+            {
+              "free": [],
+              "x": [
+                "missing"
+              ],
+              "y": [
+                "x"
+              ]
+            },
+            null
+          ],
+          [
+            {
+              "a": [
+                "b"
+              ],
+              "b": [
+                "a"
+              ],
+              "c": [
+                "b"
+              ],
+              "d": []
+            },
+            []
+          ],
+          [
+            {
+              "next": [
+                "self"
+              ],
+              "self": [
+                "self"
+              ]
+            },
+            null
+          ],
+          [
+            {
+              "a": [
+                "outside",
+                "outside"
+              ],
+              "b": [
+                "a"
+              ]
+            },
+            [
+              "outside",
+              "outside"
+            ]
+          ],
+          [
+            {
+              "a": [
+                "b"
+              ],
+              "b": [
+                "a"
+              ],
+              "c": [
+                "b"
+              ]
+            },
+            [
+              "a"
+            ]
+          ],
+          [
+            {
+              "a": [],
+              "z": []
+            },
+            [
+              "z",
+              "a",
+              "irrelevant"
+            ]
+          ],
+          [
+            {
+              "a": [],
+              "b": [],
+              "root": [],
+              "z": [
+                "root"
+              ]
+            },
+            []
+          ],
+          [
+            {
+              "task0": [],
+              "task1": [
+                "external"
+              ]
+            },
+            []
+          ],
+          [
+            {
+              "task0": [
+                "external",
+                "task4",
+                "external"
+              ],
+              "task1": [],
+              "task2": [
+                "task1",
+                "task4",
+                "task4"
+              ],
+              "task3": [
+                "task4",
+                "task4"
+              ],
+              "task4": []
+            },
+            []
+          ],
+          [
+            {
+              "task0": [
+                "task2",
+                "task2",
+                "task1"
+              ],
+              "task1": [],
+              "task2": [
+                "task0",
+                "task0",
+                "task2"
+              ],
+              "task3": [
+                "task3",
+                "task2"
+              ],
+              "task4": []
+            },
+            []
+          ],
+          [
+            {
+              "task0": [
+                "task0"
+              ]
+            },
+            [
+              "external"
+            ]
+          ],
+          [
+            {
+              "task0": []
+            },
+            [
+              "external"
+            ]
+          ],
+          [
+            {
+              "task0": [],
+              "task1": [],
+              "task2": [
+                "task0",
+                "task3"
+              ],
+              "task3": [],
+              "task4": [
+                "task3"
+              ],
+              "task5": [
+                "task1"
+              ]
+            },
+            [
+              "task1",
+              "external"
+            ]
+          ],
+          [
+            {
+              "task0": [
+                "external"
+              ],
+              "task1": [
+                "task0"
+              ]
+            },
+            []
+          ],
+          [
+            {
+              "task0": [
+                "external",
+                "task0"
+              ]
+            },
+            [
+              "task0",
+              "external"
+            ]
+          ],
+          [
+            {
+              "task0": [],
+              "task1": [
+                "task2"
+              ],
+              "task2": [
+                "task3",
+                "task2"
+              ],
+              "task3": [
+                "task0",
+                "task3",
+                "task3"
+              ],
+              "task4": []
+            },
+            []
+          ],
+          [
+            {
+              "task0": [
+                "task0",
+                "task6",
+                "task3"
+              ],
+              "task1": [
+                "task3",
+                "task0",
+                "task3"
+              ],
+              "task2": [
+                "task3"
+              ],
+              "task3": [
+                "task1"
+              ],
+              "task4": [],
+              "task5": [
+                "task2"
+              ],
+              "task6": []
+            },
+            [
+              "external"
+            ]
+          ],
+          [
+            {
+              "task0": [
+                "task1",
+                "task0"
+              ],
+              "task1": [
+                "task4"
+              ],
+              "task2": [
+                "task3",
+                "external",
+                "task1"
+              ],
+              "task3": [
+                "task3"
+              ],
+              "task4": [
+                "task1",
+                "external",
+                "task4"
+              ]
+            },
+            []
+          ],
+          [
+            {
+              "task0": [],
+              "task1": [],
+              "task2": [
+                "task2",
+                "task2",
+                "task3"
+              ],
+              "task3": [
+                "external",
+                "task1",
+                "external"
+              ]
+            },
+            [
+              "task1"
+            ]
+          ],
+          [
+            {
+              "task0": [
+                "task0",
+                "task0"
+              ],
+              "task1": [
+                "task3"
+              ],
+              "task2": [
+                "task4",
+                "task2"
+              ],
+              "task3": [
+                "external",
+                "task5",
+                "task0"
+              ],
+              "task4": [
+                "task6"
+              ],
+              "task5": [
+                "external",
+                "task2",
+                "task5"
+              ],
+              "task6": [
+                "task1",
+                "task6",
+                "task4"
+              ]
+            },
+            [
+              "external"
+            ]
+          ],
+          [
+            {
+              "task0": [
+                "task1"
+              ],
+              "task1": []
+            },
+            []
+          ],
+          [
+            {
+              "task0": [
+                "task3"
+              ],
+              "task1": [
+                "task4",
+                "task2"
+              ],
+              "task2": [],
+              "task3": [],
+              "task4": [
+                "task4",
+                "task1",
+                "task3"
+              ]
+            },
+            [
+              "task0",
+              "task1"
+            ]
+          ],
+          [
+            {
+              "task0": [
+                "task2"
+              ],
+              "task1": [
+                "task1",
+                "task1"
+              ],
+              "task2": [
+                "task3",
+                "task0"
+              ],
+              "task3": []
+            },
+            [
+              "task1",
+              "task2",
+              "task3"
+            ]
+          ],
+          [
+            {
+              "task0": [
+                "task0",
+                "task0",
+                "task0"
+              ]
+            },
+            []
+          ],
+          [
+            {
+              "task0": [],
+              "task1": [
+                "task3",
+                "task1"
+              ],
+              "task2": [
+                "external"
+              ],
+              "task3": [
+                "task2"
+              ],
+              "task4": [
+                "task1"
+              ]
+            },
+            [
+              "task4"
+            ]
+          ],
+          [
+            {
+              "task0": [],
+              "task1": [
+                "external",
+                "task2"
+              ],
+              "task2": [],
+              "task3": [
+                "task2",
+                "external"
+              ]
+            },
+            []
+          ],
+          [
+            {
+              "task0": [
+                "task3"
+              ],
+              "task1": [
+                "task3",
+                "task0"
+              ],
+              "task2": [
+                "task1"
+              ],
+              "task3": [],
+              "task4": [
+                "task5",
+                "task5"
+              ],
+              "task5": []
+            },
+            [
+              "task4",
+              "external"
+            ]
+          ],
+          [
+            {
+              "task0": [
+                "task6"
+              ],
+              "task1": [
+                "task3",
+                "external"
+              ],
+              "task2": [],
+              "task3": [
+                "task0",
+                "task6"
+              ],
+              "task4": [],
+              "task5": [],
+              "task6": [
+                "task6",
+                "task5"
+              ]
+            },
+            [
+              "task1",
+              "task2",
+              "task4"
+            ]
+          ],
+          [
+            {
+              "task0": [
+                "task2"
+              ],
+              "task1": [
+                "task0",
+                "task0"
+              ],
+              "task2": [
+                "external"
+              ],
+              "task3": []
+            },
+            [
+              "task2"
+            ]
+          ]
+        ],
+        "module": "acceptance_probe"
+      },
+      "reference_dir": "cases/case_02/reference",
+      "task": "Implement planner.build_batches(jobs, completed=None), a dependency batch planner using only the Python standard library.\n\njobs maps each unique string job name to a list of dependency names. completed is an optional list of job names already finished; None means no completed jobs. Return {\"batches\": list-of-lists, \"blocked\": list}. Omit completed jobs from both outputs. Each batch contains all remaining jobs whose dependencies were either completed before the call or scheduled in an earlier batch; jobs in the same batch do not satisfy one another. Sort names ascending within every batch. Emit batches until no further job is ready, then return all remaining job names in blocked, sorted ascending. A dependency name absent from jobs is unresolved unless it is in completed. Cycles, self-dependencies, and jobs downstream of unresolved dependencies therefore remain blocked. Repeated dependency names have no extra effect. Duplicate completed names and completed names absent from jobs are allowed.\n\nDo not mutate jobs, its dependency lists, or completed. Inputs otherwise follow the types above. Preserve the public function signature and original tests byte-for-byte. You may add tests and modify implementation files.\nKeep acceptance_probe.py byte-for-byte unchanged; it is a supplied test observation adapter, not implementation code.\n\n",
+      "workspace_dir": "cases/case_02/workspace"
+    }
+  ],
+  "coding_cycle_is_gate": false,
+  "independence": "Independently authored in the same AI environment; not external statistical independence.",
+  "score_semantics": "v3_behavior_immutable_constraints_v1",
+  "status": "frozen_unconsumed_after_offline_validation",
+  "suite_version": "holdout_v3_20261108"
+}

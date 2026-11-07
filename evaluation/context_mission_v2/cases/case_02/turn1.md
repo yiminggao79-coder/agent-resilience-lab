@@ -1,0 +1,5 @@
+The tiny palette toolkit's run-length codec drops the last run and tolerates invalid packet sizes. Repair runs.pack and runs.unpack while preserving the protected original tests and observe.py.
+
+pack(grid) must flatten pixels in row-major order, merging equal adjacent colors even across a row boundary. Return {"width": columns, "height": rows, "runs": [[positive_count, color], ...]}. Flush the final run. [] becomes {"width": 0, "height": 0, "runs": []}. Keep the existing grid rules: list of equally sized nonempty list rows, integer colors 0..9 (booleans invalid); [] is the only empty representation.
+
+unpack(packet) must require nonnegative integer dimensions (not booleans), either both zero or both positive, and a list of [positive_integer_count, valid_color] runs. The total run length must equal width*height EXACTLY, including for an empty packet; otherwise raise ValueError. Adjacent runs may repeat a color and should still decode normally. Return a fresh rectangular grid with the declared shape. Keep histogram behavior and preserve all caller input. Add separate regression tests and briefly report the checks you ran.

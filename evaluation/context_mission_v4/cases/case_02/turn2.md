@@ -1,0 +1,7 @@
+Add deterministic carton packing and integrate it into manifest.py. Create boxes.py with validate(rows), packing.py with pack(catalog, lines, boxes), and manifest.packed(catalog, lines, boxes). Preserve Turn 1 and protected original bytes.
+
+A box type is {"code": nonempty trimmed string, "max_weight": positive_integer, "max_volume": positive_integer}; codes are unique and booleans invalid. A type has unlimited supply. Empty box lists are legal, but cannot pack a nonempty order. Validate all box definitions, even if unused. Sort box types by ascending max_volume, then max_weight, then code.
+
+Expand aggregated order quantities into indivisible units. Process by descending unit weight, then descending unit volume, then ascending SKU (same-SKU units keep occurrence order). For each unit, first try already created cartons in creation order; it fits only if BOTH resulting totals are within that carton's capacity. If none fits, create a carton using the first sorted box type that fits the unit. If none fits, raise ValueError. This uses scalar volume/weight, not physical shape fitting.
+
+pack returns cartons in creation order, each {"box":code,"items":[{"sku","quantity"} sorted by SKU],"weight":total,"volume":total}. packed returns the existing items/totals report plus "cartons". Do not mutate inputs or share internal mutable records. Add tests for first-fit reuse, volume-vs-weight limits, repeated units, deterministic box ties and impossible units.

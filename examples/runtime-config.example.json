@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "command_backend": "nofork",
+  "read_only_paths": ["tests"],
+  "allow_workspace_executables": false
+}

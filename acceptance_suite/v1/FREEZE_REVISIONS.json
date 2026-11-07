@@ -1,0 +1,17 @@
+{
+  "revisions": [
+    {
+      "revision": 1,
+      "superseded_preliminary_manifest_sha256": "18b0360ce520e4a05a285528940b80f7da52d95af38865fdf3d97e3f541387ec",
+      "reason": "Controller clarified the freeze metadata contract after the preliminary local freeze: use FREEZE.json with a files map instead of a manifest-embedded SHA map.",
+      "changes": [
+        "README freeze instructions",
+        "manifest freeze metadata only",
+        "FREEZE_REVISIONS.json",
+        "FREEZE.json"
+      ],
+      "fixture_bytes_changed": false,
+      "task_or_oracle_semantics_changed": false
+    }
+  ]
+}

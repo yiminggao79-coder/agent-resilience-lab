@@ -1,0 +1,18 @@
+[
+  {
+    "input": [{"A": 4, "B": 2}, [[{"id": "x", "items": [{"sku": "A", "qty": 1}, {"sku": "A", "qty": 2}, {"sku": "B", "qty": 1}]}], [{"id": "x", "items": [{"sku": "B", "qty": 1}, {"sku": "A", "qty": 3}]}]]],
+    "output": {"batches": [{"result": {"remaining": {"A": 1, "B": 1}, "results": [{"id": "x", "accepted": true}]}, "snapshot": {"A": 1, "B": 1}}, {"result": {"remaining": {"A": 1, "B": 1}, "results": [{"id": "x", "accepted": true}]}, "snapshot": {"A": 1, "B": 1}}], "detached": true, "inputs_unchanged": true}
+  },
+  {
+    "input": [{"A": 3}, [[{"id": "x", "items": [{"sku": "A", "qty": 1}]}], [{"id": "y", "items": [{"sku": "A", "qty": 1}]}, {"id": "x", "items": [{"sku": "A", "qty": 2}]}], [{"id": "y", "items": [{"sku": "A", "qty": 2}]}, {"id": "x", "items": [{"sku": "A", "qty": 1}]}]]],
+    "output": {"batches": [{"result": {"remaining": {"A": 2}, "results": [{"id": "x", "accepted": true}]}, "snapshot": {"A": 2}}, {"result": {"error": "ValueError"}, "snapshot": {"A": 2}}, {"result": {"remaining": {"A": 0}, "results": [{"id": "y", "accepted": true}, {"id": "x", "accepted": true}]}, "snapshot": {"A": 0}}], "detached": true, "inputs_unchanged": true}
+  },
+  {
+    "input": [{"A": 2}, [[{"id": "x", "items": [{"sku": "A", "qty": 3}]}], [{"id": "y", "items": [{"sku": "A", "qty": 1}]}], [{"id": "x", "items": [{"sku": "A", "qty": 3}]}]]],
+    "output": {"batches": [{"result": {"remaining": {"A": 2}, "results": [{"id": "x", "accepted": false}]}, "snapshot": {"A": 2}}, {"result": {"remaining": {"A": 1}, "results": [{"id": "y", "accepted": true}]}, "snapshot": {"A": 1}}, {"result": {"remaining": {"A": 1}, "results": [{"id": "x", "accepted": false}]}, "snapshot": {"A": 1}}], "detached": true, "inputs_unchanged": true}
+  },
+  {
+    "input": [{}, [[{"id": "x", "items": []}], [{"id": "x", "items": []}]]],
+    "output": {"batches": [{"result": {"remaining": {}, "results": [{"id": "x", "accepted": true}]}, "snapshot": {}}, {"result": {"remaining": {}, "results": [{"id": "x", "accepted": true}]}, "snapshot": {}}], "detached": true, "inputs_unchanged": true}
+  }
+]

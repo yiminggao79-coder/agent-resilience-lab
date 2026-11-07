@@ -1,0 +1,5 @@
+Repair pitch spelling across octave boundaries and canonical event ordering together. Keep original tests and observe.py byte-identical, and add separate tests as useful.
+
+Pitch input is an integer 0..127 (not bool) or spelling letter A..G case-insensitive, optional single # or lowercase b, then a decimal octave with an optional minus sign (no plus sign). Map C/D/E/F/G/A/B to 0/2/4/5/7/9/11, with C0=12. Apply accidental arithmetic BEFORE range checking, including carry/borrow across octaves: do not wrap a pitch class inside its original octave. Reject malformed spellings and out-of-range results.
+
+Canonical events have unique nonempty trimmed IDs, nonnegative integer start, positive integer duration, pitch as the normalized integer, and integer velocity 1..127 (default 64); booleans are invalid numbers. Return only id/start/duration/pitch/velocity, sorted by start then pitch then ID. Keep measure's note count, maximum end (zero if empty), sum of durations and sorted distinct pitches correct. api.normalize must compose these direct interfaces, preserve all inputs and return detached mutable containers. Briefly report fixes and validation.

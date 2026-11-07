@@ -1,0 +1,17 @@
+{
+  "kind": "public_development_finite_checks_not_holdout",
+  "turn_1": [
+    {"input": [{"A": 3, "B": 1}, [{"id": "x", "items": [{"sku": "A", "qty": 2}, {"sku": "B", "qty": 2}]}, {"id": "y", "items": [{"sku": "A", "qty": 3}]}]], "output": {"remaining": {"A": 0, "B": 1}, "results": [{"id": "x", "accepted": false}, {"id": "y", "accepted": true}]}},
+    {"input": [{"A": 3}, [{"id": "x", "items": [{"sku": "A", "qty": 2}, {"sku": "A", "qty": 2}]}]], "output": {"remaining": {"A": 3}, "results": [{"id": "x", "accepted": false}]}},
+    {"input": [{"A": 2, "a": 0}, [{"id": "x", "items": [{"sku": "a", "qty": 1}]}, {"id": "y", "items": [{"sku": "A", "qty": 2}]}]], "output": {"remaining": {"A": 0, "a": 0}, "results": [{"id": "x", "accepted": false}, {"id": "y", "accepted": true}]}},
+    {"input": [{}, [{"id": "empty", "items": []}, {"id": "unknown", "items": [{"sku": "A", "qty": 1}]}]], "output": {"remaining": {}, "results": [{"id": "empty", "accepted": true}, {"id": "unknown", "accepted": false}]}},
+    {"input": [{"zero": 0, "A": 4}, []], "output": {"remaining": {"zero": 0, "A": 4}, "results": []}}
+  ],
+  "turn_2": [
+    {"input": [{"A": 4, "B": 2}, [{"id": "x", "items": [{"sku": "A", "qty": 2}, {"sku": "B", "qty": 1}, {"sku": "A", "qty": 1}]}, {"id": "x", "items": [{"sku": "B", "qty": 1}, {"sku": "A", "qty": 3}]}]], "output": {"remaining": {"A": 1, "B": 1}, "results": [{"id": "x", "accepted": true}, {"id": "x", "accepted": true}]}},
+    {"input": [{"A": 2}, [{"id": "x", "items": [{"sku": "A", "qty": 3}]}, {"id": "y", "items": [{"sku": "A", "qty": 1}]}, {"id": "x", "items": [{"sku": "A", "qty": 3}]}]], "output": {"remaining": {"A": 1}, "results": [{"id": "x", "accepted": false}, {"id": "y", "accepted": true}, {"id": "x", "accepted": false}]}},
+    {"input": [{"A": 3}, [{"id": "x", "items": [{"sku": "A", "qty": 1}]}, {"id": "x", "items": [{"sku": "A", "qty": 2}]}]], "output": {"error": "ValueError"}},
+    {"input": [{}, [{"id": "x", "items": []}, {"id": "x", "items": []}]], "output": {"remaining": {}, "results": [{"id": "x", "accepted": true}, {"id": "x", "accepted": true}]}},
+    {"input": [{"A": 3, "a": 3}, [{"id": "x", "items": [{"sku": "A", "qty": 1}]}, {"id": "x", "items": [{"sku": "a", "qty": 1}]}]], "output": {"error": "ValueError"}}
+  ]
+}

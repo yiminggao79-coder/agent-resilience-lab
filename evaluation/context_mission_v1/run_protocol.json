@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "attempts_per_case": 1,
+  "turns_per_case": 3,
+  "max_model_calls_per_turn": 50,
+  "turn_timeout_seconds": 900,
+  "max_output_tokens": 4096,
+  "stdlib_only": true,
+  "task_field": "utf8_file_path_relative_to_manifest_directory",
+  "case_workspace_lifecycle": "copy_once_then_preserve_candidate_changes_across_all_three_turns",
+  "original_test_command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_original.py"
+  ],
+  "oracle_inputs": "each_inner_list_is_one_positional_argument_list",
+  "oracle_expected": "one_exact_JSON_value_per_input_in_order",
+  "oracle_transport": "trusted_parent_inputs_to_separate_observation_subprocess_stdin_no_expected_values_in_child",
+  "scoring": {
+    "per_stage": "all_current_and_previous_stage_oracles_pass_and_every_immutable_file_matches_its_frozen_bytes_and_original_tests_pass",
+    "per_case": "all_three_original_stage_results_pass",
+    "overall_quality": "both_cases_pass",
+    "self_claims": "not_scored",
+    "tool_order": "not_scored",
+    "missing_or_unknown_results": "null_never_pass",
+    "added_tests": "allowed_but_do_not_replace_original_tests_or_finite_oracles",
+    "mutated_protected_files": "fail_even_if_semantically_equivalent",
+    "failures": "preserve_original_attempt_and_score_no_post_run_task_or_oracle_changes"
+  },
+  "runtime_gates_additional_to_quality": {
+    "real_model_selects_tools": true,
+    "automatic_model_summary_installed_before_final_coding": true,
+    "new_pid_across_user_turns": true,
+    "no_case_recognition_or_scripted_workflow": true,
+    "runtime_frozen_before_first_semantic_exposure": true
+  },
+  "exposure": {
+    "model_allowed": [
+      "current_candidate_workspace",
+      "current_natural_user_task"
+    ],
+    "model_denied": [
+      "external_oracle_inputs",
+      "external_oracle_expected",
+      "reference_overlays",
+      "authoring_source",
+      "author_validation_records"
+    ],
+    "implementer_pre_acceptance_allowed": [
+      "public_interface_document",
+      "public_freeze_summary"
+    ],
+    "authorship": "separate_author_role_in_same_AI_environment_not_external_statistical_independence"
+  },
+  "provenance": "fresh_synthetic_only_no_private_files_no_previous_answers_no_credentials_no_live_calls_during_authoring"
+}

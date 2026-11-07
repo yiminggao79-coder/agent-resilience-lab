@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "examples/context-mission-dev/README.md",
+      "bytes": 789,
+      "sha256": "364f815c93113f68dda8465a453faf7c41448eb4d53ac284248f5cec9921db8d"
+    },
+    {
+      "path": "examples/context-mission-dev/manifest.json",
+      "bytes": 27837,
+      "sha256": "07014a921ecd78997240f5665a3dabf001e4657d1647a4b172544466e9b0c5cb"
+    },
+    {
+      "path": "examples/context-mission-dev/turn1.md",
+      "bytes": 957,
+      "sha256": "164d115480eb0f9bfe6f8d163c43bcfa409f1d98d24e6e879af9478236db1cab"
+    },
+    {
+      "path": "examples/context-mission-dev/turn2.md",
+      "bytes": 643,
+      "sha256": "8f28723f7f4e46ab3261517d785a37180756277fe77d740551cf7dda89c446a4"
+    },
+    {
+      "path": "examples/context-mission-dev/turn3.md",
+      "bytes": 898,
+      "sha256": "d880ce69d61c983499c023ec5682dbef85d804d89ed759c9919b572c42fe0c51"
+    },
+    {
+      "path": "examples/context-mission-dev/turn4.md",
+      "bytes": 1012,
+      "sha256": "dca63d346d159a308617b18ebd45c42879002a053e76a4430d4b876f2032f2dd"
+    },
+    {
+      "path": "examples/context-mission-dev/workspace/allocation.py",
+      "bytes": 312,
+      "sha256": "8c0c60b04a757f98df66145bab2da620246832eba6ae181d9fca214dd960a3d0"
+    },
+    {
+      "path": "examples/context-mission-dev/workspace/lines.py",
+      "bytes": 79,
+      "sha256": "5d34102e25b2647d003779c5ab57ef2e32b3f6a979797e2a53ff8bfb43941693"
+    },
+    {
+      "path": "examples/context-mission-dev/workspace/observations.py",
+      "bytes": 1779,
+      "sha256": "956635060e660870fc65b030e29a23e05738acb57a49284f6c0c82603d2392e3"
+    },
+    {
+      "path": "examples/context-mission-dev/workspace/tests/test_original.py",
+      "bytes": 1340,
+      "sha256": "88f52b3e16789cda3252271d884f6e7823f14e3bf86ee207e41e80534dc31067"
+    },
+    {
+      "path": "examples/context-mission-dev/workspace/warehouse.py",
+      "bytes": 175,
+      "sha256": "7dc2e130e7a9753e5d44f27f41532ffe9fc3c552b862721093999efb78582025"
+    }
+  ],
+  "inventory_sha256": "5d9093b5a623c49f2a8d5d7c4d5678054ee706c8442e0b5902cacef93892319b"
+}
