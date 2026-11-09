@@ -1,0 +1,34 @@
+
+Mutation: generation check removed
+test_none_is_allowed_only_while_both_generations_are_absent (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+
+======================================================================
+FAIL: test_none_is_allowed_only_while_both_generations_are_absent (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 122, in test_none_is_allowed_only_while_both_generations_are_absent
+    self.fail('stale worker reached effect')
+AssertionError: stale worker reached effect
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (failures=1)
+Mutation detected by regression assertion.
+
+Mutation: lease acquisition removed
+test_executing_worker_blocks_rotation_and_another_worker (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+
+======================================================================
+FAIL: test_executing_worker_blocks_rotation_and_another_worker (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 147, in test_executing_worker_blocks_rotation_and_another_worker
+    self.guard.rotate_generation(self.root)
+AssertionError: ExecutionBusy not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.062s
+
+FAILED (failures=1)
+Mutation detected by regression assertion.

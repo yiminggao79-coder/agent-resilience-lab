@@ -1,0 +1,16 @@
+{
+  "experiment": "item_done_tool_feedback",
+  "passed": false,
+  "elapsed_seconds": 5.509,
+  "provider_requests": 0,
+  "real_llm_task_success_rate": null,
+  "cost_estimate_cny": null,
+  "real_tokens": null,
+  "same_as_pinned_source_commit": null,
+  "conditions_differ": [
+    "reference outer Mach/Home/network wrapper; Harness own tool sandbox",
+    "reference normal workspace-write and never-escalate; Harness confined-fork/literal Python and one exact approval",
+    "different builtin tools and prompts; same Python bytes and synthetic completion boundary"
+  ],
+  "phase": "completed"
+}

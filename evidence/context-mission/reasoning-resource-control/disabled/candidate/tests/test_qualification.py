@@ -1,0 +1,180 @@
+import copy
+import unittest
+from qualification import select
+
+def match(identity='m', home='A', away='B', hg=1, ag=0):
+    return dict(id=identity, home=home, away=away, home_goals=hg, away_goals=ag)
+
+def by_team(rows):
+    return {row['team']: row for row in rows}
+
+def two_groups():
+    return {'North': ['A', 'B'], 'South': ['C', 'D']}
+
+class Qualification(unittest.TestCase):
+    def test_basic_automatic_order_and_shape(self):
+        rows = [match('1', 'A', 'B', 1, 0), match('2', 'C', 'D', 0, 2)]
+        out = select(rows, [], two_groups())
+        self.assertEqual(out['automatic'], ['A', 'D'])
+        self.assertEqual(out['wildcards'], [])
+        self.assertEqual(out['qualified'], ['A', 'D'])
+        self.assertEqual(list(out['groups']), ['North', 'South'])
+        self.assertEqual([r['team'] for r in out['groups']['North']], ['A', 'B'])
+        self.assertEqual([r['team'] for r in out['groups']['South']], ['D', 'C'])
+
+    def test_cross_group_match_excluded_from_group_statistics(self):
+        rows = [match('1', 'A', 'B', 3, 0),
+                match('2', 'A', 'C', 5, 0),   # cross group: ignored locally
+                match('3', 'C', 'D', 1, 1)]
+        out = select(rows, [], two_groups())
+        north = by_team(out['groups']['North'])
+        south = by_team(out['groups']['South'])
+        self.assertEqual((north['A']['played'], north['A']['goals_for'], north['A']['points']), (1, 3, 3))
+        self.assertEqual((north['B']['played'], north['B']['points']), (1, 0))
+        self.assertEqual((south['C']['played'], south['C']['points']), (1, 1))
+        self.assertEqual((south['D']['played'], south['D']['points']), (1, 1))
+        # cross-group decisions are still validated
+        with self.assertRaises(ValueError):
+            select(rows, [{'kind': 'void', 'match_id': 'missing'}], two_groups())
+        voided = select(rows, [{'kind': 'void', 'match_id': '2'}], two_groups())
+        self.assertEqual(voided['groups'], out['groups'])
+
+    def test_penalty_changes_qualifier(self):
+        rows = [match('1', 'A', 'B', 1, 0), match('2', 'C', 'D', 1, 0)]
+        plain = select(rows, [], two_groups())
+        self.assertEqual(plain['automatic'], ['A', 'C'])
+        actions = [{'kind': 'penalty', 'team': 'A', 'points': 4}]
+        out = select(rows, actions, two_groups())
+        self.assertEqual(out['automatic'], ['B', 'C'])
+        self.assertEqual(by_team(out['groups']['North'])['A']['points'], -1)
+        # other statistics ignore the deduction
+        self.assertEqual(by_team(out['groups']['North'])['A']['difference'], 1)
+        # repeated penalties accumulate
+        out2 = select(rows, actions + [{'kind': 'penalty', 'team': 'B', 'points': 5}], two_groups())
+        self.assertEqual(out2['automatic'], ['A', 'C'])
+        self.assertEqual(out2['qualified'], ['A', 'C'])
+        # a bigger deduction to the leader hands the slot to the runner-up
+        out3 = select(rows, actions + [{'kind': 'penalty', 'team': 'A', 'points': 1}], two_groups())
+        self.assertEqual(out3['automatic'], ['B', 'C'])
+
+    def test_voided_match_teams_still_assigned_and_ranked(self):
+        rows = [match('1', 'A', 'B', 2, 0)]
+        out = select(rows, [{'kind': 'void', 'match_id': '1'}], two_groups())
+        self.assertEqual(set(by_team(out['groups']['North'])), {'A', 'B'})
+        for row in out['groups']['North']:
+            self.assertEqual((row['played'], row['points'], row['difference']), (0, 0, 0))
+        # every participant still reported in penalties path is reflected by selection
+        self.assertEqual(out['automatic'], ['A', 'C'])
+
+    def test_empty_schedules_and_zero_slots(self):
+        out = select([], [], {'G': ['X', 'Y', 'Z']})
+        self.assertEqual([r['team'] for r in out['groups']['G']], ['X', 'Y', 'Z'])
+        self.assertEqual(out['automatic'], ['X'])
+        self.assertEqual(out['qualified'], ['X'])
+        out = select([], [], {'G': ['X', 'Y', 'Z']}, slots=0)
+        self.assertEqual(out['automatic'], [])
+        self.assertEqual(out['qualified'], [])
+        out = select([], [], {'G': ['X', 'Y', 'Z']}, slots=0, wildcards=2)
+        self.assertEqual(out['wildcards'], ['X', 'Y'])
+        self.assertEqual(out['qualified'], ['X', 'Y'])
+
+    def test_extra_slots_and_wildcards_take_all_available(self):
+        rows = [match('1', 'A', 'B', 2, 1), match('2', 'C', 'D', 1, 1)]
+        out = select(rows, [], two_groups(), slots=10, wildcards=10)
+        self.assertEqual(out['automatic'], ['A', 'B', 'C', 'D'])
+        self.assertEqual(out['wildcards'], [])
+        self.assertEqual(out['qualified'], ['A', 'B', 'C', 'D'])
+        out = select(rows, [], two_groups(), slots=1, wildcards=10)
+        self.assertEqual(out['automatic'], ['A', 'C'])
+        self.assertEqual(out['wildcards'], ['D', 'B'])
+        self.assertEqual(out['qualified'], ['A', 'B', 'C', 'D'])
+
+    def test_wildcards_ranked_by_standings_order_across_groups(self):
+        rows = [match('1', 'A', 'B', 3, 0), match('2', 'C', 'D', 1, 0)]
+        out = select(rows, [], two_groups(), slots=0, wildcards=3)
+        self.assertEqual(out['wildcards'], ['A', 'C', 'D'])
+        self.assertEqual(out['automatic'], [])
+        # extra wildcards simply take every remaining team
+        everything = select(rows, [], two_groups(), slots=0, wildcards=99)
+        self.assertEqual(everything['wildcards'], ['A', 'C', 'D', 'B'])
+        self.assertEqual(everything['qualified'], ['A', 'B', 'C', 'D'])
+
+    def test_duplicate_membership_and_validation(self):
+        rows = [match('1', 'A', 'B', 1, 0)]
+        bad_groups = [
+            {'G': ['A', 'A', 'B']},
+            {'G': ['A', 'B'], 'H': ['A']},
+            {'G': []},
+            {'': ['A', 'B']},
+            {' G': ['A', 'B']},
+            {'G': [' A']},
+            {},
+            {'G': 'A'},
+        ]
+        for groups in bad_groups:
+            with self.assertRaises(ValueError):
+                select(rows, [], groups)
+        # Every team in every original match must be assigned.
+        for groups in [{'G': ['A']}, {'G': ['B']}, {'G': ['Q']}, {'G': []}]:
+            with self.assertRaises(ValueError):
+                select(rows, [], groups)
+        # Assigned teams need not play, and unassigned-nothing is fine here.
+        select(rows, [], {'G': ['A', 'B'], 'H': ['C']})
+        # Grouped teams with no matches are allowed.
+        select(rows, [], {'G': ['A', 'B', 'Q']})
+
+    def test_bad_slots_wildcards_and_actions(self):
+        rows = [match('1', 'A', 'B', 1, 0)]
+        groups = two_groups()
+        for value in [True, -1, 1.5, '1', None]:
+            with self.assertRaises(ValueError):
+                select(rows, [], groups, slots=value)
+            with self.assertRaises(ValueError):
+                select(rows, [], groups, wildcards=value)
+        bad_actions = [
+            [{'kind': 'erase', 'match_id': '1'}],
+            [{'kind': 'void', 'match_id': 'nope'}],
+            [{'kind': 'void', 'match_id': '1'}, {'kind': 'void', 'match_id': '1'}],
+            [{'kind': 'replace', 'match_id': '1', 'home_goals': True, 'away_goals': 0}],
+            [{'kind': 'penalty', 'team': 'Q', 'points': 1}],
+            [{'kind': 'penalty', 'team': 'A', 'points': -2}],
+            [{'kind': 'penalty', 'team': 'A'}],
+        ]
+        for actions in bad_actions:
+            with self.assertRaises(ValueError):
+                select(rows, actions, groups)
+
+    def test_inputs_preserved(self):
+        rows = [match('1', 'A', 'B', 2, 0), match('2', 'C', 'D', 1, 3)]
+        actions = [{'kind': 'replace', 'match_id': '1', 'home_goals': 0, 'away_goals': 0},
+                   {'kind': 'penalty', 'team': 'C', 'points': 1}]
+        groups = {'North': ['A', 'B'], 'South': ['C', 'D', 'E']}
+        before = copy.deepcopy((rows, actions, groups))
+        out = select(rows, actions, groups, 1, 1)
+        self.assertEqual((rows, actions, groups), before)
+        self.assertIsNot(out['groups']['North'][0], out['groups']['North'][1])
+        out['groups']['North'][0]['points'] = 999
+        out['automatic'].append('X')
+        self.assertEqual((rows, actions, groups), before)
+
+        failing = [{'kind': 'void', 'match_id': 'nope'}]
+        with self.assertRaises(ValueError):
+            select(rows, failing, groups)
+        self.assertEqual((rows, failing, groups), (rows, failing, groups))
+        self.assertEqual((rows, actions, groups), before)
+
+    def test_group_rows_complete_and_ranked(self):
+        rows = [match('1', 'A', 'B', 1, 1), match('2', 'C', 'D', 0, 2),
+                match('3', 'B', 'A', 1, 0)]
+        out = select(rows, [], {'North': ['A', 'B'], 'South': ['C', 'D']}, slots=2)
+        north = by_team(out['groups']['North'])
+        self.assertEqual((north['B']['points'], north['B']['difference']), (4, 1))
+        self.assertEqual((north['A']['points'], north['A']['difference']), (1, -1))
+        self.assertEqual(out['automatic'], ['B', 'A', 'D', 'C'])
+        self.assertEqual(out['qualified'], ['A', 'B', 'C', 'D'])
+        for ranked in out['groups'].values():
+            keys = [(-r['points'], -r['difference'], -r['goals_for'], r['team']) for r in ranked]
+            self.assertEqual(keys, sorted(keys))
+
+if __name__ == '__main__':
+    unittest.main()

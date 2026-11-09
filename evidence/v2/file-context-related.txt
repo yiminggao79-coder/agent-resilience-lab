@@ -1,0 +1,27 @@
+test_deleted_and_unsafe_entries_are_reported_without_reading_aliases_or_fifo (tests.dev.test_file_context.FileContextTests) ... ok
+test_eight_max_size_reads_and_notice_size_are_bounded (tests.dev.test_file_context.FileContextTests) ... ok
+test_failed_other_and_aliased_tools_do_not_ingest_and_invalid_index_always_rejected (tests.dev.test_file_context.FileContextTests) ... ok
+test_final_filename_replacement_after_stable_fd_read_is_unavailable (tests.dev.test_file_context.FileContextTests) ... ok
+test_invalid_eligible_reads_and_lru_eviction_mark_sticky_coverage_without_fabrication (tests.dev.test_file_context.FileContextTests) ... ok
+test_new_record_exact_validation_and_pure_inputs (tests.dev.test_file_context.FileContextTests) ... ok
+test_oversize_current_file_marks_only_snapshot_coverage_and_recovers (tests.dev.test_file_context.FileContextTests) ... ok
+test_same_bytes_no_initial_notice_then_same_size_mtime_change_and_restoration (tests.dev.test_file_context.FileContextTests) ... ok
+test_signature_ignores_message_index_and_lru_order_but_not_new_read_baseline (tests.dev.test_file_context.FileContextTests) ... ok
+test_successful_builtin_reads_update_lru_and_never_mutate_input (tests.dev.test_file_context.FileContextTests) ... ok
+test_after_commit_save_failure_retries_notice_not_read_or_model (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_continuation_dedupes_and_fork_rechecks_shared_disk_without_mutating_source (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_external_same_size_mtime_change_is_not_a_new_read_and_precedes_sampling (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_failed_notice_commit_prevents_sampling_and_safe_retry_emits_once (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_opt_in_record_does_not_fabricate_default_or_local_profile_reads (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_read_file_sha_is_from_exact_returned_bytes_without_second_read (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_semantic_prefix_and_copied_archive_stay_immutable_after_new_observation (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_true_reread_updates_baseline_and_latest_view_supersedes_notice_history (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_interactive_default_call_shape_and_saved_task_option_are_compatible (tests.dev.test_file_context_cli.FileContextCLITests) ... ok
+test_new_chat_opt_in_and_existing_chat_flag_rejection (tests.dev.test_file_context_cli.FileContextCLITests) ... ok
+test_run_opt_in_persists_actual_read_and_resume_needs_no_new_flag (tests.dev.test_file_context_cli.FileContextCLITests) ... ok
+test_read_and_notice_commits_survive_two_sigkills_without_duplicate_or_fake_read (tests.dev.test_file_context_restart.FileContextRestartTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 3.669s
+
+OK

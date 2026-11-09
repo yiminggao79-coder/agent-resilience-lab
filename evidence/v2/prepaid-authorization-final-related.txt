@@ -1,0 +1,56 @@
+test_402_stops_further_calls_and_persists_across_new_wrapper (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) ... ok
+test_cli_prepaid_flag_reaches_existing_ledger_and_retains_key_admission (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) ... ok
+test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) ... ok
+test_prepaid_uses_existing_records_without_enforcing_legacy_total (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) ... ok
+test_v3_prepaid_preflight_never_opens_task_or_key_without_allow_api (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) ... ok
+test_budget_configuration_is_not_reset_by_reopening (tests.dev.test_budget.BudgetTests) ... ok
+test_concurrent_reservation_is_serialized_by_sqlite (tests.dev.test_budget.BudgetTests) ... ok
+test_credential_loader_consumes_only_first_line_and_never_persists (tests.dev.test_budget.BudgetTests) ... ok
+test_documented_chat_output_cap_can_use_remaining_authorization_without_reset (tests.dev.test_budget.BudgetTests) ... ok
+test_endpoint_cannot_be_changed_after_wrapper_creation (tests.dev.test_budget.BudgetTests) ... ok
+test_invalid_usage_does_not_grant_free_requests (tests.dev.test_budget.BudgetTests) ... ok
+test_known_local_preflight_failure_does_not_consume_paid_reservation (tests.dev.test_budget.BudgetTests) ... ok
+test_known_usage_releases_only_unused_reservation (tests.dev.test_budget.BudgetTests) ... ok
+test_model_failure_keeps_reservation_and_error_text_out_of_ledger (tests.dev.test_budget.BudgetTests) ... ok
+test_nonofficial_endpoint_rejected_before_delegate_and_reservation (tests.dev.test_budget.BudgetTests) ... ok
+test_provider_overrun_latches_budget_closed_across_restart (tests.dev.test_budget.BudgetTests) ... ok
+test_reservations_survive_restart_and_cannot_overspend (tests.dev.test_budget.BudgetTests) ... ok
+test_bad_schema_cap_types_halted_and_non_sqlite_fail_fixed_without_migration (tests.dev.test_existing_budget.ExistingBudgetTests) ... ok
+test_directory_fifo_symlink_and_hardlinked_ledger_rejected_before_sqlite_open (tests.dev.test_existing_budget.ExistingBudgetTests) ... ok
+test_existing_admission_does_not_create_chmod_migrate_or_change_unknown_reservations (tests.dev.test_existing_budget.ExistingBudgetTests) ... ok
+test_existing_reserve_and_settle_keep_normal_known_and_unknown_accounting (tests.dev.test_existing_budget.ExistingBudgetTests) ... ok
+test_ordinary_constructor_still_explicitly_creates_and_migrates (tests.dev.test_existing_budget.ExistingBudgetTests) ... ok
+test_replace_between_rw_open_checks_closes_connection_and_keeps_old_data (tests.dev.test_existing_budget.ExistingBudgetTests) ... ok
+test_settlement_file_loss_remains_uncertain_without_recreation (tests.dev.test_existing_budget.ExistingBudgetTests) ... ok
+test_unlink_and_replacement_of_live_ledger_never_create_or_reserve_in_new_file (tests.dev.test_existing_budget.ExistingBudgetTests) ... ok
+test_workspace_lexical_canonical_and_ancestor_aliases_are_rejected (tests.dev.test_existing_budget.ExistingBudgetTests) ... ok
+test_actual_relocated_default_does_not_create_ledger_or_delegate (tests.dev.test_budget_routing_cli.BudgetRoutingCLITests) ... ok
+test_explicit_authorized_synthetic_ledger_and_key_restoration (tests.dev.test_budget_routing_cli.BudgetRoutingCLITests) ... ok
+test_explicit_ledger_is_not_a_non_deepseek_or_api_disabled_escape (tests.dev.test_budget_routing_cli.BudgetRoutingCLITests) ... ok
+test_invalid_missing_inside_or_bad_schema_precedes_key_loader (tests.dev.test_budget_routing_cli.BudgetRoutingCLITests) ... ok
+test_two_runtime_copies_share_explicit_existing_reservations (tests.dev.test_budget_routing_cli.BudgetRoutingCLITests) ... ok
+test_two_actual_processes_share_one_remaining_reservation_without_release (tests.dev.test_budget_routing_review.BudgetRoutingReviewTests) ... ok
+test_unapproved_endpoint_cannot_load_key_reserve_or_create_task (tests.dev.test_budget_routing_review.BudgetRoutingReviewTests) ... ok
+test_budget_preflight_is_readonly_and_handles_real_remaining_upper_bound (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_caller_can_prove_no_model_observation_and_skip_judging (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_correct_code_passes_without_prescribed_model_tool_sequence (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_failed_phase_is_observation_not_a_quality_gate_and_missing_stays_null (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_immutable_original_test_is_host_protected_from_model_writes (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_invalid_case_fails_before_model_or_candidate_execution (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_missing_oracle_execution_is_unmeasured_not_a_wrong_answer (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_model_self_claim_without_fix_is_measured_failure (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_oracle_copy_enforces_same_immutable_policy_as_final_tests (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_unknown_effect_never_launches_candidate_observation (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_blocked_budget_precedes_key_model_and_holdout_body_access (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+test_budget_storage_fault_is_fixed_diagnostic_before_key_or_task (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+test_default_is_permission_preflight_without_exposure_or_suite_read (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+test_dirty_runtime_precedes_budget_and_key_access (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+test_synthetic_stack_once_gate_and_changed_identity_are_distinct (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+test_report_fault_is_fixed_diagnostic_after_key_restore_and_unknown_retention (tests.dev.test_acceptance_v3_review.AcceptanceV3ReviewTests) ... ok
+test_reservation_refusal_after_preflight_does_not_consume_exposure (tests.dev.test_acceptance_v3_review.AcceptanceV3ReviewTests) ... ok
+test_workspace_gate_refusal_blocks_judging_even_for_terminal_state (tests.dev.test_acceptance_v3_review.AcceptanceV3ReviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 51 tests in 6.643s
+
+OK

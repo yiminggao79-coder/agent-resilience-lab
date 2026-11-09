@@ -1,0 +1,24 @@
+{
+  "path": "codex-rs/core/src/tools/handlers/mcp_resource/list_mcp_resources.rs",
+  "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/mcp_resource/list_mcp_resources.rs",
+  "body_ranges_read": [
+    [
+      1,
+      108
+    ]
+  ],
+  "upstream_executed": false,
+  "git_blob_sha1_computed_not_independently_compared": "1f3e4fdcd0f863fddb2649806e0de74ccc1f7434",
+  "excerpts": [
+    {
+      "start": 33,
+      "end": 41,
+      "text": "    fn supports_parallel_tool_calls(&self) -> bool {\n        true\n    }\n\n    fn handle<'a>(&'a self, invocation: ToolInvocation) -> codex_tools::ToolExecutorFuture<'a>\n    where\n        ToolInvocation: 'a,\n    {\n        Box::pin(self.handle_call(invocation))"
+    },
+    {
+      "start": 55,
+      "end": 107,
+      "text": "    ) -> Result<Box<dyn crate::tools::context::ToolOutput>, FunctionCallError> {\n        let ToolInvocation {\n            session,\n            step_context,\n            call_id,\n            payload,\n            ..\n        } = invocation;\n        let turn = std::sync::Arc::clone(&step_context.turn);\n        let mcp = &step_context.mcp;\n\n        let arguments = resource_arguments(&payload)?;\n        let args = ListResourceArgs::parse(arguments.clone())?;\n\n        let invocation = McpInvocation {\n            server: args.server.clone().unwrap_or_else(|| \"codex\".to_string()),\n            tool: \"list_mcp_resources\".to_string(),\n            arguments: arguments.clone(),\n        };\n\n        run_resource_operation(&session, &step_context, &call_id, invocation, async {\n            if let Some((server_name, params)) = args.target(turn.as_ref())? {\n                let result = mcp\n                    .list_resources(&server_name, params)\n                    .await\n                    .map_err(|err| {\n                        FunctionCallError::RespondToModel(format!(\"resources/list failed: {err:#}\"))\n                    })?;\n                Ok(ListResourcesPayload::from_single_server(\n                    server_name,\n                    result,\n                ))\n            } else {\n                let resources = mcp\n                    .list_all_resources(|server_name| {\n                        model_can_access_mcp_server(turn.as_ref(), server_name)\n                    })\n                    .await;\n                Ok(ListResourcesPayload::from_all_servers(resources))\n            }\n        })\n        .await\n    }\n}\n\nimpl CoreToolRuntime for ListMcpResourcesHandler {\n    fn environments_for_input(\n        &self,\n        invocation: &ToolInvocation,\n    ) -> Result<ToolEnvironments, FunctionCallError> {\n        resource_environments(invocation, ResourceOperation::List)\n    }\n}"
+    }
+  ]
+}

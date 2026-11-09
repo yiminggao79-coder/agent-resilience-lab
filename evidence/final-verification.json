@@ -1,0 +1,41 @@
+{
+  "implementation_commit": "5b9990bbb43a74cd0c6e8c153d77d0374e3fe979",
+  "freeze_matches": true,
+  "environment": {
+    "python": "3.9.7",
+    "sqlite": "3.35.5",
+    "os": "Darwin"
+  },
+  "development": {
+    "tests": 46,
+    "elapsed_seconds": 13.532,
+    "passed": true,
+    "log": "evidence/final-dev-tests.txt"
+  },
+  "independent_acceptance": {
+    "tests": 10,
+    "elapsed_seconds": 4.219,
+    "passed": true,
+    "log": "evidence/final-acceptance-tests.txt"
+  },
+  "real_model": {
+    "tested": false,
+    "success_rate": null,
+    "recovery_success_rate": null,
+    "tokens": null,
+    "cost_usd": null
+  },
+  "compileall_passed": true,
+  "all_tests": {
+    "tests": 56,
+    "elapsed_seconds": 17.156,
+    "passed": true,
+    "log": "evidence/final-all-tests.txt"
+  },
+  "acceptance_file_sha256": {
+    "tests/acceptance/__init__.py": "edbd947a606c9e322b302c23c03d4cb128d7a8166c141e814dd3a46be067e40d",
+    "tests/acceptance/crash_child.py": "883edda66a6d22695f53a498829a659c99e7819729774de18dc7fb1a0b740992",
+    "tests/acceptance/protocol_fixture.py": "3dd15ab31b6bb805ae83f7011d324e7ae41cba4dff4d599c3f7073dce5502478",
+    "tests/acceptance/test_acceptance.py": "20d8ee162074919d002fa185ab4c0e714af7b5e938987eaf635020cf23f8b733"
+  }
+}

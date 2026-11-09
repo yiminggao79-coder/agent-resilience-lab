@@ -1,0 +1,6 @@
+test_sigkill_after_notice_keeps_allowance_in_fresh_process_resume (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 10.021s
+
+OK

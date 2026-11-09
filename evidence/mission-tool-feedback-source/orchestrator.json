@@ -1,0 +1,44 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/tools/orchestrator.rs",
+  "git_blob_sha": "9ba96e57eea42bcd988b1d4d257d92149a50cc3a",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/orchestrator.rs",
+  "inspected_line_ranges": [
+    [
+      50,
+      125
+    ],
+    [
+      388,
+      488
+    ],
+    [
+      592,
+      665
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 105,
+      "end_line": 122,
+      "text": "        let run_result = tool\n            .run(req, &attempt_with_network_approval, &attempt_tool_ctx)\n            .await;\n\n        let Some(network_approval) = network_approval else {\n            return (run_result, None);\n        };\n\n        let deferred = network_approval.into_deferred();\n        if run_result.is_err() {\n            let finalize_result =\n                finish_deferred_network_approval(&tool_ctx.session, deferred).await;\n            if let Err(err) = finalize_result {\n                return (Err(err), None);\n            }\n            return (run_result, None);\n        }\n        (run_result, deferred)\n"
+    },
+    {
+      "start_line": 389,
+      "end_line": 418,
+      "text": "        let initial_attempt_start = Instant::now();\n        let (first_result, first_deferred_network_approval) =\n            Self::run_attempt(tool, req, tool_ctx, &initial_attempt, network_approval_spec).await;\n        let initial_duration = initial_attempt_start.elapsed();\n        match first_result {\n            Ok(out) => {\n                // We have a successful initial result\n                Ok(OrchestratorRunResult {\n                    output: out,\n                    deferred_network_approval: first_deferred_network_approval,\n                })\n            }\n            Err(ToolError::Codex(err)) => {\n                let CodexErrorDetails::Sandbox(SandboxErr::Denied {\n                    output,\n                    network_policy_decision,\n                }) = err.details()\n                else {\n                    let err = ToolError::Codex(err);\n                    if let Some(outcome) = sandbox_outcome_from_tool_error(&err) {\n                        otel.sandbox_outcome(\n                            &otel_tn,\n                            otel_ci,\n                            outcome,\n                            initial_duration,\n                            /*escalated_duration*/ None,\n                        );\n                    }\n                    return Err(err);\n                };\n"
+    },
+    {
+      "start_line": 436,
+      "end_line": 449,
+      "text": "                if !tool.escalate_on_failure() {\n                    otel.sandbox_outcome(\n                        &otel_tn,\n                        otel_ci,\n                        \"denied\",\n                        initial_duration,\n                        /*escalated_duration*/ None,\n                    );\n                    return Err(ToolError::Codex(err));\n                }\n                // Under `Never` or `OnRequest`, do not retry without sandbox;\n                // surface a concise sandbox denial that preserves the\n                // original output.\n                if !tool.wants_no_sandbox_approval(approval_policy) {\n"
+    },
+    {
+      "start_line": 598,
+      "end_line": 658,
+      "text": "                // Second attempt.\n                let network_approval_spec = tool.network_approval_spec(req, tool_ctx);\n                let escalated_attempt_start = Instant::now();\n                let (retry_result, retry_deferred_network_approval) =\n                    Self::run_attempt(tool, req, tool_ctx, &retry_attempt, network_approval_spec)\n                        .await;\n                let escalated_duration = escalated_attempt_start.elapsed();\n                match retry_result {\n                    Ok(output) => {\n                        otel.sandbox_outcome(\n                            &otel_tn,\n                            otel_ci,\n                            \"escalated\",\n                            initial_duration,\n                            Some(escalated_duration),\n                        );\n                        Ok(OrchestratorRunResult {\n                            output,\n                            deferred_network_approval: retry_deferred_network_approval,\n                        })\n                    }\n                    Err(err) => {\n                        if let Some(outcome) = sandbox_outcome_from_tool_error(&err) {\n                            otel.sandbox_outcome(\n                                &otel_tn,\n                                otel_ci,\n                                outcome,\n                                initial_duration,\n                                Some(escalated_duration),\n                            );\n                        }\n                        Err(err)\n                    }\n                }\n            }\n            Err(err) => {\n                if let Some(outcome) = sandbox_outcome_from_tool_error(&err) {\n                    otel.sandbox_outcome(\n                        &otel_tn,\n                        otel_ci,\n                        outcome,\n                        initial_duration,\n                        /*escalated_duration*/ None,\n                    );\n                }\n                Err(err)\n            }\n        }\n    }\n}\n\nfn sandbox_outcome_from_tool_error(err: &ToolError) -> Option<&'static str> {\n    match err {\n        ToolError::Codex(err) => match err.details() {\n            CodexErrorDetails::Sandbox(SandboxErr::Denied { .. }) => Some(\"denied\"),\n            CodexErrorDetails::Sandbox(SandboxErr::Timeout { .. }) => Some(\"timed_out\"),\n            CodexErrorDetails::Sandbox(SandboxErr::Signal(_)) => Some(\"signal\"),\n            _ => None,\n        },\n        ToolError::Rejected(_) => None,\n    }\n"
+    }
+  ],
+  "notice": "Verbatim selected public-source excerpts in local JSON wrapper; read, not executed. See LICENSE and NOTICE."
+}

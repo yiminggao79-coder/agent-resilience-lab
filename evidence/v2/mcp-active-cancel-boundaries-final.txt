@@ -1,0 +1,38 @@
+test_callback_failure_closes_without_echoing_arbitrary_exception (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_cancellable_nested_sse_ping_preserves_normal_result_and_controller_callback_thread (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_connected_slow_headers_are_cancelled_without_waiting_for_header_or_deadline (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_direct_client_predispatch_stop_does_not_send_or_report_success (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_existing_base_scope_cancels_dispatched_http_without_cross_thread_callback (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... <frozen importlib._bootstrap>:97: ResourceWarning: unclosed <socket.socket [closed] fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=6>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ERROR
+test_existing_base_scope_cancels_dispatched_stdio_effect_and_preserves_unknown (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_interrupt_closes_client_without_a_new_http_delete (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_late_connect_worker_retains_abort_gate_after_controller_returns (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_matching_final_sse_event_returns_before_later_event_in_same_chunk (tests.dev.test_mcp_http_review.MCPHTTPReviewTests) ... ok
+test_slow_http_headers_do_not_extend_total_tool_deadline (tests.dev.test_mcp_http_review.MCPHTTPReviewTests) ... ok
+test_http_remote_effect_after_local_cancel_remains_unknown_on_new_process (tests.acceptance.test_mcp_cancel_process.MCPCancelProcessTests) ... ok
+test_stdio_effect_then_cli_stop_new_process_does_not_replay (tests.acceptance.test_mcp_cancel_process.MCPCancelProcessTests) ... ok
+
+======================================================================
+ERROR: test_existing_base_scope_cancels_dispatched_http_without_cross_thread_callback (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_active_cancel.py", line 47, in test_existing_base_scope_cancels_dispatched_http_without_cross_thread_callback
+    registry=self.registry({'transport':'streamable_http','url':server.url,'allow_loopback_http':True,'timeout':4})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_active_cancel.py", line 29, in registry
+    registry=MCPToolRegistry(CodingTools(self.root),self.config);registry.__enter__();self.addCleanup(registry.close)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 153, in __enter__
+    schemas = copy.deepcopy(self.base.schemas())
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/coding_tools.py", line 83, in schemas
+    from .searching import schema as search_schema
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 158, in __enter__
+  File "<frozen importlib._bootstrap>", line 110, in acquire
+KeyError: 140704425346048
+
+----------------------------------------------------------------------
+Ran 12 tests in 6.352s
+
+FAILED (errors=1)
+{"contract": "http_mcp_cli_stop_new_pid", "first_pid": 24720, "resumed_pid": 24722, "effect_count": 1, "late_external_effect_observed": true, "pending_id_preserved": true, "external_quiescence_claimed": false, "real_llm_quality": null}
+{"contract": "stdio_mcp_cli_stop_new_pid", "first_pid": 24723, "resumed_pid": 24726, "effect_count": 1, "pending_id_preserved": true, "external_quiescence_claimed": false, "real_llm_quality": null}

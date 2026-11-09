@@ -1,0 +1,20 @@
+{
+  "provenance": "Initial tool-visible JSON transcribed before the diagnostic rerun replaced the working report; not a separate additional probe.",
+  "observed_record": {
+    "kind": "research_libuv_spawn_denial_nofork",
+    "node_sha256": "bdcd4500054d48c9ec6058706795d91cac83e3e3eaced218434294d8f2fbf7fa",
+    "exit_code": -6,
+    "body": null,
+    "stderr_bytes": 108,
+    "stderr_sha256": "72efa5bb5817b28e86ccb524daf370b6c270bfb96bdeeeb5a5e4533d00aab9d5",
+    "stdout_truncated": false,
+    "profile_sha256": "f54b261e53b584751dcfe44013a9832f28d96c51b9869910fa6a166baf7a3e27",
+    "stdio_configuration": "pipe",
+    "production_policy_changed": false,
+    "fork_enabled": false,
+    "provider_requests": 0,
+    "credential_file_read": false,
+    "real_budget_opened": false,
+    "stock_npm_compatibility_proven": false
+  }
+}

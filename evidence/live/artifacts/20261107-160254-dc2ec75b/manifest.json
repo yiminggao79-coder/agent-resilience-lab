@@ -1,0 +1,14 @@
+{
+  "run_id": "20261107-160254-dc2ec75b",
+  "original_report_sha256": "4d7908f6349fb4407df497be683bc528c7ef53a1b447a215d56b4fee76ec2fa5",
+  "files": {
+    "before.py": "6571991a4a56f6c10e2ddf35769fda73abf00ad68c65fa0d7f32f564315cf734",
+    "after.py": "4aa1bf4e3fa71a9a654d303a535c5b0a6e9396c23a69ca050f30b17798f7d2b6",
+    "test_public.py": "2f5aa9925d8059e0dc24551024a9e0a74d3d1e8baffd6812b7f77a5ad2d4b35f",
+    "change.patch": "7c91e5292dec86d3e4d3a6c4eec12eeed85303d15504ac5ec52fd47e42896361"
+  },
+  "limitations": [
+    "Artifacts exported after the run from retained synthetic workspace.",
+    "Runtime was an uncommitted development increment; no pre-run frozen runtime snapshot. Independent acceptance will pin a clean commit."
+  ]
+}

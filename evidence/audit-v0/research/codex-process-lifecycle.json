@@ -1,0 +1,73 @@
+{
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/utils/pty/src/process_group.rs",
+  "commit_pins": {
+    "codex": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+    "langgraph": "e5e37b5d70dbfd93c7006bd90a658c6179a95946",
+    "openhands": "4aae68ae53477d05010a509f1f1e3f02e61b1831"
+  },
+  "read_only": true,
+  "upstream_tests_executed": false,
+  "note": "Linux parent-death signal differs from macOS; group termination does not by itself solve SIGKILL parent cleanup on all OSes.",
+  "excerpts": [
+    {
+      "start_line": 24,
+      "end_line": 46,
+      "lines": [
+        "#[cfg(target_os = \"linux\")]",
+        "/// Ensure the child receives SIGTERM when the original parent dies.",
+        "///",
+        "/// This should run in `pre_exec` and uses `parent_pid` captured before spawn to",
+        "/// avoid a race where the parent exits between fork and exec.",
+        "pub fn set_parent_death_signal(parent_pid: libc::pid_t) -> io::Result<()> {",
+        "    if unsafe { libc::prctl(libc::PR_SET_PDEATHSIG, libc::SIGTERM) } == -1 {",
+        "        return Err(io::Error::last_os_error());",
+        "    }",
+        "",
+        "    if unsafe { libc::getppid() } != parent_pid {",
+        "        unsafe {",
+        "            libc::raise(libc::SIGTERM);",
+        "        }",
+        "    }",
+        "",
+        "    Ok(())",
+        "}",
+        "",
+        "#[cfg(not(target_os = \"linux\"))]",
+        "/// No-op on non-Linux platforms.",
+        "pub fn set_parent_death_signal(_parent_pid: i32) -> io::Result<()> {",
+        "    Ok(())"
+      ]
+    },
+    {
+      "start_line": 89,
+      "end_line": 113,
+      "lines": [
+        "/// Kill the process group for the given PID (best-effort).",
+        "///",
+        "/// This resolves the PGID for `pid` and sends SIGKILL to the whole group.",
+        "pub fn kill_process_group_by_pid(pid: u32) -> io::Result<()> {",
+        "    use std::io::ErrorKind;",
+        "",
+        "    let pid = pid as libc::pid_t;",
+        "    let pgid = unsafe { libc::getpgid(pid) };",
+        "    if pgid == -1 {",
+        "        let err = io::Error::last_os_error();",
+        "        if err.kind() != ErrorKind::NotFound && err.raw_os_error() != Some(libc::ESRCH) {",
+        "            return Err(err);",
+        "        }",
+        "        return Ok(());",
+        "    }",
+        "",
+        "    let result = unsafe { libc::killpg(pgid, libc::SIGKILL) };",
+        "    if result == -1 {",
+        "        let err = io::Error::last_os_error();",
+        "        if err.kind() != ErrorKind::NotFound && err.raw_os_error() != Some(libc::ESRCH) {",
+        "            return Err(err);",
+        "        }",
+        "    }",
+        "",
+        "    Ok(())"
+      ]
+    }
+  ]
+}

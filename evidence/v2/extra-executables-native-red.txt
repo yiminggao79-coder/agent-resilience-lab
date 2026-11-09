@@ -1,0 +1,65 @@
+test_confined_tests_can_spawn_registered_runtime_with_selected_dependencies (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... ERROR
+test_profile_paths_do_not_repeat_executable_identity_hash (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... ERROR
+test_real_ruby_multifile_failure_patch_and_success_with_exact_approvals (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... FAIL
+test_registered_entry_does_not_admit_adjacent_private_files_or_readonly_writes (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... ERROR
+test_versioned_supervisor_envelope_validates_expected_policy_before_probe (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... FAIL
+
+======================================================================
+ERROR: test_confined_tests_can_spawn_registered_runtime_with_selected_dependencies (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables_native.py", line 75, in test_confined_tests_can_spawn_registered_runtime_with_selected_dependencies
+    result=tools.execute(tools.prepare('run_tests',{}),6)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 383, in execute
+    return self._dispatch('execute', intent, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 307, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: tool_worker_failed
+
+======================================================================
+ERROR: test_profile_paths_do_not_repeat_executable_identity_hash (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables_native.py", line 115, in test_profile_paths_do_not_repeat_executable_identity_hash
+    sandbox._command_profile(self.root,scratch,tool_executables=self.mapping)
+TypeError: _command_profile() got an unexpected keyword argument 'tool_executables'
+
+======================================================================
+ERROR: test_registered_entry_does_not_admit_adjacent_private_files_or_readonly_writes (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables_native.py", line 90, in test_registered_entry_does_not_admit_adjacent_private_files_or_readonly_writes
+    result=tools.execute(tools.prepare('run_command',{'argv':['ruby','--disable-gems','-e',body,str(private)],'cwd':'.'}),6)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 383, in execute
+    return self._dispatch('execute', intent, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 307, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: tool_worker_failed
+
+======================================================================
+FAIL: test_real_ruby_multifile_failure_patch_and_success_with_exact_approvals (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables_native.py", line 52, in test_real_ruby_multifile_failure_patch_and_success_with_exact_approvals
+    self.assertEqual((state['phase'],approved),('completed',2),state.get('reason'))
+AssertionError: Tuples differ: ('needs_confirmation', 1) != ('completed', 2)
+
+First differing element 0:
+'needs_confirmation'
+'completed'
+
+- ('needs_confirmation', 1)
++ ('completed', 2) : tool_outcome_unknown
+
+======================================================================
+FAIL: test_versioned_supervisor_envelope_validates_expected_policy_before_probe (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables_native.py", line 96, in test_versioned_supervisor_envelope_validates_expected_policy_before_probe
+    self.assertTrue(hasattr(sandbox,'_runtime_supervisor'),'versioned supervisor dispatch missing')
+AssertionError: False is not true : versioned supervisor dispatch missing
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.158s
+
+FAILED (failures=2, errors=3)

@@ -1,0 +1,53 @@
+======================================================================
+ERROR: test_keyboard_interrupt_marks_model_usage_unknown (tests.dev.test_model_stop.ModelStopTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model_stop.py", line 121, in test_keyboard_interrupt_marks_model_usage_unknown
+    self.assertEqual(state['phase'],'needs_confirmation'); self.assertTrue(state['usage_unknown'])
+KeyError: 'usage_unknown'
+
+======================================================================
+FAIL: test_delegate_wrapper_is_still_called (tests.dev.test_model_stop.ModelStopTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model_stop.py", line 98, in test_delegate_wrapper_is_still_called
+    self.assertEqual(engine.run(tid)['reason'], 'user_stop_requested'); self.assertEqual(wrapper.calls,1)
+AssertionError: 'internal_error' != 'user_stop_requested'
+- internal_error
++ user_stop_requested
+
+
+======================================================================
+FAIL: test_scoped_stop_discards_incomplete_response_but_retains_unknown_usage (tests.dev.test_model_stop.ModelStopTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model_stop.py", line 58, in test_scoped_stop_discards_incomplete_response_but_retains_unknown_usage
+    self.assertEqual((state['phase'], state['reason']), ('failed', 'user_stop_requested'))
+AssertionError: Tuples differ: ('needs_confirmation', 'internal_error') != ('failed', 'user_stop_requested')
+
+First differing element 0:
+'needs_confirmation'
+'failed'
+
+- ('needs_confirmation', 'internal_error')
++ ('failed', 'user_stop_requested')
+
+======================================================================
+FAIL: test_summary_cancel_keeps_prior_context_and_restores_presentation (tests.dev.test_model_stop.ModelStopTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model_stop.py", line 111, in test_summary_cancel_keeps_prior_context_and_restores_presentation
+    self.assertEqual((state['phase'],state['reason']),('failed','user_stop_requested'))
+AssertionError: Tuples differ: ('needs_confirmation', 'compaction_outcome_unknown') != ('failed', 'user_stop_requested')
+
+First differing element 0:
+'needs_confirmation'
+'failed'
+
+- ('needs_confirmation', 'compaction_outcome_unknown')
++ ('failed', 'user_stop_requested')
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.152s
+
+FAILED (failures=3, errors=1)

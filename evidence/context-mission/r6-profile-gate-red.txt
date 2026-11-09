@@ -1,0 +1,14 @@
+test_frozen_runtime_cannot_silently_use_a_different_resource_profile (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+
+======================================================================
+FAIL: test_frozen_runtime_cannot_silently_use_a_different_resource_profile (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 236, in test_frozen_runtime_cannot_silently_use_a_different_resource_profile
+    self.assertTrue(callable(validate),'Missing frozen runtime admission gate')
+AssertionError: False is not true : Missing frozen runtime admission gate
+
+----------------------------------------------------------------------
+Ran 1 test in 0.142s
+
+FAILED (failures=1)

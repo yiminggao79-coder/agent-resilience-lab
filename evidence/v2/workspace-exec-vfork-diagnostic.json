@@ -1,0 +1,22 @@
+{
+  "compile_exit_code": 0,
+  "kind": "bounded_direct_vfork_diagnostic",
+  "variants": {
+    "confined-fork": {
+      "exit_code": 0,
+      "ok": true,
+      "stderr": "",
+      "stderr_truncated": false,
+      "stdout": "direct66_errno=1\n",
+      "stdout_truncated": false
+    },
+    "nofork": {
+      "exit_code": -12,
+      "ok": false,
+      "stderr": "",
+      "stderr_truncated": false,
+      "stdout": "",
+      "stdout_truncated": false
+    }
+  }
+}

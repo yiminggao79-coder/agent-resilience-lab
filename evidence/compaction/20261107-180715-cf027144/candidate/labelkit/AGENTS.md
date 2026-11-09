@@ -1,0 +1,1 @@
+For canonical_keys(values): trim Unicode whitespace, casefold (not lower) each string, discard empty results, deduplicate canonical results preserving first occurrence order. Return a new list and do not change the input.

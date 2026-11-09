@@ -1,0 +1,23 @@
+test_boolean_exit_codes_are_not_success_measurements (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_packing_proof_uses_actual_eligible_input_and_installed_operation (tests.dev.test_context_mission.ContextMissionTests) ... ERROR
+
+======================================================================
+ERROR: test_packing_proof_uses_actual_eligible_input_and_installed_operation (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 141, in test_packing_proof_uses_actual_eligible_input_and_installed_operation
+    proof=self.module.packing_proof(messages,None,5500)
+AttributeError: module 'scripts.context_mission' has no attribute 'packing_proof'
+
+======================================================================
+FAIL: test_boolean_exit_codes_are_not_success_measurements (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 126, in test_boolean_exit_codes_are_not_success_measurements
+    self.assertIsNone(self.module.grade_turn(row))
+AssertionError: True is not None
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.090s
+
+FAILED (failures=1, errors=1)

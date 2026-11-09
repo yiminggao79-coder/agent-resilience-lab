@@ -1,0 +1,24 @@
+test_disappearing_path_during_open_closes_both_constructor_connections (tests.dev.test_store_connection_identity.StoreConnectionIdentityTests) ... ok
+test_caller_active_transaction_is_rejected_without_commit_or_rollback (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_corrupt_mismatch_legacy_invalid_fields_and_noncanonical_row_ids (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_cursor_encoding_strict_duplicate_types_version_and_limits (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_cursor_is_bound_to_explicit_database_path_and_inode (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_filters_cursor_scope_and_newer_inserts_do_not_shift_anchor (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_huge_private_json_and_scalar_values_never_materialize_in_python (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_keyset_ties_null_tail_and_exact_output_schema (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_legacy_readonly_database_bytes_mode_schema_and_single_read_transaction (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_storage_faults_are_fixed_and_do_not_expose_sql_or_path (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_timestamp_range_finiteness_and_boolean_are_sanitized (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change (tests.dev.test_session_listing_cli.SessionListingCLITests) ... ok
+test_legacy_tasks_only_pagination_does_not_migrate_or_read_private_body (tests.dev.test_session_listing_cli.SessionListingCLITests) ... ok
+test_missing_database_does_not_create_parent_or_succeed_with_empty_list (tests.dev.test_session_listing_cli.SessionListingCLITests) ... ok
+test_readonly_cli_never_initializes_store_model_tools_or_workspace_lock (tests.dev.test_session_listing_cli.SessionListingCLITests) ... ok
+test_literal_backslash_u0000_workspace_is_distinct_from_actual_nul (tests.dev.test_session_listing_edge.SessionListingEscapeTests) ... ok
+test_existing_readonly_transaction_keeps_its_snapshot_after_rejection (tests.dev.test_session_listing_review.SessionListingReviewTests) ... ok
+test_replaced_database_path_cannot_rebind_cursor_from_old_connection (tests.dev.test_session_listing_review.SessionListingReviewTests) ... ok
+test_single_page_uses_one_snapshot_and_later_page_is_live (tests.dev.test_session_listing_review.SessionListingReviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.669s
+
+OK

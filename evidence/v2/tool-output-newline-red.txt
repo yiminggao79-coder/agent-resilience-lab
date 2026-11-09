@@ -1,0 +1,14 @@
+test_complete_display_without_final_newline_leaves_next_prompt_on_new_line (tests.dev.test_tool_output_display.ToolOutputDisplayTests) ... FAIL
+
+======================================================================
+FAIL: test_complete_display_without_final_newline_leaves_next_prompt_on_new_line (tests.dev.test_tool_output_display.ToolOutputDisplayTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_display.py", line 54, in test_complete_display_without_final_newline_leaves_next_prompt_on_new_line
+    self.assertTrue(target.getvalue().endswith('\n'))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=1)

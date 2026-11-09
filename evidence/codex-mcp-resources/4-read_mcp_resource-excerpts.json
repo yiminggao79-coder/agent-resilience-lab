@@ -1,0 +1,24 @@
+{
+  "path": "codex-rs/core/src/tools/handlers/mcp_resource/read_mcp_resource.rs",
+  "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/mcp_resource/read_mcp_resource.rs",
+  "body_ranges_read": [
+    [
+      1,
+      104
+    ]
+  ],
+  "upstream_executed": false,
+  "git_blob_sha1_computed_not_independently_compared": "67cdb7b67b4cd257d9620e89a41bc0d6ee984078",
+  "excerpts": [
+    {
+      "start": 34,
+      "end": 42,
+      "text": "\n    fn supports_parallel_tool_calls(&self) -> bool {\n        true\n    }\n\n    fn handle<'a>(&'a self, invocation: ToolInvocation) -> codex_tools::ToolExecutorFuture<'a>\n    where\n        ToolInvocation: 'a,\n    {"
+    },
+    {
+      "start": 55,
+      "end": 101,
+      "text": "        &self,\n        invocation: ToolInvocation,\n    ) -> Result<Box<dyn crate::tools::context::ToolOutput>, FunctionCallError> {\n        let ToolInvocation {\n            session,\n            step_context,\n            call_id,\n            payload,\n            ..\n        } = invocation;\n        let turn = std::sync::Arc::clone(&step_context.turn);\n        let mcp = &step_context.mcp;\n\n        let arguments = resource_arguments(&payload)?;\n        let ReadResourceArgs { server, uri } = ReadResourceArgs::parse(arguments.clone())?;\n\n        let invocation = McpInvocation {\n            server: server.clone(),\n            tool: \"read_mcp_resource\".to_string(),\n            arguments: arguments.clone(),\n        };\n\n        run_resource_operation(&session, &step_context, &call_id, invocation, async {\n            ensure_model_can_access_mcp_server(turn.as_ref(), &server)?;\n            let result = mcp\n                .read_resource(&server, ReadResourceRequestParams::new(uri.clone()))\n                .await\n                .map_err(|err| {\n                    FunctionCallError::RespondToModel(format!(\"resources/read failed: {err:#}\"))\n                })?;\n\n            Ok(ReadResourcePayload {\n                server,\n                uri,\n                result,\n            })\n        })\n        .await\n    }\n}\n\nimpl CoreToolRuntime for ReadMcpResourceHandler {\n    fn environments_for_input(\n        &self,\n        invocation: &ToolInvocation,\n    ) -> Result<ToolEnvironments, FunctionCallError> {\n        resource_environments(invocation, ResourceOperation::Read)"
+    }
+  ]
+}

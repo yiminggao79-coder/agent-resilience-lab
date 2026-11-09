@@ -1,0 +1,33 @@
+test_failed_rerun_replaces_old_success_and_does_not_echo_exception (tests.dev.test_official_mcp_report.OfficialMCPReportTests) ... ERROR
+test_success_replaces_running_marker_and_records_completed_phase (tests.dev.test_official_mcp_report.OfficialMCPReportTests) ... FAIL
+
+======================================================================
+ERROR: test_failed_rerun_replaces_old_success_and_does_not_echo_exception (tests.dev.test_official_mcp_report.OfficialMCPReportTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_official_mcp_report.py", line 28, in test_failed_rerun_replaces_old_success_and_does_not_echo_exception
+    code,report,out=self.invoke(side_effect=RuntimeError('PRIVATE_SYNTHETIC_SENTINEL'))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_official_mcp_report.py", line 24, in invoke
+    code=self.probe.main()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/scripts/probe_official_mcp.py", line 122, in main
+    result=probe(args.node,args.install)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+RuntimeError: PRIVATE_SYNTHETIC_SENTINEL
+
+======================================================================
+FAIL: test_success_replaces_running_marker_and_records_completed_phase (tests.dev.test_official_mcp_report.OfficialMCPReportTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_official_mcp_report.py", line 34, in test_success_replaces_running_marker_and_records_completed_phase
+    self.assertEqual(code,0);self.assertTrue(report['passed']);self.assertEqual(report['phase'],'completed')
+AssertionError: None != 0
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.124s
+
+FAILED (failures=1, errors=1)

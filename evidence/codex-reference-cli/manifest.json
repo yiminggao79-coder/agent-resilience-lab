@@ -1,0 +1,73 @@
+{
+  "repository": "openai/codex",
+  "commit": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "retrieval": "GitHub plugin fixed commit URL; text blob computed, not independently compared to tree API",
+  "license": "Apache-2.0; existing Codex notices apply",
+  "installed_cli_same_commit": null,
+  "files": [
+    {
+      "path": "codex-rs/config/src/loader/macos.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/config/src/loader/macos.rs",
+      "body_ranges_read": [
+        [
+          1,
+          240
+        ]
+      ],
+      "whole_file_audited": false,
+      "upstream_pinned_source_executed": false,
+      "computed_git_blob_sha1": "592bb2570b7d611879f7b43326e0af00b351c116",
+      "artifact": "evidence/codex-reference-cli/1-macos-excerpts.json"
+    },
+    {
+      "path": "codex-rs/login/src/auth/storage.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/login/src/auth/storage.rs",
+      "body_ranges_read": [
+        [
+          650,
+          730
+        ]
+      ],
+      "whole_file_audited": false,
+      "upstream_pinned_source_executed": false,
+      "computed_git_blob_sha1": "5c1a8fc61e6acc2ce7391e152de1518f9dff9669",
+      "artifact": "evidence/codex-reference-cli/2-storage-excerpts.json"
+    },
+    {
+      "path": "codex-rs/model-provider-info/src/lib.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/model-provider-info/src/lib.rs",
+      "body_ranges_read": [
+        [
+          166,
+          199
+        ],
+        [
+          220,
+          247
+        ],
+        [
+          472,
+          554
+        ]
+      ],
+      "whole_file_audited": false,
+      "upstream_pinned_source_executed": false,
+      "computed_git_blob_sha1": "efd48f17a9ad1507240c0141b62148b4dd551f84",
+      "artifact": "evidence/codex-reference-cli/3-lib-excerpts.json"
+    },
+    {
+      "path": "codex-rs/protocol/src/models.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/protocol/src/models.rs",
+      "body_ranges_read": [
+        [
+          1141,
+          1177
+        ]
+      ],
+      "whole_file_audited": false,
+      "upstream_pinned_source_executed": false,
+      "computed_git_blob_sha1": "cdeac4a5988db1c4e7b10603530343c1507052d0",
+      "artifact": "evidence/codex-reference-cli/4-models-excerpts.json"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "source_url": "https://github.com/OpenHands/OpenHands/blob/4aae68ae53477d05010a509f1f1e3f02e61b1831/openhands/controller/agent_controller.py",
+  "commit_pins": {
+    "codex": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+    "langgraph": "e5e37b5d70dbfd93c7006bd90a658c6179a95946",
+    "openhands": "4aae68ae53477d05010a509f1f1e3f02e61b1831"
+  },
+  "read_only": true,
+  "upstream_tests_executed": false,
+  "note": "Controller gates pending action and calls StuckDetector before agent.step.",
+  "excerpts": [
+    {
+      "start_line": 777,
+      "end_line": 816,
+      "lines": [
+        "        if self._pending_action:",
+        "            action_id = getattr(self._pending_action, 'id', 'unknown')",
+        "            action_type = type(self._pending_action).__name__",
+        "            self.log(",
+        "                'debug',",
+        "                f'Agent not stepping because of pending action: {action_type} (id={action_id})',",
+        "                extra={'msg_type': 'STEP_BLOCKED_PENDING_ACTION'},",
+        "            )",
+        "            return",
+        "",
+        "        self.log(",
+        "            'debug',",
+        "            f'LEVEL {self.state.delegate_level} LOCAL STEP {self.state.get_local_step()} GLOBAL STEP {self.state.iteration_flag.current_value}',",
+        "            extra={'msg_type': 'STEP'},",
+        "        )",
+        "",
+        "        # Synchronize spend across all llm services with the budget flag",
+        "        self.state_tracker.sync_budget_flag_with_metrics()",
+        "        if self._is_stuck():",
+        "            await self._react_to_exception(",
+        "                AgentStuckInLoopError('Agent got stuck in a loop')",
+        "            )",
+        "            return",
+        "",
+        "        try:",
+        "            self.state_tracker.run_control_flags()",
+        "        except Exception as e:",
+        "            logger.warning('Control flag limits hit')",
+        "            await self._react_to_exception(e)",
+        "            return",
+        "",
+        "        action: Action = NullAction()",
+        "",
+        "        if self._replay_manager.should_replay():",
+        "            # in replay mode, we don't let the agent to proceed",
+        "            # instead, we replay the action from the replay trajectory",
+        "            action = self._replay_manager.step()",
+        "        else:",
+        "            try:",
+        "                action = self.agent.step(self.state)"
+      ]
+    },
+    {
+      "start_line": 977,
+      "end_line": 987,
+      "lines": [
+        "    def _is_stuck(self) -> bool:",
+        "        \"\"\"Checks if the agent or its delegate is stuck in a loop.",
+        "",
+        "        Returns:",
+        "            bool: True if the agent is stuck, False otherwise.",
+        "        \"\"\"",
+        "        # check if delegate stuck",
+        "        if self.delegate and self.delegate._is_stuck():",
+        "            return True",
+        "",
+        "        return self._stuck_detector.is_stuck(self.headless_mode)"
+      ]
+    }
+  ]
+}

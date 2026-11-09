@@ -1,0 +1,14 @@
+{
+  "run_id": "20261107-163325-a26f1e1a",
+  "case": "warehouse_atomic",
+  "implementation_commit": "90a5803d922975df1d47f15e073bc41178c9b887",
+  "report_sha256": "f2f8cf98840bfb02fe8c40f6d729821f1fab95a5369df227dd783c180731c1e4",
+  "candidate_sha256": {
+    "catalog.py": "8c55a22c62a6d71b1f993da9e2f86d5cb43250592840d3fa43a84dbfdd6d365b",
+    "dispatch.py": "ee8ab4a62312d3fc78dae4b96a311b1c8891698ccfa6cfbcfdb47ebf44065f66",
+    "README.md": "3a63f4ad17bbb8d22f41411cc059eaeec8da4887c36e680d2ede330e5ff5a3fe",
+    "inventory.py": "9be94b78599b2b99ba0117489b989a1a1d6c4b363a1072c4734cfb07d91d9055",
+    "tests/test_dispatch.py": "ce511d6688cb713416c44f742595b7c7be71344db378ce7327ff67ab866a63c7",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

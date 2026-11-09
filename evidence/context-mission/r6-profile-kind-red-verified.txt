@@ -1,0 +1,14 @@
+test_frozen_acceptance_cannot_bypass_exposure_admission_as_development (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+
+======================================================================
+FAIL: test_frozen_acceptance_cannot_bypass_exposure_admission_as_development (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 256, in test_frozen_acceptance_cannot_bypass_exposure_admission_as_development
+    self.module.main(['--suite',str(suite),'--experiment-profile','thinking128k',
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.022s
+
+FAILED (failures=1)

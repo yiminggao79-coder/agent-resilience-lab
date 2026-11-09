@@ -1,0 +1,17 @@
+test_native_protocol_defaults_do_not_route_other_provider_credentials (tests.dev.test_model_protocols.ProtocolSafetyTests) ... FAIL
+
+======================================================================
+FAIL: test_native_protocol_defaults_do_not_route_other_provider_credentials (tests.dev.test_model_protocols.ProtocolSafetyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model_protocols.py", line 219, in test_native_protocol_defaults_do_not_route_other_provider_credentials
+    self.assertEqual(model.base_url,'https://api.anthropic.com/v1')
+AssertionError: 'https://openai-compatible.invalid/v1' != 'https://api.anthropic.com/v1'
+- https://openai-compatible.invalid/v1
++ https://api.anthropic.com/v1
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=1)

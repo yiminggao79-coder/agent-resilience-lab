@@ -1,0 +1,57 @@
+{
+  "audit_target": "a6d915fa42c005b6e49688a873eaca506711b542",
+  "production_and_scripts_freeze_unchanged": true,
+  "tracked_v0_files_unchanged": true,
+  "original_test_methods": 56,
+  "original_suite_rerun": {
+    "passed": 56,
+    "failed": 0,
+    "errors": 0,
+    "seconds": 16.935,
+    "log": "existing-56-rerun.txt"
+  },
+  "new_primary_probes": [
+    {
+      "case": "missing_usage_invalid_message",
+      "meets_expectation": false,
+      "actual_model_fixture_calls": 2,
+      "phase": "needs_confirmation",
+      "reason": "usage_unknown"
+    },
+    {
+      "case": "duplicate_committed_call_identity",
+      "meets_expectation": false,
+      "lines": 2,
+      "phase": "completed",
+      "terminal_resume_changed_file": false
+    },
+    {
+      "case": "invalid_arguments_trace_accounting",
+      "meets_expectation": false,
+      "checkpoint_input_tokens": 202,
+      "trace_input_tokens": 101
+    },
+    {
+      "case": "alternating_failure_and_success_loop",
+      "meets_expectation": false,
+      "fixture_calls": 8,
+      "phase": "failed",
+      "reason": "step_limit",
+      "consecutive_errors": 0
+    },
+    {
+      "case": "orphan_tool_after_runner_sigkill",
+      "meets_expectation": false,
+      "real_runner_exit_code": -9,
+      "file_absent_at_resume": true,
+      "file_appeared_after_old_worker_continued": true,
+      "resumed_phase": "needs_confirmation",
+      "stored_phase_after_effect": "needs_confirmation"
+    }
+  ],
+  "independent_report": "docs/audit-v0-independent.md",
+  "real_model_tested": false,
+  "paid_api_calls_performed": false,
+  "test_or_model_success_rate_claimed": false,
+  "scope": "Audit only; no fixes or new product features."
+}

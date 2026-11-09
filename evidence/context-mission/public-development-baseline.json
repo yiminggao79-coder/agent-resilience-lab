@@ -1,0 +1,99 @@
+{
+  "freeze_sha256": "afefe3be2d0c63206ed1f0344afa6ddb473a00b3b04417afe40cf0842ed3e186",
+  "result": {
+    "immutable_files_unchanged": true,
+    "original_tests_exit_code": 1,
+    "all_tests_exit_code": 1,
+    "oracles_complete": true,
+    "oracle_matches": false,
+    "observations": [
+      {
+        "turn": 1,
+        "complete": true,
+        "observations": [
+          {
+            "output": {
+              "remaining": {
+                "A": 1,
+                "B": 1
+              },
+              "results": [
+                {
+                  "id": "x",
+                  "accepted": false
+                },
+                {
+                  "id": "y",
+                  "accepted": false
+                }
+              ]
+            },
+            "inputs_unchanged": false
+          },
+          {
+            "output": {
+              "remaining": {
+                "A": 1
+              },
+              "results": [
+                {
+                  "id": "x",
+                  "accepted": true
+                }
+              ]
+            },
+            "inputs_unchanged": false
+          },
+          {
+            "output": {
+              "remaining": {
+                "A": 0,
+                "a": 0
+              },
+              "results": [
+                {
+                  "id": "x",
+                  "accepted": false
+                },
+                {
+                  "id": "y",
+                  "accepted": true
+                }
+              ]
+            },
+            "inputs_unchanged": false
+          },
+          {
+            "output": {
+              "remaining": {},
+              "results": [
+                {
+                  "id": "empty",
+                  "accepted": true
+                },
+                {
+                  "id": "unknown",
+                  "accepted": false
+                }
+              ]
+            },
+            "inputs_unchanged": true
+          },
+          {
+            "output": {
+              "remaining": {
+                "zero": 0,
+                "A": 4
+              },
+              "results": []
+            },
+            "inputs_unchanged": true
+          }
+        ],
+        "exit_code": 0
+      }
+    ],
+    "observation_status": "observed",
+    "quality_passed": false
+  }
+}

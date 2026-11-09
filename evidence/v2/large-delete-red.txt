@@ -1,0 +1,77 @@
+test_exact_two_mib_binary_deletion_has_small_intent_and_absence_reconciliation (tests.dev.test_large_delete.LargeDeleteTests) ... ERROR
+test_large_changed_content_or_mode_is_preserved (tests.dev.test_large_delete.LargeDeleteTests) ... test_large_delete_keeps_host_readonly_boundary (tests.dev.test_large_delete.LargeDeleteTests) ... ERROR
+test_legacy_file_and_patch_bounds_are_not_expanded (tests.dev.test_large_delete.LargeDeleteTests) ... test_over_two_mib_rejected_without_effect (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_recreated_large_target_with_changed_mode_is_not_deleted (tests.dev.test_large_delete.LargeDeleteTests) ... ERROR
+
+======================================================================
+ERROR: test_exact_two_mib_binary_deletion_has_small_intent_and_absence_reconciliation (tests.dev.test_large_delete.LargeDeleteTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_large_delete.py", line 19, in test_exact_two_mib_binary_deletion_has_small_intent_and_absence_reconciliation
+    intent=self.tools.prepare('delete_file',{'path':'large'})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 184, in prepare
+    return self._dispatch('prepare', {'name': name, 'args': args}, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 237, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: file_too_large
+
+======================================================================
+ERROR: test_large_changed_content_or_mode_is_preserved (tests.dev.test_large_delete.LargeDeleteTests) (changed='content')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_large_delete.py", line 35, in test_large_changed_content_or_mode_is_preserved
+    intent=self.tools.prepare('delete_file',{'path':changed})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 184, in prepare
+    return self._dispatch('prepare', {'name': name, 'args': args}, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 237, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: file_too_large
+
+======================================================================
+ERROR: test_large_changed_content_or_mode_is_preserved (tests.dev.test_large_delete.LargeDeleteTests) (changed='mode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_large_delete.py", line 35, in test_large_changed_content_or_mode_is_preserved
+    intent=self.tools.prepare('delete_file',{'path':changed})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 184, in prepare
+    return self._dispatch('prepare', {'name': name, 'args': args}, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 237, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: file_too_large
+
+======================================================================
+ERROR: test_large_delete_keeps_host_readonly_boundary (tests.dev.test_large_delete.LargeDeleteTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_large_delete.py", line 51, in test_large_delete_keeps_host_readonly_boundary
+    intent=self.tools.prepare('delete_file',{'path':'large'})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 184, in prepare
+    return self._dispatch('prepare', {'name': name, 'args': args}, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 237, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: file_too_large
+
+======================================================================
+ERROR: test_recreated_large_target_with_changed_mode_is_not_deleted (tests.dev.test_large_delete.LargeDeleteTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_large_delete.py", line 44, in test_recreated_large_target_with_changed_mode_is_not_deleted
+    intent=self.tools.prepare('delete_file',{'path':'large'});self.tools.execute(intent,5)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 184, in prepare
+    return self._dispatch('prepare', {'name': name, 'args': args}, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 237, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: file_too_large
+
+======================================================================
+FAIL: test_legacy_file_and_patch_bounds_are_not_expanded (tests.dev.test_large_delete.LargeDeleteTests) (name='read_file')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_large_delete.py", line 62, in test_legacy_file_and_patch_bounds_are_not_expanded
+    with self.subTest(name=name),self.assertRaises(ToolError):self.tools.prepare(name,args)
+AssertionError: ToolError not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.922s
+
+FAILED (failures=1, errors=5)

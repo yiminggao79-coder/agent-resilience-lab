@@ -1,0 +1,14 @@
+test_resource_or_sysctl_only_tests_do_not_gain_command_alias_exec (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... FAIL
+
+======================================================================
+FAIL: test_resource_or_sysctl_only_tests_do_not_gain_command_alias_exec (tests.dev.test_tool_resources_native.ToolResourcesNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources_native.py", line 75, in test_resource_or_sysctl_only_tests_do_not_gain_command_alias_exec
+    self.assertNotEqual(result['exit_code'],0,result)
+AssertionError: 0 == 0 : {'ok': True, 'exit_code': 0, 'stdout': 'unintended exec grant\n', 'stderr': '', 'stdout_truncated': False, 'stderr_truncated': False}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.088s
+
+FAILED (failures=1)

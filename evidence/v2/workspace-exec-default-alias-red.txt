@@ -1,0 +1,14 @@
+test_default_tests_reject_preexisting_visible_alias_to_external_private_file (tests.dev.test_workspace_exec.WorkspaceExecTests) ... FAIL
+
+======================================================================
+FAIL: test_default_tests_reject_preexisting_visible_alias_to_external_private_file (tests.dev.test_workspace_exec.WorkspaceExecTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 86, in test_default_tests_reject_preexisting_visible_alias_to_external_private_file
+    tools.execute(tools.prepare('run_tests',{}),4)
+AssertionError: ToolError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.415s
+
+FAILED (failures=1)

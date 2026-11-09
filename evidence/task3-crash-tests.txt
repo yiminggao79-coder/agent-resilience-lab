@@ -1,0 +1,15 @@
+test_external_modification_after_kill_is_preserved (tests.dev.test_crash.CrashTests) ... ok
+test_kill_in_model_request_does_not_resubmit_unknown_paid_request (tests.dev.test_crash.CrashTests) ... ok
+test_sigkill_after_append_never_repeats_and_pauses (tests.dev.test_crash.CrashTests) ... ok
+test_sigkill_after_write_before_receipt_resumes_in_new_process (tests.dev.test_crash.CrashTests) ... ok
+test_cli_missing_key_fails_without_creating_task (tests.dev.test_boundaries.BoundaryTests) ... ok
+test_cli_status_trace_and_abort_do_not_require_api_key (tests.dev.test_boundaries.BoundaryTests) ... ok
+test_context_cap_prevents_model_call (tests.dev.test_boundaries.BoundaryTests) ... ok
+test_expired_deadline_prevents_tools_and_survives_resume (tests.dev.test_boundaries.BoundaryTests) ... ok
+test_missing_usage_under_cost_limit_stops_before_tool (tests.dev.test_boundaries.BoundaryTests) ... ok
+test_restricted_expression_hard_timeout (tests.dev.test_boundaries.BoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.822s
+
+OK

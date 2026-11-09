@@ -1,0 +1,16 @@
+test_database_inside_tool_root_is_rejected (tests.dev.test_tools_store.StoreTests) ... ok
+test_exclusive_workspace_and_database_locks (tests.dev.test_tools_store.StoreTests) ... ok
+test_snapshot_and_trace_survive_reopen_without_content_in_trace (tests.dev.test_tools_store.StoreTests) ... ok
+test_trace_rejects_arbitrary_payload (tests.dev.test_tools_store.StoreTests) ... ok
+test_append_never_replayed_after_unknown_outcome (tests.dev.test_tools_store.ToolsTests) ... ok
+test_changed_target_blocks_recovery (tests.dev.test_tools_store.ToolsTests) ... ok
+test_csv_stats_and_bad_data (tests.dev.test_tools_store.ToolsTests) ... ok
+test_expression_runs_in_restricted_child (tests.dev.test_tools_store.ToolsTests) ... ok
+test_path_boundaries_and_special_files (tests.dev.test_tools_store.ToolsTests) ... ok
+test_strict_arguments_and_size (tests.dev.test_tools_store.ToolsTests) ... ok
+test_write_read_and_verified_recovery (tests.dev.test_tools_store.ToolsTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.367s
+
+OK

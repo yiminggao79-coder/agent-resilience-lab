@@ -1,0 +1,6 @@
+test_failed_then_explicit_new_turn_sends_paired_real_http_feedback_in_all_protocols (tests.dev.test_terminal_history_http.TerminalHistoryHTTPTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.936s
+
+OK

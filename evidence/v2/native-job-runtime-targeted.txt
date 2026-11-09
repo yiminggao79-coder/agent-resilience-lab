@@ -1,0 +1,11 @@
+test_real_native_normal_completion_has_durable_quiescence_and_trace_job_id (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_registered_worker_can_confirm_no_supervisor_launch_without_processes (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_uncertain_spawn_registration_gap_never_generates_cleanup_receipt (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_wrong_worker_token_cannot_confirm_or_start_supervisor_scope (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_killed_supervisor_does_not_let_another_database_or_direct_tool_start_effects (tests.acceptance.test_native_job_quarantine_process.NativeJobQuarantineProcessTests) ... {"kind": "native_job_supervisor_death_contract", "model_kind": "offline_protocol_double", "task_id": "4a7017b2ed04439b97381121df84af87", "turn_id": "02a84e844b1e446288ac5f3449180144", "operation_id": "25f47639e6874ca6895068685bfbb48a", "native_pid": 67090, "supervisor_pid": 67088, "new_runner_admitted": false, "old_effect_observed": false, "new_effect_observed": false}
+ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.920s
+
+OK

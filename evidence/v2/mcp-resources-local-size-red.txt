@@ -1,0 +1,14 @@
+test_local_wire_size_rejection_does_not_claim_dispatched_uncertainty (tests.dev.test_mcp_resources.MCPResourceTests) ... FAIL
+
+======================================================================
+FAIL: test_local_wire_size_rejection_does_not_claim_dispatched_uncertainty (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 85, in test_local_wire_size_rejection_does_not_claim_dispatched_uncertainty
+    self.assertFalse(caught.exception.uncertain)
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.101s
+
+FAILED (failures=1)

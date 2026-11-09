@@ -1,0 +1,16 @@
+test_actual_observer_uses_stdin_not_argv_with_clean_environment (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_boolean_exit_codes_are_not_success_measurements (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_freeze_verification_detects_modified_file_and_added_file (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_injected_offline_turn_exercises_real_tools_and_keeps_session_history (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_no_api_mode_never_reads_suite_or_key_and_creates_no_trial (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_owned_runner_is_actually_killed_after_its_marker (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_packing_proof_uses_actual_eligible_input_and_installed_operation (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_quality_is_external_and_unknown_observation_does_not_become_zero (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_tool_and_runner_subprocess_environments_exclude_real_key_variables (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_unsafe_artifact_never_invokes_candidate_code (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_wrong_marker_owner_never_authorizes_signalling_another_process (tests.dev.test_context_mission.ContextMissionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.668s
+
+OK

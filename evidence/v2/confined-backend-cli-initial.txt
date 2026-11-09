@@ -1,0 +1,18 @@
+test_actual_cli_approve_resume_fork_and_continue_preserve_backend (tests.acceptance.test_confined_backend_cli_process.ConfinedBackendCLIProcessTests) ... FAIL
+
+======================================================================
+FAIL: test_actual_cli_approve_resume_fork_and_continue_preserve_backend (tests.acceptance.test_confined_backend_cli_process.ConfinedBackendCLIProcessTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_confined_backend_cli_process.py", line 51, in test_actual_cli_approve_resume_fork_and_continue_preserve_backend
+    self.assertEqual(approved.returncode,0,approved.stderr)
+AssertionError: 2 != 0 : usage: -c [-h] [--db DB]
+          {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,providers,job-status,sessions}
+          ...
+-c: error: unrecognized arguments: --request-id
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.931s
+
+FAILED (failures=1)

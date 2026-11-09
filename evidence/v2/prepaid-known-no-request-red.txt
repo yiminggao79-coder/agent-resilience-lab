@@ -1,0 +1,24 @@
+test_halted_prepaid_refusal_preserves_known_usage_in_decision_and_auto_summary (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) ... 
+======================================================================
+FAIL: test_halted_prepaid_refusal_preserves_known_usage_in_decision_and_auto_summary (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) (automatic=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_prepaid_authorization.py", line 98, in test_halted_prepaid_refusal_preserves_known_usage_in_decision_and_auto_summary
+    self.assertFalse(state.get('usage_unknown',False));self.assertEqual(delegate.calls,0)
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_halted_prepaid_refusal_preserves_known_usage_in_decision_and_auto_summary (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) (automatic=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_prepaid_authorization.py", line 97, in test_halted_prepaid_refusal_preserves_known_usage_in_decision_and_auto_summary
+    self.assertEqual(state['phase'],'failed');self.assertEqual(state['reason'],'paid_requests_halted')
+AssertionError: 'needs_confirmation' != 'failed'
+- needs_confirmation
++ failed
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.069s
+
+FAILED (failures=2)

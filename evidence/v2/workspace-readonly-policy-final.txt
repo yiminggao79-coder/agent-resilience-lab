@@ -1,0 +1,21 @@
+test_every_visible_mutation_is_denied_and_ancestors_stop_at_root (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ok
+test_exact_root_sentinel_dominates_valid_descendants_with_version_one_identity (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ok
+test_existing_empty_and_scoped_policies_keep_identity_scan_and_scratch_behavior (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ok
+test_root_dominance_still_validates_every_lexical_scope (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ok
+test_scratch_overlap_is_rejected_in_both_directions (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ok
+test_scratch_symlink_case_and_unicode_aliases_are_conservatively_rejected (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ok
+test_whole_root_must_exist_and_be_a_real_directory (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ok
+test_whole_validation_does_not_scan_hidden_linked_special_or_large_trees (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ok
+test_prepare_denies_mutations_and_allows_protected_reads (tests.dev.test_read_only_policy.ReadOnlyPolicyTests) ... ok
+test_execution_and_recovery_recheck_prepared_unprotected_intents (tests.dev.test_read_only_policy.ReadOnlyPolicyTests) ... ok
+test_future_scope_and_case_aliases_cannot_bypass_protection (tests.dev.test_read_only_policy.ReadOnlyPolicyTests) ... ok
+test_protected_links_are_refused_at_configuration_and_execution (tests.dev.test_read_only_policy.ReadOnlyPolicyTests) ... ok
+test_checkpoint_binds_policy_and_legacy_empty_remains_compatible (tests.dev.test_read_only_policy.ReadOnlyPolicyTests) ... ok
+test_mcp_refuses_before_reading_config_or_starting_external_process (tests.dev.test_read_only_policy.ReadOnlyPolicyTests) ... ok
+test_command_authority_binds_policy_and_checks_host_policy (tests.dev.test_read_only_policy.ReadOnlyPolicyTests) ... ok
+test_unavailable_backend_never_executes_protected_commands_or_tests (tests.dev.test_read_only_policy.ReadOnlyPolicyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 2.510s
+
+OK

@@ -1,0 +1,39 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/context_manager/history.rs",
+  "git_blob_sha": "3e8221ba33b70690fb1641fdae6d7a7dbcbf35c0",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/context_manager/history.rs",
+  "notice": "Verbatim public-source excerpts; selection and JSON wrapper are local. Upstream code was read, not executed. See LICENSE and NOTICE.",
+  "inspected_line_ranges": [
+    [
+      680,
+      737
+    ],
+    [
+      850,
+      945
+    ],
+    [
+      1170,
+      1189
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 704,
+      "end_line": 737,
+      "text": "    /// Returns the history prepared for sending to the model. This applies a proper\n    /// normalization and drops un-suited items. Unsupported image and audio content\n    /// is stripped from messages and tool outputs according to `input_modalities`.\n    /// Unavailable file images are replaced with text placeholders.\n    pub(crate) async fn for_prompt(\n        self,\n        input_modalities: &[InputModality],\n        image_store: &dyn AttachmentStore,\n    ) -> Vec<ResponseItem> {\n        self.for_prompt_annotated(input_modalities, image_store)\n            .await\n            .into_iter()\n            .map(ResponseItemEnvelope::into_item)\n            .collect()\n    }\n\n    /// Returns normalized history envelopes for internal consumers that must retain metadata.\n    pub(crate) async fn for_prompt_annotated(\n        mut self,\n        input_modalities: &[InputModality],\n        image_store: &dyn AttachmentStore,\n    ) -> Vec<ResponseItemEnvelope> {\n        self.normalize_history(input_modalities);\n        replace_unresolvable_image_files(\n            Arc::make_mut(&mut self.items)\n                .iter_mut()\n                .map(|envelope| &mut envelope.item),\n            image_store,\n        )\n        .await;\n        self.project_file_audio_for_prompt();\n        Arc::unwrap_or_clone(self.items)\n    }\n\n"
+    },
+    {
+      "start_line": 857,
+      "end_line": 870,
+      "text": "    pub(crate) fn remove_first_item(&mut self) {\n        if !self.items.is_empty() {\n            // Remove the oldest item (front of the list). Items are ordered from\n            // oldest → newest, so index 0 is the first entry recorded.\n            let items = Arc::make_mut(&mut self.items);\n            let removed = items.remove(0);\n            // If the removed item participates in a call/output pair, also remove\n            // its corresponding counterpart to keep the invariants intact without\n            // running a full normalization pass.\n            normalize::remove_corresponding_for(items, &removed.item);\n            self.reset_last_usage_boundary();\n            self.world_state_baseline = None;\n        }\n    }\n"
+    },
+    {
+      "start_line": 1170,
+      "end_line": 1186,
+      "text": "    /// 1. every call (function/custom) has a corresponding output entry\n    /// 2. every output has a corresponding call entry or names an external tool event\n    /// 3. unsupported image and audio content is stripped from messages and tool outputs\n    pub(crate) fn normalize_history(&mut self, input_modalities: &[InputModality]) {\n        let items = Arc::make_mut(&mut self.items);\n\n        // all function/tool calls must have a corresponding output\n        normalize::ensure_call_outputs_present(items);\n\n        // Paired outputs must have a corresponding call; named external outputs stand alone.\n        normalize::remove_orphan_outputs(items);\n\n        // strip images when model does not support them\n        normalize::strip_images_when_unsupported(input_modalities, items);\n\n        // strip audio when model does not support it\n        normalize::strip_audio_when_unsupported(input_modalities, items);\n"
+    }
+  ]
+}

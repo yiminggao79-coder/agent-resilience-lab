@@ -1,0 +1,165 @@
+test_01_csv_report_matches_independent_data_oracle (test_acceptance.IndependentAcceptance) ... ok
+test_02_invalid_argument_feedback_allows_repair (test_acceptance.IndependentAcceptance) ... ok
+test_03_false_completion_does_not_establish_task_success (test_acceptance.IndependentAcceptance) ... ok
+test_04_paths_cannot_read_or_overwrite_outside_or_hidden_data (test_acceptance.IndependentAcceptance) ... ok
+test_05_step_budget_stops_before_another_model_decision (test_acceptance.IndependentAcceptance) ... ok
+test_06_missing_usage_with_cost_cap_pauses_before_mutation (test_acceptance.IndependentAcceptance) ... ok
+test_07_sigkill_write_reconciles_in_a_fresh_process (test_acceptance.IndependentAcceptance) ... ok
+test_08_sigkill_append_pauses_without_duplicate_bytes (test_acceptance.IndependentAcceptance) ... ok
+test_09_deadline_includes_time_before_resume (test_acceptance.IndependentAcceptance) ... ok
+test_10_public_cli_metadata_omits_private_task_and_file_data (test_acceptance.IndependentAcceptance) ... ok
+test_confined_backend_cancel_process (unittest.loader._FailedTest) ... ERROR
+test_actual_cli_approve_resume_fork_and_continue_preserve_backend (test_confined_backend_cli_process.ConfinedBackendCLIProcessTests) ... ok
+test_failed_observation_is_durable_quarantine_not_a_cleanup_receipt (test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_sigkill_supervisor_keeps_quarantine_despite_later_guest_effects (test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_sigkill_worker_closes_owner_pipe_and_live_supervisor_confirms_drain (test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_success_receipt_is_durable_in_new_process (test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_extra_executables_cli_process (unittest.loader._FailedTest) ... ERROR
+test_changed_mode_after_effect_is_not_silently_repaired_or_claimed_complete (test_file_mode_process.FileModeProcessTests) ... {"kind": "file_mode_process_contract", "model_kind": "offline_protocol_double", "killed_pid": 42962, "kill_return_code": -9, "resumed_pid": 42965, "phase": "needs_confirmation", "external_mode_preserved": "0o700"}
+ok
+test_matching_content_and_mode_reconcile_after_kill_without_rewrite (test_file_mode_process.FileModeProcessTests) ... {"kind": "file_mode_process_contract", "model_kind": "offline_protocol_double", "killed_pid": 42967, "kill_return_code": -9, "resumed_pid": 42970, "phase": "completed", "mode": "0o755", "inode_mtime_unchanged": true, "sha256_unchanged": true}
+ok
+test_move_destination_effect_survives_kill_then_source_is_deleted_after_mode_confirmation (test_file_mode_process.FileModeProcessTests) ... {"kind": "file_mode_process_contract", "model_kind": "offline_protocol_double", "scenario": "move_destination_before_cursor", "killed_pid": 42972, "kill_return_code": -9, "resumed_pid": 42976, "phase": "completed", "destination_mode": "0o755", "destination_inode_mtime_unchanged": true, "source_deleted_after_confirmation": true}
+ok
+test_large_delete_absence_reconciles_after_kill_without_new_effect (test_large_delete_process.LargeDeleteProcessTests) ... {"kind": "large_delete_process_contract", "model_kind": "offline_protocol_double", "scenario": "absence_after_effect", "file_bytes": 234000, "killed_pid": 42979, "kill_return_code": -9, "resumed_pid": 42982, "phase": "completed", "intent_excludes_content": true, "new_delete_effect": false}
+ok
+test_recreated_large_target_changed_mode_is_preserved_after_restart (test_large_delete_process.LargeDeleteProcessTests) ... {"kind": "large_delete_process_contract", "model_kind": "offline_protocol_double", "scenario": "recreated_target_mode_changed", "file_bytes": 234000, "killed_pid": 42984, "kill_return_code": -9, "resumed_pid": 42987, "phase": "needs_confirmation", "replacement_content_mode_inode_mtime_preserved": true}
+ok
+test_large_effect_followed_by_external_mode_change_pauses (test_large_edit_process.LargeEditProcessTests) ... ok
+test_large_effect_matching_hash_mode_reconciles_without_rebuilding_or_rewrite (test_large_edit_process.LargeEditProcessTests) ... {"kind": "large_edit_process_contract", "model_kind": "offline_protocol_double", "killed_pid": 42996, "kill_return_code": -9, "resumed_pid": 43001, "file_bytes": 210022, "phase": "completed", "intent_excludes_reconstructed_content": true, "content_mode_inode_mtime_unchanged": true}
+ok
+test_http_remote_effect_after_local_cancel_remains_unknown_on_new_process (test_mcp_cancel_process.MCPCancelProcessTests) ... ok
+test_stdio_effect_then_cli_stop_new_process_does_not_replay (test_mcp_cancel_process.MCPCancelProcessTests) ... ok
+test_mcp_resource_cli_process (unittest.loader._FailedTest) ... ERROR
+test_cli_stop_cancels_live_model_before_provider_final (test_model_cancel_process.ModelCancelProcessTests) ... {"contract": "http_mcp_cli_stop_new_pid", "first_pid": 43005, "resumed_pid": 43007, "effect_count": 1, "late_external_effect_observed": true, "pending_id_preserved": true, "external_quiescence_claimed": false, "real_llm_quality": null}
+{"contract": "stdio_mcp_cli_stop_new_pid", "first_pid": 43008, "resumed_pid": 43011, "effect_count": 1, "pending_id_preserved": true, "external_quiescence_claimed": false, "real_llm_quality": null}
+{"kind": "model_cancel_process_contract", "provider": "loopback_synthetic", "stream": true, "runner_pid": 43013, "worker_pid": 43014, "worker_nonrunning_before_final": true, "tools_accepted": false, "usage": "unknown"}
+{"kind": "model_cancel_process_contract", "provider": "loopback_synthetic", "stream": false, "runner_pid": 43017, "worker_pid": 43018, "worker_nonrunning_before_final": true, "tools_accepted": false, "usage": "unknown"}
+ok
+test_runner_sigkill_reclaims_worker_without_waiting_for_provider (test_model_cancel_process.ModelCancelProcessTests) ... {"kind": "model_worker_owner_death_contract", "provider": "loopback_synthetic", "killed_runner_pid": 43021, "worker_pid": 43022, "runner_return_code": -9, "worker_nonrunning_before_final": true, "checkpoint": "model_pending_unconfirmed"}
+ok
+test_killed_supervisor_does_not_let_another_database_or_direct_tool_start_effects (test_native_job_quarantine_process.NativeJobQuarantineProcessTests) ... {"kind": "native_job_supervisor_death_contract", "model_kind": "offline_protocol_double", "task_id": "82de2f56395e41f191c58f9d0980da75", "turn_id": "f9d24dbd338f48cabdf1a38348f96d0d", "operation_id": "0714fe3245d845cbabcb70826c612d99", "native_pid": 43031, "supervisor_pid": 43029, "new_runner_admitted": false, "old_effect_observed": false, "new_effect_observed": false}
+ok
+test_runtime_config_cli_process (unittest.loader._FailedTest) ... ERROR
+test_skill_script_cli_process (unittest.loader._FailedTest) ... ERROR
+test_kill_after_atomic_application_new_pid_never_duplicates_input (test_steering_process.SteeringProcessTests) ... {"kind": "steering_process_contract", "model_kind": "offline_protocol_double", "scenario": "kill_after_atomic_application", "killed_pid": 43036, "kill_return_code": -9, "resumed_pid": 43037, "phase": "completed", "input_status": "applied", "message_occurrences": 1, "application_events": 1}
+ok
+test_second_process_admission_while_runner_locked_survives_unknown_request_kill (test_steering_process.SteeringProcessTests) ... {"kind": "steering_process_contract", "model_kind": "offline_protocol_double", "scenario": "admitted_while_runner_locked_then_request_unknown", "killed_pid": 43038, "kill_return_code": -9, "resumed_pid": 43040, "phase": "needs_confirmation", "input_status": "pending", "message_applied": false}
+ok
+test_kill_after_claim_before_effect_never_recovers_by_creating_file (test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "after_tool_claim", "killed_pid": 43041, "kill_return_code": -9, "resumed_pid": 43044, "phase": "needs_confirmation", "new_effects_after_stop": 0, "unknown_pending_preserved": true}
+ok
+test_kill_after_patch_effect_never_replays_or_executes_remaining_files (test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "after_patch_effect", "killed_pid": 43045, "kill_return_code": -9, "resumed_pid": 43050, "phase": "needs_confirmation", "new_effects_after_stop": 0, "unknown_pending_preserved": true}
+ok
+test_live_claimed_call_finishes_but_new_tools_never_start (test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "claimed_call_finishes", "runner_pid": 43051, "stop_observed": true, "current_call_preempted": false, "new_file_effects": 0}
+ok
+test_cli_stop_cancels_real_unittest_and_keeps_effects_unknown (test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_tests", "runner_pid": 43053, "native_pid": 43058, "supervisor_pid": 43056, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_cli_stop_waits_for_command_cleanup_but_retains_unknown_effect (test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_command", "runner_pid": 43064, "native_pid": 43069, "supervisor_pid": 43067, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_runner_sigkill_owner_eof_cleans_native_before_new_runner_recovery (test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_owner_death_process_contract", "model_kind": "offline_protocol_double", "killed_runner_pid": 43075, "kill_return_code": -9, "resumed_pid": 43088, "native_pid": 43080, "supervisor_pid": 43078, "native_and_supervisor_nonrunning": true, "new_runner_fence_acquired": true, "pending_unknown_preserved": true, "new_effects": false}
+ok
+test_tool_resources_cli_process (unittest.loader._FailedTest) ... ERROR
+test_workspace_exec_cli_process (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_confined_backend_cancel_process (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_confined_backend_cancel_process
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_confined_backend_cancel_process.py", line 4, in <module>
+    from . import test_tool_cancel_process as baseline
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_extra_executables_cli_process (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_extra_executables_cli_process
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_extra_executables_cli_process.py", line 10, in <module>
+    from .test_confined_backend_cli_process import HARNESS, REPO
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_mcp_resource_cli_process (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_mcp_resource_cli_process
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_mcp_resource_cli_process.py", line 11, in <module>
+    from .test_confined_backend_cli_process import HARNESS,REPO
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_runtime_config_cli_process (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_runtime_config_cli_process
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_runtime_config_cli_process.py", line 10, in <module>
+    from .test_confined_backend_cli_process import HARNESS,REPO
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_skill_script_cli_process (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_skill_script_cli_process
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_skill_script_cli_process.py", line 11, in <module>
+    from .test_confined_backend_cli_process import HARNESS,REPO
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_tool_resources_cli_process (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_tool_resources_cli_process
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_tool_resources_cli_process.py", line 10, in <module>
+    from .test_confined_backend_cli_process import HARNESS,REPO
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_workspace_exec_cli_process (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_workspace_exec_cli_process
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_workspace_exec_cli_process.py", line 10, in <module>
+    from .test_confined_backend_cli_process import HARNESS, REPO
+ImportError: attempted relative import with no known parent package
+
+
+----------------------------------------------------------------------
+Ran 42 tests in 25.519s
+
+FAILED (errors=7)

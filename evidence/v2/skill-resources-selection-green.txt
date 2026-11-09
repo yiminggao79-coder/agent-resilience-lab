@@ -1,0 +1,34 @@
+test_disabled_invocation_requires_host_selection_not_model_explicit_argument (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_engine_resource_result_uses_normal_read_feedback_and_metadata_trace_excludes_body (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_full_text_hash_and_procedural_boundary_without_changing_old_main_loader (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_invalid_text_and_oversize_fail_without_truncated_success (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_paths_links_and_nonregular_files_cannot_escape_skill_namespace (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_saved_host_selection_survives_a_new_engine_without_repeating_cli_skill (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_script_preparation_is_existing_canonical_command_with_approved_source_snapshot (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_catalog_scan_counts_invalid_utf8_against_total_read_budget (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_catalog_size_is_bounded_and_legacy_explicit_loading_remains_supported (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_changed_root_refreshes_on_new_turn_without_erasing_user_history (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_context_projects_only_latest_generated_guidance_without_mutating_archive (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_empty_project_preserves_original_message_indices (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_failed_refresh_keeps_prior_turn_and_hash_snapshot_unchanged (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_frontmatter_byte_limit_counts_crlf_bytes (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_frontmatter_subset_is_bounded_and_does_not_evaluate_yaml (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_instruction_files_reject_symlinks_hardlinks_fifo_and_oversize (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_instruction_tool_responses_include_json_escaping_in_byte_bound (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_invalid_runtime_arguments_are_feedback_without_hidden_file_fallback (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_legacy_checkpoint_continues_with_refreshed_user_guidance (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_local_profile_does_not_advertise_unavailable_instruction_tools (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_model_cannot_invoke_disabled_skill_but_explicit_selection_survives_restart (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_project_rules_are_root_to_ancestor_with_per_directory_override (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_project_scope_and_skill_names_cannot_probe_sensitive_or_outside_paths (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_repository_context_is_user_role_before_direct_task_with_no_wire_metadata (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_runtime_instruction_tools_are_read_only_and_cannot_grant_capabilities (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_scoped_rules_are_runtime_lookup_not_automatic_whole_tree_injection (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_skill_catalog_is_metadata_only_until_runtime_load (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_skill_discovery_rejects_linked_roots_and_reports_invalid_children_without_body (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+test_unchanged_root_context_does_not_duplicate_each_turn_and_removal_is_explicit (tests.dev.test_instruction_scopes.InstructionScopeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.939s
+
+OK

@@ -1,0 +1,15 @@
+test_killed_supervisor_does_not_let_another_database_or_direct_tool_start_effects (tests.acceptance.test_native_job_quarantine_process.NativeJobQuarantineProcessTests) ... {"kind": "native_job_supervisor_death_contract", "model_kind": "offline_protocol_double", "task_id": "87d7868a6299493abd9915880e717c72", "turn_id": "9dc3c14ab81f49b98a718eaa126f635e", "operation_id": "9ec4b80bb6b34e08b56b2bb126cd7884", "native_pid": 66919, "supervisor_pid": 66917, "new_runner_admitted": true, "old_effect_observed": true, "new_effect_observed": true}
+FAIL
+
+======================================================================
+FAIL: test_killed_supervisor_does_not_let_another_database_or_direct_tool_start_effects (tests.acceptance.test_native_job_quarantine_process.NativeJobQuarantineProcessTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_native_job_quarantine_process.py", line 55, in test_killed_supervisor_does_not_let_another_database_or_direct_tool_start_effects
+    self.assertFalse(admitted,'different DB bypassed an unconfirmed native job')
+AssertionError: True is not false : different DB bypassed an unconfirmed native job
+
+----------------------------------------------------------------------
+Ran 1 test in 1.094s
+
+FAILED (failures=1)

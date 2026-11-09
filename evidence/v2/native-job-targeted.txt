@@ -1,0 +1,28 @@
+test_real_native_normal_completion_has_durable_quiescence_and_trace_job_id (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_registered_worker_can_confirm_no_supervisor_launch_without_processes (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_uncertain_spawn_registration_gap_never_generates_cleanup_receipt (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_wrong_worker_token_cannot_confirm_or_start_supervisor_scope (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_absent_job_and_database_remain_absent_without_model (tests.dev.test_native_job_cli.NativeJobCLITests) ... ok
+test_claimed_job_metadata_is_readonly_and_omits_private_paths_or_worker_token (tests.dev.test_native_job_cli.NativeJobCLITests) ... ok
+test_foreign_database_is_not_followed_and_malformed_marker_does_not_echo_data (tests.dev.test_native_job_cli.NativeJobCLITests) ... ok
+test_killed_supervisor_does_not_let_another_database_or_direct_tool_start_effects (tests.acceptance.test_native_job_quarantine_process.NativeJobQuarantineProcessTests) ... {"kind": "native_job_supervisor_death_contract", "model_kind": "offline_protocol_double", "task_id": "6867ba1f251a4f3b99ab7d4cc62eb0fc", "turn_id": "c78e19d272d44d628b67519fa8dd67e5", "operation_id": "ef8272cc3cb741a8881a135472b45525", "native_pid": 67267, "supervisor_pid": 67265, "new_runner_admitted": false, "old_effect_observed": false, "new_effect_observed": false}
+ok
+test_claim_is_bound_idempotent_metadata_and_active_marker_blocks_admission (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_claim_publish_failure_keeps_unlaunched_row_and_retry_reuses_it (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_confirmation_is_fixed_and_immutable_then_other_db_can_enter (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_confirmation_sql_error_rolls_back_and_leaves_claimed_marker (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_confirmed_db_can_repair_failed_marker_publish_only_with_explicit_db (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_corrupt_linked_or_group_readable_marker_fails_closed (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_missing_explicit_database_is_never_created (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_old_confirmation_retry_cannot_overwrite_new_active_marker (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_only_exact_active_reference_may_enter_worker_and_all_runner_gates_block (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_readonly_inspect_does_not_follow_foreign_db_or_change_artifacts (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_worker_registration_is_single_owner_and_proofs_require_exact_token (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_wrong_source_generation_intent_and_unicode_root_fail_before_marker (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_runtime_package_and_ancestor_workspace_are_rejected_before_any_controls (tests.dev.test_trusted_runtime_boundary.TrustedRuntimeBoundaryTests) ... ok
+test_separate_workspace_remains_usable (tests.dev.test_trusted_runtime_boundary.TrustedRuntimeBoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 2.711s
+
+OK

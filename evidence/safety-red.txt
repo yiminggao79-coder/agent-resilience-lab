@@ -1,0 +1,38 @@
+test_expired_budget_still_reports_changed_inflight_target_as_unknown (tests.dev.test_crash.CrashTests) ... FAIL
+test_failed_model_request_without_usage_is_not_reported_as_zero (tests.dev.test_engine.EngineTests) ... FAIL
+test_unexpected_mutating_tool_error_does_not_invite_blind_retry (tests.dev.test_engine.EngineTests) ... FAIL
+
+======================================================================
+FAIL: test_expired_budget_still_reports_changed_inflight_target_as_unknown (tests.dev.test_crash.CrashTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_crash.py", line 99, in test_expired_budget_still_reports_changed_inflight_target_as_unknown
+    self.assertEqual(state['phase'], 'needs_confirmation')
+AssertionError: 'failed' != 'needs_confirmation'
+- failed
++ needs_confirmation
+
+
+======================================================================
+FAIL: test_failed_model_request_without_usage_is_not_reported_as_zero (tests.dev.test_engine.EngineTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_engine.py", line 114, in test_failed_model_request_without_usage_is_not_reported_as_zero
+    self.assertIsNone(state['metrics']['input_tokens'])
+AssertionError: 0 is not None
+
+======================================================================
+FAIL: test_unexpected_mutating_tool_error_does_not_invite_blind_retry (tests.dev.test_engine.EngineTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_engine.py", line 127, in test_unexpected_mutating_tool_error_does_not_invite_blind_retry
+    self.assertEqual(state['phase'], 'needs_confirmation')
+AssertionError: 'completed' != 'needs_confirmation'
+- completed
++ needs_confirmation
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.292s
+
+FAILED (failures=3)

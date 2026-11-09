@@ -1,0 +1,51 @@
+import hashlib,json,os,sys,time
+from pathlib import Path
+REPO=Path.cwd();sys.path.insert(0,str(REPO))
+from agent_lab.budget import BudgetLedger,BudgetedModel,load_first_line_key
+from agent_lab.model import OpenAIModel
+from scripts.deepseek_live import RecordingModel
+from scripts.context_mission import execute_turn,judge_turn,export_candidate,atomic_json,usage_totals,implementation_snapshot
+from scripts.evaluate_acceptance import copy_project,digest_file
+plan_path=REPO/'evidence/context-mission/coding-pro-control-plan.json';plan=json.loads(plan_path.read_text())
+original=REPO/'evidence/context-mission/runs/c7476203096e47b6/report.json'
+assert digest_file(original)==plan['original_report_sha256']
+suite=REPO/'evaluation/context_mission_v1';case=next(c for c in json.loads((suite/'manifest.json').read_text())['cases'] if c['id']=='case_01')
+source=REPO/'.lab/context-mission/c7476203096e47b6/case_01/project'
+tasks=[(suite/t['task']).read_text() for t in case['turns']]
+task=('The first two requirements below are already implemented in this supplied project. Preserve them. '
+      'The active coding request is the third requirement. Implement it and verify the saved code.\n\n'
+      +'\n\n'.join('Requirement '+str(i+1)+':\n'+text for i,text in enumerate(tasks)))
+private=REPO/'.lab/coding-pro-control';private.mkdir(mode=0o700)
+output=REPO/'evidence/context-mission/coding-pro-control';output.mkdir()
+snapshot=implementation_snapshot();report={'kind':'consumed_case_fresh_context_control_not_restoration_or_acceptance',
+ 'plan_sha256':digest_file(plan_path),'script_sha256':digest_file(Path(__file__)),
+ 'implementation':snapshot,'original_grade_unchanged':True,'conditions':[]}
+ledger=BudgetLedger.open_existing(REPO/'.lab/paid-budget.sqlite')
+for mode in ('disabled',):
+ if ledger.report()['halted']:break
+ phase=private/mode;phase.mkdir();root=phase/'project';copy_project(source,root)
+ hashes={n:digest_file(root/n) for n in case['immutable_files']}
+ config={'workspace':str(root),'db':str(phase/'tasks.sqlite'),'task':task,'action':'start',
+ 'read_only_paths':case['immutable_files'],'receipt_dir':str(phase/'receipts'),
+ 'limits':{**plan['limits'],'model_timeout':90},'allow_api':True,'prepaid_account':True}
+ delegate=OpenAIModel('deepseek-v4-pro','https://api.deepseek.com','DEEPSEEK_API_KEY',True,protocol='chat',
+  stream=False,token_parameter='max_tokens',parallel_parameter=False,thinking='disabled' if mode=='disabled' else 'enabled',
+  reasoning_effort=None if mode=='disabled' else 'low',ca_bundle='/etc/ssl/cert.pem')
+ model=RecordingModel(BudgetedModel(delegate,ledger,prepaid_account=True),phase/'receipts')
+ previous=os.environ.get('DEEPSEEK_API_KEY');started=time.monotonic()
+ try:
+  load_first_line_key();assert os.environ['DEEPSEEK_API_KEY'] not in task
+  result=execute_turn(config,model=model)
+ finally:
+  if previous is None:os.environ.pop('DEEPSEEK_API_KEY',None)
+  else:os.environ['DEEPSEEK_API_KEY']=previous
+ judge=judge_turn(case,2,root,phase,hashes,result.get('safe_to_observe') is True)
+ row={'mode':mode,'elapsed_seconds':time.monotonic()-started,**result,**judge,
+      'model':'deepseek-v4-pro','usage_totals':usage_totals(result['model_receipts'],model_name='deepseek-v4-pro')}
+ report['conditions'].append(row);atomic_json(output/'report.json',report)
+ if result.get('safe_to_observe') is True:export_candidate(source,phase,output/mode)
+ print(json.dumps({'mode':mode,'phase':result['phase'],'quality':judge['quality_passed'],
+                   'model_calls':result['metrics']['model_calls']}),flush=True)
+report['runtime_unchanged']=implementation_snapshot()['source_sha256']==snapshot['source_sha256']
+report['original_report_unchanged']=digest_file(original)==plan['original_report_sha256']
+atomic_json(output/'report.json',report)

@@ -1,0 +1,26 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/git-utils/src/status.rs",
+  "git_blob_sha": "ba24d52e37dcb5044646367842f61df8c34e0f89",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/git-utils/src/status.rs",
+  "inspected_line_ranges": [
+    [
+      1,
+      83
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 12,
+      "end_line": 13,
+      "text": "use crate::info::detect_local_fsmonitor_override;\nuse crate::info::run_git_command_with_timeout_from;\n"
+    },
+    {
+      "start_line": 29,
+      "end_line": 41,
+      "text": "pub async fn get_has_changes_in_repo(cwd: &Path, repo_root: &Path) -> Option<bool> {\n    let git = PathBuf::from(\"git\");\n    let cwd = cwd.to_path_buf();\n    let key = git_status_key(git.clone(), repo_root).await;\n    share_git_status_run(key, move || async move {\n        let fsmonitor = detect_local_fsmonitor_override(&git, &cwd).await;\n        let output =\n            run_git_command_with_timeout_from(&git, &[\"status\", \"--porcelain\"], &cwd, fsmonitor)\n                .await?;\n        output.status.success().then_some(!output.stdout.is_empty())\n    })\n    .await\n}\n"
+    }
+  ],
+  "notice": "Verbatim selected public-source excerpts in local JSON wrapper; source read, not executed. See LICENSE and NOTICE."
+}

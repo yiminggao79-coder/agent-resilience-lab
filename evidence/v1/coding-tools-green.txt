@@ -1,0 +1,19 @@
+test_listing_and_search_have_finite_result_limits (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_patch_conflict_ambiguous_empty_and_changed_target_are_rejected (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_patch_prepare_is_pure_and_recovery_is_idempotent (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_patch_refuses_escape_binary_and_oversized_desired_content (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_recursive_listing_and_literal_search_exclude_hidden_and_links (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_test_execution_is_unsafe_and_legacy_tools_are_retained (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_denies_outside_read_write_network_and_control_mutation (tests.dev.test_sandbox.SandboxTests) ... ok
+test_invalid_utf8_expansion_marks_output_truncated (tests.dev.test_sandbox.SandboxTests) ... ok
+test_output_collection_is_bounded_for_both_streams (tests.dev.test_sandbox.SandboxTests) ... ok
+test_project_cannot_fork_or_spawn_to_escape_timeout (tests.dev.test_sandbox.SandboxTests) ... ok
+test_real_unittest_runs_and_reports_failure_then_success (tests.dev.test_sandbox.SandboxTests) ... ok
+test_supervisor_retains_lease_after_worker_is_killed (tests.dev.test_sandbox.SandboxTests) ... ok
+test_timeout_kills_descendant_before_late_write (tests.dev.test_sandbox.SandboxTests) ... ok
+test_unavailable_backend_never_executes_project (tests.dev.test_sandbox.SandboxTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 4.116s
+
+OK

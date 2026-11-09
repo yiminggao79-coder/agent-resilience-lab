@@ -1,0 +1,18 @@
+test_completion_gate_delivers_item_done_before_completion_boundary (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ERROR
+
+======================================================================
+ERROR: test_completion_gate_delivers_item_done_before_completion_boundary (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_protocol_fixture.py", line 38, in test_completion_gate_delivers_item_done_before_completion_boundary
+    with serving(completion_gate=True) as server:
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/contextlib.py", line 263, in helper
+    return _GeneratorContextManager(func, args, kwds)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/contextlib.py", line 87, in __init__
+    self.gen = func(*args, **kwds)
+TypeError: serving() got an unexpected keyword argument 'completion_gate'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+FAILED (errors=1)

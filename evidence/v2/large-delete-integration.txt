@@ -1,0 +1,34 @@
+test_exact_two_mib_binary_deletion_has_small_intent_and_absence_reconciliation (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_large_changed_content_or_mode_is_preserved (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_large_delete_keeps_host_readonly_boundary (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_legacy_file_and_patch_bounds_are_not_expanded (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_over_two_mib_rejected_without_effect (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_recreated_large_target_with_changed_mode_is_not_deleted (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_changed_parent_symlink_cannot_redirect_delete_or_directory_creation (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_create_directory_recovers_partial_parents_without_removing_contents (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_create_directory_requires_explicit_parents_and_is_idempotent (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_delete_and_directory_recovery_never_mutate_after_expired_timeout (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_delete_changed_or_recreated_file_is_preserved (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_delete_detects_content_or_link_count_changes_while_hashing (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_delete_prepares_without_effect_and_recovery_confirms_absence (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_delete_replacement_kind_or_link_is_preserved_and_large_input_is_rejected (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_delete_unchanged_prepared_file_can_be_retried (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_directory_changed_to_file_is_not_overwritten_during_recovery (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_new_mutations_obey_worker_execution_lease (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_new_schema_is_strict_and_retains_existing_command_and_read_file (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_paths_reject_hidden_escape_symlink_fifo_hardlink_and_wrong_kind (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_read_lines_empty_files_and_invalid_utf8_are_explicit (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_read_lines_numbers_and_pages_utf8_without_changing_legacy_read (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_read_lines_pages_files_larger_than_legacy_read_limit (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_read_lines_reports_oversized_line_page_and_file_without_truncating (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_sigkill_after_delete_before_receipt_recovers_in_a_fresh_process (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_strict_arguments_reject_boolean_line_numbers_and_extra_fields (tests.dev.test_file_operations.FileOperationsTests) ... ok
+test_large_delete_absence_reconciles_after_kill_without_new_effect (tests.acceptance.test_large_delete_process.LargeDeleteProcessTests) ... {"kind": "large_delete_process_contract", "model_kind": "offline_protocol_double", "scenario": "absence_after_effect", "file_bytes": 234000, "killed_pid": 59686, "kill_return_code": -9, "resumed_pid": 59690, "phase": "completed", "intent_excludes_content": true, "new_delete_effect": false}
+ok
+test_recreated_large_target_changed_mode_is_preserved_after_restart (tests.acceptance.test_large_delete_process.LargeDeleteProcessTests) ... {"kind": "large_delete_process_contract", "model_kind": "offline_protocol_double", "scenario": "recreated_target_mode_changed", "file_bytes": 234000, "killed_pid": 59692, "kill_return_code": -9, "resumed_pid": 59695, "phase": "needs_confirmation", "replacement_content_mode_inode_mtime_preserved": true}
+ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 11.521s
+
+OK

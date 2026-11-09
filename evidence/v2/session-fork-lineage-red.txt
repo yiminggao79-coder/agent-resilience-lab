@@ -1,0 +1,14 @@
+test_status_exposes_filtered_lineage_without_history_or_arbitrary_origin_values (tests.dev.test_session_fork_cli.SessionForkCLITests) ... ERROR
+
+======================================================================
+ERROR: test_status_exposes_filtered_lineage_without_history_or_arbitrary_origin_values (tests.dev.test_session_fork_cli.SessionForkCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_fork_cli.py", line 59, in test_status_exposes_filtered_lineage_without_history_or_arbitrary_origin_values
+    origin=json.loads(out)['fork_origin']
+KeyError: 'fork_origin'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.056s
+
+FAILED (errors=1)

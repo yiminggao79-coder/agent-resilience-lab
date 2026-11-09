@@ -1,0 +1,130 @@
+test_all_commands_tests_and_cached_state_bind_file_content_and_resource_scope (tests.dev.test_tool_resources.ToolResourceTests) ... ERROR
+test_default_shape_and_file_scope_hash_versus_directory_scope_identity (tests.dev.test_tool_resources.ToolResourceTests) ... ERROR
+test_directory_data_is_explicitly_not_a_content_snapshot (tests.dev.test_tool_resources.ToolResourceTests) ... ERROR
+test_forged_worker_and_missing_resume_configuration_are_refused (tests.dev.test_tool_resources.ToolResourceTests) ... ERROR
+test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) ... test_safe_named_reads_are_explicit_and_cannot_write_or_wildcard (tests.dev.test_tool_resources.ToolResourceTests) ... ERROR
+
+======================================================================
+ERROR: test_all_commands_tests_and_cached_state_bind_file_content_and_resource_scope (tests.dev.test_tool_resources.ToolResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 52, in test_all_commands_tests_and_cached_state_bind_file_content_and_resource_scope
+    tools=CodingTools(self.root,tool_read_paths=[str(self.file)],tool_sysctl_read=['hw.pagesize_compat'])
+TypeError: __init__() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_default_shape_and_file_scope_hash_versus_directory_scope_identity (tests.dev.test_tool_resources.ToolResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 26, in test_default_shape_and_file_scope_hash_versus_directory_scope_identity
+    file=runtime_policy(self.root,tool_read_paths=[str(self.file)])['read_resources']['paths'][0]
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_directory_data_is_explicitly_not_a_content_snapshot (tests.dev.test_tool_resources.ToolResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 61, in test_directory_data_is_explicitly_not_a_content_snapshot
+    tools=CodingTools(self.root,tool_read_paths=[str(self.resources)])
+TypeError: __init__() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_forged_worker_and_missing_resume_configuration_are_refused (tests.dev.test_tool_resources.ToolResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 67, in test_forged_worker_and_missing_resume_configuration_are_refused
+    tools=CodingTools(self.root,tool_read_paths=[str(self.file)])
+TypeError: __init__() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['/Users/yiming'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['/'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['/Users'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['/private/tmp/agentlab-resource-51x7ha0c'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['/private/tmp/agentlab-resource-51x7ha0c/work/inside'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['/private/tmp/agentlab-resource-51x7ha0c/host'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['/private/tmp/agentlab-resource-51x7ha0c/pipe'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['/private/tmp/agentlab-resource-51x7ha0c/resources', '/private/tmp/agentlab-resource-51x7ha0c/resources/value.txt'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['/private/tmp/agentlab-resource-51x7ha0c/resources/value.txt', '/private/tmp/agentlab-resource-51x7ha0c/resources/value.txt'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) (paths=['relative'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 42, in test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes
+    runtime_policy(self.root,tool_read_paths=paths)
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_safe_named_reads_are_explicit_and_cannot_write_or_wildcard (tests.dev.test_tool_resources.ToolResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources.py", line 45, in test_safe_named_reads_are_explicit_and_cannot_write_or_wildcard
+    policy=runtime_policy(self.root,tool_sysctl_read=['hw.pagesize_compat'])
+TypeError: runtime_policy() got an unexpected keyword argument 'tool_sysctl_read'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.021s
+
+FAILED (errors=15)

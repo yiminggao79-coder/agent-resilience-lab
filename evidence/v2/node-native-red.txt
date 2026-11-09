@@ -1,0 +1,60 @@
+test_actual_js_import_write_and_two_file_same_process_test_runner (tests.dev.test_node_native.NodeNativeTests) ... ERROR
+test_private_files_child_process_and_network_are_denied_with_clean_env (tests.dev.test_node_native.NodeNativeTests) ... ERROR
+test_timeout_joins_native_before_late_effect_and_output_stays_bounded (tests.dev.test_node_native.NodeNativeTests) ... ERROR
+test_tools_worker_and_trusted_supervisor_execute_node_through_original_channel (tests.dev.test_node_native.NodeNativeTests) ... ERROR
+test_whole_root_readonly_and_external_scratch_survive_node_grant (tests.dev.test_node_native.NodeNativeTests) ... ERROR
+
+======================================================================
+ERROR: test_actual_js_import_write_and_two_file_same_process_test_runner (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 35, in test_actual_js_import_write_and_two_file_same_process_test_runner
+    result = self.command(['node', 'script.cjs'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 29, in command
+    intent = prepare_command(self.root, argv, node_executable=self.node, read_only_paths=readonly)
+TypeError: prepare_command() got an unexpected keyword argument 'node_executable'
+
+======================================================================
+ERROR: test_private_files_child_process_and_network_are_denied_with_clean_env (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 60, in test_private_files_child_process_and_network_are_denied_with_clean_env
+    result = self.command(['node', 'check.cjs', str(private)])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 29, in command
+    intent = prepare_command(self.root, argv, node_executable=self.node, read_only_paths=readonly)
+TypeError: prepare_command() got an unexpected keyword argument 'node_executable'
+
+======================================================================
+ERROR: test_timeout_joins_native_before_late_effect_and_output_stays_bounded (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 82, in test_timeout_joins_native_before_late_effect_and_output_stays_bounded
+    self.command(['node', '-e', body], timeout=.7)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 29, in command
+    intent = prepare_command(self.root, argv, node_executable=self.node, read_only_paths=readonly)
+TypeError: prepare_command() got an unexpected keyword argument 'node_executable'
+
+======================================================================
+ERROR: test_tools_worker_and_trusted_supervisor_execute_node_through_original_channel (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 93, in test_tools_worker_and_trusted_supervisor_execute_node_through_original_channel
+    tools = CodingTools(self.root, node_executable=self.node)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 72, in __init__
+    from .command_runtime import runtime_policy
+ModuleNotFoundError: No module named 'agent_lab.command_runtime'
+
+======================================================================
+ERROR: test_whole_root_readonly_and_external_scratch_survive_node_grant (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 74, in test_whole_root_readonly_and_external_scratch_survive_node_grant
+    result = self.command(['node', '-e', body], readonly=('.',))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 29, in command
+    intent = prepare_command(self.root, argv, node_executable=self.node, read_only_paths=readonly)
+TypeError: prepare_command() got an unexpected keyword argument 'node_executable'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.122s
+
+FAILED (errors=5)

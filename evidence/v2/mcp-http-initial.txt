@@ -1,0 +1,25 @@
+test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_json_lifecycle_headers_and_session_delete_without_credentials_or_proxy (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_matching_sse_result_finishes_without_waiting_for_stream_disconnect (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_output_limit_and_timeout_after_effect_remain_unknown (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_sse_notifications_ping_and_both_line_endings (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_url_authority_is_explicit_and_invalid_limits_launch_nothing (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_calls_are_serialized_with_unique_ids (tests.dev.test_mcp.MCPTests) ... ok
+test_close_kills_process_group_even_after_leader_death (tests.dev.test_mcp.MCPTests) ... ok
+test_discovery_rejects_cycles_invalid_schemas_and_item_overflow (tests.dev.test_mcp.MCPTests) ... ok
+test_environment_requires_explicit_values_and_allowlist (tests.dev.test_mcp.MCPTests) ... ok
+test_list_changed_requires_explicit_catalog_refresh (tests.dev.test_mcp.MCPTests) ... ok
+test_page_limit_is_bounded_and_config_is_validated_before_launch (tests.dev.test_mcp.MCPTests) ... ok
+test_progress_notifications_never_extend_request_deadline (tests.dev.test_mcp.MCPTests) ... ok
+test_protocol_failures_are_sanitized_and_effects_are_uncertain (tests.dev.test_mcp.MCPTests) ... ok
+test_real_initialize_paginated_discovery_and_structured_call (tests.dev.test_mcp.MCPTests) ... ok
+test_real_timeout_does_not_reconnect_or_replay_mutating_call (tests.dev.test_mcp.MCPTests) ... ok
+test_server_notifications_and_ping_do_not_become_results (tests.dev.test_mcp.MCPTests) ... ok
+test_stdout_stderr_and_notification_floods_are_bounded (tests.dev.test_mcp.MCPTests) ... ok
+test_unlisted_tool_and_bad_arguments_never_reach_server (tests.dev.test_mcp.MCPTests) ... ok
+test_version_negotiation_and_capability_requirements (tests.dev.test_mcp.MCPTests) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 10.845s
+
+OK

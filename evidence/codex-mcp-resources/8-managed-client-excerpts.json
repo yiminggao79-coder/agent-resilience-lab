@@ -1,0 +1,24 @@
+{
+  "path": "codex-rs/codex-mcp/src/rmcp_client/managed_client.rs",
+  "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/codex-mcp/src/rmcp_client/managed_client.rs",
+  "body_ranges_read": [
+    [
+      1,
+      185
+    ]
+  ],
+  "upstream_executed": false,
+  "excerpts": [
+    {
+      "start": 43,
+      "end": 75,
+      "text": "impl ManagedClient {\n    pub(crate) async fn with_active_shared_lease<T>(\n        &self,\n        operation: impl Future<Output = T>,\n    ) -> Result<T> {\n        match &self.connection_sharing {\n            ConnectionSharing::Shared(lease) => tokio::select! {\n                biased;\n                () = lease.cancellation().cancelled() => {\n                    Err(anyhow!(\"MCP connection lease has been released\"))\n                }\n                result = operation => Ok(result),\n            },\n            ConnectionSharing::Private\n            | ConnectionSharing::Negotiated\n            | ConnectionSharing::Owned(_) => Ok(operation.await),\n        }\n    }\n\n    pub(crate) async fn with_lease_request<T>(\n        &self,\n        operation: impl Future<Output = Result<T>>,\n    ) -> Result<T> {\n        // Keep one copy of the request future as it passes through both lease scopes.\n        let operation = std::pin::pin!(operation);\n        self.with_active_shared_lease(async {\n            match self.connection_sharing.server_lease() {\n                Some(lease) => lease.requests.scope(operation).await,\n                None => operation.await,\n            }\n        })\n        .await?\n    }"
+    },
+    {
+      "start": 117,
+      "end": 161,
+      "text": "    /// Lists resources within this chat's lease lifetime.\n    pub(crate) async fn list_resources(\n        &self,\n        params: Option<PaginatedRequestParams>,\n        timeout: Option<Duration>,\n    ) -> Result<ListResourcesResult> {\n        self.with_active_shared_lease(self.client.list_resources(params, timeout))\n            .await?\n    }\n\n    /// Lists resource templates within this chat's lease lifetime.\n    pub(crate) async fn list_resource_templates(\n        &self,\n        params: Option<PaginatedRequestParams>,\n        timeout: Option<Duration>,\n    ) -> Result<ListResourceTemplatesResult> {\n        self.with_active_shared_lease(self.client.list_resource_templates(params, timeout))\n            .await?\n    }\n\n    /// Reads a resource using this chat's input authority and lease lifetime.\n    pub(crate) async fn read_resource(\n        &self,\n        mut params: rmcp::model::ReadResourceRequestParams,\n        timeout: Option<Duration>,\n    ) -> Result<rmcp::model::ReadResourceResult> {\n        if let Some(lease) = self.connection_sharing.server_lease() {\n            params.meta.get_or_insert_default().insert(\n                crate::connection_pool::LEASE_META_KEY.to_owned(),\n                serde_json::json!(lease.id),\n            );\n        }\n        self.with_lease_request(async {\n            if let Some(send_elicitation) = &self.shared_elicitation {\n                self.client\n                    .read_resource_with_elicitation(params, timeout, Arc::clone(send_elicitation))\n                    .await\n            } else {\n                self.client.read_resource(params, timeout).await\n            }\n        })\n        .await\n    }\n\n    pub(crate) async fn listed_catalog(&self) -> (Vec<ToolInfo>, Option<Arc<serde_json::Value>>) {"
+    }
+  ],
+  "git_blob_sha1_computed_not_independently_compared": "7c3d830dc22fd71eb8e33fc0ba270b61fedb7f25"
+}

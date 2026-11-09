@@ -1,0 +1,427 @@
+--- before/allocation.py
++++ after/allocation.py
+@@ -1,10 +1,32 @@
+-from lines import quantities
++from lines import identity, quantities
+ from warehouse import reserve
+ 
+ 
+ def allocate(stock, orders):
++    remaining = dict(stock)
+     results = []
++    seen = {}
++    decisions = {}
++
++    # Pre-validate every replay so a mismatched ID raises ValueError before
++    # any stock is touched, keeping caller inputs unchanged on error.
+     for order in orders:
+-        accepted = reserve(stock, quantities(order['items']))
+-        results.append({'id': order['id'], 'accepted': accepted})
+-    return {'remaining': stock, 'results': results}
++        key = identity(quantities(order['items']))
++        previous = seen.get(order['id'])
++        if previous is not None and previous[0] != key:
++            raise ValueError('order id reused with different quantities: %r'
++                             % (order['id'],))
++        seen.setdefault(order['id'], (key, None))
++
++    for order in orders:
++        order_id = order['id']
++        key = identity(quantities(order['items']))
++        if order_id in decisions:
++            # Replay: return the original decision, consume nothing.
++            accepted = decisions[order_id]
++        else:
++            accepted = reserve(remaining, quantities(order['items']))
++            decisions[order_id] = accepted
++        results.append({'id': order_id, 'accepted': accepted})
++
++    return {'remaining': remaining, 'results': results}
+--- before/lines.py
++++ after/lines.py
+@@ -1,2 +1,16 @@
+ def quantities(items):
+-    return {item['sku']: item['qty'] for item in items}
++    """Combine repeated SKU lines in one order into summed quantities."""
++    combined = {}
++    for item in items:
++        sku = item['sku']
++        combined[sku] = combined.get(sku, 0) + item['qty']
++    return combined
++
++
++def identity(combined):
++    """Order identity for replay detection.
++
++    Depends only on the set of SKU -> total qty pairs, so line order and
++    splitting one SKU across several lines do not affect it.
++    """
++    return tuple(sorted(combined.items()))
+--- before/reports.py
++++ after/reports.py
+@@ -0,0 +1,55 @@
++"""Allocation reporting built on top of :func:`allocation.allocate`.
++
++This module deliberately contains no allocation logic of its own: every
++acceptance decision and stock movement comes from ``allocate`` so the two
++APIs can never drift apart.
++"""
++from allocation import allocate
++
++
++def build_report(stock, orders):
++    """Summarize the effect of allocating ``orders`` against ``stock``.
++
++    Returns a dict with exactly the keys ``remaining``, ``accepted_unique``,
++    ``rejected_unique``, ``units_reserved``, ``reserved_by_sku`` and
++    ``rejected_ids``.
++
++    Distinct order IDs are counted by their first decision only, so
++    equivalent replays are counted once and consume nothing. Conflicting
++    payloads for one ID propagate ``ValueError`` from ``allocate``. Neither
++    argument is mutated, including on that error.
++    """
++    # allocate works on its own copy of stock and never mutates orders, so the
++    # caller's inputs stay untouched -- including when it raises ValueError.
++    outcome = allocate(stock, orders)
++    remaining = outcome['remaining']
++
++    accepted_ids = []
++    rejected_ids = []
++    for row in outcome['results']:
++        order_id = row['id']
++        if row['accepted']:
++            accepted_ids.append(order_id)
++        else:
++            rejected_ids.append(order_id)
++
++    # Distinct IDs in first-appearance order; each ID's decision is fixed by
++    # its first occurrence, so duplicates collapse to that single decision.
++    accepted_unique = len(dict.fromkeys(accepted_ids))
++    rejected_order = list(dict.fromkeys(rejected_ids))
++
++    reserved_by_sku = {}
++    total_reserved = 0
++    for sku in sorted(stock):
++        consumed = stock[sku] - remaining[sku]
++        reserved_by_sku[sku] = consumed
++        total_reserved += consumed
++
++    return {
++        'remaining': remaining,
++        'accepted_unique': accepted_unique,
++        'rejected_unique': len(rejected_order),
++        'units_reserved': total_reserved,
++        'reserved_by_sku': reserved_by_sku,
++        'rejected_ids': rejected_order,
++    }
+--- before/tests/test_allocation_extra.py
++++ after/tests/test_allocation_extra.py
+@@ -0,0 +1,48 @@
++import copy
++import unittest
++
++from allocation import allocate
++
++
++class AllocationExtraTests(unittest.TestCase):
++    def test_repeated_lines_combined_and_accepted(self):
++        result = allocate({'A': 5}, [{'id': 'x', 'items': [{'sku': 'A', 'qty': 2}, {'sku': 'A', 'qty': 2}]}])
++        self.assertEqual(result, {'remaining': {'A': 1}, 'results': [{'id': 'x', 'accepted': True}]})
++
++    def test_case_sensitive_skus(self):
++        result = allocate({'A': 1, 'a': 1}, [{'id': 'x', 'items': [{'sku': 'a', 'qty': 1}]}])
++        self.assertEqual(result, {'remaining': {'A': 1, 'a': 0}, 'results': [{'id': 'x', 'accepted': True}]})
++
++    def test_zero_stock_key_preserved(self):
++        result = allocate({'A': 1, 'zero': 0}, [])
++        self.assertEqual(result, {'remaining': {'A': 1, 'zero': 0}, 'results': []})
++
++    def test_rejection_consumes_no_stock(self):
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}, {'sku': 'B', 'qty': 5}]},
++                  {'id': 'y', 'items': [{'sku': 'A', 'qty': 1}]}]
++        result = allocate({'A': 1, 'B': 1}, orders)
++        self.assertEqual(result, {'remaining': {'A': 0, 'B': 1},
++                                  'results': [{'id': 'x', 'accepted': False},
++                                              {'id': 'y', 'accepted': True}]})
++
++    def test_no_mutation_of_inputs(self):
++        stock = {'A': 3}
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]}]
++        before = copy.deepcopy((stock, orders))
++        result = allocate(stock, orders)
++        self.assertEqual((stock, orders), before)
++        result['remaining']['A'] = 99
++        self.assertEqual(stock, {'A': 3})
++
++    def test_sequential_orders_arrival_order(self):
++        orders = [{'id': 'a', 'items': [{'sku': 'A', 'qty': 2}]},
++                  {'id': 'b', 'items': [{'sku': 'A', 'qty': 2}]},
++                  {'id': 'c', 'items': [{'sku': 'A', 'qty': 1}]}]
++        self.assertEqual(allocate({'A': 3}, orders),
++                         {'remaining': {'A': 0}, 'results': [{'id': 'a', 'accepted': True},
++                                                              {'id': 'b', 'accepted': False},
++                                                              {'id': 'c', 'accepted': True}]})
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_idempotent_ids.py
++++ after/tests/test_idempotent_ids.py
+@@ -0,0 +1,122 @@
++import copy
++import unittest
++
++from allocation import allocate
++
++
++class IdempotentOrderIdTests(unittest.TestCase):
++    def test_replay_returns_original_result_without_consuming_stock(self):
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 2}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 2}]}]
++        result = allocate({'A': 5}, orders)
++        self.assertEqual(result, {'remaining': {'A': 3},
++                                  'results': [{'id': 'x', 'accepted': True},
++                                              {'id': 'x', 'accepted': True}]})
++
++    def test_replay_identity_ignores_line_order(self):
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}, {'sku': 'B', 'qty': 2}]},
++                  {'id': 'x', 'items': [{'sku': 'B', 'qty': 2}, {'sku': 'A', 'qty': 1}]}]
++        result = allocate({'A': 1, 'B': 2}, orders)
++        self.assertEqual(result, {'remaining': {'A': 0, 'B': 0},
++                                  'results': [{'id': 'x', 'accepted': True},
++                                              {'id': 'x', 'accepted': True}]})
++
++    def test_replay_identity_ignores_line_splitting(self):
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 2}, {'sku': 'B', 'qty': 1}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 1}, {'sku': 'B', 'qty': 1},
++                                        {'sku': 'A', 'qty': 1}]}]
++        result = allocate({'A': 2, 'B': 1}, orders)
++        self.assertEqual(result, {'remaining': {'A': 0, 'B': 0},
++                                  'results': [{'id': 'x', 'accepted': True},
++                                              {'id': 'x', 'accepted': True}]})
++
++    def test_rejected_id_stays_rejected_on_later_replay(self):
++        # First attempt fails; stock is still untouched, but the ID is pinned
++        # to its original rejection even though stock exists now.
++        orders = [{'id': 'blocker', 'items': [{'sku': 'A', 'qty': 2}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 2}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 2}]}]
++        result = allocate({'A': 2}, orders)
++        self.assertEqual(result, {'remaining': {'A': 0},
++                                  'results': [{'id': 'blocker', 'accepted': True},
++                                              {'id': 'x', 'accepted': False},
++                                              {'id': 'x', 'accepted': False}]})
++
++    def test_rejected_replay_with_insufficient_stock_at_first(self):
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 5}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 5}]}]
++        result = allocate({'A': 3}, orders)
++        self.assertEqual(result, {'remaining': {'A': 3},
++                                  'results': [{'id': 'x', 'accepted': False},
++                                              {'id': 'x', 'accepted': False}]})
++
++    def test_reused_id_with_different_quantities_raises(self):
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 2}]}]
++        stock = {'A': 5}
++        before = copy.deepcopy((stock, orders))
++        with self.assertRaises(ValueError):
++            allocate(stock, orders)
++        self.assertEqual((stock, orders), before)
++
++    def test_reused_id_with_different_skus_raises_and_inputs_unchanged(self):
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]},
++                  {'id': 'ok', 'items': [{'sku': 'A', 'qty': 1}]},
++                  {'id': 'x', 'items': [{'sku': 'B', 'qty': 1}]}]
++        stock = {'A': 2, 'B': 1}
++        before = copy.deepcopy((stock, orders))
++        with self.assertRaises(ValueError):
++            allocate(stock, orders)
++        self.assertEqual((stock, orders), before)
++
++    def test_conflict_after_replay_still_raises(self):
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 3}]}]
++        with self.assertRaises(ValueError):
++            allocate({'A': 5}, orders)
++
++    def test_empty_order_identity(self):
++        orders = [{'id': 'e', 'items': []},
++                  {'id': 'e', 'items': []}]
++        result = allocate({'A': 0}, orders)
++        self.assertEqual(result, {'remaining': {'A': 0},
++                                  'results': [{'id': 'e', 'accepted': True},
++                                              {'id': 'e', 'accepted': True}]})
++
++    def test_empty_order_reused_with_items_raises(self):
++        orders = [{'id': 'x', 'items': []},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]}]
++        with self.assertRaises(ValueError):
++            allocate({'A': 1}, orders)
++
++    def test_zero_qty_lines_cancel_in_identity(self):
++        # Two lines summing to zero combine to the same empty identity.
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}, {'sku': 'A', 'qty': 1}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 2}]}]
++        result = allocate({'A': 2}, orders)
++        self.assertEqual(result, {'remaining': {'A': 0},
++                                  'results': [{'id': 'x', 'accepted': True},
++                                              {'id': 'x', 'accepted': True}]})
++
++    def test_distinct_ids_unaffected(self):
++        orders = [{'id': 'a', 'items': [{'sku': 'A', 'qty': 2}]},
++                  {'id': 'b', 'items': [{'sku': 'A', 'qty': 2}]}]
++        result = allocate({'A': 3}, orders)
++        self.assertEqual(result, {'remaining': {'A': 1},
++                                  'results': [{'id': 'a', 'accepted': True},
++                                              {'id': 'b', 'accepted': False}]})
++
++    def test_successful_replay_does_not_mutate_inputs(self):
++        stock = {'A': 4, 'zero': 0}
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]}]
++        before = copy.deepcopy((stock, orders))
++        result = allocate(stock, orders)
++        self.assertEqual((stock, orders), before)
++        result['remaining']['A'] = 99
++        self.assertEqual(stock, {'A': 4, 'zero': 0})
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_reports.py
++++ after/tests/test_reports.py
+@@ -0,0 +1,116 @@
++import copy
++import unittest
++
++from allocation import allocate
++from reports import build_report
++
++EXPECTED_KEYS = {'remaining', 'accepted_unique', 'rejected_unique',
++                 'units_reserved', 'reserved_by_sku', 'rejected_ids'}
++
++
++class BuildReportTests(unittest.TestCase):
++    def test_exact_key_set(self):
++        report = build_report({'A': 1}, [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]}])
++        self.assertEqual(set(report), EXPECTED_KEYS)
++
++    def test_basic_counts_and_units(self):
++        stock = {'A': 5, 'B': 3}
++        orders = [{'id': 'a', 'items': [{'sku': 'A', 'qty': 2}, {'sku': 'B', 'qty': 1}]},
++                  {'id': 'b', 'items': [{'sku': 'A', 'qty': 10}]}]
++        report = build_report(stock, orders)
++        self.assertEqual(report, {
++            'remaining': {'A': 3, 'B': 2},
++            'accepted_unique': 1,
++            'rejected_unique': 1,
++            'units_reserved': 3,
++            'reserved_by_sku': {'A': 2, 'B': 1},
++            'rejected_ids': ['b'],
++        })
++
++    def test_equivalent_replays_counted_once_and_consume_nothing(self):
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 2}, {'sku': 'B', 'qty': 1}]},
++                  # same identity: reordered lines
++                  {'id': 'x', 'items': [{'sku': 'B', 'qty': 1}, {'sku': 'A', 'qty': 2}]},
++                  # same identity: split lines
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 1}, {'sku': 'A', 'qty': 1},
++                                        {'sku': 'B', 'qty': 1}]}]
++        report = build_report({'A': 4, 'B': 2}, orders)
++        self.assertEqual(report, {
++            'remaining': {'A': 2, 'B': 1},
++            'accepted_unique': 1,
++            'rejected_unique': 0,
++            'units_reserved': 3,
++            'reserved_by_sku': {'A': 2, 'B': 1},
++            'rejected_ids': [],
++        })
++
++    def test_rejected_replays_counted_once(self):
++        orders = [{'id': 'bad', 'items': [{'sku': 'A', 'qty': 9}]},
++                  {'id': 'bad', 'items': [{'sku': 'A', 'qty': 9}]},
++                  {'id': 'good', 'items': [{'sku': 'A', 'qty': 1}]}]
++        report = build_report({'A': 1}, orders)
++        self.assertEqual(report['rejected_unique'], 1)
++        self.assertEqual(report['rejected_ids'], ['bad'])
++        self.assertEqual(report['accepted_unique'], 1)
++        self.assertEqual(report['units_reserved'], 1)
++        self.assertEqual(report['remaining'], {'A': 0})
++
++    def test_rejected_ids_first_appearance_order(self):
++        orders = [{'id': 'z', 'items': [{'sku': 'A', 'qty': 9}]},
++                  {'id': 'm', 'items': [{'sku': 'A', 'qty': 9}]},
++                  {'id': 'z', 'items': [{'sku': 'A', 'qty': 9}]},
++                  {'id': 'a', 'items': [{'sku': 'A', 'qty': 9}]}]
++        self.assertEqual(build_report({'A': 1}, orders)['rejected_ids'], ['z', 'm', 'a'])
++
++    def test_reserved_by_sku_includes_zeros_in_sorted_order(self):
++        stock = {'b': 2, 'a': 0, 'zero': 0, 'C': 4}
++        orders = [{'id': 'x', 'items': [{'sku': 'b', 'qty': 1}, {'sku': 'C', 'qty': 3}]}]
++        report = build_report(stock, orders)
++        self.assertEqual(list(report['reserved_by_sku']), ['C', 'a', 'b', 'zero'])
++        self.assertEqual(report['reserved_by_sku'], {'C': 3, 'a': 0, 'b': 1, 'zero': 0})
++        self.assertEqual(report['units_reserved'], 4)
++
++    def test_unknown_sku_rejection_reserves_nothing(self):
++        report = build_report({'A': 3}, [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1},
++                                                               {'sku': 'nope', 'qty': 1}]}])
++        self.assertEqual(report['units_reserved'], 0)
++        self.assertEqual(report['reserved_by_sku'], {'A': 0})
++        self.assertEqual(report['remaining'], {'A': 3})
++        self.assertEqual(report['rejected_ids'], ['x'])
++
++    def test_empty_order_counts_as_accepted_unique(self):
++        report = build_report({'A': 0}, [{'id': 'e', 'items': []}, {'id': 'e', 'items': []}])
++        self.assertEqual(report['accepted_unique'], 1)
++        self.assertEqual(report['rejected_unique'], 0)
++        self.assertEqual(report['units_reserved'], 0)
++        self.assertEqual(report['remaining'], {'A': 0})
++
++    def test_conflict_raises_and_inputs_unchanged(self):
++        stock = {'A': 5, 'zero': 0}
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 2}]}]
++        before = copy.deepcopy((stock, orders))
++        with self.assertRaises(ValueError):
++            build_report(stock, orders)
++        self.assertEqual((stock, orders), before)
++
++    def test_success_path_inputs_unchanged(self):
++        stock = {'A': 4, 'zero': 0}
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 1}]}]
++        before = copy.deepcopy((stock, orders))
++        report = build_report(stock, orders)
++        self.assertEqual((stock, orders), before)
++        report['remaining']['A'] = 99
++        self.assertEqual(stock, {'A': 4, 'zero': 0})
++
++    def test_remaining_matches_allocate(self):
++        stock = {'A': 3, 'B': 2}
++        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 2}]},
++                  {'id': 'y', 'items': [{'sku': 'B', 'qty': 5}]},
++                  {'id': 'x', 'items': [{'sku': 'A', 'qty': 2}]}]
++        self.assertEqual(build_report(stock, orders)['remaining'], allocate(stock, orders)['remaining'])
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/warehouse.py
++++ after/warehouse.py
+@@ -1,6 +1,12 @@
+ def reserve(stock, quantities):
++    """Atomically reserve quantities from stock, or leave stock untouched.
++
++    Returns True if all quantities (including unknown SKUs) are available and
++    were deducted; returns False without changing stock otherwise.
++    """
+     for sku, qty in quantities.items():
+         if stock.get(sku, 0) < qty:
+             return False
++    for sku, qty in quantities.items():
+         stock[sku] -= qty
+     return True

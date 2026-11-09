@@ -1,0 +1,104 @@
+test_active_caller_transaction_is_not_committed_or_rolled_back (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_exhausted_page_can_be_followed_by_newly_committed_rows (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_interleaved_global_seek_pages_do_not_lose_or_repeat_task_events (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_invalid_arguments_fingerprint_binding_and_stale_file_are_fixed (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_invalid_duplicate_nan_deep_and_oversize_metadata_never_escape (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_invalid_known_fields_unknown_fields_and_null_values_are_counted (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_metadata_is_nested_whitelisted_and_cannot_override_row_identity (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_raw_time_and_kind_are_sql_sanitized_and_bad_metadata_does_not_override_them (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_readonly_bytes_mode_schema_unchanged_and_storage_fault_fixed (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_sql_projection_bounds_python_memory_and_never_materializes_task_history (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+test_wal_page_is_one_snapshot_when_writer_appends_after_task_existence_read (tests.dev.test_event_reader.EventReaderTests) ... FAIL
+
+======================================================================
+FAIL: test_active_caller_transaction_is_not_committed_or_rolled_back (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_exhausted_page_can_be_followed_by_newly_committed_rows (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_interleaved_global_seek_pages_do_not_lose_or_repeat_task_events (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_invalid_arguments_fingerprint_binding_and_stale_file_are_fixed (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_invalid_duplicate_nan_deep_and_oversize_metadata_never_escape (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_invalid_known_fields_unknown_fields_and_null_values_are_counted (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_metadata_is_nested_whitelisted_and_cannot_override_row_identity (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_raw_time_and_kind_are_sql_sanitized_and_bad_metadata_does_not_override_them (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_readonly_bytes_mode_schema_unchanged_and_storage_fault_fixed (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_sql_projection_bounds_python_memory_and_never_materializes_task_history (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+======================================================================
+FAIL: test_wal_page_is_one_snapshot_when_writer_appends_after_task_existence_read (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.event_reader'),
+AssertionError: unexpectedly None : bounded committed metadata event reader is missing
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.002s
+
+FAILED (failures=11)

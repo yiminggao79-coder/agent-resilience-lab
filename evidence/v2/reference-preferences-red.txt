@@ -1,0 +1,14 @@
+test_only_preferences_broker_is_allowed_and_other_mach_services_stay_denied (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... FAIL
+
+======================================================================
+FAIL: test_only_preferences_broker_is_allowed_and_other_mach_services_stay_denied (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_cli_boundary.py", line 48, in test_only_preferences_broker_is_allowed_and_other_mach_services_stay_denied
+    self.assertEqual(codes['com.apple.cfprefsd.agent'],0);self.assertEqual(codes['com.apple.cfprefsd.daemon'],0)
+AssertionError: 1100 != 0
+
+----------------------------------------------------------------------
+Ran 1 test in 0.073s
+
+FAILED (failures=1)

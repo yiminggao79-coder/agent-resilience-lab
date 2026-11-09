@@ -1,0 +1,66 @@
+{
+  "repository": "openai/codex",
+  "commit": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "source": "GitHub connector fetch_file; pinned public tree metadata cross-check",
+  "upstream_executed": false,
+  "files": [
+    {
+      "path": "codex-rs/config/src/loader/mod.rs",
+      "blob_sha": "bdc19e6cbe8b11f5f1a7f410a211670ed7eb0d47",
+      "download_blob_verified": true,
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/config/src/loader/mod.rs",
+      "artifact": "evidence/codex-config/mod-excerpts.json",
+      "body_ranges_read": [
+        [
+          147,
+          210
+        ],
+        [
+          240,
+          294
+        ],
+        [
+          420,
+          525
+        ]
+      ],
+      "whole_file_audited": false
+    },
+    {
+      "path": "codex-rs/config/src/state.rs",
+      "blob_sha": "abb97b9561103cf8524dadd7136f5b205391c5f0",
+      "download_blob_verified": true,
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/config/src/state.rs",
+      "artifact": "evidence/codex-config/state-excerpts.json",
+      "body_ranges_read": [
+        [
+          315,
+          350
+        ],
+        [
+          650,
+          665
+        ],
+        [
+          724,
+          742
+        ]
+      ],
+      "whole_file_audited": false
+    },
+    {
+      "path": "codex-rs/config/src/overrides.rs",
+      "blob_sha": "70d5fcd2bc5600266d54f87f31aba6e0671bc94b",
+      "download_blob_verified": true,
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/config/src/overrides.rs",
+      "artifact": "evidence/codex-config/overrides-excerpts.json",
+      "body_ranges_read": [
+        [
+          1,
+          100
+        ]
+      ],
+      "whole_file_audited": false
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+test_current_complete_batch_results_adapt_to_remaining_context_budget (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ERROR
+
+======================================================================
+ERROR: test_current_complete_batch_results_adapt_to_remaining_context_budget (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 258, in test_current_complete_batch_results_adapt_to_remaining_context_budget
+    view,stats=build_context(messages,engine._schemas(),28000)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/context.py", line 221, in build_context
+    raise error
+agent_lab.context.ContextLimit: context_limit
+
+----------------------------------------------------------------------
+Ran 1 test in 0.062s
+
+FAILED (errors=1)

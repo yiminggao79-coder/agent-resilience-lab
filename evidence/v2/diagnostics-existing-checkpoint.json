@@ -1,0 +1,30 @@
+{
+  "kind": "existing_checkpoint_readonly_inspection",
+  "source_run_id": "20261107-200730-bdbbc054",
+  "api_requests_made": 0,
+  "checkpoint_bytes_unchanged": true,
+  "checkpoint_mode_unchanged": true,
+  "directory_entries_unchanged": true,
+  "inspection_is_not_recovery": true,
+  "view": {
+    "task_id": "6de1efc190254e4caa43ba294169c079",
+    "session_id": "9b12177903a640fe908cf27d279fb90d",
+    "turn_id": "8d15410da7f04586b2cea624ec0a1be4",
+    "observed_revision": 48,
+    "phase": "needs_confirmation",
+    "reason": "transport_unknown",
+    "outcome_unresolved": true,
+    "usage_unknown": true,
+    "model_request": "not_pending_in_snapshot",
+    "model_purpose": null,
+    "runner_liveness": "not_checked",
+    "filesystem_verification": "not_performed",
+    "queued_tools": 0,
+    "operation": null,
+    "pending_inputs": [],
+    "guidance": [
+      "unknown_outcome_blocks_automatic_continuation",
+      "missing_usage_is_not_zero_cost"
+    ]
+  }
+}

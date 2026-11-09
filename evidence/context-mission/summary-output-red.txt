@@ -1,0 +1,14 @@
+test_summary_uses_explicit_turn_output_ceiling_without_hidden_1024_cap (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... FAIL
+
+======================================================================
+FAIL: test_summary_uses_explicit_turn_output_ceiling_without_hidden_1024_cap (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 227, in test_summary_uses_explicit_turn_output_ceiling_without_hidden_1024_cap
+    self.assertEqual(model.output_ceiling,4096)
+AssertionError: 1024 != 4096
+
+----------------------------------------------------------------------
+Ran 1 test in 0.060s
+
+FAILED (failures=1)

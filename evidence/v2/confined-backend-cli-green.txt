@@ -1,0 +1,6 @@
+test_actual_cli_approve_resume_fork_and_continue_preserve_backend (tests.acceptance.test_confined_backend_cli_process.ConfinedBackendCLIProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.398s
+
+OK

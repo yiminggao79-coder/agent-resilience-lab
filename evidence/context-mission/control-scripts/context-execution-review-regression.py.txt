@@ -1,0 +1,38 @@
+"""One consumed-suite execution-review diagnostic; never independent acceptance or replacement score."""
+import sys,json,uuid
+from pathlib import Path
+REPO=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(REPO))
+from scripts.context_mission import (load_suite,_run_case,export_candidate,atomic_json,
+    implementation_snapshot,digest_file,usage_totals,safe_path,_probe_backend)
+from agent_lab.budget import BudgetLedger
+suite=REPO/'evaluation/context_mission_v3'
+snapshot=implementation_snapshot()
+if snapshot['runtime_dirty']:raise SystemExit('commit_runtime_first')
+if BudgetLedger.open_existing(REPO/'.lab/paid-budget.sqlite').report()['halted']:
+    raise SystemExit('paid_requests_halted')
+freeze,cases=load_suite(suite)
+run_id=uuid.uuid4().hex[:16]
+private=REPO/'.lab/context-mission'/run_id;private.mkdir(mode=0o700)
+output=REPO/'evidence/context-mission/runs'/run_id/'report.json';output.parent.mkdir(parents=True)
+if not _probe_backend(private/'backend-probe'):raise SystemExit('native_backend_unavailable')
+report={'kind':'consumed_context_execution_review_diagnostic','run_id':run_id,'implementation':snapshot,
+        'suite':'evaluation/context_mission_v3','freeze_sha256':freeze,'model':'deepseek-flash',
+        'protocol':'chat','stream':False,'thinking':'disabled','cases':[],
+        'original_acceptance_run':'4df2f548d9214be5','prior_guidance_diagnostic':'ae273f8adbe04a09','independent_acceptance':False,
+        'limitations':['Consumed synthetic suite; no replacement of original 0/2 grade.',
+                       'Bounded ready-boundary execution review; no claim of general ability or sole cause.']}
+try:
+    for case in cases:
+        result=_run_case(suite,case,private/case['id'],development=False,model_name='deepseek-flash')
+        export_candidate(safe_path(suite,case['workspace_dir']),private/case['id'],output.parent/case['id'])
+        report['cases'].append(result);atomic_json(output,report)
+        if BudgetLedger.open_existing(REPO/'.lab/paid-budget.sqlite').report()['halted']:break
+finally:
+    report['runtime_unchanged']=implementation_snapshot()['source_sha256']==snapshot['source_sha256']
+    report['freeze_unchanged']=load_suite(suite)[0]==freeze
+    report['usage_totals']=usage_totals([r for c in report['cases'] for t in c['turns'] for r in t.get('model_receipts',[])])
+    report['diagnostic_passed']=bool(len(report['cases'])==2 and all(c['complete'] for c in report['cases'])
+                                   and report['runtime_unchanged'] and report['freeze_unchanged'])
+    atomic_json(output,report)
+print(json.dumps({'report':str(output.relative_to(REPO)),'diagnostic_passed':report['diagnostic_passed']}))

@@ -1,0 +1,75 @@
+--- before/catalog.py
++++ after/catalog.py
+@@ -1,9 +1,20 @@
+ """Translate order lines into inventory requests."""
+ 
+ 
++def normalize_sku(sku):
++    """Return the canonical form of a requested SKU."""
++    return sku.strip().upper()
++
++
+ def prepare_request(lines):
++    """Combine duplicate lines into a single normalized SKU -> quantity mapping."""
+     request = {}
+     for line in lines:
+-        sku = line["sku"].strip()
++        sku = normalize_sku(line["sku"])
+         request[sku] = request.get(sku, 0) + line["quantity"]
+     return request
++
++
++def request_items(request):
++    """Represent a prepared request as a SKU-sorted list of line dicts."""
++    return [{"sku": sku, "quantity": quantity} for sku, quantity in sorted(request.items())]
+--- before/dispatch.py
++++ after/dispatch.py
+@@ -1,6 +1,6 @@
+ """Public batch dispatch API."""
+ 
+-from catalog import prepare_request
++from catalog import prepare_request, request_items
+ from inventory import reserve_request
+ 
+ 
+@@ -13,7 +13,7 @@
+         results.append({
+             "order_id": order["order_id"],
+             "status": "rejected" if shortages else "reserved",
+-            "items": [{"sku": sku, "quantity": quantity} for sku, quantity in sorted(request.items())],
++            "items": request_items(request),
+             "shortages": shortages,
+         })
+     return {"remaining": remaining, "orders": results}
+--- before/inventory.py
++++ after/inventory.py
+@@ -1,12 +1,26 @@
+ """Apply a prepared request to a working stock dictionary."""
+ 
+ 
+-def reserve_request(available, request):
++def find_shortages(available, request):
++    """Return every short SKU, SKU-sorted, without touching available."""
+     shortages = []
+     for sku, quantity in sorted(request.items()):
+         current = available.get(sku, 0)
+         if quantity > current:
+             shortages.append({"sku": sku, "requested": quantity, "available": current})
+-        else:
+-            available[sku] = current - quantity
+     return shortages
++
++
++def reserve_request(available, request):
++    """Reserve the whole request when possible.
++
++    Returns the (possibly empty) list of shortages. The request is reserved only
++    if nothing is short; otherwise ``available`` is left unchanged. Unknown SKUs
++    are never added to ``available``.
++    """
++    shortages = find_shortages(available, request)
++    if shortages:
++        return shortages
++    for sku, quantity in request.items():
++        available[sku] = available[sku] - quantity
++    return shortages

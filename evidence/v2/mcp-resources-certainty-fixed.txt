@@ -1,0 +1,31 @@
+test_actual_resource_only_pagination_templates_and_multiple_contents (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_engine_resource_approval_feedback_binary_projection_and_privacy (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_external_result_cannot_override_host_envelope (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_http_transport_reuses_resource_protocol_and_sse_without_new_credentials (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_invalid_resource_bodies_and_binary_encoding_are_rejected (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_local_wire_size_rejection_does_not_claim_dispatched_uncertainty (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_missing_and_malformed_capabilities_are_not_resource_support (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_read_timeout_and_new_registry_resume_do_not_repeat_external_request (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_received_page_canonical_expansion_is_not_classified_as_unsent (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_registry_known_oversize_before_dispatch_is_correctable_feedback (tests.dev.test_mcp_resources.MCPResourceTests) ... FAIL
+test_resource_wait_honors_active_cancel_and_never_claims_quiescence (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_tools_only_manifest_and_schemas_do_not_gain_resource_authority (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_external_effect_before_response_remains_unknown_across_new_cli_processes (tests.acceptance.test_mcp_resource_cli_process.MCPResourceCLIProcessTests) ... ok
+
+======================================================================
+FAIL: test_registry_known_oversize_before_dispatch_is_correctable_feedback (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 95, in test_registry_known_oversize_before_dispatch_is_correctable_feedback
+    self.assertEqual(state['phase'],'completed')
+AssertionError: 'needs_confirmation' != 'completed'
+- needs_confirmation
++ completed
+
+
+----------------------------------------------------------------------
+Ran 15 tests in 4.356s
+
+FAILED (failures=1)

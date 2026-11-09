@@ -1,0 +1,56 @@
+test_actual_cost_exceeded_by_summary_blocks_regular_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_advancing_source_is_bounded_and_allowance_resets_per_turn (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_default_disabled_and_old_snapshot_has_no_extra_model_call (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_known_invalid_summary_falls_back_with_known_usage (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_large_archive_small_active_view_does_not_trigger (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_limits_validate_opt_in_threshold_and_attempt_cap (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_no_new_content_and_oversized_summary_input_use_valid_old_view (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_no_reduction_is_not_retried_for_same_prefix (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_old_view_overflow_is_rescued_or_fails_without_resend (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_one_attempt_cap_allows_tools_and_then_regular_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_opt_in_summary_precedes_decision_with_exact_archive_and_usage (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_queued_batch_and_recovering_partial_patch_finish_before_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_run_never_acquires_recursive_store_lock (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_shared_budget_refusal_does_not_fallback_to_paid_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_step_and_deadline_are_rechecked_after_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_storage_failure_keeps_started_attempt_and_resume_never_resends (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_summary_preflight_cost_refusal_allows_cheaper_valid_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_threshold_measures_active_view_and_triggers_at_boundary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unknown_summary_and_unknown_usage_pause_without_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unknown_usage_after_deadline_still_requires_confirmation (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unpaired_history_and_user_only_overflow_never_request_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_external_json_equality_does_not_accept_boolean_as_number (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... ok
+test_freeze_rejects_added_candidate_file (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... ok
+test_freeze_rejects_modified_evidence_before_model_use (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... ok
+test_implementation_snapshot_covers_imported_scoring_scripts (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... ok
+test_model_claim_cannot_pass_frozen_external_oracle (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... {"kind": "created", "phase": "ready"}
+{"kind": "model_started", "phase": "model_pending"}
+{"kind": "model_response", "phase": "model_pending"}
+{"kind": "model_finished", "phase": "completed"}
+ok
+test_root_baseline_and_final_keep_same_scope_if_candidate_adds_tests_directory (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... {"kind": "created", "phase": "ready"}
+{"kind": "model_started", "phase": "model_pending"}
+{"kind": "model_response", "phase": "model_pending"}
+{"kind": "model_finished", "phase": "tool_queued"}
+{"kind": "tool_prepared", "phase": "tool_pending", "tool": "create_directory"}
+{"kind": "tool_started", "phase": "tool_pending", "tool": "create_directory"}
+{"kind": "tool_finished", "phase": "ready", "tool": "create_directory", "code": "ok"}
+{"kind": "model_started", "phase": "model_pending"}
+{"kind": "model_response", "phase": "model_pending"}
+{"kind": "model_finished", "phase": "completed"}
+ok
+test_unknown_execution_state_is_not_reported_as_observed_wrong_answer (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... {"kind": "created", "phase": "ready"}
+{"kind": "model_started", "phase": "model_pending"}
+{"kind": "model_error", "phase": "model_pending", "code": "transport_unknown"}
+{"kind": "terminated", "phase": "needs_confirmation", "code": "transport_unknown"}
+ok
+test_explicit_disable_overrides_saved_setting_but_omission_preserves_it (tests.dev.test_auto_context_cli.AutoContextCLITests) ... ok
+test_run_threshold_and_attempt_limit_are_explicit_host_configuration (tests.dev.test_auto_context_cli.AutoContextCLITests) ... ok
+test_failed_process_exit_is_visible_without_private_output (tests.dev.test_trace_process_results.ProcessTraceTests) ... ok
+test_local_budget_refusal_does_not_erase_known_usage (tests.dev.test_trace_process_results.ProcessTraceTests) ... ok
+test_transport_metadata_is_bounded_and_unknown_usage_stays_unknown (tests.dev.test_trace_process_results.ProcessTraceTests) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 3.500s
+
+OK

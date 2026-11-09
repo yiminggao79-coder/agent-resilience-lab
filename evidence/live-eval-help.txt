@@ -1,0 +1,20 @@
+usage: evaluate_live.py [-h] [--allow-api] [--model MODEL]
+                        [--base-url BASE_URL] [--api-key-env API_KEY_ENV]
+                        --max-cost-usd MAX_COST_USD --input-price INPUT_PRICE
+                        --output-price OUTPUT_PRICE --output OUTPUT
+
+Opt-in real model evaluation with file-based oracles. Does not run on import.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --allow-api
+  --model MODEL
+  --base-url BASE_URL
+  --api-key-env API_KEY_ENV
+  --max-cost-usd MAX_COST_USD
+                        per task estimated cap; entire suite may reserve 3x
+                        this value
+  --input-price INPUT_PRICE
+                        user-verified USD per million input tokens
+  --output-price OUTPUT_PRICE
+  --output OUTPUT

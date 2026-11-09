@@ -1,0 +1,17 @@
+test_invalid_paths_are_not_masked_by_an_unavailable_repository (tests.dev.test_git_availability.GitAvailabilityTests) ... FAIL
+
+======================================================================
+FAIL: test_invalid_paths_are_not_masked_by_an_unavailable_repository (tests.dev.test_git_availability.GitAvailabilityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_git_availability.py", line 62, in test_invalid_paths_are_not_masked_by_an_unavailable_repository
+    self.assertEqual(result['reason'],'error_limit');self.assertEqual(result['errors'],3)
+AssertionError: 'model_finished' != 'error_limit'
+- model_finished
++ error_limit
+
+
+----------------------------------------------------------------------
+Ran 1 test in 2.405s
+
+FAILED (failures=1)

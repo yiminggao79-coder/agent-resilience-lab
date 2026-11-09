@@ -1,0 +1,280 @@
+{
+  "tool_transport": "mcp_stdio",
+  "experiment": "item_done_tool_feedback",
+  "passed": true,
+  "reference": {
+    "item_done_observed": true,
+    "effect_before_completed": true,
+    "observation_window_seconds": 1.5,
+    "fixture_directory": "/private/tmp/agentlab-reference-tool-ukyvzzhi",
+    "exit_code": 0,
+    "stdout": "{\"type\":\"thread.started\",\"thread_id\":\"01a1b9c6-09fc-7300-ad46-73fedf541f1b\"}\n{\"type\":\"item.completed\",\"item\":{\"id\":\"item_0\",\"type\":\"error\",\"message\":\"Model metadata for `reference-protocol-fixture` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.\"}}\n{\"type\":\"turn.started\"}\n{\"type\":\"item.started\",\"item\":{\"id\":\"item_1\",\"type\":\"mcp_tool_call\",\"server\":\"owned_fixture\",\"tool\":\"write_receipt\",\"arguments\":{},\"result\":null,\"error\":null,\"status\":\"in_progress\"}}\n{\"type\":\"item.completed\",\"item\":{\"id\":\"item_1\",\"type\":\"mcp_tool_call\",\"server\":\"owned_fixture\",\"tool\":\"write_receipt\",\"arguments\":{},\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"owned-tool-receipt\"}],\"structured_content\":null},\"error\":null,\"status\":\"completed\"}}\n{\"type\":\"item.completed\",\"item\":{\"id\":\"item_2\",\"type\":\"agent_message\",\"text\":\"owned tool stimulus complete\"}}\n{\"type\":\"turn.completed\",\"usage\":{\"input_tokens\":24,\"cached_input_tokens\":0,\"cache_write_input_tokens\":0,\"output_tokens\":6,\"reasoning_output_tokens\":0}}\n",
+    "stderr": "Reading additional input from stdin...\n",
+    "requests": 2,
+    "request_summaries": [
+      {
+        "model": "reference-protocol-fixture",
+        "stream": true,
+        "tool_names": [
+          "exec_command",
+          "write_stdin",
+          "list_mcp_resources",
+          "list_mcp_resource_templates",
+          "read_mcp_resource",
+          "request_user_input",
+          "view_image",
+          "multi_agent_v1",
+          "mcp__owned_fixture",
+          "get_goal",
+          "create_goal",
+          "update_goal",
+          null
+        ],
+        "tool_types": [
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "namespace",
+          "namespace",
+          "function",
+          "function",
+          "function",
+          "web_search"
+        ],
+        "input_types": [
+          "message",
+          "message",
+          "message",
+          "message"
+        ]
+      },
+      {
+        "model": "reference-protocol-fixture",
+        "stream": true,
+        "tool_names": [
+          "exec_command",
+          "write_stdin",
+          "list_mcp_resources",
+          "list_mcp_resource_templates",
+          "read_mcp_resource",
+          "request_user_input",
+          "view_image",
+          "multi_agent_v1",
+          "mcp__owned_fixture",
+          "get_goal",
+          "create_goal",
+          "update_goal",
+          null
+        ],
+        "tool_types": [
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "namespace",
+          "namespace",
+          "function",
+          "function",
+          "function",
+          "web_search"
+        ],
+        "input_types": [
+          "message",
+          "message",
+          "message",
+          "message",
+          "function_call",
+          "function_call_output"
+        ]
+      }
+    ],
+    "actual_receipt": "owned-tool-receipt\n",
+    "tool_output_returned_in_next_request": true,
+    "managed_preferences_presence": {
+      "synchronized": true,
+      "forced_config": false,
+      "forced_requirements": false
+    },
+    "tool_feedback": [
+      {
+        "call_id": "call_owned_reference",
+        "output": "[{'type': 'input_text', 'text': 'Wall time: 0.0027 seconds\\nOutput:'}, {'type': 'input_text', 'text': 'owned-tool-receipt'}]"
+      }
+    ],
+    "tool_declaration_fields": [
+      {
+        "name": "exec_command",
+        "type": "function"
+      }
+    ]
+  },
+  "harness": {
+    "item_done_observed": true,
+    "effect_before_completed": false,
+    "observation_window_seconds": 1.5,
+    "phase_before_completed": "model_pending",
+    "pending_tool_before_completed": false,
+    "phase": "completed",
+    "reason": "model_finished",
+    "exact_approvals": 1,
+    "requests": 2,
+    "actual_receipt": "owned-tool-receipt\n",
+    "request_summaries": [
+      {
+        "model": "reference-protocol-fixture",
+        "stream": true,
+        "tool_names": [
+          "read_file",
+          "list_files",
+          "write_file",
+          "append_file",
+          "csv_stats",
+          "python_expr",
+          "search_files",
+          "apply_patch",
+          "run_tests",
+          "run_command",
+          "create_directory",
+          "delete_file",
+          "read_lines",
+          "git_status",
+          "git_diff",
+          "list_files_page",
+          "apply_patch_text",
+          "search_files_page",
+          "edit_file",
+          "mcp_995954c99dc4552d430dcb80093c8717d8d009f8",
+          "update_plan",
+          "history_lookup",
+          "project_rules",
+          "list_skills",
+          "read_skill_resource",
+          "load_skill",
+          "run_skill_script"
+        ],
+        "tool_types": [
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function"
+        ],
+        "input_types": [
+          "system",
+          "user"
+        ]
+      },
+      {
+        "model": "reference-protocol-fixture",
+        "stream": true,
+        "tool_names": [
+          "read_file",
+          "list_files",
+          "write_file",
+          "append_file",
+          "csv_stats",
+          "python_expr",
+          "search_files",
+          "apply_patch",
+          "run_tests",
+          "run_command",
+          "create_directory",
+          "delete_file",
+          "read_lines",
+          "git_status",
+          "git_diff",
+          "list_files_page",
+          "apply_patch_text",
+          "search_files_page",
+          "edit_file",
+          "mcp_995954c99dc4552d430dcb80093c8717d8d009f8",
+          "update_plan",
+          "history_lookup",
+          "project_rules",
+          "list_skills",
+          "read_skill_resource",
+          "load_skill",
+          "run_skill_script"
+        ],
+        "tool_types": [
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function"
+        ],
+        "input_types": [
+          "system",
+          "user",
+          "function_call",
+          "function_call_output"
+        ]
+      }
+    ],
+    "fixture_directory": "/private/tmp/agentlab-reference-harness-niev1zrz",
+    "tool_output_returned_in_next_request": true
+  },
+  "elapsed_seconds": 3.736,
+  "provider_requests": 0,
+  "real_llm_task_success_rate": null,
+  "cost_estimate_cny": null,
+  "real_tokens": null,
+  "same_as_pinned_source_commit": null,
+  "conditions_differ": [
+    "reference outer Mach/Home/network wrapper; Harness own tool sandbox",
+    "reference normal workspace-write and never-escalate; Harness confined-fork/literal Python and one exact approval",
+    "different builtin tools and prompts; same Python bytes and synthetic completion boundary"
+  ],
+  "phase": "completed"
+}

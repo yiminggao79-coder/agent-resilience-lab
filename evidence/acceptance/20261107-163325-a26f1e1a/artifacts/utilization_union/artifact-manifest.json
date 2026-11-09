@@ -1,0 +1,14 @@
+{
+  "run_id": "20261107-163325-a26f1e1a",
+  "case": "utilization_union",
+  "implementation_commit": "90a5803d922975df1d47f15e073bc41178c9b887",
+  "report_sha256": "f2f8cf98840bfb02fe8c40f6d729821f1fab95a5369df227dd783c180731c1e4",
+  "candidate_sha256": {
+    "README.md": "95d4cebcfc197ea5beccce892cfcf101b31555cd5c088e397da5daec83202f8c",
+    "ranges.py": "e0f154d5938f940842442b5d0d597ec695d8668b0229c494678e07299999e6d0",
+    "timecodec.py": "712683b91a66ea1b682a3c11b78099465c6082a86bdb9b68495627d153f096fb",
+    "usage_report.py": "8ec51e083a938acc274b1f581bf4c548c12db7ce62abdb8d1489e70eefef3edd",
+    "tests/test_usage_report.py": "310cf02381ba53e65ea289e28b399fa63ac5de138e77f38a06761bdadc1598d1",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

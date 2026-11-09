@@ -1,0 +1,60 @@
+test_actual_approved_command_retains_venv_semantics (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests) ... FAIL
+test_actual_selected_dependency_unittest_and_quiescent_receipt (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests) ... FAIL
+test_cli_opt_in_reaches_state_without_model_network (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests) ... usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: unrecognized arguments: --python-environment /private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpwfut1vbk/env
+ERROR
+test_prepare_and_state_pin_selected_environment_and_changed_bytes_reject (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests) ... ERROR
+
+======================================================================
+ERROR: test_cli_opt_in_reaches_state_without_model_network (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment_integration.py", line 50, in test_cli_opt_in_reaches_state_without_model_network
+    code=cli.main(['--db',str(self.db),'run','Synthetic CLI','--workspace',str(self.root),
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 107, in main
+    args = parser.parse_args(raw_argv)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/argparse.py", line 1823, in parse_args
+    self.error(msg % ' '.join(argv))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/argparse.py", line 2577, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/argparse.py", line 2564, in exit
+    _sys.exit(status)
+SystemExit: 2
+
+======================================================================
+ERROR: test_prepare_and_state_pin_selected_environment_and_changed_bytes_reject (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment_integration.py", line 36, in test_prepare_and_state_pin_selected_environment_and_changed_bytes_reject
+    tools=self.tools();intent=tools._prepare('run_command',{'argv':['python','-m','public_dependency'],'cwd':'.'})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/coding_tools.py", line 118, in _prepare
+    return prepare_command(self.root, args['argv'], args['cwd'], read_only_paths=self.read_only_policy.paths,
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/commands.py", line 118, in prepare_command
+    descriptor = (runtime['node'] if runtime is not None and str(binary) == runtime['node']['path']
+KeyError: 'node'
+
+======================================================================
+FAIL: test_actual_approved_command_retains_venv_semantics (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment_integration.py", line 79, in test_actual_approved_command_retains_venv_semantics
+    self.assertEqual(engine.run(tid)['phase'],'awaiting_approval')
+AssertionError: 'completed' != 'awaiting_approval'
+- completed
++ awaiting_approval
+
+
+======================================================================
+FAIL: test_actual_selected_dependency_unittest_and_quiescent_receipt (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment_integration.py", line 73, in test_actual_selected_dependency_unittest_and_quiescent_receipt
+    result=json.loads(model.seen[-1][-1]['content']);self.assertEqual(result.get('exit_code'),0,result)
+AssertionError: 2 != 0 : {'ok': False, 'exit_code': 2, 'stdout': '', 'stderr': 'Failed to import test module: test_public\nTraceback (most recent call last):\n  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 436, in _find_test_path\n    module = self._get_module_from_name(name)\n  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name\n    __import__(name)\n  File "/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpee17hxov/work/test_public.py", line 1, in <module>\n    import unittest,public_dependency,sys,os,socket\nModuleNotFoundError: No module named \'public_dependency\'\n\n', 'stdout_truncated': False, 'stderr_truncated': False, 'test_start_dir': '.'}
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.801s
+
+FAILED (failures=2, errors=2)

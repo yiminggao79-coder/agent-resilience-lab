@@ -1,0 +1,27 @@
+{
+  "observed_on": "2026-11-07",
+  "repository_head_at_read": "ae701de8225237c1224656b7174275df60d175de",
+  "scope": "V0 baseline before concurrent V1 edits; local observations only, not upstream test results",
+  "files": {
+    "agent_lab/engine.py": {
+      "sha256": "e100255f99eb750001cc5d15c6f90dafc903c2bea90bcd9b8fe24a189e9f54ad",
+      "line_count": 270
+    },
+    "agent_lab/model.py": {
+      "sha256": "adf8ae6cac419da1eb262e48da8de54312dd99a76645ae77fef86a4880ac7125",
+      "line_count": 107
+    },
+    "agent_lab/tools.py": {
+      "sha256": "9266efe4bc477ff9d61d2dab685201d6d9ee844380fa1ebac2ff5313ade341f7",
+      "line_count": 265
+    },
+    "agent_lab/store.py": {
+      "sha256": "f5aa3899e24ce6742972e081b30694ca271037d2cfedbade1d5ae6897cc586e5",
+      "line_count": 89
+    },
+    "agent_lab/__main__.py": {
+      "sha256": "dfeaafd1cadc91c45c4c9a811ca935e1368c6636e5497dda59bd4f3f74e16c88",
+      "line_count": 71
+    }
+  }
+}

@@ -1,0 +1,9 @@
+test_changed_host_endpoint_or_options_reject_saved_toolset (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ok
+test_readonly_and_mixed_transport_configuration_refuse_before_dispatch (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ok
+test_remote_authority_requires_exact_approval_then_private_feedback (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ok
+test_unknown_after_remote_effect_never_replays_on_repeated_resume (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.046s
+
+OK

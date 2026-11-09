@@ -1,0 +1,189 @@
+{
+  "tool_transport": "mcp_stdio",
+  "experiment": "item_done_then_eof",
+  "passed": true,
+  "reference": {
+    "item_done_observed": true,
+    "effect_before_completed": true,
+    "observation_window_seconds": 1.5,
+    "fixture_directory": "/private/tmp/agentlab-reference-tool-0o84kk8x",
+    "exit_code": 1,
+    "timed_out": false,
+    "stdout": "{\"type\":\"thread.started\",\"thread_id\":\"01a1b9e3-9602-7e40-815b-a300e021dcdf\"}\n{\"type\":\"item.completed\",\"item\":{\"id\":\"item_0\",\"type\":\"error\",\"message\":\"Model metadata for `reference-protocol-fixture` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.\"}}\n{\"type\":\"turn.started\"}\n{\"type\":\"item.started\",\"item\":{\"id\":\"item_1\",\"type\":\"mcp_tool_call\",\"server\":\"owned_fixture\",\"tool\":\"write_receipt\",\"arguments\":{},\"result\":null,\"error\":null,\"status\":\"in_progress\"}}\n{\"type\":\"item.completed\",\"item\":{\"id\":\"item_1\",\"type\":\"mcp_tool_call\",\"server\":\"owned_fixture\",\"tool\":\"write_receipt\",\"arguments\":{},\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"owned-tool-receipt\"}],\"structured_content\":null},\"error\":null,\"status\":\"completed\"}}\n{\"type\":\"error\",\"message\":\"stream disconnected before completion: stream closed before response.completed\"}\n{\"type\":\"turn.failed\",\"error\":{\"message\":\"stream disconnected before completion: stream closed before response.completed\"}}\n",
+    "stderr": "Reading additional input from stdin...\n",
+    "requests": 1,
+    "request_summaries": [
+      {
+        "model": "reference-protocol-fixture",
+        "stream": true,
+        "tool_names": [
+          "exec_command",
+          "write_stdin",
+          "list_mcp_resources",
+          "list_mcp_resource_templates",
+          "read_mcp_resource",
+          "request_user_input",
+          "view_image",
+          "multi_agent_v1",
+          "mcp__owned_fixture",
+          "get_goal",
+          "create_goal",
+          "update_goal",
+          null
+        ],
+        "tool_types": [
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "namespace",
+          "namespace",
+          "function",
+          "function",
+          "function",
+          "web_search"
+        ],
+        "input_types": [
+          "message",
+          "message",
+          "message",
+          "message"
+        ]
+      }
+    ],
+    "actual_receipt": "owned-tool-receipt\n",
+    "tool_output_returned_in_next_request": false,
+    "managed_preferences_presence": {
+      "synchronized": true,
+      "forced_config": false,
+      "forced_requirements": false
+    },
+    "mcp_method_counts": {
+      "initialize": 1,
+      "tools/list": 1,
+      "tools/call": 1
+    },
+    "tool_feedback": [],
+    "tool_declaration_fields": [
+      {
+        "name": "exec_command",
+        "type": "function"
+      }
+    ]
+  },
+  "harness": {
+    "item_done_observed": true,
+    "effect_before_completed": false,
+    "observation_window_seconds": 1.5,
+    "phase_before_completed": "model_pending",
+    "pending_tool_before_completed": false,
+    "phase": "needs_confirmation",
+    "reason": "invalid_model_response",
+    "exact_approvals": 0,
+    "requests": 1,
+    "actual_receipt": null,
+    "request_summaries": [
+      {
+        "model": "reference-protocol-fixture",
+        "stream": true,
+        "tool_names": [
+          "read_file",
+          "list_files",
+          "write_file",
+          "append_file",
+          "csv_stats",
+          "python_expr",
+          "search_files",
+          "apply_patch",
+          "run_tests",
+          "run_command",
+          "create_directory",
+          "delete_file",
+          "read_lines",
+          "git_status",
+          "git_diff",
+          "list_files_page",
+          "apply_patch_text",
+          "search_files_page",
+          "edit_file",
+          "mcp_995954c99dc4552d430dcb80093c8717d8d009f8",
+          "update_plan",
+          "history_lookup",
+          "project_rules",
+          "list_skills",
+          "read_skill_resource",
+          "load_skill",
+          "run_skill_script"
+        ],
+        "tool_types": [
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function",
+          "function"
+        ],
+        "input_types": [
+          "system",
+          "user"
+        ]
+      }
+    ],
+    "fixture_directory": "/private/tmp/agentlab-reference-harness-otptjure",
+    "tool_output_returned_in_next_request": false,
+    "mcp_method_counts": {
+      "initialize": 1,
+      "tools/list": 1,
+      "tools/call": 0
+    }
+  },
+  "elapsed_seconds": 3.136,
+  "reference_binary_sha256": "f08326a585b6b82a3d5951662bac6f78bf7b759639737d8464b3ac165195f846",
+  "harness_source_sha256": {
+    "engine.py": "9631a2b9e05674d6689ee174498efa7aadc6f4d4062b790405acf9696e13933e",
+    "model.py": "9c8fd2a1d5cd5d4cc1c0b1ec521f1cc08a348bf76e30eefaec3bfead15430367",
+    "protocols.py": "802e413ac2340e29d1a7eacf41bfd20ad962d77be2d2b7517ba8efd8fd8a0586",
+    "registry.py": "0d1642597064a8d2010e1f6dea3c14b806ea49bad937b5019afc6971fc8050e8",
+    "coding_tools.py": "bb63246ec9a423252adde344df665b35f0ed4d806a3be1d3b10e7104589e9664"
+  },
+  "harness_effect_authority": "trusted_external_mcp_process",
+  "harness_effect_is_command_sandboxed": false,
+  "harness_approval_count": 0,
+  "provider_requests": 0,
+  "real_llm_task_success_rate": null,
+  "cost_estimate_cny": null,
+  "real_tokens": null,
+  "same_as_pinned_source_commit": null,
+  "usage_kind": "synthetic_fixture_counters",
+  "owned_mcp_source_sha256": "46649dfa09e16aca11b44e9724aeed4452843c37506240eb34fd05aaf2e72ed3",
+  "conditions_differ": [
+    "reference MCP child inherits outer Home/Mach/network boundary; Harness MCP is trusted external with clean env",
+    "reference normal command sandbox retained; Harness MCP requires exact approval after completed response, actual count recorded separately",
+    "different builtin tools/prompts; identical owned MCP server bytes and 2025-11-25 RPC"
+  ],
+  "phase": "completed"
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "prospective_consumed_case_sandboxed_diagnostic_not_acceptance",
+  "original_report_sha256": "9be115006c3bcd7ed438de3190526c9cde663d271e1edaf112577fb9955922ed",
+  "original_case": "case_01",
+  "original_grade_unchanged": true,
+  "conditions": [
+    "deepseek-v4-pro thinking disabled"
+  ],
+  "input": "Fresh identical copies of consumed candidate after two verified stages; original three user task texts, with first two explicitly marked already implemented; no old summaries/assistant history/external expected outputs in model input.",
+  "limits": {
+    "max_steps": 20,
+    "max_seconds": 300,
+    "max_context_bytes": 131072,
+    "auto_compact_bytes": null,
+    "max_output_tokens": 4096,
+    "tool_timeout": 12
+  },
+  "judging": "same protected byte checks, original tests and cumulative external finite observations as consumed case; diagnostic only, not fresh quality score",
+  "purpose": "One same-input/control-budget stronger-model comparison, before selecting any fresh-acceptance model. No scoring or output ceiling change.",
+  "stop": "At most these two bounded runs; preserve any failure/unknown and analyze; no repeated unchanged calls.",
+  "official_mode_docs": "https://api-docs.deepseek.com/guides/thinking_mode/",
+  "extends_completed_controls": "Flash disabled implemented but hit20-step diagnostic ceiling; Flash low thinking response truncated at4096 on request4, unknown retained."
+}

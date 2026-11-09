@@ -1,0 +1,54 @@
+{
+  "protocols": [
+    "chat",
+    "responses",
+    "anthropic"
+  ],
+  "real_model_coding_milestone": "blocked_credentials_and_budget",
+  "real_task_success_rate": null,
+  "real_recovery_success_rate": null,
+  "real_tokens": null,
+  "real_api_cost_usd": null,
+  "upstream_behavior_consistency_rate": null,
+  "upstream_executed": false,
+  "native_sandbox": "macOS Seatbelt only, project child creation denied",
+  "runtime_file_sha256": {
+    "agent_lab/__init__.py": "87694391bac3fe3725211549c30424eb870e57e38dbcc9a5299f6c19073f5574",
+    "agent_lab/__main__.py": "e9313889551a520c294a3ec95c1940b28d88d57c06f305187cb3e1899576c366",
+    "agent_lab/coding_tools.py": "e7d9d02a22e0e56c2d9e4e40c4b3723895f2b4b54a7cb9f4dc1f5e6949865752",
+    "agent_lab/context.py": "a14016b00d0c84e55aa7f38037a468e90c1beb3f0105be4a6a78e57bc49b2e0f",
+    "agent_lab/engine.py": "93594e3170aa992de9001f979ba549c51c26a04467a31706ad320002cabcd483",
+    "agent_lab/expression.py": "29afadc5fca5cc0b29bfa1eee6969ac773aefab8e9d27f45778c128780163572",
+    "agent_lab/instructions.py": "048f5d6ff1891f1985b7671f8cb0cd0720afc1e01c693cbc9e898611fdcf76e7",
+    "agent_lab/model.py": "1ca2d21d036889a26e394edeb0b4abf2386582f8a5bd5244adb3e1aec523464b",
+    "agent_lab/process_guard.py": "2cde8e970dad551260ee49994b461ee05675d203c0085d785c1d073ffaa08327",
+    "agent_lab/protocols.py": "87f0170b8342262fd63f4d64d1b29c8f2d9b76be247374e211d3a8a80403c96e",
+    "agent_lab/sandbox.py": "9d4e7956cc62f087e76243afe58d538a48f60a6622f2abf189b7165e46e8628d",
+    "agent_lab/store.py": "9f5f0198238a3cf7148f851aec650b45d66a22bd3e7cc6aac3423647249d755f",
+    "agent_lab/tools.py": "660416830545c9e3eb39691b87d5a27f6d43762be8b00f1c8fccc4e0bb7b916c",
+    "scripts/evaluate_coding.py": "4dbff58e27637ce4ba909b22007a027d5f86a224c8cced8f724d2801f20d31e4"
+  },
+  "present_key_names": [],
+  "final_regression": {
+    "tests": 123,
+    "seconds": 34.072,
+    "passed": true,
+    "skipped": 0,
+    "log": "evidence/v1/final-tests.txt",
+    "note": "Includes synthetic evaluator rejection; its printed score is not a real-model rate."
+  },
+  "review": {
+    "range": "ae701de..10081c4",
+    "important_findings": 2,
+    "important_fixed": 2,
+    "deferred_minor": "non_string_phase_malformed_checkpoint_cli_traceback",
+    "report": "docs/v1-independent-review.md"
+  },
+  "additional_parent_fix": "protocol-specific endpoint/key defaults prevent cross-provider ambient routing",
+  "audit_comparison": {
+    "missing_usage_invalid_message": true,
+    "duplicate_committed_call_identity": true,
+    "invalid_arguments_trace_accounting": true,
+    "orphan_tool_after_runner_sigkill": true
+  }
+}

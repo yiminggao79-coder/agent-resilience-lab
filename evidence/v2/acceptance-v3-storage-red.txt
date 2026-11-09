@@ -1,0 +1,24 @@
+test_budget_storage_fault_is_fixed_diagnostic_before_key_or_task (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ERROR
+
+======================================================================
+ERROR: test_budget_storage_fault_is_fixed_diagnostic_before_key_or_task (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_cli.py", line 47, in test_budget_storage_fault_is_fixed_diagnostic_before_key_or_task
+    code,result,err=self.call('--allow-api')
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_cli.py", line 26, in call
+    with redirect_stdout(out),redirect_stderr(err):code=runner.main(list(args))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/scripts/evaluate_acceptance_v3.py", line 216, in main
+    ledger=BudgetLedger(REPO/'.lab'/'paid-budget.sqlite')
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+sqlite3.OperationalError: PRIVATE_DATABASE_PATH
+
+----------------------------------------------------------------------
+Ran 1 test in 0.011s
+
+FAILED (errors=1)

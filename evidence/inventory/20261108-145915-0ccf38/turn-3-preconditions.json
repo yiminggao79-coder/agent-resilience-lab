@@ -1,0 +1,16 @@
+{
+  "kind": "public_third_turn_preexposure_conditions",
+  "fixture_sha256": {
+    "STATEFUL.md": "dca63d346d159a308617b18ebd45c42879002a053e76a4430d4b876f2032f2dd",
+    "stateful_probe.py": "0512818f43e7412c4f1a19abdf9af343c37c92b8b3fb64f77e67ba2a7ae8f05d",
+    "stateful-checks.json": "3d970b2a2f8367852062e370be974137606d5ac9a051edd3100b8665b1e02c8c"
+  },
+  "checks": 4,
+  "old_checks_retained": 10,
+  "max_context_bytes": 65536,
+  "auto_compact_bytes": 38000,
+  "max_auto_compactions": 2,
+  "independent_acceptance": false,
+  "paired_no_compaction_control": false,
+  "api_requests_sent": 0
+}

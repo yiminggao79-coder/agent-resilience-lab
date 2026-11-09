@@ -1,0 +1,16 @@
+test_http_remote_effect_after_local_cancel_remains_unknown_on_new_process (tests.acceptance.test_mcp_cancel_process.MCPCancelProcessTests) ... FAIL
+test_stdio_effect_then_cli_stop_new_process_does_not_replay (tests.acceptance.test_mcp_cancel_process.MCPCancelProcessTests) ... ok
+
+======================================================================
+FAIL: test_http_remote_effect_after_local_cancel_remains_unknown_on_new_process (tests.acceptance.test_mcp_cancel_process.MCPCancelProcessTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_mcp_cancel_process.py", line 77, in test_http_remote_effect_after_local_cancel_remains_unknown_on_new_process
+    self.assertFalse(any(r.get('method')=='DELETE' for r in server.records))
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.107s
+
+FAILED (failures=1)
+{"contract": "stdio_mcp_cli_stop_new_pid", "first_pid": 24630, "resumed_pid": 24634, "effect_count": 1, "pending_id_preserved": true, "external_quiescence_claimed": false, "real_llm_quality": null}

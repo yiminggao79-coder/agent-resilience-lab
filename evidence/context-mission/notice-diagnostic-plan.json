@@ -1,0 +1,24 @@
+{
+  "kind": "prospective_consumed_case_diagnostic_not_acceptance",
+  "original_run": "c7476203096e47b6",
+  "request_sha256": "4724c6c64de1b7bc891e03370cdc057f36440ddd1df71a17a04987a93af08b8a",
+  "selection": "last complete request before owner stop of observed read loop",
+  "conditions": [
+    "unchanged_request",
+    "remove_only_last_file_context_user_notice"
+  ],
+  "removed_message_indices": [
+    11
+  ],
+  "max_requests": 2,
+  "model": "deepseek-flash",
+  "protocol": "chat",
+  "thinking": "disabled",
+  "max_output_tokens": 4096,
+  "execute_returned_tools": false,
+  "expected_hypothesis": "unchanged selects reads, removed notice may select coding; otherwise inconclusive",
+  "limitations": [
+    "One pair is stochastic and cannot establish causality or task quality.",
+    "Original frozen grades remain unchanged; case already consumed."
+  ]
+}

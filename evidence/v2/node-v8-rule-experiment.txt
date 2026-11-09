@@ -1,0 +1,1 @@
+{"experimental_extra_rule": "(allow sysctl-read (sysctl-name \"hw.pagesize_compat\") (sysctl-name \"kern.osrelease\"))", "result": {"ok": true, "exit_code": 0, "stdout": "vm initialized\n", "stderr": "", "stdout_truncated": false, "stderr_truncated": false}}

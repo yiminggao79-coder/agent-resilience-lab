@@ -1,0 +1,65 @@
+{
+  "source_url": "https://github.com/openai/codex/blob/main/codex-rs/rollout/src/recorder.rs",
+  "modified_date": "2026-11-02T16:00:20Z",
+  "sha256": null,
+  "observations": [
+    {
+      "line": 1073,
+      "text": "pub async fn record_canonical_items(&self, items: &[RolloutItem]) -> std::io::Result<()> {"
+    },
+    {
+      "line": 1112,
+      "text": "pub async fn flush(&self) -> std::io::Result<()> {"
+    },
+    {
+      "line": 1941,
+      "text": "async fn rollout_writer("
+    },
+    {
+      "line": 2104,
+      "text": "async fn write_line(&mut self, item: &impl serde::Serialize) -> std::io::Result<()> {"
+    }
+  ],
+  "excerpts": [
+    {
+      "start_line": 1073,
+      "lines": [
+        "    pub async fn record_canonical_items(&self, items: &[RolloutItem]) -> std::io::Result<()> {",
+        "        if items.is_empty() {",
+        "            return Ok(());",
+        "        }",
+        "        self.tx"
+      ]
+    },
+    {
+      "start_line": 1112,
+      "lines": [
+        "    pub async fn flush(&self) -> std::io::Result<()> {",
+        "        let (tx, rx) = oneshot::channel();",
+        "        self.tx",
+        "            .send(RolloutCmd::Flush { ack: tx })",
+        "            .await"
+      ]
+    },
+    {
+      "start_line": 1941,
+      "lines": [
+        "async fn rollout_writer(",
+        "    mut state: RolloutWriterState,",
+        "    mut rx: mpsc::Receiver<RolloutCmd>,",
+        ") -> std::io::Result<()> {",
+        "    // Process rollout commands"
+      ]
+    },
+    {
+      "start_line": 2104,
+      "lines": [
+        "    async fn write_line(&mut self, item: &impl serde::Serialize) -> std::io::Result<()> {",
+        "        let mut json = serde_json::to_string(item)?;",
+        "        json.push('\\n');",
+        "        self.file.write_all(json.as_bytes()).await?;",
+        "        self.file.flush().await?;"
+      ]
+    }
+  ]
+}

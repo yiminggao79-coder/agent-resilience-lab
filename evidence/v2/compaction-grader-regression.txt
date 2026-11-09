@@ -1,0 +1,11 @@
+test_correct_values_cannot_hide_input_mutation (tests.dev.test_compaction_experiment.CompactionOracleTests) ... ok
+test_old_summary_cannot_count_as_a_successful_new_compaction (tests.dev.test_compaction_experiment.CompactionOracleTests) ... ok
+test_summary_usage_requires_exact_user_data_in_the_actual_request (tests.dev.test_compaction_experiment.CompactionOracleTests) ... ok
+test_chat_compact_does_not_create_a_user_turn (tests.dev.test_compaction_cli.CompactionCLITests) ... ok
+test_explicit_cli_compaction_uses_model_without_replacing_private_archive (tests.dev.test_compaction_cli.CompactionCLITests) ... ok
+test_rejected_summary_has_nonzero_cli_exit_even_when_original_turn_completed (tests.dev.test_compaction_cli.CompactionCLITests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.117s
+
+OK

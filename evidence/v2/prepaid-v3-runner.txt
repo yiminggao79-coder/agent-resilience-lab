@@ -1,0 +1,1 @@
+{"quality_measured": 2, "quality_unmeasured": 0, "quality_passes": 2, "quality_pass_rate": 1.0, "blocked_prior_exposure": 0, "provider_exposure_possible_cases": 2, "valid_model_responses": 22, "evaluation_valid": true, "report": "evidence/acceptance_v3/20261108-214537-b2bdd182/report.json"}

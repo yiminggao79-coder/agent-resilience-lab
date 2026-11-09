@@ -1,0 +1,14 @@
+test_managed_preferences_probe_exports_only_presence_booleans_not_values (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ERROR
+
+======================================================================
+ERROR: test_managed_preferences_probe_exports_only_presence_booleans_not_values (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_cli_boundary.py", line 36, in test_managed_preferences_probe_exports_only_presence_booleans_not_values
+    from scripts.reference_cli import managed_preferences_status
+ImportError: cannot import name 'managed_preferences_status' from 'scripts.reference_cli' (/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/scripts/reference_cli.py)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (errors=1)

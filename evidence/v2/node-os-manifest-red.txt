@@ -1,0 +1,30 @@
+test_node_only_os_reads_are_explicit_and_digest_bound (tests.dev.test_node_integration.NodeIntegrationTests) ... FAIL
+
+======================================================================
+FAIL: test_node_only_os_reads_are_explicit_and_digest_bound (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 46, in test_node_only_os_reads_are_explicit_and_digest_bound
+    self.assertEqual(tools.command_runtime_policy['sysctl_read'], names)
+AssertionError: Lists differ: ['hw.pagesize_compat', 'kern.osrelease'] != ['hw.machine', 'hw.pagesize_compat', 'kern.hos[51 chars]ion']
+
+First differing element 0:
+'hw.pagesize_compat'
+'hw.machine'
+
+Second list contains 4 additional elements.
+First extra element 2:
+'kern.hostname'
+
+- ['hw.pagesize_compat', 'kern.osrelease']
++ ['hw.machine',
++  'hw.pagesize_compat',
++  'kern.hostname',
++  'kern.osrelease',
++  'kern.ostype',
++  'kern.version']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (failures=1)

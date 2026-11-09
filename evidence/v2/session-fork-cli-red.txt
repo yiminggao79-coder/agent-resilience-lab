@@ -1,0 +1,33 @@
+test_active_or_unknown_source_rejects_without_creation_or_confirmation (tests.dev.test_session_fork_cli.SessionForkCLITests) ... ok
+test_coding_profile_and_readonly_manifest_survive_without_mcp_or_credentials (tests.dev.test_session_fork_cli.SessionForkCLITests) ... FAIL
+test_fork_outputs_only_new_ids_and_shared_workspace_metadata_without_model_or_execution (tests.dev.test_session_fork_cli.SessionForkCLITests) ... FAIL
+test_wrong_workspace_or_missing_readonly_scope_rejects_before_child_creation (tests.dev.test_session_fork_cli.SessionForkCLITests) ... ok
+
+======================================================================
+FAIL: test_coding_profile_and_readonly_manifest_survive_without_mcp_or_credentials (tests.dev.test_session_fork_cli.SessionForkCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_fork_cli.py", line 57, in test_coding_profile_and_readonly_manifest_survive_without_mcp_or_credentials
+    self.assertEqual(code,0,err)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,providers}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'fork' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'providers')
+
+
+======================================================================
+FAIL: test_fork_outputs_only_new_ids_and_shared_workspace_metadata_without_model_or_execution (tests.dev.test_session_fork_cli.SessionForkCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_fork_cli.py", line 43, in test_fork_outputs_only_new_ids_and_shared_workspace_metadata_without_model_or_execution
+    self.assertEqual(code,0,err);result=json.loads(out)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,providers}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'fork' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'providers')
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.212s
+
+FAILED (failures=2)

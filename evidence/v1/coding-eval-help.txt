@@ -1,0 +1,30 @@
+usage: evaluate_coding.py [-h] [--allow-api] [--model MODEL]
+                          [--base-url BASE_URL] [--api-key-env API_KEY_ENV]
+                          [--protocol {chat,responses,anthropic}] [--stream]
+                          [--token-parameter {max_tokens,max_completion_tokens}]
+                          [--no-parallel-parameter]
+                          [--case {add,normalize,all}] --max-cost-usd
+                          MAX_COST_USD --input-price INPUT_PRICE
+                          --output-price OUTPUT_PRICE --output OUTPUT
+
+Opt-in real Coding Agent milestone. No credentials => no API requests.
+Independent file/test oracles decide success; model completion is
+insufficient. This is a public development benchmark, not an unseen acceptance
+set.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --allow-api
+  --model MODEL
+  --base-url BASE_URL
+  --api-key-env API_KEY_ENV
+  --protocol {chat,responses,anthropic}
+  --stream
+  --token-parameter {max_tokens,max_completion_tokens}
+  --no-parallel-parameter
+  --case {add,normalize,all}
+  --max-cost-usd MAX_COST_USD
+                        per task configured cost reservation limit
+  --input-price INPUT_PRICE
+  --output-price OUTPUT_PRICE
+  --output OUTPUT

@@ -1,0 +1,654 @@
+{
+  "kind": "offline_protocol_fixture",
+  "real_model_tested": false,
+  "real_agent_success_rate": null,
+  "real_api_cost_usd": null,
+  "normal_case": {
+    "id": "c8fb265d5c4340e7884ade1b980fec0c",
+    "phase": "completed",
+    "reason": "model_finished",
+    "verified_success": null,
+    "metrics": {
+      "model_calls": 6,
+      "tool_attempts": 5,
+      "recoveries": 0,
+      "input_tokens": 600,
+      "output_tokens": 220,
+      "cost_usd": null,
+      "reserved_usd": 0.0,
+      "elapsed_seconds": 0.8565700054168701
+    },
+    "artifact_verified": true,
+    "trace": [
+      {
+        "seq": 1,
+        "at": 1794027464.2064362,
+        "kind": "created",
+        "phase": "ready"
+      },
+      {
+        "seq": 2,
+        "at": 1794027464.208628,
+        "kind": "model_started",
+        "model_calls": 1,
+        "request_bytes": 2363,
+        "reserved_usd": 0.0
+      },
+      {
+        "seq": 3,
+        "at": 1794027464.3038661,
+        "kind": "model_finished",
+        "input_tokens": 100,
+        "output_tokens": 40,
+        "cost_usd": null,
+        "duration_ms": 0.11768099999999448,
+        "model_calls": 1
+      },
+      {
+        "seq": 4,
+        "at": 1794027464.305875,
+        "kind": "tool_started",
+        "tool": "read_file",
+        "attempt": 1
+      },
+      {
+        "seq": 5,
+        "at": 1794027464.382638,
+        "kind": "tool_finished",
+        "tool": "read_file",
+        "ok": true,
+        "code": "ok",
+        "duration_ms": 76.694385
+      },
+      {
+        "seq": 6,
+        "at": 1794027464.383928,
+        "kind": "model_started",
+        "model_calls": 2,
+        "request_bytes": 2657,
+        "reserved_usd": 0.0
+      },
+      {
+        "seq": 7,
+        "at": 1794027464.4574678,
+        "kind": "model_finished",
+        "input_tokens": 100,
+        "output_tokens": 40,
+        "cost_usd": null,
+        "duration_ms": 0.07798700000000158,
+        "model_calls": 2
+      },
+      {
+        "seq": 8,
+        "at": 1794027464.458606,
+        "kind": "tool_started",
+        "tool": "csv_stats",
+        "attempt": 2
+      },
+      {
+        "seq": 9,
+        "at": 1794027464.534862,
+        "kind": "tool_finished",
+        "tool": "csv_stats",
+        "ok": true,
+        "code": "ok",
+        "duration_ms": 76.01322799999998
+      },
+      {
+        "seq": 10,
+        "at": 1794027464.536823,
+        "kind": "model_started",
+        "model_calls": 3,
+        "request_bytes": 2996,
+        "reserved_usd": 0.0
+      },
+      {
+        "seq": 11,
+        "at": 1794027464.612294,
+        "kind": "model_finished",
+        "input_tokens": 100,
+        "output_tokens": 40,
+        "cost_usd": null,
+        "duration_ms": 0.10418200000000821,
+        "model_calls": 3
+      },
+      {
+        "seq": 12,
+        "at": 1794027464.614187,
+        "kind": "tool_started",
+        "tool": "python_expr",
+        "attempt": 3
+      },
+      {
+        "seq": 13,
+        "at": 1794027464.73683,
+        "kind": "tool_finished",
+        "tool": "python_expr",
+        "ok": true,
+        "code": "ok",
+        "duration_ms": 122.51304799999996
+      },
+      {
+        "seq": 14,
+        "at": 1794027464.738708,
+        "kind": "model_started",
+        "model_calls": 4,
+        "request_bytes": 3261,
+        "reserved_usd": 0.0
+      },
+      {
+        "seq": 15,
+        "at": 1794027464.815122,
+        "kind": "model_finished",
+        "input_tokens": 100,
+        "output_tokens": 40,
+        "cost_usd": null,
+        "duration_ms": 0.10784500000005082,
+        "model_calls": 4
+      },
+      {
+        "seq": 16,
+        "at": 1794027464.816489,
+        "kind": "tool_started",
+        "tool": "write_file",
+        "attempt": 4
+      },
+      {
+        "seq": 17,
+        "at": 1794027464.8961668,
+        "kind": "tool_finished",
+        "tool": "write_file",
+        "ok": true,
+        "code": "ok",
+        "duration_ms": 79.39329399999994
+      },
+      {
+        "seq": 18,
+        "at": 1794027464.8974102,
+        "kind": "model_started",
+        "model_calls": 5,
+        "request_bytes": 3679,
+        "reserved_usd": 0.0
+      },
+      {
+        "seq": 19,
+        "at": 1794027464.981457,
+        "kind": "model_finished",
+        "input_tokens": 100,
+        "output_tokens": 40,
+        "cost_usd": null,
+        "duration_ms": 0.17132500000005546,
+        "model_calls": 5
+      },
+      {
+        "seq": 20,
+        "at": 1794027464.98253,
+        "kind": "tool_started",
+        "tool": "read_file",
+        "attempt": 5
+      },
+      {
+        "seq": 21,
+        "at": 1794027465.057438,
+        "kind": "tool_finished",
+        "tool": "read_file",
+        "ok": true,
+        "code": "ok",
+        "duration_ms": 74.70365000000001
+      },
+      {
+        "seq": 22,
+        "at": 1794027465.05937,
+        "kind": "model_started",
+        "model_calls": 6,
+        "request_bytes": 3991,
+        "reserved_usd": 0.0
+      },
+      {
+        "seq": 23,
+        "at": 1794027465.060606,
+        "kind": "model_finished",
+        "input_tokens": 100,
+        "output_tokens": 20,
+        "cost_usd": null,
+        "duration_ms": 0.15667999999990911,
+        "model_calls": 6,
+        "phase": "completed"
+      }
+    ]
+  },
+  "crash_comparison": [
+    {
+      "operation": "write_file",
+      "strategy": "resume",
+      "phase": "completed",
+      "reason": "model_finished",
+      "task_success": true,
+      "target_matches": true,
+      "line_count": 1,
+      "elapsed_seconds": 0.48595846499999995,
+      "model_calls_total": 2,
+      "tool_attempts_total": 1,
+      "actual_kill_signal": "SIGKILL",
+      "crash_stage": "after_tool_effect_before_receipt",
+      "trace_before_kill": [
+        {
+          "seq": 1,
+          "at": 1794027465.177002,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794027465.179557,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2350,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794027465.254538,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 40,
+          "cost_usd": null,
+          "duration_ms": 0.11449900000000401,
+          "model_calls": 1
+        },
+        {
+          "seq": 4,
+          "at": 1794027465.256363,
+          "kind": "tool_started",
+          "tool": "write_file",
+          "attempt": 1
+        }
+      ],
+      "trace_after_restart": [
+        {
+          "seq": 1,
+          "at": 1794027465.177002,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794027465.179557,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2350,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794027465.254538,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 40,
+          "cost_usd": null,
+          "duration_ms": 0.11449900000000401,
+          "model_calls": 1
+        },
+        {
+          "seq": 4,
+          "at": 1794027465.256363,
+          "kind": "tool_started",
+          "tool": "write_file",
+          "attempt": 1
+        },
+        {
+          "seq": 5,
+          "at": 1794027465.452971,
+          "kind": "tool_recovery",
+          "tool": "write_file",
+          "recovered": true
+        },
+        {
+          "seq": 6,
+          "at": 1794027465.5285969,
+          "kind": "tool_finished",
+          "tool": "write_file",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 75.62908999999999
+        },
+        {
+          "seq": 7,
+          "at": 1794027465.530569,
+          "kind": "model_started",
+          "model_calls": 2,
+          "request_bytes": 2725,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 8,
+          "at": 1794027465.531751,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 20,
+          "cost_usd": null,
+          "duration_ms": 0.08444499999998856,
+          "model_calls": 2,
+          "phase": "completed"
+        }
+      ]
+    },
+    {
+      "operation": "write_file",
+      "strategy": "restart_without_checkpoint",
+      "phase": "completed",
+      "reason": "model_finished",
+      "task_success": true,
+      "target_matches": true,
+      "line_count": 1,
+      "elapsed_seconds": 0.540093819,
+      "model_calls_total": 3,
+      "tool_attempts_total": 2,
+      "actual_kill_signal": "SIGKILL",
+      "crash_stage": "after_tool_effect_before_receipt",
+      "trace_before_kill": [
+        {
+          "seq": 1,
+          "at": 1794027465.665609,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794027465.667113,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2350,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794027465.737349,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 40,
+          "cost_usd": null,
+          "duration_ms": 0.09178099999999911,
+          "model_calls": 1
+        },
+        {
+          "seq": 4,
+          "at": 1794027465.73873,
+          "kind": "tool_started",
+          "tool": "write_file",
+          "attempt": 1
+        }
+      ],
+      "trace_after_restart": [
+        {
+          "seq": 5,
+          "at": 1794027465.9237719,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 6,
+          "at": 1794027465.9262028,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2350,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 7,
+          "at": 1794027465.997806,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 40,
+          "cost_usd": null,
+          "duration_ms": 0.04739800000000405,
+          "model_calls": 1
+        },
+        {
+          "seq": 8,
+          "at": 1794027465.999653,
+          "kind": "tool_started",
+          "tool": "write_file",
+          "attempt": 1
+        },
+        {
+          "seq": 9,
+          "at": 1794027466.0704691,
+          "kind": "tool_finished",
+          "tool": "write_file",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 70.71052999999999
+        },
+        {
+          "seq": 10,
+          "at": 1794027466.072402,
+          "kind": "model_started",
+          "model_calls": 2,
+          "request_bytes": 2725,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 11,
+          "at": 1794027466.073468,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 20,
+          "cost_usd": null,
+          "duration_ms": 0.0815960000000171,
+          "model_calls": 2,
+          "phase": "completed"
+        }
+      ]
+    },
+    {
+      "operation": "append_file",
+      "strategy": "resume",
+      "phase": "needs_confirmation",
+      "reason": "tool_outcome_unknown",
+      "task_success": false,
+      "target_matches": true,
+      "line_count": 1,
+      "elapsed_seconds": 0.46390168799999976,
+      "model_calls_total": 1,
+      "tool_attempts_total": 1,
+      "actual_kill_signal": "SIGKILL",
+      "crash_stage": "after_tool_effect_before_receipt",
+      "trace_before_kill": [
+        {
+          "seq": 1,
+          "at": 1794027466.2036538,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794027466.205108,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2350,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794027466.276238,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 40,
+          "cost_usd": null,
+          "duration_ms": 0.10944499999999968,
+          "model_calls": 1
+        },
+        {
+          "seq": 4,
+          "at": 1794027466.2781372,
+          "kind": "tool_started",
+          "tool": "append_file",
+          "attempt": 1
+        }
+      ],
+      "trace_after_restart": [
+        {
+          "seq": 1,
+          "at": 1794027466.2036538,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794027466.205108,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2350,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794027466.276238,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 40,
+          "cost_usd": null,
+          "duration_ms": 0.10944499999999968,
+          "model_calls": 1
+        },
+        {
+          "seq": 4,
+          "at": 1794027466.2781372,
+          "kind": "tool_started",
+          "tool": "append_file",
+          "attempt": 1
+        },
+        {
+          "seq": 5,
+          "at": 1794027466.465371,
+          "kind": "tool_recovery",
+          "tool": "append_file",
+          "recovered": true
+        },
+        {
+          "seq": 6,
+          "at": 1794027466.537505,
+          "kind": "terminated",
+          "phase": "needs_confirmation",
+          "code": "tool_outcome_unknown"
+        }
+      ]
+    },
+    {
+      "operation": "append_file",
+      "strategy": "restart_without_checkpoint",
+      "phase": "completed",
+      "reason": "model_finished",
+      "task_success": false,
+      "target_matches": false,
+      "line_count": 2,
+      "elapsed_seconds": 0.5543880380000004,
+      "model_calls_total": 3,
+      "tool_attempts_total": 2,
+      "actual_kill_signal": "SIGKILL",
+      "crash_stage": "after_tool_effect_before_receipt",
+      "trace_before_kill": [
+        {
+          "seq": 1,
+          "at": 1794027466.673635,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794027466.676258,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2350,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794027466.749439,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 40,
+          "cost_usd": null,
+          "duration_ms": 0.13929699999999656,
+          "model_calls": 1
+        },
+        {
+          "seq": 4,
+          "at": 1794027466.7513092,
+          "kind": "tool_started",
+          "tool": "append_file",
+          "attempt": 1
+        }
+      ],
+      "trace_after_restart": [
+        {
+          "seq": 5,
+          "at": 1794027466.9372659,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 6,
+          "at": 1794027466.939622,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2350,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 7,
+          "at": 1794027467.012112,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 40,
+          "cost_usd": null,
+          "duration_ms": 0.04656699999999736,
+          "model_calls": 1
+        },
+        {
+          "seq": 8,
+          "at": 1794027467.013972,
+          "kind": "tool_started",
+          "tool": "append_file",
+          "attempt": 1
+        },
+        {
+          "seq": 9,
+          "at": 1794027467.087456,
+          "kind": "tool_finished",
+          "tool": "append_file",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 72.988957
+        },
+        {
+          "seq": 10,
+          "at": 1794027467.0897121,
+          "kind": "model_started",
+          "model_calls": 2,
+          "request_bytes": 2704,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 11,
+          "at": 1794027467.0915961,
+          "kind": "model_finished",
+          "input_tokens": 100,
+          "output_tokens": 20,
+          "cost_usd": null,
+          "duration_ms": 0.16097400000000817,
+          "model_calls": 2,
+          "phase": "completed"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Scripted responses; no model capability claim.",
+    "One synthetic run per case; no statistical significance.",
+    "No-checkpoint baseline restarts the same scripted policy from the start.",
+    "tool_attempts counts durable start records, not guaranteed external execution counts.",
+    "Usage in protocol fixtures is synthetic; excluded from real API metrics."
+  ]
+}

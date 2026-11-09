@@ -1,0 +1,159 @@
+--- before/evaluation.py
++++ after/evaluation.py
+@@ -28,8 +28,7 @@
+         if kind=='mul': return left*right
+         if kind=='div':
+             if not right: raise ValueError('division by zero')
+-            # Current quotient discards fractional results, despite the exact API.
+-            return Fraction(left//right)
++            return left/right
+         raise ValueError('unknown expression node')
+     return run(node)
+ def pair(value): return [value.numerator,value.denominator]
+--- before/parsing.py
++++ after/parsing.py
+@@ -1,4 +1,11 @@
+-"""Recursive expression parser with a deliberately small power grammar."""
++"""Recursive expression parser with a deliberately small power grammar.
++
++Precedence, from loosest to tightest: + - (left associative), * / (left
++associative), unary + -, and finally a power suffix that binds a single atom.
++Because unary signs sit above power, -2^2 is -(2^2) while (-2)^2 has a
++parenthesized negative base.  Only one signed decimal integer literal of
++magnitude at most 12 is allowed as the exponent.
++"""
+ from lexing import tokenize
+ from nodes import number,variable
+ def parse(text):
+@@ -20,15 +27,9 @@
+         if token.isdecimal(): return number(int(token))
+         if token[0].isalpha() or token[0]=='_': return variable(token)
+         raise ValueError('expected atom')
+-    def signed_atom():
+-        if peek() in ('+','-'):
+-            sign=take()
+-            child=signed_atom()
+-            return ('neg',child) if sign=='-' else child
+-        return atom()
+     def power():
+-        # Current precedence wrongly includes the sign in the base.
+-        result=signed_atom()
++        # A power suffix applies to the atom alone, before any outer sign.
++        result=atom()
+         if peek()=='^':
+             take()
+             sign=-1 if peek()=='-' else 1
+@@ -39,7 +40,13 @@
+             if abs(exponent)>12: raise ValueError('power exponent out of range')
+             result=('pow',result,exponent)
+         return result
+-    def unary(): return power()
++    def unary():
++        # Signs repeat and bind more loosely than the power suffix.
++        if peek() in ('+','-'):
++            sign=take()
++            child=unary()
++            return ('neg',child) if sign=='-' else child
++        return power()
+     def term():
+         result=unary()
+         while peek() in ('*','/'):
+--- before/tests/test_regressions.py
++++ after/tests/test_regressions.py
+@@ -0,0 +1,96 @@
++import copy
++import unittest
++from api import calculate
++from parsing import parse
++from rendering import render
++from evaluation import evaluate,pair
++
++
++class UnaryPowerPrecedence(unittest.TestCase):
++    def test_power_binds_atom_before_outer_sign(self):
++        self.assertEqual(calculate('-2^2',{}),{'canonical':'(-(2^2))','value':[-4,1]})
++        self.assertEqual(calculate('(-2)^2',{})['value'],[4,1])
++        self.assertEqual(calculate('(-2)^2',{})['canonical'],'((-2)^2)')
++
++    def test_repeated_signs(self):
++        self.assertEqual(calculate('--2^2',{}),{'canonical':'(-(-(2^2)))','value':[4,1]})
++        self.assertEqual(calculate('---2',{})['value'],[-2,1])
++        self.assertEqual(calculate('+2^2',{})['value'],[4,1])
++        self.assertEqual(calculate('-+2^2',{})['value'],[-4,1])
++
++    def test_signs_before_parentheses(self):
++        self.assertEqual(calculate('-(2+3)',{})['value'],[-5,1])
++        self.assertEqual(calculate('-(-2)^2',{})['value'],[-4,1])
++        self.assertEqual(calculate('-(x+1)^2',{'x':2})['value'],[-9,1])
++
++    def test_power_suffix_sign(self):
++        self.assertEqual(calculate('2^-2',{}),{'canonical':'(2^-2)','value':[1,4]})
++        self.assertEqual(calculate('2^+2',{})['value'],[4,1])
++        self.assertEqual(calculate('-2^-2',{})['value'],[-1,4])
++        self.assertEqual(calculate('(-2)^-2',{})['value'],[1,4])
++
++
++class ExactRationals(unittest.TestCase):
++    def test_division_is_exact(self):
++        self.assertEqual(calculate('1/2+1/3',{})['value'],[5,6])
++        self.assertEqual(calculate('1/3+1/6',{})['value'],[1,2])
++        self.assertEqual(calculate('-1/3',{})['value'],[-1,3])
++        self.assertEqual(calculate('1/2*3',{})['value'],[3,2])
++        self.assertEqual(calculate('x/2',{'x':[2,3]})['value'],[1,3])
++        self.assertEqual(calculate('1/x',{'x':[2,3]})['value'],[3,2])
++
++    def test_left_associativity(self):
++        self.assertEqual(calculate('8/4/2',{})['value'],[1,1])
++        self.assertEqual(calculate('1/2/3',{})['value'],[1,6])
++        self.assertEqual(calculate('8/4*2',{})['value'],[4,1])
++        self.assertEqual(calculate('1-2-3',{})['value'],[-4,1])
++
++    def test_multiplicative_binds_tighter_than_additive(self):
++        self.assertEqual(calculate('1+2*3',{})['value'],[7,1])
++        self.assertEqual(calculate('2*3^2',{})['value'],[18,1])
++        self.assertEqual(calculate('-2^2*3',{})['value'],[-12,1])
++        self.assertEqual(calculate('2^-1*4',{})['value'],[2,1])
++
++    def test_zero_powers(self):
++        self.assertEqual(calculate('0^0',{}),{'canonical':'(0^0)','value':[1,1]})
++        self.assertEqual(calculate('(1-1)^0',{}),{'canonical':'((1-1)^0)','value':[1,1]})
++        self.assertEqual(calculate('0^2',{})['value'],[0,1])
++        with self.assertRaises(ValueError):
++            calculate('0^-1',{})
++
++    def test_division_by_zero(self):
++        for text in ('1/0','1/(-0)','0/0'):
++            with self.assertRaises(ValueError):
++                calculate(text,{})
++
++
++class Validation(unittest.TestCase):
++    def test_exponent_grammar_unchanged(self):
++        for text in ('2^2^2','2^(2)','2^x','x^2^3','2^13','2^-13','2^+13',
++                     '2^','2^^2','2^--2','^2'):
++            with self.assertRaises(ValueError):
++                parse(text)
++
++    def test_environment_validation(self):
++        for values in ({'x':True},{'x':[1,0]},{'x':[1]},{'x':1.5},
++                       {'x':[True,2]},{'x':'2'},{'1x':2},[('x',1)],'x'):
++            with self.assertRaises(ValueError):
++                evaluate(parse('x'),values)
++
++    def test_unbound_variable(self):
++        with self.assertRaises(ValueError):
++            calculate('x+1',{})
++
++    def test_caller_inputs_preserved(self):
++        values={'x':[1,2],'y':[-3,4]}
++        before=copy.deepcopy(values)
++        calculate('-x^2+y/2',values)
++        self.assertEqual(values,before)
++        tree=parse('-x^2+y/2')
++        tree_before=copy.deepcopy(tree)
++        evaluate(tree,values)
++        self.assertEqual(tree,tree_before)
++
++
++if __name__=='__main__':
++    unittest.main()

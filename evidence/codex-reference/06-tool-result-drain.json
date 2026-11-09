@@ -1,0 +1,44 @@
+{
+  "repository": "openai/codex",
+  "commit": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/session/turn.rs",
+  "blob_sha": "1fdf62faca3d396b4f1b6b7c64d879f99be7b2e9",
+  "license": "Apache-2.0",
+  "excerpts": [
+    {
+      "start_line": 2850,
+      "end_line": 2877,
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs#L2850-L2877",
+      "lines": [
+        "async fn drain_in_flight(",
+        "    in_flight: &mut FuturesOrdered<InFlightFuture<'static>>,",
+        "    sess: Arc<Session>,",
+        "    step_context: &StepContext,",
+        ") -> CodexResult<()> {",
+        "    let turn_context = &step_context.turn;",
+        "    while let Some(res) = in_flight.next().await {",
+        "        match res {",
+        "            Ok(envelope) => {",
+        "                mark_thread_memory_mode_polluted_if_external_context(",
+        "                    sess.as_ref(),",
+        "                    turn_context.as_ref(),",
+        "                    &envelope.item,",
+        "                )",
+        "                .await;",
+        "                sess.record_annotated_conversation_items(",
+        "                    turn_context,",
+        "                    &step_context.settings.model_info,",
+        "                    vec![envelope],",
+        "                )",
+        "                .await;",
+        "            }",
+        "            Err(err) => {",
+        "                error_or_panic(format!(\"in-flight tool future failed during drain: {err}\"));",
+        "            }",
+        "        }",
+        "    }",
+        "    Ok(())"
+      ]
+    }
+  ]
+}

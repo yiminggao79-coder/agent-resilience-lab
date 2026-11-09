@@ -1,0 +1,31 @@
+test_engine (unittest.loader._FailedTest) ... ERROR
+test_model (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_engine (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_engine
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_engine.py", line 5, in <module>
+    from agent_lab.engine import Engine, Limits
+ModuleNotFoundError: No module named 'agent_lab.engine'
+
+
+======================================================================
+ERROR: test_model (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_model
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 9, in <module>
+    from agent_lab.model import OpenAIModel, ModelError
+ModuleNotFoundError: No module named 'agent_lab.model'
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (errors=2)

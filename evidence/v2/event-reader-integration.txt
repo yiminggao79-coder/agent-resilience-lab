@@ -1,0 +1,24 @@
+test_active_caller_transaction_is_not_committed_or_rolled_back (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_exhausted_page_can_be_followed_by_newly_committed_rows (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_interleaved_global_seek_pages_do_not_lose_or_repeat_task_events (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_invalid_arguments_fingerprint_binding_and_stale_file_are_fixed (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_invalid_duplicate_nan_deep_and_oversize_metadata_never_escape (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_invalid_known_fields_unknown_fields_and_null_values_are_counted (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_metadata_is_nested_whitelisted_and_cannot_override_row_identity (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_raw_time_and_kind_are_sql_sanitized_and_bad_metadata_does_not_override_them (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_readonly_bytes_mode_schema_unchanged_and_storage_fault_fixed (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_sql_projection_bounds_python_memory_and_never_materializes_task_history (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_wal_page_is_one_snapshot_when_writer_appends_after_task_existence_read (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_cli_is_readonly_does_not_load_history_or_construct_tools_model (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_seek_pages_expected_database_and_live_append_after_exhaustion (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_signed_native_signal_exit_status_is_not_filtered_as_a_counter (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_store_checked_identity_matches_open_and_rejects_replaced_path (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_existing_readonly_transaction_keeps_its_snapshot_after_rejection (tests.dev.test_session_listing_review.SessionListingReviewTests) ... ok
+test_replaced_database_path_cannot_rebind_cursor_from_old_connection (tests.dev.test_session_listing_review.SessionListingReviewTests) ... ok
+test_single_page_uses_one_snapshot_and_later_page_is_live (tests.dev.test_session_listing_review.SessionListingReviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.461s
+
+OK

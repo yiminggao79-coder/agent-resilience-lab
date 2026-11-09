@@ -1,0 +1,19 @@
+{
+  "path": "codex-rs/core/src/tools/handlers/mcp_resource_spec.rs",
+  "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/mcp_resource_spec.rs",
+  "body_ranges_read": [
+    [
+      1,
+      103
+    ]
+  ],
+  "upstream_executed": false,
+  "git_blob_sha1_computed_not_independently_compared": "86b550fbbdc190505dcaee52164b0eb551572ace",
+  "excerpts": [
+    {
+      "start": 67,
+      "end": 99,
+      "text": "        (\n            \"server\".to_string(),\n            JsonSchema::string(Some(\n                \"MCP server name exactly as configured. Must match the 'server' field returned by list_mcp_resources.\"\n                    .to_string(),\n            )),\n        ),\n        (\n            \"uri\".to_string(),\n            JsonSchema::string(Some(\n                \"Resource URI to read. Must be one of the URIs returned by list_mcp_resources.\"\n                    .to_string(),\n            )),\n        ),\n    ]);\n\n    let tool = ResponsesApiTool {\n        name: \"read_mcp_resource\".to_string(),\n        description:\n            \"Read a specific resource from an MCP server given the server name and resource URI.\"\n                .to_string(),\n        strict: false,\n        defer_loading: None,\n        parameters: JsonSchema::object(\n            properties,\n            Some(vec![\"server\".to_string(), \"uri\".to_string()]),\n            Some(false.into()),\n        ),\n        output_schema: None,\n    };\n    ToolSpec::Function(with_catalog_tool_message(tool, messages))\n}\n"
+    }
+  ]
+}

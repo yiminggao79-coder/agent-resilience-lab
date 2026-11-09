@@ -1,0 +1,103 @@
+test_config_rejects_workspace_direct_intermediate_alias_symlink_hardlink_fifo (tests.dev.test_runtime_config.RuntimeConfigTests) ... ERROR
+test_default_runtime_check_has_legacy_none_and_no_hidden_writes (tests.dev.test_runtime_config.RuntimeConfigTests) ... FAIL
+test_explicit_default_and_abbreviated_flags_conflict_before_config_read_or_store (tests.dev.test_runtime_config.RuntimeConfigTests) ... ERROR
+test_invalid_config_fails_before_deepseek_key_loading_and_store (tests.dev.test_runtime_config.RuntimeConfigTests) ... ERROR
+test_load_returns_existing_kwargs_not_source_path_or_new_authority (tests.dev.test_runtime_config.RuntimeConfigTests) ... ERROR
+test_runtime_check_validates_without_store_key_model_or_subprocess (tests.dev.test_runtime_config.RuntimeConfigTests) ... FAIL
+test_strict_version_fields_types_duplicate_and_bounded_regular_file (tests.dev.test_runtime_config.RuntimeConfigTests) ... ERROR
+
+======================================================================
+ERROR: test_config_rejects_workspace_direct_intermediate_alias_symlink_hardlink_fifo (tests.dev.test_runtime_config.RuntimeConfigTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_config.py", line 55, in test_config_rejects_workspace_direct_intermediate_alias_symlink_hardlink_fifo
+    from agent_lab.runtime_config import load_runtime_config,RuntimeConfigurationError
+ModuleNotFoundError: No module named 'agent_lab.runtime_config'
+
+======================================================================
+ERROR: test_explicit_default_and_abbreviated_flags_conflict_before_config_read_or_store (tests.dev.test_runtime_config.RuntimeConfigTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_config.py", line 75, in test_explicit_default_and_abbreviated_flags_conflict_before_config_read_or_store
+    from agent_lab.runtime_config import RuntimeConfigurationError
+ModuleNotFoundError: No module named 'agent_lab.runtime_config'
+
+======================================================================
+ERROR: test_invalid_config_fails_before_deepseek_key_loading_and_store (tests.dev.test_runtime_config.RuntimeConfigTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1227, in _dot_lookup
+    return getattr(thing, comp)
+AttributeError: module 'agent_lab' has no attribute 'live'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_config.py", line 86, in test_invalid_config_fails_before_deepseek_key_loading_and_store
+    with patch('agent_lab.live.load_first_line_key',side_effect=AssertionError('key read')),patch('agent_lab.__main__.Store',side_effect=AssertionError('Store opened')):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1389, in __enter__
+    self.target = self.getter()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1564, in <lambda>
+    getter = lambda: _importer(target)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1240, in _importer
+    thing = _dot_lookup(thing, comp, import_path)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1229, in _dot_lookup
+    __import__(import_path)
+ModuleNotFoundError: No module named 'agent_lab.live'
+
+======================================================================
+ERROR: test_load_returns_existing_kwargs_not_source_path_or_new_authority (tests.dev.test_runtime_config.RuntimeConfigTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_config.py", line 32, in test_load_returns_existing_kwargs_not_source_path_or_new_authority
+    from agent_lab.runtime_config import load_runtime_config
+ModuleNotFoundError: No module named 'agent_lab.runtime_config'
+
+======================================================================
+ERROR: test_strict_version_fields_types_duplicate_and_bounded_regular_file (tests.dev.test_runtime_config.RuntimeConfigTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_config.py", line 37, in test_strict_version_fields_types_duplicate_and_bounded_regular_file
+    from agent_lab.runtime_config import load_runtime_config,RuntimeConfigurationError
+ModuleNotFoundError: No module named 'agent_lab.runtime_config'
+
+======================================================================
+FAIL: test_default_runtime_check_has_legacy_none_and_no_hidden_writes (tests.dev.test_runtime_config.RuntimeConfigTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_config.py", line 93, in test_default_runtime_check_has_legacy_none_and_no_hidden_writes
+    self.assertEqual((code,err),(0,''),err);self.assertIsNone(json.loads(out)['command_runtime_policy'])
+AssertionError: Tuples differ: (2, "usage: python3 -m unittest [-h] [--db[623 chars])\n") != (0, '')
+
+First differing element 0:
+2
+0
+
+Diff is 740 characters long. Set self.maxDiff to None to see it. : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'runtime-check' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'fork', 'events', 'providers', 'job-status', 'sessions')
+
+
+======================================================================
+FAIL: test_runtime_check_validates_without_store_key_model_or_subprocess (tests.dev.test_runtime_config.RuntimeConfigTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_config.py", line 69, in test_runtime_check_validates_without_store_key_model_or_subprocess
+    self.assertEqual((code,err),(0,''),err)
+AssertionError: Tuples differ: (2, "usage: python3 -m unittest [-h] [--db[623 chars])\n") != (0, '')
+
+First differing element 0:
+2
+0
+
+Diff is 740 characters long. Set self.maxDiff to None to see it. : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'runtime-check' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'fork', 'events', 'providers', 'job-status', 'sessions')
+
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.067s
+
+FAILED (failures=2, errors=5)

@@ -1,0 +1,14 @@
+test_inherited_lease_survives_normal_exit_of_original_holder (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+
+======================================================================
+FAIL: test_inherited_lease_survives_normal_exit_of_original_holder (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 209, in test_inherited_lease_survives_normal_exit_of_original_holder
+    self.guard.rotate_generation(self.root)
+AssertionError: ExecutionBusy not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.117s
+
+FAILED (failures=1)

@@ -1,0 +1,14 @@
+test_private_generation_mode_does_not_depend_on_process_umask (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+
+======================================================================
+FAIL: test_private_generation_mode_does_not_depend_on_process_umask (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 135, in test_private_generation_mode_does_not_depend_on_process_umask
+    self.assertEqual(stat.S_IMODE((self.root / '.agent-lab.generation').stat().st_mode), 0o600)
+AssertionError: 0 != 384
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (failures=1)

@@ -1,0 +1,37 @@
+test_change_during_stream_hash_fails_closed (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_default_authority_and_aliases_are_unchanged_and_never_infer_environment (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_default_selected_binary_also_uses_bounded_descriptor_without_shape_change (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_explicit_alias_and_host_launcher_symlink_bind_canonical_runtime (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_hardlink_alias_into_workspace_is_not_an_admitted_runtime (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_nonregular_nonexecutable_and_oversize_are_rejected_before_open (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_streaming_descriptor_is_stable_bounded_and_has_only_existing_fields (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_whole_optional_grant_binds_python_commands_and_changed_grant_cannot_reuse_approval (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_workspace_paths_and_both_directions_of_launcher_alias_are_rejected (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_approval_of_python_also_requires_matching_node_grant_and_abort_needs_none (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_checkpoint_drop_add_change_and_inplace_replacement_reject_before_model (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_cli_run_resume_and_fork_forward_explicit_host_path (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_continuation_and_compaction_reject_missing_runtime_before_sampling (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_fork_requires_runtime_and_preserves_policy_without_running (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_node_only_page_and_kernel_reads_are_explicit_and_digest_bound (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_runtime_admission_failure_confirms_durable_job_before_any_native_launch (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_worker_prepare_binds_host_runtime_even_for_python_and_default_is_legacy (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_worker_rejects_tampered_runtime_envelope_before_preparing_tool (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_actual_js_import_write_and_two_file_same_process_test_runner (tests.dev.test_node_native.NodeNativeTests) ... FAIL
+test_cancel_joins_node_before_return_and_preserves_partial_effect (tests.dev.test_node_native.NodeNativeTests) ... ok
+test_private_files_child_process_and_network_are_denied_with_clean_env (tests.dev.test_node_native.NodeNativeTests) ... ok
+test_timeout_joins_native_before_late_effect_and_output_stays_bounded (tests.dev.test_node_native.NodeNativeTests) ... ok
+test_tools_worker_and_trusted_supervisor_execute_node_through_original_channel (tests.dev.test_node_native.NodeNativeTests) ... ok
+test_whole_root_readonly_and_external_scratch_survive_node_grant (tests.dev.test_node_native.NodeNativeTests) ... ok
+
+======================================================================
+FAIL: test_actual_js_import_write_and_two_file_same_process_test_runner (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 42, in test_actual_js_import_write_and_two_file_same_process_test_runner
+    self.assertEqual(result['exit_code'], 0, result)
+AssertionError: -6 != 0 : {'ok': False, 'exit_code': -6, 'stdout': '', 'stderr': '\n  #  /Users/yiming/.local/share/nodejs/node-v24.22.2-darwin-x64/bin/node[82933]: void node::os::GetOSInformation(const FunctionCallbackInfo<Value> &) at ../src/node_os.cc:88\n  #  Assertion failed: (args.Length()) >= (1)\n\n----- Native stack trace -----\n\n 1: 0x101f746c5 node::(anonymous namespace)::DefaultAbortHandler(char const*, char const*) [/Users/yiming/.local/share/nodejs/node-v24.22.2-darwin-x64/bin/node]\n 2: 0x101f7446b node::Assert(node::AssertionInfo const&) [/Users/yiming/.local/share/nodejs/node-v24.22.2-darwin-x64/bin/node]\n 3: 0x10453c270 node::os::GetOSInformation(v8::FunctionCallbackInfo<v8::Value> const&) (.cold.1) [/Users/yiming/.local/share/nodejs/node-v24.22.2-darwin-x64/bin/node]\n 4: 0x102021012 node::os::GetOSInformation(v8::FunctionCallbackInfo<v8::Value> const&) [/Users/yiming/.local/share/nodejs/node-v24.22.2-darwin-x64/bin/node]\n 5: 0x102fc1a0d Builtins_CallApiCallbackGeneric [/Users/yiming/.local/share/nodejs/node-v24.22.2-darwin-x64/bin/node]\n\n----- JavaScript stack trace -----\n\n1: node:os:79:5\n2: compileForInternalLoader (node:internal/bootstrap/realm:398:7)\n3: requireBuiltin (node:internal/bootstrap/realm:429:14)\n4: node:internal/test_runner/runner:38:34\n5: compileForInternalLoader (node:internal/bootstrap/realm:398:7)\n6: requireBuiltin (node:internal/bootstrap/realm:429:14)\n7: node:internal/main/test_runner:12:17\n\n\n', 'stdout_truncated': False, 'stderr_truncated': False}
+
+----------------------------------------------------------------------
+Ran 24 tests in 17.781s
+
+FAILED (failures=1)

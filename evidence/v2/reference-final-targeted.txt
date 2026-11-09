@@ -1,0 +1,16 @@
+test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests) ... ok
+test_mcp_metadata_describes_actual_zero_approval_before_eof_and_external_effect (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests) ... ok
+test_actual_wrapper_denies_private_reads_and_second_endpoint_but_preserves_fixture_access (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+test_environment_is_explicit_empty_of_ambient_auth_and_preserves_real_home (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+test_managed_preferences_probe_exports_only_presence_booleans_not_values (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+test_only_numeric_valid_port_and_owned_private_scope_are_accepted (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+test_only_preferences_broker_is_allowed_and_other_mach_services_stay_denied (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+test_complete_frames_normalize_in_our_existing_responses_adapter (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ok
+test_completion_gate_delivers_item_done_before_completion_boundary (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ok
+test_reference_command_keeps_normal_sandbox_and_uses_only_loopback_synthetic_provider (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ok
+test_request_admission_rejects_wrong_auth_path_and_excess_without_recording_body (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.365s
+
+OK

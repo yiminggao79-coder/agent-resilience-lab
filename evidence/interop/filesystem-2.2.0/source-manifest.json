@@ -1,0 +1,67 @@
+{
+  "package_version": "server-filesystem2.2.0/SDK2.4.0",
+  "source": "installed published npm artifacts; exact lock/integrity preserved",
+  "source_identity": "archive SHA512 and per-file SHA256, not guessed Git commit",
+  "files": [
+    {
+      "package_path": "@modelcontextprotocol/server-filesystem/dist/index.js",
+      "sha256": "44715d2c53dfd9005a03ae4c46d8ccd6632c39af138c99de71a496d119b93352",
+      "bytes": 8424,
+      "body_ranges_read": [
+        [
+          90,
+          157
+        ]
+      ],
+      "whole_file_audited": false
+    },
+    {
+      "package_path": "@modelcontextprotocol/server-filesystem/dist/server.js",
+      "sha256": "eb145c8a9d88a050f0ac85d7e544eb009076c08dd6f9c3179492fcf4decaaeca",
+      "bytes": 44974,
+      "body_ranges_read": [
+        [
+          154,
+          234
+        ],
+        [
+          444,
+          471
+        ]
+      ],
+      "whole_file_audited": false
+    },
+    {
+      "package_path": "@modelcontextprotocol/server-filesystem/dist/lib.js",
+      "sha256": "f034ed05d60189cae1e066ccab834398d2e8adaf206c9003e529000b7965d4d0",
+      "bytes": 43948,
+      "body_ranges_read": [
+        [
+          314,
+          354
+        ],
+        [
+          710,
+          742
+        ]
+      ],
+      "whole_file_audited": false
+    },
+    {
+      "package_path": "@modelcontextprotocol/server/dist/stdio.mjs",
+      "sha256": "892fcad4d0e0c7fa11a88dd769353e298b6d2b445ad833790d16b063e199b10d",
+      "bytes": 22199,
+      "body_ranges_read": [
+        [
+          232,
+          252
+        ],
+        [
+          286,
+          318
+        ]
+      ],
+      "whole_file_audited": false
+    }
+  ]
+}

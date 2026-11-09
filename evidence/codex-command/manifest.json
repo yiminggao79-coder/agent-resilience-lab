@@ -1,0 +1,194 @@
+{
+  "repository": "openai/codex",
+  "commit": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "fetched_on": "2026-11-07",
+  "connector": "mcp__codex_apps__github_fetch_file",
+  "upstream_executed": false,
+  "files": [
+    {
+      "path": "codex-rs/core/src/unified_exec/process_manager.rs",
+      "artifact": "evidence/codex-command/unified_exec-process_manager.rs",
+      "blob_sha": "caa45622a2c826ae7a7c14c1edd2c849e8f81799",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/unified_exec/process_manager.rs",
+      "total_lines": 1915,
+      "body_ranges_read": [
+        [
+          451,
+          504
+        ],
+        [
+          536,
+          676
+        ],
+        [
+          1247,
+          1485
+        ],
+        [
+          1488,
+          1565
+        ],
+        [
+          1579,
+          1689
+        ],
+        [
+          1729,
+          1818
+        ]
+      ],
+      "coverage_note": "Selected bodies read; other branches not reviewed"
+    },
+    {
+      "path": "codex-rs/core/src/tools/orchestrator.rs",
+      "artifact": "evidence/codex-command/tools-orchestrator.rs",
+      "blob_sha": "9ba96e57eea42bcd988b1d4d257d92149a50cc3a",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/orchestrator.rs",
+      "total_lines": 665,
+      "body_ranges_read": [
+        [
+          125,
+          243
+        ],
+        [
+          390,
+          447
+        ],
+        [
+          481,
+          604
+        ]
+      ],
+      "coverage_note": "Selected bodies read; other branches not reviewed"
+    },
+    {
+      "path": "codex-rs/core/src/sandboxing/mod.rs",
+      "artifact": "evidence/codex-command/sandboxing-mod.rs",
+      "blob_sha": "a5f61153d95ab305cd763daaeef14a23bb4861b1",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/sandboxing/mod.rs",
+      "total_lines": 206,
+      "body_ranges_read": [
+        [
+          150,
+          206
+        ]
+      ],
+      "coverage_note": "Selected bodies read; other branches not reviewed"
+    },
+    {
+      "path": "codex-rs/core/src/unified_exec/process.rs",
+      "artifact": "evidence/codex-command/unified_exec-process.rs",
+      "blob_sha": "f9afaaa41d5349e519ca45585bcd05954655dd4d",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/unified_exec/process.rs",
+      "total_lines": 706,
+      "body_ranges_read": [],
+      "coverage_note": "Preserved context; no complete body-review claim"
+    },
+    {
+      "path": "codex-rs/sandboxing/src/lib.rs",
+      "artifact": "evidence/codex-command/sandboxing-lib.rs",
+      "blob_sha": "70b3a812bb56127beb026ac978079b53e5795468",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/sandboxing/src/lib.rs",
+      "total_lines": 109,
+      "body_ranges_read": [
+        [
+          1,
+          109
+        ]
+      ],
+      "coverage_note": "Selected bodies read; other branches not reviewed"
+    },
+    {
+      "path": "codex-rs/core/src/tools/approvals.rs",
+      "artifact": "evidence/codex-command/tools-approvals.rs",
+      "blob_sha": "2f63fe7070dfce9c4fe16b5d442564f84dc7d441",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/approvals.rs",
+      "total_lines": 999,
+      "body_ranges_read": [
+        [
+          282,
+          320
+        ],
+        [
+          524,
+          547
+        ],
+        [
+          785,
+          865
+        ]
+      ],
+      "coverage_note": "Selected bodies read; other branches not reviewed"
+    },
+    {
+      "path": "codex-rs/sandboxing/src/seatbelt.rs",
+      "artifact": "evidence/codex-command/sandboxing-seatbelt.rs",
+      "blob_sha": "bca03f4f4ce518544230e12ddbad3085250b6430",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/sandboxing/src/seatbelt.rs",
+      "total_lines": 1066,
+      "body_ranges_read": [
+        [
+          471,
+          576
+        ],
+        [
+          983,
+          1045
+        ]
+      ],
+      "coverage_note": "Selected bodies read; other branches not reviewed"
+    },
+    {
+      "path": "codex-rs/sandboxing/src/manager.rs",
+      "artifact": "evidence/codex-command/sandboxing-manager.rs",
+      "blob_sha": "fa4d252d3ba8032ffce97a1e2a0abf27348f701a",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/sandboxing/src/manager.rs",
+      "total_lines": 839,
+      "body_ranges_read": [
+        [
+          462,
+          500
+        ]
+      ],
+      "coverage_note": "Selected bodies read; other branches not reviewed"
+    },
+    {
+      "path": "codex-rs/sandboxing/src/spawn.rs",
+      "artifact": "evidence/codex-command/sandboxing-spawn.rs",
+      "blob_sha": "86d2878fbdc022cd589ef0db31f453bfd790a44e",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/sandboxing/src/spawn.rs",
+      "total_lines": 142,
+      "body_ranges_read": [],
+      "coverage_note": "Preserved context; no complete body-review claim"
+    },
+    {
+      "path": "codex-rs/sandboxing/src/seatbelt_base_policy.sbpl",
+      "artifact": "evidence/codex-command/sandboxing-seatbelt_base_policy.sbpl",
+      "blob_sha": "2fca6a886e4f3ad5a5d8d8e6e6e88894fc8f0ed9",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/sandboxing/src/seatbelt_base_policy.sbpl",
+      "total_lines": 116,
+      "body_ranges_read": [
+        [
+          1,
+          116
+        ]
+      ],
+      "coverage_note": "Selected bodies read; other branches not reviewed"
+    },
+    {
+      "path": "codex-rs/sandboxing/src/seatbelt_read_only_platform_defaults.sbpl",
+      "artifact": "evidence/codex-command/sandboxing-seatbelt_read_only_platform_defaults.sbpl",
+      "blob_sha": "0714f2e6d747cba390d4f112286df8eba7148c55",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/sandboxing/src/seatbelt_read_only_platform_defaults.sbpl",
+      "total_lines": 188,
+      "body_ranges_read": [
+        [
+          1,
+          188
+        ]
+      ],
+      "coverage_note": "Selected bodies read; other branches not reviewed"
+    }
+  ],
+  "reading_scope": "Full public files preserved; selected body ranges cited in docs/managed-command-plan.md were read. Preservation is not full-file review or upstream execution."
+}

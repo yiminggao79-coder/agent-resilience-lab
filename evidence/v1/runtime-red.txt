@@ -1,0 +1,120 @@
+test_abort_keeps_completed_history (tests.dev.test_runtime_v1.RuntimeV1Tests) ... FAIL
+test_duplicate_provider_call_id_cannot_append_twice (tests.dev.test_runtime_v1.RuntimeV1Tests) ... FAIL
+test_every_response_has_usage_event_even_invalid_tool_args (tests.dev.test_runtime_v1.RuntimeV1Tests) ... FAIL
+test_invalid_message_missing_usage_pauses_before_another_request (tests.dev.test_runtime_v1.RuntimeV1Tests) ... FAIL
+test_receipt_transient_sqlite_failure_continues_without_reexecuting_tool (tests.dev.test_runtime_v1.RuntimeV1Tests) ... ERROR
+test_save_event_is_idempotent_under_lost_commit_ack (tests.dev.test_runtime_v1.RuntimeV1Tests) ... FAIL
+test_storage_failure_does_not_mutate_pending_or_seal_failed (tests.dev.test_runtime_v1.RuntimeV1Tests) ... ERROR
+test_unknown_phase_is_rejected_without_model_call (tests.dev.test_runtime_v1.RuntimeV1Tests) ... FAIL
+
+======================================================================
+ERROR: test_receipt_transient_sqlite_failure_continues_without_reexecuting_tool (tests.dev.test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/store.py", line 49, in save
+    self.db.execute('INSERT INTO tasks(id,state) VALUES(?,?) ON CONFLICT(id) DO UPDATE SET state=excluded.state', (state['id'], snapshot))
+sqlite3.DatabaseError: not authorized
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 247, in run
+    self._tool(state, recovering=False)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 117, in _tool
+    self._feedback(state, result)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 89, in _feedback
+    self._save(state, 'tool_finished', {'tool': pending['intent']['name'] if pending.get('intent') else 'invalid',
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 73, in _save
+    self.store.save(state, kind, meta)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/store.py", line 50, in save
+    self.db.execute('INSERT INTO events(task_id,at,kind,meta) VALUES(?,?,?,?)', (state['id'], time.time(), kind, json.dumps(meta, allow_nan=False)))
+sqlite3.DatabaseError: not authorized
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/store.py", line 49, in save
+    self.db.execute('INSERT INTO tasks(id,state) VALUES(?,?) ON CONFLICT(id) DO UPDATE SET state=excluded.state', (state['id'], snapshot))
+sqlite3.DatabaseError: not authorized
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 65, in test_receipt_transient_sqlite_failure_continues_without_reexecuting_tool
+    state = engine.run(tid)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 258, in run
+    return self._stop(state, 'needs_confirmation' if unsafe or model_unknown else 'failed', 'internal_error')
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 77, in _stop
+    self._save(state, 'terminated', {'phase': phase, 'code': code})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 73, in _save
+    self.store.save(state, kind, meta)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/store.py", line 50, in save
+    self.db.execute('INSERT INTO events(task_id,at,kind,meta) VALUES(?,?,?,?)', (state['id'], time.time(), kind, json.dumps(meta, allow_nan=False)))
+sqlite3.DatabaseError: not authorized
+
+======================================================================
+ERROR: test_storage_failure_does_not_mutate_pending_or_seal_failed (tests.dev.test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 72, in test_storage_failure_does_not_mutate_pending_or_seal_failed
+    from agent_lab.store import StorageUnavailable
+ImportError: cannot import name 'StorageUnavailable' from 'agent_lab.store' (/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/store.py)
+
+======================================================================
+FAIL: test_abort_keeps_completed_history (tests.dev.test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 99, in test_abort_keeps_completed_history
+    self.assertEqual(engine.abort(tid)['phase'], 'completed')
+AssertionError: 'failed' != 'completed'
+- failed
++ completed
+
+
+======================================================================
+FAIL: test_duplicate_provider_call_id_cannot_append_twice (tests.dev.test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 45, in test_duplicate_provider_call_id_cannot_append_twice
+    self.assertEqual((self.root / 'out').read_text(), 'once\n')
+AssertionError: 'once\nonce\n' != 'once\n'
+  once
+- once
+
+
+======================================================================
+FAIL: test_every_response_has_usage_event_even_invalid_tool_args (tests.dev.test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 37, in test_every_response_has_usage_event_even_invalid_tool_args
+    self.assertEqual(sum(e.get('input_tokens') or 0 for e in events), state['metrics']['input_tokens'])
+AssertionError: 100 != 200
+
+======================================================================
+FAIL: test_invalid_message_missing_usage_pauses_before_another_request (tests.dev.test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 29, in test_invalid_message_missing_usage_pauses_before_another_request
+    self.assertEqual(len(model.seen), 1)
+AssertionError: 2 != 1
+
+======================================================================
+FAIL: test_save_event_is_idempotent_under_lost_commit_ack (tests.dev.test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 93, in test_save_event_is_idempotent_under_lost_commit_ack
+    self.assertEqual(len(self.store.events(state['id'])), 1)
+AssertionError: 2 != 1
+
+======================================================================
+FAIL: test_unknown_phase_is_rejected_without_model_call (tests.dev.test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 109, in test_unknown_phase_is_rejected_without_model_call
+    engine.run(tid)
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.678s
+
+FAILED (failures=6, errors=2)

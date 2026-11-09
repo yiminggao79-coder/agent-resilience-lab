@@ -1,0 +1,41 @@
+test_blocked_budget_precedes_key_model_and_holdout_body_access (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... FAIL
+test_default_is_permission_preflight_without_exposure_or_suite_read (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... FAIL
+test_dirty_runtime_precedes_budget_and_key_access (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... FAIL
+test_synthetic_full_stack_cannot_start_second_exposed_attempt (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... FAIL
+
+======================================================================
+FAIL: test_blocked_budget_precedes_key_model_and_holdout_body_access (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_cli.py", line 29, in test_blocked_budget_precedes_key_model_and_holdout_body_access
+    self.assertTrue(hasattr(runner,'main'),'V3 CLI entry is missing')
+AssertionError: False is not true : V3 CLI entry is missing
+
+======================================================================
+FAIL: test_default_is_permission_preflight_without_exposure_or_suite_read (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_cli.py", line 45, in test_default_is_permission_preflight_without_exposure_or_suite_read
+    self.assertTrue(hasattr(runner,'main'))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_dirty_runtime_precedes_budget_and_key_access (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_cli.py", line 38, in test_dirty_runtime_precedes_budget_and_key_access
+    self.assertTrue(hasattr(runner,'main'))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_synthetic_full_stack_cannot_start_second_exposed_attempt (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_cli.py", line 54, in test_synthetic_full_stack_cannot_start_second_exposed_attempt
+    self.assertTrue(hasattr(runner,'main'))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.031s
+
+FAILED (failures=4)

@@ -1,0 +1,16 @@
+test_answer_is_explicit_private_output_not_part_of_status_or_trace (tests.dev.test_boundaries.BoundaryTests) ... FAIL
+
+======================================================================
+FAIL: test_answer_is_explicit_private_output_not_part_of_status_or_trace (tests.dev.test_boundaries.BoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_boundaries.py", line 85, in test_answer_is_explicit_private_output_not_part_of_status_or_trace
+    self.assertEqual(proc.returncode, 0, proc.stderr)
+AssertionError: 2 != 0 : usage: __main__.py [-h] [--db DB] {run,resume,status,trace,abort} ...
+__main__.py: error: argument command: invalid choice: 'answer' (choose from 'run', 'resume', 'status', 'trace', 'abort')
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.143s
+
+FAILED (failures=1)

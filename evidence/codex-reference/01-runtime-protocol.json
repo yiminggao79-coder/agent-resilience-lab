@@ -1,0 +1,371 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "fetched_on": "2026-11-07",
+  "acquisition": "GitHub connector fetch_file, exact commit ref; complete bodies fetched, selected branches read; no upstream execution",
+  "license": "Apache-2.0; see LICENSE.txt and NOTICE.md",
+  "sources": [
+    {
+      "path": "codex-rs/core/src/session/turn.rs",
+      "blob_sha": "1fdf62faca3d396b4f1b6b7c64d879f99be7b2e9",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs",
+      "excerpts": [
+        {
+          "start_line": 543,
+          "end_line": 568,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs#L543-L568",
+          "lines": [
+            "    loop {",
+            "        // Note that pending_input would be something like a message the user",
+            "        // submitted through the UI while the model was running. Though the UI",
+            "        // may support this, the model might not.",
+            "        let pending_input = if can_drain_pending_input {",
+            "            sess.input_queue",
+            "                .get_pending_input(&sess.active_turn)",
+            "                .await",
+            "                .0",
+            "        } else {",
+            "            Vec::new()",
+            "        };",
+            "",
+            "        if run_hooks_and_record_inputs(",
+            "            &sess,",
+            "            &turn_context,",
+            "            &turn_context.capture_current_model_info(),",
+            "            &pending_input,",
+            "            PersistContext::SteeredUserInput,",
+            "        )",
+            "        .await?",
+            "        {",
+            "            break;",
+            "        }",
+            "",
+            "        // Input and turn-start injections are recorded before recovery can continue this turn."
+          ]
+        },
+        {
+          "start_line": 641,
+          "end_line": 665,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs#L641-L665",
+          "lines": [
+            "            // Construct the input that we will send to the model.",
+            "            let sampling_request_input = sess",
+            "                .clone_history()",
+            "                .instrument(trace_span!(\"run_turn.prepare_sampling_request_input\"))",
+            "                .await;",
+            "",
+            "            run_sampling_request(",
+            "                Arc::clone(&sess),",
+            "                Arc::clone(&step_context),",
+            "                Arc::clone(&turn_context.extension_data),",
+            "                Arc::clone(&turn_diff_tracker),",
+            "                &mut client_session,",
+            "                sampling_request_input,",
+            "                cancellation_token.child_token(),",
+            "            )",
+            "            .await",
+            "        }",
+            "        .await;",
+            "        match sampling_request_result {",
+            "            Ok((sampling_request_output, notify_messages)) => {",
+            "                guardian_budget_compacted = false;",
+            "                let SamplingRequestResult {",
+            "                    needs_follow_up: model_needs_follow_up,",
+            "                    mailbox_preempted,",
+            "                    last_agent_message: sampling_request_last_agent_message,"
+          ]
+        },
+        {
+          "start_line": 740,
+          "end_line": 749,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs#L740-L749",
+          "lines": [
+            "                let candidate = if needs_follow_up {",
+            "                    super::async_compaction::take_ready(&sess, &turn_context).await",
+            "                } else {",
+            "                    None",
+            "                };",
+            "                let should_roll_over = auto_compaction_enabled",
+            "                    && needs_follow_up",
+            "                    && (sess.take_new_context_window_request().await",
+            "                        || token_limit_reached",
+            "                        || candidate.is_some());"
+          ]
+        },
+        {
+          "start_line": 805,
+          "end_line": 817,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs#L805-L817",
+          "lines": [
+            "                if !needs_follow_up {",
+            "                    last_agent_message = sampling_request_last_agent_message;",
+            "                    let stop_outcome = run_turn_stop_hooks(",
+            "                        &sess,",
+            "                        &step_context,",
+            "                        stop_hook_active,",
+            "                        last_agent_message.clone(),",
+            "                    )",
+            "                    .await;",
+            "                    if matches!(",
+            "                        turn_context.session_source,",
+            "                        SessionSource::Internal(InternalSessionSource::MemoryConsolidation)",
+            "                    ) && (stop_outcome.should_block || stop_outcome.should_stop)"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "codex-rs/core/src/session/session.rs",
+      "blob_sha": "2afcb80afe678d8773bcc54e8fa727539cf0405c",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/session.rs",
+      "excerpts": [
+        {
+          "start_line": 74,
+          "end_line": 88,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/session.rs#L74-L88",
+          "lines": [
+            "pub(crate) struct Session {",
+            "    pub(crate) thread_id: ThreadId,",
+            "    pub(crate) item_id_generator: ItemIdGenerator,",
+            "    pub(crate) agent_runtime: AgentRuntimeServices,",
+            "    pub(crate) outcome_reporting: Option<AgentOutcomeReporting>,",
+            "    pub(crate) installation_id: String,",
+            "    pub(super) tx_event: Sender<Event>,",
+            "    /// Installed by Guardian before its first review; forwards items and cancellation without",
+            "    /// transferring ownership of the private session's event receiver.",
+            "    pub(crate) parent_observer_event_tx: OnceLock<Sender<Event>>,",
+            "    pub(super) agent_status: watch::Sender<AgentStatus>,",
+            "    pub(super) state: Mutex<SessionState>,",
+            "    /// Orders accepted settings commits and their persisted events with compaction checkpoints.",
+            "    /// Keep this separate from `state` so storage I/O does not block runtime state access.",
+            "    pub(super) thread_settings_persistence: Semaphore,"
+          ]
+        },
+        {
+          "start_line": 110,
+          "end_line": 120,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/session.rs#L110-L120",
+          "lines": [
+            "    pub(crate) conversation: Arc<RealtimeConversationManager>,",
+            "    pub(crate) realtime_history: Option<Mutex<crate::realtime_history::RealtimeHistoryState>>,",
+            "    pub(crate) active_turn: Mutex<Option<ActiveTurn>>,",
+            "    pub(crate) async_hook_results: async_channel::Receiver<HookCompletedEvent>,",
+            "    pub(crate) input_queue: InputQueue,",
+            "    pub(crate) services: SessionServices,",
+            "    pub(super) git_enrichment_policy: GitEnrichmentPolicy,",
+            "    pub(super) fork_persistence: ForkPersistence,",
+            "    pub(super) history_initialization: HistoryInitialization,",
+            "    pub(super) forked_from_ordinal_exclusive: Option<u64>,",
+            "    pub(super) next_internal_sub_id: AtomicU64,"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "codex-rs/core/src/tasks/mod.rs",
+      "blob_sha": "af0f10df1d7f444ccff7b5a97589ac98ef5d10d5",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tasks/mod.rs",
+      "excerpts": [
+        {
+          "start_line": 276,
+          "end_line": 284,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tasks/mod.rs#L276-L284",
+          "lines": [
+            "    pub async fn spawn_task<T: SessionTask>(",
+            "        self: &Arc<Self>,",
+            "        turn_context: Arc<TurnContext>,",
+            "        input: Vec<TurnInput>,",
+            "        task: T,",
+            "    ) {",
+            "        self.abort_all_tasks(TurnAbortReason::Replaced).await;",
+            "        self.clear_connector_selection().await;",
+            "        self.start_task(turn_context, input, task).await;"
+          ]
+        },
+        {
+          "start_line": 323,
+          "end_line": 375,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tasks/mod.rs#L323-L375",
+          "lines": [
+            "        let started_at = Instant::now();",
+            "        let turn_started_at_unix_ms = turn_context",
+            "            .turn_timing_state",
+            "            .mark_turn_started(started_at)",
+            "            .await;",
+            "        turn_context",
+            "            .turn_metadata_state",
+            "            .set_turn_started_at_unix_ms(turn_started_at_unix_ms);",
+            "        let token_usage_at_turn_start = self.total_token_usage().await.unwrap_or_default();",
+            "",
+            "        let cancellation_token = CancellationToken::new();",
+            "        let done = Arc::new(Notify::new());",
+            "",
+            "        let (pending_items, _) = self.input_queue.drain_mailbox_input_items().await;",
+            "        let turn_state = {",
+            "            let mut active = self.active_turn.lock().await;",
+            "            if self.outcome_handoffs_closed() {",
+            "                return;",
+            "            }",
+            "            let turn = active.get_or_insert_with(ActiveTurn::default);",
+            "            debug_assert!(turn.task.is_none());",
+            "            turn.finishing = None;",
+            "            Arc::clone(&turn.turn_state)",
+            "        };",
+            "        turn_state.lock().await.token_usage_at_turn_start = token_usage_at_turn_start.clone();",
+            "        self.input_queue",
+            "            .extend_pending_input_for_turn_state(turn_state.as_ref(), pending_items)",
+            "            .await;",
+            "        self.emit_turn_start_lifecycle(",
+            "            turn_context.as_ref(),",
+            "            Some(&token_usage_at_turn_start),",
+            "            codex_extension_api::TurnStartPhase::BeforeTaskRegistration,",
+            "        )",
+            "        .await;",
+            "",
+            "        let mut active = self.active_turn.lock().await;",
+            "        // Shutdown closes registration before taking this same lock to abort active work.",
+            "        let outcome_handoff = if let Some(reporting) = &self.outcome_reporting {",
+            "            if reporting.handoffs.is_closed() {",
+            "                return;",
+            "            }",
+            "            Some(reporting.handoffs.token())",
+            "        } else {",
+            "            None",
+            "        };",
+            "        let turn = active.get_or_insert_with(ActiveTurn::default);",
+            "        debug_assert!(turn.task.is_none());",
+            "        // Record lineage only when the task starts: settings changes can invalidate a reservation.",
+            "        self.record_started_turn(",
+            "            &turn_context.sub_id,",
+            "            (task_kind == TaskKind::Regular).then(|| turn_context.attribution()),",
+            "        )",
+            "        .await;"
+          ]
+        },
+        {
+          "start_line": 476,
+          "end_line": 494,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tasks/mod.rs#L476-L494",
+          "lines": [
+            "        let handle = tokio::spawn(storage_originator.scope(task_future));",
+            "        let timer = turn_context",
+            "            .session_telemetry",
+            "            .start_timer(TURN_E2E_DURATION_METRIC, &[])",
+            "            .ok();",
+            "        let running_task = RunningTask {",
+            "            done,",
+            "            handle: AbortOnDropHandle::new(handle),",
+            "            kind: task_kind,",
+            "            task,",
+            "            cancellation_token,",
+            "            turn_context: Arc::clone(&turn_context),",
+            "            _agent_execution_guard: agent_execution_guard,",
+            "            outcome_handoff,",
+            "            pending_initial_input,",
+            "            _diagnostics_guard: ACTIVE_TURNS.track(),",
+            "            _timer: timer,",
+            "        };",
+            "        turn.task = Some(running_task);"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "codex-rs/protocol/src/protocol.rs",
+      "blob_sha": "58e3b3cf92cc02e55a1fd61d4aac6e080a9059c7",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/protocol/src/protocol.rs",
+      "excerpts": [
+        {
+          "start_line": 705,
+          "end_line": 720,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/protocol/src/protocol.rs#L705-L720",
+          "lines": [
+            "pub enum Op {",
+            "    /// Abort current task without terminating background terminal processes.",
+            "    /// This server sends [`EventMsg::TurnAborted`] in response.",
+            "    Interrupt,",
+            "",
+            "    /// Interrupt the named turn only if no input is queued for it.",
+            "    /// The decision is acknowledged before cancellation finishes.",
+            "    #[debug(\"InterruptIfNoPendingInput {{ turn_id: {turn_id:?} }}\")]",
+            "    InterruptIfNoPendingInput {",
+            "        turn_id: String,",
+            "        reply: oneshot::Sender<bool>,",
+            "    },",
+            "",
+            "    /// Terminate all running background terminal processes for this thread.",
+            "    /// Use this when callers intentionally want to stop long-lived background shells.",
+            "    CleanBackgroundTerminals,"
+          ]
+        },
+        {
+          "start_line": 1522,
+          "end_line": 1527,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/protocol/src/protocol.rs#L1522-L1527",
+          "lines": [
+            "pub struct Event {",
+            "    /// Submission `id` that this event is correlated with.",
+            "    pub id: String,",
+            "    /// Payload",
+            "    pub msg: EventMsg,",
+            "}"
+          ]
+        },
+        {
+          "start_line": 1588,
+          "end_line": 1604,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/protocol/src/protocol.rs#L1588-L1604",
+          "lines": [
+            "    /// Agent has started a turn.",
+            "    /// v1 wire format uses `task_started`; accept `turn_started` for v2 interop.",
+            "    #[serde(rename = \"task_started\", alias = \"turn_started\")]",
+            "    TurnStarted(TurnStartedEvent),",
+            "",
+            "    /// Persistent thread-settings overrides from the correlated submission have",
+            "    /// been applied to the session configuration.",
+            "    ThreadSettingsApplied(ThreadSettingsAppliedEvent),",
+            "",
+            "    /// Agent has completed all actions.",
+            "    /// v1 wire format uses `task_complete`; accept `turn_complete` for v2 interop.",
+            "    #[serde(rename = \"task_complete\", alias = \"turn_complete\")]",
+            "    TurnComplete(TurnCompleteEvent),",
+            "",
+            "    /// Usage update for the current session, including totals and last turn.",
+            "    /// Optional means unknown — UIs should not display when `None`.",
+            "    TokenCount(TokenCountEvent),"
+          ]
+        },
+        {
+          "start_line": 2423,
+          "end_line": 2445,
+          "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/protocol/src/protocol.rs#L2423-L2445",
+          "lines": [
+            "pub struct TurnCompleteEvent {",
+            "    /// Resolved causal root for this turn; absent on older or synthetic events.",
+            "    #[serde(default, skip_serializing_if = \"Option::is_none\")]",
+            "    #[ts(optional)]",
+            "    pub root_turn_id: Option<String>,",
+            "    pub turn_id: String,",
+            "    pub last_agent_message: Option<String>,",
+            "    /// Terminal error details when the turn completed unsuccessfully.",
+            "    #[serde(default, skip_serializing_if = \"Option::is_none\")]",
+            "    #[ts(optional)]",
+            "    pub error: Option<ErrorEvent>,",
+            "    /// Unix timestamp (in seconds) when the turn started.",
+            "    #[serde(default, skip_serializing_if = \"Option::is_none\")]",
+            "    #[ts(type = \"number | null\", optional)]",
+            "    pub started_at: Option<i64>,",
+            "    /// Unix timestamp (in seconds) when the turn completed.",
+            "    #[serde(default, skip_serializing_if = \"Option::is_none\")]",
+            "    #[ts(type = \"number | null\", optional)]",
+            "    pub completed_at: Option<i64>,",
+            "    /// Duration between turn start and completion in milliseconds, if known.",
+            "    #[serde(default, skip_serializing_if = \"Option::is_none\")]",
+            "    #[ts(type = \"number | null\", optional)]",
+            "    pub duration_ms: Option<i64>,"
+          ]
+        }
+      ]
+    }
+  ]
+}

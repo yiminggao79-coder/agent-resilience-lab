@@ -1,0 +1,31 @@
+test_terminal_maintenance_summary_does_not_reopen_steering_admission (tests.dev.test_compaction.CompactionTests) ... ok
+test_active_phase_stale_turn_unknown_and_text_validation (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_admission_and_withdrawal_event_failure_are_atomic (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_apply_marks_exact_user_message_and_snapshot_together (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_bad_application_rolls_back_all_rows_snapshot_and_event (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_duplicate_precedes_terminal_guard_but_conflicting_reuse_fails (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_final_gate_and_committed_event_duplicate_order (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_final_gate_is_strict_even_with_simultaneous_application (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_pending_count_byte_and_lifetime_caps (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_queue_is_separate_durable_metadata_only_transaction (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_sql_failure_rolls_back_input_application_and_allows_retry (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_withdrawal_is_idempotent_private_and_cannot_undo_applied (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_withdrawal_winning_application_race_has_distinct_retry_signal (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_application_storage_failure_cannot_ack_or_append_without_commit (tests.dev.test_steering.SteeringTests) ... ok
+test_applied_receipt_and_history_survive_reopen_without_duplicate (tests.dev.test_steering.SteeringTests) ... ok
+test_batch_finishes_before_feedback_and_archive_pairs_stay_complete (tests.dev.test_steering.SteeringTests) ... ok
+test_input_during_model_final_is_applied_before_a_new_decision (tests.dev.test_steering.SteeringTests) ... ok
+test_unapplied_feedback_does_not_reset_quotas_or_cross_turns (tests.dev.test_steering.SteeringTests) ... ok
+test_unknown_model_outcome_never_consumes_queued_input (tests.dev.test_steering.SteeringTests) ... ok
+test_withdrawal_winning_application_race_does_not_fail_or_apply_stale_copy (tests.dev.test_steering.SteeringTests) ... ok
+test_stale_turn_and_oversized_stdin_fail_without_text_leak (tests.dev.test_steering_cli.SteeringCLITests) ... ok
+test_stdin_receipt_metadata_private_text_and_withdraw_without_model (tests.dev.test_steering_cli.SteeringCLITests) ... ok
+test_kill_after_atomic_application_new_pid_never_duplicates_input (tests.acceptance.test_steering_process.SteeringProcessTests) ... {"kind": "steering_process_contract", "model_kind": "offline_protocol_double", "scenario": "kill_after_atomic_application", "killed_pid": 41434, "kill_return_code": -9, "resumed_pid": 41436, "phase": "completed", "input_status": "applied", "message_occurrences": 1, "application_events": 1}
+ok
+test_second_process_admission_while_runner_locked_survives_unknown_request_kill (tests.acceptance.test_steering_process.SteeringProcessTests) ... {"kind": "steering_process_contract", "model_kind": "offline_protocol_double", "scenario": "admitted_while_runner_locked_then_request_unknown", "killed_pid": 41437, "kill_return_code": -9, "resumed_pid": 41439, "phase": "needs_confirmation", "input_status": "pending", "message_applied": false}
+ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 2.040s
+
+OK

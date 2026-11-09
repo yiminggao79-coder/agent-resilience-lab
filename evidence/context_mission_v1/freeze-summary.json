@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "status": "frozen_before_model_exposure",
+  "frozen_at_utc": "2026-11-08T16:18:25.849945+00:00",
+  "manifest_path": "evaluation/context_mission_v1/manifest.json",
+  "freeze_path": "evaluation/context_mission_v1/FREEZE.json",
+  "interface_path": "docs/context-mission-acceptance-interface.md",
+  "manifest_sha256": "6a192ac6a99d27b3963d061974523a22c0949ecd648ec09787797d855bea1d52",
+  "freeze_sha256": "5021d128a6aa8cb02a263e1b1607880157284186e6827cf78bfe4edefc2a0b88",
+  "inventory_sha256": "bf8719d9120f640d4ffb59632a555546818d018adf9114d86f5e31009ceecd5c",
+  "interface_sha256": "14dbe9cf8aa48baaae1e2708c76a7f2dee3900f736af635a9966b4cac5f8ee23",
+  "validation_sha256": "249bba73b9a5343d8408da6238bb38c4a38d2fbaf9ff6f671b41639d7315c545",
+  "frozen_inventory_files": 37,
+  "cases": 2,
+  "turns_per_case": 3,
+  "turns": 6,
+  "protected_original_files": 4,
+  "protected_original_test_methods_per_case": [
+    8,
+    10
+  ],
+  "oracle_observations_per_case_stage": [
+    [
+      6,
+      6,
+      6
+    ],
+    [
+      6,
+      7,
+      6
+    ]
+  ],
+  "final_oracle_observations": 37,
+  "cumulative_reference_observations": 74,
+  "reference_stage_original_test_methods": 54,
+  "negative_controls": 26,
+  "offline_reference_stages_passed": 6,
+  "baselines_detected_by_original_tests": 2,
+  "all_offline_validation_passed": true,
+  "author_model_or_api_calls": 0,
+  "synthetic_provenance": true,
+  "authorship_independence": "role_separation_same_AI_environment_not_external_statistical_independence",
+  "live_runtime_gates": "not_measured_by_author_validation",
+  "limits": {
+    "max_model_calls_per_turn": 50,
+    "turn_timeout_seconds": 900,
+    "max_output_tokens": 4096
+  },
+  "verify_command": [
+    "python3",
+    "-B",
+    "evaluation/context_mission_v1/verify_freeze.py"
+  ],
+  "exposure_rule": "only_candidate_workspace_and_current_task_to_model_after_runtime_freeze; no_oracle_reference_or_author_files",
+  "after_attempt_rule": "preserve_original_stage_scores_and_all_frozen_bytes_no_regrading_by_task_edits"
+}

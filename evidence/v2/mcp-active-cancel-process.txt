@@ -1,0 +1,9 @@
+test_http_remote_effect_after_local_cancel_remains_unknown_on_new_process (tests.acceptance.test_mcp_cancel_process.MCPCancelProcessTests) ... ok
+test_stdio_effect_then_cli_stop_new_process_does_not_replay (tests.acceptance.test_mcp_cancel_process.MCPCancelProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.347s
+
+OK
+{"contract": "http_mcp_cli_stop_new_pid", "first_pid": 24666, "resumed_pid": 24669, "effect_count": 1, "late_external_effect_observed": true, "pending_id_preserved": true, "external_quiescence_claimed": false, "real_llm_quality": null}
+{"contract": "stdio_mcp_cli_stop_new_pid", "first_pid": 24675, "resumed_pid": 24678, "effect_count": 1, "pending_id_preserved": true, "external_quiescence_claimed": false, "real_llm_quality": null}

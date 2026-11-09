@@ -1,0 +1,14 @@
+test_budget_preflight_is_readonly_and_handles_real_remaining_upper_bound (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_correct_code_passes_without_prescribed_model_tool_sequence (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_failed_phase_is_observation_not_a_quality_gate_and_missing_stays_null (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_immutable_original_test_is_host_protected_from_model_writes (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_invalid_case_fails_before_model_or_candidate_execution (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_missing_oracle_execution_is_unmeasured_not_a_wrong_answer (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_model_self_claim_without_fix_is_measured_failure (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_oracle_copy_enforces_same_immutable_policy_as_final_tests (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_unknown_effect_never_launches_candidate_observation (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.560s
+
+OK

@@ -1,0 +1,36 @@
+{
+  "clang": "/Library/Developer/CommandLineTools/usr/bin/clang",
+  "clang_resources": "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0",
+  "experiment_passed": false,
+  "frontend_with_readonly_resources": {
+    "exit_code": 0,
+    "ok": true,
+    "stderr": "In file included from main.c:1:\nIn file included from /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/stdio.h:64:\nIn file included from /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_stdio.h:68:\n/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/cdefs.h:81:2: warning: \"Unsupported compiler detected\" [-W#warnings]\n#warning \"Unsupported compiler detected\"\n ^\n1 warning generated.\n",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_truncated": false
+  },
+  "frontend_without_resources": {
+    "exit_code": 1,
+    "ok": false,
+    "stderr": "main.c:1:10: fatal error: 'stdio.h' file not found\n#include <stdio.h>\n         ^~~~~~~~~\n1 error generated.\n",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_truncated": false
+  },
+  "kind": "fixed_toolchain_resource_feasibility",
+  "link": {
+    "exit_code": -6,
+    "ok": false,
+    "stderr": "dyld[17837]: Library not loaded: @rpath/libtapi.dylib\n  Referenced from: <F1501F9D-077C-3A69-A0B0-5BA98AC646CB> /Library/Developer/CommandLineTools/usr/bin/ld\n  Reason: tried: '/Library/Developer/CommandLineTools/usr/lib/libtapi.dylib' (errno=1), '/Library/Developer/CommandLineTools/usr/lib/libtapi.dylib' (errno=1)\n",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_truncated": false
+  },
+  "linker": "/Library/Developer/CommandLineTools/usr/bin/ld",
+  "model_kind": null,
+  "production_resource_capability": false,
+  "sdk": "/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk",
+  "sdk_version": "14.4",
+  "source_sha256": "f677f41de3f7b14eaf34e7dfaeb4234fbd0e5ebac372e53dc3c8c8da41415c97"
+}

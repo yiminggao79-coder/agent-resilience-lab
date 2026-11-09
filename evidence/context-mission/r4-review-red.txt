@@ -1,0 +1,43 @@
+test_existing_checkpoint_without_feature_marker_is_preserved (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+test_failed_tests_stay_failed_and_are_not_retried_by_review (tests.dev.test_execution_review.ExecutionReviewTests) ... FAIL
+test_known_test_then_stalled_reads_reaches_next_request_without_success_inference (tests.dev.test_execution_review.ExecutionReviewTests) ... FAIL
+test_new_turn_gets_new_allowance_without_rewriting_previous_notice (tests.dev.test_execution_review.ExecutionReviewTests) ... FAIL
+test_no_verification_and_stale_verification_after_edit_do_not_trigger (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+test_two_reviews_maximum_and_no_extra_model_requests (tests.dev.test_execution_review.ExecutionReviewTests) ... FAIL
+
+======================================================================
+FAIL: test_failed_tests_stay_failed_and_are_not_retried_by_review (tests.dev.test_execution_review.ExecutionReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_execution_review.py", line 50, in test_failed_tests_stay_failed_and_are_not_retried_by_review
+    events=self.reviews(task);self.assertEqual(len(events),1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_known_test_then_stalled_reads_reaches_next_request_without_success_inference (tests.dev.test_execution_review.ExecutionReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_execution_review.py", line 37, in test_known_test_then_stalled_reads_reaches_next_request_without_success_inference
+    events=self.reviews(task);self.assertEqual(len(events),1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_new_turn_gets_new_allowance_without_rewriting_previous_notice (tests.dev.test_execution_review.ExecutionReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_execution_review.py", line 72, in test_new_turn_gets_new_allowance_without_rewriting_previous_notice
+    self.assertEqual(len(self.reviews(task)),2)
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_two_reviews_maximum_and_no_extra_model_requests (tests.dev.test_execution_review.ExecutionReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_execution_review.py", line 59, in test_two_reviews_maximum_and_no_extra_model_requests
+    self.assertEqual(len(self.reviews(task)),2)
+AssertionError: 0 != 2
+
+----------------------------------------------------------------------
+Ran 6 tests in 37.519s
+
+FAILED (failures=4)

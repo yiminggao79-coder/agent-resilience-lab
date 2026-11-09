@@ -1,0 +1,162 @@
+{
+  "run_id": "20261107-153217-792cdbc3",
+  "kind": "real_llm_coding_development_task",
+  "model": "deepseek-flash",
+  "protocol": "chat",
+  "stream": false,
+  "thinking": "disabled",
+  "cost_is_supplier_invoice": false,
+  "result": {
+    "case": "add",
+    "task_id": "675ac84dfe304977b83132514ac738ec",
+    "id": "675ac84dfe304977b83132514ac738ec",
+    "phase": "failed",
+    "reason": "http_error",
+    "verified_success": null,
+    "metrics": {
+      "model_calls": 1,
+      "tool_attempts": 0,
+      "recoveries": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "cost_usd": null,
+      "reserved_usd": 0.0,
+      "elapsed_seconds": 19.358452081680298
+    },
+    "public_tests_unchanged": true,
+    "oracle_matches": false,
+    "observations_complete": true,
+    "oracle_exit_code": 0,
+    "tools": [],
+    "confirmed_coding_cycle": false,
+    "task_success": false,
+    "elapsed_seconds": 20.469322839,
+    "trace": [
+      {
+        "seq": 1,
+        "at": 1794036738.7097,
+        "kind": "created",
+        "phase": "ready",
+        "revision": 1,
+        "turn_id": "4d1ea3242c1744e3bb76824f6720040b"
+      },
+      {
+        "seq": 2,
+        "at": 1794036738.7238662,
+        "kind": "model_started",
+        "model_calls": 1,
+        "request_bytes": 3698,
+        "reserved_usd": 0.0,
+        "revision": 2,
+        "turn_id": "4d1ea3242c1744e3bb76824f6720040b"
+      },
+      {
+        "seq": 3,
+        "at": 1794036758.0624409,
+        "kind": "terminated",
+        "phase": "failed",
+        "code": "http_error",
+        "revision": 3,
+        "turn_id": "4d1ea3242c1744e3bb76824f6720040b"
+      }
+    ],
+    "limitations": [
+      "Public tiny development task; not unseen acceptance or general competence.",
+      "Model completion alone is insufficient; external value oracle required.",
+      "No recovery injection in this live run."
+    ]
+  },
+  "elapsed_seconds": 21.640759963,
+  "budget": {
+    "halted": false,
+    "currency": "CNY",
+    "cap_cny": 30,
+    "pricing": "peak_cache_miss_upper_estimate_2026_11_07",
+    "committed_upper_cny": 26.220282,
+    "known_usage_estimate_cny": 0.005882,
+    "unresolved_requests": 5,
+    "requests": [
+      {
+        "id": "98c37e456109460e9179cb652ef252c0",
+        "at": 1794036164.771808,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      },
+      {
+        "id": "db37a59454464b4fadbe6e992baacda4",
+        "at": 1794036302.81156,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      },
+      {
+        "id": "5c258d9c98cd4414b27de9e62a48a79c",
+        "at": 1794036482.210557,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 0.00103,
+        "status": "settled",
+        "usage": {
+          "input_tokens": 299,
+          "output_tokens": 54
+        }
+      },
+      {
+        "id": "307a219228644e93af251afbdc3db8c2",
+        "at": 1794036489.018154,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      },
+      {
+        "id": "93937bc9fdc14be78df87f19d09bf6e0",
+        "at": 1794036579.458994,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 0.002202,
+        "status": "settled",
+        "usage": {
+          "input_tokens": 985,
+          "output_tokens": 29
+        }
+      },
+      {
+        "id": "989a2c0e3d0c4933b5945c183b46ea07",
+        "at": 1794036585.879,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 0.00265,
+        "status": "settled",
+        "usage": {
+          "input_tokens": 1045,
+          "output_tokens": 70
+        }
+      },
+      {
+        "id": "40fffa9581454b748d41575c8d986d0e",
+        "at": 1794036590.177879,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      },
+      {
+        "id": "8cd3f1c724ab4453a34bc0930cdaa0f3",
+        "at": 1794036738.727654,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      }
+    ]
+  }
+}

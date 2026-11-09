@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-11-07T10:49:02.592373+00:00",
+  "docker_cli": false,
+  "podman_cli": false,
+  "docker_socket_present": false,
+  "action": "read_only_inventory_no_install_or_daemon_start",
+  "consequence": "No existing local container backend; full fork/shell backend remains open, default restrictions unchanged."
+}

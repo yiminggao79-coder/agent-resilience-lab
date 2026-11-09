@@ -1,0 +1,68 @@
+test_alias_shape_reserved_count_and_nonmapping_rejected (tests.dev.test_extra_executables.ExtraExecutableTests) ... FAIL
+test_cli_option_parse_and_dynamic_schema_keep_model_args_unchanged (tests.dev.test_extra_executables.ExtraExecutableTests) ... FAIL
+test_default_shapes_unchanged_and_explicit_mapping_canonical_and_hashed (tests.dev.test_extra_executables.ExtraExecutableTests) ... FAIL
+test_every_command_including_echo_binds_whole_mapping_and_mutations (tests.dev.test_extra_executables.ExtraExecutableTests) ... FAIL
+test_inside_nonexec_hardlink_and_parent_alias_workspace_routes_rejected (tests.dev.test_extra_executables.ExtraExecutableTests) ... FAIL
+test_session_restore_rejects_missing_registered_mapping (tests.dev.test_extra_executables.ExtraExecutableTests) ... FAIL
+test_worker_tampering_and_run_tests_intent_are_bound_before_launch (tests.dev.test_extra_executables.ExtraExecutableTests) ... FAIL
+
+======================================================================
+FAIL: test_alias_shape_reserved_count_and_nonmapping_rejected (tests.dev.test_extra_executables.ExtraExecutableTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables.py", line 25, in setUp
+    self.assertIsNotNone(executable_paths,'explicit executable registration not implemented')
+AssertionError: unexpectedly None : explicit executable registration not implemented
+
+======================================================================
+FAIL: test_cli_option_parse_and_dynamic_schema_keep_model_args_unchanged (tests.dev.test_extra_executables.ExtraExecutableTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables.py", line 25, in setUp
+    self.assertIsNotNone(executable_paths,'explicit executable registration not implemented')
+AssertionError: unexpectedly None : explicit executable registration not implemented
+
+======================================================================
+FAIL: test_default_shapes_unchanged_and_explicit_mapping_canonical_and_hashed (tests.dev.test_extra_executables.ExtraExecutableTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables.py", line 25, in setUp
+    self.assertIsNotNone(executable_paths,'explicit executable registration not implemented')
+AssertionError: unexpectedly None : explicit executable registration not implemented
+
+======================================================================
+FAIL: test_every_command_including_echo_binds_whole_mapping_and_mutations (tests.dev.test_extra_executables.ExtraExecutableTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables.py", line 25, in setUp
+    self.assertIsNotNone(executable_paths,'explicit executable registration not implemented')
+AssertionError: unexpectedly None : explicit executable registration not implemented
+
+======================================================================
+FAIL: test_inside_nonexec_hardlink_and_parent_alias_workspace_routes_rejected (tests.dev.test_extra_executables.ExtraExecutableTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables.py", line 25, in setUp
+    self.assertIsNotNone(executable_paths,'explicit executable registration not implemented')
+AssertionError: unexpectedly None : explicit executable registration not implemented
+
+======================================================================
+FAIL: test_session_restore_rejects_missing_registered_mapping (tests.dev.test_extra_executables.ExtraExecutableTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables.py", line 25, in setUp
+    self.assertIsNotNone(executable_paths,'explicit executable registration not implemented')
+AssertionError: unexpectedly None : explicit executable registration not implemented
+
+======================================================================
+FAIL: test_worker_tampering_and_run_tests_intent_are_bound_before_launch (tests.dev.test_extra_executables.ExtraExecutableTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables.py", line 25, in setUp
+    self.assertIsNotNone(executable_paths,'explicit executable registration not implemented')
+AssertionError: unexpectedly None : explicit executable registration not implemented
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+FAILED (failures=7)

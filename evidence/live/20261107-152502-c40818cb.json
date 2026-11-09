@@ -1,0 +1,39 @@
+{
+  "run_id": "20261107-152502-c40818cb",
+  "kind": "official_api_protocol_probe",
+  "model": "deepseek-flash",
+  "protocol": "chat",
+  "stream": true,
+  "thinking": "disabled",
+  "cost_is_supplier_invoice": false,
+  "error_code": "http_error",
+  "elapsed_seconds": 21.477914337999998,
+  "budget": {
+    "currency": "CNY",
+    "cap_cny": 30,
+    "pricing": "peak_cache_miss_upper_estimate_2026_11_07",
+    "committed_upper_cny": 10.48576,
+    "known_usage_estimate_cny": 0.0,
+    "unresolved_requests": 2,
+    "requests": [
+      {
+        "id": "98c37e456109460e9179cb652ef252c0",
+        "at": 1794036164.771808,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      },
+      {
+        "id": "db37a59454464b4fadbe6e992baacda4",
+        "at": 1794036302.81156,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      }
+    ]
+  }
+}

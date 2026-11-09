@@ -1,0 +1,421 @@
+--- before/reporting.py
++++ after/reporting.py
+@@ -2,13 +2,30 @@
+ from clockwork import day_key
+ from records import canonical, ordered
+ 
++def union_minutes(intervals):
++    """Total minutes covered by the union of half-open [start, end) intervals."""
++    total, current_start, current_end = 0, None, None
++    for start, end in sorted(intervals):
++        if current_end is None or start > current_end:
++            if current_end is not None:
++                total += current_end - current_start
++            current_start, current_end = start, end
++        elif end > current_end:
++            current_end = end
++    if current_end is not None:
++        total += current_end - current_start
++    return total
++
+ def day_report(rows, day):
+     day_key(day)
+     grouped = {}
++    spans = {}
+     for row in ordered(canonical(rows)):
+         if row['day'] != day:
+             continue
+         group = grouped.setdefault(row['room'], {'minutes': 0, 'ids': []})
+-        group['minutes'] += row['end'] - row['start']
+         group['ids'].append(row['id'])
++        spans.setdefault(row['room'], []).append((row['start'], row['end']))
++    for room, intervals in spans.items():
++        grouped[room]['minutes'] = union_minutes(intervals)
+     return {'day': day, 'rooms': grouped}
+--- before/requests.py
++++ after/requests.py
+@@ -0,0 +1,111 @@
++"""Priority-ordered room allocation over one-day bookings.
++
++Interval rule: bookings and blocks are half-open [start, end), so merely
++touching endpoints never counts as an overlap.
++"""
++from clockwork import day_key, minute
++from records import booking, canonical, ordered, positive, room_key
++
++DEFAULT_CAPACITY = 1
++_FIELDS = ('id', 'room', 'day', 'start', 'end', 'attendees')
++
++
++def _priority(value):
++    if type(value) is not int:
++        raise ValueError("priority must be an integer")
++    return value
++
++
++def _request(row):
++    item = booking(row)
++    item['priority'] = _priority(row.get('priority', 0))
++    return item
++
++
++def _block(row):
++    if not isinstance(row, dict):
++        raise ValueError("block must be a dictionary")
++    try:
++        result = dict(room=room_key(row['room']), day=day_key(row['day']),
++                      start=minute(row['start']), end=minute(row['end']))
++    except KeyError as exc:
++        raise ValueError("missing block field: " + str(exc)) from None
++    if result['start'] >= result['end']:
++        raise ValueError("block must end after it starts")
++    return result
++
++
++def _capacities(source):
++    if not isinstance(source, dict):
++        raise ValueError("capacities must be a dictionary")
++    result = {}
++    for name, value in source.items():
++        key = room_key(name)
++        if key in result:
++            raise ValueError("duplicate capacity room: " + key)
++        result[key] = positive(value, 'capacity')
++    return result
++
++
++def _touches(left, right):
++    """True when two entries of the same room/day overlap under half-open rules."""
++    return (left['room'] == right['room'] and left['day'] == right['day']
++            and left['start'] < right['end'] and right['start'] < left['end'])
++
++
++def _same_slot(left, right):
++    return left['room'] == right['room'] and left['day'] == right['day']
++
++
++def _fits(candidate, booked, capacity):
++    """Whether adding `candidate` keeps simultaneous attendees within `capacity`."""
++    if candidate['attendees'] > capacity:
++        return False
++    # Load only changes at neighbouring starts/ends strictly inside the request,
++    # so checking each such boundary covers every sub-interval exactly once.
++    points = {candidate['start']}
++    for other in booked:
++        if _same_slot(candidate, other):
++            for point in (other['start'], other['end']):
++                if candidate['start'] <= point < candidate['end']:
++                    points.add(point)
++    for point in points:
++        total = sum(other['attendees'] for other in booked
++                    if _same_slot(candidate, other)
++                    and other['start'] <= point < other['end'])
++        if total + candidate['attendees'] > capacity:
++            return False
++    return True
++
++
++def allocate(existing, requests, capacities, blocks=()):
++    # Validate and normalize every input before any allocation decision is made.
++    booked = canonical(existing)
++    candidates = [_request(row) for row in requests]
++    limits = _capacities(capacities)
++    stopped = [_block(row) for row in blocks]
++
++    seen = set(item['id'] for item in booked)
++    for item in candidates:
++        if item['id'] in seen:
++            raise ValueError("duplicate booking id")
++        seen.add(item['id'])
++
++    # Higher priority first; sort is stable, so ties keep request input order.
++    queue = sorted(enumerate(candidates), key=lambda pair: (-pair[1]['priority'], pair[0]))
++
++    accepted, rejected = [], []
++    for _, item in queue:
++        room, day, start, end = item['room'], item['day'], item['start'], item['end']
++        window = dict(room=room, day=day, start=start, end=end)
++        if any(_touches(window, block) for block in stopped):
++            rejected.append({'id': item['id'], 'reason': 'blocked'})
++            continue
++        if not _fits(item, booked, limits.get(room, DEFAULT_CAPACITY)):
++            rejected.append({'id': item['id'], 'reason': 'capacity'})
++            continue
++        accepted.append(item['id'])
++        booked.append(item)
++
++    schedule = [{field: item[field] for field in _FIELDS} for item in booked]
++    return {'accepted': accepted, 'rejected': rejected, 'schedule': ordered(schedule)}
+--- before/schedule.py
++++ after/schedule.py
+@@ -2,14 +2,16 @@
+ from records import canonical
+ 
+ def overlap(left, right):
++    # Intervals are half-open [start, end): touching endpoints do not conflict.
+     return (left['room'] == right['room'] and left['day'] == right['day']
+-            and left['start'] <= right['end'] and right['start'] <= left['end'])
++            and left['start'] < right['end'] and right['start'] < left['end'])
+ 
+ def conflicts(rows):
+     entries = canonical(rows)
+-    pairs = []
++    pairs = set()
+     for index, left in enumerate(entries):
+         for right in entries[index + 1:]:
+             if overlap(left, right):
+-                pairs.append(sorted([left['id'], right['id']]))
+-    return sorted(pairs)
++                pairs.add((left['id'], right['id']) if left['id'] <= right['id']
++                          else (right['id'], left['id']))
++    return [list(pair) for pair in sorted(pairs)]
+--- before/tests/test_regressions.py
++++ after/tests/test_regressions.py
+@@ -0,0 +1,79 @@
++import copy
++import unittest
++from reporting import day_report, union_minutes
++from schedule import conflicts, overlap
++
++def row(identity, start, end, room='main', day='2027-05-10', attendees=1):
++    return dict(id=identity, room=room, day=day, start=start, end=end, attendees=attendees)
++
++class HalfOpenConflicts(unittest.TestCase):
++    def test_adjacent_both_directions(self):
++        rows = [row('a', '08:00', '09:00'), row('b', '09:00', '10:00'),
++                row('c', '07:00', '08:00')]
++        self.assertEqual(conflicts(rows), [])
++
++    def test_actual_overlap_detected(self):
++        rows = [row('b', '08:30', '09:30'), row('a', '08:00', '09:00')]
++        self.assertEqual(conflicts(rows), [['a', 'b']])
++
++    def test_containment_and_identical(self):
++        rows = [row('a', '08:00', '10:00'), row('b', '08:30', '09:00'),
++                row('c', '08:00', '10:00')]
++        self.assertEqual(conflicts(rows), [['a', 'b'], ['a', 'c'], ['b', 'c']])
++
++    def test_pairs_sorted_unique_and_normalized_room(self):
++        rows = [row('z', '08:00', '09:00', ' MAIN '), row('y', '08:30', '09:30', 'main'),
++                row('x', '08:30', '09:30', 'Annex')]
++        self.assertEqual(conflicts(rows), [['y', 'z']])
++
++    def test_interval_touching_at_end_of_day(self):
++        self.assertFalse(overlap({'room': 'r', 'day': '2027-05-10', 'id': 'a', 'start': 1380, 'end': 1440},
++                                 {'room': 'r', 'day': '2027-05-10', 'id': 'b', 'start': 1440, 'end': 1500}))
++
++class UnionMinutes(unittest.TestCase):
++    def test_nested_not_summed(self):
++        rows = [row('a', '08:00', '10:00'), row('b', '08:30', '09:00')]
++        self.assertEqual(day_report(rows, '2027-05-10')['rooms']['main']['minutes'], 120)
++
++    def test_partial_overlap(self):
++        rows = [row('a', '08:00', '09:00'), row('b', '08:30', '10:00')]
++        self.assertEqual(day_report(rows, '2027-05-10')['rooms']['main']['minutes'], 120)
++
++    def test_chain_merge_and_ids_order(self):
++        rows = [row('c', '10:00', '11:00'), row('a', '08:00', '09:30'),
++                row('b', '09:00', '10:30')]
++        self.assertEqual(day_report(rows, '2027-05-10'),
++            {'day': '2027-05-10', 'rooms': {'main': {'minutes': 180, 'ids': ['a', 'b', 'c']}}})
++
++    def test_identical_duplicate_spans(self):
++        self.assertEqual(union_minutes([(0, 60), (0, 60), (30, 90)]), 90)
++
++    def test_rooms_independent(self):
++        rows = [row('a', '08:00', '09:00', 'main'), row('b', '08:00', '09:00', 'annex')]
++        report = day_report(rows, '2027-05-10')
++        self.assertEqual(report['rooms']['main'], {'minutes': 60, 'ids': ['a']})
++        self.assertEqual(report['rooms']['annex'], {'minutes': 60, 'ids': ['b']})
++
++    def test_union_helper_boundaries(self):
++        self.assertEqual(union_minutes([]), 0)
++        self.assertEqual(union_minutes([(60, 120), (0, 60)]), 120)
++        self.assertEqual(union_minutes([(0, 60), (61, 120)]), 119)
++
++class CallerInputsPreserved(unittest.TestCase):
++    def test_rows_untouched(self):
++        rows = [row('b', '08:30', '09:30', ' MAIN '), row('a', '08:00', '09:00')]
++        before = copy.deepcopy(rows)
++        conflicts(rows)
++        day_report(rows, '2027-05-10')
++        self.assertEqual(rows, before)
++
++    def test_validation_retained(self):
++        with self.assertRaises(ValueError):
++            conflicts([row('a', '09:00', '08:00')])
++        with self.assertRaises(ValueError):
++            day_report([row('a', '08:00', '09:00')], '2027-5-10')
++        with self.assertRaises(ValueError):
++            day_report([row('a', '08:00', '09:00'), row('a', '10:00', '11:00')], '2027-05-10')
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_requests.py
++++ after/tests/test_requests.py
+@@ -0,0 +1,165 @@
++import copy
++import unittest
++from requests import allocate
++
++def row(identity, start, end, room='main', day='2027-05-10', attendees=1, **extra):
++    result = dict(id=identity, room=room, day=day, start=start, end=end, attendees=attendees)
++    result.update(extra)
++    return result
++
++def block(room, start, end, day='2027-05-10'):
++    return dict(room=room, day=day, start=start, end=end)
++
++class PriorityOrder(unittest.TestCase):
++    def test_higher_first_ties_in_input_order(self):
++        rooms = {'main': 3}
++        result = allocate([], [row('a', '08:00', '09:00'),
++                               row('b', '08:00', '09:00', priority=5),
++                               row('c', '08:00', '09:00', priority=5)], rooms)
++        self.assertEqual(result['accepted'], ['b', 'c', 'a'])
++        self.assertEqual(result['rejected'], [])
++
++    def test_negative_priority_allowed(self):
++        result = allocate([], [row('a', '08:00', '09:00', priority=-3),
++                               row('b', '08:00', '09:00')], {'main': 2})
++        self.assertEqual(result['accepted'], ['b', 'a'])
++
++    def test_priority_preserves_input_order_for_equal_default(self):
++        result = allocate([], [row('z', '08:00', '09:00'), row('y', '08:00', '09:00')], {'main': 2})
++        self.assertEqual(result['accepted'], ['z', 'y'])
++
++    def test_lower_priority_loses_slot_to_higher(self):
++        result = allocate([], [row('a', '08:00', '09:00'), row('b', '08:00', '09:00', priority=1)], {})
++        self.assertEqual(result['accepted'], ['b'])
++        self.assertEqual(result['rejected'], [{'id': 'a', 'reason': 'capacity'}])
++
++class Capacity(unittest.TestCase):
++    def test_default_capacity_one_blocks_overlap_wins_by_priority(self):
++        result = allocate([], [row('a', '08:00', '09:00'), row('b', '08:30', '09:30')], {})
++        self.assertEqual(result['accepted'], ['a'])
++        self.assertEqual(result['rejected'], [{'id': 'b', 'reason': 'capacity'}])
++
++    def test_adjacent_does_not_consume_capacity(self):
++        result = allocate([], [row('a', '08:00', '09:00'), row('b', '09:00', '10:00')], {})
++        self.assertEqual(result['accepted'], ['a', 'b'])
++
++    def test_simultaneous_sum_not_pairwise(self):
++        # Each pair overlaps only partially; capacity 4 is exceeded only mid-request.
++        existing = [row('e1', '08:00', '09:00', attendees=2),
++                    row('e2', '08:30', '10:00', attendees=2)]
++        result = allocate(existing, [row('a', '08:45', '09:15', attendees=1)], {'MAIN ': 4})
++        self.assertEqual(result['accepted'], [])
++        self.assertEqual(result['rejected'], [{'id': 'a', 'reason': 'capacity'}])
++
++    def test_simultaneous_sum_fits(self):
++        existing = [row('e1', '08:00', '09:00', attendees=2),
++                    row('e2', '08:30', '10:00', attendees=1)]
++        result = allocate(existing, [row('a', '08:45', '09:15', attendees=1)], {'main': 4})
++        self.assertEqual(result['accepted'], ['a'])
++
++    def test_single_request_larger_than_capacity(self):
++        result = allocate([], [row('a', '08:00', '09:00', attendees=3)], {'main': 2})
++        self.assertEqual(result['rejected'], [{'id': 'a', 'reason': 'capacity'}])
++
++    def test_existing_over_capacity_does_not_block_unrelated_request(self):
++        existing = [row('e1', '08:00', '09:00', attendees=5),
++                    row('e2', '08:00', '09:00', attendees=5)]
++        result = allocate(existing, [row('a', '10:00', '11:00')], {'main': 2})
++        self.assertEqual(result['accepted'], ['a'])
++        self.assertEqual(result['rejected'], [])
++
++    def test_earlier_accepted_requests_count(self):
++        result = allocate([], [row('a', '08:00', '09:00', attendees=2, priority=1),
++                               row('b', '08:30', '09:30')], {'main': 2})
++        self.assertEqual(result['accepted'], ['a'])
++        self.assertEqual(result['rejected'], [{'id': 'b', 'reason': 'capacity'}])
++
++    def test_room_day_partition(self):
++        result = allocate([], [row('a', '08:00', '09:00'),
++                               row('b', '08:00', '09:00', 'annex'),
++                               row('c', '08:00', '09:00', day='2027-05-11')], {})
++        self.assertEqual(result['accepted'], ['a', 'b', 'c'])
++
++class Blocks(unittest.TestCase):
++    def test_blocked_beats_capacity(self):
++        result = allocate([], [row('a', '08:00', '09:00'),
++                               row('b', '08:00', '09:00')],
++                          {}, [block(' MAIN ', '08:30', '10:00')])
++        self.assertEqual(result['accepted'], [])
++        self.assertEqual(result['rejected'], [{'id': 'a', 'reason': 'blocked'},
++                                              {'id': 'b', 'reason': 'blocked'}])
++
++    def test_block_endpoint_touch_is_free(self):
++        result = allocate([], [row('a', '08:00', '09:00')], {}, [block('main', '09:00', '10:00')])
++        self.assertEqual(result['accepted'], ['a'])
++
++    def test_block_other_room_or_day_ignored(self):
++        result = allocate([], [row('a', '08:00', '09:00')], {},
++                          [block('annex', '08:00', '09:00'), block('main', '08:00', '09:00', '2027-05-11')])
++        self.assertEqual(result['accepted'], ['a'])
++
++    def test_optional_blocks_argument(self):
++        self.assertEqual(allocate([], [row('a', '08:00', '09:00')], {})['accepted'], ['a'])
++
++class Validation(unittest.TestCase):
++    def test_duplicate_anywhere(self):
++        with self.assertRaises(ValueError):
++            allocate([row('a', '08:00', '09:00')], [row('a', '10:00', '11:00')], {})
++        with self.assertRaises(ValueError):
++            allocate([], [row('a', '08:00', '09:00'), row('a', '10:00', '11:00')], {})
++        with self.assertRaises(ValueError):
++            allocate([row('a', '08:00', '09:00'), row('a', '10:00', '11:00')], [], {})
++
++    def test_bad_priority(self):
++        for bad in (True, False, 1.0, '1'):
++            with self.assertRaises(ValueError):
++                allocate([], [dict(row('a', '08:00', '09:00'), priority=bad)], {})
++
++    def test_bad_capacity(self):
++        for bad in (0, -1, True, 2.0, '2'):
++            with self.assertRaises(ValueError):
++                allocate([], [], {'main': bad})
++
++    def test_duplicate_normalized_capacity(self):
++        with self.assertRaises(ValueError):
++            allocate([], [], {'Main': 2, ' main ': 3})
++
++    def test_bad_block(self):
++        with self.assertRaises(ValueError):
++            allocate([], [], {}, [block('main', '10:00', '09:00')])
++        with self.assertRaises(ValueError):
++            allocate([], [], {}, [dict(room='main', day='2027-05-10', start='08:00')])
++        with self.assertRaises(ValueError):
++            allocate([], [], {}, [dict(room='  ', day='2027-05-10', start='08:00', end='09:00')])
++
++    def test_invalid_request_interval_rejected_before_allocation(self):
++        with self.assertRaises(ValueError):
++            allocate([], [row('a', '08:00', '09:00'), row('b', '10:00', '10:00')], {})
++
++class Output(unittest.TestCase):
++    def test_schedule_sorted_and_canonical(self):
++        result = allocate([row('e', '09:00', '10:00', ' Annex ')],
++                          [row('a', '08:00', '09:00', day='2027-05-11', priority=1),
++                           row('b', '08:00', '09:00')], {' annex ': 4})
++        self.assertEqual(result['schedule'],
++            [{'id': 'e', 'room': 'annex', 'day': '2027-05-10', 'start': 540, 'end': 600, 'attendees': 1},
++             {'id': 'b', 'room': 'main', 'day': '2027-05-10', 'start': 480, 'end': 540, 'attendees': 1},
++             {'id': 'a', 'room': 'main', 'day': '2027-05-11', 'start': 480, 'end': 540, 'attendees': 1}])
++        self.assertEqual(result['accepted'], ['a', 'b'])
++
++    def test_caller_objects_unchanged(self):
++        existing = [row('e', '09:00', '10:00', ' Annex ', attendees=2)]
++        requests = [row('a', '08:00', '09:00', priority=3)]
++        capacities = {'Annex': 4}
++        blocks = [block('main', '20:00', '21:00')]
++        snapshot = copy.deepcopy((existing, requests, capacities, blocks))
++        result = allocate(existing, requests, capacities, blocks)
++        self.assertEqual((existing, requests, capacities, blocks), snapshot)
++        result['schedule'][0]['room'] = 'mutated'
++        self.assertEqual(existing[0]['room'], ' Annex ')
++
++    def test_empty_input(self):
++        self.assertEqual(allocate([], [], {}), {'accepted': [], 'rejected': [], 'schedule': []})
++
++if __name__ == '__main__':
++    unittest.main()

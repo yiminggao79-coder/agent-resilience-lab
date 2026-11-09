@@ -1,0 +1,16 @@
+test_existing_readonly_transaction_keeps_its_snapshot_after_rejection (tests.dev.test_session_listing_review.SessionListingReviewTests) ... ok
+test_replaced_database_path_cannot_rebind_cursor_from_old_connection (tests.dev.test_session_listing_review.SessionListingReviewTests) ... FAIL
+test_single_page_uses_one_snapshot_and_later_page_is_live (tests.dev.test_session_listing_review.SessionListingReviewTests) ... ok
+
+======================================================================
+FAIL: test_replaced_database_path_cannot_rebind_cursor_from_old_connection (tests.dev.test_session_listing_review.SessionListingReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing_review.py", line 94, in test_replaced_database_path_cannot_rebind_cursor_from_old_connection
+    list_sessions(old_reader, limit=1)
+AssertionError: StorageUnavailable not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.069s
+
+FAILED (failures=1)

@@ -1,0 +1,14 @@
+test_external_result_cannot_override_host_envelope (tests.dev.test_mcp_resources.MCPResourceTests) ... FAIL
+
+======================================================================
+FAIL: test_external_result_cannot_override_host_envelope (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 103, in test_external_result_cannot_override_host_envelope
+    self.assertTrue(result['ok']);self.assertEqual(result['server'],'owned')
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.070s
+
+FAILED (failures=1)

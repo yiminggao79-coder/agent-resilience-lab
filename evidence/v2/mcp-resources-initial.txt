@@ -1,0 +1,80 @@
+test_actual_resource_only_pagination_templates_and_multiple_contents (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_engine_resource_approval_feedback_binary_projection_and_privacy (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_http_transport_reuses_resource_protocol_and_sse_without_new_credentials (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+test_invalid_resource_bodies_and_binary_encoding_are_rejected (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_missing_and_malformed_capabilities_are_not_resource_support (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_read_timeout_and_new_registry_resume_do_not_repeat_external_request (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_resource_wait_honors_active_cancel_and_never_claims_quiescence (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_calls_are_serialized_with_unique_ids (tests.dev.test_mcp.MCPTests) ... ok
+test_close_kills_process_group_even_after_leader_death (tests.dev.test_mcp.MCPTests) ... ok
+test_discovery_rejects_cycles_invalid_schemas_and_item_overflow (tests.dev.test_mcp.MCPTests) ... ok
+test_environment_requires_explicit_values_and_allowlist (tests.dev.test_mcp.MCPTests) ... ok
+test_list_changed_requires_explicit_catalog_refresh (tests.dev.test_mcp.MCPTests) ... ok
+test_page_limit_is_bounded_and_config_is_validated_before_launch (tests.dev.test_mcp.MCPTests) ... ok
+test_progress_notifications_never_extend_request_deadline (tests.dev.test_mcp.MCPTests) ... ok
+test_protocol_failures_are_sanitized_and_effects_are_uncertain (tests.dev.test_mcp.MCPTests) ... ok
+test_real_initialize_paginated_discovery_and_structured_call (tests.dev.test_mcp.MCPTests) ... ok
+test_real_timeout_does_not_reconnect_or_replay_mutating_call (tests.dev.test_mcp.MCPTests) ... ok
+test_server_notifications_and_ping_do_not_become_results (tests.dev.test_mcp.MCPTests) ... ok
+test_stdout_stderr_and_notification_floods_are_bounded (tests.dev.test_mcp.MCPTests) ... ok
+test_unlisted_tool_and_bad_arguments_never_reach_server (tests.dev.test_mcp.MCPTests) ... ok
+test_version_negotiation_and_capability_requirements (tests.dev.test_mcp.MCPTests) ... ok
+test_agent_approval_precedes_real_call_and_feedback_reaches_model (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_ambient_api_keys_are_not_forwarded_and_close_quiesces_local_group (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_cached_catalog_never_accumulates_engine_history_tools (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_cli_error_and_chat_exit_close_actual_stdio_clients (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_configuration_or_catalog_change_rejects_resume_and_adding_removing_registry (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_intent_binding_preserves_json_boolean_types (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_lost_acknowledgement_recovers_without_reissuing_external_call (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_partial_startup_failure_closes_all_started_processes (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_strict_intent_and_approval_digest_reject_tampering (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_tool_error_is_private_structured_feedback_without_unknown_replay (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_trusted_config_rejects_workspace_links_unknown_keys_and_environment (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_unknown_call_enters_confirmation_and_is_never_replayed_on_resume (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_workspace_executable_alias_cannot_become_trusted_host_command (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_json_lifecycle_headers_and_session_delete_without_credentials_or_proxy (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_matching_sse_result_finishes_without_waiting_for_stream_disconnect (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_negotiated_older_version_pagination_and_optional_sessions (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_output_limit_and_timeout_after_effect_remain_unknown (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_sse_notifications_ping_and_both_line_endings (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_url_authority_is_explicit_and_invalid_limits_launch_nothing (tests.dev.test_mcp_http.MCPHTTPTests) ... ok
+test_changed_host_endpoint_or_options_reject_saved_toolset (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ok
+test_readonly_and_mixed_transport_configuration_refuse_before_dispatch (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ok
+test_remote_authority_requires_exact_approval_then_private_feedback (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ok
+test_unknown_after_remote_effect_never_replays_on_repeated_resume (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ok
+
+======================================================================
+ERROR: test_actual_resource_only_pagination_templates_and_multiple_contents (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 48, in test_actual_resource_only_pagination_templates_and_multiple_contents
+    self.assertEqual(client.list_resource_templates()['resourceTemplates'][0]['uriTemplate'],'owned:///reference/{name}')
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp.py", line 222, in list_resource_templates
+    return self._list_resources_page(True,cursor)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp.py", line 205, in _list_resources_page
+    _resource_string(entry.get('name'))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp.py", line 28, in _resource_string
+    raise MCPError('invalid_resource_arguments')
+agent_lab.mcp.MCPError: invalid_resource_arguments
+
+======================================================================
+ERROR: test_http_transport_reuses_resource_protocol_and_sse_without_new_credentials (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 126, in test_http_transport_reuses_resource_protocol_and_sse_without_new_credentials
+    self.assertIn('resourceTemplates',client.list_resource_templates())
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp.py", line 222, in list_resource_templates
+    return self._list_resources_page(True,cursor)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp.py", line 205, in _list_resources_page
+    _resource_string(entry.get('name'))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp.py", line 28, in _resource_string
+    raise MCPError('invalid_resource_arguments')
+agent_lab.mcp.MCPError: invalid_resource_arguments
+
+----------------------------------------------------------------------
+Ran 47 tests in 20.468s
+
+FAILED (errors=2)

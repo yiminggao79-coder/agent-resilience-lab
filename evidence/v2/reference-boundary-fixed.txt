@@ -1,0 +1,8 @@
+test_actual_wrapper_denies_private_reads_and_second_endpoint_but_preserves_fixture_access (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+test_environment_is_explicit_empty_of_ambient_auth_and_preserves_real_home (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+test_only_numeric_valid_port_and_owned_private_scope_are_accepted (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.097s
+
+OK

@@ -1,0 +1,18 @@
+test_changed_bytes_and_ordinary_mode_invalidate_old_intent (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ok
+test_default_denies_and_opt_in_binds_mode_image_and_scope (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ok
+test_no_hidden_parent_symlink_external_bare_or_special_mode_programs (tests.dev.test_workspace_exec.WorkspaceExecTests) ... FAIL
+test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ok
+test_worker_forgery_and_version2_envelope_fail_before_launch (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ok
+
+======================================================================
+FAIL: test_no_hidden_parent_symlink_external_bare_or_special_mode_programs (tests.dev.test_workspace_exec.WorkspaceExecTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 53, in test_no_hidden_parent_symlink_external_bare_or_special_mode_programs
+    with self.assertRaises(ToolError):tools.prepare('run_command',{'argv':['./program'],'cwd':'.'})
+AssertionError: ToolError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.617s
+
+FAILED (failures=1)

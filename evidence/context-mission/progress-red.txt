@@ -1,0 +1,14 @@
+test_runtime_advances_semantic_cursor_even_when_old_view_already_dropped_history (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... FAIL
+
+======================================================================
+FAIL: test_runtime_advances_semantic_cursor_even_when_old_view_already_dropped_history (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 161, in test_runtime_advances_semantic_cursor_even_when_old_view_already_dropped_history
+    self.assertEqual(result['semantic_context']['generation'], 2)
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 1 test in 0.205s
+
+FAILED (failures=1)

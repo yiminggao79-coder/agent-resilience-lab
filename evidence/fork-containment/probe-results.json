@@ -1,0 +1,174 @@
+{
+  "tested_on": "2026-11-07",
+  "runtime_commit": "90a5803d922975df1d47f15e073bc41178c9b887",
+  "host": {
+    "macos": "14.8.2",
+    "darwin": "23.6.0",
+    "architecture": "x86_64",
+    "kernel_build": "xnu-10063.141.1.707.11~1"
+  },
+  "probe1": {
+    "probe": "isolated_seatbelt_fork_session",
+    "normalization": "Outcome fields transcribed from the first successful terminal probe; PID values omitted. All created children were known to their parent and SIGKILL/waitpid-reaped before that parent exited.",
+    "profiles": [
+      {
+        "name": "deny_setcontrol",
+        "adds": [
+          "allow process-fork",
+          "deny process-info-setcontrol"
+        ],
+        "results": [
+          {
+            "action": "setsid",
+            "exit_code": 0,
+            "action_errno": null,
+            "escaped_group": true,
+            "child_reaped": true
+          },
+          {
+            "action": "setpgid",
+            "exit_code": 0,
+            "action_errno": null,
+            "escaped_group": true,
+            "child_reaped": true
+          },
+          {
+            "action": "spawn_plain",
+            "exit_code": 0,
+            "action_errno": null,
+            "escaped_group": false,
+            "child_reaped": true
+          },
+          {
+            "action": "spawn_setsid",
+            "exit_code": 0,
+            "action_errno": null,
+            "escaped_group": true,
+            "child_reaped": true
+          },
+          {
+            "action": "spawn_setpgid",
+            "exit_code": 0,
+            "action_errno": null,
+            "escaped_group": true,
+            "child_reaped": true
+          }
+        ]
+      },
+      {
+        "name": "deny_setsid_setpgid",
+        "adds": [
+          "disable-syscall-inference",
+          "allow syscall-unix",
+          "deny syscall-unix (syscall-number 82 147)"
+        ],
+        "results": [
+          {
+            "action": "setsid",
+            "exit_code": 0,
+            "action_errno": 1,
+            "escaped_group": false,
+            "child_reaped": true
+          },
+          {
+            "action": "setpgid",
+            "exit_code": 0,
+            "action_errno": 1,
+            "escaped_group": false,
+            "child_reaped": true
+          },
+          {
+            "action": "spawn_plain",
+            "exit_code": 0,
+            "action_errno": null,
+            "escaped_group": false,
+            "child_reaped": true
+          },
+          {
+            "action": "spawn_setsid",
+            "exit_code": 0,
+            "action_errno": null,
+            "escaped_group": true,
+            "child_reaped": true
+          },
+          {
+            "action": "spawn_setpgid",
+            "exit_code": 0,
+            "action_errno": null,
+            "escaped_group": true,
+            "child_reaped": true
+          }
+        ],
+        "inherits": "deny_setcontrol"
+      },
+      {
+        "name": "deny_setsid_setpgid_spawn",
+        "adds": [
+          "deny syscall-unix (syscall-number 82 147 244)"
+        ],
+        "results": [
+          {
+            "action": "setsid",
+            "exit_code": 1,
+            "reached_parent_code": false,
+            "error": "framework python wrapper posix_spawn bootstrap denied"
+          },
+          {
+            "action": "setpgid",
+            "exit_code": 1,
+            "reached_parent_code": false,
+            "error": "framework python wrapper posix_spawn bootstrap denied"
+          },
+          {
+            "action": "spawn_plain",
+            "exit_code": 1,
+            "reached_parent_code": false,
+            "error": "framework python wrapper posix_spawn bootstrap denied"
+          },
+          {
+            "action": "spawn_setsid",
+            "exit_code": 1,
+            "reached_parent_code": false,
+            "error": "framework python wrapper posix_spawn bootstrap denied"
+          },
+          {
+            "action": "spawn_setpgid",
+            "exit_code": 1,
+            "reached_parent_code": false,
+            "error": "framework python wrapper posix_spawn bootstrap denied"
+          }
+        ],
+        "inherits": "deny_setcontrol"
+      }
+    ]
+  },
+  "probe2": {
+    "probe": "native_interpreter_deny_setsid_spawn",
+    "results": [
+      {
+        "action": "setsid",
+        "exit_code": 0,
+        "stdout": "{\"pid\": 21648, \"ppid\": 21647, \"pgid\": 21647, \"sid\": 21647, \"action_errno\": 1, \"action\": \"setsid\", \"parent_pgid\": 21647, \"parent_sid\": 21647, \"escaped_group\": false, \"escaped_session\": false, \"child_reaped\": true, \"child_status\": 9}\n",
+        "stderr": ""
+      },
+      {
+        "action": "setpgid",
+        "exit_code": 0,
+        "stdout": "{\"pid\": 21650, \"ppid\": 21649, \"pgid\": 21650, \"sid\": 21649, \"action_errno\": null, \"action\": \"setpgid\", \"parent_pgid\": 21649, \"parent_sid\": 21649, \"escaped_group\": true, \"escaped_session\": false, \"child_reaped\": true, \"child_status\": 9}\n",
+        "stderr": ""
+      },
+      {
+        "action": "fork_exec",
+        "exit_code": 0,
+        "stdout": "{\"pid\": 21652, \"ppid\": 21651, \"pgid\": 21651, \"sid\": 21651, \"action_errno\": null, \"action\": \"fork_exec\", \"parent_pgid\": 21651, \"parent_sid\": 21651, \"escaped_group\": false, \"escaped_session\": false, \"child_reaped\": true, \"child_status\": 9}\n",
+        "stderr": ""
+      },
+      {
+        "action": "spawn_plain",
+        "exit_code": 0,
+        "stdout": "{\"action\": \"spawn_plain\", \"launch_errno\": 1, \"child_created\": false}\n",
+        "stderr": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+test_approval_unsafe_and_partial_patch_views_never_claim_effects_verified (tests.dev.test_diagnostics.DiagnosticTests) ... ok
+test_concurrent_admission_cannot_mix_two_database_observation_times (tests.dev.test_diagnostics.DiagnosticTests) ... ok
+test_default_metadata_has_confirmation_boundary_and_no_private_bodies (tests.dev.test_diagnostics.DiagnosticTests) ... ok
+test_malformed_optional_metadata_is_omitted_without_private_exception_text (tests.dev.test_diagnostics.DiagnosticTests) ... ok
+test_pending_input_metadata_is_preserved_and_not_automatically_withdrawn (tests.dev.test_diagnostics.DiagnosticTests) ... ok
+test_running_model_is_not_diagnosed_as_confirmed_lost_request (tests.dev.test_diagnostics.DiagnosticTests) ... ok
+test_inspection_never_creates_a_database_or_migrates_legacy_schema (tests.dev.test_diagnostics_cli.DiagnosticCLITests) ... ok
+test_pending_reads_private_db_without_constructing_tools_or_model (tests.dev.test_diagnostics_cli.DiagnosticCLITests) ... ok
+test_active_phase_stale_turn_unknown_and_text_validation (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_admission_and_withdrawal_event_failure_are_atomic (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_apply_marks_exact_user_message_and_snapshot_together (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_bad_application_rolls_back_all_rows_snapshot_and_event (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_duplicate_precedes_terminal_guard_but_conflicting_reuse_fails (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_final_gate_and_committed_event_duplicate_order (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_final_gate_is_strict_even_with_simultaneous_application (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_pending_count_byte_and_lifetime_caps (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_queue_is_separate_durable_metadata_only_transaction (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_sql_failure_rolls_back_input_application_and_allows_retry (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_withdrawal_is_idempotent_private_and_cannot_undo_applied (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_withdrawal_winning_application_race_has_distinct_retry_signal (tests.dev.test_steering_store.SteeringStoreTests) ... ok
+test_cli_followup_uses_persisted_history_and_exposes_turn_records (tests.dev.test_session_cli.SessionCLITests) ... ok
+test_followup_without_limit_flags_preserves_session_limits (tests.dev.test_session_cli.SessionCLITests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.889s
+
+OK

@@ -1,0 +1,32 @@
+test_actual_wrapper_denies_private_reads_and_second_endpoint_but_preserves_fixture_access (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ERROR
+test_environment_is_explicit_empty_of_ambient_auth_and_preserves_real_home (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ERROR
+test_only_numeric_valid_port_and_owned_private_scope_are_accepted (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ERROR
+
+======================================================================
+ERROR: test_actual_wrapper_denies_private_reads_and_second_endpoint_but_preserves_fixture_access (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_cli_boundary.py", line 36, in test_actual_wrapper_denies_private_reads_and_second_endpoint_but_preserves_fixture_access
+    from scripts.reference_cli import reference_profile,reference_environment
+ModuleNotFoundError: No module named 'scripts.reference_cli'
+
+======================================================================
+ERROR: test_environment_is_explicit_empty_of_ambient_auth_and_preserves_real_home (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_cli_boundary.py", line 19, in test_environment_is_explicit_empty_of_ambient_auth_and_preserves_real_home
+    from scripts.reference_cli import reference_environment
+ModuleNotFoundError: No module named 'scripts.reference_cli'
+
+======================================================================
+ERROR: test_only_numeric_valid_port_and_owned_private_scope_are_accepted (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_cli_boundary.py", line 30, in test_only_numeric_valid_port_and_owned_private_scope_are_accepted
+    from scripts.reference_cli import reference_profile
+ModuleNotFoundError: No module named 'scripts.reference_cli'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.009s
+
+FAILED (errors=3)

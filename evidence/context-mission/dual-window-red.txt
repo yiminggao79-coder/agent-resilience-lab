@@ -1,0 +1,14 @@
+test_summary_input_budget_is_independent_of_larger_agent_working_window (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ERROR
+
+======================================================================
+ERROR: test_summary_input_budget_is_independent_of_larger_agent_working_window (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 276, in test_summary_input_budget_is_independent_of_larger_agent_working_window
+    limits=Limits(max_context_bytes=64000,max_summary_input_bytes=18000,
+TypeError: __init__() got an unexpected keyword argument 'max_summary_input_bytes'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.018s
+
+FAILED (errors=1)

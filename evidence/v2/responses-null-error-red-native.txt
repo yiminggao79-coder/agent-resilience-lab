@@ -1,0 +1,78 @@
+test_real_http_null_error_response_is_not_an_unknown_model_failure (tests.dev.test_responses_continuation.ResponsesContinuationHTTPTests) ... test_real_http_worker_replays_native_items_and_tool_output_in_both_modes (tests.dev.test_responses_continuation.ResponsesContinuationHTTPTests) ... ok
+test_completed_response_with_null_error_keeps_tools_and_usage (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ERROR
+test_default_identity_is_legacy_identity_and_invalid_replay_precedes_key_lookup (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ok
+test_malformed_or_unsupported_native_shapes_fail_closed (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ok
+test_ordered_native_outputs_roundtrip_without_duplicate_visible_items (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ok
+test_private_native_content_survives_engine_store_but_not_lookup_summary_or_trace (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ok
+test_raw_invalid_tool_json_still_roundtrips_for_engine_feedback (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ok
+test_replay_rejects_forged_native_text_tools_or_role (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ok
+test_stream_mismatched_or_missing_done_items_never_return_tools (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ok
+test_stream_null_error_does_not_weaken_completion_or_error_checks (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ERROR
+test_stream_uses_done_items_and_keeps_reasoning_off_text_callback (tests.dev.test_responses_continuation.ResponsesContinuationTests) ... ok
+
+======================================================================
+ERROR: test_real_http_null_error_response_is_not_an_unknown_model_failure (tests.dev.test_responses_continuation.ResponsesContinuationHTTPTests) (streaming=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/model.py", line 230, in complete
+    canonical = result['completion']
+KeyError: 'completion'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_responses_continuation.py", line 203, in test_real_http_null_error_response_is_not_an_unknown_model_failure
+    result = self.model('responses', stream=streaming).complete(
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/model.py", line 246, in complete
+    raise ModelError('invalid_model_response', uncertain=True, diagnostic=diagnostic,
+agent_lab.model.ModelError: invalid_model_response
+
+======================================================================
+ERROR: test_real_http_null_error_response_is_not_an_unknown_model_failure (tests.dev.test_responses_continuation.ResponsesContinuationHTTPTests) (streaming=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/model.py", line 230, in complete
+    canonical = result['completion']
+KeyError: 'completion'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_responses_continuation.py", line 203, in test_real_http_null_error_response_is_not_an_unknown_model_failure
+    result = self.model('responses', stream=streaming).complete(
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/model.py", line 246, in complete
+    raise ModelError('invalid_model_response', uncertain=True, diagnostic=diagnostic,
+agent_lab.model.ModelError: invalid_model_response
+
+======================================================================
+ERROR: test_completed_response_with_null_error_keeps_tools_and_usage (tests.dev.test_responses_continuation.ResponsesContinuationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_responses_continuation.py", line 43, in test_completed_response_with_null_error_keeps_tools_and_usage
+    result = normalize_response('responses', wire)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 319, in normalize_response
+    return _normalize(protocol, body)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 264, in _normalize
+    raise ProtocolError('invalid_response')
+agent_lab.protocols.ProtocolError: invalid_response
+
+======================================================================
+ERROR: test_stream_null_error_does_not_weaken_completion_or_error_checks (tests.dev.test_responses_continuation.ResponsesContinuationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_responses_continuation.py", line 56, in test_stream_null_error_does_not_weaken_completion_or_error_checks
+    result = consume_sse('responses', sse(events + [{'type': 'response.completed', 'response': wire}]))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 535, in consume_sse
+    return parser(_events(lines), on_text)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 513, in _responses_stream
+    completed = normalize_response('responses', event['response'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 319, in normalize_response
+    return _normalize(protocol, body)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 264, in _normalize
+    raise ProtocolError('invalid_response')
+agent_lab.protocols.ProtocolError: invalid_response
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.843s
+
+FAILED (errors=4)

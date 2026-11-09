@@ -1,0 +1,8 @@
+{
+  "phase": "needs_confirmation",
+  "reason": "transport_unknown",
+  "original_external_oracle": null,
+  "original_final_tests_exit_code": null,
+  "candidate_is_unverified_partial_or_baseline": true,
+  "new_execution_or_rescore_performed": false
+}

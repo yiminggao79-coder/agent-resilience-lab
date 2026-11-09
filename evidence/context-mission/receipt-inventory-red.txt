@@ -1,0 +1,14 @@
+test_receipts_include_pre_kill_and_resume_without_inventing_unknown_usage (tests.dev.test_context_mission.ContextMissionTests) ... ERROR
+
+======================================================================
+ERROR: test_receipts_include_pre_kill_and_resume_without_inventing_unknown_usage (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 152, in test_receipts_include_pre_kill_and_resume_without_inventing_unknown_usage
+    records=self.module.receipt_inventory(root)
+AttributeError: module 'scripts.context_mission' has no attribute 'receipt_inventory'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.131s
+
+FAILED (errors=1)

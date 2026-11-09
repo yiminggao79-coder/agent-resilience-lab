@@ -1,0 +1,69 @@
+test_actual_compiled_image_requires_opt_in_approval_and_survives_readonly_root (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... FAIL
+test_cancel_drains_actual_native_fork_descendant_before_return (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... ERROR
+test_confined_unittest_can_spawn_workspace_compiled_program (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... ERROR
+test_native_program_private_readonly_network_hidden_and_nofork_boundaries (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... ERROR
+test_secondary_visible_programs_are_scope_granted_not_individually_pinned (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... ERROR
+
+======================================================================
+ERROR: test_cancel_drains_actual_native_fork_descendant_before_return (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec_native.py", line 107, in test_cancel_drains_actual_native_fork_descendant_before_return
+    with self.assertRaises(ToolCancelled) as caught:tools.execute(intent,6)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 385, in execute
+    return self._dispatch('execute', intent, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 309, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: tool_worker_failed
+
+======================================================================
+ERROR: test_confined_unittest_can_spawn_workspace_compiled_program (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec_native.py", line 93, in test_confined_unittest_can_spawn_workspace_compiled_program
+    result=tools.execute(tools.prepare('run_tests',{}),6)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 385, in execute
+    return self._dispatch('execute', intent, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 309, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: tool_worker_failed
+
+======================================================================
+ERROR: test_native_program_private_readonly_network_hidden_and_nofork_boundaries (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec_native.py", line 69, in test_native_program_private_readonly_network_hidden_and_nofork_boundaries
+    result=tools.execute(tools.prepare('run_command',{'argv':['./boundaries',str(private)],'cwd':'.'}),6)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 385, in execute
+    return self._dispatch('execute', intent, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 309, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: tool_worker_failed
+
+======================================================================
+ERROR: test_secondary_visible_programs_are_scope_granted_not_individually_pinned (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec_native.py", line 80, in test_secondary_visible_programs_are_scope_granted_not_individually_pinned
+    result=tools.execute(intent,6)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 385, in execute
+    return self._dispatch('execute', intent, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 309, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: tool_worker_failed
+
+======================================================================
+FAIL: test_actual_compiled_image_requires_opt_in_approval_and_survives_readonly_root (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec_native.py", line 36, in test_actual_compiled_image_requires_opt_in_approval_and_survives_readonly_root
+    state=engine.run(task);self.assertEqual(state['phase'],'completed',state.get('reason'))
+AssertionError: 'needs_confirmation' != 'completed'
+- needs_confirmation
++ completed
+ : tool_outcome_unknown
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.336s
+
+FAILED (failures=1, errors=4)

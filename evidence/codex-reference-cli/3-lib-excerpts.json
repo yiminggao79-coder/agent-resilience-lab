@@ -1,0 +1,33 @@
+{
+  "path": "codex-rs/model-provider-info/src/lib.rs",
+  "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/model-provider-info/src/lib.rs",
+  "body_ranges_read": [
+    [
+      166,
+      199
+    ],
+    [
+      220,
+      247
+    ],
+    [
+      472,
+      554
+    ]
+  ],
+  "whole_file_audited": false,
+  "upstream_pinned_source_executed": false,
+  "excerpts": [
+    {
+      "start": 220,
+      "end": 231,
+      "text": "    /// the user is presented with a login screen on first run, and credentials are\n    /// stored using the backend selected by `cli_auth_credentials_store`.\n    /// If false (the default), the login screen is skipped, and the API key\n    /// (if needed) comes from the environment variable specified by `env_key`.\n    #[serde(default)]\n    pub requires_openai_auth: bool,\n    /// Whether this provider supports the Responses API WebSocket transport.\n    #[serde(default)]\n    pub supports_websockets: bool,\n    /// Whether this provider supports the standalone web-search endpoint.\n    #[serde(default)]\n    pub supports_standalone_web_search: bool,"
+    },
+    {
+      "start": 522,
+      "end": 554,
+      "text": "    /// If `env_key` is Some, returns the API key for this provider if present\n    /// (and non-empty) in the environment. If `env_key` is required but\n    /// cannot be found, returns an error.\n    pub fn api_key(&self) -> CodexResult<Option<String>> {\n        match &self.env_key {\n            Some(env_key) => {\n                let api_key = std::env::var(env_key)\n                    .ok()\n                    .filter(|v| !v.trim().is_empty())\n                    .ok_or_else(|| {\n                        CodexErr::EnvVar(EnvVarError {\n                            var: env_key.clone(),\n                            instructions: self.env_key_instructions.clone(),\n                        })\n                    })?;\n                Ok(Some(api_key))\n            }\n            None => Ok(None),\n        }\n    }\n\n    /// Effective maximum number of request retries for this provider.\n    pub fn request_max_retries(&self) -> u64 {\n        self.request_max_retries\n            .unwrap_or(DEFAULT_REQUEST_MAX_RETRIES)\n            .min(MAX_REQUEST_MAX_RETRIES)\n    }\n\n    /// Effective maximum number of stream reconnection attempts for this provider.\n    pub fn stream_max_retries(&self) -> u64 {\n        self.stream_max_retries\n            .unwrap_or(DEFAULT_STREAM_MAX_RETRIES)\n            .min(MAX_STREAM_MAX_RETRIES)"
+    }
+  ],
+  "computed_git_blob_sha1": "efd48f17a9ad1507240c0141b62148b4dd551f84"
+}

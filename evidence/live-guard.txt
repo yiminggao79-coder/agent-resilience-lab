@@ -1,0 +1,5 @@
+usage: evaluate_live.py [-h] [--allow-api] [--model MODEL]
+                        [--base-url BASE_URL] [--api-key-env API_KEY_ENV]
+                        --max-cost-usd MAX_COST_USD --input-price INPUT_PRICE
+                        --output-price OUTPUT_PRICE --output OUTPUT
+evaluate_live.py: error: requires --allow-api, --model and a configured API key environment variable

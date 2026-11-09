@@ -1,0 +1,502 @@
+{
+  "original_report_sha256": "609bba5ff20982de9b9a5e2f603f190a9095d3179812ea600a42780ffe389ef3",
+  "grades_unchanged": true,
+  "records": [
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 1,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 3634,
+        "output_tokens": 66
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "d9192fbf4739a1e730d4aaf6b468cd7418a32b9fb20aaa466b2ba4572077653f",
+      "response_sha256": "2a53b2349868e9d42e2eb35b617612182f543ddc43ee1f8fb62049cfd02872e7",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "list_files",
+        "project_rules"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 2,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 3832,
+        "output_tokens": 160
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "777c92003d02f87eaf1534afb843ceab47bd49cd4d6c5c6744b2e8493d6731de",
+      "response_sha256": "19bfe1ded83a359b5b1cc4009f0d35216b9f175521426620533533b911ccf815",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "read_file",
+        "read_file",
+        "read_file",
+        "read_file",
+        "read_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 3,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 5315,
+        "output_tokens": 70
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "07a8eddc8dfc49d3047e6d698c1b386f04b4c8dc318f3fd00400e96800e7fda4",
+      "response_sha256": "60f0c5c7368dc9b6757c2454f68c828222161a66261b5577df2b6496134119d0",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_tests"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 4,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 6141,
+        "output_tokens": 529
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "755640e1ea6473dfe0eb3062e29ba67af77cb02be3be56bf49f677499fbc66b8",
+      "response_sha256": "a1d14ed7eec091caf0f941814fa571e0895093d50cd702a8d60da877175b0f63",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "write_file",
+        "write_file",
+        "write_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 5,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 7493,
+        "output_tokens": 992
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "8dc3a45dea1abede9d3ccc9ae677a8f5bfe286a90d3d837c91e0ee7d6c568e4e",
+      "response_sha256": "5d1514de20c74cfc105b4592fe076c889617564029ef5e96ca39e9148d5dc495",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "write_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 6,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 8560,
+        "output_tokens": 22
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "b962b7901c045dab7a0fd1fae247af000bf80b844ccf04da6751b1550ecdca6f",
+      "response_sha256": "d4ef2fd1b8cf912eab93c5717577c9da70968deb3106a91f835cde665af361e1",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_tests"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 7,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 8879,
+        "output_tokens": 216
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "56ef51c3294a3cb3bd14d35ec3aeeda260957fe42ccb173723b7a3c0b20a2323",
+      "response_sha256": "dda7165861d4e76cd259c1df424242cc93c03d21770a8c2bfd3e5e568cfb6ef0",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_command"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 8,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 9113,
+        "output_tokens": 186
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "e067a00570c040620995e3f87da21d97a1f6cb3daed177474de1ee6fd8255bd6",
+      "response_sha256": "828947caa68b23305a7c4e8ded0b43c12f1bb7f037c94a5aeff0793903c4427b",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_command"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 9,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 9463,
+        "output_tokens": 435
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "d0a3d1d4cebe8e69edf36e2d81512324730e85c3a1b0daf1fe880a8b78ba6433",
+      "response_sha256": "9aa7abe9bfb7b7b0903a0bc1350ce0780e4ff140d11c0101e5563487d9787fd0",
+      "finish_reason": "stop",
+      "tools": []
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 1,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 10027,
+        "output_tokens": 112
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "311b52ed0cb19f7c3813d38a67f3d58263c73b8ab5a32988412645dca873e51a",
+      "response_sha256": "9b5d0ae0ad046141cf990b1fe1ba544d272ece45623fb2e138398367ec1bcd1f",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "read_file",
+        "read_file",
+        "read_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 2,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 10779,
+        "output_tokens": 605
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "3ea0b791015a60c066e98845dfb79cedc69731917498d2737ccb5ddce0daec4f",
+      "response_sha256": "c2d3a154bcb3256b1f65dfa01c030c4753ad9d8b4ea410f0340e3cf5859fd805",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "write_file",
+        "write_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 3,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 11516,
+        "output_tokens": 1453
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "b4d7fabae3662cd402ef16a7917cea133addf5309a3791f06b2e9f27709c3a82",
+      "response_sha256": "cae94420ed744a98c89f3ed849576112ac5b975b375f024f89c3424a79d554db",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "write_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 4,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 13042,
+        "output_tokens": 22
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "968aea874ca668f214205ac8a9838d9b6c53c3398a1b5390f513f80639dc7b9f",
+      "response_sha256": "aa4583c7cca17a4e8ee2be18beab4f4fed39fdb630288165ce566a3e3070e264",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_tests"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 5,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 14044,
+        "output_tokens": 290
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "aaa8ff54b1a7e0f801d1ec03ee4ce4d75fd55097063730636895902e2d5aac04",
+      "response_sha256": "cdfafbfbc99579d9a41f1cf0ef934084ba4507d732cef38323414114fcfc5cc3",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "edit_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 6,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 14404,
+        "output_tokens": 108
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "0002326785f81eb6c135f3240a98862be5a82b42e86c93f530eba6eecfd782dc",
+      "response_sha256": "8d71a47e0ca73b222023afd5598098cdceca226bf4c506061196fee20a468bb6",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "read_lines"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 7,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 15188,
+        "output_tokens": 504
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "36482687351dbb39eb5e580c484c1acf5bcbcc131ac1a9feeacb11d3fedd999a",
+      "response_sha256": "b4440defa7d8c524b000434bf37a95866226da43320e269120f2f5ae12388de8",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "edit_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 8,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 15772,
+        "output_tokens": 22
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "d0a0cb9ed9635a7300c50f7d046b75d7edee37fbb8bf30952b62b8c6f4e3d457",
+      "response_sha256": "9f376ddbcded29ce46b48f12bfba3f6df915e5329127e0fcd0928b462c8ec079",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_tests"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 9,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 16405,
+        "output_tokens": 232
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "9cdc6edcf6d8ba1af65d21001cf5721f901792f1a4b478607c5bb52c09104370",
+      "response_sha256": "be6ab2fb598a2d3c886e9d5c0463ac981cfc4a46cbfbff81d970a46d628c308e",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_command"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-2/first-receipts",
+      "index": 10,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 16809,
+        "output_tokens": 579
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "bc24bb65b5cbc4d7cd2b23ebd2a3b224fa54a01bdb8494f877d784036094f5a4",
+      "response_sha256": "a37416a70eb1945bc885ed9ad1e705ddb9cc8d4f69cfd360ba18acfd914fea97",
+      "finish_reason": "stop",
+      "tools": []
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 1,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 17560,
+        "output_tokens": 94
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "8dfac845a27a0f7dc3552de209182b8cea2aba4d7d80b3ae55bd0f703782788e",
+      "response_sha256": "0ab2edfb0562b6bb28d9ec64a297f3fc6e9d8f9e420955f8e7b15e01da17bb4b",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "read_file",
+        "read_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 2,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 18620,
+        "output_tokens": 63
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "6bd76b1ae54a7601c9e6f33a468bb94cc1033e428b095d6d8237107288d77c3a",
+      "response_sha256": "95ab9870d2b3f17b4026d2bf1673f6014c305d69fbe39bed47c032660f87298e",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "read_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 3,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 18906,
+        "output_tokens": 541
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "293662e5b80ef0a799dbf888df7e68a47d4df04e6a24c68722c9edd5cf6d43cc",
+      "response_sha256": "625314e14fe6ded06ec5760046abd840b976f92dfe9fc5106f04ccc8cbe32fb8",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "write_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 4,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 19518,
+        "output_tokens": 1762
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "0f6a3d325f4c5921af7f4fed683a689b236991a6e82d5fb225dcb194b1de7eab",
+      "response_sha256": "1d26de0707c1d1b5e820ff8dfd12229836347e7a4e6ac8dfecae051e65b48436",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "write_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 5,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 21356,
+        "output_tokens": 22
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "b1c29661be8946b1fc18f37baa9f30d6187402147f527ccaf59a8c791549462a",
+      "response_sha256": "a0ecbf9c3689a30be79f0510ab0822fc9f329cbd6881990018d46461aac3d1c4",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_tests"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 6,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 22570,
+        "output_tokens": 254
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "705c72522c6c63775680adaa7bf58a3bb203559dbc5d3ba58bbee2f52da04018",
+      "response_sha256": "970ca215f06b91147f1c7f3323676e7ad886a39b101657cfd5f66a7bd6b4c7da",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "read_lines"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 7,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 24033,
+        "output_tokens": 737
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "628545002851807f7a7df6b13a6eefd8769718ddb748aab22b4f1da8963f8d56",
+      "response_sha256": "434292af94f0e360ed9377fafc365b1e51267ab27822d4b118fbe8766f1c0678",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "edit_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 8,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 24846,
+        "output_tokens": 79
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "feb9766edfbe4ff41bb8e99e81693d4d36bfb77abdba38b2353c76fd15c2233c",
+      "response_sha256": "dcdf4c5ffa8bb42b0fae3ec860ae7edfe316fb0d5e1b3b73bbe3fe9048cb18c6",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_tests"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 9,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 25755,
+        "output_tokens": 249
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "865fe1b7c175b860da8c91222e9fb31070f18a844165fe1ffefed0811a3b1968",
+      "response_sha256": "415f615c9a9ff4b8815650eef7ac47b3d79e1c371c9b2e02f200352fc34e7fd2",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "run_command"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-3/first-receipts",
+      "index": 10,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 26167,
+        "output_tokens": 675
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "8a1a9656f4fd4a3f45f24d25f9802a8c9f1dc6919df3b6664e75d2fd08b92c06",
+      "response_sha256": "2e73e9ea98a9613a9ce910af29a4d222679be646f9a5b46ff38c1a57ef2b4d2b",
+      "finish_reason": "stop",
+      "tools": []
+    },
+    {
+      "segment": "public-inventory/turn-4/first-receipts",
+      "index": 1,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 8657,
+        "output_tokens": 578
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "2899055781c87a60617a02140d28b6e08e6d98c0c7e5f5fe643d6c3817b68f90",
+      "response_sha256": "9b99ad252619b1586d60d0bdd755957e064e2c27210aa34d45d3a7ce49d2f5b7",
+      "finish_reason": "stop",
+      "tools": []
+    }
+  ],
+  "usage_totals": {
+    "requests": 30,
+    "known_input_tokens": 428404,
+    "known_output_tokens": 11657,
+    "unknown_usage_requests": 0,
+    "known_peak_cache_miss_estimate_cny": 0.950064,
+    "pricing_cny_per_million": {
+      "input_peak_cache_miss": 2,
+      "output_peak": 8
+    },
+    "estimate_is_invoice": false
+  },
+  "limitation": "Elapsed times absent in original killed-process files remain null; no values inferred."
+}

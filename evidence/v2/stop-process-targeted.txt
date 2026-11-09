@@ -1,0 +1,11 @@
+test_kill_after_claim_before_effect_never_recovers_by_creating_file (tests.acceptance.test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "after_tool_claim", "killed_pid": 52022, "kill_return_code": -9, "resumed_pid": 52029, "phase": "needs_confirmation", "new_effects_after_stop": 0, "unknown_pending_preserved": true}
+ok
+test_kill_after_patch_effect_never_replays_or_executes_remaining_files (tests.acceptance.test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "after_patch_effect", "killed_pid": 52030, "kill_return_code": -9, "resumed_pid": 52043, "phase": "needs_confirmation", "new_effects_after_stop": 0, "unknown_pending_preserved": true}
+ok
+test_live_claimed_call_finishes_but_new_tools_never_start (tests.acceptance.test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "claimed_call_finishes", "runner_pid": 52044, "stop_observed": true, "current_call_preempted": false, "new_file_effects": 0}
+ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.673s
+
+OK

@@ -1,0 +1,16 @@
+test_mcp_wrapper_forwards_runtime_validation_without_putting_path_in_prompt (tests.dev.test_node_review.NodeReviewTests) ... ERROR
+
+======================================================================
+ERROR: test_mcp_wrapper_forwards_runtime_validation_without_putting_path_in_prompt (tests.dev.test_node_review.NodeReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_review.py", line 67, in test_mcp_wrapper_forwards_runtime_validation_without_putting_path_in_prompt
+    with patch('agent_lab.registry.MCPClient',Client), MCPToolRegistry(base,config) as registry:
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 183, in __enter__
+    if client.supports('resources'):self._resource_servers[name]=spec
+AttributeError: 'Client' object has no attribute 'supports'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+FAILED (errors=1)

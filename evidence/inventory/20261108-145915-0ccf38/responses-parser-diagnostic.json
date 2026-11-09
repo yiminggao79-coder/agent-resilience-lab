@@ -1,0 +1,65 @@
+{
+  "kind": "offline_reparse_of_paid_minimal_responses_body",
+  "protocol_code": "invalid_response",
+  "event_counts": {
+    "response.created": 1,
+    "response.in_progress": 1,
+    "response.output_item.added": 2,
+    "response.content_part.added": 1,
+    "response.reasoning_text.delta": 32,
+    "response.reasoning_text.done": 1,
+    "response.content_part.done": 1,
+    "response.output_item.done": 2,
+    "response.function_call_arguments.delta": 17,
+    "response.function_call_arguments.done": 1,
+    "response.completed": 1
+  },
+  "item_shapes": [
+    {
+      "event": "response.output_item.added",
+      "index": 0,
+      "item_type": "reasoning",
+      "item_status": "in_progress",
+      "summary_type": "list",
+      "content_type": "list",
+      "response_status": null
+    },
+    {
+      "event": "response.output_item.done",
+      "index": 0,
+      "item_type": "reasoning",
+      "item_status": "completed",
+      "summary_type": "list",
+      "content_type": "list",
+      "response_status": null
+    },
+    {
+      "event": "response.output_item.added",
+      "index": 1,
+      "item_type": "function_call",
+      "item_status": "in_progress",
+      "summary_type": "NoneType",
+      "content_type": "NoneType",
+      "response_status": null
+    },
+    {
+      "event": "response.output_item.done",
+      "index": 1,
+      "item_type": "function_call",
+      "item_status": "completed",
+      "summary_type": "NoneType",
+      "content_type": "NoneType",
+      "response_status": null
+    },
+    {
+      "event": "response.completed",
+      "index": null,
+      "item_type": null,
+      "item_status": null,
+      "summary_type": "NoneType",
+      "content_type": "NoneType",
+      "response_status": "completed"
+    }
+  ],
+  "api_requests_sent": 0
+}

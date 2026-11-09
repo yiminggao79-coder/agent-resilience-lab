@@ -1,0 +1,1 @@
+{"ok": true, "exit_code": 0, "stdout": "{\"SC_PAGESIZE\": {\"errno\": 1}, \"SC_PAGE_SIZE\": {\"errno\": 1}, \"SC_NPROCESSORS_ONLN\": {\"errno\": 1}}\n", "stderr": "", "stdout_truncated": false, "stderr_truncated": false}

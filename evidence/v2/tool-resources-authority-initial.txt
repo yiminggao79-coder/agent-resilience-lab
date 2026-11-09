@@ -1,0 +1,11 @@
+test_all_commands_tests_and_cached_state_bind_file_content_and_resource_scope (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_default_shape_and_file_scope_hash_versus_directory_scope_identity (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_directory_data_is_explicitly_not_a_content_snapshot (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_forged_worker_and_missing_resume_configuration_are_refused (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_safe_named_reads_are_explicit_and_cannot_write_or_wildcard (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.447s
+
+OK

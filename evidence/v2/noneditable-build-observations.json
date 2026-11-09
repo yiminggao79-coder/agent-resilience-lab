@@ -1,0 +1,94 @@
+{
+  "kind": "local_distribution_build_observations",
+  "baseline": "cd6eac4",
+  "python": "3.9.7",
+  "build_dependencies": {
+    "pip": {
+      "version": "21.2.3",
+      "license": "MIT"
+    },
+    "setuptools": {
+      "version": "82.0.1",
+      "license": "MIT",
+      "requires_python": ">=3.9"
+    },
+    "wheel": {
+      "version": "0.48.0",
+      "license": "MIT",
+      "requires_python": ">=3.9"
+    },
+    "packaging": {
+      "version": "26.3",
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "requires_python": ">=3.9"
+    }
+  },
+  "dependency_index": "https://pypi.org/simple",
+  "build_and_install_no_index": true,
+  "system_python_modified": false,
+  "source_allowlist": [
+    "agent_lab/*.py",
+    "pyproject.toml"
+  ],
+  "wheel_inventory": [
+    "agent_lab/__init__.py",
+    "agent_lab/__main__.py",
+    "agent_lab/budget.py",
+    "agent_lab/coding_tools.py",
+    "agent_lab/command_runtime.py",
+    "agent_lab/commands.py",
+    "agent_lab/compaction.py",
+    "agent_lab/context.py",
+    "agent_lab/diagnostics.py",
+    "agent_lab/discovery.py",
+    "agent_lab/editing.py",
+    "agent_lab/engine.py",
+    "agent_lab/event_reader.py",
+    "agent_lab/expression.py",
+    "agent_lab/file_context.py",
+    "agent_lab/git_tools.py",
+    "agent_lab/history.py",
+    "agent_lab/instructions.py",
+    "agent_lab/interactive.py",
+    "agent_lab/mcp.py",
+    "agent_lab/model.py",
+    "agent_lab/native_job_runtime.py",
+    "agent_lab/native_jobs.py",
+    "agent_lab/patching.py",
+    "agent_lab/permissions.py",
+    "agent_lab/plan.py",
+    "agent_lab/process_guard.py",
+    "agent_lab/protocols.py",
+    "agent_lab/providers.py",
+    "agent_lab/registry.py",
+    "agent_lab/sandbox.py",
+    "agent_lab/searching.py",
+    "agent_lab/session_listing.py",
+    "agent_lab/store.py",
+    "agent_lab/tool_control.py",
+    "agent_lab/tool_display.py",
+    "agent_lab/tool_output.py",
+    "agent_lab/tools.py",
+    "agent_resilience_lab-0.1.0.dist-info/METADATA",
+    "agent_resilience_lab-0.1.0.dist-info/WHEEL",
+    "agent_resilience_lab-0.1.0.dist-info/entry_points.txt",
+    "agent_resilience_lab-0.1.0.dist-info/top_level.txt",
+    "agent_resilience_lab-0.1.0.dist-info/RECORD"
+  ],
+  "baseline_wheel_sha256": "f3c120107305282abde4cb7980aa5f1e45bcc1ab18ab9617d4ab5ec7f84c1472",
+  "fixed_wheel_sha256": "be5c262f16b16a5584adb85be21db0d7ff0bf2ef7b509a42bd13ee065aa30db9",
+  "baseline_native_exit_codes": [
+    71,
+    71
+  ],
+  "baseline_test_body_executed": false,
+  "fixture_errors_corrected": [
+    "duplicate_scripted_call_id",
+    "CLI_error_is_on_stderr",
+    "default_ledger_assertion_parent"
+  ],
+  "real_provider_requests": 0,
+  "credential_file_read": false,
+  "original_budget_opened": false,
+  "claim": "Artifact identity and offline native wiring, not reproducible ZIP bytes or LLM task quality"
+}

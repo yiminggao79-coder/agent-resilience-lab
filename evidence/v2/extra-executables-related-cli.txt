@@ -1,0 +1,19 @@
+test_alias_shape_reserved_count_and_nonmapping_rejected (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_cli_option_parse_and_dynamic_schema_keep_model_args_unchanged (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_default_shapes_unchanged_and_explicit_mapping_canonical_and_hashed (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_every_command_including_echo_binds_whole_mapping_and_mutations (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_inside_nonexec_hardlink_and_parent_alias_workspace_routes_rejected (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_session_restore_rejects_missing_registered_mapping (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_worker_tampering_and_run_tests_intent_are_bound_before_launch (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_confined_tests_can_spawn_registered_runtime_with_selected_dependencies (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... ok
+test_profile_paths_do_not_repeat_executable_identity_hash (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... ok
+test_real_ruby_multifile_failure_patch_and_success_with_exact_approvals (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... ok
+test_registered_entry_does_not_admit_adjacent_private_files_or_readonly_writes (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... ok
+test_versioned_supervisor_envelope_validates_expected_policy_before_probe (tests.dev.test_extra_executables_native.ExtraExecutableNativeTests) ... ok
+test_all_runtime_cli_commands_advertise_the_same_host_option (tests.acceptance.test_extra_executables_cli_process.ExtraExecutableCLIProcessTests) ... ok
+test_registered_runtime_is_repeated_on_approval_resume_and_fork (tests.acceptance.test_extra_executables_cli_process.ExtraExecutableCLIProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 6.918s
+
+OK

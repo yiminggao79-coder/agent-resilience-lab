@@ -1,0 +1,86 @@
+test_actual_process_death_after_mark_before_provider_still_blocks_later_attempt (tests.dev.test_holdout_gate.HoldoutGateTests) ... FAIL
+test_actual_process_death_before_mark_allows_later_attempt (tests.dev.test_holdout_gate.HoldoutGateTests) ... FAIL
+test_closed_unentered_reentered_and_other_process_gate_are_rejected (tests.dev.test_holdout_gate.HoldoutGateTests) ... FAIL
+test_concurrent_same_case_blocks_but_distinct_scope_is_independent (tests.dev.test_holdout_gate.HoldoutGateTests) ... FAIL
+test_delegate_exception_preserves_possible_marker_without_relabeling_delivery (tests.dev.test_holdout_gate.HoldoutGateTests) ... FAIL
+test_existing_partial_marker_or_changed_successful_marker_never_delegates (tests.dev.test_holdout_gate.HoldoutGateTests) ... FAIL
+test_invalid_types_and_unsafe_private_controls_fail_closed (tests.dev.test_holdout_gate.HoldoutGateTests) ... FAIL
+test_mark_precedes_delegate_is_metadata_only_and_same_active_attempt_repeats (tests.dev.test_holdout_gate.HoldoutGateTests) ... FAIL
+test_partial_write_or_fsync_failure_poison_same_active_attempt_before_delegate (tests.dev.test_holdout_gate.HoldoutGateTests) ... FAIL
+
+======================================================================
+FAIL: test_actual_process_death_after_mark_before_provider_still_blocks_later_attempt (tests.dev.test_holdout_gate.HoldoutGateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_holdout_gate.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.holdout_gate'),
+AssertionError: unexpectedly None : durable possible-exposure gate is missing
+
+======================================================================
+FAIL: test_actual_process_death_before_mark_allows_later_attempt (tests.dev.test_holdout_gate.HoldoutGateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_holdout_gate.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.holdout_gate'),
+AssertionError: unexpectedly None : durable possible-exposure gate is missing
+
+======================================================================
+FAIL: test_closed_unentered_reentered_and_other_process_gate_are_rejected (tests.dev.test_holdout_gate.HoldoutGateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_holdout_gate.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.holdout_gate'),
+AssertionError: unexpectedly None : durable possible-exposure gate is missing
+
+======================================================================
+FAIL: test_concurrent_same_case_blocks_but_distinct_scope_is_independent (tests.dev.test_holdout_gate.HoldoutGateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_holdout_gate.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.holdout_gate'),
+AssertionError: unexpectedly None : durable possible-exposure gate is missing
+
+======================================================================
+FAIL: test_delegate_exception_preserves_possible_marker_without_relabeling_delivery (tests.dev.test_holdout_gate.HoldoutGateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_holdout_gate.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.holdout_gate'),
+AssertionError: unexpectedly None : durable possible-exposure gate is missing
+
+======================================================================
+FAIL: test_existing_partial_marker_or_changed_successful_marker_never_delegates (tests.dev.test_holdout_gate.HoldoutGateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_holdout_gate.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.holdout_gate'),
+AssertionError: unexpectedly None : durable possible-exposure gate is missing
+
+======================================================================
+FAIL: test_invalid_types_and_unsafe_private_controls_fail_closed (tests.dev.test_holdout_gate.HoldoutGateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_holdout_gate.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.holdout_gate'),
+AssertionError: unexpectedly None : durable possible-exposure gate is missing
+
+======================================================================
+FAIL: test_mark_precedes_delegate_is_metadata_only_and_same_active_attempt_repeats (tests.dev.test_holdout_gate.HoldoutGateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_holdout_gate.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.holdout_gate'),
+AssertionError: unexpectedly None : durable possible-exposure gate is missing
+
+======================================================================
+FAIL: test_partial_write_or_fsync_failure_poison_same_active_attempt_before_delegate (tests.dev.test_holdout_gate.HoldoutGateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_holdout_gate.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.holdout_gate'),
+AssertionError: unexpectedly None : durable possible-exposure gate is missing
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+FAILED (failures=9)

@@ -1,0 +1,204 @@
+test_actual_resource_only_pagination_templates_and_multiple_contents (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success (tests.dev.test_mcp_resources.MCPResourceTests) ... test_engine_resource_approval_feedback_binary_projection_and_privacy (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+test_http_transport_reuses_resource_protocol_and_sse_without_new_credentials (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+test_invalid_resource_bodies_and_binary_encoding_are_rejected (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) ... test_missing_and_malformed_capabilities_are_not_resource_support (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+test_read_timeout_and_new_registry_resume_do_not_repeat_external_request (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+test_resource_wait_honors_active_cancel_and_never_claims_quiescence (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+
+======================================================================
+ERROR: test_actual_resource_only_pagination_templates_and_multiple_contents (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 46, in test_actual_resource_only_pagination_templates_and_multiple_contents
+    page=client.list_resources();self.assertEqual(page['nextCursor'],'page2')
+AttributeError: 'MCPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success (tests.dev.test_mcp_resources.MCPResourceTests) (mode='bad_page')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 63, in test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success
+    with self.assertRaises(MCPError):client.list_resources()
+AttributeError: 'MCPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success (tests.dev.test_mcp_resources.MCPResourceTests) (mode='bad_cursor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 63, in test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success
+    with self.assertRaises(MCPError):client.list_resources()
+AttributeError: 'MCPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success (tests.dev.test_mcp_resources.MCPResourceTests) (mode='many')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 63, in test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success
+    with self.assertRaises(MCPError):client.list_resources()
+AttributeError: 'MCPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_engine_resource_approval_feedback_binary_projection_and_privacy (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 83, in test_engine_resource_approval_feedback_binary_projection_and_privacy
+    registry=self.registry('binary')
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 40, in registry
+    registry=MCPToolRegistry(CodingTools(self.root),self.config);registry.__enter__();self.addCleanup(registry.close);return registry
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 189, in __enter__
+    raise ValueError('mcp_startup_failed') from None
+ValueError: mcp_startup_failed
+
+======================================================================
+ERROR: test_http_transport_reuses_resource_protocol_and_sse_without_new_credentials (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 124, in test_http_transport_reuses_resource_protocol_and_sse_without_new_credentials
+    page=client.list_resources();self.assertEqual(page['nextCursor'],'page2')
+AttributeError: 'MCPHTTPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_invalid_resource_bodies_and_binary_encoding_are_rejected (tests.dev.test_mcp_resources.MCPResourceTests) (mode='bad_blob')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 70, in test_invalid_resource_bodies_and_binary_encoding_are_rejected
+    with self.assertRaisesRegex(MCPError,'invalid_resource_result'):client.read_resource('owned:///reference')
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_invalid_resource_bodies_and_binary_encoding_are_rejected (tests.dev.test_mcp_resources.MCPResourceTests) (mode='ambiguous')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 70, in test_invalid_resource_bodies_and_binary_encoding_are_rejected
+    with self.assertRaisesRegex(MCPError,'invalid_resource_result'):client.read_resource('owned:///reference')
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_invalid_resource_bodies_and_binary_encoding_are_rejected (tests.dev.test_mcp_resources.MCPResourceTests) (mode='bad_text')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 70, in test_invalid_resource_bodies_and_binary_encoding_are_rejected
+    with self.assertRaisesRegex(MCPError,'invalid_resource_result'):client.read_resource('owned:///reference')
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_invalid_resource_bodies_and_binary_encoding_are_rejected (tests.dev.test_mcp_resources.MCPResourceTests) (mode='bad_uri')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 70, in test_invalid_resource_bodies_and_binary_encoding_are_rejected
+    with self.assertRaisesRegex(MCPError,'invalid_resource_result'):client.read_resource('owned:///reference')
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_invalid_resource_bodies_and_binary_encoding_are_rejected (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 72, in test_invalid_resource_bodies_and_binary_encoding_are_rejected
+    self.assertEqual(self.client('binary').read_resource('owned:///binary')['contents'][0]['blob'],'YWJjAA==')
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) (uri='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 77, in test_local_bad_uri_and_cursor_fail_before_dispatch
+    with self.subTest(uri=value),self.assertRaises(MCPError):client.read_resource(value)
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) (uri='relative')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 77, in test_local_bad_uri_and_cursor_fail_before_dispatch
+    with self.subTest(uri=value),self.assertRaises(MCPError):client.read_resource(value)
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) (uri='owned:///newline\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 77, in test_local_bad_uri_and_cursor_fail_before_dispatch
+    with self.subTest(uri=value),self.assertRaises(MCPError):client.read_resource(value)
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) (uri=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 77, in test_local_bad_uri_and_cursor_fail_before_dispatch
+    with self.subTest(uri=value),self.assertRaises(MCPError):client.read_resource(value)
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) (uri='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 77, in test_local_bad_uri_and_cursor_fail_before_dispatch
+    with self.subTest(uri=value),self.assertRaises(MCPError):client.read_resource(value)
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+======================================================================
+ERROR: test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) (cursor='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 79, in test_local_bad_uri_and_cursor_fail_before_dispatch
+    with self.subTest(cursor=value),self.assertRaises(MCPError):client.list_resources(value)
+AttributeError: 'MCPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) (cursor=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 79, in test_local_bad_uri_and_cursor_fail_before_dispatch
+    with self.subTest(cursor=value),self.assertRaises(MCPError):client.list_resources(value)
+AttributeError: 'MCPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) (cursor=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 79, in test_local_bad_uri_and_cursor_fail_before_dispatch
+    with self.subTest(cursor=value),self.assertRaises(MCPError):client.list_resources(value)
+AttributeError: 'MCPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) (cursor='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 79, in test_local_bad_uri_and_cursor_fail_before_dispatch
+    with self.subTest(cursor=value),self.assertRaises(MCPError):client.list_resources(value)
+AttributeError: 'MCPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_missing_and_malformed_capabilities_are_not_resource_support (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 55, in test_missing_and_malformed_capabilities_are_not_resource_support
+    with self.assertRaisesRegex(MCPError,'resources_not_supported'):client.list_resources()
+AttributeError: 'MCPClient' object has no attribute 'list_resources'
+
+======================================================================
+ERROR: test_read_timeout_and_new_registry_resume_do_not_repeat_external_request (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 100, in test_read_timeout_and_new_registry_resume_do_not_repeat_external_request
+    registry=self.registry('die')
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 40, in registry
+    registry=MCPToolRegistry(CodingTools(self.root),self.config);registry.__enter__();self.addCleanup(registry.close);return registry
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 189, in __enter__
+    raise ValueError('mcp_startup_failed') from None
+ValueError: mcp_startup_failed
+
+======================================================================
+ERROR: test_resource_wait_honors_active_cancel_and_never_claims_quiescence (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 115, in test_resource_wait_honors_active_cancel_and_never_claims_quiescence
+    with client.cancellation_scope(stop.is_set),self.assertRaises(MCPError) as caught:client.read_resource('owned:///reference')
+AttributeError: 'MCPClient' object has no attribute 'read_resource'
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.599s
+
+FAILED (errors=23)

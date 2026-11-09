@@ -1,0 +1,18 @@
+test_cli_is_readonly_does_not_load_history_or_construct_tools_model (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_seek_pages_expected_database_and_live_append_after_exhaustion (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_signed_native_signal_exit_status_is_not_filtered_as_a_counter (tests.dev.test_event_reader_cli.EventReaderCLITests) ... FAIL
+test_store_checked_identity_matches_open_and_rejects_replaced_path (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+
+======================================================================
+FAIL: test_signed_native_signal_exit_status_is_not_filtered_as_a_counter (tests.dev.test_event_reader_cli.EventReaderCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 77, in test_signed_native_signal_exit_status_is_not_filtered_as_a_counter
+    self.assertEqual(json.loads(out)['events'][0]['metadata'].get('exit_code'),-9)
+AssertionError: None != -9
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.320s
+
+FAILED (failures=1)

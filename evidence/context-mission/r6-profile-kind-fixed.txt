@@ -1,0 +1,31 @@
+test_actual_observer_uses_stdin_not_argv_with_clean_environment (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_actual_tool_change_and_noop_have_distinct_note_bound_proofs (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_boolean_exit_codes_are_not_success_measurements (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_continuity_binds_installed_note_to_request_selecting_final_code_change (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_four_natural_turns_get_named_working_limits_without_fabricating_runtime_proof (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_freeze_verification_detects_modified_file_and_added_file (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_frozen_acceptance_cannot_bypass_exposure_admission_as_development (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_frozen_runtime_cannot_silently_use_a_different_resource_profile (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_implementation_snapshot_ignores_format_docs_and_tests_but_observes_code (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_independent_turns_honor_full_48k_protocol_and_one_selected_model (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_injected_offline_turn_exercises_real_tools_and_keeps_session_history (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_missing_child_result_exports_pending_receipt_and_null_quality (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_model_cost_uses_selected_official_model_rates (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_mutation_snapshot_reads_multiple_implementation_files_in_same_directory (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_named_profile_reaches_official_adapter_before_any_key_read (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_named_thinking_profile_preflight_never_reads_key_or_suite (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_no_api_mode_never_reads_suite_or_key_and_creates_no_trial (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_noop_docs_tests_and_unexecuted_code_cannot_count_as_implementation_change (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_owned_runner_is_actually_killed_after_its_marker (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_packing_proof_uses_actual_eligible_input_and_installed_operation (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_quality_is_external_and_unknown_observation_does_not_become_zero (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_receipts_include_pre_kill_and_resume_without_inventing_unknown_usage (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_rollover_watermark_preserves_working_space_instead_of_half_fixed_overhead (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_tool_and_runner_subprocess_environments_exclude_real_key_variables (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_unsafe_artifact_never_invokes_candidate_code (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_wrong_marker_owner_never_authorizes_signalling_another_process (tests.dev.test_context_mission.ContextMissionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 5.612s
+
+OK

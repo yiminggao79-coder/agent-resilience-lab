@@ -1,0 +1,11 @@
+{
+  "kind": "host_process_observation_api_inventory",
+  "os_waitid": false,
+  "WNOWAIT": true,
+  "kqueue": true,
+  "KQ_NOTE_EXIT": true,
+  "proc_listpgrppids": true,
+  "proc_pidinfo": true,
+  "functions_invoked": false,
+  "production_policy_changed": false
+}

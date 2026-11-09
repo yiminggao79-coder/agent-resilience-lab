@@ -1,0 +1,18 @@
+{
+  "kind": "offline_context_fit_not_live_coding",
+  "original_failed_run": "1b4bd91efbf5439a",
+  "uses_full_engine_schemas": true,
+  "budget_bytes": 32000,
+  "stats": {
+    "original_bytes": 86558,
+    "retained_bytes": 31018,
+    "pre_drop_bytes": 40177,
+    "shortened": 1,
+    "dropped_pairs": 0
+  },
+  "adaptive_preview_indices": [
+    61
+  ],
+  "archive_not_modified": true,
+  "quality_passed": null
+}

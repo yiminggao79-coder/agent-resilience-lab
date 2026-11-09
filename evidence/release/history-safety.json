@@ -1,0 +1,59 @@
+{
+  "status": "PUBLISHED_WITH_EXPLICIT_OWNER_AUTHORIZATION",
+  "baseline": "dbe2b07f032d1dbb9b06eeadb5b312db61c8e3d8",
+  "reachable_commits_scanned": 93,
+  "unique_blobs_scanned": 2698,
+  "total_object_bytes_scanned": 45329708,
+  "authorized_current_key_exact_matches": 0,
+  "pattern_candidates": 1,
+  "reviewed_fixture_false_positives": 1,
+  "unresolved_credential_pattern_candidates": 0,
+  "historical_sensitive_filenames": [],
+  "historical_home_path_files": 235,
+  "home_path_scope_review": "Project synthetic experiment paths and locally installed Node tool paths; no unrelated personal file contents identified. Raw immutable evidence retained, not silently redacted.",
+  "personal_account_metadata": {
+    "files": [
+      "AGENTS.md",
+      "EVALUATION.md"
+    ],
+    "introduced_commit": "71c74150835d96a345571194cb45498d70aa3d42",
+    "category": "Private prepaid-account balance/authorization prose, distinct from authorized experiment cost estimates; values deliberately omitted.",
+    "action": "Keep original history/SHA/evidence; no redaction or new permission needed for that same data scope.",
+    "owner_disposition": "Explicit permission on2026-11-09 to publish original historical account-balance/local-path metadata to own publicGitHub; credentials excluded."
+  },
+  "github_status": {
+    "remote_configured": true,
+    "cli_installed": false,
+    "connector_profile_confirmed": true,
+    "connector_repository_creation_or_history_push_capability": false,
+    "browser_authenticated": true,
+    "publication_or_upload_attempted": false,
+    "strict_batch_ssh_authenticated": false,
+    "public_empty_repository_created": true,
+    "repository_url": "https://github.com/yiminggao79-coder/agent-resilience-lab",
+    "code_or_history_pushed": true,
+    "https_dry_run_authenticated": false,
+    "official_cli_version": "2.103.3",
+    "system_cli_install_modified": false,
+    "broad_oauth_authorization": "User explicitly approved each of all four listed scopes; standard device login completed only afterward.",
+    "official_cli_login_authenticated": true,
+    "account_matches_connected_owner": true,
+    "https_authenticated_dry_run_passed": true,
+    "per_command_git_helper_only": true,
+    "global_git_helper_modified": false,
+    "public_anonymous_read_verified": true,
+    "first_code_push_commit": "24107f073cc57aca395cfd5c11a5254cbbbfd660",
+    "local_cli_state_ignored_and_private": true
+  },
+  "apache_license": {
+    "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "unchanged_official_text": true,
+    "tls_verified": true
+  },
+  "limits": [
+    "Not a full source-similarity audit.",
+    "Pattern and exact-current-key scans cannot certify absence of every unknown secret.",
+    "Publication blocked despite no discovered live credential."
+  ]
+}

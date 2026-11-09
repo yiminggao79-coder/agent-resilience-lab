@@ -1,0 +1,40 @@
+{
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/rollout/src/recorder_tests.rs",
+  "commit_pins": {
+    "codex": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+    "langgraph": "e5e37b5d70dbfd93c7006bd90a658c6179a95946",
+    "openhands": "4aae68ae53477d05010a509f1f1e3f02e61b1831"
+  },
+  "read_only": true,
+  "upstream_tests_executed": false,
+  "note": "Repeated recorder resume with ordinal sequence; not tool side-effect recovery.",
+  "excerpts": [
+    {
+      "start_line": 848,
+      "end_line": 868,
+      "lines": [
+        "    let resumed =",
+        "        RolloutRecorder::new(&config, RolloutRecorderParams::resume(rollout_path.clone())).await?;",
+        "    assert!(resumed.unpersisted_session_meta().await?.is_none());",
+        "    resumed",
+        "        .record_canonical_items(&[agent_message_item(\"first child record\")])",
+        "        .await?;",
+        "    resumed.flush().await?;",
+        "    resumed.shutdown().await?;",
+        "",
+        "    let resumed =",
+        "        RolloutRecorder::new(&config, RolloutRecorderParams::resume(rollout_path.clone())).await?;",
+        "    resumed",
+        "        .record_canonical_items(&[agent_message_item(\"second child record\")])",
+        "        .await?;",
+        "    resumed.flush().await?;",
+        "    assert_eq!(",
+        "        read_rollout_lines(&rollout_path)?",
+        "            .into_iter()",
+        "            .map(|line| line.ordinal)",
+        "            .collect::<Vec<_>>(),",
+        "        vec![Some(41), Some(42), Some(43)]"
+      ]
+    }
+  ]
+}

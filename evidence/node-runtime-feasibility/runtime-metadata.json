@@ -1,0 +1,89 @@
+{
+  "kind": "sanitized_node_runtime_metadata_feasibility",
+  "date": "2026-11-08",
+  "collection_scope": [
+    "shutil.which",
+    "Path.resolve",
+    "stat",
+    "one trusted /usr/bin/otool -L invocation"
+  ],
+  "path_redaction": "Home-directory prefix replaced by <USER_HOME>; no private file contents read",
+  "version": {
+    "root_reported_clean_environment": "v24.22.2",
+    "executed_by_this_study": false,
+    "path_label": "node-v24.22.2-darwin-x64"
+  },
+  "node": {
+    "selected_path": "<USER_HOME>/.local/bin/node",
+    "resolved_path": "<USER_HOME>/.local/share/nodejs/node-v24.22.2-darwin-x64/bin/node",
+    "device": 16777220,
+    "inode": 70548073,
+    "size": 125722000,
+    "mtime_ns": 1793144569000000000,
+    "mode_octal": "0755",
+    "regular_file": true,
+    "sha256_collected": false
+  },
+  "npm": {
+    "found": true,
+    "selected_path": "<USER_HOME>/.local/bin/npm",
+    "resolved_path": "<USER_HOME>/.local/share/nodejs/node-v24.22.2-darwin-x64/lib/node_modules/npm/bin/npm-cli.js",
+    "size": 54,
+    "mode_octal": "0755",
+    "executed": false,
+    "admission_recommended": false
+  },
+  "dependency_metadata": {
+    "tool": "/usr/bin/otool",
+    "invocations": 1,
+    "arguments": [
+      "-L",
+      "<resolved node executable>"
+    ],
+    "exit_code": 0,
+    "xcrun_cache_permission_warnings": 2,
+    "not_raw_output": true,
+    "direct_install_names": [
+      "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+      "/System/Library/Frameworks/Security.framework/Versions/A/Security",
+      "/usr/lib/libc++.1.dylib",
+      "/usr/lib/libSystem.B.dylib"
+    ],
+    "observed_non_system_install_names": [],
+    "not_verified": [
+      "transitive or late runtime resource accesses",
+      "V8/JIT/thread/syscall requirements under Seatbelt",
+      "Node test execution under project policy"
+    ]
+  },
+  "official_sources": {
+    "cli": {
+      "repository": "nodejs/node",
+      "ref": "v24.22.2",
+      "path": "doc/api/cli.md",
+      "blob_sha": "b4f389241f66f34b94fb8df756ac0db9f679a7b5",
+      "body_read_ranges": [
+        [
+          2633,
+          2667
+        ],
+        [
+          2763,
+          2778
+        ]
+      ]
+    },
+    "test_runner": {
+      "url": "https://nodejs.org/docs/latest-v24.x/api/test.html#test-runner-execution-model",
+      "rendered_version": "v24.22.2",
+      "retrieved": "2026-11-08",
+      "mutable_url": true
+    }
+  },
+  "node_project_executed": false,
+  "node_executed": false,
+  "npm_executed": false,
+  "runtime_changed": false,
+  "model_requests": 0
+}
+

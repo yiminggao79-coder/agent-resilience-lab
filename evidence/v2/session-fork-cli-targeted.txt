@@ -1,0 +1,10 @@
+test_active_or_unknown_source_rejects_without_creation_or_confirmation (tests.dev.test_session_fork_cli.SessionForkCLITests) ... ok
+test_coding_profile_and_readonly_manifest_survive_without_mcp_or_credentials (tests.dev.test_session_fork_cli.SessionForkCLITests) ... ok
+test_fork_outputs_only_new_ids_and_shared_workspace_metadata_without_model_or_execution (tests.dev.test_session_fork_cli.SessionForkCLITests) ... ok
+test_status_exposes_filtered_lineage_without_history_or_arbitrary_origin_values (tests.dev.test_session_fork_cli.SessionForkCLITests) ... ok
+test_wrong_workspace_or_missing_readonly_scope_rejects_before_child_creation (tests.dev.test_session_fork_cli.SessionForkCLITests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.259s
+
+OK

@@ -1,0 +1,43 @@
+"""Offline native diagnosis of consumed candidates; never replacement grading."""
+import sys,json,hashlib,tempfile
+from pathlib import Path
+REPO=Path(__file__).resolve().parents[3];sys.path.insert(0,str(REPO))
+from scripts.context_mission import observe_stdin,copy_project,digest_file,implementation_snapshot
+run=REPO/'evidence/context-mission/runs/e41e0d1ecc2b4607'
+original={str(p.relative_to(run)):digest_file(p) for p in run.rglob('*') if p.is_file()}
+with tempfile.TemporaryDirectory(prefix='r4-failure-probe-') as temp:
+    base=Path(temp);league=base/'league';stream=base/'stream'
+    copy_project(run/'case_01/candidate',league);copy_project(run/'case_02/candidate',stream)
+    rows=[{'id':'a','home':'A1','away':'A2','home_goals':2,'away_goals':0},
+          {'id':'b','home':'B1','away':'B2','home_goals':10,'away_goals':8}]
+    groups={'A':['A1','A2'],'B':['B1','B2']}
+    a=observe_stdin(league,'qualification','select',[[rows,[],groups,1,2]],12)
+    (stream/'diagnostic_probe.py').write_text("""from wire import decode_line
+from stream import Decoder
+def malformed():
+ line='a|'+chr(92)+'|u'+chr(10)
+ result={}
+ try:result['wire']=decode_line(line)
+ except ValueError:result['wire']='ValueError'
+ decoder=Decoder();decoder.feed('a|'+chr(92))
+ try:result['stream']=decoder.feed('|u'+chr(10))
+ except ValueError:result['stream']='ValueError'
+ return result
+""")
+    b=observe_stdin(stream,'diagnostic_probe','malformed',[[]],12)
+    observed=a['observations'][0]['wildcards'] if a['complete'] else None
+    report={'kind':'consumed_candidate_native_failure_diagnosis','source_run':run.name,
+            'runtime':implementation_snapshot(),'api_requests_sent':0,'original_scores_changed':False,
+            'candidate_originals_unchanged':all(digest_file(run/p)==h for p,h in original.items()),
+            'qualification':{'observation':a,'requirement_expected_wildcards':['B2','A2'],
+                'bug_reproduced':observed==['A2','B2'],
+                'reason':'Candidate recomputes matches after removing automatic qualifiers, instead of ranking the already-computed group standing rows. Both runners-up lose all statistics, incorrectly tying at zero.'},
+            'streaming':{'observation':b,'wrong_self_test_reproduced':b['complete'] and b['observations']==[{'wire':'ValueError','stream':'ValueError'}],
+                'reason':'The candidate-authored test concatenates a| plus backslash plus |u newline: the escaped pipe leaves only two physical fields. Both codecs correctly reject it; the test expects a valid three-field record.'},
+            'limitations':['Manually derived finite counterexamples after consumption; not new independent acceptance.',
+                           'No external frozen answers or references used; no candidate repair; no new model request.',
+                           'These explain specific final failures, not every read loop or all model behavior.']}
+output=REPO/'evidence/context-mission/r4-failure-probe.json';output.write_text(json.dumps(report,indent=2)+'\n')
+print(json.dumps({'qualification_bug_reproduced':report['qualification']['bug_reproduced'],
+                  'wrong_self_test_reproduced':report['streaming']['wrong_self_test_reproduced'],
+                  'candidate_originals_unchanged':report['candidate_originals_unchanged'],'api_requests_sent':0}))

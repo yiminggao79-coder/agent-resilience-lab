@@ -1,0 +1,6 @@
+test_http_model_adapter_edits_real_code_and_uses_failing_then_passing_tests (tests.dev.test_coding_e2e.CodingEndToEnd) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 3.520s
+
+OK

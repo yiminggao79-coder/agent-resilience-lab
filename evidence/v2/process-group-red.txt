@@ -1,0 +1,77 @@
+test_anchor_revalidated_after_members_query (tests.dev.test_process_group.ProcessGroupTests) ... FAIL
+test_capacity_saturation_grows_and_stops_without_false_complete (tests.dev.test_process_group.ProcessGroupTests) ... FAIL
+test_changed_identity_parent_group_or_wait_state_forbids_target (tests.dev.test_process_group.ProcessGroupTests) ... FAIL
+test_no_empty_error_duplicate_or_foreign_list_becomes_quiet (tests.dev.test_process_group.ProcessGroupTests) ... FAIL
+test_no_group_access_after_reap_starts_even_if_wait_fails (tests.dev.test_process_group.ProcessGroupTests) ... FAIL
+test_nondefault_wait_policy_and_initial_nonowned_group_are_refused (tests.dev.test_process_group.ProcessGroupTests) ... FAIL
+test_other_members_even_zombies_are_not_accepted_as_finished (tests.dev.test_process_group.ProcessGroupTests) ... FAIL
+test_running_then_owned_zombie_singleton_is_narrow_predicate (tests.dev.test_process_group.ProcessGroupTests) ... FAIL
+
+======================================================================
+FAIL: test_anchor_revalidated_after_members_query (tests.dev.test_process_group.ProcessGroupTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group.py", line 15, in setUp
+    self.assertIsNotNone(OwnedGroup,'owned-group observer not implemented')
+AssertionError: unexpectedly None : owned-group observer not implemented
+
+======================================================================
+FAIL: test_capacity_saturation_grows_and_stops_without_false_complete (tests.dev.test_process_group.ProcessGroupTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group.py", line 15, in setUp
+    self.assertIsNotNone(OwnedGroup,'owned-group observer not implemented')
+AssertionError: unexpectedly None : owned-group observer not implemented
+
+======================================================================
+FAIL: test_changed_identity_parent_group_or_wait_state_forbids_target (tests.dev.test_process_group.ProcessGroupTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group.py", line 15, in setUp
+    self.assertIsNotNone(OwnedGroup,'owned-group observer not implemented')
+AssertionError: unexpectedly None : owned-group observer not implemented
+
+======================================================================
+FAIL: test_no_empty_error_duplicate_or_foreign_list_becomes_quiet (tests.dev.test_process_group.ProcessGroupTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group.py", line 15, in setUp
+    self.assertIsNotNone(OwnedGroup,'owned-group observer not implemented')
+AssertionError: unexpectedly None : owned-group observer not implemented
+
+======================================================================
+FAIL: test_no_group_access_after_reap_starts_even_if_wait_fails (tests.dev.test_process_group.ProcessGroupTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group.py", line 15, in setUp
+    self.assertIsNotNone(OwnedGroup,'owned-group observer not implemented')
+AssertionError: unexpectedly None : owned-group observer not implemented
+
+======================================================================
+FAIL: test_nondefault_wait_policy_and_initial_nonowned_group_are_refused (tests.dev.test_process_group.ProcessGroupTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group.py", line 15, in setUp
+    self.assertIsNotNone(OwnedGroup,'owned-group observer not implemented')
+AssertionError: unexpectedly None : owned-group observer not implemented
+
+======================================================================
+FAIL: test_other_members_even_zombies_are_not_accepted_as_finished (tests.dev.test_process_group.ProcessGroupTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group.py", line 15, in setUp
+    self.assertIsNotNone(OwnedGroup,'owned-group observer not implemented')
+AssertionError: unexpectedly None : owned-group observer not implemented
+
+======================================================================
+FAIL: test_running_then_owned_zombie_singleton_is_narrow_predicate (tests.dev.test_process_group.ProcessGroupTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group.py", line 15, in setUp
+    self.assertIsNotNone(OwnedGroup,'owned-group observer not implemented')
+AssertionError: unexpectedly None : owned-group observer not implemented
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+FAILED (failures=8)

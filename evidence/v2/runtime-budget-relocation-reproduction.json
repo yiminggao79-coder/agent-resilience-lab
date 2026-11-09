@@ -1,0 +1,29 @@
+{
+  "kind": "offline_synthetic_runtime_relocation",
+  "observations": [
+    {
+      "seeded_synthetic_existing_ledger": true,
+      "ledger_existed_before": true,
+      "ledger_exists_after": true,
+      "cli_exit_code": 2,
+      "fake_delegate_calls": 0,
+      "synthetic_request_records": 14,
+      "provider_requests_sent": 0,
+      "credential_file_read": false,
+      "real_project_ledger_opened": false
+    },
+    {
+      "seeded_synthetic_existing_ledger": false,
+      "ledger_existed_before": false,
+      "ledger_exists_after": true,
+      "cli_exit_code": 0,
+      "fake_delegate_calls": 1,
+      "synthetic_request_records": 1,
+      "provider_requests_sent": 0,
+      "credential_file_read": false,
+      "real_project_ledger_opened": false
+    }
+  ],
+  "real_provider_or_billing_result": false,
+  "risk_reproduced": true
+}

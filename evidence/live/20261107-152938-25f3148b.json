@@ -1,0 +1,240 @@
+{
+  "run_id": "20261107-152938-25f3148b",
+  "kind": "real_llm_coding_development_task",
+  "model": "deepseek-flash",
+  "protocol": "chat",
+  "stream": false,
+  "thinking": "disabled",
+  "cost_is_supplier_invoice": false,
+  "result": {
+    "case": "add",
+    "task_id": "cbf3f71afcdd41c79cda517e35f2ad42",
+    "id": "cbf3f71afcdd41c79cda517e35f2ad42",
+    "phase": "failed",
+    "reason": "http_error",
+    "verified_success": null,
+    "metrics": {
+      "model_calls": 3,
+      "tool_attempts": 1,
+      "recoveries": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "cost_usd": null,
+      "reserved_usd": 0.0,
+      "elapsed_seconds": 30.221434831619263
+    },
+    "public_tests_unchanged": true,
+    "oracle_matches": false,
+    "observations_complete": true,
+    "oracle_exit_code": 0,
+    "tools": [
+      "list_files"
+    ],
+    "confirmed_coding_cycle": false,
+    "task_success": false,
+    "elapsed_seconds": 31.237377925999997,
+    "trace": [
+      {
+        "seq": 1,
+        "at": 1794036579.424565,
+        "kind": "created",
+        "phase": "ready",
+        "revision": 1,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8"
+      },
+      {
+        "seq": 2,
+        "at": 1794036579.4482172,
+        "kind": "model_started",
+        "model_calls": 1,
+        "request_bytes": 3698,
+        "reserved_usd": 0.0,
+        "revision": 2,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8"
+      },
+      {
+        "seq": 3,
+        "at": 1794036584.286478,
+        "kind": "model_response",
+        "input_tokens": 985,
+        "output_tokens": 29,
+        "cost_usd": null,
+        "duration_ms": 4825.4369,
+        "model_calls": 1,
+        "request_id_hash": "4e894b5dcb8219fe945f6305b0504e88c2bae647ab794642bda5e304ba7de19c",
+        "finish_reason": "tool_calls",
+        "revision": 3,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8"
+      },
+      {
+        "seq": 4,
+        "at": 1794036585.415908,
+        "kind": "model_finished",
+        "revision": 4,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8",
+        "operation_id": "05c496aab4a244e0b04a8ae2204345d9"
+      },
+      {
+        "seq": 5,
+        "at": 1794036585.422108,
+        "kind": "tool_started",
+        "tool": "list_files",
+        "attempt": 1,
+        "revision": 5,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8",
+        "operation_id": "05c496aab4a244e0b04a8ae2204345d9"
+      },
+      {
+        "seq": 6,
+        "at": 1794036585.870246,
+        "kind": "tool_finished",
+        "tool": "list_files",
+        "ok": true,
+        "code": "ok",
+        "duration_ms": 448.81549599999994,
+        "operation_id": "05c496aab4a244e0b04a8ae2204345d9",
+        "revision": 6,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8"
+      },
+      {
+        "seq": 7,
+        "at": 1794036585.875603,
+        "kind": "model_started",
+        "model_calls": 2,
+        "request_bytes": 4070,
+        "reserved_usd": 0.0,
+        "revision": 7,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8"
+      },
+      {
+        "seq": 8,
+        "at": 1794036590.1313841,
+        "kind": "model_response",
+        "input_tokens": 1045,
+        "output_tokens": 70,
+        "cost_usd": null,
+        "duration_ms": 4248.153575,
+        "model_calls": 2,
+        "request_id_hash": "039189ebb3e930a8935deddd08bab2d97467f8d3063272cefebb94e0068f2757",
+        "finish_reason": "tool_calls",
+        "revision": 8,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8"
+      },
+      {
+        "seq": 9,
+        "at": 1794036590.140086,
+        "kind": "model_protocol_error",
+        "code": "invalid_model_message",
+        "revision": 9,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8"
+      },
+      {
+        "seq": 10,
+        "at": 1794036590.161553,
+        "kind": "model_started",
+        "model_calls": 3,
+        "request_bytes": 4186,
+        "reserved_usd": 0.0,
+        "revision": 10,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8"
+      },
+      {
+        "seq": 11,
+        "at": 1794036609.611979,
+        "kind": "terminated",
+        "phase": "failed",
+        "code": "http_error",
+        "revision": 11,
+        "turn_id": "2bde4d09f4cd4dec8dcf7a608f9d87d8"
+      }
+    ],
+    "limitations": [
+      "Public tiny development task; not unseen acceptance or general competence.",
+      "Model completion alone is insufficient; external value oracle required.",
+      "No recovery injection in this live run."
+    ]
+  },
+  "elapsed_seconds": 32.368090493,
+  "budget": {
+    "currency": "CNY",
+    "cap_cny": 30,
+    "pricing": "peak_cache_miss_upper_estimate_2026_11_07",
+    "committed_upper_cny": 20.977402,
+    "known_usage_estimate_cny": 0.005882,
+    "unresolved_requests": 4,
+    "requests": [
+      {
+        "id": "98c37e456109460e9179cb652ef252c0",
+        "at": 1794036164.771808,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      },
+      {
+        "id": "db37a59454464b4fadbe6e992baacda4",
+        "at": 1794036302.81156,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      },
+      {
+        "id": "5c258d9c98cd4414b27de9e62a48a79c",
+        "at": 1794036482.210557,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 0.00103,
+        "status": "settled",
+        "usage": {
+          "input_tokens": 299,
+          "output_tokens": 54
+        }
+      },
+      {
+        "id": "307a219228644e93af251afbdc3db8c2",
+        "at": 1794036489.018154,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      },
+      {
+        "id": "93937bc9fdc14be78df87f19d09bf6e0",
+        "at": 1794036579.458994,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 0.002202,
+        "status": "settled",
+        "usage": {
+          "input_tokens": 985,
+          "output_tokens": 29
+        }
+      },
+      {
+        "id": "989a2c0e3d0c4933b5945c183b46ea07",
+        "at": 1794036585.879,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 0.00265,
+        "status": "settled",
+        "usage": {
+          "input_tokens": 1045,
+          "output_tokens": 70
+        }
+      },
+      {
+        "id": "40fffa9581454b748d41575c8d986d0e",
+        "at": 1794036590.177879,
+        "model": "deepseek-flash",
+        "reserved_cny": 5.24288,
+        "charged_upper_cny": 5.24288,
+        "status": "unknown",
+        "usage": null
+      }
+    ]
+  }
+}

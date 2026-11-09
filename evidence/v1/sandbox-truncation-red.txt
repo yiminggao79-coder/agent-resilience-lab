@@ -1,0 +1,14 @@
+test_invalid_utf8_expansion_marks_output_truncated (tests.dev.test_sandbox.SandboxTests) ... FAIL
+
+======================================================================
+FAIL: test_invalid_utf8_expansion_marks_output_truncated (tests.dev.test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 115, in test_invalid_utf8_expansion_marks_output_truncated
+    self.assertTrue(result['stdout_truncated'])
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.162s
+
+FAILED (failures=1)

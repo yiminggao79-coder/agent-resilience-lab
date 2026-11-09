@@ -1,0 +1,79 @@
+test_abort_awaiting_approval_closes_current_and_tail_without_approval (tests.dev.test_terminal_history.TerminalHistoryTests) ... FAIL
+test_error_limit_closes_tail_durably_without_running_it_and_new_turn_works (tests.dev.test_terminal_history.TerminalHistoryTests) ... FAIL
+test_failed_terminal_save_leaves_original_queue_for_safe_reopen_and_one_receipt (tests.dev.test_terminal_history.TerminalHistoryTests) ... FAIL
+test_inconsistent_history_is_not_closed_or_unlocked (tests.dev.test_terminal_history.TerminalHistoryTests) ... FAIL
+test_planned_tool_deadline_has_no_side_effect_and_keeps_attempt_count_zero (tests.dev.test_terminal_history.TerminalHistoryTests) ... FAIL
+test_running_or_prior_unknown_is_never_classified_not_executed (tests.dev.test_terminal_history.TerminalHistoryTests) ... ok
+
+======================================================================
+FAIL: test_abort_awaiting_approval_closes_current_and_tail_without_approval (tests.dev.test_terminal_history.TerminalHistoryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_terminal_history.py", line 61, in test_abort_awaiting_approval_closes_current_and_tail_without_approval
+    self.assertEqual([i for i,_ in self.receipts(state)],['command','tail'])
+AssertionError: Lists differ: [] != ['command', 'tail']
+
+Second list contains 2 additional elements.
+First extra element 0:
+'command'
+
+- []
++ ['command', 'tail']
+
+======================================================================
+FAIL: test_error_limit_closes_tail_durably_without_running_it_and_new_turn_works (tests.dev.test_terminal_history.TerminalHistoryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_terminal_history.py", line 34, in test_error_limit_closes_tail_durably_without_running_it_and_new_turn_works
+    self.assertEqual(self.receipts(state)[-1],('tail',{'ok':False,'error':'not_executed','reason':'error_limit'}))
+AssertionError: Tuples differ: ('bad', {'ok': False, 'error': 'not_found'}) != ('tail', {'ok': False, 'error': 'not_executed', 'reason': 'error_limit'})
+
+First differing element 0:
+'bad'
+'tail'
+
+- ('bad', {'error': 'not_found', 'ok': False})
++ ('tail', {'error': 'not_executed', 'ok': False, 'reason': 'error_limit'})
+
+======================================================================
+FAIL: test_failed_terminal_save_leaves_original_queue_for_safe_reopen_and_one_receipt (tests.dev.test_terminal_history.TerminalHistoryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_terminal_history.py", line 75, in test_failed_terminal_save_leaves_original_queue_for_safe_reopen_and_one_receipt
+    self.assertEqual(state,again);self.assertEqual([i for i,_ in self.receipts(state)],['bad','tail'])
+AssertionError: Lists differ: ['bad'] != ['bad', 'tail']
+
+Second list contains 1 additional elements.
+First extra element 1:
+'tail'
+
+- ['bad']
++ ['bad', 'tail']
+
+======================================================================
+FAIL: test_inconsistent_history_is_not_closed_or_unlocked (tests.dev.test_terminal_history.TerminalHistoryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_terminal_history.py", line 84, in test_inconsistent_history_is_not_closed_or_unlocked
+    self.assertEqual((state['phase'],state['reason']),('needs_confirmation','terminal_history_mismatch'))
+AssertionError: Tuples differ: ('failed', 'time_limit') != ('needs_confirmation', 'terminal_history_mismatch')
+
+First differing element 0:
+'failed'
+'needs_confirmation'
+
+- ('failed', 'time_limit')
++ ('needs_confirmation', 'terminal_history_mismatch')
+
+======================================================================
+FAIL: test_planned_tool_deadline_has_no_side_effect_and_keeps_attempt_count_zero (tests.dev.test_terminal_history.TerminalHistoryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_terminal_history.py", line 54, in test_planned_tool_deadline_has_no_side_effect_and_keeps_attempt_count_zero
+    self.assertIsNone(state['pending']);self.assertEqual(state['metrics']['tool_attempts'],0)
+AssertionError: {'call_id': 'one', 'status': 'planned', 'intent': {'name': 'write_file', 'args': {'path': 'never', 'content': 'x'}, 'policy': 'verify', 'before': None, 'before_mode': None, 'desired_mode': 384, 'desired': '2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881'}, 'operation_id': '6760017c5ab840c1a970a2b819fe095c'} is not None
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.010s
+
+FAILED (failures=5)

@@ -1,0 +1,372 @@
+--- before/stream.py
++++ after/stream.py
+@@ -0,0 +1,57 @@
++"""Incremental decoder for the ``tag|value|unit`` wire format.
++
++``Decoder.feed`` accepts arbitrary string chunks, combines them with any
++retained incomplete tail and decodes only complete *physical* lines.  Each
++feed is transactional: if any complete line in the chunk is invalid, the
++decoder's state is restored exactly and ``ValueError`` is raised.
++"""
++from wire import decode_line
++
++
++class Decoder(object):
++    def __init__(self):
++        self._pending = ''
++        self._accepted_chars = 0
++        self._records_seen = 0
++        self._closed = False
++
++    def feed(self, chunk):
++        if not isinstance(chunk, str):
++            raise ValueError('chunk must be a str')
++        if self._closed:
++            raise ValueError('decoder is closed')
++
++        combined = self._pending + chunk
++        cut = combined.rfind('\n')
++        if cut < 0:
++            complete_text = ''
++            tail = combined
++        else:
++            complete_text = combined[:cut + 1]
++            tail = combined[cut + 1:]
++
++        # Build everything before committing any state so a failure leaves
++        # the decoder exactly as it was before this feed.
++        decoded = []
++        if complete_text:
++            lines = complete_text[:-1].split('\n')
++            decoded = [decode_line(line + '\n') for line in lines]
++
++        self._pending = tail
++        self._accepted_chars += len(chunk)
++        self._records_seen += len(decoded)
++        return decoded
++
++    def finish(self):
++        if self._pending:
++            raise ValueError('incomplete line pending')
++        self._closed = True
++        return []
++
++    def snapshot(self):
++        return {
++            'accepted_chars': self._accepted_chars,
++            'pending': self._pending,
++            'records_seen': self._records_seen,
++            'closed': self._closed,
++        }
+--- before/tests/test_codec.py
++++ after/tests/test_codec.py
+@@ -0,0 +1,117 @@
++import copy
++import unittest
++from wire import encode_record, decode_line
++from batch import load
++from stats import counts
++
++
++class RoundTrip(unittest.TestCase):
++    def test_escaped_reserved_characters(self):
++        row = {'tag': 'a|b', 'value': 'x\\y|z\nw', 'unit': '\\|'}
++        self.assertEqual(decode_line(encode_record(row)), row)
++
++    def test_empty_value_and_unit(self):
++        row = {'tag': 'a', 'value': '', 'unit': ''}
++        self.assertEqual(encode_record(row), 'a||\n')
++        self.assertEqual(decode_line(encode_record(row)), row)
++
++    def test_empty_value_only(self):
++        row = {'tag': 'a', 'value': '', 'unit': 'u'}
++        self.assertEqual(encode_record(row), 'a||u\n')
++        self.assertEqual(decode_line('a||u\n'), row)
++
++    def test_escaped_newline_is_not_a_terminator(self):
++        row = {'tag': 'a', 'value': 'one\ntwo', 'unit': 'u'}
++        line = encode_record(row)
++        self.assertEqual(line.count('\n'), 1)
++        self.assertEqual(decode_line(line), row)
++
++    def test_unicode_round_trip(self):
++        row = {'tag': '温|度', 'value': '\n℃\\', 'unit': 'μ'}
++        self.assertEqual(decode_line(encode_record(row)), row)
++
++    def test_encode_does_not_mutate_input(self):
++        row = {'tag': 'a|b', 'value': '1', 'unit': ''}
++        before = copy.deepcopy(row)
++        encode_record(row)
++        self.assertEqual(row, before)
++
++
++class Malformed(unittest.TestCase):
++    def test_missing_terminator(self):
++        with self.assertRaises(ValueError):
++            decode_line('a|1|u')
++
++    def test_raw_embedded_newline(self):
++        with self.assertRaises(ValueError):
++            decode_line('a|1\n|u\n')
++
++    def test_unknown_escape(self):
++        with self.assertRaises(ValueError):
++            decode_line('a|\\q|u\n')
++
++    def test_dangling_escape(self):
++        with self.assertRaises(ValueError):
++            decode_line('a|1|u\\\n')
++
++    def test_wrong_separator_count(self):
++        for line in ('a|1\n', 'a|1|u|2\n', 'a\n', 'a|||u\n'):
++            with self.assertRaises(ValueError):
++                decode_line(line)
++
++    def test_empty_tag_rejected(self):
++        with self.assertRaises(ValueError):
++            decode_line('||\n')
++        with self.assertRaises(ValueError):
++            decode_line(' |1|u\n')
++
++    def test_carriage_return_rejected(self):
++        with self.assertRaises(ValueError):
++            decode_line('a|1\r|u\n')
++
++    def test_non_text_rejected(self):
++        with self.assertRaises(ValueError):
++            decode_line(None)
++        with self.assertRaises(ValueError):
++            decode_line(('a', '1', 'u'))
++
++    def test_escaping_separator_is_one_field(self):
++        self.assertEqual(decode_line('a\\|b|c|d\n'), {'tag': 'a|b', 'value': 'c', 'unit': 'd'})
++
++
++class BatchAndCounts(unittest.TestCase):
++    def test_batch_round_trip_with_empty_and_escapes(self):
++        text = encode_record({'tag': 'a|b', 'value': '', 'unit': ''}) + encode_record(
++            {'tag': 'a', 'value': 'n\nl', 'unit': 'u'}) + encode_record(
++            {'tag': '温', 'value': '1', 'unit': '℃'})
++        rows = load(text)
++        self.assertEqual(len(rows), 3)
++        self.assertEqual(rows[0], {'tag': 'a|b', 'value': '', 'unit': ''})
++        self.assertEqual(rows[1], {'tag': 'a', 'value': 'n\nl', 'unit': 'u'})
++        self.assertEqual(rows[2], {'tag': '温', 'value': '1', 'unit': '℃'})
++
++    def test_batch_empty_and_incomplete(self):
++        self.assertEqual(load(''), [])
++        with self.assertRaises(ValueError):
++            load('a|1|u')
++        with self.assertRaises(ValueError):
++            load('a|1|u\nb|2|u')
++
++    def test_counts_distinguishes_escaped_tags(self):
++        rows = load('a|1|u\na|2|u\nb|3|u\nb|4|u\n')
++        self.assertEqual([r['tag'] for r in rows], ['a', 'a', 'b', 'b'])
++        self.assertEqual(counts(rows), {'a': 2, 'b': 2})
++
++    def test_counts_keeps_empty_fields(self):
++        rows = load('a||\na||\nb||u\n')
++        self.assertEqual(counts(rows), {'a': 2, 'b': 1})
++
++    def test_counts_does_not_mutate_rows(self):
++        rows = [{'tag': 'a', 'value': '', 'unit': ''}]
++        before = copy.deepcopy(rows)
++        counts(rows)
++        self.assertEqual(rows, before)
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_stream.py
++++ after/tests/test_stream.py
+@@ -0,0 +1,114 @@
++import unittest
++
++from stream import Decoder
++
++
++class StreamBasics(unittest.TestCase):
++    def test_fresh_snapshot(self):
++        self.assertEqual(
++            Decoder().snapshot(),
++            {'accepted_chars': 0, 'pending': '', 'records_seen': 0, 'closed': False},
++        )
++
++    def test_multiple_lines_in_one_chunk(self):
++        decoder = Decoder()
++        rows = decoder.feed('a|1|u\nb|2|u\n')
++        self.assertEqual(rows, [{'tag': 'a', 'value': '1', 'unit': 'u'},
++                                {'tag': 'b', 'value': '2', 'unit': 'u'}])
++        self.assertEqual(decoder.snapshot(),
++                         {'accepted_chars': 8, 'pending': '', 'records_seen': 2, 'closed': False})
++
++    def test_incomplete_tail_retained(self):
++        decoder = Decoder()
++        self.assertEqual(decoder.feed('a|1|u\nb|2'), [{'tag': 'a', 'value': '1', 'unit': 'u'}])
++        self.assertEqual(decoder.snapshot(),
++                         {'accepted_chars': 8, 'pending': 'b|2', 'records_seen': 1, 'closed': False})
++        self.assertEqual(decoder.feed('|u\n'), [{'tag': 'b', 'value': '2', 'unit': 'u'}])
++        self.assertEqual(decoder.snapshot()['pending'], '')
++
++    def test_split_escapes_across_chunks(self):
++        decoder = Decoder()
++        self.assertEqual(decoder.feed('a|x'), [])
++        self.assertEqual(decoder.feed('\\'), [])
++        self.assertEqual(decoder.feed('|'), [])
++        self.assertEqual(decoder.feed('\\'), [])
++        self.assertEqual(decoder.feed('n'), [])
++        self.assertEqual(decoder.feed('|u\n'), [{'tag': 'a', 'value': 'x|\\n', 'unit': 'u'}])
++
++    def test_empty_fields_preserved(self):
++        decoder = Decoder()
++        self.assertEqual(decoder.feed('a||\n'), [{'tag': 'a', 'value': '', 'unit': ''}])
++
++    def test_snapshot_is_fresh(self):
++        decoder = Decoder()
++        snap = decoder.snapshot()
++        snap['pending'] = 'x'
++        snap['records_seen'] = 5
++        self.assertEqual(decoder.snapshot()['pending'], '')
++        self.assertEqual(decoder.snapshot()['records_seen'], 0)
++
++    def test_records_are_independent(self):
++        decoder = Decoder()
++        rows = decoder.feed('a|1|u\n')
++        rows[0]['tag'] = 'mutated'
++        self.assertEqual(decoder.snapshot()['records_seen'], 1)
++        self.assertEqual(decoder.feed('a|1|u\n'), [{'tag': 'a', 'value': '1', 'unit': 'u'}])
++
++
++class StreamRollback(unittest.TestCase):
++    def test_valid_then_invalid_rolls_back_all(self):
++        decoder = Decoder()
++        decoder.feed('old')
++        before = decoder.snapshot()
++        with self.assertRaises(ValueError):
++            decoder.feed('a|1|u\nbad\n')
++        self.assertEqual(decoder.snapshot(), before)
++        # Old tail is unchanged and still usable.
++        self.assertEqual(decoder.feed('|x\n'), [{'tag': 'old', 'value': 'x', 'unit': ''}])
++
++    def test_invalid_incomplete_tail_not_decoded(self):
++        decoder = Decoder()
++        self.assertEqual(decoder.feed('a|\\q'), [])
++
++
++class StreamClose(unittest.TestCase):
++    def test_non_string_chunk(self):
++        decoder = Decoder()
++        with self.assertRaises(ValueError):
++            decoder.feed(None)
++        with self.assertRaises(ValueError):
++            decoder.feed(b'a|1|u\n')
++        self.assertEqual(decoder.snapshot()['accepted_chars'], 0)
++
++    def test_finish_with_pending(self):
++        decoder = Decoder()
++        decoder.feed('a|1')
++        before = decoder.snapshot()
++        with self.assertRaises(ValueError):
++            decoder.finish()
++        self.assertEqual(decoder.snapshot(), before)
++        self.assertEqual(decoder.feed('|u\n'), [{'tag': 'a', 'value': '1', 'unit': 'u'}])
++        self.assertEqual(decoder.finish(), [])
++        self.assertTrue(decoder.snapshot()['closed'])
++
++    def test_finish_repeated_and_closed_feed(self):
++        decoder = Decoder()
++        self.assertEqual(decoder.finish(), [])
++        self.assertEqual(decoder.finish(), [])
++        with self.assertRaises(ValueError):
++            decoder.feed('')
++        with self.assertRaises(ValueError):
++            decoder.feed('a|1|u\n')
++        self.assertEqual(decoder.snapshot(),
++                         {'accepted_chars': 0, 'pending': '', 'records_seen': 0, 'closed': True})
++
++    def test_finish_does_not_synthesize_newline(self):
++        decoder = Decoder()
++        decoder.feed('a|1')
++        with self.assertRaises(ValueError):
++            decoder.finish()
++        self.assertEqual(decoder.snapshot()['pending'], 'a|1')
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/wire.py
++++ after/wire.py
+@@ -1,14 +1,67 @@
+-"""Three fields separated by pipes, terminated by one newline."""
++"""Three fields separated by pipes, terminated by one newline.
++
++Wire grammar (canonical, exactly three fields ``tag|value|unit`` followed by
++one physical newline):
++
++* a literal backslash is written as ``\\\\``
++* a literal pipe is written as ``\\|``
++* an embedded newline is written as ``\\n`` (backslash + lowercase ``n``)
++
++No other escape is valid. Empty value/unit fields are legal and are emitted
++as empty between separators rather than being dropped. Only the three
++unescaped pipes separate fields; escaped pipes/newlines belong to a field.
++"""
++from fields import tag as _tag
+ from fields import record
++
++_SPECIAL = {'\\': '\\\\', '|': '\\|', '\n': '\\n'}
++_UNESCAPE = {'\\': '\\', '|': '|', 'n': '\n'}
++
++
++def _escape_field(text):
++    return ''.join(_SPECIAL.get(char, char) for char in text)
++
+ 
+ def encode_record(value):
+     value = record(value)
+-    return '|'.join(value[key] for key in ('tag','value','unit')) + '\n'
++    encoded = '|'.join(_escape_field(value[key]) for key in ('tag', 'value', 'unit'))
++    if '\r' in encoded:
++        raise ValueError('carriage returns are invalid')
++    return encoded + '\n'
++
++
++def _split_fields(body):
++    """Split an unterminated line body on unescaped pipes, unescaping fields."""
++    parts = [[]]
++    index = 0
++    length = len(body)
++    while index < length:
++        char = body[index]
++        if char == '\\':
++            if index + 1 >= length:
++                raise ValueError('dangling escape')
++            following = body[index + 1]
++            if following not in _UNESCAPE:
++                raise ValueError('unknown escape')
++            parts[-1].append(_UNESCAPE[following])
++            index += 2
++        elif char == '|':
++            parts.append([])
++            index += 1
++        else:
++            parts[-1].append(char)
++            index += 1
++    return [''.join(part) for part in parts]
++
+ 
+ def decode_line(line):
+-    if not isinstance(line, str) or not line.endswith('\n') or '\n' in line[:-1]:
++    if not isinstance(line, str) or not line.endswith('\n'):
+         raise ValueError('expected one terminated physical line')
+-    parts = [part for part in line[:-1].split('|') if part]
++    body = line[:-1]
++    if '\n' in body or '\r' in body:
++        raise ValueError('expected one terminated physical line')
++    parts = _split_fields(body)
+     if len(parts) != 3:
+         raise ValueError('expected three fields')
+-    return record(dict(zip(('tag','value','unit'),parts)))
++    _tag(parts[0])
++    return record(dict(zip(('tag','value','unit'), parts)))

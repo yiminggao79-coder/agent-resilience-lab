@@ -1,0 +1,190 @@
+{
+  "kind": "postclosure_trace_observations_not_new_scoring",
+  "source_report_sha256": "96d2d3adbc35bb36741df2eed53d5c71fee7b71649d8600a2f0cb41eb0745fde",
+  "api_requests_sent": 0,
+  "stages_with_failure_AST_change_then_green": 2,
+  "stages": [
+    {
+      "case": "case_01",
+      "turn": 1,
+      "test_exit_sequence": [
+        1,
+        0,
+        0
+      ],
+      "observed_failure_change_green_chains": []
+    },
+    {
+      "case": "case_01",
+      "turn": 2,
+      "test_exit_sequence": [
+        0
+      ],
+      "observed_failure_change_green_chains": []
+    },
+    {
+      "case": "case_01",
+      "turn": 3,
+      "test_exit_sequence": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "observed_failure_change_green_chains": []
+    },
+    {
+      "case": "case_01",
+      "turn": 4,
+      "test_exit_sequence": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "observed_failure_change_green_chains": [
+        {
+          "failed_test_seq": 456,
+          "failed_exit_code": 1,
+          "intervening_actual_AST_changes": [
+            {
+              "event_seq": 497,
+              "operation_id": "4ccfe6cf0f7e431c8a0f11b2bd6fb689",
+              "implementation_paths": [
+                "query.py"
+              ]
+            },
+            {
+              "event_seq": 519,
+              "operation_id": "22b01ad30a4e4b908a898a22d56fcfd9",
+              "implementation_paths": [
+                "query.py"
+              ]
+            },
+            {
+              "event_seq": 527,
+              "operation_id": "3b05b29cc9fc42ef8beb0d31fce500e0",
+              "implementation_paths": [
+                "query.py"
+              ]
+            },
+            {
+              "event_seq": 535,
+              "operation_id": "64d015ea7ce54dcda748ab8cac860961",
+              "implementation_paths": [
+                "query.py"
+              ]
+            },
+            {
+              "event_seq": 609,
+              "operation_id": "f94f363ae1d84d16946dd3a8b48b2bd3",
+              "implementation_paths": [
+                "grouping.py"
+              ]
+            }
+          ],
+          "later_green_test_seq": 657,
+          "later_exit_code": 0
+        },
+        {
+          "failed_test_seq": 505,
+          "failed_exit_code": 1,
+          "intervening_actual_AST_changes": [
+            {
+              "event_seq": 519,
+              "operation_id": "22b01ad30a4e4b908a898a22d56fcfd9",
+              "implementation_paths": [
+                "query.py"
+              ]
+            },
+            {
+              "event_seq": 527,
+              "operation_id": "3b05b29cc9fc42ef8beb0d31fce500e0",
+              "implementation_paths": [
+                "query.py"
+              ]
+            },
+            {
+              "event_seq": 535,
+              "operation_id": "64d015ea7ce54dcda748ab8cac860961",
+              "implementation_paths": [
+                "query.py"
+              ]
+            },
+            {
+              "event_seq": 609,
+              "operation_id": "f94f363ae1d84d16946dd3a8b48b2bd3",
+              "implementation_paths": [
+                "grouping.py"
+              ]
+            }
+          ],
+          "later_green_test_seq": 657,
+          "later_exit_code": 0
+        }
+      ]
+    },
+    {
+      "case": "case_02",
+      "turn": 1,
+      "test_exit_sequence": [
+        0,
+        0
+      ],
+      "observed_failure_change_green_chains": []
+    },
+    {
+      "case": "case_02",
+      "turn": 2,
+      "test_exit_sequence": [
+        0,
+        1,
+        0
+      ],
+      "observed_failure_change_green_chains": []
+    },
+    {
+      "case": "case_02",
+      "turn": 3,
+      "test_exit_sequence": [
+        0,
+        1,
+        0
+      ],
+      "observed_failure_change_green_chains": [
+        {
+          "failed_test_seq": 367,
+          "failed_exit_code": 1,
+          "intervening_actual_AST_changes": [
+            {
+              "event_seq": 374,
+              "operation_id": "cc450b071b084b4aa91411b1a4883507",
+              "implementation_paths": [
+                "arrangement.py"
+              ]
+            }
+          ],
+          "later_green_test_seq": 381,
+          "later_exit_code": 0
+        }
+      ]
+    },
+    {
+      "case": "case_02",
+      "turn": 4,
+      "test_exit_sequence": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "observed_failure_change_green_chains": []
+    }
+  ],
+  "limitations": [
+    "Temporal evidence, not counterfactual causal proof or proof each changed AST node executed.",
+    "Multiple chains may share a later green test; not independent samples.",
+    "Original frozen scores and raw report unchanged."
+  ]
+}

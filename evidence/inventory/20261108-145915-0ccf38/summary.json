@@ -1,0 +1,27 @@
+{
+  "kind": "public_real_deepseek_two_turn_development",
+  "runtime_commit": "71c74150835d96a345571194cb45498d70aa3d42",
+  "quality_passed_by_turn": [
+    true,
+    true
+  ],
+  "finite_observations_by_turn": [
+    5,
+    10
+  ],
+  "same_session_new_turn": true,
+  "model_requests": 13,
+  "tool_attempts": 18,
+  "input_tokens": 95515,
+  "output_tokens": 3935,
+  "estimated_peak_cache_miss_cny": 0.22250999999999999,
+  "supplier_bill_cny": null,
+  "independent_acceptance": false,
+  "long_context_quality_measured": false,
+  "new_process_recovery_measured": false,
+  "limitations": [
+    "Public implementation-owner-authored synthetic task, not independent generalization.",
+    "Finite observations; no guarantee for every possible input.",
+    "CNY estimate is peak cache-miss upper estimate, not supplier invoice."
+  ]
+}

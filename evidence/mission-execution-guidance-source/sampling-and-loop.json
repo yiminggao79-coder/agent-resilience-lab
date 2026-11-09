@@ -1,0 +1,86 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/session/turn.rs",
+  "git_blob_sha": "1fdf62faca3d396b4f1b6b7c64d879f99be7b2e9",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs",
+  "inspected_line_ranges": [
+    [
+      650,
+      729
+    ],
+    [
+      800,
+      888
+    ],
+    [
+      1836,
+      2065
+    ],
+    [
+      2891,
+      3140
+    ],
+    [
+      3318,
+      3353
+    ],
+    [
+      3579,
+      3642
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 660,
+      "end_line": 690,
+      "text": "            Ok((sampling_request_output, notify_messages)) => {\n                guardian_budget_compacted = false;\n                let SamplingRequestResult {\n                    needs_follow_up: model_needs_follow_up,\n                    mailbox_preempted,\n                    last_agent_message: sampling_request_last_agent_message,\n                } = sampling_request_output;\n                if model_needs_follow_up {\n                    sess.input_queue\n                        .accept_mailbox_delivery_for_current_turn(\n                            &sess.active_turn,\n                            &turn_context.sub_id,\n                        )\n                        .await;\n                }\n                can_drain_pending_input = true;\n                // Process async hooks only after sampling and its tools have finished.\n                drain_async_hook_results(&sess, &turn_context, /*before_user_prompt*/ false).await;\n                let (has_pending_input, token_status) = async {\n                    let has_pending_input =\n                        sess.input_queue.has_pending_input(&sess.active_turn).await;\n                    let token_status = super::context_window::context_window_token_status(\n                        sess.as_ref(),\n                        turn_context.as_ref(),\n                    )\n                    .await;\n                    (has_pending_input, token_status)\n                }\n                .instrument(trace_span!(\"run_turn.collect_post_sampling_state\"))\n                .await;\n                let needs_follow_up = model_needs_follow_up || has_pending_input;\n"
+    },
+    {
+      "start_line": 805,
+      "end_line": 855,
+      "text": "                if !needs_follow_up {\n                    last_agent_message = sampling_request_last_agent_message;\n                    let stop_outcome = run_turn_stop_hooks(\n                        &sess,\n                        &step_context,\n                        stop_hook_active,\n                        last_agent_message.clone(),\n                    )\n                    .await;\n                    if matches!(\n                        turn_context.session_source,\n                        SessionSource::Internal(InternalSessionSource::MemoryConsolidation)\n                    ) && (stop_outcome.should_block || stop_outcome.should_stop)\n                    {\n                        // Do not feed managed rejections back into an unattended memory loop.\n                        return Err(CodexErr::InvalidRequest(\n                            \"Memory consolidation was rejected by a Stop hook.\".to_string(),\n                        ));\n                    }\n                    if stop_outcome.should_block {\n                        if let Some(hook_prompt_message) = build_hook_prompt_message(\n                            &stop_outcome.continuation_fragments,\n                            &sess.item_id_generator,\n                        ) {\n                            sess.record_response_item_and_emit_turn_item(\n                                &turn_context,\n                                &step_context.settings.model_info,\n                                hook_prompt_message,\n                            )\n                            .await;\n                            sess.input_queue\n                                .accept_mailbox_delivery_for_current_turn(\n                                    &sess.active_turn,\n                                    &turn_context.sub_id,\n                                )\n                                .await;\n                            stop_hook_active = true;\n                            continue;\n                        } else {\n                            sess.send_event(\n                                &turn_context,\n                                EventMsg::Warning(WarningEvent {\n                                    message: \"Stop hook requested continuation without a prompt; ignoring the block.\".to_string(),\n                                }),\n                            )\n                            .await;\n                        }\n                    }\n                    if stop_outcome.should_stop {\n                        break;\n                    }\n"
+    },
+    {
+      "start_line": 1842,
+      "end_line": 1879,
+      "text": "pub(crate) fn build_prompt(\n    input: Vec<ResponseItem>,\n    step_context: &StepContext,\n    base_instructions: BaseInstructions,\n    incremental_tools: bool,\n) -> Prompt {\n    let turn_context = &step_context.turn;\n    Prompt {\n        input,\n        tools: if incremental_tools {\n            // Hosted tools still require top-level Responses configuration.\n            step_context\n                .tool_router\n                .model_visible_specs()\n                .iter()\n                .filter(|tool| matches!(tool, ToolSpec::WebSearch { .. }))\n                .cloned()\n                .collect()\n        } else {\n            step_context.tool_router.model_visible_specs()\n        },\n        parallel_tool_calls: true,\n        base_instructions: if incremental_tools {\n            BaseInstructions {\n                text: String::new(),\n                provenance: None,\n            }\n        } else {\n            base_instructions\n        },\n        output_schema: turn_context.final_output_json_schema.clone(),\n        output_schema_strict: !crate::guardian::is_basic_session_source(\n            &turn_context.session_source,\n        ),\n        prompt_cache_ttl: turn_context.prompt_cache_ttl,\n        cyber_access_program: turn_context.cyber_access_program,\n    }\n}\n"
+    },
+    {
+      "start_line": 1909,
+      "end_line": 1965,
+      "text": "    let base_instructions = sess.get_prompt_base_instructions().await;\n\n    let tool_runtime = ToolCallRuntime::new(\n        Arc::clone(&sess),\n        Arc::clone(&step_context),\n        Arc::clone(&turn_diff_tracker),\n    );\n    let _code_mode_worker = sess.services.code_mode_service.start_turn_worker(\n        &sess,\n        Arc::clone(&step_context),\n        Arc::clone(&turn_diff_tracker),\n    );\n    let max_retries = turn_context.provider.info().stream_max_retries();\n    let incremental_tools = sess\n        .current_window_uses_incremental_tools(&step_context)\n        .await;\n    record_registration_metrics(\n        &step_context.tool_router,\n        &step_context.session_telemetry,\n        incremental_tools,\n    );\n    let mut retry_state = ResponsesStreamRetryState::default();\n    let mut initial_input = Some(input);\n    let mut notify_messages = Vec::new();\n    let mut executed_tool_calls_by_output = HashMap::new();\n    loop {\n        // Running code-mode cells can request review while this response is in flight.\n        // Keep the latest received ID until response.created replaces it.\n        let first_attempt = initial_input.is_some();\n        let history = if let Some(input) = initial_input.take() {\n            input\n        } else {\n            sess.clone_history().await\n        };\n        let input_item_count = history.raw_items().len();\n        let sampling_step_context = Arc::new(StepContext {\n            sampled_through_sequence: Some(history.input_sequence()),\n            ..step_context.as_ref().clone()\n        });\n        let mut prompt_input = history\n            .for_prompt(\n                &step_context.settings.model_info.input_modalities,\n                sess.services.image_store.as_ref(),\n            )\n            .await;\n        sess.services\n            .executed_tool_calls\n            .attach_to_prompt(&mut prompt_input, &mut executed_tool_calls_by_output);\n        let mut prompt = build_prompt(\n            prompt_input,\n            step_context.as_ref(),\n            base_instructions.clone(),\n            incremental_tools,\n        );\n        let responses_metadata = sess\n            .responses_metadata(step_context.as_ref(), CodexResponsesRequestKind::Turn)\n            .await;\n"
+    },
+    {
+      "start_line": 2007,
+      "end_line": 2026,
+      "text": "        let mut draining_for_mailbox = false;\n        let err = match try_run_sampling_request(\n            tool_runtime.clone(),\n            Arc::clone(&sess),\n            sampling_step_context,\n            Arc::clone(&turn_store),\n            client_session,\n            &responses_metadata,\n            Arc::clone(&turn_diff_tracker),\n            prompt,\n            pending_audio,\n            input_item_count,\n            cancellation_token.child_token(),\n            &mut draining_for_mailbox,\n        )\n        .await\n        {\n            Ok(output) => {\n                return Ok((output, notify_messages));\n            }\n"
+    },
+    {
+      "start_line": 2994,
+      "end_line": 3011,
+      "text": "    let mut stream_request = async |prompt: &Prompt| {\n        client_session\n            .stream(\n                prompt,\n                &step_context.settings.model_info,\n                &step_context.session_telemetry,\n                effort.clone(),\n                step_context.settings.reasoning_summary,\n                step_context.settings.service_tier.clone(),\n                responses_metadata,\n                &inference_trace,\n            )\n            .instrument(trace_span!(\"stream_request\"))\n            .await\n    };\n    let stream = stream_request(&prompt)\n        .or_cancel(&cancellation_token)\n        .await?;\n"
+    },
+    {
+      "start_line": 3035,
+      "end_line": 3037,
+      "text": "    let mut in_flight: FuturesOrdered<InFlightFuture<'static>> = FuturesOrdered::new();\n    let mut needs_follow_up = false;\n    let mut last_agent_message: Option<String> = None;\n"
+    },
+    {
+      "start_line": 3064,
+      "end_line": 3074,
+      "text": "    let outcome: CodexResult<SamplingRequestResult> = loop {\n        if response_completed && resampling.accepted_output.is_empty() {\n            if resampling.update_usage_boundary {\n                sess.state.lock().await.history.reset_last_usage_boundary();\n            }\n            break Ok(SamplingRequestResult {\n                needs_follow_up,\n                mailbox_preempted: *draining_for_mailbox,\n                last_agent_message,\n            });\n        }\n"
+    },
+    {
+      "start_line": 3331,
+      "end_line": 3337,
+      "text": "                if let Some(tool_future) = output_result.tool_future {\n                    in_flight.push_back(tool_future);\n                }\n                if let Some(agent_message) = output_result.last_agent_message {\n                    last_agent_message = Some(agent_message);\n                }\n                needs_follow_up |= output_result.needs_follow_up;\n"
+    },
+    {
+      "start_line": 3604,
+      "end_line": 3606,
+      "text": "                if let Some(false) = end_turn {\n                    needs_follow_up = true;\n                }\n"
+    }
+  ],
+  "notice": "Selected verbatim public code excerpts in local wrapper; read, not executed. See LICENSE and NOTICE."
+}

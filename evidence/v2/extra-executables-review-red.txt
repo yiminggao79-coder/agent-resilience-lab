@@ -1,0 +1,14 @@
+test_external_entry_cannot_route_through_workspace_intermediate_link (tests.dev.test_extra_executables_review.ExtraExecutableReviewTests) ... FAIL
+
+======================================================================
+FAIL: test_external_entry_cannot_route_through_workspace_intermediate_link (tests.dev.test_extra_executables_review.ExtraExecutableReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables_review.py", line 25, in test_external_entry_cannot_route_through_workspace_intermediate_link
+    executable_descriptors(root, {'checker': str(selected)})
+AssertionError: ToolError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (failures=1)

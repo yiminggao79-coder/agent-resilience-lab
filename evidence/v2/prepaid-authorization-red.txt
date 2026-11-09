@@ -1,0 +1,56 @@
+test_402_stops_further_calls_and_persists_across_new_wrapper (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) ... ERROR
+test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) ... ERROR
+test_prepaid_uses_existing_records_without_enforcing_legacy_total (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) ... ERROR
+
+======================================================================
+ERROR: test_402_stops_further_calls_and_persists_across_new_wrapper (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_prepaid_authorization.py", line 40, in test_402_stops_further_calls_and_persists_across_new_wrapper
+    BudgetedModel(delegate,ledger,prepaid_account=True).complete([],[],1,32)
+TypeError: __init__() got an unexpected keyword argument 'prepaid_account'
+
+======================================================================
+ERROR: test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) (value=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_prepaid_authorization.py", line 50, in test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards
+    with self.subTest(value=value),self.assertRaises(ValueError):BudgetedModel(Delegate(),ledger,prepaid_account=value)
+TypeError: __init__() got an unexpected keyword argument 'prepaid_account'
+
+======================================================================
+ERROR: test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) (value='yes')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_prepaid_authorization.py", line 50, in test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards
+    with self.subTest(value=value),self.assertRaises(ValueError):BudgetedModel(Delegate(),ledger,prepaid_account=value)
+TypeError: __init__() got an unexpected keyword argument 'prepaid_account'
+
+======================================================================
+ERROR: test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_prepaid_authorization.py", line 50, in test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards
+    with self.subTest(value=value),self.assertRaises(ValueError):BudgetedModel(Delegate(),ledger,prepaid_account=value)
+TypeError: __init__() got an unexpected keyword argument 'prepaid_account'
+
+======================================================================
+ERROR: test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_prepaid_authorization.py", line 52, in test_prepaid_is_explicit_bool_and_does_not_relax_endpoint_or_key_guards
+    with self.assertRaises(ValueError):BudgetedModel(delegate,ledger,prepaid_account=True)
+TypeError: __init__() got an unexpected keyword argument 'prepaid_account'
+
+======================================================================
+ERROR: test_prepaid_uses_existing_records_without_enforcing_legacy_total (tests.dev.test_prepaid_authorization.PrepaidAuthorizationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_prepaid_authorization.py", line 32, in test_prepaid_uses_existing_records_without_enforcing_legacy_total
+    delegate=Delegate();result=BudgetedModel(delegate,ledger,prepaid_account=True).complete([],[],1,32)
+TypeError: __init__() got an unexpected keyword argument 'prepaid_account'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.043s
+
+FAILED (errors=6)

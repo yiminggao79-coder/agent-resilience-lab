@@ -1,0 +1,14 @@
+{
+  "kind": "pre_execution_freeze_path_metadata_correction",
+  "runtime_frozen_commit": "587d82b",
+  "old_freeze_sha256": "e3ca8c6e84a3d0bfd45f061dd3017e5576d78b63a02edee2a9a6d610246b2d5d",
+  "new_freeze_sha256": "bba18cec0a5dcfc76d8a62f2f57391d17a216f96f67e3ae6117ca8fe97991184",
+  "candidate_oracle_reference_bytes_unchanged": true,
+  "old_root_relative_entries": 16,
+  "new_suite_relative_entries": 15,
+  "external_document_hashes_not_in_suite": {
+    "docs/acceptance-v2-design.md": "5f06b006111952c57bb6692678fce2ff1dcead42e319a6eb6aecf3aa7e5fd23b"
+  },
+  "api_requests_for_v2_sent": 0,
+  "reason": "Verifier requires suite-relative keys; original descriptor used repository-relative keys and included one external design document."
+}

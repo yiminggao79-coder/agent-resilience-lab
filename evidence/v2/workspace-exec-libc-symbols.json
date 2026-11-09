@@ -1,0 +1,7 @@
+{
+  "kind": "readonly_host_symbol_identity_not_fork_call",
+  "library_vfork_and_fork_same_address": false,
+  "raw_addresses_disclosed": false,
+  "release": "23.6.0",
+  "system": "Darwin"
+}

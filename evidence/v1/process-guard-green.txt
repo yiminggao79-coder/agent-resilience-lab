@@ -1,0 +1,14 @@
+test_control_symlinks_are_never_followed (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_executing_worker_blocks_rotation_and_another_worker (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_generation_persists_privately_and_replaces_atomically (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_late_worker_cannot_execute_after_generation_rotation (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_lease_is_released_after_exception_and_worker_sigkill (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_none_is_allowed_only_while_both_generations_are_absent (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_private_generation_mode_does_not_depend_on_process_umask (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_sigkill_of_parent_does_not_release_child_owned_lease (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_special_and_hardlinked_control_files_fail_closed (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.327s
+
+OK

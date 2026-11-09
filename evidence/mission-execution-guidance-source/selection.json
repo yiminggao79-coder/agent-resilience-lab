@@ -1,0 +1,39 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/session/mod.rs",
+  "git_blob_sha": "c52dd4e9c7b6ca1e834bac631c30d015cff7c557",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/mod.rs",
+  "inspected_line_ranges": [
+    [
+      905,
+      925
+    ],
+    [
+      1000,
+      1030
+    ],
+    [
+      1690,
+      1735
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 914,
+      "end_line": 918,
+      "text": "        let base_instructions = config\n            .base_instructions\n            .clone()\n            .or_else(|| conversation_history.get_base_instructions().map(|s| s.text))\n            .unwrap_or_else(|| render_model_instructions(&model_info));\n"
+    },
+    {
+      "start_line": 1008,
+      "end_line": 1023,
+      "text": "        let session_configuration = SessionConfiguration {\n            turn_extension_init,\n            provider: provider_auth.model_provider(config.model_provider.clone()),\n            step_settings: Arc::new(StepSettings {\n                collaboration_mode,\n                reasoning_summary: config.model_reasoning_summary,\n                service_tier: config.service_tier.clone(),\n                personality: config.personality,\n                approval_policy: config.permissions.approval_policy.clone(),\n                approvals_reviewer: config.approvals_reviewer,\n            }),\n            environments: environment_selections.clone(),\n            model_info_overrides: config.to_models_manager_config().into(),\n            developer_instructions: config.developer_instructions.clone(),\n            base_instructions,\n            permission_profile_state: session_permission_profile_state_from_config(&config)?,\n"
+    },
+    {
+      "start_line": 1696,
+      "end_line": 1722,
+      "text": "    pub(crate) async fn get_base_instructions(&self) -> BaseInstructions {\n        let state = self.state.lock().await;\n        BaseInstructions {\n            text: state.session_configuration.base_instructions.clone(),\n            provenance: state.base_instructions_provenance.clone(),\n        }\n    }\n\n    /// Render the request copy without changing instructions persisted or inherited by forks.\n    pub(crate) async fn get_prompt_base_instructions(&self) -> BaseInstructions {\n        let config = self.get_config().await;\n        let instructions = self.get_base_instructions().await;\n        if !config.update_plan_enabled\n            && config.model_catalog.is_none()\n            && matches!(\n                instructions.provenance,\n                Some(BaseInstructionsProvenance::Model { .. })\n            )\n        {\n            BaseInstructions {\n                text: codex_prompts::without_update_plan_instructions(&instructions.text),\n                ..instructions\n            }\n        } else {\n            instructions\n        }\n    }\n"
+    }
+  ],
+  "notice": "Selected verbatim public code excerpts in local wrapper; read, not executed. See LICENSE and NOTICE."
+}

@@ -1,0 +1,14 @@
+test_missing_child_result_exports_pending_receipt_and_null_quality (tests.dev.test_context_mission.ContextMissionTests) ... ERROR
+
+======================================================================
+ERROR: test_missing_child_result_exports_pending_receipt_and_null_quality (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 177, in test_missing_child_result_exports_pending_receipt_and_null_quality
+    self.assertEqual(row['usage_totals']['requests'],1)
+KeyError: 'usage_totals'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.192s
+
+FAILED (errors=1)

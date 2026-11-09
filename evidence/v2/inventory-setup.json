@@ -1,0 +1,25 @@
+{
+  "private": ".lab/inventory-20261108-145915-0ccf38",
+  "fixture_sha256": {
+    "FOLLOWUP.md": "8f28723f7f4e46ab3261517d785a37180756277fe77d740551cf7dda89c446a4",
+    "checks.json": "9f2f9c0f5c0cd052e359859da9b45c9dfa6f10e8536dbc5594d9f116efc34a84",
+    "README.md": "185d747a39682ae833aa851705b75593a09887ace99707d2918752018f415955",
+    "probe.py": "986571810636392d95bacb2ad5e235537989ff1ba873e7e607c3278dab43ae1c",
+    "TASK.md": "164d115480eb0f9bfe6f8d163c43bcfa409f1d98d24e6e879af9478236db1cab",
+    "workspace/warehouse.py": "7dc2e130e7a9753e5d44f27f41532ffe9fc3c552b862721093999efb78582025",
+    "workspace/lines.py": "5d34102e25b2647d003779c5ab57ef2e32b3f6a979797e2a53ff8bfb43941693",
+    "workspace/allocation.py": "8c0c60b04a757f98df66145bab2da620246832eba6ae181d9fca214dd960a3d0",
+    "workspace/tests/test_original.py": "88f52b3e16789cda3252271d884f6e7823f14e3bf86ee207e41e80534dc31067"
+  },
+  "original_test_sha256": "88f52b3e16789cda3252271d884f6e7823f14e3bf86ee207e41e80534dc31067",
+  "baseline_tests_exit": 1,
+  "baseline_probe_complete": true,
+  "baseline_matches": [
+    false,
+    false,
+    false,
+    true,
+    true
+  ],
+  "api_requests_sent": 0
+}

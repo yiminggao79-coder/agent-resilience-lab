@@ -1,0 +1,33 @@
+{
+  "base_commit": "f280c42",
+  "frozen_v3_exposed": false,
+  "full_suite_note": "Final product code; worker fixture assertions strengthened after full suite, then final-related ran current fixtures. No product change after full suite.",
+  "kind": "private_candidate_native_contract",
+  "new_provider_requests": 0,
+  "original_ledger_used": false,
+  "production_enabled": false,
+  "real_model_quality": null,
+  "records": {
+    "confined-collector-final-related": {
+      "elapsed_seconds": 5.895,
+      "exit_verified": 0,
+      "sha256": "26ab0580d76e1a638fa55343dde41ee4172a4a936f89b9c21c042277555612a9",
+      "skips": 0,
+      "tests": 13
+    },
+    "confined-collector-suite": {
+      "elapsed_seconds": 233.903,
+      "exit_verified": 0,
+      "sha256": "b6d3b7a647d62cf7ce56466004a05da9fc61850e28fd1d1ba9a54937ac2a17ef",
+      "skips": 0,
+      "tests": 934
+    }
+  },
+  "source_sha256": {
+    "agent_lab/confined_collector.py": "454315666261ce8f5a2273b9c05dec48ff483a1f46bd432418dac03a9e27d7b1",
+    "agent_lab/process_group.py": "3acb92348e7fbe65f64dab782f0625de80e42ff29b70e6427352082970e00751",
+    "tests/acceptance/test_confined_collector_process.py": "da8d3668ddc5f3a040a7ad99c649e01d632d9209112ef642f68c86844cd1e920",
+    "tests/dev/test_confined_collector.py": "8fcb7fa10870e195bc249e8aa20eb2234d5b7378aee58ffe78292cf7d2af36d2",
+    "tests/dev/test_confined_collector_review.py": "a4e82138dd10bc83cd18a863c5f3397544168ba3ebc676207f9148e43ad1b276"
+  }
+}

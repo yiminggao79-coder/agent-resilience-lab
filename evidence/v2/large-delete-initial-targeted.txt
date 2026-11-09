@@ -1,0 +1,18 @@
+test_exact_two_mib_binary_deletion_has_small_intent_and_absence_reconciliation (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_large_changed_content_or_mode_is_preserved (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_large_delete_keeps_host_readonly_boundary (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_legacy_file_and_patch_bounds_are_not_expanded (tests.dev.test_large_delete.LargeDeleteTests) ... test_over_two_mib_rejected_without_effect (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+test_recreated_large_target_with_changed_mode_is_not_deleted (tests.dev.test_large_delete.LargeDeleteTests) ... ok
+
+======================================================================
+FAIL: test_legacy_file_and_patch_bounds_are_not_expanded (tests.dev.test_large_delete.LargeDeleteTests) (name='read_file')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_large_delete.py", line 62, in test_legacy_file_and_patch_bounds_are_not_expanded
+    with self.subTest(name=name),self.assertRaises(ToolError):self.tools.prepare(name,args)
+AssertionError: ToolError not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.540s
+
+FAILED (failures=1)

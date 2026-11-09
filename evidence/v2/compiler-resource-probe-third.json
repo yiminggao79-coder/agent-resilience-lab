@@ -1,0 +1,36 @@
+{
+  "clang": "/Library/Developer/CommandLineTools/usr/bin/clang",
+  "clang_resources": "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0",
+  "experiment_passed": false,
+  "frontend_with_readonly_resources": {
+    "exit_code": 0,
+    "ok": true,
+    "stderr": "",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_truncated": false
+  },
+  "frontend_without_resources": {
+    "exit_code": 1,
+    "ok": false,
+    "stderr": "main.c:1:10: fatal error: 'stdio.h' file not found\n#include <stdio.h>\n         ^~~~~~~~~\n1 error generated.\n",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_truncated": false
+  },
+  "kind": "fixed_toolchain_resource_feasibility",
+  "link": {
+    "exit_code": 1,
+    "ok": false,
+    "stderr": "0  0x103af6d1b  __assert_rtn + 64\n1  0x1039f11ad  mach_o::Header::make(std::__1::span<unsigned char, 18446744073709551615ul>, unsigned int, unsigned int, mach_o::Architecture, bool) + 349\n2  0x103a9c7e6  ld::LayoutExecutable::writeToFile(char const*) + 7174\n3  0x103a3cb14  main + 14628\nld: Assertion failed: (((uint64_t)buffer.data() & (minHeaderAlignment - 1)) == 0), function make, file Header.cpp, line 1749.\n",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_truncated": false
+  },
+  "linker": "/Library/Developer/CommandLineTools/usr/bin/ld",
+  "model_kind": null,
+  "production_resource_capability": false,
+  "sdk": "/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk",
+  "sdk_version": "14.4",
+  "source_sha256": "f677f41de3f7b14eaf34e7dfaeb4234fbd0e5ebac372e53dc3c8c8da41415c97"
+}

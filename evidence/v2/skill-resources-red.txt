@@ -1,0 +1,65 @@
+test_disabled_invocation_requires_host_selection_not_model_explicit_argument (tests.dev.test_skill_resources.SkillResourceTests) ... ERROR
+test_engine_resource_result_uses_normal_read_feedback_and_metadata_trace_excludes_body (tests.dev.test_skill_resources.SkillResourceTests) ... FAIL
+test_full_text_hash_and_procedural_boundary_without_changing_old_main_loader (tests.dev.test_skill_resources.SkillResourceTests) ... ERROR
+test_invalid_text_and_oversize_fail_without_truncated_success (tests.dev.test_skill_resources.SkillResourceTests) ... ERROR
+test_paths_links_and_nonregular_files_cannot_escape_skill_namespace (tests.dev.test_skill_resources.SkillResourceTests) ... ERROR
+test_script_preparation_is_existing_canonical_command_with_approved_source_snapshot (tests.dev.test_skill_resources.SkillResourceTests) ... ERROR
+
+======================================================================
+ERROR: test_disabled_invocation_requires_host_selection_not_model_explicit_argument (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 36, in test_disabled_invocation_requires_host_selection_not_model_explicit_argument
+    from agent_lab.skill_resources import read_skill_resource
+ModuleNotFoundError: No module named 'agent_lab.skill_resources'
+
+======================================================================
+ERROR: test_full_text_hash_and_procedural_boundary_without_changing_old_main_loader (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 27, in test_full_text_hash_and_procedural_boundary_without_changing_old_main_loader
+    from agent_lab.skill_resources import read_skill_resource
+ModuleNotFoundError: No module named 'agent_lab.skill_resources'
+
+======================================================================
+ERROR: test_invalid_text_and_oversize_fail_without_truncated_success (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 58, in test_invalid_text_and_oversize_fail_without_truncated_success
+    from agent_lab.skill_resources import read_skill_resource
+ModuleNotFoundError: No module named 'agent_lab.skill_resources'
+
+======================================================================
+ERROR: test_paths_links_and_nonregular_files_cannot_escape_skill_namespace (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 47, in test_paths_links_and_nonregular_files_cannot_escape_skill_namespace
+    from agent_lab.skill_resources import read_skill_resource
+ModuleNotFoundError: No module named 'agent_lab.skill_resources'
+
+======================================================================
+ERROR: test_script_preparation_is_existing_canonical_command_with_approved_source_snapshot (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 77, in test_script_preparation_is_existing_canonical_command_with_approved_source_snapshot
+    intent=engine._prepare_tool('run_skill_script',{'name':'owned','resource':'scripts/helper.py','args':['owned'],'cwd':'.'},3)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 111, in _prepare_tool
+    return self.tools.prepare(name, args, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 229, in prepare
+    return self._dispatch('prepare', {'name': name, 'args': args}, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 318, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: unknown_tool
+
+======================================================================
+FAIL: test_engine_resource_result_uses_normal_read_feedback_and_metadata_trace_excludes_body (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 69, in test_engine_resource_result_uses_normal_read_feedback_and_metadata_trace_excludes_body
+    self.assertTrue(result['ok'],result);self.assertEqual(result['content'],'owned reference\n')
+AssertionError: False is not true : {'ok': False, 'error': 'unknown_tool'}
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.437s
+
+FAILED (failures=1, errors=5)

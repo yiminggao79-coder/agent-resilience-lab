@@ -1,0 +1,104 @@
+{
+  "version": 5,
+  "manifest_schema_version": 1,
+  "status": "frozen_before_model_exposure",
+  "frozen_at_utc": "2026-11-09T04:48:01.106815+00:00",
+  "manifest_path": "evaluation/context_mission_v5/manifest.json",
+  "freeze_path": "evaluation/context_mission_v5/FREEZE.json",
+  "interface_path": "docs/context-mission-v5-acceptance-interface.md",
+  "runtime_profile": {
+    "experiment_profile": "thinking128k",
+    "model": "deepseek-flash"
+  },
+  "manifest_sha256": "f7e3a6b39cf7e2cb251a312d2ed2a675506391db9cc9470b16ed941a44203558",
+  "freeze_sha256": "7e0490e4bdc55d56a8d778137f7c4a5c6e01ce4e6decbcda82026e88c78998c0",
+  "inventory_sha256": "c02f7f79b6b1fab6dbde34caea92a2d0bae1be8e89ab67e795237be4a24854f3",
+  "interface_sha256": "9aeb7c4ca68a2b9591261aee51c68d02a5a66f3964943c173cc7b1c506243cac",
+  "validation_sha256": "53b3ecbaddedee557d884786df83f6df1acce8f57791d01faef8e5c99078a6ac",
+  "frozen_inventory_files": 53,
+  "cases": 2,
+  "turns_per_case": 4,
+  "turns": 8,
+  "protected_original_files": 4,
+  "protected_original_test_methods_per_case": [
+    12,
+    12
+  ],
+  "oracle_observations_per_case_stage": [
+    [
+      9,
+      9,
+      9,
+      9
+    ],
+    [
+      9,
+      9,
+      9,
+      9
+    ]
+  ],
+  "final_oracle_observations": 72,
+  "cumulative_reference_observations": 180,
+  "reference_stage_original_test_methods": 96,
+  "reference_stage_full_discovery_test_methods": 96,
+  "reference_stage_test_method_executions_total": 192,
+  "negative_controls": 58,
+  "offline_reference_stages_passed": 8,
+  "baselines_detected_by_original_assertions_and_behavior": 2,
+  "implementation_modules_per_reference_stage": [
+    [
+      2,
+      3,
+      3,
+      3
+    ],
+    [
+      2,
+      4,
+      3,
+      3
+    ]
+  ],
+  "all_offline_validation_passed": true,
+  "author_live_model_or_API_calls": 0,
+  "synthetic_provenance": true,
+  "fresh_domains_and_APIs": true,
+  "four_substantive_multimodule_features_each_case": true,
+  "separate_integrated_and_direct_success_or_error_observations": true,
+  "caller_value_and_mutable_identity_observations": true,
+  "authorship_independence": "role_separation_same_AI_environment_not_external_statistical_independence",
+  "profile_conditions": {
+    "model": "deepseek-flash",
+    "thinking": "enabled",
+    "reasoning_effort": "low",
+    "transport": "buffered_official_Chat",
+    "max_model_calls_per_turn": 50,
+    "turn_timeout_seconds": 900,
+    "max_output_tokens": 16384,
+    "active_context_max_bytes": 131072,
+    "summary_input_max_bytes": 32000,
+    "automatic_summary_threshold_ratio": 0.8,
+    "max_summaries_per_turn": 6,
+    "model_timeout_seconds": 180,
+    "tool_timeout_seconds": 12,
+    "same_limits_every_turn": true,
+    "same_resources_as_v4": true
+  },
+  "previous_scope": "no_previous_score_revision_resource_increase_or_legacy48k_repair_claim",
+  "prior_attempts": "original_scores_artifacts_and_exposure_records_separate_preserved",
+  "live_quality": null,
+  "live_final_turn_note_AST_binding": null,
+  "live_four_turn_PID_separation": null,
+  "runtime_gates": "Runner_proves_real_automatic_note_visible_in_finalTurn_actual_implementation_AST_change_request_and_distinct_fourTurn_PIDs",
+  "profile_mismatch_rule": "Runner_rejects_before_semantic_exposure_or_API",
+  "original_score_rule": "all_four_original_stage_results_require_original_added_tests_and_current_prior_oracles_later_repairs_do_not_erase_failure",
+  "verify_command": [
+    "python3",
+    "-B",
+    "evaluation/context_mission_v5/verify_freeze.py"
+  ],
+  "root_runtime_protocol": "independently_pinned_by_Runner_not_author_inventory",
+  "authoring_status": "stopped_this_dispatch_after_v5_freeze_no_automatic_v6",
+  "scope": "only_new_suite_new_public_interface_receipt_no_runtime_private_credential_old_artifact_root_document_or_Git_work"
+}

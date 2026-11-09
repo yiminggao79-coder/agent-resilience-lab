@@ -1,0 +1,76 @@
+test_01_csv_report_matches_independent_data_oracle (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_02_invalid_argument_feedback_allows_repair (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_03_false_completion_does_not_establish_task_success (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_04_paths_cannot_read_or_overwrite_outside_or_hidden_data (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_05_step_budget_stops_before_another_model_decision (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_06_missing_usage_with_cost_cap_pauses_before_mutation (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_07_sigkill_write_reconciles_in_a_fresh_process (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_08_sigkill_append_pauses_without_duplicate_bytes (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_09_deadline_includes_time_before_resume (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_10_public_cli_metadata_omits_private_task_and_file_data (tests.acceptance.test_acceptance.IndependentAcceptance) ... ok
+test_cli_stop_cancels_real_unittest_and_keeps_effects_unknown (tests.acceptance.test_confined_backend_cancel_process.ConfinedBackendCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_tests", "runner_pid": 43201, "native_pid": 43206, "supervisor_pid": 43204, "descendant_pid": 43207, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_cli_stop_waits_for_command_cleanup_but_retains_unknown_effect (tests.acceptance.test_confined_backend_cancel_process.ConfinedBackendCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_command", "runner_pid": 43215, "native_pid": 43221, "supervisor_pid": 43219, "descendant_pid": 43222, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_runner_sigkill_owner_eof_cleans_native_before_new_runner_recovery (tests.acceptance.test_confined_backend_cancel_process.ConfinedBackendCancelProcessTests) ... {"kind": "native_tool_owner_death_process_contract", "model_kind": "offline_protocol_double", "killed_runner_pid": 43230, "kill_return_code": -9, "resumed_pid": 43244, "native_pid": 43235, "supervisor_pid": 43233, "descendant_pid": 43236, "native_and_supervisor_nonrunning": true, "new_runner_fence_acquired": true, "pending_unknown_preserved": true, "new_effects": false}
+ok
+test_actual_cli_approve_resume_fork_and_continue_preserve_backend (tests.acceptance.test_confined_backend_cli_process.ConfinedBackendCLIProcessTests) ... ok
+test_failed_observation_is_durable_quarantine_not_a_cleanup_receipt (tests.acceptance.test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_sigkill_supervisor_keeps_quarantine_despite_later_guest_effects (tests.acceptance.test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_sigkill_worker_closes_owner_pipe_and_live_supervisor_confirms_drain (tests.acceptance.test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_success_receipt_is_durable_in_new_process (tests.acceptance.test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_all_runtime_cli_commands_advertise_the_same_host_option (tests.acceptance.test_extra_executables_cli_process.ExtraExecutableCLIProcessTests) ... ok
+test_registered_runtime_is_repeated_on_approval_resume_and_fork (tests.acceptance.test_extra_executables_cli_process.ExtraExecutableCLIProcessTests) ... ok
+test_changed_mode_after_effect_is_not_silently_repaired_or_claimed_complete (tests.acceptance.test_file_mode_process.FileModeProcessTests) ... {"kind": "file_mode_process_contract", "model_kind": "offline_protocol_double", "killed_pid": 43300, "kill_return_code": -9, "resumed_pid": 43303, "phase": "needs_confirmation", "external_mode_preserved": "0o700"}
+ok
+test_matching_content_and_mode_reconcile_after_kill_without_rewrite (tests.acceptance.test_file_mode_process.FileModeProcessTests) ... {"kind": "file_mode_process_contract", "model_kind": "offline_protocol_double", "killed_pid": 43305, "kill_return_code": -9, "resumed_pid": 43308, "phase": "completed", "mode": "0o755", "inode_mtime_unchanged": true, "sha256_unchanged": true}
+ok
+test_move_destination_effect_survives_kill_then_source_is_deleted_after_mode_confirmation (tests.acceptance.test_file_mode_process.FileModeProcessTests) ... {"kind": "file_mode_process_contract", "model_kind": "offline_protocol_double", "scenario": "move_destination_before_cursor", "killed_pid": 43310, "kill_return_code": -9, "resumed_pid": 43313, "phase": "completed", "destination_mode": "0o755", "destination_inode_mtime_unchanged": true, "source_deleted_after_confirmation": true}
+ok
+test_large_delete_absence_reconciles_after_kill_without_new_effect (tests.acceptance.test_large_delete_process.LargeDeleteProcessTests) ... {"kind": "large_delete_process_contract", "model_kind": "offline_protocol_double", "scenario": "absence_after_effect", "file_bytes": 234000, "killed_pid": 43316, "kill_return_code": -9, "resumed_pid": 43321, "phase": "completed", "intent_excludes_content": true, "new_delete_effect": false}
+ok
+test_recreated_large_target_changed_mode_is_preserved_after_restart (tests.acceptance.test_large_delete_process.LargeDeleteProcessTests) ... {"kind": "large_delete_process_contract", "model_kind": "offline_protocol_double", "scenario": "recreated_target_mode_changed", "file_bytes": 234000, "killed_pid": 43323, "kill_return_code": -9, "resumed_pid": 43326, "phase": "needs_confirmation", "replacement_content_mode_inode_mtime_preserved": true}
+ok
+test_large_effect_followed_by_external_mode_change_pauses (tests.acceptance.test_large_edit_process.LargeEditProcessTests) ... ok
+test_large_effect_matching_hash_mode_reconciles_without_rebuilding_or_rewrite (tests.acceptance.test_large_edit_process.LargeEditProcessTests) ... {"kind": "large_edit_process_contract", "model_kind": "offline_protocol_double", "killed_pid": 43335, "kill_return_code": -9, "resumed_pid": 43340, "file_bytes": 210022, "phase": "completed", "intent_excludes_reconstructed_content": true, "content_mode_inode_mtime_unchanged": true}
+ok
+test_http_remote_effect_after_local_cancel_remains_unknown_on_new_process (tests.acceptance.test_mcp_cancel_process.MCPCancelProcessTests) ... ok
+test_stdio_effect_then_cli_stop_new_process_does_not_replay (tests.acceptance.test_mcp_cancel_process.MCPCancelProcessTests) ... ok
+test_external_effect_before_response_remains_unknown_across_new_cli_processes (tests.acceptance.test_mcp_resource_cli_process.MCPResourceCLIProcessTests) ... ok
+test_cli_stop_cancels_live_model_before_provider_final (tests.acceptance.test_model_cancel_process.ModelCancelProcessTests) ... {"contract": "http_mcp_cli_stop_new_pid", "first_pid": 43342, "resumed_pid": 43344, "effect_count": 1, "late_external_effect_observed": true, "pending_id_preserved": true, "external_quiescence_claimed": false, "real_llm_quality": null}
+{"contract": "stdio_mcp_cli_stop_new_pid", "first_pid": 43345, "resumed_pid": 43348, "effect_count": 1, "pending_id_preserved": true, "external_quiescence_claimed": false, "real_llm_quality": null}
+{"kind": "model_cancel_process_contract", "provider": "loopback_synthetic", "stream": true, "runner_pid": 43358, "worker_pid": 43359, "worker_nonrunning_before_final": true, "tools_accepted": false, "usage": "unknown"}
+{"kind": "model_cancel_process_contract", "provider": "loopback_synthetic", "stream": false, "runner_pid": 43362, "worker_pid": 43363, "worker_nonrunning_before_final": true, "tools_accepted": false, "usage": "unknown"}
+ok
+test_runner_sigkill_reclaims_worker_without_waiting_for_provider (tests.acceptance.test_model_cancel_process.ModelCancelProcessTests) ... {"kind": "model_worker_owner_death_contract", "provider": "loopback_synthetic", "killed_runner_pid": 43366, "worker_pid": 43367, "runner_return_code": -9, "worker_nonrunning_before_final": true, "checkpoint": "model_pending_unconfirmed"}
+ok
+test_killed_supervisor_does_not_let_another_database_or_direct_tool_start_effects (tests.acceptance.test_native_job_quarantine_process.NativeJobQuarantineProcessTests) ... {"kind": "native_job_supervisor_death_contract", "model_kind": "offline_protocol_double", "task_id": "2fe031e9724f420bb64b69e0d8a00cc2", "turn_id": "62d8446d490746e7bf2629ea43188fc9", "operation_id": "6a72c3dc26254c558ab5fe893fb1d401", "native_pid": 43377, "supervisor_pid": 43375, "new_runner_admitted": false, "old_effect_observed": false, "new_effect_observed": false}
+ok
+test_all_runtime_commands_advertise_explicit_config_and_check_never_creates_db (tests.acceptance.test_runtime_config_cli_process.RuntimeConfigCLIProcessTests) ... ok
+test_single_config_survives_approval_resume_fork_and_rejects_changed_grants (tests.acceptance.test_runtime_config_cli_process.RuntimeConfigCLIProcessTests) ... ok
+test_approval_and_new_cli_resume_use_persisted_source_not_changed_skill_file (tests.acceptance.test_skill_script_cli_process.SkillScriptCLIProcessTests) ... ok
+test_kill_after_atomic_application_new_pid_never_duplicates_input (tests.acceptance.test_steering_process.SteeringProcessTests) ... {"kind": "steering_process_contract", "model_kind": "offline_protocol_double", "scenario": "kill_after_atomic_application", "killed_pid": 43423, "kill_return_code": -9, "resumed_pid": 43424, "phase": "completed", "input_status": "applied", "message_occurrences": 1, "application_events": 1}
+ok
+test_second_process_admission_while_runner_locked_survives_unknown_request_kill (tests.acceptance.test_steering_process.SteeringProcessTests) ... {"kind": "steering_process_contract", "model_kind": "offline_protocol_double", "scenario": "admitted_while_runner_locked_then_request_unknown", "killed_pid": 43425, "kill_return_code": -9, "resumed_pid": 43427, "phase": "needs_confirmation", "input_status": "pending", "message_applied": false}
+ok
+test_kill_after_claim_before_effect_never_recovers_by_creating_file (tests.acceptance.test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "after_tool_claim", "killed_pid": 43428, "kill_return_code": -9, "resumed_pid": 43431, "phase": "needs_confirmation", "new_effects_after_stop": 0, "unknown_pending_preserved": true}
+ok
+test_kill_after_patch_effect_never_replays_or_executes_remaining_files (tests.acceptance.test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "after_patch_effect", "killed_pid": 43432, "kill_return_code": -9, "resumed_pid": 43436, "phase": "needs_confirmation", "new_effects_after_stop": 0, "unknown_pending_preserved": true}
+ok
+test_live_claimed_call_finishes_but_new_tools_never_start (tests.acceptance.test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "claimed_call_finishes", "runner_pid": 43437, "stop_observed": true, "current_call_preempted": false, "new_file_effects": 0}
+ok
+test_cli_stop_cancels_real_unittest_and_keeps_effects_unknown (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_tests", "runner_pid": 43439, "native_pid": 43444, "supervisor_pid": 43442, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_cli_stop_waits_for_command_cleanup_but_retains_unknown_effect (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_command", "runner_pid": 43451, "native_pid": 43456, "supervisor_pid": 43454, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_runner_sigkill_owner_eof_cleans_native_before_new_runner_recovery (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_owner_death_process_contract", "model_kind": "offline_protocol_double", "killed_runner_pid": 43462, "kill_return_code": -9, "resumed_pid": 43475, "native_pid": 43467, "supervisor_pid": 43465, "native_and_supervisor_nonrunning": true, "new_runner_fence_acquired": true, "pending_unknown_preserved": true, "new_effects": false}
+ok
+test_cli_repeat_resource_and_named_read_on_approval_resume_fork (tests.acceptance.test_tool_resources_cli_process.ToolResourceCLIProcessTests) ... ok
+test_runtime_help_lists_read_scope_and_named_metadata (tests.acceptance.test_tool_resources_cli_process.ToolResourceCLIProcessTests) ... ok
+test_cli_scope_binds_approval_resume_and_session_fork (tests.acceptance.test_workspace_exec_cli_process.WorkspaceExecCLIProcessTests) ... ok
+test_runtime_cli_help_has_explicit_scope_and_primary_secondary_distinction (tests.acceptance.test_workspace_exec_cli_process.WorkspaceExecCLIProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 44.906s
+
+OK

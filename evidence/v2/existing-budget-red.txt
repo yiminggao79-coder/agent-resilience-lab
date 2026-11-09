@@ -1,0 +1,86 @@
+test_bad_schema_cap_types_halted_and_non_sqlite_fail_fixed_without_migration (tests.dev.test_existing_budget.ExistingBudgetTests) ... FAIL
+test_directory_fifo_symlink_and_hardlinked_ledger_rejected_before_sqlite_open (tests.dev.test_existing_budget.ExistingBudgetTests) ... FAIL
+test_existing_admission_does_not_create_chmod_migrate_or_change_unknown_reservations (tests.dev.test_existing_budget.ExistingBudgetTests) ... FAIL
+test_existing_reserve_and_settle_keep_normal_known_and_unknown_accounting (tests.dev.test_existing_budget.ExistingBudgetTests) ... FAIL
+test_ordinary_constructor_still_explicitly_creates_and_migrates (tests.dev.test_existing_budget.ExistingBudgetTests) ... FAIL
+test_replace_between_rw_open_checks_closes_connection_and_keeps_old_data (tests.dev.test_existing_budget.ExistingBudgetTests) ... FAIL
+test_settlement_file_loss_remains_uncertain_without_recreation (tests.dev.test_existing_budget.ExistingBudgetTests) ... FAIL
+test_unlink_and_replacement_of_live_ledger_never_create_or_reserve_in_new_file (tests.dev.test_existing_budget.ExistingBudgetTests) ... FAIL
+test_workspace_lexical_canonical_and_ancestor_aliases_are_rejected (tests.dev.test_existing_budget.ExistingBudgetTests) ... FAIL
+
+======================================================================
+FAIL: test_bad_schema_cap_types_halted_and_non_sqlite_fail_fixed_without_migration (tests.dev.test_existing_budget.ExistingBudgetTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_existing_budget.py", line 15, in setUp
+    self.assertTrue(hasattr(budget.BudgetLedger, 'open_existing'), 'existing-only budget admission is missing')
+AssertionError: False is not true : existing-only budget admission is missing
+
+======================================================================
+FAIL: test_directory_fifo_symlink_and_hardlinked_ledger_rejected_before_sqlite_open (tests.dev.test_existing_budget.ExistingBudgetTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_existing_budget.py", line 15, in setUp
+    self.assertTrue(hasattr(budget.BudgetLedger, 'open_existing'), 'existing-only budget admission is missing')
+AssertionError: False is not true : existing-only budget admission is missing
+
+======================================================================
+FAIL: test_existing_admission_does_not_create_chmod_migrate_or_change_unknown_reservations (tests.dev.test_existing_budget.ExistingBudgetTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_existing_budget.py", line 15, in setUp
+    self.assertTrue(hasattr(budget.BudgetLedger, 'open_existing'), 'existing-only budget admission is missing')
+AssertionError: False is not true : existing-only budget admission is missing
+
+======================================================================
+FAIL: test_existing_reserve_and_settle_keep_normal_known_and_unknown_accounting (tests.dev.test_existing_budget.ExistingBudgetTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_existing_budget.py", line 15, in setUp
+    self.assertTrue(hasattr(budget.BudgetLedger, 'open_existing'), 'existing-only budget admission is missing')
+AssertionError: False is not true : existing-only budget admission is missing
+
+======================================================================
+FAIL: test_ordinary_constructor_still_explicitly_creates_and_migrates (tests.dev.test_existing_budget.ExistingBudgetTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_existing_budget.py", line 15, in setUp
+    self.assertTrue(hasattr(budget.BudgetLedger, 'open_existing'), 'existing-only budget admission is missing')
+AssertionError: False is not true : existing-only budget admission is missing
+
+======================================================================
+FAIL: test_replace_between_rw_open_checks_closes_connection_and_keeps_old_data (tests.dev.test_existing_budget.ExistingBudgetTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_existing_budget.py", line 15, in setUp
+    self.assertTrue(hasattr(budget.BudgetLedger, 'open_existing'), 'existing-only budget admission is missing')
+AssertionError: False is not true : existing-only budget admission is missing
+
+======================================================================
+FAIL: test_settlement_file_loss_remains_uncertain_without_recreation (tests.dev.test_existing_budget.ExistingBudgetTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_existing_budget.py", line 15, in setUp
+    self.assertTrue(hasattr(budget.BudgetLedger, 'open_existing'), 'existing-only budget admission is missing')
+AssertionError: False is not true : existing-only budget admission is missing
+
+======================================================================
+FAIL: test_unlink_and_replacement_of_live_ledger_never_create_or_reserve_in_new_file (tests.dev.test_existing_budget.ExistingBudgetTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_existing_budget.py", line 15, in setUp
+    self.assertTrue(hasattr(budget.BudgetLedger, 'open_existing'), 'existing-only budget admission is missing')
+AssertionError: False is not true : existing-only budget admission is missing
+
+======================================================================
+FAIL: test_workspace_lexical_canonical_and_ancestor_aliases_are_rejected (tests.dev.test_existing_budget.ExistingBudgetTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_existing_budget.py", line 15, in setUp
+    self.assertTrue(hasattr(budget.BudgetLedger, 'open_existing'), 'existing-only budget admission is missing')
+AssertionError: False is not true : existing-only budget admission is missing
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+FAILED (failures=9)

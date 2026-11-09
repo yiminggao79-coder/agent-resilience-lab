@@ -1,0 +1,44 @@
+test_absent_job_and_database_remain_absent_without_model (tests.dev.test_native_job_cli.NativeJobCLITests) ... FAIL
+test_claimed_job_metadata_is_readonly_and_omits_private_paths_or_worker_token (tests.dev.test_native_job_cli.NativeJobCLITests) ... FAIL
+test_foreign_database_is_not_followed_and_malformed_marker_does_not_echo_data (tests.dev.test_native_job_cli.NativeJobCLITests) ... FAIL
+
+======================================================================
+FAIL: test_absent_job_and_database_remain_absent_without_model (tests.dev.test_native_job_cli.NativeJobCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_native_job_cli.py", line 41, in test_absent_job_and_database_remain_absent_without_model
+    self.assertEqual(code,0,err);self.assertEqual(json.loads(out)['state'],'none')
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,providers}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'job-status' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'fork', 'providers')
+
+
+======================================================================
+FAIL: test_claimed_job_metadata_is_readonly_and_omits_private_paths_or_worker_token (tests.dev.test_native_job_cli.NativeJobCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_native_job_cli.py", line 47, in test_claimed_job_metadata_is_readonly_and_omits_private_paths_or_worker_token
+    code,out,err=self.call();self.assertEqual(code,0,err);body=json.loads(out)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,providers}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'job-status' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'fork', 'providers')
+
+
+======================================================================
+FAIL: test_foreign_database_is_not_followed_and_malformed_marker_does_not_echo_data (tests.dev.test_native_job_cli.NativeJobCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_native_job_cli.py", line 57, in test_foreign_database_is_not_followed_and_malformed_marker_does_not_echo_data
+    self.assertEqual(code,0,err);body=json.loads(out);self.assertFalse(body['database_checked']);self.assertTrue(body['workspace_quarantined'])
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,providers}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'job-status' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'fork', 'providers')
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.388s
+
+FAILED (failures=3)

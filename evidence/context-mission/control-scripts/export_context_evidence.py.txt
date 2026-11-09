@@ -1,0 +1,71 @@
+"""Deliberate synthetic-only projections; no credentials, APIs or native reasoning export."""
+import argparse,hashlib,json,re,sys
+from pathlib import Path
+REPO=Path(__file__).resolve().parents[1];sys.path.insert(0,str(REPO))
+from agent_lab.history import _projection
+from agent_lab.store import Store
+from scripts.context_mission import digest_file
+p=argparse.ArgumentParser();p.add_argument('--run-id');p.add_argument('--git-regression',action='store_true');args=p.parse_args()
+if args.git_regression:
+    private=REPO/'.lab/git-capability-regression';public=REPO/'evidence/context-mission/git-capability-regression'
+else:
+    if not args.run_id or not re.fullmatch('[a-f0-9]{16}',args.run_id):raise SystemExit('invalid_run_identity')
+    private=REPO/'.lab/context-mission'/args.run_id;public=REPO/'evidence/context-mission/runs'/args.run_id
+report_path=public/'report.json';original=digest_file(report_path);report=json.loads(report_path.read_text())
+if not all(type(report.get(k)) is bool for k in ('runtime_unchanged','runtime_protocol_unchanged','freeze_unchanged')):
+    raise SystemExit('report_not_final')
+counts=[]
+for case in report['cases']:
+    name=case['case']
+    if not re.fullmatch('[a-z0-9][a-z0-9_-]{0,79}',name):raise SystemExit('invalid_case_identity')
+    root=private/name;events=case.get('installed_summaries',[]);notes=[]
+    for path in root.rglob('model-*-response.json'):
+        response=json.loads(path.read_text());text=response.get('message',{}).get('content')
+        if not isinstance(text,str):continue
+        text=text.strip();sha=hashlib.sha256(text.encode()).hexdigest()
+        for event in events:
+            if event.get('summary_sha256')==sha:
+                notes.append({'installed_event':event,'summary':text,'response_snapshot_sha256':digest_file(path)})
+    notes.sort(key=lambda n:n['installed_event']['seq'])
+    turns=case['turns'];decisions=[]
+    if turns:
+        final=turns[-1];phase=root/('turn-'+str(final['turn']))
+        task=final.get('id');state=None
+        if task:
+            with Store.open_readonly(root/'tasks.sqlite') as store:state=store.load(task)
+        desired={}
+        proof=case.get('continuity_proof',{})
+        if proof.get('coding_model_call') is not None:desired[proof['coding_model_call']]='coding_decision'
+        if final.get('metrics',{}).get('model_calls') is not None:
+            desired.setdefault(final['metrics']['model_calls'],'last_decision')
+        for path in sorted(phase.rglob('model-*-request.json')):
+            segment=path.parent/'segment.json'
+            if not segment.is_file():continue
+            segment=json.loads(segment.read_text());number=segment['base_model_calls']+int(path.name.split('-')[1])
+            if number not in desired:continue
+            request=json.loads(path.read_text())
+            if not request.get('tools'):continue  # Summaries are not tool-selection requests.
+            response_path=path.with_name(path.name.replace('request.json','response.json'))
+            response=json.loads(response_path.read_text()) if response_path.is_file() else None
+            message=_projection(response['message']) if response else None
+            ids={c['id'] for c in (message or {}).get('tool_calls',[])}
+            feedback=[{'archive_message_index':i,'message':_projection(m)}
+                      for i,m in enumerate(state['messages'] if state else [])
+                      if m.get('role')=='tool' and m.get('tool_call_id') in ids]
+            projected={'messages':[_projection(m) for m in request['messages']]}
+            assert all(not any(k in m for k in ('reasoning_content','native_content','_native_assistant'))
+                       for m in projected['messages']+[message or {}])
+            decisions.append({'purpose':desired[number],'model_call_number':number,'pid':segment['pid'],
+                'request_snapshot_sha256':digest_file(path),'public_request_projection':projected,
+                'public_projection_sha256':hashlib.sha256(json.dumps(projected,sort_keys=True,ensure_ascii=True).encode()).hexdigest(),
+                'response_snapshot_sha256':digest_file(response_path) if response else None,
+                'public_response_message':message,'usage':response.get('usage') if response else None,
+                'resulting_tool_feedback':feedback})
+    artifact={'scope':'Deliberately exported synthetic experiment only. Public adapter-input/response projections, not full HTTP wire. Original private snapshot hashes retained; native reasoning/protocol blocks removed. Note strings match committed normalized hashes. Generated local experiment paths may remain to preserve exact evidence.',
+              'source_report_sha256':original,'installed_notes':notes,'selected_decisions':decisions,
+              'all_installed_note_texts_found':len(notes)==len(events),'native_protocol_fields_exported':False}
+    target=public/name/'public-continuity-projections.json';target.parent.mkdir(parents=True,exist_ok=True)
+    target.write_text(json.dumps(artifact,indent=2,allow_nan=False)+'\n')
+    counts.append({'case':name,'notes':len(notes),'decisions':len(decisions),'all_note_hashes_found':len(notes)==len(events)})
+assert digest_file(report_path)==original
+print(json.dumps({'cases':counts,'original_report_unchanged':True,'api_requests_sent':0}))

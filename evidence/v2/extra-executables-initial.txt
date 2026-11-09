@@ -1,0 +1,12 @@
+test_alias_shape_reserved_count_and_nonmapping_rejected (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_cli_option_parse_and_dynamic_schema_keep_model_args_unchanged (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_default_shapes_unchanged_and_explicit_mapping_canonical_and_hashed (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_every_command_including_echo_binds_whole_mapping_and_mutations (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_inside_nonexec_hardlink_and_parent_alias_workspace_routes_rejected (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_session_restore_rejects_missing_registered_mapping (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+test_worker_tampering_and_run_tests_intent_are_bound_before_launch (tests.dev.test_extra_executables.ExtraExecutableTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.414s
+
+OK

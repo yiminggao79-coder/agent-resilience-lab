@@ -1,0 +1,41 @@
+test_report_fault_is_fixed_diagnostic_after_key_restore_and_unknown_retention (tests.dev.test_acceptance_v3_review.AcceptanceV3ReviewTests) ... test_reservation_refusal_after_preflight_does_not_consume_exposure (tests.dev.test_acceptance_v3_review.AcceptanceV3ReviewTests) ... ok
+test_workspace_gate_refusal_blocks_judging_even_for_terminal_state (tests.dev.test_acceptance_v3_review.AcceptanceV3ReviewTests) ... ok
+
+======================================================================
+ERROR: test_report_fault_is_fixed_diagnostic_after_key_restore_and_unknown_retention (tests.dev.test_acceptance_v3_review.AcceptanceV3ReviewTests) (fault='report_write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_review.py", line 139, in test_report_fault_is_fixed_diagnostic_after_key_restore_and_unknown_retention
+    raise error
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_review.py", line 130, in test_report_fault_is_fixed_diagnostic_after_key_restore_and_unknown_retention
+    code = runner.main(['--allow-api', '--suite', str(root/'synthetic-suite')])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/scripts/evaluate_acceptance_v3.py", line 295, in main
+    output.write_text(json.dumps(report,ensure_ascii=False,allow_nan=False,indent=2)+'\n')
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_review.py", line 107, in write
+    raise OSError('SYNTHETIC_PRIVATE_REPORT_PATH')
+OSError: SYNTHETIC_PRIVATE_REPORT_PATH
+
+======================================================================
+ERROR: test_report_fault_is_fixed_diagnostic_after_key_restore_and_unknown_retention (tests.dev.test_acceptance_v3_review.AcceptanceV3ReviewTests) (fault='budget_report')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_review.py", line 139, in test_report_fault_is_fixed_diagnostic_after_key_restore_and_unknown_retention
+    raise error
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_review.py", line 130, in test_report_fault_is_fixed_diagnostic_after_key_restore_and_unknown_retention
+    code = runner.main(['--allow-api', '--suite', str(root/'synthetic-suite')])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/scripts/evaluate_acceptance_v3.py", line 284, in main
+    report['budget']=ledger.report()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1158, in _execute_mock_call
+    result = effect(*args, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_review.py", line 102, in report
+    raise OSError('SYNTHETIC_PRIVATE_REPORT_PATH')
+OSError: SYNTHETIC_PRIVATE_REPORT_PATH
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.100s
+
+FAILED (errors=2)

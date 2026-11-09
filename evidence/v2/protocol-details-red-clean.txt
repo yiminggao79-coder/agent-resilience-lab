@@ -1,0 +1,100 @@
+test_engine_preserves_limit_reason_without_executing_partial_write (tests.dev.test_protocol_failure_details.ProtocolReasonHTTPTests) ... FAIL
+test_real_worker_distinguishes_incomplete_json_and_schema (tests.dev.test_protocol_failure_details.ProtocolReasonHTTPTests) ... FAIL
+test_real_worker_reports_three_protocol_buffered_limits (tests.dev.test_protocol_failure_details.ProtocolReasonHTTPTests) ... FAIL
+test_explicit_token_limits_are_distinct_from_missing_completion (tests.dev.test_protocol_failure_details.ProtocolReasonTests) ... FAIL
+test_stream_token_limit_does_not_return_partial_calls (tests.dev.test_protocol_failure_details.ProtocolReasonTests) ... FAIL
+test_tls_subclasses_are_classified_without_exception_text (tests.dev.test_protocol_failure_details.ProtocolReasonTests) ... FAIL
+test_unlisted_protocol_exception_detail_is_not_a_public_label (tests.dev.test_protocol_failure_details.ProtocolReasonTests) ... ok
+
+======================================================================
+FAIL: test_engine_preserves_limit_reason_without_executing_partial_write (tests.dev.test_protocol_failure_details.ProtocolReasonHTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_protocol_failure_details.py", line 129, in test_engine_preserves_limit_reason_without_executing_partial_write
+    self.assertEqual(event['diagnostic'], 'phase_body,protocol,output_token_limit')
+AssertionError: 'phase_body,protocol' != 'phase_body,protocol,output_token_limit'
+- phase_body,protocol
++ phase_body,protocol,output_token_limit
+
+
+======================================================================
+FAIL: test_real_worker_distinguishes_incomplete_json_and_schema (tests.dev.test_protocol_failure_details.ProtocolReasonHTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_protocol_failure_details.py", line 110, in test_real_worker_distinguishes_incomplete_json_and_schema
+    self.assertEqual(caught.exception.diagnostic, ['phase_body', 'protocol', detail])
+AssertionError: Lists differ: ['phase_body', 'protocol'] != ['phase_body', 'protocol', 'incomplete_stream']
+
+Second list contains 1 additional elements.
+First extra element 2:
+'incomplete_stream'
+
+- ['phase_body', 'protocol']
++ ['phase_body', 'protocol', 'incomplete_stream']
+
+======================================================================
+FAIL: test_real_worker_reports_three_protocol_buffered_limits (tests.dev.test_protocol_failure_details.ProtocolReasonHTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_protocol_failure_details.py", line 98, in test_real_worker_reports_three_protocol_buffered_limits
+    self.assertEqual(caught.exception.diagnostic, ['phase_body', 'protocol', 'output_token_limit'])
+AssertionError: Lists differ: ['phase_body', 'protocol'] != ['phase_body', 'protocol', 'output_token_limit']
+
+Second list contains 1 additional elements.
+First extra element 2:
+'output_token_limit'
+
+- ['phase_body', 'protocol']
++ ['phase_body', 'protocol', 'output_token_limit']
+
+======================================================================
+FAIL: test_explicit_token_limits_are_distinct_from_missing_completion (tests.dev.test_protocol_failure_details.ProtocolReasonTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_protocol_failure_details.py", line 42, in test_explicit_token_limits_are_distinct_from_missing_completion
+    self.assertEqual(caught.exception.args, ('output_token_limit',))
+AssertionError: Tuples differ: ('incomplete_response',) != ('output_token_limit',)
+
+First differing element 0:
+'incomplete_response'
+'output_token_limit'
+
+- ('incomplete_response',)
++ ('output_token_limit',)
+
+======================================================================
+FAIL: test_stream_token_limit_does_not_return_partial_calls (tests.dev.test_protocol_failure_details.ProtocolReasonTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_protocol_failure_details.py", line 58, in test_stream_token_limit_does_not_return_partial_calls
+    self.assertEqual(caught.exception.args, ('output_token_limit',))
+AssertionError: Tuples differ: ('incomplete_stream',) != ('output_token_limit',)
+
+First differing element 0:
+'incomplete_stream'
+'output_token_limit'
+
+- ('incomplete_stream',)
++ ('output_token_limit',)
+
+======================================================================
+FAIL: test_tls_subclasses_are_classified_without_exception_text (tests.dev.test_protocol_failure_details.ProtocolReasonTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_protocol_failure_details.py", line 68, in test_tls_subclasses_are_classified_without_exception_text
+    self.assertEqual(result['diagnostic'], ['phase_open', label])
+AssertionError: Lists differ: ['phase_open', 'tls'] != ['phase_open', 'tls_eof']
+
+First differing element 1:
+'tls'
+'tls_eof'
+
+- ['phase_open', 'tls']
++ ['phase_open', 'tls_eof']
+?                    ++++
+
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.916s
+
+FAILED (failures=6)

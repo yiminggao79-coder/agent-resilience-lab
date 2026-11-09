@@ -1,0 +1,27 @@
+{
+  "installed_version": "0.1.0",
+  "editable": false,
+  "runtime_inside_selected_venv": true,
+  "target_shadow_imported": false,
+  "engine_phase": "completed",
+  "native_test_exit_codes": [
+    1,
+    0
+  ],
+  "patch_exact_bytes_verified": true,
+  "native_job_quiescent": true,
+  "overlap_rejections": 3,
+  "missing_ledger_admission_cases": 2,
+  "credential_loader_calls": 0,
+  "provider_requests": 0,
+  "kind": "offline_noneditable_install_and_native_tools",
+  "wheel_sha256": "be5c262f16b16a5584adb85be21db0d7ff0bf2ef7b509a42bd13ee065aa30db9",
+  "wheel_entries": 43,
+  "runtime_source_files": 38,
+  "isolated_module_cli": true,
+  "console_cli": true,
+  "wheel_payload_matches_install": true,
+  "real_llm_task_result": false,
+  "original_budget_opened": false,
+  "credential_file_read": false
+}

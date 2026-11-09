@@ -1,0 +1,37 @@
+{
+  "kind": "research_native_entry_nofork",
+  "observations": [
+    {
+      "variant": "eperm",
+      "exit_code": 0,
+      "body": {
+        "native_entry_started": true,
+        "base_prefix": true,
+        "fork_errno": 1,
+        "spawn_errno": 1
+      },
+      "stderr_bytes": 0,
+      "stdout_truncated": false,
+      "profile_sha256": "fe85a8fa20cf1c70344a34887291725d6d38fd2995bae0202693eacfc3e36e49"
+    },
+    {
+      "variant": "enosys",
+      "exit_code": 0,
+      "body": {
+        "native_entry_started": true,
+        "base_prefix": true,
+        "fork_errno": 1,
+        "spawn_errno": 78
+      },
+      "stderr_bytes": 0,
+      "stdout_truncated": false,
+      "profile_sha256": "39d6d3b90d258623ba1b53c2028c843ebffbc9269dd8cd7ebafe4efebd0a4807"
+    }
+  ],
+  "expected_enosys_errno": 78,
+  "production_policy_changed": false,
+  "fork_enabled": false,
+  "provider_requests": 0,
+  "credential_file_read": false,
+  "real_budget_opened": false
+}

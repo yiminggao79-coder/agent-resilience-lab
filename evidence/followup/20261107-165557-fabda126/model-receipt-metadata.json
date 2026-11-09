@@ -1,0 +1,112 @@
+[
+  {
+    "phase": "start",
+    "receipt": "model-001-response.json",
+    "sha256": "b1e5871defd99025dbc4bc3aa6d71f210b44ad97ced751db8594378c93e7f3f7",
+    "usage": {
+      "input_tokens": 9144,
+      "output_tokens": 161
+    },
+    "finish_reason": "tool_calls",
+    "tools": [
+      "read_file",
+      "read_file",
+      "read_file",
+      "read_file",
+      "list_files"
+    ]
+  },
+  {
+    "phase": "start",
+    "receipt": "model-002-response.json",
+    "sha256": "beb2a45adb789908ca4d096cf31f0e2d9d9183d278098420361afa953c9efdad",
+    "usage": {
+      "input_tokens": 10468,
+      "output_tokens": 418
+    },
+    "finish_reason": "tool_calls",
+    "tools": [
+      "write_file"
+    ]
+  },
+  {
+    "phase": "resume",
+    "receipt": "model-001-response.json",
+    "sha256": "61346c95d4abaf7c06a8e16de8829c50675916dc5f5e4f18742c23a80b21c51b",
+    "usage": {
+      "input_tokens": 10957,
+      "output_tokens": 1933
+    },
+    "finish_reason": "tool_calls",
+    "tools": [
+      "write_file"
+    ]
+  },
+  {
+    "phase": "resume",
+    "receipt": "model-002-response.json",
+    "sha256": "ae016d874890d16f34a854a1b515c4530686b50384c3a2a10e52eabbf54b3967",
+    "usage": {
+      "input_tokens": 12956,
+      "output_tokens": 102
+    },
+    "finish_reason": "tool_calls",
+    "tools": [
+      "run_tests",
+      "run_command"
+    ]
+  },
+  {
+    "phase": "resume",
+    "receipt": "model-003-response.json",
+    "sha256": "f136f9dc87575588e3d404f1101f6ffa85ed3b98d0992991c900da50f4ca5dbf",
+    "usage": {
+      "input_tokens": 14704,
+      "output_tokens": 403
+    },
+    "finish_reason": "tool_calls",
+    "tools": [
+      "apply_patch"
+    ]
+  },
+  {
+    "phase": "resume",
+    "receipt": "model-004-response.json",
+    "sha256": "f758286a08b7cd13e1eb4f6f699c127e25f22d2b83022dffeecd2b3bca5faf5e",
+    "usage": {
+      "input_tokens": 15172,
+      "output_tokens": 88
+    },
+    "finish_reason": "tool_calls",
+    "tools": [
+      "run_tests",
+      "run_command"
+    ]
+  },
+  {
+    "phase": "resume",
+    "receipt": "model-005-response.json",
+    "sha256": "7d106fe1c9701c959009ec0de99521b210e54f53e7a787066b4720fd0370fae2",
+    "usage": {
+      "input_tokens": 16070,
+      "output_tokens": 216
+    },
+    "finish_reason": "tool_calls",
+    "tools": [
+      "read_file",
+      "read_lines",
+      "read_lines"
+    ]
+  },
+  {
+    "phase": "resume",
+    "receipt": "model-006-response.json",
+    "sha256": "650bb0587a07459e292cdb24fab8759a38164f851050b24d973fe6fcfb514ec6",
+    "usage": {
+      "input_tokens": 17592,
+      "output_tokens": 551
+    },
+    "finish_reason": "stop",
+    "tools": []
+  }
+]

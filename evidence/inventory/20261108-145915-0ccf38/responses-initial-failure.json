@@ -1,0 +1,89 @@
+{
+  "kind": "real_deepseek_responses_stream_initial_failure",
+  "runtime_commit": "71c74150835d96a345571194cb45498d70aa3d42",
+  "model": "deepseek-flash",
+  "protocol": "responses",
+  "stream": true,
+  "thinking": "provider_default_not_configured",
+  "status": {
+    "id": "6b2d152b19584b52a6d592ff4cc23e5b",
+    "phase": "needs_confirmation",
+    "reason": "invalid_model_response",
+    "verified_success": null,
+    "metrics": {
+      "model_calls": 1,
+      "tool_attempts": 0,
+      "recoveries": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "cost_usd": null,
+      "reserved_usd": 0.0,
+      "elapsed_seconds": 4.415095090866089
+    },
+    "session_id": "54308fbf754540878f211890dcdb67ba",
+    "turn_id": "68404826ed654c1dbebdfeb39c1f324c",
+    "session_metrics": {
+      "model_calls": 1,
+      "tool_attempts": 0,
+      "recoveries": 0,
+      "input_tokens": null,
+      "output_tokens": null,
+      "cost_usd": null,
+      "reserved_usd": 0.0,
+      "elapsed_seconds": 4.415095090866089
+    },
+    "read_only": {
+      "scope_count": 1,
+      "identity": "4095a434b14560d45d63752e52be6847dd61618a4adf92e6abbe02728a1d28a4"
+    }
+  },
+  "trace": [
+    {
+      "seq": 1,
+      "at": 1794121660.496278,
+      "kind": "created",
+      "phase": "ready",
+      "revision": 1,
+      "turn_id": "68404826ed654c1dbebdfeb39c1f324c"
+    },
+    {
+      "seq": 2,
+      "at": 1794121660.502104,
+      "kind": "model_started",
+      "model_calls": 1,
+      "request_bytes": 14422,
+      "reserved_usd": 0.0,
+      "revision": 2,
+      "turn_id": "68404826ed654c1dbebdfeb39c1f324c"
+    },
+    {
+      "seq": 3,
+      "at": 1794121664.907274,
+      "kind": "model_error",
+      "code": "invalid_model_response",
+      "diagnostic": "phase_body,protocol",
+      "http_status": 200,
+      "response_body_bytes": 48352,
+      "revision": 3,
+      "turn_id": "68404826ed654c1dbebdfeb39c1f324c"
+    },
+    {
+      "seq": 4,
+      "at": 1794121664.9091158,
+      "kind": "terminated",
+      "phase": "needs_confirmation",
+      "code": "invalid_model_response",
+      "revision": 4,
+      "turn_id": "68404826ed654c1dbebdfeb39c1f324c"
+    }
+  ],
+  "passed": false,
+  "tool_effects_observed": 0,
+  "usage": null,
+  "supplier_bill_cny": null,
+  "limitations": [
+    "First requestHTTP200/48352bodybytes rejected by parser; no raw body archived for this original run.",
+    "Do not infer cause or zero cost from protocol error; reservation remains unknown.",
+    "No frozenV3/task quality result."
+  ]
+}

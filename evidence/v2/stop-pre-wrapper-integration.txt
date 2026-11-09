@@ -1,0 +1,150 @@
+test_active_automatic_summary_accepts_feedback_without_treating_it_as_maintenance (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_actual_cost_exceeded_by_summary_blocks_regular_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_advancing_source_is_bounded_and_allowance_resets_per_turn (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_default_disabled_and_old_snapshot_has_no_extra_model_call (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_known_invalid_summary_falls_back_with_known_usage (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_large_archive_small_active_view_does_not_trigger (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_limits_validate_opt_in_threshold_and_attempt_cap (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_no_new_content_and_oversized_summary_input_use_valid_old_view (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_no_reduction_is_not_retried_for_same_prefix (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_old_view_overflow_is_rescued_or_fails_without_resend (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_one_attempt_cap_allows_tools_and_then_regular_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_opt_in_summary_precedes_decision_with_exact_archive_and_usage (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_queued_batch_and_recovering_partial_patch_finish_before_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_run_never_acquires_recursive_store_lock (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_shared_budget_refusal_does_not_fallback_to_paid_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_step_and_deadline_are_rechecked_after_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_storage_failure_keeps_started_attempt_and_resume_never_resends (tests.dev.test_auto_context.AutoContextTests) ... FAIL
+test_summary_preflight_cost_refusal_allows_cheaper_valid_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_threshold_measures_active_view_and_triggers_at_boundary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unknown_summary_and_unknown_usage_pause_without_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unknown_usage_after_deadline_still_requires_confirmation (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unpaired_history_and_user_only_overflow_never_request_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_adversarial_summary_has_no_host_authority_or_tool_effect (tests.dev.test_compaction.CompactionTests) ... ok
+test_bounds_and_corrupt_prefix_reject_without_billable_call (tests.dev.test_compaction.CompactionTests) ... ok
+test_explicit_summary_preserves_archive_requirements_evidence_and_restart (tests.dev.test_compaction.CompactionTests) ... ok
+test_internal_summary_mutes_and_restores_wrapped_stream_callback (tests.dev.test_compaction.CompactionTests) ... ok
+test_invalid_public_role_is_sanitized_before_model (tests.dev.test_compaction.CompactionTests) ... ok
+test_invalid_summary_never_executes_and_keeps_prior_record (tests.dev.test_compaction.CompactionTests) ... ok
+test_known_model_failure_preserves_view_but_charges_unknown_usage (tests.dev.test_compaction.CompactionTests) ... ok
+test_malformed_completion_cannot_escape_accounting_and_recovery (tests.dev.test_compaction.CompactionTests) ... ok
+test_protocol_views_keep_complete_newest_batch (tests.dev.test_compaction.CompactionTests) ... ok
+test_rejects_pending_unknown_and_unpaired_histories_before_model (tests.dev.test_compaction.CompactionTests) ... ok
+test_store_failure_after_response_leaves_durable_pending_not_summary (tests.dev.test_compaction.CompactionTests) ... ERROR
+test_stream_callback_restored_on_unknown_transport_failure (tests.dev.test_compaction.CompactionTests) ... ok
+test_summary_can_recover_when_old_request_view_exceeds_limit (tests.dev.test_compaction.CompactionTests) ... ok
+test_summary_uses_shared_cost_reservation_and_rejected_usage_is_counted (tests.dev.test_compaction.CompactionTests) ... ok
+test_terminal_maintenance_summary_does_not_reopen_steering_admission (tests.dev.test_compaction.CompactionTests) ... ok
+test_unbounded_or_unknown_source_and_repeated_cursor_make_no_request (tests.dev.test_compaction.CompactionTests) ... ok
+test_unknown_request_is_not_replayed_on_restart (tests.dev.test_compaction.CompactionTests) ... ok
+test_valid_second_summary_advances_without_replaying_archived_native_blocks (tests.dev.test_compaction.CompactionTests) ... ok
+test_changed_later_file_pauses_with_acknowledged_prefix (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_corrupt_cursor_cannot_skip_unapplied_file (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_grammar_caps_and_old_tool_are_independent (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_guards_revalidate_whole_source_vector_before_first_effect (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_insertion_empty_add_and_multiple_ordered_chunks (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_later_context_conflict_prevents_earlier_add (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_move_does_not_remove_source_if_destination_changes (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_move_recovery_reconciles_destination_before_removing_source (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_move_then_delete_source_preserves_destination (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_multifile_patch_has_one_final_feedback_and_real_effects (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_patch_preserves_unterminated_file_and_rejects_crlf (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_patch_result_precedes_following_call_in_same_model_batch (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_paths_aliases_readonly_and_destinations_fail_before_effect (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_readonly_destination_and_symlink_preflight_and_recovery (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_recovery_at_deadline_reconciles_current_then_reports_unstarted_suffix (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_sigkill_after_first_effect_fresh_process_reconciles_without_rewrite (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_small_patch_over_large_file_vector_has_bounded_prepared_transport (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_storage_failure_does_not_publish_cursor_or_replay_acknowledged_prefix (tests.dev.test_patch_text.PatchTextTests) ... FAIL
+test_strict_ambiguous_whitespace_and_eof_conflicts (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_timeout_between_steps_reports_committed_prefix (tests.dev.test_patch_text.PatchTextTests) ... ok
+test_clear_survives_followup_without_changing_authority_or_verified_success (tests.dev.test_plan.PlanTests) ... ok
+test_crash_before_plan_commit_recovers_once_without_external_effect (tests.dev.test_plan.PlanTests) ... ok
+test_invalid_replacements_leave_prior_plan_and_return_repairable_errors (tests.dev.test_plan.PlanTests) ... ok
+test_lost_commit_acknowledgement_retries_same_plan_event_identity (tests.dev.test_plan.PlanTests) ... ERROR
+test_optional_coding_tool_accepts_legacy_snapshot_without_plan (tests.dev.test_plan.PlanTests) ... ok
+test_replacement_persists_with_revision_feedback_and_redacted_events (tests.dev.test_plan.PlanTests) ... ok
+test_resume_after_committed_update_does_not_repeat_plan (tests.dev.test_plan.PlanTests) ... ok
+test_same_batch_updates_execute_in_order_with_exact_boundary_sizes (tests.dev.test_plan.PlanTests) ... ok
+test_transaction_failure_keeps_plan_and_feedback_uncommitted (tests.dev.test_plan.PlanTests) ... ok
+test_abort_waiting_batch_keeps_tail_unexecuted_and_blocks_followup (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_accepted_queue_and_consumed_ids_survive_exit_before_first_preparation (tests.dev.test_tool_batches.ToolBatchTests) ... FAIL
+test_corrupt_queued_state_rejected_before_model_or_effect (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_deadline_after_first_effect_stops_tail_without_fabricated_feedback (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_dependent_batch_prepares_after_prior_results_and_preserves_native_message (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_each_command_waits_for_its_own_approval_and_denial_advances_tail (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_eight_calls_allowed_ninth_rejects_whole_response (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_error_limit_retains_unexecuted_queue_and_rejects_user_followup (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_expired_recovery_confirms_first_effect_without_launching_tail (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_feedback_storage_failure_reconciles_first_before_executing_tail (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_invalid_or_repeated_batch_ids_reject_all_before_any_effect (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_legacy_single_pending_snapshot_without_queue_remains_resumable (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_malformed_arguments_produce_one_ordered_error_then_run_remaining_calls (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_model_step_limit_does_not_cut_a_previously_accepted_batch (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_pending_call_cannot_also_appear_in_durable_queue (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_previously_consumed_id_rejects_entire_next_batch (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_sigkill_first_effect_then_fresh_process_recovery_preserves_order (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_uncertain_first_effect_pauses_entire_batch_without_running_tail (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_approval_waits_without_effect_or_extra_model_call_and_survives_restart (tests.dev.test_approvals.ApprovalTests) ... ok
+test_changed_command_after_approval_is_not_executed (tests.dev.test_approvals.ApprovalTests) ... ok
+test_cli_inspection_and_decision_need_no_model_credentials (tests.dev.test_approvals.ApprovalTests) ... ok
+test_crash_after_durable_denial_leaves_runnable_tool_feedback (tests.dev.test_approvals.ApprovalTests) ... ok
+test_identical_decision_replay_is_idempotent_conflict_rejected (tests.dev.test_approvals.ApprovalTests) ... ok
+test_wrong_identity_cannot_approve_and_denial_becomes_tool_feedback (tests.dev.test_approvals.ApprovalTests) ... ok
+
+======================================================================
+ERROR: test_store_failure_after_response_leaves_durable_pending_not_summary (tests.dev.test_compaction.CompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_compaction.py", line 195, in test_store_failure_after_response_leaves_durable_pending_not_summary
+    engine.compact(tid)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 820, in compact
+    return self._compact_locked(state)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 860, in _compact_locked
+    self._save(state, 'compaction_started', {'operation_id': operation_id, 'request_bytes': request_bytes,
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 293, in _save
+    self.store.save(state, kind, metadata, **options)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1158, in _execute_mock_call
+    result = effect(*args, **kwargs)
+TypeError: fail_install() got an unexpected keyword argument 'require_no_stop'
+
+======================================================================
+ERROR: test_lost_commit_acknowledgement_retries_same_plan_event_identity (tests.dev.test_plan.PlanTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_plan.py", line 148, in test_lost_commit_acknowledgement_retries_same_plan_event_identity
+    self.assertEqual(state['current_plan']['revision'], 1)
+KeyError: 'current_plan'
+
+======================================================================
+FAIL: test_storage_failure_keeps_started_attempt_and_resume_never_resends (tests.dev.test_auto_context.AutoContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_auto_context.py", line 201, in test_storage_failure_keeps_started_attempt_and_resume_never_resends
+    engine.run(tid)
+AssertionError: StorageUnavailable not raised
+
+======================================================================
+FAIL: test_storage_failure_does_not_publish_cursor_or_replay_acknowledged_prefix (tests.dev.test_patch_text.PatchTextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_patch_text.py", line 260, in test_storage_failure_does_not_publish_cursor_or_replay_acknowledged_prefix
+    engine.run(task_id)
+AssertionError: StorageUnavailable not raised
+
+======================================================================
+FAIL: test_accepted_queue_and_consumed_ids_survive_exit_before_first_preparation (tests.dev.test_tool_batches.ToolBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_batches.py", line 268, in test_accepted_queue_and_consumed_ids_survive_exit_before_first_preparation
+    engine.run(task_id)
+AssertionError: SystemExit not raised
+
+----------------------------------------------------------------------
+Ran 93 tests in 16.961s
+
+FAILED (failures=3, errors=2)

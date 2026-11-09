@@ -1,0 +1,25 @@
+test_after_commit_save_failure_retries_notice_not_read_or_model (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_continuation_dedupes_and_fork_rechecks_shared_disk_without_mutating_source (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_external_same_size_mtime_change_is_not_a_new_read_and_precedes_sampling (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_opt_in_record_does_not_fabricate_default_or_local_profile_reads (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_read_file_sha_is_from_exact_returned_bytes_without_second_read (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_semantic_prefix_and_copied_archive_stay_immutable_after_new_observation (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ERROR
+test_true_reread_updates_baseline_and_latest_view_supersedes_notice_history (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ok
+test_interactive_default_call_shape_and_saved_task_option_are_compatible (tests.dev.test_file_context_cli.FileContextCLITests) ... ok
+test_new_chat_opt_in_and_existing_chat_flag_rejection (tests.dev.test_file_context_cli.FileContextCLITests) ... ok
+test_run_opt_in_persists_actual_read_and_resume_needs_no_new_flag (tests.dev.test_file_context_cli.FileContextCLITests) ... ok
+
+======================================================================
+ERROR: test_semantic_prefix_and_copied_archive_stay_immutable_after_new_observation (tests.dev.test_file_context_integration.FileContextIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_integration.py", line 138, in test_semantic_prefix_and_copied_archive_stay_immutable_after_new_observation
+    record = completed_record(prefix, end, final('Synthetic summary only'), model.identity, None)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/compaction.py", line 130, in completed_record
+    raise ValueError('compaction_invalid_summary') from None
+ValueError: compaction_invalid_summary
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.424s
+
+FAILED (errors=1)

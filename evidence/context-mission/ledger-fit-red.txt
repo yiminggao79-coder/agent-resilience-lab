@@ -1,0 +1,16 @@
+test_derived_ledger_yields_space_to_semantic_notes_without_losing_archive (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ERROR
+
+======================================================================
+ERROR: test_derived_ledger_yields_space_to_semantic_notes_without_losing_archive (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 207, in test_derived_ledger_yields_space_to_semantic_notes_without_losing_archive
+    view,stats=build_context(messages,tools,24000,semantic=record)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/context.py", line 212, in build_context
+    raise error
+agent_lab.context.ContextLimit: context_limit
+
+----------------------------------------------------------------------
+Ran 1 test in 0.042s
+
+FAILED (errors=1)

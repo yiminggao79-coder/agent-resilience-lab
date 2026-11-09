@@ -1,0 +1,14 @@
+test_profile_construction_does_not_repeat_command_executable_hash (tests.dev.test_confined_backend.ConfinedBackendTests) ... FAIL
+
+======================================================================
+FAIL: test_profile_construction_does_not_repeat_command_executable_hash (tests.dev.test_confined_backend.ConfinedBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend.py", line 127, in test_profile_construction_does_not_repeat_command_executable_hash
+    self.assertEqual(hashed.call_count,0,'profile construction rehash consumes the command execution deadline')
+AssertionError: 1 != 0 : profile construction rehash consumes the command execution deadline
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+FAILED (failures=1)

@@ -1,0 +1,14 @@
+test_venv_launcher_symlink_does_not_prevent_sandboxed_tests (tests.dev.test_venv_native.VenvNativeTests) ... ok
+test_denies_outside_read_write_network_and_control_mutation (tests.dev.test_sandbox.SandboxTests) ... ok
+test_invalid_utf8_expansion_marks_output_truncated (tests.dev.test_sandbox.SandboxTests) ... ok
+test_output_collection_is_bounded_for_both_streams (tests.dev.test_sandbox.SandboxTests) ... ok
+test_project_cannot_fork_or_spawn_to_escape_timeout (tests.dev.test_sandbox.SandboxTests) ... ok
+test_real_unittest_runs_and_reports_failure_then_success (tests.dev.test_sandbox.SandboxTests) ... ok
+test_supervisor_retains_lease_after_worker_is_killed (tests.dev.test_sandbox.SandboxTests) ... ok
+test_timeout_kills_descendant_before_late_write (tests.dev.test_sandbox.SandboxTests) ... ok
+test_unavailable_backend_never_executes_project (tests.dev.test_sandbox.SandboxTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.599s
+
+OK

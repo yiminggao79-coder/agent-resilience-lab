@@ -1,0 +1,33 @@
+test_control_symlinks_are_never_followed (tests.dev.test_process_guard.ProcessGuardTests) ... ERROR
+test_executing_worker_blocks_rotation_and_another_worker (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_generation_persists_privately_and_replaces_atomically (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_late_worker_cannot_execute_after_generation_rotation (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_lease_is_released_after_exception_and_worker_sigkill (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_none_is_allowed_only_while_both_generations_are_absent (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_sigkill_of_parent_does_not_release_child_owned_lease (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_special_and_hardlinked_control_files_fail_closed (tests.dev.test_process_guard.ProcessGuardTests) ... ERROR
+
+======================================================================
+ERROR: test_control_symlinks_are_never_followed (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 203, in test_control_symlinks_are_never_followed
+    control.symlink_to(outside)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1403, in symlink_to
+    self._accessor.symlink(target, self, target_is_directory)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py", line 456, in symlink
+    return os.symlink(a, b)
+FileExistsError: [Errno 17] File exists: '/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpkogai97j/outside' -> '/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpkogai97j/work/.agent-lab.execution.lock'
+
+======================================================================
+ERROR: test_special_and_hardlinked_control_files_fail_closed (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 223, in test_special_and_hardlinked_control_files_fail_closed
+    os.mkfifo(control)
+FileExistsError: [Errno 17] File exists
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.325s
+
+FAILED (errors=2)

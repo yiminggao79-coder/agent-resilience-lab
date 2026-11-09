@@ -1,0 +1,76 @@
+test_callback_failure_is_fixed_unknown_after_stdin_close_and_cleanup (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_closed_native_stdout_stderr_does_not_hide_live_process (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_native_project_receives_neither_owner_environment_nor_extra_fds (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_nested_thread_scopes_and_file_tools_do_not_consume_native_cancel (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_normal_completion_and_forged_native_stdout_remain_normal_results (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_owner_eof_between_probe_and_project_launch_is_confirmed_without_launch (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_real_command_cancel_waits_for_cleanup_and_blocks_late_write (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_tests_are_cancellable_with_mutating_effects_left_visible (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_trusted_cancel_receipt_requires_boolean_true_not_integer_alias (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_mutating_native_cancel_retains_unknown_effect_and_pending_after_local_cleanup (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_readonly_cancel_closes_result_and_unstarted_tail_without_fake_success (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_registry_style_base_wrapper_is_not_bypassed (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_unconfirmed_cancel_never_unlocks_even_readonly_execution (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_cli_stop_cancels_real_unittest_and_keeps_effects_unknown (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_tests", "runner_pid": 61868, "native_pid": 61873, "supervisor_pid": 61871, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_cli_stop_waits_for_command_cleanup_but_retains_unknown_effect (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_command", "runner_pid": 61879, "native_pid": 61884, "supervisor_pid": 61882, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_runner_sigkill_owner_eof_cleans_native_before_new_runner_recovery (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_owner_death_process_contract", "model_kind": "offline_protocol_double", "killed_runner_pid": 61890, "kill_return_code": -9, "resumed_pid": 61902, "native_pid": 61895, "supervisor_pid": 61893, "native_and_supervisor_nonrunning": true, "new_runner_fence_acquired": true, "pending_unknown_preserved": true, "new_effects": false}
+ok
+test_denies_outside_read_write_network_and_control_mutation (tests.dev.test_sandbox.SandboxTests) ... ok
+test_invalid_utf8_expansion_marks_output_truncated (tests.dev.test_sandbox.SandboxTests) ... ok
+test_output_collection_is_bounded_for_both_streams (tests.dev.test_sandbox.SandboxTests) ... ok
+test_project_cannot_fork_or_spawn_to_escape_timeout (tests.dev.test_sandbox.SandboxTests) ... ok
+test_real_unittest_runs_and_reports_failure_then_success (tests.dev.test_sandbox.SandboxTests) ... ok
+test_supervisor_retains_lease_after_worker_is_killed (tests.dev.test_sandbox.SandboxTests) ... ok
+test_timeout_kills_descendant_before_late_write (tests.dev.test_sandbox.SandboxTests) ... ok
+test_unavailable_backend_never_executes_project (tests.dev.test_sandbox.SandboxTests) ... ok
+test_environment_policy_ignores_ambient_credentials_and_cannot_be_changed (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_exact_argv_and_workspace_bind_a_stable_json_intent (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_missing_backend_never_executes_project_code (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_rejects_invalid_commands_paths_and_ambient_executables (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_tampering_and_replaced_workspace_or_cwd_are_rejected (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_visible_hard_link_alias_cannot_bypass_private_file_scope (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_private_files_network_fork_and_directory_relocation_are_denied (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_real_command_can_import_project_and_report_exit (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_timeout_stops_effects_and_output_is_bounded (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_trusted_supervisor_keeps_lease_after_worker_death (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_agent_approval_precedes_real_call_and_feedback_reaches_model (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_ambient_api_keys_are_not_forwarded_and_close_quiesces_local_group (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_cached_catalog_never_accumulates_engine_history_tools (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_cli_error_and_chat_exit_close_actual_stdio_clients (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_configuration_or_catalog_change_rejects_resume_and_adding_removing_registry (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_intent_binding_preserves_json_boolean_types (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_lost_acknowledgement_recovers_without_reissuing_external_call (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_partial_startup_failure_closes_all_started_processes (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_strict_intent_and_approval_digest_reject_tampering (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_tool_error_is_private_structured_feedback_without_unknown_replay (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_trusted_config_rejects_workspace_links_unknown_keys_and_environment (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_unknown_call_enters_confirmation_and_is_never_replayed_on_resume (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_workspace_executable_alias_cannot_become_trusted_host_command (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_actual_unknown_error_reason_and_flags_survive_stop_observation (tests.dev.test_stop.StopTests) ... ok
+test_current_tool_finishes_and_next_batch_tool_never_starts (tests.dev.test_stop.StopTests) ... ok
+test_explicit_ready_compaction_observes_stop_after_preserving_known_summary (tests.dev.test_stop.StopTests) ... ok
+test_idle_approval_can_be_stopped_without_model_or_command_and_new_turn_is_allowed (tests.dev.test_stop.StopTests) ... ok
+test_partial_patch_stops_after_confirmed_prefix_and_closes_one_result (tests.dev.test_stop.StopTests) ... ok
+test_stop_before_model_or_tool_claim_reloads_unclaimed_snapshot (tests.dev.test_stop.StopTests) ... ok
+test_stop_before_sampling_never_calls_model_and_observation_is_idempotent (tests.dev.test_stop.StopTests) ... ok
+test_stop_during_claimed_model_preserves_known_usage_and_cancels_unstarted_tools (tests.dev.test_stop.StopTests) ... ok
+test_stop_winning_model_final_commit_preserves_answer_and_usage_without_extra_sampling (tests.dev.test_stop.StopTests) ... ok
+test_stop_winning_recovery_claim_cannot_trigger_missing_file_effect (tests.dev.test_stop.StopTests) ... ok
+test_stopped_turn_cannot_start_explicit_compaction_or_discard_pending_user_feedback (tests.dev.test_stop.StopTests) ... ok
+test_unconfirmed_model_stop_keeps_usage_unknown_without_request (tests.dev.test_stop.StopTests) ... ok
+test_unconfirmed_running_tool_stop_never_calls_recover_or_adds_effect (tests.dev.test_stop.StopTests) ... ok
+test_cancel_without_persisted_stop_is_not_clean (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_cancelled_new_summary_preserves_previously_installed_record (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_clean_cancel_keeps_budget_reservation_unknown_across_reopen (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_delegate_wrapper_is_still_called (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_keyboard_interrupt_marks_model_usage_unknown (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_prior_unresolved_outcome_is_never_cleared (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_scoped_stop_discards_incomplete_response_but_retains_unknown_usage (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_summary_cancel_keeps_prior_context_and_restores_presentation (tests.dev.test_model_stop.ModelStopTests) ... ok
+
+----------------------------------------------------------------------
+Ran 68 tests in 16.940s
+
+OK

@@ -1,0 +1,14 @@
+test_rollover_watermark_preserves_working_space_instead_of_half_fixed_overhead (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+
+======================================================================
+FAIL: test_rollover_watermark_preserves_working_space_instead_of_half_fixed_overhead (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 203, in test_rollover_watermark_preserves_working_space_instead_of_half_fixed_overhead
+    self.assertEqual(second['limits']['auto_compact_bytes'],stats['retained_bytes'])
+AssertionError: 9946 != 19892
+
+----------------------------------------------------------------------
+Ran 1 test in 0.807s
+
+FAILED (failures=1)

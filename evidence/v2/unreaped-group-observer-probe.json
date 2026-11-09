@@ -1,0 +1,74 @@
+{
+  "kind": "owned_nofork_unreaped_group_observation",
+  "bsdinfo_abi_bytes": 136,
+  "observer_source_sha256": "3acb92348e7fbe65f64dab782f0625de80e42ff29b70e6427352082970e00751",
+  "running": {
+    "bsd": {
+      "returned_bytes": 136,
+      "errno": 0,
+      "status": 2,
+      "owned_pid_matches": true,
+      "group_matches_owned_leader": true
+    },
+    "group": {
+      "reported_count": 1,
+      "errno": 0,
+      "buffer_full": false,
+      "nonzero_slots": 1,
+      "contains_owned_leader": true,
+      "only_owned_leader": true
+    }
+  },
+  "exit_event_observed": true,
+  "unreaped": {
+    "popen_returncode_still_unset": true,
+    "bsd_without_zombies": {
+      "returned_bytes": 0,
+      "errno": 3,
+      "status": null,
+      "owned_pid_matches": null,
+      "group_matches_owned_leader": null
+    },
+    "bsd_with_zombies": {
+      "returned_bytes": 136,
+      "errno": 0,
+      "status": 5,
+      "owned_pid_matches": true,
+      "group_matches_owned_leader": true
+    },
+    "group": {
+      "reported_count": 1,
+      "errno": 0,
+      "buffer_full": false,
+      "nonzero_slots": 1,
+      "contains_owned_leader": true,
+      "only_owned_leader": true
+    },
+    "observer_singleton_zombie": true
+  },
+  "reaped": {
+    "exit_code": 7,
+    "bsd_with_zombies": {
+      "returned_bytes": 0,
+      "errno": 3,
+      "status": null,
+      "owned_pid_matches": null,
+      "group_matches_owned_leader": null
+    },
+    "group": {
+      "reported_count": 0,
+      "errno": 0,
+      "buffer_full": false,
+      "nonzero_slots": 0,
+      "contains_owned_leader": false,
+      "only_owned_leader": false
+    },
+    "observer_rejects_released_target": true
+  },
+  "production_policy_changed": false,
+  "fork_enabled": false,
+  "quiescence_proven": false,
+  "provider_requests": 0,
+  "credential_file_read": false,
+  "real_budget_opened": false
+}

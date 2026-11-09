@@ -1,0 +1,22 @@
+{
+  "kind": "independent_run_observation_status_not_rescore",
+  "original_report_completion_fraction": 0.0,
+  "completed_task_acceptances": 0,
+  "started_with_actual_model_responses": 1,
+  "blocked_before_model": 1,
+  "model_task_success_rate": null,
+  "unmeasured_reason": "First task lost API response/usage and paused; second had no remaining authorization reservation capacity.",
+  "implementation_unchanged": true,
+  "suite_still_frozen": true,
+  "ledger_attempts": 88,
+  "valid_usage_responses": 82,
+  "unresolved_requests": 6,
+  "known_input_tokens": 451035,
+  "known_output_tokens": 20498,
+  "known_usage_estimate_cny": 1.066054,
+  "committed_upper_cny": 29.410374,
+  "remaining_upper_capacity_cny": 0.5896259999999991,
+  "new_paid_requests_allowed": false,
+  "missing_usage_not_estimated_as_zero": true,
+  "unknown_reservations_released": false
+}

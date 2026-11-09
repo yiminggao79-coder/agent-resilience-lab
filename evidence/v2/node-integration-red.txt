@@ -1,0 +1,73 @@
+test_approval_of_python_also_requires_matching_node_grant_and_abort_needs_none (tests.dev.test_node_integration.NodeIntegrationTests) ... ERROR
+test_checkpoint_drop_add_change_and_inplace_replacement_reject_before_model (tests.dev.test_node_integration.NodeIntegrationTests) ... ERROR
+test_cli_run_resume_and_fork_forward_explicit_host_path (tests.dev.test_node_integration.NodeIntegrationTests) ... FAIL
+test_fork_requires_runtime_and_preserves_policy_without_running (tests.dev.test_node_integration.NodeIntegrationTests) ... ERROR
+test_worker_prepare_binds_host_runtime_even_for_python_and_default_is_legacy (tests.dev.test_node_integration.NodeIntegrationTests) ... ERROR
+test_worker_rejects_tampered_runtime_envelope_before_preparing_tool (tests.dev.test_node_integration.NodeIntegrationTests) ... ERROR
+
+======================================================================
+ERROR: test_approval_of_python_also_requires_matching_node_grant_and_abort_needs_none (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 76, in test_approval_of_python_also_requires_matching_node_grant_and_abort_needs_none
+    engine = Engine(store, self.tools(), model); tid = engine.create('Run a command'); engine.run(tid)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 29, in tools
+    return CodingTools(self.root, node_executable=str(self.node))
+TypeError: __init__() got an unexpected keyword argument 'node_executable'
+
+======================================================================
+ERROR: test_checkpoint_drop_add_change_and_inplace_replacement_reject_before_model (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 54, in test_checkpoint_drop_add_change_and_inplace_replacement_reject_before_model
+    tools = self.tools(); model = ScriptedModel([final()]); engine = Engine(store, tools, model)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 29, in tools
+    return CodingTools(self.root, node_executable=str(self.node))
+TypeError: __init__() got an unexpected keyword argument 'node_executable'
+
+======================================================================
+ERROR: test_fork_requires_runtime_and_preserves_policy_without_running (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 88, in test_fork_requires_runtime_and_preserves_policy_without_running
+    engine = Engine(store, self.tools(), ScriptedModel([final()])); tid = engine.create('First'); engine.run(tid)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 29, in tools
+    return CodingTools(self.root, node_executable=str(self.node))
+TypeError: __init__() got an unexpected keyword argument 'node_executable'
+
+======================================================================
+ERROR: test_worker_prepare_binds_host_runtime_even_for_python_and_default_is_legacy (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 32, in test_worker_prepare_binds_host_runtime_even_for_python_and_default_is_legacy
+    tools = self.tools()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 29, in tools
+    return CodingTools(self.root, node_executable=str(self.node))
+TypeError: __init__() got an unexpected keyword argument 'node_executable'
+
+======================================================================
+ERROR: test_worker_rejects_tampered_runtime_envelope_before_preparing_tool (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 42, in test_worker_rejects_tampered_runtime_envelope_before_preparing_tool
+    tools = self.tools()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 29, in tools
+    return CodingTools(self.root, node_executable=str(self.node))
+TypeError: __init__() got an unexpected keyword argument 'node_executable'
+
+======================================================================
+FAIL: test_cli_run_resume_and_fork_forward_explicit_host_path (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 107, in test_cli_run_resume_and_fork_forward_explicit_host_path
+    self.assertEqual(code, 0, err)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: unrecognized arguments: --node-executable /private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmp3p0f588l/host-node
+
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.067s
+
+FAILED (failures=1, errors=5)

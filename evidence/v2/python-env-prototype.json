@@ -1,0 +1,14 @@
+[
+  {
+    "kind": "baseline",
+    "exit_code": 71,
+    "stdout": "",
+    "stderr": "sandbox-exec: execvp() of '/private/tmp/agentlab-python-deps-tipo1p2t/env/bin/python' failed: Operation not permitted\n"
+  },
+  {
+    "kind": "explicit_venv_resources",
+    "exit_code": 0,
+    "stdout": "...                                                                      [100%]\n3 passed in 0.03s\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "base_commit": "575ff20",
+  "default_scope_enabled": false,
+  "direct66_source_provenance": "Transcribed from actual input; original report had no source hash",
+  "fixture_compilation": "Host clang, not Agent compilation",
+  "frozen_v3_exposed": false,
+  "kind": "host_opt_in_workspace_execution",
+  "new_provider_requests": 0,
+  "original_ledger_used": false,
+  "probe_source_reconstruction_matches_original_sha256": true,
+  "real_model_quality": null,
+  "records": {
+    "workspace-exec-default-alias-red": {
+      "elapsed_seconds": 0.415,
+      "passed": false,
+      "sha256": "c57cef36569569c3decc04592a0835d89e5b89b89f41831327a8800ea8c7e688",
+      "skips": 0,
+      "tests": 1
+    },
+    "workspace-exec-final-related": {
+      "elapsed_seconds": 8.459,
+      "passed": true,
+      "sha256": "2187ceb690e57a4121e3db3af04eb5bd2641680d5facc70193e8669688cf5b7d",
+      "skips": 0,
+      "tests": 14
+    },
+    "workspace-exec-native-red": {
+      "elapsed_seconds": 2.336,
+      "passed": false,
+      "sha256": "21ea30b7bfcac1554a72dbc9ca1a0b5e71586cd5055e2cd2d6bd607c82e66d25",
+      "skips": 0,
+      "tests": 5
+    },
+    "workspace-exec-review-red": {
+      "elapsed_seconds": 0.571,
+      "passed": false,
+      "sha256": "081a5bce72037ffd750232462ee28f9ec2369e2fab2688e3fb0f757c9dd9c7ec",
+      "skips": 0,
+      "tests": 1
+    },
+    "workspace-exec-suite": {
+      "elapsed_seconds": 265.687,
+      "passed": true,
+      "sha256": "61a3997e74aa097791274683a17cdbbeadfbf885c204c07e5f463b5148c9ad98",
+      "skips": 0,
+      "tests": 985
+    }
+  },
+  "source_sha256": {
+    "agent_lab/__main__.py": "10f3090ec7a95932d6e2d987d5c41c22ef922a7441dd0e08dc077f860a4a3631",
+    "agent_lab/coding_tools.py": "bd42f6d920b13300f15d2e3c19c0649609681bfdcb3dae2362cedf97dfc5ff04",
+    "agent_lab/command_runtime.py": "0b1362dc64f2f62dfb450db2052bfadce7d0f41d1f73f8ee001b34f159bc0abe",
+    "agent_lab/commands.py": "231f3bbeb79d9ab7a629425fa5a3b304fd6500eaa9c52de6e648a91a1450351b",
+    "agent_lab/confined_backend.py": "fc4a80a5c53563bcb432ae4b0a14437e368317ec75e14f8dfe231fefba87b26d",
+    "agent_lab/confined_collector.py": "454315666261ce8f5a2273b9c05dec48ff483a1f46bd432418dac03a9e27d7b1",
+    "agent_lab/engine.py": "e680164f330be2c7148b62d056e5b1d1e2b1bd5d0e99d1aef9c966dd38c48240",
+    "agent_lab/process_group.py": "3acb92348e7fbe65f64dab782f0625de80e42ff29b70e6427352082970e00751",
+    "agent_lab/registry.py": "c98ee46d37fea3cca03dbb9ec5918cb2410ed0122167a5ca30bc174035930b38",
+    "agent_lab/sandbox.py": "f13a76f104156edb77b2a20622cac6c414bcf8bf171f47bb42c906bf52a2cbb8",
+    "agent_lab/tools.py": "6585371ac774e37b93bd708739f5ff3e6a1d63297a4a1815e09f3a89ee3e7367",
+    "agent_lab/workspace_exec.py": "f263d17cb94d7484082c3b8a5b6539218514a8070547bd2254cb3c23f138608d"
+  }
+}

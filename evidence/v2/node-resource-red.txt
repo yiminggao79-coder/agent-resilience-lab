@@ -1,0 +1,14 @@
+test_node_only_page_and_kernel_reads_are_explicit_and_digest_bound (tests.dev.test_node_integration.NodeIntegrationTests) ... ERROR
+
+======================================================================
+ERROR: test_node_only_page_and_kernel_reads_are_explicit_and_digest_bound (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 45, in test_node_only_page_and_kernel_reads_are_explicit_and_digest_bound
+    self.assertEqual(tools.command_runtime_policy['sysctl_read'], ['hw.pagesize_compat', 'kern.osrelease'])
+KeyError: 'sysctl_read'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (errors=1)

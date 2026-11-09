@@ -1,0 +1,133 @@
+{
+  "boundaries": {
+    "outside": true,
+    "outside_write_denied": true,
+    "private_bytes_unchanged": true,
+    "symlink": true
+  },
+  "catalog_names": [
+    "read_file",
+    "read_text_file",
+    "read_media_file",
+    "read_multiple_files",
+    "write_file",
+    "append_file",
+    "edit_file",
+    "create_directory",
+    "list_directory",
+    "list_directory_with_sizes",
+    "directory_tree",
+    "move_file",
+    "copy_file",
+    "search_files",
+    "get_file_info",
+    "list_allowed_directories"
+  ],
+  "cost_estimate_cny": null,
+  "elapsed_seconds": 2.517,
+  "engine": {
+    "final_source_sha256": "2921fc2c922adc90199e383c9b877d1c5a06f75ea749455a602514af3331b89d",
+    "fresh_native_verification_exit": 0,
+    "host_readonly_policy_enforced_for_mcp": false,
+    "mcp_exact_approvals": 3,
+    "mcp_tools_used": [
+      "list_directory",
+      "read_text_file",
+      "edit_file"
+    ],
+    "model_calls": 6,
+    "native_proof": "all_native_joined",
+    "native_test_exit_codes": [
+      1,
+      0
+    ],
+    "original_test_sha256": "457d3584ac5f4536e8249cb134de84008a2b990487a8ee56e6776f9fe1e12168",
+    "phase": "completed",
+    "test_bytes_unchanged_observed": true
+  },
+  "entry_sha256": "44715d2c53dfd9005a03ae4c46d8ccd6632c39af138c99de71a496d119b93352",
+  "experiment": "official_filesystem_stdio_interoperability",
+  "external_server_is_command_sandboxed": false,
+  "initialize": {
+    "capabilities": {
+      "resources": {
+        "listChanged": true
+      },
+      "tools": {
+        "listChanged": true
+      }
+    },
+    "protocolVersion": "2025-11-25",
+    "serverInfo": {
+      "name": "secure-filesystem-server",
+      "version": "2.2.0"
+    }
+  },
+  "model_kind": "offline_scripted_protocol_double",
+  "package_lock_sha256": "bb0df3736a46c6328f744b2dc842f0cf2733e4bdeb3aa8464f196a3cd954de35",
+  "packages": [
+    {
+      "license_metadata": "BlueOak-1.0.0",
+      "package": "@isaacs/nonrecursive-glob-match",
+      "version": "1.1.0"
+    },
+    {
+      "license_metadata": "Apache-2.0",
+      "package": "@modelcontextprotocol/core",
+      "version": "2.4.0"
+    },
+    {
+      "license_metadata": "Apache-2.0",
+      "package": "@modelcontextprotocol/server",
+      "version": "2.4.0"
+    },
+    {
+      "license_metadata": "SEE LICENSE IN LICENSE",
+      "package": "@modelcontextprotocol/server-filesystem",
+      "version": "2.2.0"
+    },
+    {
+      "license_metadata": "MIT",
+      "package": "balanced-match",
+      "version": "4.0.4"
+    },
+    {
+      "license_metadata": "MIT",
+      "package": "brace-expansion",
+      "version": "5.0.12"
+    },
+    {
+      "license_metadata": "BSD-3-Clause",
+      "package": "diff",
+      "version": "8.0.4"
+    },
+    {
+      "license_metadata": "BlueOak-1.0.0",
+      "package": "minimatch",
+      "version": "11.0.5"
+    },
+    {
+      "license_metadata": "MIT",
+      "package": "zod",
+      "version": "4.6.7"
+    }
+  ],
+  "passed": true,
+  "provider_requests": 0,
+  "readonly_catalog_names": [
+    "directory_tree",
+    "get_file_info",
+    "list_allowed_directories",
+    "list_directory",
+    "list_directory_with_sizes",
+    "read_file",
+    "read_media_file",
+    "read_multiple_files",
+    "read_text_file",
+    "search_files"
+  ],
+  "real_llm_task_success_rate": null,
+  "real_tokens": null,
+  "server_package": "@modelcontextprotocol/server-filesystem",
+  "server_version": "2.2.0"
+}

@@ -1,0 +1,34 @@
+test_backlog_pages_have_no_duplicates_and_page_cap_bounds_continuous_events (tests.dev.test_event_follow.EventFollowTests) ... ok
+test_database_source_is_implicitly_pinned_after_first_page (tests.dev.test_event_follow.EventFollowTests) ... ok
+test_empty_observation_is_emitted_once_then_live_commit_is_visible (tests.dev.test_event_follow.EventFollowTests) ... ok
+test_empty_pages_do_not_imply_terminal_or_repeat_until_deadline (tests.dev.test_event_follow.EventFollowTests) ... ok
+test_follow_preserves_caller_owned_transaction (tests.dev.test_event_follow.EventFollowTests) ... ok
+test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) ... ok
+test_default_single_page_and_explicit_follow_format_remain_distinct (tests.dev.test_event_follow_cli.EventFollowCLITests) ... ok
+test_invalid_options_do_not_create_missing_database (tests.dev.test_event_follow_cli.EventFollowCLITests) ... ok
+test_keyboard_interrupt_closes_readonly_store_without_stopping_task (tests.dev.test_event_follow_cli.EventFollowCLITests) ... ok
+test_second_process_emits_before_exit_and_observes_a_subsequent_commit (tests.dev.test_event_follow_cli.EventFollowCLITests) ... ok
+test_active_caller_transaction_is_not_committed_or_rolled_back (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_exhausted_page_can_be_followed_by_newly_committed_rows (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_interleaved_global_seek_pages_do_not_lose_or_repeat_task_events (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_invalid_arguments_fingerprint_binding_and_stale_file_are_fixed (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_invalid_duplicate_nan_deep_and_oversize_metadata_never_escape (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_invalid_known_fields_unknown_fields_and_null_values_are_counted (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_metadata_is_nested_whitelisted_and_cannot_override_row_identity (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_raw_time_and_kind_are_sql_sanitized_and_bad_metadata_does_not_override_them (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_readonly_bytes_mode_schema_unchanged_and_storage_fault_fixed (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_sql_projection_bounds_python_memory_and_never_materializes_task_history (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_wal_page_is_one_snapshot_when_writer_appends_after_task_existence_read (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_cli_is_readonly_does_not_load_history_or_construct_tools_model (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_seek_pages_expected_database_and_live_append_after_exhaustion (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_signed_native_signal_exit_status_is_not_filtered_as_a_counter (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_store_checked_identity_matches_open_and_rejects_replaced_path (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+test_cli_sql_authorizer_forbids_history_and_fingerprint_rejects_other_file (tests.dev.test_event_reader_review.EventReaderReviewTests) ... ok
+test_committed_live_pages_and_rejected_readonly_snapshot_stay_separate (tests.dev.test_event_reader_review.EventReaderReviewTests) ... ok
+test_exact_utf8_byte_cap_and_reserved_values_never_override_row (tests.dev.test_event_reader_review.EventReaderReviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 1.610s
+
+OK

@@ -1,0 +1,14 @@
+test_scoped_stop_discards_incomplete_response_but_retains_unknown_usage (tests.dev.test_model_stop.ModelStopTests) ... FAIL
+
+======================================================================
+FAIL: test_scoped_stop_discards_incomplete_response_but_retains_unknown_usage (tests.dev.test_model_stop.ModelStopTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model_stop.py", line 77, in test_scoped_stop_discards_incomplete_response_but_retains_unknown_usage
+    self.assertFalse(any('_runtime_control' in m for m in wire['messages']))
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 1 test in 0.032s
+
+FAILED (failures=1)

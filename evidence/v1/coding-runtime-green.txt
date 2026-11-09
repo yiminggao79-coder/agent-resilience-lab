@@ -1,0 +1,8 @@
+test_cli_exposes_protocol_profile_and_structured_events (tests.dev.test_coding_runtime.CodingRuntimeTests) ... ok
+test_coding_worker_routes_search_patch_and_instructions (tests.dev.test_coding_runtime.CodingRuntimeTests) ... ok
+test_large_repeated_read_continues_with_bounded_context (tests.dev.test_coding_runtime.CodingRuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.238s
+
+OK

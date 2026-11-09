@@ -1,0 +1,37 @@
+test_approval_of_python_also_requires_matching_node_grant_and_abort_needs_none (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_checkpoint_drop_add_change_and_inplace_replacement_reject_before_model (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_cli_run_resume_and_fork_forward_explicit_host_path (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_continuation_and_compaction_reject_missing_runtime_before_sampling (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_enabled_schema_discloses_node_without_changing_default_schema_or_paths (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_fork_requires_runtime_and_preserves_policy_without_running (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_node_only_os_reads_are_explicit_and_digest_bound (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_runtime_admission_failure_confirms_durable_job_before_any_native_launch (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_worker_prepare_binds_host_runtime_even_for_python_and_default_is_legacy (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_worker_rejects_tampered_runtime_envelope_before_preparing_tool (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_change_during_stream_hash_fails_closed (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_default_authority_and_aliases_are_unchanged_and_never_infer_environment (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_default_selected_binary_also_uses_bounded_descriptor_without_shape_change (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_explicit_alias_and_host_launcher_symlink_bind_canonical_runtime (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_hardlink_alias_into_workspace_is_not_an_admitted_runtime (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_nonregular_nonexecutable_and_oversize_are_rejected_before_open (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_streaming_descriptor_is_stable_bounded_and_has_only_existing_fields (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_whole_optional_grant_binds_python_commands_and_changed_grant_cannot_reuse_approval (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_workspace_paths_and_both_directions_of_launcher_alias_are_rejected (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_agent_approval_precedes_real_call_and_feedback_reaches_model (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_ambient_api_keys_are_not_forwarded_and_close_quiesces_local_group (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_cached_catalog_never_accumulates_engine_history_tools (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_cli_error_and_chat_exit_close_actual_stdio_clients (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_configuration_or_catalog_change_rejects_resume_and_adding_removing_registry (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_intent_binding_preserves_json_boolean_types (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_lost_acknowledgement_recovers_without_reissuing_external_call (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_partial_startup_failure_closes_all_started_processes (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_strict_intent_and_approval_digest_reject_tampering (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_tool_error_is_private_structured_feedback_without_unknown_replay (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_trusted_config_rejects_workspace_links_unknown_keys_and_environment (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_unknown_call_enters_confirmation_and_is_never_replayed_on_resume (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_workspace_executable_alias_cannot_become_trusted_host_command (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 3.729s
+
+OK

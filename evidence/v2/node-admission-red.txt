@@ -1,0 +1,16 @@
+test_runtime_admission_failure_confirms_durable_job_before_any_native_launch (tests.dev.test_node_integration.NodeIntegrationTests) ... ERROR
+
+======================================================================
+ERROR: test_runtime_admission_failure_confirms_durable_job_before_any_native_launch (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 72, in test_runtime_admission_failure_confirms_durable_job_before_any_native_launch
+    native_jobs.require_quiescent(reference)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/native_jobs.py", line 334, in require_quiescent
+    raise JobBlocked()
+agent_lab.native_jobs.JobBlocked: workspace_quarantined
+
+----------------------------------------------------------------------
+Ran 1 test in 0.030s
+
+FAILED (errors=1)

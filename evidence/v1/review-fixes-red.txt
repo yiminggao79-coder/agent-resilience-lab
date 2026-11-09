@@ -1,0 +1,63 @@
+test_assertion_monkeypatch_cannot_change_parent_value_comparison (tests.dev.test_review_v1.ReviewOracleTests) ... FAIL
+test_early_exit_cannot_count_as_successful_observation (tests.dev.test_review_v1.ReviewOracleTests) ... FAIL
+test_live_evaluator_rejects_zero_assertion_candidate_without_vendor_calls (tests.dev.test_review_v1.ReviewOracleTests) ... FAIL
+test_complete_bad_argument_json_returns_feedback_and_preserves_usage (tests.dev.test_review_v1.ReviewProtocolTests) ... ERROR
+
+======================================================================
+ERROR: test_complete_bad_argument_json_returns_feedback_and_preserves_usage (tests.dev.test_review_v1.ReviewProtocolTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 17, in _object_arguments
+    value = json.loads(arguments, parse_constant=lambda _: (_ for _ in ()).throw(ValueError()))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 359, in loads
+    return cls(**kw).decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_review_v1.py", line 20, in test_complete_bad_argument_json_returns_feedback_and_preserves_usage
+    normalized=normalize_response('chat',body)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 189, in normalize_response
+    return _normalize(protocol, body)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 137, in _normalize
+    calls.append(_call(call['id'], call['function']['name'], call['function']['arguments']))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 28, in _call
+    _object_arguments(arguments)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 19, in _object_arguments
+    raise ProtocolError('invalid_tool_arguments')
+agent_lab.protocols.ProtocolError: invalid_tool_arguments
+
+======================================================================
+FAIL: test_assertion_monkeypatch_cannot_change_parent_value_comparison (tests.dev.test_review_v1.ReviewOracleTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_review_v1.py", line 44, in test_assertion_monkeypatch_cannot_change_parent_value_comparison
+    self.assertTrue(hasattr(sandbox,'observe_function'),'independent function observer missing')
+AssertionError: False is not true : independent function observer missing
+
+======================================================================
+FAIL: test_early_exit_cannot_count_as_successful_observation (tests.dev.test_review_v1.ReviewOracleTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_review_v1.py", line 34, in test_early_exit_cannot_count_as_successful_observation
+    self.assertTrue(hasattr(sandbox,'observe_function'),'independent function observer missing')
+AssertionError: False is not true : independent function observer missing
+
+======================================================================
+FAIL: test_live_evaluator_rejects_zero_assertion_candidate_without_vendor_calls (tests.dev.test_review_v1.ReviewOracleTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_review_v1.py", line 70, in test_live_evaluator_rejects_zero_assertion_candidate_without_vendor_calls
+    self.assertEqual(code,1)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.081s
+
+FAILED (failures=3, errors=1)
+{"report": "/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmp_lq4_zs2/report.json", "task_success_rate": 1.0}

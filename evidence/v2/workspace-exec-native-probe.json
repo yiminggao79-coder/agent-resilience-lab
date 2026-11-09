@@ -1,0 +1,26 @@
+{
+  "agent_compilation": false,
+  "binary_sha256": "74714ab882b38efb39836cc7874297a3296bbfc793f7c1811ddd1131efb5e746",
+  "compile_exit_code": 0,
+  "compile_stderr_bytes": 734,
+  "kind": "owned_host_compiled_fixture_probe",
+  "source_sha256": "e45661ece410871c8013ecd2e8a5fa799c2bdcec7df97abd552600f20fb1049a",
+  "variants": {
+    "confined-fork": {
+      "exit_code": 0,
+      "ok": true,
+      "stderr": "",
+      "stderr_truncated": false,
+      "stdout": "fork_errno=0 vfork_errno=0\n",
+      "stdout_truncated": false
+    },
+    "nofork": {
+      "exit_code": 0,
+      "ok": true,
+      "stderr": "",
+      "stderr_truncated": false,
+      "stdout": "fork_errno=1 vfork_errno=1\n",
+      "stdout_truncated": false
+    }
+  }
+}

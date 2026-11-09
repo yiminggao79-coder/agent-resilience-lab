@@ -1,0 +1,66 @@
+test_approval_of_python_also_requires_matching_node_grant_and_abort_needs_none (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_checkpoint_drop_add_change_and_inplace_replacement_reject_before_model (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_cli_run_resume_and_fork_forward_explicit_host_path (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_continuation_and_compaction_reject_missing_runtime_before_sampling (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_fork_requires_runtime_and_preserves_policy_without_running (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_worker_prepare_binds_host_runtime_even_for_python_and_default_is_legacy (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_worker_rejects_tampered_runtime_envelope_before_preparing_tool (tests.dev.test_node_integration.NodeIntegrationTests) ... ok
+test_actual_js_import_write_and_two_file_same_process_test_runner (tests.dev.test_node_native.NodeNativeTests) ... FAIL
+test_cancel_joins_node_before_return_and_preserves_partial_effect (tests.dev.test_node_native.NodeNativeTests) ... FAIL
+test_private_files_child_process_and_network_are_denied_with_clean_env (tests.dev.test_node_native.NodeNativeTests) ... FAIL
+test_timeout_joins_native_before_late_effect_and_output_stays_bounded (tests.dev.test_node_native.NodeNativeTests) ... FAIL
+test_tools_worker_and_trusted_supervisor_execute_node_through_original_channel (tests.dev.test_node_native.NodeNativeTests) ... FAIL
+test_whole_root_readonly_and_external_scratch_survive_node_grant (tests.dev.test_node_native.NodeNativeTests) ... FAIL
+
+======================================================================
+FAIL: test_actual_js_import_write_and_two_file_same_process_test_runner (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 37, in test_actual_js_import_write_and_two_file_same_process_test_runner
+    self.assertEqual(result['exit_code'], 0, result)
+AssertionError: -6 != 0 : {'ok': False, 'exit_code': -6, 'stdout': '', 'stderr': '[low_level_alloc.cc : 437] RAW: Check sum >= a failed: LowLevelAlloc arithmetic overflow\n', 'stdout_truncated': False, 'stderr_truncated': False}
+
+======================================================================
+FAIL: test_cancel_joins_node_before_return_and_preserves_partial_effect (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 105, in test_cancel_joins_node_before_return_and_preserves_partial_effect
+    tools.execute(intent, 8)
+AssertionError: ToolCancelled not raised
+
+======================================================================
+FAIL: test_private_files_child_process_and_network_are_denied_with_clean_env (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 62, in test_private_files_child_process_and_network_are_denied_with_clean_env
+    self.assertEqual(result['exit_code'], 0, result)
+AssertionError: -6 != 0 : {'ok': False, 'exit_code': -6, 'stdout': '', 'stderr': '[low_level_alloc.cc : 437] RAW: Check sum >= a failed: LowLevelAlloc arithmetic overflow\n', 'stdout_truncated': False, 'stderr_truncated': False}
+
+======================================================================
+FAIL: test_timeout_joins_native_before_late_effect_and_output_stays_bounded (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 83, in test_timeout_joins_native_before_late_effect_and_output_stays_bounded
+    self.command(['node', '-e', body], timeout=.7)
+AssertionError: ToolError not raised
+
+======================================================================
+FAIL: test_tools_worker_and_trusted_supervisor_execute_node_through_original_channel (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 97, in test_tools_worker_and_trusted_supervisor_execute_node_through_original_channel
+    self.assertEqual(result['exit_code'], 0, result)
+AssertionError: -6 != 0 : {'ok': False, 'exit_code': -6, 'stdout': '', 'stderr': '[low_level_alloc.cc : 437] RAW: Check sum >= a failed: LowLevelAlloc arithmetic overflow\n', 'stdout_truncated': False, 'stderr_truncated': False}
+
+======================================================================
+FAIL: test_whole_root_readonly_and_external_scratch_survive_node_grant (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 76, in test_whole_root_readonly_and_external_scratch_survive_node_grant
+    self.assertEqual(result['exit_code'], 0, result)
+AssertionError: -6 != 0 : {'ok': False, 'exit_code': -6, 'stdout': '', 'stderr': '[low_level_alloc.cc : 437] RAW: Check sum >= a failed: LowLevelAlloc arithmetic overflow\n', 'stdout_truncated': False, 'stderr_truncated': False}
+
+----------------------------------------------------------------------
+Ran 13 tests in 15.236s
+
+FAILED (failures=6)

@@ -1,0 +1,6 @@
+test_unrepresentable_integer_limits_use_fixed_error_before_any_admission (tests.dev.test_confined_collector_review.ConfinedCollectorReviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+OK

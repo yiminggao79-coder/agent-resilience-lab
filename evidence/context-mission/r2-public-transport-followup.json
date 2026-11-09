@@ -1,0 +1,11 @@
+{
+  "failed_run": "921a32ad806044b1",
+  "source_unchanged": true,
+  "classification": "transport_unknown",
+  "diagnostic": "phase_open,tls_eof",
+  "first_turn_quality_passed": true,
+  "next_turn_observations": null,
+  "unknown_record_preserved": true,
+  "new_attempt_reason": "One fresh public development run under identical frozen runtime after explicit transport failure; not retrying or resolving the old unknown operation. No task, limits or scoring changes. If repeated transport failure, stop repeated requests and analyze environment.",
+  "not_holdout": true
+}

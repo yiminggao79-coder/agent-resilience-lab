@@ -1,0 +1,30 @@
+test_blocked_budget_precedes_key_model_and_holdout_body_access (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+test_default_is_permission_preflight_without_exposure_or_suite_read (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+test_dirty_runtime_precedes_budget_and_key_access (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+test_synthetic_full_stack_cannot_start_second_exposed_attempt (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+test_budget_preflight_is_readonly_and_handles_real_remaining_upper_bound (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_caller_can_prove_no_model_observation_and_skip_judging (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_correct_code_passes_without_prescribed_model_tool_sequence (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_failed_phase_is_observation_not_a_quality_gate_and_missing_stays_null (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_immutable_original_test_is_host_protected_from_model_writes (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_invalid_case_fails_before_model_or_candidate_execution (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_missing_oracle_execution_is_unmeasured_not_a_wrong_answer (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_model_self_claim_without_fix_is_measured_failure (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_oracle_copy_enforces_same_immutable_policy_as_final_tests (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_unknown_effect_never_launches_candidate_observation (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ok
+test_actual_process_death_after_mark_before_provider_still_blocks_later_attempt (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_actual_process_death_before_mark_allows_later_attempt (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_closed_unentered_reentered_and_other_process_gate_are_rejected (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_concurrent_same_case_blocks_but_distinct_scope_is_independent (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_delegate_exception_preserves_possible_marker_without_relabeling_delivery (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_existing_partial_marker_or_changed_successful_marker_never_delegates (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_invalid_types_and_unsafe_private_controls_fail_closed (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_mark_precedes_delegate_is_metadata_only_and_same_active_attempt_repeats (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_marker_replacement_after_durable_mark_is_not_an_active_retry (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_partial_write_or_fsync_failure_poison_same_active_attempt_before_delegate (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+test_wrong_file_types_symlinked_root_and_marker_are_never_followed (tests.dev.test_holdout_gate.HoldoutGateTests) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 3.353s
+
+OK

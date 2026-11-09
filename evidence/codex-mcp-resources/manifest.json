@@ -1,0 +1,112 @@
+{
+  "repository": "openai/codex",
+  "commit": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "retrieval": "GitHub plugin public fetch at pinned commit URL; SHA computed from returned text, not independently compared to tree API",
+  "license": "Apache-2.0; existing Codex notices apply",
+  "files": [
+    {
+      "path": "codex-rs/core/src/tools/handlers/mcp_resource.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/mcp_resource.rs",
+      "body_ranges_read": [
+        [
+          1,
+          473
+        ]
+      ],
+      "upstream_executed": false,
+      "git_blob_sha1_computed_not_independently_compared": "7a3d9223bc49dcfe147d73ad580e3e2e6bb984b0",
+      "artifact": "evidence/codex-mcp-resources/1-mcp_resource-excerpts.json"
+    },
+    {
+      "path": "codex-rs/core/src/tools/handlers/mcp_resource/list_mcp_resources.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/mcp_resource/list_mcp_resources.rs",
+      "body_ranges_read": [
+        [
+          1,
+          108
+        ]
+      ],
+      "upstream_executed": false,
+      "git_blob_sha1_computed_not_independently_compared": "1f3e4fdcd0f863fddb2649806e0de74ccc1f7434",
+      "artifact": "evidence/codex-mcp-resources/2-list_mcp_resources-excerpts.json"
+    },
+    {
+      "path": "codex-rs/core/src/tools/handlers/mcp_resource/list_mcp_resource_templates.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/mcp_resource/list_mcp_resource_templates.rs",
+      "body_ranges_read": [
+        [
+          1,
+          110
+        ]
+      ],
+      "upstream_executed": false,
+      "git_blob_sha1_computed_not_independently_compared": "8a570ad11549b63369fffd9b9526038df2f4ecf0",
+      "artifact": "evidence/codex-mcp-resources/3-list_mcp_resource_templates-excerpts.json"
+    },
+    {
+      "path": "codex-rs/core/src/tools/handlers/mcp_resource/read_mcp_resource.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/mcp_resource/read_mcp_resource.rs",
+      "body_ranges_read": [
+        [
+          1,
+          104
+        ]
+      ],
+      "upstream_executed": false,
+      "git_blob_sha1_computed_not_independently_compared": "67cdb7b67b4cd257d9620e89a41bc0d6ee984078",
+      "artifact": "evidence/codex-mcp-resources/4-read_mcp_resource-excerpts.json"
+    },
+    {
+      "path": "codex-rs/core/src/tools/handlers/mcp_resource_spec.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/mcp_resource_spec.rs",
+      "body_ranges_read": [
+        [
+          1,
+          103
+        ]
+      ],
+      "upstream_executed": false,
+      "git_blob_sha1_computed_not_independently_compared": "86b550fbbdc190505dcaee52164b0eb551572ace",
+      "artifact": "evidence/codex-mcp-resources/5-mcp_resource_spec-excerpts.json"
+    },
+    {
+      "path": "codex-rs/codex-mcp/src/connection_manager/resources.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/codex-mcp/src/connection_manager/resources.rs",
+      "body_ranges_read": [
+        [
+          1,
+          284
+        ]
+      ],
+      "upstream_executed": false,
+      "git_blob_sha1_computed_not_independently_compared": "c0e150dc6f7772a30c8ba439c5faefd573b22d86",
+      "artifact": "evidence/codex-mcp-resources/6-resources-excerpts.json"
+    },
+    {
+      "path": "codex-rs/rmcp-client/src/rmcp_client.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/rmcp-client/src/rmcp_client.rs",
+      "body_ranges_read": [
+        [
+          817,
+          979
+        ]
+      ],
+      "upstream_executed": false,
+      "git_blob_sha1_computed_not_independently_compared": "221336dfc813b41d70fdf16554525bb5306e3ab4",
+      "artifact": "evidence/codex-mcp-resources/7-rmcp_client-excerpts.json"
+    },
+    {
+      "path": "codex-rs/codex-mcp/src/rmcp_client/managed_client.rs",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/codex-mcp/src/rmcp_client/managed_client.rs",
+      "body_ranges_read": [
+        [
+          1,
+          185
+        ]
+      ],
+      "upstream_executed": false,
+      "git_blob_sha1_computed_not_independently_compared": "7c3d830dc22fd71eb8e33fc0ba270b61fedb7f25",
+      "artifact": "evidence/codex-mcp-resources/8-managed-client-excerpts.json"
+    }
+  ]
+}

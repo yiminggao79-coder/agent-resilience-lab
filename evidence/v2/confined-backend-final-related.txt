@@ -1,0 +1,26 @@
+test_all_commands_bind_backend_and_python_uses_native_entry (tests.dev.test_confined_backend.ConfinedBackendTests) ... ok
+test_backend_change_is_detected_with_cached_tools_before_prepare (tests.dev.test_confined_backend.ConfinedBackendTests) ... ok
+test_backend_checkpoint_approval_and_fork_require_same_config (tests.dev.test_confined_backend.ConfinedBackendTests) ... ok
+test_default_wire_unchanged_and_nondefault_binds_entry_and_cleanup (tests.dev.test_confined_backend.ConfinedBackendTests) ... ok
+test_native_entry_venv_is_admitted_wrapper_venv_is_not (tests.dev.test_confined_backend.ConfinedBackendTests) ... ok
+test_run_tests_intent_binds_full_runtime_and_rejects_tampering (tests.dev.test_confined_backend.ConfinedBackendTests) ... ok
+test_schemas_report_actual_backend_without_model_selector_parameter (tests.dev.test_confined_backend.ConfinedBackendTests) ... ok
+test_worker_forged_expected_policy_or_selector_fails_before_launch (tests.dev.test_confined_backend.ConfinedBackendTests) ... ok
+test_changed_supervisor_backend_manifest_is_rejected_before_probe (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... ok
+test_cli_exposes_explicit_saved_backend_on_all_runtime_commands (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... ok
+test_exact_command_approval_pipe_private_boundary_and_native_receipt (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... ok
+test_native_entry_dependency_venv_runs_inside_profile (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... ok
+test_real_engine_test_failure_patch_and_success_use_subprocesses (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... ok
+test_timeout_keeps_effect_unknown_after_confirmed_local_group_cleanup (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... ok
+test_actual_cli_approve_resume_fork_and_continue_preserve_backend (tests.acceptance.test_confined_backend_cli_process.ConfinedBackendCLIProcessTests) ... ok
+test_cli_stop_cancels_real_unittest_and_keeps_effects_unknown (tests.acceptance.test_confined_backend_cancel_process.ConfinedBackendCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_tests", "runner_pid": 7350, "native_pid": 7355, "supervisor_pid": 7353, "descendant_pid": 7356, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_cli_stop_waits_for_command_cleanup_but_retains_unknown_effect (tests.acceptance.test_confined_backend_cancel_process.ConfinedBackendCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_command", "runner_pid": 7364, "native_pid": 7369, "supervisor_pid": 7367, "descendant_pid": 7370, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_runner_sigkill_owner_eof_cleans_native_before_new_runner_recovery (tests.acceptance.test_confined_backend_cancel_process.ConfinedBackendCancelProcessTests) ... {"kind": "native_tool_owner_death_process_contract", "model_kind": "offline_protocol_double", "killed_runner_pid": 7379, "kill_return_code": -9, "resumed_pid": 7395, "native_pid": 7384, "supervisor_pid": 7382, "descendant_pid": 7385, "native_and_supervisor_nonrunning": true, "new_runner_fence_acquired": true, "pending_unknown_preserved": true, "new_effects": false}
+ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 13.977s
+
+OK

@@ -1,0 +1,68 @@
+test_actual_observer_uses_stdin_not_argv_with_clean_environment (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_freeze_verification_detects_modified_file_and_added_file (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_no_api_mode_never_reads_suite_or_key_and_creates_no_trial (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_owned_runner_is_actually_killed_after_its_marker (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_quality_is_external_and_unknown_observation_does_not_become_zero (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_tool_and_runner_subprocess_environments_exclude_real_key_variables (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_wrong_marker_owner_never_authorizes_signalling_another_process (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+
+======================================================================
+FAIL: test_actual_observer_uses_stdin_not_argv_with_clean_environment (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.context_mission'), 'mission runner is missing')
+AssertionError: unexpectedly None : mission runner is missing
+
+======================================================================
+FAIL: test_freeze_verification_detects_modified_file_and_added_file (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.context_mission'), 'mission runner is missing')
+AssertionError: unexpectedly None : mission runner is missing
+
+======================================================================
+FAIL: test_no_api_mode_never_reads_suite_or_key_and_creates_no_trial (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.context_mission'), 'mission runner is missing')
+AssertionError: unexpectedly None : mission runner is missing
+
+======================================================================
+FAIL: test_owned_runner_is_actually_killed_after_its_marker (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.context_mission'), 'mission runner is missing')
+AssertionError: unexpectedly None : mission runner is missing
+
+======================================================================
+FAIL: test_quality_is_external_and_unknown_observation_does_not_become_zero (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.context_mission'), 'mission runner is missing')
+AssertionError: unexpectedly None : mission runner is missing
+
+======================================================================
+FAIL: test_tool_and_runner_subprocess_environments_exclude_real_key_variables (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.context_mission'), 'mission runner is missing')
+AssertionError: unexpectedly None : mission runner is missing
+
+======================================================================
+FAIL: test_wrong_marker_owner_never_authorizes_signalling_another_process (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 29, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.context_mission'), 'mission runner is missing')
+AssertionError: unexpectedly None : mission runner is missing
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.003s
+
+FAILED (failures=7)

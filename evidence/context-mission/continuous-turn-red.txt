@@ -1,0 +1,23 @@
+test_whole_group_omission_triggers_semantic_summary_below_watermark (tests.dev.test_auto_context.AutoContextTests) ... FAIL
+test_continuity_binds_installed_note_to_request_selecting_final_code_change (tests.dev.test_context_mission.ContextMissionTests) ... ERROR
+
+======================================================================
+ERROR: test_continuity_binds_installed_note_to_request_selecting_final_code_change (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 243, in test_continuity_binds_installed_note_to_request_selecting_final_code_change
+    proof=self.module.continuity_proof([row],[installed,started,write])
+AttributeError: module 'scripts.context_mission' has no attribute 'continuity_proof'
+
+======================================================================
+FAIL: test_whole_group_omission_triggers_semantic_summary_below_watermark (tests.dev.test_auto_context.AutoContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_auto_context.py", line 372, in test_whole_group_omission_triggers_semantic_summary_below_watermark
+    self.assertIsNotNone(result.get('semantic_context'))
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.157s
+
+FAILED (failures=1, errors=1)

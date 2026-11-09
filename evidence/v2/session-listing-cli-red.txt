@@ -1,0 +1,102 @@
+test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change (tests.dev.test_session_listing_cli.SessionListingCLITests) ... test_legacy_tasks_only_pagination_does_not_migrate_or_read_private_body (tests.dev.test_session_listing_cli.SessionListingCLITests) ... FAIL
+test_missing_database_does_not_create_parent_or_succeed_with_empty_list (tests.dev.test_session_listing_cli.SessionListingCLITests) ... ERROR
+test_readonly_cli_never_initializes_store_model_tools_or_workspace_lock (tests.dev.test_session_listing_cli.SessionListingCLITests) ... FAIL
+
+======================================================================
+ERROR: test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change (tests.dev.test_session_listing_cli.SessionListingCLITests) (options=('--limit', '0'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing_cli.py", line 87, in test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change (tests.dev.test_session_listing_cli.SessionListingCLITests) (options=('--limit', '101'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing_cli.py", line 87, in test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change (tests.dev.test_session_listing_cli.SessionListingCLITests) (options=('--cursor', 'PRIVATE_INVALID_CURSOR'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing_cli.py", line 87, in test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change (tests.dev.test_session_listing_cli.SessionListingCLITests) (options=('--phase', 'PRIVATE_FAKE_PHASE'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing_cli.py", line 87, in test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_missing_database_does_not_create_parent_or_succeed_with_empty_list (tests.dev.test_session_listing_cli.SessionListingCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing_cli.py", line 38, in test_missing_database_does_not_create_parent_or_succeed_with_empty_list
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+FAIL: test_legacy_tasks_only_pagination_does_not_migrate_or_read_private_body (tests.dev.test_session_listing_cli.SessionListingCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing_cli.py", line 70, in test_legacy_tasks_only_pagination_does_not_migrate_or_read_private_body
+    code,out,err=self.call('--limit','2');self.assertEqual(code,0,err);first=json.loads(out)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,providers,job-status}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'sessions' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'fork', 'providers', 'job-status')
+
+
+======================================================================
+FAIL: test_readonly_cli_never_initializes_store_model_tools_or_workspace_lock (tests.dev.test_session_listing_cli.SessionListingCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing_cli.py", line 52, in test_readonly_cli_never_initializes_store_model_tools_or_workspace_lock
+    self.assertEqual(code,0,err);body=json.loads(out)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,providers,job-status}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'sessions' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'fork', 'providers', 'job-status')
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.282s
+
+FAILED (failures=2, errors=5)

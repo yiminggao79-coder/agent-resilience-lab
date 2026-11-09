@@ -1,0 +1,1154 @@
+--- before/api.py
++++ after/api.py
+@@ -1,5 +1,14 @@
+ """JSON-ready musical event observations, without audio or external devices."""
++from arrangement import build
+ from score import canonical,measure
++from sequencer import compile as compile_tracks
++from transforms import apply
+ def normalize(events):
+     notes=canonical(events)
+     return {'events':notes,'metrics':measure(notes)}
++def transform_report(events,**options):
++    notes=apply(events,**options)
++    return {'events':notes,'metrics':measure(notes)}
++def arrange(tracks): return build(tracks)
++def render(tracks,tempo,ticks_per_beat=480):
++    return compile_tracks(tracks,tempo,ticks_per_beat)
+--- before/arrangement.py
++++ after/arrangement.py
+@@ -0,0 +1,101 @@
++"""Build clipped, repeated arrangements from transformed tracks."""
++
++from score import by_track, identity, measure
++from transforms import apply
++
++
++_TRANSFORM_KEYS = frozenset(('transpose', 'stretch', 'shift', 'reverse'))
++_MISSING = object()
++
++
++def _positive_integer(value, label):
++    if type(value) is not int or value < 1:
++        raise ValueError('invalid %s' % label)
++    return value
++
++
++def _crop(value):
++    if not isinstance(value, (list, tuple)) or len(value) != 2:
++        raise ValueError('invalid crop')
++    start, end = value
++    if (type(start) is not int or type(end) is not int or
++            start < 0 or end <= start):
++        raise ValueError('invalid crop')
++    return start, end
++
++
++def build(tracks):
++    """Return repeated, cropped tracks plus global and per-track metrics."""
++    if not isinstance(tracks, list):
++        raise ValueError('tracks must be a list')
++
++    prepared = []
++    seen = set()
++    for track in tracks:
++        if not isinstance(track, dict):
++            raise ValueError('track must be a dictionary')
++        try:
++            track_id = identity(track['id'])
++            events = track['events']
++        except KeyError:
++            raise ValueError('track field missing') from None
++        if track_id in seen:
++            raise ValueError('duplicate track identity')
++        seen.add(track_id)
++
++        repeat = _positive_integer(track.get('repeat', 1), 'repeat')
++
++        period = track.get('period', _MISSING)
++        if period is not _MISSING:
++            period = _positive_integer(period, 'period')
++
++        crop = track.get('crop', _MISSING)
++        if crop is not _MISSING:
++            crop = _crop(crop)
++        else:
++            crop = None
++
++        options = track.get('transform', {})
++        if not isinstance(options, dict):
++            raise ValueError('invalid transform')
++        if set(options) - _TRANSFORM_KEYS:
++            raise ValueError('invalid transform option')
++
++        transformed = apply(events, **options)
++        if period is _MISSING:
++            if not transformed and repeat > 1:
++                raise ValueError('empty repeated score requires a period')
++            period = max((note['start'] + note['duration']
++                          for note in transformed), default=0)
++
++        prepared.append((track_id, transformed, repeat, period, crop))
++
++    notes = []
++    for track_id, transformed, repeat, period, crop in prepared:
++        for cycle in range(repeat):
++            offset = cycle * period
++            for note in transformed:
++                start = note['start'] + offset
++                end = start + note['duration']
++                if crop is not None:
++                    start = max(start, crop[0])
++                    end = min(end, crop[1])
++                    if start >= end:
++                        continue
++                notes.append(dict(
++                    id=note['id'],
++                    start=start,
++                    duration=end - start,
++                    pitch=note['pitch'],
++                    velocity=note['velocity'],
++                    track=track_id,
++                    cycle=cycle,
++                ))
++
++    notes.sort(key=lambda note: (note['start'], note['pitch'], note['track'],
++                                 note['cycle'], note['id']))
++    return {
++        'notes': notes,
++        'metrics': measure(notes),
++        'tracks': by_track(notes, [item[0] for item in prepared]),
++    }
+--- before/pitch.py
++++ after/pitch.py
+@@ -10,7 +10,15 @@
+     letter,accidental,octave=found.groups()
+     semitone={'C':0,'D':2,'E':4,'F':5,'G':7,'A':9,'B':11}[letter.upper()]
+     alteration={'':0,'#':1,'b':-1}[accidental]
+-    # Current accidental wrapping loses octave carry/borrow.
+-    result=12*(int(octave)+1)+(semitone+alteration)%12
++    # Apply the accidental to the absolute pitch before validating its range;
++    # this lets sharps/flats carry or borrow into adjacent octaves.
++    result=12*(int(octave)+1)+semitone+alteration
+     if not 0<=result<=127: raise ValueError('pitch out of range')
+     return result
++
++
++def transpose(value,semitones):
++    if type(semitones) is not int: raise ValueError('invalid semitones')
++    result=parse(value)+semitones
++    if not 0<=result<=127: raise ValueError('pitch out of range')
++    return result
+--- before/rhythm.py
++++ after/rhythm.py
+@@ -0,0 +1,50 @@
++"""Exact rational helpers for musical tick arithmetic."""
++
++_MISSING = object()
++
++
++def _positive_integer(value, label):
++    if type(value) is not int or value <= 0:
++        raise ValueError('invalid %s' % label)
++    return value
++
++
++def _pair(numerator, denominator):
++    return (_positive_integer(numerator, 'ratio numerator'),
++            _positive_integer(denominator, 'ratio denominator'))
++
++
++def ratio(value=None, denominator=_MISSING):
++    """Return a validated ``(numerator, denominator)`` ratio.
++
++    ``None`` is the identity ratio. A single two-item list/tuple is also
++    accepted, as are separate numerator and denominator arguments.
++    """
++    if denominator is not _MISSING:
++        return _pair(value, denominator)
++    if value is None:
++        return (1, 1)
++    if isinstance(value, (list, tuple)) and len(value) == 2:
++        return _pair(value[0], value[1])
++    raise ValueError('invalid ratio')
++
++
++def scale(value, factor=_MISSING, denominator=_MISSING):
++    """Scale an exact nonnegative tick without rounding.
++
++    ``factor`` may be a stretch pair, ``None`` for identity, or a numerator
++    when ``denominator`` is supplied separately. A fractional result raises
++    ``ValueError``.
++    """
++    if type(value) is not int or value < 0:
++        raise ValueError('invalid tick')
++    if denominator is not _MISSING:
++        if factor is _MISSING:
++            raise ValueError('invalid ratio')
++        numerator, denominator = _pair(factor, denominator)
++    else:
++        numerator, denominator = ratio(factor)
++    product = value * numerator
++    if product % denominator:
++        raise ValueError('nonintegral tick')
++    return product // denominator
+--- before/score.py
++++ after/score.py
+@@ -22,7 +22,15 @@
+         if key in seen or velocity>127: raise ValueError('duplicate event or invalid velocity')
+         seen.add(key)
+         output.append(dict(id=key,start=start,duration=duration,pitch=pitch,velocity=velocity))
+-    return sorted(output,key=lambda event:event['id'])
++    return sorted(output,key=lambda event:(event['start'],event['pitch'],event['id']))
+ def measure(notes):
+     return {'notes':len(notes),'end':max((event['start']+event['duration'] for event in notes),default=0),
+             'duration_sum':sum(event['duration'] for event in notes),'pitches':sorted({event['pitch'] for event in notes})}
++def by_track(notes, track_ids):
++    if not isinstance(notes,list): raise ValueError('notes must be a list')
++    if isinstance(track_ids,str): raise ValueError('track ids must be a collection')
++    try: ids=[identity(value) for value in track_ids]
++    except TypeError: raise ValueError('track ids must be a collection') from None
++    if len(set(ids))!=len(ids): raise ValueError('duplicate track identity')
++    return {key:measure([note for note in notes if note.get('track')==key])
++            for key in sorted(ids)}
+--- before/sequencer.py
++++ after/sequencer.py
+@@ -0,0 +1,71 @@
++"""Compile arrangements into deterministic in-memory timed commands."""
++
++from arrangement import build
++from timing import to_microseconds, validate
++
++
++def _sort_key(command):
++    return (
++        command['tick'],
++        0 if command['kind'] == 'off' else 1,
++        command['pitch'],
++        command['track'],
++        command['cycle'],
++        command['id'],
++    )
++
++
++def compile(tracks, tempo, ticks_per_beat=480):
++    """Compile tracks into detached note-on/note-off commands."""
++    validate(tempo, ticks_per_beat)
++    arranged = build(tracks)
++    notes = arranged['notes']
++
++    microseconds_at = {}
++
++    def microseconds(tick):
++        if tick not in microseconds_at:
++            microseconds_at[tick] = to_microseconds(
++                tick, tempo, ticks_per_beat)
++        return microseconds_at[tick]
++
++    commands = []
++    for note in notes:
++        end = note['start'] + note['duration']
++        common = {
++            'pitch': note['pitch'],
++            'track': note['track'],
++            'cycle': note['cycle'],
++            'id': note['id'],
++        }
++        commands.append({
++            'tick': note['start'],
++            'microseconds': microseconds(note['start']),
++            'kind': 'on',
++            'pitch': common['pitch'],
++            'velocity': note['velocity'],
++            'track': common['track'],
++            'cycle': common['cycle'],
++            'id': common['id'],
++        })
++        commands.append({
++            'tick': end,
++            'microseconds': microseconds(end),
++            'kind': 'off',
++            'pitch': common['pitch'],
++            'velocity': 0,
++            'track': common['track'],
++            'cycle': common['cycle'],
++            'id': common['id'],
++        })
++
++    commands.sort(key=_sort_key)
++    end_tick = max((note['start'] + note['duration'] for note in notes),
++                   default=0)
++    return {
++        'commands': commands,
++        'end_tick': end_tick,
++        'end_microseconds': microseconds(end_tick),
++        'notes': len(notes),
++        'tracks': sorted(arranged['tracks']),
++    }
+--- before/tests/test_arrangement.py
++++ after/tests/test_arrangement.py
+@@ -0,0 +1,174 @@
++import copy
++import unittest
++
++import api
++import observe
++from arrangement import build
++from score import by_track
++
++
++def E(key, start, duration, pitch_value=60, velocity=64):
++    return {
++        'id': key,
++        'start': start,
++        'duration': duration,
++        'pitch': pitch_value,
++        'velocity': velocity,
++    }
++
++
++class ArrangementTests(unittest.TestCase):
++    def test_transform_repeat_and_crop_order(self):
++        tracks = [{
++            'id': 't',
++            'events': [E('a', 0, 2, 60), E('b', 2, 2, 62)],
++            'transform': {
++                'transpose': 12,
++                'stretch': [2, 1],
++                'shift': 3,
++                'reverse': True,
++            },
++            'repeat': 2,
++            'crop': [5, 15],
++        }]
++        before = copy.deepcopy(tracks)
++
++        result = build(tracks)
++
++        self.assertEqual([(n['id'], n['start'], n['duration'],
++                           n['pitch'], n['cycle']) for n in result['notes']],
++                         [('b', 5, 2, 74, 0),
++                          ('a', 7, 4, 72, 0),
++                          ('b', 14, 1, 74, 1)])
++        self.assertEqual(result['metrics'],
++                         {'notes': 3, 'end': 15, 'duration_sum': 7,
++                          'pitches': [72, 74]})
++        self.assertEqual(result['tracks']['t'], result['metrics'])
++        self.assertEqual(tracks, before)
++
++    def test_overlapping_repetitions_use_explicit_period(self):
++        result = build([{
++            'id': 'overlap',
++            'events': [E('x', 0, 4)],
++            'repeat': 3,
++            'period': 2,
++        }])
++        self.assertEqual([(n['start'], n['duration'], n['cycle'])
++                          for n in result['notes']],
++                         [(0, 4, 0), (2, 4, 1), (4, 4, 2)])
++        self.assertEqual(result['metrics'],
++                         {'notes': 3, 'end': 8, 'duration_sum': 12,
++                          'pitches': [60]})
++
++    def test_crop_is_half_open_and_keeps_global_ticks(self):
++        result = build([{
++            'id': 'cropped',
++            'events': [E('left', 0, 2, 60),
++                       E('inside', 2, 4, 62),
++                       E('right', 6, 2, 64),
++                       E('tail', 4, 4, 65)],
++            'crop': [2, 6],
++        }])
++        self.assertEqual([(n['id'], n['start'], n['duration'])
++                          for n in result['notes']],
++                         [('inside', 2, 4), ('tail', 4, 2)])
++        self.assertEqual(result['metrics'],
++                         {'notes': 2, 'end': 6, 'duration_sum': 6,
++                          'pitches': [62, 65]})
++
++    def test_empty_tracks_and_reused_source_ids(self):
++        empty = build([{'id': 'empty', 'events': []}])
++        zeros = {'notes': 0, 'end': 0, 'duration_sum': 0, 'pitches': []}
++        self.assertEqual(empty, {'notes': [],
++                                 'metrics': zeros,
++                                 'tracks': {'empty': zeros}})
++
++        repeated_empty = build([{'id': 'empty', 'events': [],
++                                 'repeat': 2, 'period': 3}])
++        self.assertEqual(repeated_empty['notes'], [])
++        self.assertEqual(repeated_empty['tracks']['empty'], zeros)
++
++        with self.assertRaises(ValueError):
++            build([{'id': 'empty', 'events': [], 'repeat': 2}])
++
++        result = build([
++            {'id': 'b', 'events': [E('x', 0, 1)]},
++            {'id': 'a', 'events': [E('x', 1, 1)],
++             'repeat': 2, 'period': 2},
++        ])
++        self.assertEqual([(n['id'], n['track'], n['cycle'], n['start'])
++                          for n in result['notes']],
++                         [('x', 'b', 0, 0),
++                          ('x', 'a', 0, 1),
++                          ('x', 'a', 1, 3)])
++        self.assertEqual(sorted(result['tracks']), ['a', 'b'])
++
++    def test_track_validation_covers_empty_and_clipped_tracks(self):
++        with self.assertRaises(ValueError):
++            build([{'id': 'one', 'events': []},
++                   {'id': 'one', 'events': []}])
++        for change in ({'id': ''},
++                       {'id': ' bad'},
++                       {'repeat': True},
++                       {'repeat': 0},
++                       {'period': False},
++                       {'period': 0},
++                       {'period': None},
++                       {'transform': []},
++                       {'transform': {'unknown': 1}},
++                       {'crop': [0]},
++                       {'crop': None},
++                       {'crop': [2, 2]},
++                       {'crop': [-1, 2]},
++                       {'crop': [0, True]}):
++            track = {'id': 't', 'events': []}
++            track.update(change)
++            with self.subTest(change=change):
++                with self.assertRaises(ValueError):
++                    build([track])
++
++        with self.assertRaises(ValueError):
++            build([{'id': 't', 'events': [E('', 0, 1)],
++                    'crop': [100, 200]}])
++        with self.assertRaises(ValueError):
++            build([{'id': 't', 'events': [E('x', 1, 2)],
++                    'transform': {'stretch': [3, 2]},
++                    'crop': [100, 200]}])
++
++    def test_by_track_uses_global_measure_semantics(self):
++        notes = [
++            {'id': 'z', 'start': 10, 'duration': 2, 'pitch': 62,
++             'velocity': 64, 'track': 'b', 'cycle': 0},
++            {'id': 'a', 'start': 2, 'duration': 3, 'pitch': 60,
++             'velocity': 64, 'track': 'a', 'cycle': 0},
++        ]
++        result = by_track(notes, ['b', 'empty', 'a'])
++        self.assertEqual(list(result), ['a', 'b', 'empty'])
++        self.assertEqual(result['a'],
++                         {'notes': 1, 'end': 5, 'duration_sum': 3,
++                          'pitches': [60]})
++        self.assertEqual(result['b'],
++                         {'notes': 1, 'end': 12, 'duration_sum': 2,
++                          'pitches': [62]})
++        self.assertEqual(result['empty'],
++                         {'notes': 0, 'end': 0, 'duration_sum': 0,
++                          'pitches': []})
++
++    def test_api_arrange_matches_direct_build_and_preserves_inputs(self):
++        tracks = [{
++            'id': 'api',
++            'events': [E('e', 0, 2)],
++            'repeat': 2,
++        }]
++        direct = build(tracks)
++        self.assertEqual(api.arrange(tracks), direct)
++
++        observed = observe.third({'tracks': tracks})
++        self.assertTrue(observed['preserved'])
++        self.assertTrue(observed['detached'])
++        self.assertTrue(observed['result']['direct_consistent'])
++        self.assertEqual(observed['result']['report'], direct)
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_pitch_boundaries.py
++++ after/tests/test_pitch_boundaries.py
+@@ -0,0 +1,63 @@
++import copy
++import unittest
++
++import api
++from pitch import parse, transpose
++from score import canonical
++
++
++class PitchBoundaryTests(unittest.TestCase):
++    def test_accidentals_carry_and_borrow_before_range_checks(self):
++        self.assertEqual(parse('B#3'), 60)
++        self.assertEqual(parse('Cb4'), 59)
++        self.assertEqual(parse('B#-1'), 12)
++        self.assertEqual(parse('Cb0'), 11)
++        with self.assertRaises(ValueError):
++            parse('B#9')
++        with self.assertRaises(ValueError):
++            parse('Cb-1')
++
++    def test_malformed_spellings_and_boolean_pitches_are_rejected(self):
++        for value in ('C', 'C#', 'C+4', 'C##4', 'Cb#4', ' C4', 'C4 ',
++                      'H4', True, -1, 128):
++            with self.subTest(value=value):
++                with self.assertRaises(ValueError):
++                    parse(value)
++
++    def test_transpose_validates_semitones_and_result_range(self):
++        self.assertEqual(transpose('C0', -12), 0)
++        self.assertEqual(transpose('B#8', 7), 127)
++        for value, semitones in ((0, -1), (127, 1), (60, True)):
++            with self.subTest(value=value, semitones=semitones):
++                with self.assertRaises(ValueError):
++                    transpose(value, semitones)
++
++
++class CanonicalOrderingTests(unittest.TestCase):
++    def test_start_then_pitch_then_identity_and_only_public_fields(self):
++        notes = canonical([
++            {'id': 'z', 'start': 0, 'duration': 1, 'pitch': 'D4',
++             'velocity': 1, 'extra': 'ignored'},
++            {'id': 'b', 'start': 0, 'duration': 1, 'pitch': 'C4'},
++            {'id': 'a', 'start': 0, 'duration': 1, 'pitch': 'C4'},
++            {'id': 'later', 'start': 1, 'duration': 2, 'pitch': 'C4'},
++        ])
++        self.assertEqual([note['id'] for note in notes], ['a', 'b', 'z', 'later'])
++        self.assertEqual([(note['start'], note['pitch']) for note in notes],
++                         [(0, 60), (0, 60), (0, 62), (1, 60)])
++        self.assertEqual(set(notes[0]), {'id', 'start', 'duration',
++                                         'pitch', 'velocity'})
++        self.assertEqual(notes[1]['velocity'], 64)
++
++    def test_normalize_preserves_input_and_detaches_mutable_output(self):
++        events = [{'id': 'a', 'start': 0, 'duration': 1, 'pitch': 'C4'}]
++        before = copy.deepcopy(events)
++        report = api.normalize(events)
++        self.assertEqual(events, before)
++        report['events'][0]['start'] = 99
++        report['metrics']['pitches'].append(0)
++        self.assertEqual(events, before)
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_render.py
++++ after/tests/test_render.py
+@@ -0,0 +1,188 @@
++import copy
++import unittest
++
++import api
++import observe
++import timing
++from sequencer import compile as compile_arrangement
++
++
++def E(key, start, duration, pitch=60, velocity=64):
++    return {
++        'id': key,
++        'start': start,
++        'duration': duration,
++        'pitch': pitch,
++        'velocity': velocity,
++    }
++
++
++class TimingTests(unittest.TestCase):
++    def test_tempo_boundaries(self):
++        tempo = [
++            {'tick': 0, 'microseconds_per_beat': 1_000_000},
++            {'tick': 480, 'microseconds_per_beat': 500_000},
++        ]
++        self.assertEqual(timing.to_microseconds(0, tempo, 480), 0)
++        self.assertEqual(timing.to_microseconds(480, tempo, 480), 1_000_000)
++        self.assertEqual(timing.to_microseconds(960, tempo, 480), 1_500_000)
++        self.assertEqual(timing.to_microseconds(1200, tempo, 480), 1_750_000)
++
++    def test_fractional_totals_are_floored_only_after_accumulation(self):
++        tempo = [
++            {'tick': 0, 'microseconds_per_beat': 1},
++            {'tick': 2, 'microseconds_per_beat': 1},
++        ]
++        self.assertEqual(timing.to_microseconds(1, tempo, 3), 0)
++        self.assertEqual(timing.to_microseconds(2, tempo, 3), 0)
++        self.assertEqual(timing.to_microseconds(3, tempo, 3), 1)
++        self.assertEqual(timing.to_microseconds(4, tempo, 3), 1)
++
++    def test_invalid_tempo_is_checked_in_full(self):
++        valid = [{'tick': 0, 'microseconds_per_beat': 1}]
++        bad_tempos = [
++            [],
++            [{'tick': 1, 'microseconds_per_beat': 1}],
++            [
++                {'tick': 0, 'microseconds_per_beat': 1},
++                {'tick': 0, 'microseconds_per_beat': 2},
++            ],
++            [
++                {'tick': 0, 'microseconds_per_beat': 1},
++                {'tick': 3, 'microseconds_per_beat': 1},
++                {'tick': 2, 'microseconds_per_beat': 1},
++            ],
++            [{'tick': True, 'microseconds_per_beat': 1}],
++            [{'tick': -1, 'microseconds_per_beat': 1}],
++            [{'tick': 0, 'microseconds_per_beat': True}],
++            [{'tick': 0, 'microseconds_per_beat': 0}],
++            [{'tick': 0}],
++            [('tick', 0, 'microseconds_per_beat', 1)],
++            ({'tick': 0, 'microseconds_per_beat': 1},),
++        ]
++        for tempo in bad_tempos:
++            with self.assertRaises(ValueError):
++                timing.validate(tempo)
++
++        for ticks_per_beat in [True, False, 0, -1, 1.0]:
++            with self.assertRaises(ValueError):
++                timing.validate(valid, ticks_per_beat)
++        for tick in [True, -1, 1.0]:
++            with self.assertRaises(ValueError):
++                timing.to_microseconds(tick, valid, 480)
++
++    def test_tempo_beyond_last_note_is_validated_for_empty_arrangement(self):
++        tempo = [
++            {'tick': 0, 'microseconds_per_beat': 1},
++            {'tick': 5, 'microseconds_per_beat': 0},
++        ]
++        with self.assertRaises(ValueError):
++            compile_arrangement([], tempo)
++
++
++class CompileTests(unittest.TestCase):
++    def test_empty_track_keeps_identity_and_zero_metrics(self):
++        tracks = [{'id': 'empty', 'events': []}]
++        before = copy.deepcopy(tracks)
++        result = compile_arrangement(
++            tracks, [{'tick': 0, 'microseconds_per_beat': 1000}])
++
++        self.assertEqual(result, {
++            'commands': [],
++            'end_tick': 0,
++            'end_microseconds': 0,
++            'notes': 0,
++            'tracks': ['empty'],
++        })
++        self.assertEqual(tracks, before)
++
++    def test_commands_are_ordered_offs_before_ons_at_same_tick(self):
++        tracks = [{
++            'id': 't',
++            'events': [
++                E('a', 0, 2, 60, 10),
++                E('b', 2, 1, 62, 20),
++                E('c', 0, 2, 64, 30),
++                E('d', 2, 1, 50, 40),
++            ],
++        }]
++        result = compile_arrangement(
++            tracks, [{'tick': 0, 'microseconds_per_beat': 1000}], 2)
++
++        self.assertEqual(
++            [(c['tick'], c['microseconds'], c['kind'], c['pitch'], c['id'])
++             for c in result['commands']],
++            [
++                (0, 0, 'on', 60, 'a'),
++                (0, 0, 'on', 64, 'c'),
++                (2, 1000, 'off', 60, 'a'),
++                (2, 1000, 'off', 64, 'c'),
++                (2, 1000, 'on', 50, 'd'),
++                (2, 1000, 'on', 62, 'b'),
++                (3, 1500, 'off', 50, 'd'),
++                (3, 1500, 'off', 62, 'b'),
++            ])
++        self.assertEqual(result['end_tick'], 3)
++        self.assertEqual(result['end_microseconds'], 1500)
++        self.assertEqual(result['notes'], 4)
++        self.assertEqual(result['tracks'], ['t'])
++        fields = {'tick', 'microseconds', 'kind', 'pitch', 'velocity',
++                  'track', 'cycle', 'id'}
++        self.assertTrue(all(set(command) == fields
++                            for command in result['commands']))
++        self.assertEqual([c['velocity'] for c in result['commands']],
++                         [10, 30, 0, 0, 40, 20, 0, 0])
++
++    def test_repeated_cropped_notes_keep_cycles_and_tick_coordinates(self):
++        tracks = [{
++            'id': 'r',
++            'events': [E('x', 0, 4, 60), E('y', 2, 4, 62)],
++            'repeat': 3,
++            'period': 3,
++            'crop': [1, 8],
++        }]
++        result = compile_arrangement(
++            tracks, [{'tick': 0, 'microseconds_per_beat': 480}])
++
++        self.assertEqual(result['notes'], 5)
++        self.assertEqual(len(result['commands']), 10)
++        self.assertEqual(result['end_tick'], 8)
++        self.assertEqual(result['end_microseconds'], 8)
++        starts = [(c['id'], c['cycle'], c['tick'])
++                  for c in result['commands'] if c['kind'] == 'on']
++        self.assertEqual(starts, [
++            ('x', 0, 1), ('y', 0, 2), ('x', 1, 3),
++            ('y', 1, 5), ('x', 2, 6),
++        ])
++
++    def test_fractional_end_conversion_is_floored_once(self):
++        tracks = [{'id': 't', 'events': [E('a', 0, 3)]}]
++        tempo = [
++            {'tick': 0, 'microseconds_per_beat': 1},
++            {'tick': 2, 'microseconds_per_beat': 1},
++        ]
++        result = compile_arrangement(tracks, tempo, 3)
++        self.assertEqual(result['end_tick'], 3)
++        self.assertEqual(result['end_microseconds'], 1)
++        self.assertEqual([c['microseconds'] for c in result['commands']],
++                         [0, 1])
++
++    def test_api_and_observe_match_direct_compiler(self):
++        tracks = [{'id': 't', 'events': [E('a', 0, 2), E('b', 2, 2)]}]
++        tempo = [{'tick': 0, 'microseconds_per_beat': 500}]
++        direct = compile_arrangement(tracks, tempo)
++        self.assertEqual(api.render(tracks, tempo), direct)
++
++        observed = observe.fourth({
++            'tracks': tracks,
++            'tempo': tempo,
++            'ticks_per_beat': 480,
++        })
++        self.assertTrue(observed['preserved'])
++        self.assertTrue(observed['detached'])
++        self.assertTrue(observed['result']['direct_consistent'])
++        self.assertEqual(observed['result']['report'], direct)
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_repairs.py
++++ after/tests/test_repairs.py
+@@ -0,0 +1,130 @@
++import copy
++import unittest
++from api import normalize
++from pitch import parse
++from score import canonical, measure
++
++
++def E(key='n', start=0, duration=4, pitch='C4', velocity=64):
++    return dict(id=key, start=start, duration=duration, pitch=pitch, velocity=velocity)
++
++
++class PitchBoundaryTests(unittest.TestCase):
++    def test_sharp_carries_into_next_octave(self):
++        cases = {'B#3': 60, 'B#7': 108, 'B#-1': 12, 'C#-1': 1}
++        for spelling, expected in cases.items():
++            with self.subTest(spelling=spelling):
++                self.assertEqual(parse(spelling), expected)
++
++    def test_flat_borrows_into_previous_octave(self):
++        cases = {'Cb4': 59, 'Cb0': 11, 'Cb8': 107, 'db4': 61}
++        for spelling, expected in cases.items():
++            with self.subTest(spelling=spelling):
++                self.assertEqual(parse(spelling), expected)
++
++    def test_accidental_is_checked_after_arithmetic(self):
++        for spelling in ['B#8', 'B#9', 'Cb-1', 'Cb-2']:
++            with self.subTest(spelling=spelling):
++                if spelling == 'B#8':
++                    self.assertEqual(parse(spelling), 120)
++                else:
++                    with self.assertRaises(ValueError):
++                        parse(spelling)
++
++    def test_malformed_spellings_and_nonintegers(self):
++        for value in [True, False, 1.0, None, '', 'C', '4', 'H4', 'C+4',
++                      'C##4', 'Cbb4', 'cB4', 'C4 ', ' C4', 'C4.0', 'C#']:
++            with self.subTest(value=value):
++                with self.assertRaises(ValueError):
++                    parse(value)
++
++    def test_integer_range_is_checked(self):
++        for value in [-1, 128]:
++            with self.assertRaises(ValueError):
++                parse(value)
++
++
++class CanonicalEventTests(unittest.TestCase):
++    def test_order_by_start_then_pitch_then_id(self):
++        events = [
++            E('late', start=4, pitch='C4'),
++            E('z', start=0, pitch='C4'),
++            E('a', start=0, pitch='D4'),
++            E('b', start=0, pitch='C4'),
++            E('early-low', start=0, pitch='B3'),
++        ]
++        notes = canonical(events)
++        self.assertEqual([note['id'] for note in notes],
++                         ['early-low', 'b', 'z', 'a', 'late'])
++
++    def test_only_canonical_fields_are_returned(self):
++        notes = canonical([{'id': 'a', 'start': 1, 'duration': 2,
++                            'pitch': 'B#3', 'extra': 'ignored'}])
++        self.assertEqual(notes, [{'id': 'a', 'start': 1, 'duration': 2,
++                                  'pitch': 60, 'velocity': 64}])
++
++    def test_ids_must_be_nonempty_and_already_trimmed(self):
++        for key in ['', '   ', ' a', 'a ', ' a ']:
++            with self.subTest(key=key):
++                with self.assertRaises(ValueError):
++                    canonical([E(key)])
++
++    def test_duplicate_ids_are_rejected(self):
++        with self.assertRaises(ValueError):
++            canonical([E('a'), E('a')])
++
++    def test_blank_ids_and_boolean_numbers_are_rejected(self):
++        for event in [E('   '), E(start=True), E(duration=True),
++                      E(velocity=True)]:
++            with self.subTest(event=event):
++                with self.assertRaises(ValueError):
++                    canonical([event])
++
++    def test_velocity_bounds_and_default(self):
++        self.assertEqual(canonical([E(velocity=1)])[0]['velocity'], 1)
++        self.assertEqual(canonical([E(velocity=127)])[0]['velocity'], 127)
++        for velocity in [0, 128, -1]:
++            with self.assertRaises(ValueError):
++                canonical([E(velocity=velocity)])
++
++
++class MeasureAndNormalizeTests(unittest.TestCase):
++    def test_measure_uses_canonical_fields(self):
++        notes = canonical([
++            E('a', start=0, duration=4, pitch='C4'),
++            E('b', start=2, duration=3, pitch='D4'),
++            E('c', start=2, duration=1, pitch='C4'),
++        ])
++        self.assertEqual(measure(notes), {
++            'notes': 3,
++            'end': 5,
++            'duration_sum': 8,
++            'pitches': [60, 62],
++        })
++
++    def test_empty_measure(self):
++        self.assertEqual(measure([]), {
++            'notes': 0,
++            'end': 0,
++            'duration_sum': 0,
++            'pitches': [],
++        })
++
++    def test_normalize_preserves_input_and_returns_detached_containers(self):
++        events = [E('a', start=4, pitch='B#3'),
++                  E('b', start=0, duration=2, pitch='Cb4')]
++        before = copy.deepcopy(events)
++        result = normalize(events)
++        self.assertEqual(events, before)
++        self.assertIsInstance(result, dict)
++        self.assertIsInstance(result['events'], list)
++        self.assertIsInstance(result['metrics'], dict)
++        self.assertIsInstance(result['metrics']['pitches'], list)
++        result['events'][0]['start'] = 99
++        result['metrics']['pitches'].append(0)
++        self.assertEqual(events, before)
++        self.assertEqual(normalize(events), normalize(before))
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_transforms.py
++++ after/tests/test_transforms.py
+@@ -0,0 +1,178 @@
++import unittest
++
++import api
++import observe
++import pitch
++import rhythm
++from score import measure
++from transforms import apply
++
++
++def E(key, start, duration, pitch_value=60, velocity=64):
++    return {
++        'id': key,
++        'start': start,
++        'duration': duration,
++        'pitch': pitch_value,
++        'velocity': velocity,
++    }
++
++
++class RhythmTests(unittest.TestCase):
++    def test_ratio_accepts_identity_pairs_and_separate_arguments(self):
++        self.assertEqual(rhythm.ratio(None), (1, 1))
++        self.assertEqual(rhythm.ratio([3, 2]), (3, 2))
++        self.assertEqual(rhythm.ratio((2, 1)), (2, 1))
++        self.assertEqual(rhythm.ratio(4, 3), (4, 3))
++
++    def test_invalid_ratios_are_rejected(self):
++        for value in ([0, 1], [1, 0], [True, 1], [1, False],
++                      [1, 2, 3], [1], 2, 1.5, '2/1'):
++            with self.subTest(value=value):
++                with self.assertRaises(ValueError):
++                    rhythm.ratio(value)
++
++    def test_scale_is_exact_and_never_rounds(self):
++        self.assertEqual(rhythm.scale(6, [3, 2]), 9)
++        self.assertEqual(rhythm.scale(6, 3, 2), 9)
++        self.assertEqual(rhythm.scale(8, [2, 4]), 4)
++        with self.assertRaises(ValueError):
++            rhythm.scale(5, [3, 2])
++        with self.assertRaises(ValueError):
++            rhythm.scale(1, [1, 2])
++
++
++class TransformTests(unittest.TestCase):
++    def test_reverse_reflects_about_original_maximum_end(self):
++        events = [
++            E('a', 0, 4, 60),
++            E('b', 4, 2, 62),
++            E('c', 2, 1, 64),
++        ]
++        notes = apply(events, reverse=True)
++        self.assertEqual([note['id'] for note in notes], ['b', 'a', 'c'])
++        self.assertEqual([(note['start'], note['duration']) for note in notes],
++                         [(0, 2), (2, 4), (3, 1)])
++
++    def test_exact_ratio_scales_starts_and_durations(self):
++        notes = apply([E('a', 2, 4, pitch_value=60, velocity=99)],
++                      stretch=[3, 2])
++        self.assertEqual(notes, [
++            {'id': 'a', 'start': 3, 'duration': 6,
++             'pitch': 60, 'velocity': 99},
++        ])
++
++    def test_nonintegral_start_or_duration_is_rejected(self):
++        with self.assertRaises(ValueError):
++            apply([E('a', 1, 2)], stretch=[1, 2])
++        with self.assertRaises(ValueError):
++            apply([E('a', 2, 1)], stretch=[1, 2])
++        with self.assertRaises(ValueError):
++            apply([E('a', 1, 2)], stretch=[3, 2])
++
++    def test_combined_reverse_stretch_shift_and_transpose(self):
++        events = [E('a', 2, 4, 60, 77), E('b', 6, 2, 62, 88)]
++        notes = apply(events, transpose=12, stretch=[3, 2], shift=5,
++                      reverse=True)
++        # Original end is 8. Reverse starts are 2 and 0; scaled they are 3
++        # and 0; shifted they are 8 and 5.
++        self.assertEqual(notes, [
++            {'id': 'b', 'start': 5, 'duration': 3,
++             'pitch': 74, 'velocity': 88},
++            {'id': 'a', 'start': 8, 'duration': 6,
++             'pitch': 72, 'velocity': 77},
++        ])
++
++    def test_negative_final_start_is_rejected(self):
++        with self.assertRaises(ValueError):
++            apply([E('a', 0, 1)], shift=-1)
++        with self.assertRaises(ValueError):
++            apply([E('a', 2, 1)], stretch=[1, 2], shift=0)
++
++    def test_transpose_boundaries(self):
++        self.assertEqual(pitch.transpose(60, 67), 127)
++        self.assertEqual(pitch.transpose(60, -60), 0)
++        self.assertEqual(pitch.transpose('C4', 12), 72)
++        with self.assertRaises(ValueError):
++            pitch.transpose(60, 68)
++        with self.assertRaises(ValueError):
++            pitch.transpose(60, -61)
++        with self.assertRaises(ValueError):
++            pitch.transpose('C4', True)
++        with self.assertRaises(ValueError):
++            pitch.transpose('C4', 1.0)
++
++    def test_empty_score_still_validates_all_options(self):
++        invalid_options = [
++            {'transpose': True},
++            {'transpose': 1.0},
++            {'shift': False},
++            {'shift': 2.0},
++            {'reverse': 1},
++            {'reverse': None},
++            {'stretch': [0, 1]},
++            {'stretch': [1, 0]},
++            {'stretch': [True, 1]},
++            {'stretch': [1, 2, 3]},
++            {'stretch': [1]},
++            {'stretch': 2},
++        ]
++        for options in invalid_options:
++            with self.subTest(options=options):
++                with self.assertRaises(ValueError):
++                    apply([], **options)
++
++    def test_empty_score_with_valid_options(self):
++        self.assertEqual(apply([], transpose=3, stretch=None, shift=-5,
++                               reverse=True), [])
++        self.assertEqual(api.transform_report([]), {
++            'events': [],
++            'metrics': {'notes': 0, 'end': 0, 'duration_sum': 0,
++                        'pitches': []},
++        })
++
++    def test_observed_transform_report_matches_direct_interfaces(self):
++        events = [
++            E('a', 2, 4, 60, 77),
++            E('b', 6, 2, 62, 88),
++        ]
++        payload = {
++            'events': events,
++            'options': {
++                'transpose': 12,
++                'stretch': [3, 2],
++                'shift': 5,
++                'reverse': True,
++            },
++        }
++        observed = observe.second(payload)
++        self.assertTrue(observed['preserved'])
++        self.assertTrue(observed['detached'])
++        self.assertTrue(observed['result']['direct_consistent'])
++        self.assertEqual(observed['result']['report']['events'], [
++            {'id': 'b', 'start': 5, 'duration': 3,
++             'pitch': 74, 'velocity': 88},
++            {'id': 'a', 'start': 8, 'duration': 6,
++             'pitch': 72, 'velocity': 77},
++        ])
++
++    def test_report_is_detached_and_preserves_input(self):
++        events = [E('a', 0, 2, 60, 80), E('b', 2, 2, 62, 90)]
++        before = [dict(event) for event in events]
++        report = api.transform_report(events, transpose=1, stretch=[2, 1])
++        self.assertEqual(events, before)
++        self.assertEqual(report['metrics'], measure(report['events']))
++        report['events'][0]['start'] = 999
++        report['events'].append(E('c', 10, 1))
++        report['metrics']['pitches'].append(0)
++        self.assertEqual(events, before)
++        self.assertEqual(apply(events), [
++            {'id': 'a', 'start': 0, 'duration': 2,
++             'pitch': 60, 'velocity': 80},
++            {'id': 'b', 'start': 2, 'duration': 2,
++             'pitch': 62, 'velocity': 90},
++        ])
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/timing.py
++++ after/timing.py
+@@ -0,0 +1,70 @@
++"""Exact conversion between musical ticks and elapsed microseconds."""
++
++from fractions import Fraction
++
++
++def _integer(value, label, minimum):
++    if type(value) is not int or value < minimum:
++        raise ValueError('invalid %s' % label)
++    return value
++
++
++def validate(tempo, ticks_per_beat=480):
++    """Validate and copy a complete tempo history.
++
++    Every entry is checked, even entries later than any note being rendered.
++    """
++    _integer(ticks_per_beat, 'ticks per beat', 1)
++    if not isinstance(tempo, list) or not tempo:
++        raise ValueError('invalid tempo')
++
++    output = []
++    previous_tick = None
++    for entry in tempo:
++        if not isinstance(entry, dict):
++            raise ValueError('invalid tempo entry')
++        try:
++            tick = _integer(entry['tick'], 'tempo tick', 0)
++            microseconds = _integer(
++                entry['microseconds_per_beat'],
++                'microseconds per beat',
++                1,
++            )
++        except KeyError:
++            raise ValueError('tempo field missing') from None
++
++        if previous_tick is None:
++            if tick != 0:
++                raise ValueError('tempo must start at tick zero')
++        elif tick <= previous_tick:
++            raise ValueError('tempo ticks must strictly increase')
++        previous_tick = tick
++        output.append({
++            'tick': tick,
++            'microseconds_per_beat': microseconds,
++        })
++    return output
++
++
++def _convert(tick, tempo, ticks_per_beat):
++    target = _integer(tick, 'target tick', 0)
++    total = Fraction(0, 1)
++    for index, entry in enumerate(tempo):
++        start = entry['tick']
++        if start >= target:
++            break
++        end = (tempo[index + 1]['tick']
++               if index + 1 < len(tempo) else target)
++        if end > target:
++            end = target
++        total += Fraction(
++            (end - start) * entry['microseconds_per_beat'],
++            ticks_per_beat,
++        )
++    return total.numerator // total.denominator
++
++
++def to_microseconds(tick, tempo, ticks_per_beat=480):
++    """Convert a nonnegative tick using the accumulated exact tempo total."""
++    normalized = validate(tempo, ticks_per_beat)
++    return _convert(tick, normalized, ticks_per_beat)
+--- before/transforms.py
++++ after/transforms.py
+@@ -0,0 +1,43 @@
++"""Exact, detached note transformations."""
++
++from pitch import transpose as transpose_pitch
++from rhythm import ratio, scale
++from score import canonical
++
++
++def _integer(value, label):
++    if type(value) is not int:
++        raise ValueError('invalid %s' % label)
++    return value
++
++
++def apply(events, transpose=0, stretch=None, shift=0, reverse=False):
++    """Return a canonically ordered, exactly transformed copy of ``events``."""
++    transpose = _integer(transpose, 'transpose')
++    shift = _integer(shift, 'shift')
++    if type(reverse) is not bool:
++        raise ValueError('invalid reverse')
++    numerator, denominator = ratio(stretch)
++
++    notes = canonical(events)
++    original_end = max((note['start'] + note['duration'] for note in notes),
++                       default=0)
++    transformed = []
++    for note in notes:
++        start = note['start']
++        duration = note['duration']
++        if reverse:
++            start = original_end - start - duration
++        start = scale(start, (numerator, denominator))
++        duration = scale(duration, (numerator, denominator))
++        start += shift
++        if start < 0:
++            raise ValueError('negative start')
++        transformed.append(dict(
++            id=note['id'],
++            start=start,
++            duration=duration,
++            pitch=transpose_pitch(note['pitch'], transpose),
++            velocity=note['velocity'],
++        ))
++    return canonical(transformed)

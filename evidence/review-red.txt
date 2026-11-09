@@ -1,0 +1,72 @@
+test_malformed_usage_is_unmeasured_instead_of_crashing (tests.dev.test_model.ModelTests) ... test_provider_body_cannot_control_retry_policy_or_public_error_code (tests.dev.test_model.ModelTests) ... FAIL
+test_unexpected_exception_is_safe_and_trace_does_not_leak (tests.dev.test_engine.EngineTests) ... FAIL
+test_file_tools_have_real_wall_timeout_and_mutations_are_uncertain (tests.dev.test_boundaries.BoundaryTests) ... FAIL
+
+======================================================================
+ERROR: test_malformed_usage_is_unmeasured_instead_of_crashing (tests.dev.test_model.ModelTests) (usage=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 103, in test_malformed_usage_is_unmeasured_instead_of_crashing
+    self.assertIsNone(self.model.complete([], [], 3, 100)['usage'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/model.py", line 60, in complete
+    usage = {'input_tokens': usage.get('prompt_tokens'), 'output_tokens': usage.get('completion_tokens')}
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_malformed_usage_is_unmeasured_instead_of_crashing (tests.dev.test_model.ModelTests) (usage=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 103, in test_malformed_usage_is_unmeasured_instead_of_crashing
+    self.assertIsNone(self.model.complete([], [], 3, 100)['usage'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/model.py", line 60, in complete
+    usage = {'input_tokens': usage.get('prompt_tokens'), 'output_tokens': usage.get('completion_tokens')}
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_malformed_usage_is_unmeasured_instead_of_crashing (tests.dev.test_model.ModelTests) (usage='bad')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 103, in test_malformed_usage_is_unmeasured_instead_of_crashing
+    self.assertIsNone(self.model.complete([], [], 3, 100)['usage'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/model.py", line 60, in complete
+    usage = {'input_tokens': usage.get('prompt_tokens'), 'output_tokens': usage.get('completion_tokens')}
+AttributeError: 'str' object has no attribute 'get'
+
+======================================================================
+FAIL: test_provider_body_cannot_control_retry_policy_or_public_error_code (tests.dev.test_model.ModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 109, in test_provider_body_cannot_control_retry_policy_or_public_error_code
+    self.assertEqual(error.exception.code, 'invalid_model_response')
+AssertionError: 'server_secret_token' != 'invalid_model_response'
+- server_secret_token
++ invalid_model_response
+
+
+======================================================================
+FAIL: test_unexpected_exception_is_safe_and_trace_does_not_leak (tests.dev.test_engine.EngineTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_engine.py", line 76, in test_unexpected_exception_is_safe_and_trace_does_not_leak
+    self.assertEqual((state['phase'], state['reason']), ('needs_confirmation', 'internal_error'))
+AssertionError: Tuples differ: ('failed', 'internal_error') != ('needs_confirmation', 'internal_error')
+
+First differing element 0:
+'failed'
+'needs_confirmation'
+
+- ('failed', 'internal_error')
++ ('needs_confirmation', 'internal_error')
+
+======================================================================
+FAIL: test_file_tools_have_real_wall_timeout_and_mutations_are_uncertain (tests.dev.test_boundaries.BoundaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_boundaries.py", line 93, in test_file_tools_have_real_wall_timeout_and_mutations_are_uncertain
+    tools.execute(tools.prepare('write_file', {'path': 'out', 'content': 'x'}), 0.00001)
+AssertionError: UncertainEffect not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.911s
+
+FAILED (failures=3, errors=3)

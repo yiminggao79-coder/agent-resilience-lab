@@ -1,0 +1,27 @@
+test_caller_active_transaction_is_rejected_without_commit_or_rollback (tests.dev.test_session_listing.SessionListingTests) ... ERROR
+test_filters_cursor_scope_and_newer_inserts_do_not_shift_anchor (tests.dev.test_session_listing.SessionListingTests) ... FAIL
+
+======================================================================
+ERROR: test_caller_active_transaction_is_rejected_without_commit_or_rollback (tests.dev.test_session_listing.SessionListingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing.py", line 185, in test_caller_active_transaction_is_rejected_without_commit_or_rollback
+    with self.assertRaisesRegex(ValueError, '^invalid_session_listing$'): self.page()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing.py", line 42, in page
+    def page(self, **kwargs): return self.listing.list_sessions(self.store, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/session_listing.py", line 157, in list_sessions
+    raise StorageUnavailable('storage_unavailable')
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+FAIL: test_filters_cursor_scope_and_newer_inserts_do_not_shift_anchor (tests.dev.test_session_listing.SessionListingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing.py", line 127, in test_filters_cursor_scope_and_newer_inserts_do_not_shift_anchor
+    self.assertNotIn(tid(49), [item['task_id'] for item in fresh['items']])
+AssertionError: '00000000000000000000000000000031' unexpectedly found in ['00000000000000000000000000000032', '00000000000000000000000000000031', '00000000000000000000000000000004', '00000000000000000000000000000003', '00000000000000000000000000000002', '00000000000000000000000000000001']
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.023s
+
+FAILED (failures=1, errors=1)

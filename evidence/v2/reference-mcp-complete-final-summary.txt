@@ -1,0 +1,30 @@
+{
+  "tool_transport": "mcp_stdio",
+  "experiment": "item_done_tool_feedback",
+  "passed": true,
+  "elapsed_seconds": 3.346,
+  "reference_binary_sha256": "f08326a585b6b82a3d5951662bac6f78bf7b759639737d8464b3ac165195f846",
+  "harness_source_sha256": {
+    "engine.py": "9631a2b9e05674d6689ee174498efa7aadc6f4d4062b790405acf9696e13933e",
+    "model.py": "9c8fd2a1d5cd5d4cc1c0b1ec521f1cc08a348bf76e30eefaec3bfead15430367",
+    "protocols.py": "802e413ac2340e29d1a7eacf41bfd20ad962d77be2d2b7517ba8efd8fd8a0586",
+    "registry.py": "0d1642597064a8d2010e1f6dea3c14b806ea49bad937b5019afc6971fc8050e8",
+    "coding_tools.py": "bb63246ec9a423252adde344df665b35f0ed4d806a3be1d3b10e7104589e9664"
+  },
+  "harness_effect_authority": "trusted_external_mcp_process",
+  "harness_effect_is_command_sandboxed": false,
+  "harness_approval_count": 1,
+  "provider_requests": 0,
+  "real_llm_task_success_rate": null,
+  "cost_estimate_cny": null,
+  "real_tokens": null,
+  "same_as_pinned_source_commit": null,
+  "usage_kind": "synthetic_fixture_counters",
+  "owned_mcp_source_sha256": "46649dfa09e16aca11b44e9724aeed4452843c37506240eb34fd05aaf2e72ed3",
+  "conditions_differ": [
+    "reference MCP child inherits outer Home/Mach/network boundary; Harness MCP is trusted external with clean env",
+    "reference normal command sandbox retained; Harness MCP requires exact approval after completed response, actual count recorded separately",
+    "different builtin tools/prompts; identical owned MCP server bytes and 2025-11-25 RPC"
+  ],
+  "phase": "completed"
+}

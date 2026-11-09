@@ -1,0 +1,17 @@
+test_actual_unknown_error_reason_and_flags_survive_stop_observation (tests.dev.test_stop.StopTests) ... ok
+test_current_tool_finishes_and_next_batch_tool_never_starts (tests.dev.test_stop.StopTests) ... ok
+test_idle_approval_can_be_stopped_without_model_or_command_and_new_turn_is_allowed (tests.dev.test_stop.StopTests) ... ok
+test_partial_patch_stops_after_confirmed_prefix_and_closes_one_result (tests.dev.test_stop.StopTests) ... ok
+test_stop_before_model_or_tool_claim_reloads_unclaimed_snapshot (tests.dev.test_stop.StopTests) ... ok
+test_stop_before_sampling_never_calls_model_and_observation_is_idempotent (tests.dev.test_stop.StopTests) ... ok
+test_stop_during_claimed_model_preserves_known_usage_and_cancels_unstarted_tools (tests.dev.test_stop.StopTests) ... ok
+test_stop_winning_model_final_commit_preserves_answer_and_usage_without_extra_sampling (tests.dev.test_stop.StopTests) ... ok
+test_stop_winning_recovery_claim_cannot_trigger_missing_file_effect (tests.dev.test_stop.StopTests) ... ok
+test_stopped_turn_cannot_start_explicit_compaction_or_discard_pending_user_feedback (tests.dev.test_stop.StopTests) ... ok
+test_unconfirmed_model_stop_keeps_usage_unknown_without_request (tests.dev.test_stop.StopTests) ... ok
+test_unconfirmed_running_tool_stop_never_calls_recover_or_adds_effect (tests.dev.test_stop.StopTests) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.244s
+
+OK

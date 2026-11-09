@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 15.157,
+  "stdout": "\nadded 9 packages in 15s\n",
+  "stderr": "npm notice\nnpm notice New major version of npm available! 11.19.1 -> 12.2.2\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2\nnpm notice To update run: npm install -g npm@12.2.2\nnpm notice\n",
+  "install": "/private/tmp/agentlab-official-mcp-205maypm/install",
+  "scripts_disabled": true,
+  "audit_disabled": true,
+  "user_global_config_empty_distinct": true,
+  "provider_key_environment": false
+}

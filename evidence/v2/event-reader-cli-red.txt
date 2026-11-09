@@ -1,0 +1,124 @@
+test_cli_is_readonly_does_not_load_history_or_construct_tools_model (tests.dev.test_event_reader_cli.EventReaderCLITests) ... FAIL
+test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) ... test_seek_pages_expected_database_and_live_append_after_exhaustion (tests.dev.test_event_reader_cli.EventReaderCLITests) ... FAIL
+test_store_checked_identity_matches_open_and_rejects_replaced_path (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ERROR
+
+======================================================================
+ERROR: test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) (options=('--after', '-1'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 82, in test_missing_database_and_invalid_parameters_do_not_create_or_leak
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) (options=('--after', '9223372036854775808'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 82, in test_missing_database_and_invalid_parameters_do_not_create_or_leak
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) (options=('--limit', '0'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 82, in test_missing_database_and_invalid_parameters_do_not_create_or_leak
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) (options=('--limit', '101'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 82, in test_missing_database_and_invalid_parameters_do_not_create_or_leak
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) (options=('--expected-database', 'PRIVATE_INVALID'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 82, in test_missing_database_and_invalid_parameters_do_not_create_or_leak
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_missing_database_and_invalid_parameters_do_not_create_or_leak (tests.dev.test_event_reader_cli.EventReaderCLITests) (options=('--expected-database', 'ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 82, in test_missing_database_and_invalid_parameters_do_not_create_or_leak
+    self.assertEqual(json.loads(err),{'error':'configuration_or_storage_error'})
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_store_checked_identity_matches_open_and_rejects_replaced_path (tests.dev.test_event_reader_cli.EventReaderCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 39, in test_store_checked_identity_matches_open_and_rejects_replaced_path
+    value=store.checked_file_identity()
+AttributeError: 'Store' object has no attribute 'checked_file_identity'
+
+======================================================================
+FAIL: test_cli_is_readonly_does_not_load_history_or_construct_tools_model (tests.dev.test_event_reader_cli.EventReaderCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 51, in test_cli_is_readonly_does_not_load_history_or_construct_tools_model
+    self.assertEqual(code,0,err);page=json.loads(out)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'events' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'fork', 'providers', 'job-status', 'sessions')
+
+
+======================================================================
+FAIL: test_seek_pages_expected_database_and_live_append_after_exhaustion (tests.dev.test_event_reader_cli.EventReaderCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader_cli.py", line 61, in test_seek_pages_expected_database_and_live_append_after_exhaustion
+    code,out,err=self.call('--after','2','--limit','2');self.assertEqual(code,0,err);first=json.loads(out)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: argument command: invalid choice: 'events' (choose from 'run', 'resume', 'continue', 'compact', 'turns', 'status', 'trace', 'answer', 'plan', 'policy', 'abort', 'approval', 'approve', 'deny', 'chat', 'steer', 'inputs', 'input-withdraw', 'pending', 'stop', 'stop-status', 'fork', 'providers', 'job-status', 'sessions')
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.272s
+
+FAILED (failures=2, errors=7)

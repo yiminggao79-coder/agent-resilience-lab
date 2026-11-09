@@ -1,0 +1,22 @@
+test_mutation_snapshot_reads_multiple_implementation_files_in_same_directory (tests.dev.test_context_mission.ContextMissionTests) ... ERROR
+
+======================================================================
+ERROR: test_mutation_snapshot_reads_multiple_implementation_files_in_same_directory (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 320, in test_mutation_snapshot_reads_multiple_implementation_files_in_same_directory
+    versions=self.module.implementation_versions(root,())
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/scripts/context_mission.py", line 214, in implementation_versions
+    path=Path(directory)/name;relative=str(path.relative_to(root))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1082, in __new__
+    self = cls._from_parts(args, init=False)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py", line 707, in _from_parts
+    drv, root, parts = self._parse_args(args)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py", line 691, in _parse_args
+    a = os.fspath(a)
+TypeError: expected str, bytes or os.PathLike object, not int
+
+----------------------------------------------------------------------
+Ran 1 test in 0.300s
+
+FAILED (errors=1)

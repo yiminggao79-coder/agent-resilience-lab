@@ -1,0 +1,17 @@
+test_saved_host_selection_survives_a_new_engine_without_repeating_cli_skill (tests.dev.test_skill_resources.SkillResourceTests) ... FAIL
+
+======================================================================
+FAIL: test_saved_host_selection_survives_a_new_engine_without_repeating_cli_skill (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 91, in test_saved_host_selection_survives_a_new_engine_without_repeating_cli_skill
+    self.assertEqual(state['phase'],'awaiting_approval',state.get('reason'))
+AssertionError: 'completed' != 'awaiting_approval'
+- completed
++ awaiting_approval
+ : model_finished
+
+----------------------------------------------------------------------
+Ran 1 test in 0.046s
+
+FAILED (failures=1)

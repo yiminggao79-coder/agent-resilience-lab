@@ -1,0 +1,316 @@
+{
+  "note": "V0 probe contracts rerun against V1; original V0 evidence untouched. Offline only.",
+  "results": [
+    {
+      "case": "missing_usage_invalid_message",
+      "expectation": "pause after first response, no second request",
+      "meets_expectation": true,
+      "actual_model_fixture_calls": 1,
+      "phase": "needs_confirmation",
+      "reason": "usage_unknown",
+      "trace": [
+        {
+          "seq": 1,
+          "at": 1794033937.721282,
+          "kind": "created",
+          "phase": "ready",
+          "revision": 1,
+          "turn_id": "befedea39f6f459d8ffae78029d6c804"
+        },
+        {
+          "seq": 2,
+          "at": 1794033937.7260768,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2348,
+          "reserved_usd": 0.007468,
+          "revision": 2,
+          "turn_id": "befedea39f6f459d8ffae78029d6c804"
+        },
+        {
+          "seq": 3,
+          "at": 1794033937.727903,
+          "kind": "model_response",
+          "duration_ms": 0.04910299999999479,
+          "model_calls": 1,
+          "revision": 3,
+          "turn_id": "befedea39f6f459d8ffae78029d6c804"
+        },
+        {
+          "seq": 4,
+          "at": 1794033937.7292778,
+          "kind": "terminated",
+          "phase": "needs_confirmation",
+          "code": "usage_unknown",
+          "revision": 4,
+          "turn_id": "befedea39f6f459d8ffae78029d6c804"
+        }
+      ]
+    },
+    {
+      "case": "duplicate_committed_call_identity",
+      "expectation": "same call identity applies at most once",
+      "meets_expectation": true,
+      "lines": 1,
+      "phase": "needs_confirmation",
+      "terminal_resume_changed_file": false,
+      "scope": "This is a repeated model response, not proof of repeated recovery replay.",
+      "trace": [
+        {
+          "seq": 1,
+          "at": 1794033937.738209,
+          "kind": "created",
+          "phase": "ready",
+          "revision": 1,
+          "turn_id": "75d4dfe618684882b56f4b8d0282e18b"
+        },
+        {
+          "seq": 2,
+          "at": 1794033937.740748,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2348,
+          "reserved_usd": 0.0,
+          "revision": 2,
+          "turn_id": "75d4dfe618684882b56f4b8d0282e18b"
+        },
+        {
+          "seq": 3,
+          "at": 1794033937.742075,
+          "kind": "model_response",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.048744999999988936,
+          "model_calls": 1,
+          "revision": 3,
+          "turn_id": "75d4dfe618684882b56f4b8d0282e18b"
+        },
+        {
+          "seq": 4,
+          "at": 1794033937.8485272,
+          "kind": "model_finished",
+          "revision": 4,
+          "turn_id": "75d4dfe618684882b56f4b8d0282e18b",
+          "operation_id": "f42b396a60fb43359bcd5dce58bbd1ed"
+        },
+        {
+          "seq": 5,
+          "at": 1794033937.850057,
+          "kind": "tool_started",
+          "tool": "append_file",
+          "attempt": 1,
+          "revision": 5,
+          "turn_id": "75d4dfe618684882b56f4b8d0282e18b",
+          "operation_id": "f42b396a60fb43359bcd5dce58bbd1ed"
+        },
+        {
+          "seq": 6,
+          "at": 1794033937.944005,
+          "kind": "tool_finished",
+          "tool": "append_file",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 93.910987,
+          "operation_id": "f42b396a60fb43359bcd5dce58bbd1ed",
+          "revision": 6,
+          "turn_id": "75d4dfe618684882b56f4b8d0282e18b"
+        },
+        {
+          "seq": 7,
+          "at": 1794033937.945575,
+          "kind": "model_started",
+          "model_calls": 2,
+          "request_bytes": 2736,
+          "reserved_usd": 0.0,
+          "revision": 7,
+          "turn_id": "75d4dfe618684882b56f4b8d0282e18b"
+        },
+        {
+          "seq": 8,
+          "at": 1794033937.946827,
+          "kind": "model_response",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.03656200000001775,
+          "model_calls": 2,
+          "revision": 8,
+          "turn_id": "75d4dfe618684882b56f4b8d0282e18b"
+        },
+        {
+          "seq": 9,
+          "at": 1794033937.947903,
+          "kind": "terminated",
+          "phase": "needs_confirmation",
+          "code": "duplicate_call_id",
+          "revision": 9,
+          "turn_id": "75d4dfe618684882b56f4b8d0282e18b"
+        }
+      ]
+    },
+    {
+      "case": "invalid_arguments_trace_accounting",
+      "expectation": "trace response usage sum equals checkpoint usage",
+      "meets_expectation": true,
+      "checkpoint_input_tokens": 202,
+      "trace_input_tokens": 202,
+      "source": "synthetic usage only; no actual API accounting",
+      "trace": [
+        {
+          "seq": 1,
+          "at": 1794033937.9586508,
+          "kind": "created",
+          "phase": "ready",
+          "revision": 1,
+          "turn_id": "6986d48557c94b8bb14723706bb9ead4"
+        },
+        {
+          "seq": 2,
+          "at": 1794033937.961078,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2348,
+          "reserved_usd": 0.0,
+          "revision": 2,
+          "turn_id": "6986d48557c94b8bb14723706bb9ead4"
+        },
+        {
+          "seq": 3,
+          "at": 1794033937.962132,
+          "kind": "model_response",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.0264170000000008,
+          "model_calls": 1,
+          "revision": 3,
+          "turn_id": "6986d48557c94b8bb14723706bb9ead4"
+        },
+        {
+          "seq": 4,
+          "at": 1794033938.051362,
+          "kind": "tool_finished",
+          "tool": "invalid",
+          "ok": false,
+          "code": "invalid_arguments",
+          "duration_ms": 88.02829200000006,
+          "operation_id": "7f08d39b020d45bc8c2a3689829357ab",
+          "revision": 4,
+          "turn_id": "6986d48557c94b8bb14723706bb9ead4"
+        },
+        {
+          "seq": 5,
+          "at": 1794033938.053043,
+          "kind": "model_started",
+          "model_calls": 2,
+          "request_bytes": 2623,
+          "reserved_usd": 0.0,
+          "revision": 5,
+          "turn_id": "6986d48557c94b8bb14723706bb9ead4"
+        },
+        {
+          "seq": 6,
+          "at": 1794033938.054197,
+          "kind": "model_response",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.03316400000008546,
+          "model_calls": 2,
+          "revision": 6,
+          "turn_id": "6986d48557c94b8bb14723706bb9ead4"
+        },
+        {
+          "seq": 7,
+          "at": 1794033938.055251,
+          "kind": "model_finished",
+          "phase": "completed",
+          "revision": 7,
+          "turn_id": "6986d48557c94b8bb14723706bb9ead4"
+        }
+      ]
+    },
+    {
+      "case": "orphan_tool_after_runner_sigkill",
+      "expectation": "old worker cannot produce later effects after runner restart",
+      "meets_expectation": true,
+      "real_runner_exit_code": -9,
+      "file_absent_at_resume": true,
+      "file_appeared_after_old_worker_continued": false,
+      "resumed_phase": "needs_confirmation",
+      "stored_phase_after_effect": "needs_confirmation",
+      "injection": "Popen observer stops real tools.py execute worker before stdin is consumed; parent receives SIGKILL; no production code changed",
+      "trace": [
+        {
+          "seq": 1,
+          "at": 1794033938.230291,
+          "kind": "created",
+          "phase": "ready",
+          "revision": 1,
+          "turn_id": "c3c7634d45be44f79a87dcaed2c4f824"
+        },
+        {
+          "seq": 2,
+          "at": 1794033938.233427,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2327,
+          "reserved_usd": 0.0,
+          "revision": 2,
+          "turn_id": "c3c7634d45be44f79a87dcaed2c4f824"
+        },
+        {
+          "seq": 3,
+          "at": 1794033938.234563,
+          "kind": "model_response",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.02841900000000175,
+          "model_calls": 1,
+          "revision": 3,
+          "turn_id": "c3c7634d45be44f79a87dcaed2c4f824"
+        },
+        {
+          "seq": 4,
+          "at": 1794033938.325142,
+          "kind": "model_finished",
+          "revision": 4,
+          "turn_id": "c3c7634d45be44f79a87dcaed2c4f824",
+          "operation_id": "ce102b8e684f4409b7f3ba88eeeafcb5"
+        },
+        {
+          "seq": 5,
+          "at": 1794033938.3265128,
+          "kind": "tool_started",
+          "tool": "append_file",
+          "attempt": 1,
+          "revision": 5,
+          "turn_id": "c3c7634d45be44f79a87dcaed2c4f824",
+          "operation_id": "ce102b8e684f4409b7f3ba88eeeafcb5"
+        },
+        {
+          "seq": 6,
+          "at": 1794033938.546303,
+          "kind": "tool_recovery",
+          "tool": "append_file",
+          "recovered": true,
+          "revision": 6,
+          "turn_id": "c3c7634d45be44f79a87dcaed2c4f824",
+          "operation_id": "ce102b8e684f4409b7f3ba88eeeafcb5"
+        },
+        {
+          "seq": 7,
+          "at": 1794033938.657235,
+          "kind": "terminated",
+          "phase": "needs_confirmation",
+          "code": "tool_outcome_unknown",
+          "revision": 7,
+          "turn_id": "c3c7634d45be44f79a87dcaed2c4f824",
+          "operation_id": "ce102b8e684f4409b7f3ba88eeeafcb5"
+        }
+      ]
+    }
+  ]
+}

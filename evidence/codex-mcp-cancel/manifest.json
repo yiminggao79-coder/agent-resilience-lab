@@ -1,0 +1,20 @@
+{
+  "repository": "openai/codex",
+  "commit": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/rmcp-client/src/request_cancellation.rs",
+  "blob_sha": "5ec49d70e84d90f9d9c14d20455fd78990121c4b",
+  "downloaded_blob_verified": true,
+  "body_ranges_read": [
+    [
+      38,
+      80
+    ],
+    [
+      90,
+      131
+    ]
+  ],
+  "whole_file_audited": false,
+  "upstream_executed": false,
+  "license": "Apache-2.0, existing project Codex notices apply"
+}

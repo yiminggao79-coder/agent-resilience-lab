@@ -1,0 +1,28 @@
+{
+  "kind": "posthoc_diagnostic_not_rescore",
+  "original_report_task_success": false,
+  "candidate_test_file_appended": "tests/test_regressions.py",
+  "original_test_files_restored_only_in_separate_copy": true,
+  "original_tests_exit_code": 0,
+  "original_tests_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "original_tests_stderr_sha256": "f61c0574383b5755890df6cd4c4bff42289c3f534fc1a12ec44f868452607c72",
+  "context_before": {
+    "original_bytes": 25343,
+    "retained_bytes": 25343,
+    "shortened": 0,
+    "dropped_pairs": 0
+  },
+  "context_after": {
+    "original_bytes": 25343,
+    "retained_bytes": 21948,
+    "shortened": 0,
+    "dropped_pairs": 0
+  },
+  "summary_utf8_bytes": 2471,
+  "covered_until": 25,
+  "summary_sha256": "4a948aa9dc58d971d21fd98f9fa76f536721bd0954106e83746a9b71a11c9f71",
+  "limitations": [
+    "Additional diagnostic only; immutable-file gate failure and original JSON are preserved.",
+    "Short real session, not a long-context success rate."
+  ]
+}

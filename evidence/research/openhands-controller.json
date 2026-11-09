@@ -1,0 +1,147 @@
+{
+  "source_url": "https://github.com/OpenHands/OpenHands/blob/0.54.0/openhands/controller/agent_controller.py",
+  "modified_date": "2025-08-18T19:10:32Z",
+  "sha256": null,
+  "observations": [
+    {
+      "line": 29,
+      "text": "from openhands.controller.stuck import StuckDetector"
+    },
+    {
+      "line": 133,
+      "text": "max_budget_per_task: The maximum budget (in USD) allowed per task, beyond which the agent will stop."
+    },
+    {
+      "line": 170,
+      "text": "max_budget_per_task=budget_per_task_delta,"
+    },
+    {
+      "line": 179,
+      "text": "self._initial_max_budget_per_task = budget_per_task_delta"
+    },
+    {
+      "line": 182,
+      "text": "self._stuck_detector = StuckDetector(self.state)"
+    },
+    {
+      "line": 249,
+      "text": "async def _react_to_exception("
+    },
+    {
+      "line": 305,
+      "text": "def step(self) -> None:"
+    },
+    {
+      "line": 308,
+      "text": "async def _step_with_exception_handling(self) -> None:"
+    },
+    {
+      "line": 578,
+      "text": "async def set_agent_state_to(self, new_state: AgentState) -> None:"
+    },
+    {
+      "line": 692,
+      "text": "budget_per_task_delta=self._initial_max_budget_per_task,"
+    },
+    {
+      "line": 767,
+      "text": "async def _step(self) -> None:"
+    },
+    {
+      "line": 956,
+      "text": "max_budget_per_task: float | None,"
+    },
+    {
+      "line": 964,
+      "text": "max_budget_per_task,"
+    },
+    {
+      "line": 995,
+      "text": "- max_budget_per_task: The maximum budget allowed for the task"
+    },
+    {
+      "line": 1012,
+      "text": "# Add max_budget_per_task to metrics"
+    },
+    {
+      "line": 1014,
+      "text": "clean_metrics.max_budget_per_task = self.state.budget_flag.max_value"
+    },
+    {
+      "line": 1027,
+      "text": "f'Action metrics - accumulated_cost: {metrics.accumulated_cost}, max_budget: {metrics.max_budget_per_task}, '"
+    }
+  ],
+  "excerpts": [
+    {
+      "start_line": 29,
+      "lines": [
+        "from openhands.controller.stuck import StuckDetector",
+        "from openhands.core.config import AgentConfig, LLMConfig",
+        "from openhands.core.exceptions import (",
+        "    AgentStuckInLoopError,",
+        "    FunctionCallNotExistsError,"
+      ]
+    },
+    {
+      "start_line": 133,
+      "lines": [
+        "            max_budget_per_task: The maximum budget (in USD) allowed per task, beyond which the agent will stop.",
+        "            agent_to_llm_config: A dictionary mapping agent names to LLM configurations in the case that",
+        "                we delegate to a different agent.",
+        "            agent_configs: A dictionary mapping agent names to agent configurations in the case that",
+        "                we delegate to a different agent."
+      ]
+    },
+    {
+      "start_line": 170,
+      "lines": [
+        "            max_budget_per_task=budget_per_task_delta,",
+        "            confirmation_mode=confirmation_mode,",
+        "        )",
+        "",
+        "        self.state = self.state_tracker.state  # TODO: share between manager and controller for backward compatability; we should ideally move all state related logic to the state manager"
+      ]
+    },
+    {
+      "start_line": 179,
+      "lines": [
+        "        self._initial_max_budget_per_task = budget_per_task_delta",
+        "",
+        "        # stuck helper",
+        "        self._stuck_detector = StuckDetector(self.state)",
+        "        self.status_callback = status_callback"
+      ]
+    },
+    {
+      "start_line": 182,
+      "lines": [
+        "        self._stuck_detector = StuckDetector(self.state)",
+        "        self.status_callback = status_callback",
+        "",
+        "        # replay-related",
+        "        self._replay_manager = ReplayManager(replay_events)"
+      ]
+    },
+    {
+      "start_line": 249,
+      "lines": [
+        "    async def _react_to_exception(",
+        "        self,",
+        "        e: Exception,",
+        "    ) -> None:",
+        "        \"\"\"React to an exception by setting the agent state to error and sending a status message.\"\"\""
+      ]
+    },
+    {
+      "start_line": 305,
+      "lines": [
+        "    def step(self) -> None:",
+        "        asyncio.create_task(self._step_with_exception_handling())",
+        "",
+        "    async def _step_with_exception_handling(self) -> None:",
+        "        try:"
+      ]
+    }
+  ]
+}

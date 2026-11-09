@@ -1,0 +1,117 @@
+test_every_visible_mutation_is_denied_and_ancestors_stop_at_root (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ERROR
+test_exact_root_sentinel_dominates_valid_descendants_with_version_one_identity (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ERROR
+test_existing_empty_and_scoped_policies_keep_identity_scan_and_scratch_behavior (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ERROR
+test_root_dominance_still_validates_every_lexical_scope (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ok
+test_scratch_overlap_is_rejected_in_both_directions (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ERROR
+test_scratch_symlink_case_and_unicode_aliases_are_conservatively_rejected (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ERROR
+test_whole_root_must_exist_and_be_a_real_directory (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ERROR
+test_whole_validation_does_not_scan_hidden_linked_special_or_large_trees (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests) ... ERROR
+
+======================================================================
+ERROR: test_every_visible_mutation_is_denied_and_ancestors_stop_at_root (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 68, in test_every_visible_mutation_is_denied_and_ancestors_stop_at_root
+    policy = self.whole()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 21, in whole
+    def whole(self, paths=('.',)): return ReadOnlyPolicy(self.root, paths)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in __init__
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in <setcomp>
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 31, in _parts
+    raise ValueError('invalid_read_only_path')
+ValueError: invalid_read_only_path
+
+======================================================================
+ERROR: test_exact_root_sentinel_dominates_valid_descendants_with_version_one_identity (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 24, in test_exact_root_sentinel_dominates_valid_descendants_with_version_one_identity
+    policy = self.whole(['source/code.py', '.', 'source', '.'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 21, in whole
+    def whole(self, paths=('.',)): return ReadOnlyPolicy(self.root, paths)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in __init__
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in <setcomp>
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 31, in _parts
+    raise ValueError('invalid_read_only_path')
+ValueError: invalid_read_only_path
+
+======================================================================
+ERROR: test_existing_empty_and_scoped_policies_keep_identity_scan_and_scratch_behavior (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 103, in test_existing_empty_and_scoped_policies_keep_identity_scan_and_scratch_behavior
+    self.assertFalse(empty.whole_workspace)
+AttributeError: 'ReadOnlyPolicy' object has no attribute 'whole_workspace'
+
+======================================================================
+ERROR: test_scratch_overlap_is_rejected_in_both_directions (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 77, in test_scratch_overlap_is_rejected_in_both_directions
+    policy = self.whole()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 21, in whole
+    def whole(self, paths=('.',)): return ReadOnlyPolicy(self.root, paths)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in __init__
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in <setcomp>
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 31, in _parts
+    raise ValueError('invalid_read_only_path')
+ValueError: invalid_read_only_path
+
+======================================================================
+ERROR: test_scratch_symlink_case_and_unicode_aliases_are_conservatively_rejected (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 87, in test_scratch_symlink_case_and_unicode_aliases_are_conservatively_rejected
+    policy = self.whole()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 21, in whole
+    def whole(self, paths=('.',)): return ReadOnlyPolicy(self.root, paths)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in __init__
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in <setcomp>
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 31, in _parts
+    raise ValueError('invalid_read_only_path')
+ValueError: invalid_read_only_path
+
+======================================================================
+ERROR: test_whole_root_must_exist_and_be_a_real_directory (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 62, in test_whole_root_must_exist_and_be_a_real_directory
+    policy = self.whole()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 21, in whole
+    def whole(self, paths=('.',)): return ReadOnlyPolicy(self.root, paths)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in __init__
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in <setcomp>
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 31, in _parts
+    raise ValueError('invalid_read_only_path')
+ValueError: invalid_read_only_path
+
+======================================================================
+ERROR: test_whole_validation_does_not_scan_hidden_linked_special_or_large_trees (tests.dev.test_workspace_readonly.WorkspaceReadonlyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 51, in test_whole_validation_does_not_scan_hidden_linked_special_or_large_trees
+    policy = self.whole(['.', 'source/code.py', 'future/file'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly.py", line 21, in whole
+    def whole(self, paths=('.',)): return ReadOnlyPolicy(self.root, paths)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in __init__
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in <setcomp>
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 31, in _parts
+    raise ValueError('invalid_read_only_path')
+ValueError: invalid_read_only_path
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.018s
+
+FAILED (errors=7)

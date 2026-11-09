@@ -1,0 +1,170 @@
+test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) ... test_json_lifecycle_headers_and_session_delete_without_credentials_or_proxy (tests.dev.test_mcp_http.MCPHTTPTests) ... FAIL
+test_matching_sse_result_finishes_without_waiting_for_stream_disconnect (tests.dev.test_mcp_http.MCPHTTPTests) ... FAIL
+test_output_limit_and_timeout_after_effect_remain_unknown (tests.dev.test_mcp_http.MCPHTTPTests) ... test_sse_notifications_ping_and_both_line_endings (tests.dev.test_mcp_http.MCPHTTPTests) ... test_url_authority_is_explicit_and_invalid_limits_launch_nothing (tests.dev.test_mcp_http.MCPHTTPTests) ... FAIL
+
+======================================================================
+FAIL: test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) (mode='wrong_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 64, in test_invalid_final_framing_and_http_status_do_not_replay
+    client=self.ready(server);server.mode=mode
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) (mode='duplicate_key')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 64, in test_invalid_final_framing_and_http_status_do_not_replay
+    client=self.ready(server);server.mode=mode
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) (mode='partial_sse')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 64, in test_invalid_final_framing_and_http_status_do_not_replay
+    client=self.ready(server);server.mode=mode
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) (mode='changed_session')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 64, in test_invalid_final_framing_and_http_status_do_not_replay
+    client=self.ready(server);server.mode=mode
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) (mode='redirect')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 64, in test_invalid_final_framing_and_http_status_do_not_replay
+    client=self.ready(server);server.mode=mode
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) (mode='expired')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 64, in test_invalid_final_framing_and_http_status_do_not_replay
+    client=self.ready(server);server.mode=mode
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_invalid_final_framing_and_http_status_do_not_replay (tests.dev.test_mcp_http.MCPHTTPTests) (mode='accepted')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 64, in test_invalid_final_framing_and_http_status_do_not_replay
+    client=self.ready(server);server.mode=mode
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_json_lifecycle_headers_and_session_delete_without_credentials_or_proxy (tests.dev.test_mcp_http.MCPHTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 27, in test_json_lifecycle_headers_and_session_delete_without_credentials_or_proxy
+    with self.client(server) as client:
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_matching_sse_result_finishes_without_waiting_for_stream_disconnect (tests.dev.test_mcp_http.MCPHTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 53, in test_matching_sse_result_finishes_without_waiting_for_stream_disconnect
+    client=self.ready(server);server.mode='persistent_sse';started=time.monotonic()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_output_limit_and_timeout_after_effect_remain_unknown (tests.dev.test_mcp_http.MCPHTTPTests) (mode='overflow')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 75, in test_output_limit_and_timeout_after_effect_remain_unknown
+    client=self.ready(server,timeout=.2,max_bytes=4096);server.mode=mode;started=time.monotonic()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_output_limit_and_timeout_after_effect_remain_unknown (tests.dev.test_mcp_http.MCPHTTPTests) (mode='effect_timeout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 75, in test_output_limit_and_timeout_after_effect_remain_unknown
+    client=self.ready(server,timeout=.2,max_bytes=4096);server.mode=mode;started=time.monotonic()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_sse_notifications_ping_and_both_line_endings (tests.dev.test_mcp_http.MCPHTTPTests) (mode='sse')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 45, in test_sse_notifications_ping_and_both_line_endings
+    client=self.ready(server);server.mode=mode
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_sse_notifications_ping_and_both_line_endings (tests.dev.test_mcp_http.MCPHTTPTests) (mode='sse_cr')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 45, in test_sse_notifications_ping_and_both_line_endings
+    client=self.ready(server);server.mode=mode
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 22, in ready
+    client=self.client(server,**kwargs);client.start();client.list_tools();return client
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 17, in client
+    self.assertIsNotNone(MCPHTTPClient,'HTTP transport not implemented')
+AssertionError: unexpectedly None : HTTP transport not implemented
+
+======================================================================
+FAIL: test_url_authority_is_explicit_and_invalid_limits_launch_nothing (tests.dev.test_mcp_http.MCPHTTPTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http.py", line 83, in test_url_authority_is_explicit_and_invalid_limits_launch_nothing
+    self.assertIsNotNone(MCPHTTPClient)
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 6 tests in 6.551s
+
+FAILED (failures=14)

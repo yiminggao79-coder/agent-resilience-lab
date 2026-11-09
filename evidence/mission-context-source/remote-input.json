@@ -1,0 +1,25 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/compact_remote_v2_attempt.rs",
+  "git_blob_sha": "ce2063fc664ac813662fef9ddaf9ab82e5672c92",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/compact_remote_v2_attempt.rs",
+  "notice": "Verbatim public-source excerpts; selection and JSON wrapper are local. Upstream code was read, not executed. See LICENSE and NOTICE.",
+  "inspected_line_ranges": [
+    [
+      1,
+      48
+    ],
+    [
+      95,
+      180
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 95,
+      "end_line": 146,
+      "text": "        RemoteCompactV2AttemptInput::Foreground(client_session) => {\n            let model_info = turn_context.model_info();\n            let mut history = sess.clone_history().await;\n            let input_goal_ids = UserGoalUpdate::message_ids(history.raw_items());\n            let tools_in_history = step_context.incremental_tools_feature().is_some()\n                && history.has_tool_declarations();\n            let base_instructions = if tools_in_history {\n                BaseInstructions {\n                    text: String::new(),\n                    provenance: None,\n                }\n            } else {\n                sess.get_prompt_base_instructions().await\n            };\n            let (rewritten_outputs, estimated_deleted_tokens) =\n                trim_function_call_history_to_fit_context_window(\n                    &mut history,\n                    turn_context,\n                    turn_context.model_context_window(),\n                    &base_instructions,\n                );\n            if rewritten_outputs > 0 {\n                info!(\n                    turn_id = %turn_context.sub_id,\n                    rewritten_outputs,\n                    \"rewrote history outputs before remote compaction v2\"\n                );\n            }\n            if estimated_deleted_tokens > 0 {\n                let max_local_deleted_tokens = sess.estimated_tokens_since_last_usage().await;\n                analytics_details.active_context_tokens_before = analytics_details\n                    .active_context_tokens_before\n                    .map(|active_context_tokens_before| {\n                        active_context_tokens_before\n                            .saturating_sub(estimated_deleted_tokens.min(max_local_deleted_tokens))\n                    });\n            }\n            let trace_input_history = compaction_trace\n                .is_enabled()\n                .then(|| history.raw_items().cloned().collect());\n            let (mut input, metadata): (Vec<_>, Vec<_>) = history\n                .for_prompt_annotated(\n                    &model_info.input_modalities,\n                    sess.services.image_store.as_ref(),\n                )\n                .await\n                .into_iter()\n                .map(|envelope| (envelope.item, envelope.metadata))\n                .unzip();\n            sess.services\n                .executed_tool_calls\n                .attach_to_compaction_prompt(&mut input);\n"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+test_mutation_after_tests_in_same_batch_invalidates_that_verification (tests.dev.test_execution_review.ExecutionReviewTests) ... FAIL
+
+======================================================================
+FAIL: test_mutation_after_tests_in_same_batch_invalidates_that_verification (tests.dev.test_execution_review.ExecutionReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_execution_review.py", line 75, in test_mutation_after_tests_in_same_batch_invalidates_that_verification
+    self.assertEqual(self.reviews(task),[])
+AssertionError: Lists differ: [{'seq': 59, 'at': 1794168905.698503, 'kin[128 chars]b4'}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'seq': 59, 'at': 1794168905.698503, 'kind': 'execution_review', 'steps': 8, 'exit_code': 0, 'model_calls': 9, 'revision': 59, 'turn_id': '6a6ea27162c8486983b981f26b523ab4'}
+
++ []
+- [{'at': 1794168905.698503,
+-   'exit_code': 0,
+-   'kind': 'execution_review',
+-   'model_calls': 9,
+-   'revision': 59,
+-   'seq': 59,
+-   'steps': 8,
+-   'turn_id': '6a6ea27162c8486983b981f26b523ab4'}]
+
+----------------------------------------------------------------------
+Ran 1 test in 4.290s
+
+FAILED (failures=1)

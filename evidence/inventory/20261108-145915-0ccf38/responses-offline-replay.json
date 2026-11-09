@@ -1,0 +1,12 @@
+{
+  "kind": "offline_replay_actual_paid_diagnostic_sse_after_null_fix",
+  "parsed": true,
+  "tool_count": 1,
+  "usage": {
+    "input_tokens": 324,
+    "output_tokens": 82
+  },
+  "finish_reason": "completed",
+  "api_requests_sent": 0,
+  "old_unknown_reservations_changed": false
+}

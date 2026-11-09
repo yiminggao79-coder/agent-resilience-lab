@@ -1,0 +1,30 @@
+test_local_wire_size_rejection_does_not_claim_dispatched_uncertainty (tests.dev.test_mcp_resources.MCPResourceTests) ... ERROR
+test_registry_known_oversize_before_dispatch_is_correctable_feedback (tests.dev.test_mcp_resources.MCPResourceTests) ... FAIL
+
+======================================================================
+ERROR: test_local_wire_size_rejection_does_not_claim_dispatched_uncertainty (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 87, in test_local_wire_size_rejection_does_not_claim_dispatched_uncertainty
+    self.assertIn('contents',client.read_resource('owned:///reference'))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp.py", line 229, in read_resource
+    self._resources_ready();uri=_resource_string(uri,uri=True)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp.py", line 188, in _resources_ready
+    if self._state!='ready':raise MCPError('client_not_ready')
+agent_lab.mcp.MCPError: client_not_ready
+
+======================================================================
+FAIL: test_registry_known_oversize_before_dispatch_is_correctable_feedback (tests.dev.test_mcp_resources.MCPResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_resources.py", line 97, in test_registry_known_oversize_before_dispatch_is_correctable_feedback
+    self.assertEqual(state['phase'],'awaiting_approval')
+AssertionError: 'needs_confirmation' != 'awaiting_approval'
+- needs_confirmation
++ awaiting_approval
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.180s
+
+FAILED (failures=1, errors=1)

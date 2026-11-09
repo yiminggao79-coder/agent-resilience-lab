@@ -1,0 +1,15 @@
+test_cli_stop_cancels_real_unittest_and_keeps_effects_unknown (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_tests", "runner_pid": 61545, "native_pid": 61550, "supervisor_pid": 61548, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_cli_stop_waits_for_command_cleanup_but_retains_unknown_effect (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_command", "runner_pid": 61556, "native_pid": 61570, "supervisor_pid": 61568, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_runner_sigkill_owner_eof_cleans_native_before_new_runner_recovery (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_owner_death_process_contract", "model_kind": "offline_protocol_double", "killed_runner_pid": 61576, "kill_return_code": -9, "resumed_pid": 61588, "native_pid": 61581, "supervisor_pid": 61579, "native_and_supervisor_nonrunning": true, "new_runner_fence_acquired": true, "pending_unknown_preserved": true, "new_effects": false}
+ok
+test_mutating_native_cancel_retains_unknown_effect_and_pending_after_local_cleanup (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_readonly_cancel_closes_result_and_unstarted_tail_without_fake_success (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_registry_style_base_wrapper_is_not_bypassed (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_unconfirmed_cancel_never_unlocks_even_readonly_execution (tests.dev.test_tool_stop.ToolStopTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 3.254s
+
+OK

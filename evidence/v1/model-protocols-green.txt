@@ -1,0 +1,31 @@
+test_anthropic_and_responses_streams_complete_and_fail_closed (tests.dev.test_model_protocols.ModelOtherStreamsHTTPTests) ... ok
+test_all_protocols_use_real_worker_and_protocol_headers (tests.dev.test_model_protocols.ModelProtocolHTTPTests) ... ok
+test_identity_changes_with_protocol_and_capabilities (tests.dev.test_model_protocols.ModelProtocolHTTPTests) ... ok
+test_response_size_limit_applies_to_stream (tests.dev.test_model_protocols.ModelProtocolHTTPTests) ... ok
+test_worker_stream_assembles_tool_and_rejects_incomplete_response (tests.dev.test_model_protocols.ModelProtocolHTTPTests) ... ok
+test_chat_private_reasoning_and_request_id_are_preserved_canonically (tests.dev.test_model_protocols.ProtocolBoundaryTests) ... ok
+test_refusal_and_malformed_tool_arguments_are_rejected (tests.dev.test_model_protocols.ProtocolBoundaryTests) ... ok
+test_stream_rejects_unclosed_anthropic_block_and_chat_length (tests.dev.test_model_protocols.ProtocolBoundaryTests) ... ok
+test_anthropic_parallel_capability_can_be_omitted (tests.dev.test_model_protocols.ProtocolSafetyTests) ... ok
+test_malformed_anthropic_stream_usage_is_unknown (tests.dev.test_model_protocols.ProtocolSafetyTests) ... ok
+test_non_assistant_chat_message_cannot_be_promoted_to_assistant (tests.dev.test_model_protocols.ProtocolSafetyTests) ... ok
+test_anthropic_stream_needs_message_stop_and_complete_tool_input (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_anthropic_tools_and_feedback_are_translated (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_chat_stream_reassembles_arguments_only_after_done (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_chat_token_capability_is_explicit (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_responses_function_items_and_usage (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_responses_stream_requires_completed_response (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_truncation_refusal_and_bad_usage_never_authorize_partial_tool (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_http_status_classification (tests.dev.test_model.ModelTests) ... ok
+test_http_wall_timeout_and_redirect_refusal (tests.dev.test_model.ModelTests) ... ok
+test_invalid_json_shape_is_unknown_not_retryable (tests.dev.test_model.ModelTests) ... ok
+test_malformed_usage_is_unmeasured_instead_of_crashing (tests.dev.test_model.ModelTests) ... ok
+test_no_network_without_explicit_enable (tests.dev.test_model.ModelTests) ... ok
+test_provider_body_cannot_control_retry_policy_or_public_error_code (tests.dev.test_model.ModelTests) ... ok
+test_real_http_payload_tools_usage_and_key_environment (tests.dev.test_model.ModelTests) ... ok
+test_remote_http_and_credential_urls_rejected (tests.dev.test_model.ModelTests) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 9.219s
+
+OK

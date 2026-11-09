@@ -1,0 +1,17 @@
+test_callback_failure_closes_without_echoing_arbitrary_exception (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_cancellable_nested_sse_ping_preserves_normal_result_and_controller_callback_thread (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_connected_slow_headers_are_cancelled_without_waiting_for_header_or_deadline (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_direct_client_predispatch_stop_does_not_send_or_report_success (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_existing_base_scope_cancels_dispatched_http_without_cross_thread_callback (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py:331: ResourceWarning: unclosed <socket.socket [closed] fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=6>
+  def _resolve(path, rest):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_existing_base_scope_cancels_dispatched_stdio_effect_and_preserves_unknown (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_late_connect_worker_retains_abort_gate_after_controller_returns (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_matching_final_sse_event_returns_before_later_event_in_same_chunk (tests.dev.test_mcp_http_review.MCPHTTPReviewTests) ... ok
+test_slow_http_headers_do_not_extend_total_tool_deadline (tests.dev.test_mcp_http_review.MCPHTTPReviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 3.882s
+
+OK

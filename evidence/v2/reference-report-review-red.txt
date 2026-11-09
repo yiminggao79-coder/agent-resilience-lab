@@ -1,0 +1,55 @@
+test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests) ... FAIL
+test_mcp_metadata_describes_actual_zero_approval_before_eof_and_external_effect (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests) ... ERROR
+
+======================================================================
+ERROR: test_mcp_metadata_describes_actual_zero_approval_before_eof_and_external_effect (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_probe_reports.py", line 29, in test_mcp_metadata_describes_actual_zero_approval_before_eof_and_external_effect
+    self.assertEqual(result['harness_effect_authority'],'trusted_external_mcp_process')
+KeyError: 'harness_effect_authority'
+
+======================================================================
+FAIL: test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests) (changed={'exit_code': -9, 'timed_out': True})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_probe_reports.py", line 19, in test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment
+    with self.subTest(changed=changed):self.assertFalse(self.run_mocked({**reference,**changed},harness)['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests) (changed={'item_done_observed': False})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_probe_reports.py", line 19, in test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment
+    with self.subTest(changed=changed):self.assertFalse(self.run_mocked({**reference,**changed},harness)['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests) (changed={'stdout': 'unrelated failure'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_probe_reports.py", line 19, in test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment
+    with self.subTest(changed=changed):self.assertFalse(self.run_mocked({**reference,**changed},harness)['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests) (changed={'exit_code': 2})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_probe_reports.py", line 19, in test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment
+    with self.subTest(changed=changed):self.assertFalse(self.run_mocked({**reference,**changed},harness)['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment (tests.dev.test_reference_probe_reports.ReferenceProbeReportTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_probe_reports.py", line 20, in test_killed_or_unobserved_reference_is_not_a_successful_eof_experiment
+    self.assertFalse(self.run_mocked(reference,{**harness,'item_done_observed':False})['passed'])
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.008s
+
+FAILED (failures=5, errors=1)

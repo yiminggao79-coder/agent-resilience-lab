@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "read_date": "2026-11-09",
+  "retrieval": "Connected GitHub fetch_file, paths discovered from the previously captured complete immutable recursive tree. No paid/model API calls.",
+  "scope": "Three newly inspected source files; prior turn.rs study reused by reference only. No private transcripts, frozen task contents, credentials, runtime edits or upstream execution.",
+  "sources": [
+    {
+      "evidence_file": "handler.json",
+      "path": "codex-rs/core/src/tools/handlers/unified_exec/exec_command.rs",
+      "git_blob_sha": "2b746b85d13e06b3a52f6f13a20d02ffc9ab373b",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/unified_exec/exec_command.rs",
+      "inspected_line_ranges": [
+        [
+          1,
+          278
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          133,
+          167
+        ],
+        [
+          225,
+          275
+        ]
+      ],
+      "evidence_sha256": "57cd699253217b6c90deaa5324183738e5d99e936491cec6388710cb48bfe1d6"
+    },
+    {
+      "evidence_file": "orchestrator.json",
+      "path": "codex-rs/core/src/tools/orchestrator.rs",
+      "git_blob_sha": "9ba96e57eea42bcd988b1d4d257d92149a50cc3a",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/orchestrator.rs",
+      "inspected_line_ranges": [
+        [
+          50,
+          125
+        ],
+        [
+          388,
+          488
+        ],
+        [
+          592,
+          665
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          105,
+          122
+        ],
+        [
+          389,
+          418
+        ],
+        [
+          436,
+          449
+        ],
+        [
+          598,
+          658
+        ]
+      ],
+      "evidence_sha256": "163050ccc90d2ae0f75712610edd8a84bbb8e011be9c17ee3c59a1318c0bb813"
+    },
+    {
+      "evidence_file": "process-result.json",
+      "path": "codex-rs/core/src/unified_exec/process_manager.rs",
+      "git_blob_sha": "caa45622a2c826ae7a7c14c1edd2c849e8f81799",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/unified_exec/process_manager.rs",
+      "inspected_line_ranges": [
+        [
+          440,
+          540
+        ],
+        [
+          570,
+          640
+        ],
+        [
+          700,
+          880
+        ],
+        [
+          1295,
+          1370
+        ],
+        [
+          1480,
+          1585
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          518,
+          534
+        ],
+        [
+          711,
+          735
+        ],
+        [
+          737,
+          795
+        ],
+        [
+          821,
+          874
+        ],
+        [
+          1517,
+          1558
+        ]
+      ],
+      "evidence_sha256": "003f7b1c451b603da935f6201604bee3032b63c333dd36897a59a2c633ab0e18"
+    }
+  ],
+  "prior_loop_evidence": {
+    "report": "../../docs/mission-execution-guidance-source-study.md",
+    "manifest": "../mission-execution-guidance-source/manifest.json",
+    "path": "codex-rs/core/src/session/turn.rs",
+    "git_blob_sha": "1fdf62faca3d396b4f1b6b7c64d879f99be7b2e9",
+    "ranges": [
+      [
+        660,
+        690
+      ],
+      [
+        805,
+        855
+      ],
+      [
+        3331,
+        3337
+      ]
+    ],
+    "scope": "Previously inspected body; no new source expansion."
+  },
+  "attribution": [
+    {
+      "evidence_file": "LICENSE",
+      "git_blob_sha": "4606e72e042564097e8780d66c1d4dcb611869bd",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/LICENSE",
+      "evidence_sha256": "d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc"
+    },
+    {
+      "evidence_file": "NOTICE",
+      "git_blob_sha": "2805899d56d0332d175cfc613c67d45d6f006db7",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/NOTICE",
+      "evidence_sha256": "9d71575ecfd9a843fc1677b0efb08053c6ba9fd686a0de1a6f5382fd3c220915"
+    }
+  ],
+  "local_readonly_comparison": {
+    "path": "agent_lab/engine.py",
+    "ranges": [
+      [
+        634,
+        662
+      ],
+      [
+        813,
+        820
+      ],
+      [
+        1320,
+        1334
+      ]
+    ],
+    "functions": [
+      "_feedback",
+      "_tool",
+      "run"
+    ],
+    "scope": "Only generic engine control/feedback, no task artifacts."
+  },
+  "verification": "Three newly inspected blob IDs match fixed recursive tree entries; JSON range lengths, export SHA-256 and LICENSE/NOTICE Git blob identities checked. No upstream behavior execution."
+}

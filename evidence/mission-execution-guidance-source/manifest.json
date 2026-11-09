@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "read_date": "2026-11-09",
+  "retrieval": "Connected GitHub immutable recursive tree (truncated=false) plus fetch_file bodies. session/mod.rs and license/notice reused from same-ref connector bodies held in this worker's session; relevant bodies reread.",
+  "tree": {
+    "sha": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+    "truncated": false,
+    "selected_entries": [
+      {
+        "path": "LICENSE",
+        "type": "blob",
+        "sha": "4606e72e042564097e8780d66c1d4dcb611869bd",
+        "size": 10926
+      },
+      {
+        "path": "NOTICE",
+        "type": "blob",
+        "sha": "2805899d56d0332d175cfc613c67d45d6f006db7",
+        "size": 242
+      },
+      {
+        "path": "codex-rs/core/src/session/mod.rs",
+        "type": "blob",
+        "sha": "c52dd4e9c7b6ca1e834bac631c30d015cff7c557",
+        "size": 250477
+      },
+      {
+        "path": "codex-rs/core/src/session/turn.rs",
+        "type": "blob",
+        "sha": "1fdf62faca3d396b4f1b6b7c64d879f99be7b2e9",
+        "size": 155137
+      },
+      {
+        "path": "codex-rs/models-manager/models.json",
+        "type": "blob",
+        "sha": "489ebe3f2483348641a16160ce8491dd077eabca",
+        "size": 539696
+      },
+      {
+        "path": "codex-rs/prompts/src/model_instructions.rs",
+        "type": "blob",
+        "sha": "a169e408b65ae96b8e8f70ca806cbe2ba8eb885e",
+        "size": 798
+      },
+      {
+        "path": "codex-rs/prompts/src/model_messages.rs",
+        "type": "blob",
+        "sha": "ab295566fa779d808916ed958be9848dab9c5105",
+        "size": 12531
+      }
+    ]
+  },
+  "scope": "Five relevant source files; public research evidence only; no upstream execution, paid API, frozen tasks, private records or credential access.",
+  "sources": [
+    {
+      "evidence_file": "selection.json",
+      "path": "codex-rs/core/src/session/mod.rs",
+      "git_blob_sha": "c52dd4e9c7b6ca1e834bac631c30d015cff7c557",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/mod.rs",
+      "inspected_line_ranges": [
+        [
+          905,
+          925
+        ],
+        [
+          1000,
+          1030
+        ],
+        [
+          1690,
+          1735
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          914,
+          918
+        ],
+        [
+          1008,
+          1023
+        ],
+        [
+          1696,
+          1722
+        ]
+      ],
+      "evidence_sha256": "b0c17bfe1336e91d6eef9b118501afbb546793ea257c393a141a001fa9f6dc5a"
+    },
+    {
+      "evidence_file": "template-rendering.json",
+      "path": "codex-rs/prompts/src/model_instructions.rs",
+      "git_blob_sha": "a169e408b65ae96b8e8f70ca806cbe2ba8eb885e",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/prompts/src/model_instructions.rs",
+      "inspected_line_ranges": [
+        [
+          1,
+          21
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          1,
+          17
+        ]
+      ],
+      "evidence_sha256": "073428dc611910f22d50b646912bff714586ec3aa5d07a4cc42068aa79f37a19"
+    },
+    {
+      "evidence_file": "metadata-resolution.json",
+      "path": "codex-rs/prompts/src/model_messages.rs",
+      "git_blob_sha": "ab295566fa779d808916ed958be9848dab9c5105",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/prompts/src/model_messages.rs",
+      "inspected_line_ranges": [
+        [
+          1,
+          110
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          68,
+          98
+        ]
+      ],
+      "evidence_sha256": "97b88418a41ebd03e9b3885777e7432b2d2a1f73c756536c65d037e9bd64e1f4"
+    },
+    {
+      "evidence_file": "sampling-and-loop.json",
+      "path": "codex-rs/core/src/session/turn.rs",
+      "git_blob_sha": "1fdf62faca3d396b4f1b6b7c64d879f99be7b2e9",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs",
+      "inspected_line_ranges": [
+        [
+          650,
+          729
+        ],
+        [
+          800,
+          888
+        ],
+        [
+          1836,
+          2065
+        ],
+        [
+          2891,
+          3140
+        ],
+        [
+          3318,
+          3353
+        ],
+        [
+          3579,
+          3642
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          660,
+          690
+        ],
+        [
+          805,
+          855
+        ],
+        [
+          1842,
+          1879
+        ],
+        [
+          1909,
+          1965
+        ],
+        [
+          2007,
+          2026
+        ],
+        [
+          2994,
+          3011
+        ],
+        [
+          3035,
+          3037
+        ],
+        [
+          3064,
+          3074
+        ],
+        [
+          3331,
+          3337
+        ],
+        [
+          3604,
+          3606
+        ]
+      ],
+      "evidence_sha256": "2fb2b17fff2ec03a39b28d64c42d66b562da4ff488c0288d639659a201322a9d"
+    },
+    {
+      "evidence_file": "catalog-guidance.json",
+      "path": "codex-rs/models-manager/models.json",
+      "git_blob_sha": "489ebe3f2483348641a16160ce8491dd077eabca",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/models-manager/models.json",
+      "inspected_scope": "Complete decoded gpt-6.1-sol and gpt-5.5 instructions_template values read; other model templates inspected only by keyword scan. Metadata bootstrap/catalog loading outside this five-file trace.",
+      "exported_json_pointer_fragments": [
+        {
+          "json_pointer": "/models/1/model_messages/instructions_template",
+          "source_line": 250,
+          "character_range_zero_based": [
+            2681,
+            3578
+          ],
+          "decoded_template_line_range": [
+            19,
+            21
+          ]
+        },
+        {
+          "json_pointer": "/models/1/model_messages/instructions_template",
+          "source_line": 250,
+          "character_range_zero_based": [
+            10541,
+            11403
+          ],
+          "decoded_template_line_range": [
+            71,
+            73
+          ]
+        },
+        {
+          "json_pointer": "/models/1/model_messages/instructions_template",
+          "source_line": 250,
+          "character_range_zero_based": [
+            17303,
+            17529
+          ],
+          "decoded_template_line_range": [
+            128,
+            128
+          ]
+        },
+        {
+          "json_pointer": "/models/10/model_messages/instructions_template",
+          "source_line": 1584,
+          "character_range_zero_based": [
+            21169,
+            21503
+          ],
+          "decoded_template_line_range": [
+            145,
+            146
+          ]
+        }
+      ],
+      "evidence_sha256": "5167c6d517f4dcd570d017a9083b0bc1dfa0cbfd0d9a7cdb3bdf126fe113d2b8"
+    }
+  ],
+  "attribution": [
+    {
+      "evidence_file": "LICENSE",
+      "path": "LICENSE",
+      "git_blob_sha": "4606e72e042564097e8780d66c1d4dcb611869bd",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/LICENSE",
+      "evidence_sha256": "d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc"
+    },
+    {
+      "evidence_file": "NOTICE",
+      "path": "NOTICE",
+      "git_blob_sha": "2805899d56d0332d175cfc613c67d45d6f006db7",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/NOTICE",
+      "evidence_sha256": "9d71575ecfd9a843fc1677b0efb08053c6ba9fd686a0de1a6f5382fd3c220915"
+    }
+  ],
+  "local_readonly_comparison": {
+    "path": "agent_lab/engine.py",
+    "head": "73d00692d3a277fb93729266848e6185b1984d6d",
+    "lines": [
+      23,
+      30
+    ],
+    "symbol": "SYSTEM / PROJECT_SYSTEM",
+    "scope": "Only general host guidance comparison; no local task/workspace reads."
+  },
+  "verification": "Five source blob IDs equal pinned recursive tree entries; excerpt range lengths and prompt JSON fragment decoding checked; export SHA-256 recorded; copied LICENSE/NOTICE Git blob IDs verified. No upstream execution."
+}

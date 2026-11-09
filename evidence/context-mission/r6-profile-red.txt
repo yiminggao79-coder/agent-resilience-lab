@@ -1,0 +1,42 @@
+test_named_thinking_profile_preflight_never_reads_key_or_suite (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_named_profile_reaches_official_adapter_before_any_key_read (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_four_natural_turns_get_named_working_limits_without_fabricating_runtime_proof (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+
+======================================================================
+FAIL: test_named_thinking_profile_preflight_never_reads_key_or_suite (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 240, in test_named_thinking_profile_preflight_never_reads_key_or_suite
+    self.assertEqual(code,0)
+AssertionError: 2 != 0
+
+======================================================================
+FAIL: test_named_profile_reaches_official_adapter_before_any_key_read (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 257, in test_named_profile_reaches_official_adapter_before_any_key_read
+    self.assertEqual(kw['thinking'],'enabled');self.assertEqual(kw.get('reasoning_effort'),'low')
+AssertionError: 'disabled' != 'enabled'
+- disabled
++ enabled
+
+
+======================================================================
+FAIL: test_four_natural_turns_get_named_working_limits_without_fabricating_runtime_proof (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 274, in test_four_natural_turns_get_named_working_limits_without_fabricating_runtime_proof
+    try:result=self.module._run_case(suite,case,base/'trial',experiment_profile='thinking128k')
+TypeError: _run_case() got an unexpected keyword argument 'experiment_profile'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 275, in test_four_natural_turns_get_named_working_limits_without_fabricating_runtime_proof
+    except TypeError as error:raise AssertionError('Named profile must reach all four Turns') from error
+AssertionError: Named profile must reach all four Turns
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.096s
+
+FAILED (failures=3)

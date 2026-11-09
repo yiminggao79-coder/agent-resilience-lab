@@ -1,0 +1,15 @@
+test_venv_launcher_symlink_does_not_prevent_sandboxed_tests (tests.dev.test_venv_native.VenvNativeTests) ... FAIL
+
+======================================================================
+FAIL: test_venv_launcher_symlink_does_not_prevent_sandboxed_tests (tests.dev.test_venv_native.VenvNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_venv_native.py", line 41, in test_venv_launcher_symlink_does_not_prevent_sandboxed_tests
+    self.assertEqual(report['exit_code'],0,report['stderr'])
+AssertionError: 71 != 0 : sandbox-exec: execvp() of '/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/agentlab-venv-native-fhs0hnb3/env/bin/python' failed: Operation not permitted
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.164s
+
+FAILED (failures=1)

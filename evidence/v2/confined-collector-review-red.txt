@@ -1,0 +1,37 @@
+test_unrepresentable_integer_limits_use_fixed_error_before_any_admission (tests.dev.test_confined_collector_review.ConfinedCollectorReviewTests) ... 
+======================================================================
+FAIL: test_unrepresentable_integer_limits_use_fixed_error_before_any_admission (tests.dev.test_confined_collector_review.ConfinedCollectorReviewTests) (limit='positive_timeout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector_review.py", line 26, in test_unrepresentable_integer_limits_use_fixed_error_before_any_admission
+    self.assertIsInstance(caught,ToolError)
+AssertionError: OverflowError('int too large to convert to float') is not an instance of <class 'agent_lab.tools.ToolError'>
+
+======================================================================
+FAIL: test_unrepresentable_integer_limits_use_fixed_error_before_any_admission (tests.dev.test_confined_collector_review.ConfinedCollectorReviewTests) (limit='negative_timeout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector_review.py", line 26, in test_unrepresentable_integer_limits_use_fixed_error_before_any_admission
+    self.assertIsInstance(caught,ToolError)
+AssertionError: OverflowError('int too large to convert to float') is not an instance of <class 'agent_lab.tools.ToolError'>
+
+======================================================================
+FAIL: test_unrepresentable_integer_limits_use_fixed_error_before_any_admission (tests.dev.test_confined_collector_review.ConfinedCollectorReviewTests) (limit='positive_cleanup')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector_review.py", line 26, in test_unrepresentable_integer_limits_use_fixed_error_before_any_admission
+    self.assertIsInstance(caught,ToolError)
+AssertionError: OverflowError('int too large to convert to float') is not an instance of <class 'agent_lab.tools.ToolError'>
+
+======================================================================
+FAIL: test_unrepresentable_integer_limits_use_fixed_error_before_any_admission (tests.dev.test_confined_collector_review.ConfinedCollectorReviewTests) (limit='negative_cleanup')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector_review.py", line 26, in test_unrepresentable_integer_limits_use_fixed_error_before_any_admission
+    self.assertIsInstance(caught,ToolError)
+AssertionError: OverflowError('int too large to convert to float') is not an instance of <class 'agent_lab.tools.ToolError'>
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (failures=4)

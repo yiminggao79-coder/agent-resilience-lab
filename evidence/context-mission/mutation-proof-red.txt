@@ -1,0 +1,23 @@
+test_noop_docs_tests_and_unexecuted_code_cannot_count_as_implementation_change (tests.dev.test_context_mission.ContextMissionTests) ... FAIL
+test_implementation_snapshot_ignores_format_docs_and_tests_but_observes_code (tests.dev.test_context_mission.ContextMissionTests) ... ERROR
+
+======================================================================
+ERROR: test_implementation_snapshot_ignores_format_docs_and_tests_but_observes_code (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 270, in test_implementation_snapshot_ignores_format_docs_and_tests_but_observes_code
+    before=self.module.implementation_versions(root,())
+AttributeError: module 'scripts.context_mission' has no attribute 'implementation_versions'
+
+======================================================================
+FAIL: test_noop_docs_tests_and_unexecuted_code_cannot_count_as_implementation_change (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 260, in test_noop_docs_tests_and_unexecuted_code_cannot_count_as_implementation_change
+    self.assertFalse(self.module.continuity_proof([row],[installed,started,write])['passed'])
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.166s
+
+FAILED (failures=1, errors=1)

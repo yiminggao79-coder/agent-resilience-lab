@@ -1,0 +1,29 @@
+[
+  {
+    "ok": true,
+    "isError": false,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"policy\": {\"multiplier\": 36, \"offset\": 389, \"receipt\": \"1a129ea6d0461decc63f624cee704d68dec35e940e9118ab\"}, \"credential_env_present\": {\"DEEPSEEK_API_KEY\": false, \"OPENAI_API_KEY\": false, \"ANTHROPIC_API_KEY\": false}}"
+      }
+    ],
+    "origin": {
+      "type": "mcp_stdio",
+      "server": "owned_synthetic_receipt",
+      "tool": "fetch_policy"
+    },
+    "structuredContent": {
+      "policy": {
+        "multiplier": 36,
+        "offset": 389,
+        "receipt": "1a129ea6d0461decc63f624cee704d68dec35e940e9118ab"
+      },
+      "credential_env_present": {
+        "DEEPSEEK_API_KEY": false,
+        "OPENAI_API_KEY": false,
+        "ANTHROPIC_API_KEY": false
+      }
+    }
+  }
+]

@@ -1,0 +1,13 @@
+test_parent_directory_symlink_chain_must_not_hide_workspace_routing (tests.dev.test_extra_executables.ExtraExecutableTests) ... 
+======================================================================
+FAIL: test_parent_directory_symlink_chain_must_not_hide_workspace_routing (tests.dev.test_extra_executables.ExtraExecutableTests) (directory='host-double-root')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_extra_executables.py", line 108, in test_parent_directory_symlink_chain_must_not_hide_workspace_routing
+    executable_descriptors(self.root,{'checker':str(directory/'checker')})
+AssertionError: ToolError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+FAILED (failures=1)

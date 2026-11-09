@@ -1,0 +1,11 @@
+test_byte_and_entry_caps_fail_without_unbounded_source_reads (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_configuration_mismatch_and_retargeted_launcher_are_refused (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_content_replacement_and_modes_change_bound_identity (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_targets_relative_alias_and_broad_overlap_are_rejected (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_valid_manifest_keeps_launcher_base_config_and_tree_distinct (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.089s
+
+OK

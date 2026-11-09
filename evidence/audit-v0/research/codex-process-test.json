@@ -1,0 +1,71 @@
+{
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/utils/pty/src/process_group_tests.rs",
+  "commit_pins": {
+    "codex": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+    "langgraph": "e5e37b5d70dbfd93c7006bd90a658c6179a95946",
+    "openhands": "4aae68ae53477d05010a509f1f1e3f02e61b1831"
+  },
+  "read_only": true,
+  "upstream_tests_executed": false,
+  "note": "Test includes descendants, leader exited, EPERM fallback and escalation; read but not run here.",
+  "excerpts": [
+    {
+      "start_line": 18,
+      "end_line": 30,
+      "lines": [
+        "async fn denied_group_signal_terminates_owned_descendants_and_preserves_escalation() -> Result<()> {",
+        "    for leader_exited in [false, true] {",
+        "        let mut wrapper = Command::new(\"/bin/sh\")",
+        "            .args([",
+        "                \"-c\",",
+        "                \"trap '' TERM; /bin/sleep 30 & resistant=$!; trap - TERM; /bin/sleep 30 & sibling=$!; printf '%s %s\\\\n' \\\"$resistant\\\" \\\"$sibling\\\"; wait\",",
+        "            ])",
+        "            .stdout(Stdio::piped())",
+        "            .stderr(Stdio::null())",
+        "            .kill_on_drop(true)",
+        "            .process_group(0)",
+        "            .spawn()?;",
+        "        let process_group_id ="
+      ]
+    },
+    {
+      "start_line": 44,
+      "end_line": 76,
+      "lines": [
+        "        if leader_exited {",
+        "            wrapper.kill().await?;",
+        "        }",
+        "",
+        "        let mut denied_leader = false;",
+        "        for signal in [libc::SIGTERM, libc::SIGKILL] {",
+        "            assert!(signal_process_group_with_member_fallback(",
+        "                process_group_id as u32,",
+        "                signal,",
+        "                |_, _| Err(io::Error::from_raw_os_error(libc::EPERM)),",
+        "                |process_id, signal| {",
+        "                    if process_id == process_group_id {",
+        "                        denied_leader = true;",
+        "                        Err(io::Error::from_raw_os_error(libc::EPERM))",
+        "                    } else {",
+        "                        signal_process_id(process_id, signal)",
+        "                    }",
+        "                },",
+        "            )?);",
+        "            if signal == libc::SIGTERM {",
+        "                assert_eq!(denied_leader, !leader_exited);",
+        "                assert!(signal_process_id(resistant_pid, /*signal*/ 0)?);",
+        "            }",
+        "        }",
+        "",
+        "        for process_id in [resistant_pid, sibling_pid] {",
+        "            timeout(Duration::from_secs(5), async move {",
+        "                while signal_process_id(process_id, /*signal*/ 0)? {",
+        "                    tokio::time::sleep(Duration::from_millis(20)).await;",
+        "                }",
+        "                Ok::<(), io::Error>(())",
+        "            })",
+        "            .await??;"
+      ]
+    }
+  ]
+}

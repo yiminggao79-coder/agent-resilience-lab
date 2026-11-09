@@ -1,0 +1,101 @@
+test_claim_is_bound_idempotent_metadata_and_active_marker_blocks_admission (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_claim_publish_failure_keeps_unlaunched_row_and_retry_reuses_it (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_confirmation_is_fixed_and_immutable_then_other_db_can_enter (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_confirmation_sql_error_rolls_back_and_leaves_claimed_marker (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_confirmed_db_can_repair_failed_marker_publish_only_with_explicit_db (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_corrupt_linked_or_group_readable_marker_fails_closed (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_missing_explicit_database_is_never_created (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_old_confirmation_retry_cannot_overwrite_new_active_marker (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_only_exact_active_reference_may_enter_worker_and_all_runner_gates_block (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_readonly_inspect_does_not_follow_foreign_db_or_change_artifacts (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_worker_registration_is_single_owner_and_proofs_require_exact_token (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_wrong_source_generation_intent_and_unicode_root_fail_before_marker (tests.dev.test_native_jobs.NativeJobTests) ... ok
+test_real_native_normal_completion_has_durable_quiescence_and_trace_job_id (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_registered_worker_can_confirm_no_supervisor_launch_without_processes (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_uncertain_spawn_registration_gap_never_generates_cleanup_receipt (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_wrong_worker_token_cannot_confirm_or_start_supervisor_scope (tests.dev.test_native_job_runtime.NativeJobRuntimeTests) ... ok
+test_absent_job_and_database_remain_absent_without_model (tests.dev.test_native_job_cli.NativeJobCLITests) ... ok
+test_claimed_job_metadata_is_readonly_and_omits_private_paths_or_worker_token (tests.dev.test_native_job_cli.NativeJobCLITests) ... ok
+test_foreign_database_is_not_followed_and_malformed_marker_does_not_echo_data (tests.dev.test_native_job_cli.NativeJobCLITests) ... ok
+test_runtime_package_and_ancestor_workspace_are_rejected_before_any_controls (tests.dev.test_trusted_runtime_boundary.TrustedRuntimeBoundaryTests) ... ok
+test_separate_workspace_remains_usable (tests.dev.test_trusted_runtime_boundary.TrustedRuntimeBoundaryTests) ... ok
+test_killed_supervisor_does_not_let_another_database_or_direct_tool_start_effects (tests.acceptance.test_native_job_quarantine_process.NativeJobQuarantineProcessTests) ... {"kind": "native_job_supervisor_death_contract", "model_kind": "offline_protocol_double", "task_id": "4668a55e352a4f7ba974ff233247a679", "turn_id": "4daf019e943547e3b1b0987460f684a1", "operation_id": "d60f80a77fff45cc9d511c7a45ee745f", "native_pid": 67488, "supervisor_pid": 67486, "new_runner_admitted": false, "old_effect_observed": false, "new_effect_observed": false}
+ok
+test_callback_failure_is_fixed_unknown_after_stdin_close_and_cleanup (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_closed_native_stdout_stderr_does_not_hide_live_process (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_native_project_receives_neither_owner_environment_nor_extra_fds (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_nested_thread_scopes_and_file_tools_do_not_consume_native_cancel (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_normal_completion_and_forged_native_stdout_remain_normal_results (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_owner_eof_between_probe_and_project_launch_is_confirmed_without_launch (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_real_command_cancel_waits_for_cleanup_and_blocks_late_write (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_tests_are_cancellable_with_mutating_effects_left_visible (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_trusted_cancel_receipt_requires_boolean_true_not_integer_alias (tests.dev.test_tool_cancellation.ToolCancellationTests) ... ok
+test_mutating_native_cancel_retains_unknown_effect_and_pending_after_local_cleanup (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_readonly_cancel_closes_result_and_unstarted_tail_without_fake_success (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_registry_style_base_wrapper_is_not_bypassed (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_unconfirmed_cancel_never_unlocks_even_readonly_execution (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_cli_stop_cancels_real_unittest_and_keeps_effects_unknown (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_tests", "runner_pid": 67540, "native_pid": 67545, "supervisor_pid": 67543, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_cli_stop_waits_for_command_cleanup_but_retains_unknown_effect (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_stop_process_contract", "model_kind": "offline_protocol_double", "tool": "run_command", "runner_pid": 67551, "native_pid": 67556, "supervisor_pid": 67554, "native_and_supervisor_nonrunning": true, "known_prefix_file": "native-ready.json", "late_or_tail_effect": false, "phase": "needs_confirmation", "effects": "unknown"}
+ok
+test_runner_sigkill_owner_eof_cleans_native_before_new_runner_recovery (tests.acceptance.test_tool_cancel_process.ToolCancelProcessTests) ... {"kind": "native_tool_owner_death_process_contract", "model_kind": "offline_protocol_double", "killed_runner_pid": 67562, "kill_return_code": -9, "resumed_pid": 67574, "native_pid": 67567, "supervisor_pid": 67565, "native_and_supervisor_nonrunning": true, "new_runner_fence_acquired": true, "pending_unknown_preserved": true, "new_effects": false}
+ok
+test_active_lease_descriptor_is_scoped_and_restored_after_failure (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_control_symlinks_are_never_followed (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_executing_worker_blocks_rotation_and_another_worker (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_generation_persists_privately_and_replaces_atomically (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_inherited_lease_survives_normal_exit_of_original_holder (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_inherited_lease_survives_sigkill_of_original_holder (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_late_worker_cannot_execute_after_generation_rotation (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_lease_is_released_after_exception_and_worker_sigkill (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_none_is_allowed_only_while_both_generations_are_absent (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_private_generation_mode_does_not_depend_on_process_umask (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_sigkill_of_parent_does_not_release_child_owned_lease (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_special_and_hardlinked_control_files_fail_closed (tests.dev.test_process_guard.ProcessGuardTests) ... ok
+test_database_inside_tool_root_is_rejected (tests.dev.test_tools_store.StoreTests) ... ok
+test_exclusive_workspace_and_database_locks (tests.dev.test_tools_store.StoreTests) ... ok
+test_snapshot_and_trace_survive_reopen_without_content_in_trace (tests.dev.test_tools_store.StoreTests) ... ok
+test_trace_rejects_arbitrary_payload (tests.dev.test_tools_store.StoreTests) ... ok
+test_append_never_replayed_after_unknown_outcome (tests.dev.test_tools_store.ToolsTests) ... ok
+test_changed_target_blocks_recovery (tests.dev.test_tools_store.ToolsTests) ... ok
+test_csv_stats_and_bad_data (tests.dev.test_tools_store.ToolsTests) ... ok
+test_expression_runs_in_restricted_child (tests.dev.test_tools_store.ToolsTests) ... ok
+test_path_boundaries_and_special_files (tests.dev.test_tools_store.ToolsTests) ... ok
+test_strict_arguments_and_size (tests.dev.test_tools_store.ToolsTests) ... ok
+test_write_read_and_verified_recovery (tests.dev.test_tools_store.ToolsTests) ... ok
+test_agent_approval_precedes_real_call_and_feedback_reaches_model (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_ambient_api_keys_are_not_forwarded_and_close_quiesces_local_group (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_cached_catalog_never_accumulates_engine_history_tools (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_cli_error_and_chat_exit_close_actual_stdio_clients (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_configuration_or_catalog_change_rejects_resume_and_adding_removing_registry (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_intent_binding_preserves_json_boolean_types (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_lost_acknowledgement_recovers_without_reissuing_external_call (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_partial_startup_failure_closes_all_started_processes (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_strict_intent_and_approval_digest_reject_tampering (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_tool_error_is_private_structured_feedback_without_unknown_replay (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_trusted_config_rejects_workspace_links_unknown_keys_and_environment (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_unknown_call_enters_confirmation_and_is_never_replayed_on_resume (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_workspace_executable_alias_cannot_become_trusted_host_command (tests.dev.test_mcp_registry.MCPRegistryTests) ... ok
+test_abort_cannot_turn_unknown_model_outcome_into_safe_followup (tests.dev.test_sessions.SessionTests) ... ok
+test_abort_of_crashed_model_request_cannot_enable_followup (tests.dev.test_sessions.SessionTests) ... ok
+test_each_turn_gets_fresh_step_time_and_cost_budgets_with_explicit_totals (tests.dev.test_sessions.SessionTests) ... ok
+test_engine_preserves_native_and_reasoning_fields_for_tools_and_final (tests.dev.test_sessions.SessionTests) ... ok
+test_failed_followup_commit_preserves_old_turn_and_events (tests.dev.test_sessions.SessionTests) ... ok
+test_failed_turn_followup_resets_errors_retries_and_keeps_failure_record (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_does_not_hide_aborted_pending_tool (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_obeys_existing_workspace_and_database_locks (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_recovers_from_exhausted_retries_without_reusing_unknown_usage (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_rejects_active_or_uncertain_turn_without_modifying_state (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_rejects_unpaired_tool_transcript_even_without_pending (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_survives_reopen_preserves_full_history_and_turn_events (tests.dev.test_sessions.SessionTests) ... ok
+test_invalid_followup_and_phase_list_raise_value_error_without_mutation (tests.dev.test_sessions.SessionTests) ... ok
+test_legacy_snapshot_can_start_followup_without_losing_old_turn (tests.dev.test_sessions.SessionTests) ... ok
+test_provider_call_ids_remain_consumed_across_user_turns (tests.dev.test_sessions.SessionTests) ... ok
+test_resume_does_not_create_a_followup_or_reset_limits (tests.dev.test_sessions.SessionTests) ... ok
+test_unknown_prior_usage_stays_unknown_in_session_totals (tests.dev.test_sessions.SessionTests) ... ok
+test_workspace_model_and_profile_must_match_before_followup (tests.dev.test_sessions.SessionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 92 tests in 17.525s
+
+OK

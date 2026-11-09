@@ -1,0 +1,21 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/prompts/src/model_messages.rs",
+  "git_blob_sha": "ab295566fa779d808916ed958be9848dab9c5105",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/prompts/src/model_messages.rs",
+  "inspected_line_ranges": [
+    [
+      1,
+      110
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 68,
+      "end_line": 98,
+      "text": "/// The view borrows the consumer's captured model metadata without resolving any families.\n/// Missing values select bundled text or retain delegation to consumer-owned settings.\n/// Explicit empty strings remain overrides unless a message family validates them.\n#[derive(Debug, Clone, Copy)]\npub struct ResolvedModelMessages<'a> {\n    catalog_messages: Option<&'a ModelMessages>,\n}\n\nimpl<'a> ResolvedModelMessages<'a> {\n    /// Borrows messages from the selected model; absent catalog values still use defaults.\n    pub fn from_model(model_info: &'a ModelInfo) -> Self {\n        Self {\n            catalog_messages: model_info.model_messages.as_ref(),\n        }\n    }\n\n    /// Resolves only bundled defaults, independently of any selected model.\n    pub fn bundled() -> Self {\n        Self {\n            catalog_messages: None,\n        }\n    }\n\n    /// Resolves the literal instruction template, preserving missing values.\n    pub fn instructions_template(&self) -> Option<&'a str> {\n        self.catalog_messages\n            .and_then(|messages| messages.instructions_template.as_deref())\n    }\n\n    /// Resolves approval messages and their bundled alternatives.\n    pub(crate) fn approvals(self) -> ResolvedApprovalMessages<'a> {\n"
+    }
+  ],
+  "notice": "Selected verbatim public code excerpts in local wrapper; read, not executed. See LICENSE and NOTICE."
+}

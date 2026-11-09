@@ -1,0 +1,61 @@
+test_actual_literal_and_directory_read_without_adjacent_private_write_or_handle_mutation (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... ERROR
+test_actual_unittest_resource_only_runtime_uses_extended_supervisor (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... ERROR
+test_engine_actual_sandbox_multifile_compile_link_fail_patch_rebuild_and_verify (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... FAIL
+test_resources_do_not_register_an_executable_or_rehash_during_profile_generation (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... ERROR
+test_strict_v3_supervisor_binds_grant_before_any_subprocess (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... ERROR
+
+======================================================================
+ERROR: test_actual_literal_and_directory_read_without_adjacent_private_write_or_handle_mutation (tests.dev.test_tool_resources_native.ToolResourcesNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources_native.py", line 39, in test_actual_literal_and_directory_read_without_adjacent_private_write_or_handle_mutation
+    result=tools.execute(tools.prepare('run_command',{'argv':['python','-I','-c',code,str(self.file),str(private)],'cwd':'.'}),6)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 390, in execute
+    return self._dispatch('execute', intent, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 314, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: tool_worker_failed
+
+======================================================================
+ERROR: test_actual_unittest_resource_only_runtime_uses_extended_supervisor (tests.dev.test_tool_resources_native.ToolResourcesNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources_native.py", line 67, in test_actual_unittest_resource_only_runtime_uses_extended_supervisor
+    result=tools.execute(tools.prepare('run_tests',{}),6)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 390, in execute
+    return self._dispatch('execute', intent, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 314, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: tool_worker_failed
+
+======================================================================
+ERROR: test_resources_do_not_register_an_executable_or_rehash_during_profile_generation (tests.dev.test_tool_resources_native.ToolResourcesNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources_native.py", line 49, in test_resources_do_not_register_an_executable_or_rehash_during_profile_generation
+    profile=sandbox._command_profile(self.root,self.base/'scratch',tool_read_paths=[str(self.resources)])
+TypeError: _command_profile() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+ERROR: test_strict_v3_supervisor_binds_grant_before_any_subprocess (tests.dev.test_tool_resources_native.ToolResourcesNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources_native.py", line 55, in test_strict_v3_supervisor_binds_grant_before_any_subprocess
+    request=sandbox._runtime_request('run_tests',self.root,4,(),None,None,'nofork',None,
+TypeError: _runtime_request() got an unexpected keyword argument 'tool_read_paths'
+
+======================================================================
+FAIL: test_engine_actual_sandbox_multifile_compile_link_fail_patch_rebuild_and_verify (tests.dev.test_tool_resources_native.ToolResourcesNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_resources_native.py", line 95, in test_engine_actual_sandbox_multifile_compile_link_fail_patch_rebuild_and_verify
+    self.assertEqual(state['phase'],'completed',state.get('reason'))
+AssertionError: 'needs_confirmation' != 'completed'
+- needs_confirmation
++ completed
+ : tool_outcome_unknown
+
+----------------------------------------------------------------------
+Ran 5 tests in 20.284s
+
+FAILED (failures=1, errors=4)

@@ -1,0 +1,47 @@
+{
+  "repository": "openai/codex",
+  "commit": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "files": [
+    {
+      "path": "codex-rs/ext/skills/src/catalog_prompt.rs",
+      "blob_sha": "0f60373707f5398d9562e020d6ac7a98ac4e1b71",
+      "downloaded_blob_verified": true,
+      "artifact": "evidence/codex-skill-resources/catalog-prompt-excerpts.json",
+      "body_ranges_read": [
+        [
+          1,
+          134
+        ]
+      ],
+      "whole_file_audited": false
+    },
+    {
+      "path": "codex-rs/ext/skills/src/host_prompt.rs",
+      "blob_sha": "7d5a62f59d27e91a3431a327638aec83613f60c5",
+      "downloaded_blob_verified": true,
+      "artifact": "evidence/codex-skill-resources/host-prompt-excerpts.json",
+      "body_ranges_read": [
+        [
+          61,
+          115
+        ]
+      ],
+      "whole_file_audited": false
+    },
+    {
+      "path": "codex-rs/ext/skills/src/tools/read.rs",
+      "blob_sha": "ecf65c238ff323b986e210bebb288a32edfdcd7a",
+      "downloaded_blob_verified": true,
+      "artifact": "evidence/codex-skill-resources/read-tool-excerpts.json",
+      "body_ranges_read": [
+        [
+          35,
+          375
+        ]
+      ],
+      "whole_file_audited": false
+    }
+  ],
+  "upstream_executed": false,
+  "license": "Apache-2.0, existing project Codex notices apply"
+}

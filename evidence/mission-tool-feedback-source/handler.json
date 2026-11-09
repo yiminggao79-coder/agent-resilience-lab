@@ -1,0 +1,26 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/tools/handlers/unified_exec/exec_command.rs",
+  "git_blob_sha": "2b746b85d13e06b3a52f6f13a20d02ffc9ab373b",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/unified_exec/exec_command.rs",
+  "inspected_line_ranges": [
+    [
+      1,
+      278
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 133,
+      "end_line": 167,
+      "text": "impl ExecCommandHandler {\n    async fn handle_call(\n        &self,\n        invocation: ToolInvocation,\n    ) -> Result<Box<dyn crate::tools::context::ToolOutput>, FunctionCallError> {\n        let ToolInvocation {\n            environments,\n            session,\n            step_context,\n            cancellation_token,\n            tracker,\n            call_id,\n            payload,\n            ..\n        } = invocation;\n\n        let arguments = match payload {\n            ToolPayload::Function { arguments } => arguments,\n            _ => {\n                return Err(FunctionCallError::RespondToModel(\n                    \"exec_command handler received unsupported payload\".to_string(),\n                ));\n            }\n        };\n\n        let manager: &UnifiedExecProcessManager = &session.services.unified_exec_manager;\n        let context = UnifiedExecContext::new(\n            session.clone(),\n            step_context.clone(),\n            cancellation_token,\n            call_id.clone(),\n        );\n        let turn_environment = selected_executor(&environments, &step_context.environments)?;\n        let parsed =\n            ParsedExecCommand::parse(&arguments, &session, &step_context, turn_environment)?;\n"
+    },
+    {
+      "start_line": 225,
+      "end_line": 275,
+      "text": "        let tool_cwd =\n            (!prepared.turn_environment.environment().is_remote()).then(|| prepared.cwd.clone());\n        let request = ExecCommandRequest {\n            prepared,\n            process_id,\n            network: context.step_context.turn.network.clone(),\n        };\n        let result = match request.prepared.completion_timeout {\n            Some(timeout) => {\n                UnifiedExecProcessManager::exec_command_to_completion(request, &context, timeout)\n                    .await\n            }\n            None => manager.exec_command(request, &context).await,\n        };\n        match result {\n            Ok(response) => Ok(boxed_tool_output(response)),\n            Err(UnifiedExecError::SandboxDenied {\n                output,\n                original_token_count,\n                output_omitted_bytes,\n                ..\n            }) => {\n                let output_text = output.aggregated_output.text;\n                let original_token_count =\n                    original_token_count.unwrap_or_else(|| approx_token_count(&output_text));\n                Ok(boxed_tool_output(ExecCommandToolOutput {\n                    event_call_id: context.call_id.clone(),\n                    chunk_id: generate_chunk_id(),\n                    wall_time: output.duration,\n                    raw_output: CapturedStream {\n                        text: output_text,\n                        omitted_bytes: output_omitted_bytes.map_or(0, std::num::NonZeroUsize::get),\n                    },\n                    truncation_policy: step_context.settings.model_info.truncation_policy.into(),\n                    max_output_tokens,\n                    // Sandbox denial is terminal, so there is no live\n                    // process for write_stdin to resume.\n                    process_id: None,\n                    exit_code: Some(output.exit_code),\n                    original_token_count: Some(original_token_count),\n                    hook_command: Some(hook_command),\n                    tool_cwd,\n                }))\n            }\n            Err(err) => {\n                let message = format!(\"exec_command failed: {err:?}\");\n                Err(FunctionCallError::RespondToModel(truncate_middle_chars(\n                    &message,\n                    EXEC_COMMAND_REJECTION_MAX_BYTES,\n                )))\n            }\n"
+    }
+  ],
+  "notice": "Verbatim selected public-source excerpts in local JSON wrapper; read, not executed. See LICENSE and NOTICE."
+}

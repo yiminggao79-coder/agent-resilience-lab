@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "phase": "completed",
+  "experiment": "isolated_installed_codex_synthetic_final",
+  "fixture_directory": "/private/tmp/agentlab-reference-final-l2oc15y7",
+  "binary_path": "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex",
+  "binary_sha256": "f08326a585b6b82a3d5951662bac6f78bf7b759639737d8464b3ac165195f846",
+  "provider_requests": 0,
+  "real_llm_task_success_rate": null,
+  "real_tokens": null,
+  "cost_estimate_cny": null,
+  "same_as_pinned_source_commit": null,
+  "protocol_stimulus": "offline_synthetic_responses",
+  "raw_requests_exported": false,
+  "managed_preferences_presence": {
+    "synchronized": true,
+    "forced_config": false,
+    "forced_requirements": false
+  },
+  "exit_code": 0,
+  "stdout": "{\"type\":\"thread.started\",\"thread_id\":\"01a1b9bd-ee51-7fc3-8ec2-39c3fe0e3361\"}\n{\"type\":\"item.completed\",\"item\":{\"id\":\"item_0\",\"type\":\"error\",\"message\":\"Model metadata for `reference-protocol-fixture` not found. Defaulting to fallback metadata; this can degrade performance and cause issues.\"}}\n{\"type\":\"turn.started\"}\n{\"type\":\"item.completed\",\"item\":{\"id\":\"item_1\",\"type\":\"agent_message\",\"text\":\"owned reference final\"}}\n{\"type\":\"turn.completed\",\"usage\":{\"input_tokens\":12,\"cached_input_tokens\":0,\"cache_write_input_tokens\":0,\"output_tokens\":3,\"reasoning_output_tokens\":0}}\n",
+  "stderr": "Reading additional input from stdin...\n",
+  "timed_out": false,
+  "stdout_truncated": false,
+  "stderr_truncated": false,
+  "requests": 1,
+  "request_summaries": [
+    {
+      "model": "reference-protocol-fixture",
+      "stream": true,
+      "tool_names": [
+        "exec_command",
+        "write_stdin",
+        "request_user_input",
+        "view_image",
+        "multi_agent_v1",
+        "get_goal",
+        "create_goal",
+        "update_goal",
+        null
+      ],
+      "tool_types": [
+        "function",
+        "function",
+        "function",
+        "function",
+        "namespace",
+        "function",
+        "function",
+        "function",
+        "web_search"
+      ],
+      "input_types": [
+        "message",
+        "message",
+        "message",
+        "message"
+      ]
+    }
+  ],
+  "elapsed_seconds": 1.954
+}

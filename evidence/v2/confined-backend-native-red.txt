@@ -1,0 +1,60 @@
+test_changed_supervisor_backend_manifest_is_rejected_before_probe (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... ERROR
+test_cli_exposes_explicit_saved_backend_on_all_runtime_commands (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... FAIL
+test_exact_command_approval_pipe_private_boundary_and_native_receipt (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... FAIL
+test_native_entry_dependency_venv_runs_inside_profile (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... ERROR
+test_real_engine_test_failure_patch_and_success_use_subprocesses (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests) ... FAIL
+
+======================================================================
+ERROR: test_changed_supervisor_backend_manifest_is_rejected_before_probe (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend_native.py", line 115, in test_changed_supervisor_backend_manifest_is_rejected_before_probe
+    sandbox._run_command(self.root,intent,3,command_backend='confined-fork',backend_policy=manifest)
+TypeError: _run_command() got an unexpected keyword argument 'command_backend'
+
+======================================================================
+ERROR: test_native_entry_dependency_venv_runs_inside_profile (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend_native.py", line 106, in test_native_entry_dependency_venv_runs_inside_profile
+    result=tools.execute(tools.prepare('run_tests',{}),5)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 380, in execute
+    return self._dispatch('execute', intent, timeout)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 304, in _dispatch
+    raise ToolError(result['error'])
+agent_lab.tools.ToolError: tool_worker_failed
+
+======================================================================
+FAIL: test_cli_exposes_explicit_saved_backend_on_all_runtime_commands (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend_native.py", line 33, in test_cli_exposes_explicit_saved_backend_on_all_runtime_commands
+    self.assertIn('--command-backend {nofork,confined-fork}',result.stdout)
+AssertionError: '--command-backend {nofork,confined-fork}' not found in "usage: __main__.py run [-h] --workspace WORKSPACE\n                       [--read-only-path READ_ONLY_PATH]\n                       [--node-executable NODE_EXECUTABLE]\n                       [--python-environment PYTHON_ENVIRONMENT]\n                       [--mcp-config MCP_CONFIG] [--model-config MODEL_CONFIG]\n                       [--model MODEL] [--base-url BASE_URL]\n                       [--api-key-env API_KEY_ENV] [--allow-api]\n                       [--load-deepseek-key] [--budget-ledger BUDGET_LEDGER]\n                       [--profile {local,coding}]\n                       [--protocol {chat,responses,anthropic}] [--stream]\n                       [--stream-text] [--stream-tools]\n                       [--thinking {enabled,disabled,adaptive}]\n                       [--reasoning-effort REASONING_EFFORT]\n                       [--ca-bundle CA_BUNDLE]\n                       [--token-parameter {max_completion_tokens,max_tokens}]\n                       [--no-parallel-parameter] [--skill SKILL] [--events]\n                       [--track-file-context] [--no-auto-compact]\n                       [--max-steps MAX_STEPS] [--max-seconds MAX_SECONDS]\n                       [--model-timeout MODEL_TIMEOUT]\n                       [--tool-timeout TOOL_TIMEOUT] [--max-errors MAX_ERRORS]\n                       [--max-model-retries MAX_MODEL_RETRIES]\n                       [--max-output-tokens MAX_OUTPUT_TOKENS]\n                       [--max-context-bytes MAX_CONTEXT_BYTES]\n                       [--auto-compact-bytes AUTO_COMPACT_BYTES]\n                       [--max-auto-compactions MAX_AUTO_COMPACTIONS]\n                       [--max-cost-usd MAX_COST_USD]\n                       [--input-price INPUT_PRICE]\n                       [--output-price OUTPUT_PRICE]\n                       task\n\npositional arguments:\n  task\n\noptional arguments:\n  -h, --help            show this help message and exit\n  --workspace WORKSPACE\n  --read-only-path READ_ONLY_PATH\n                        host read-only file/subtree scope; exact '.' protects\n                        whole workspace; repeat saved scopes on resume\n  --node-executable NODE_EXECUTABLE\n                        explicit trusted absolute Node executable outside\n                        workspace; admits OS/hostname metadata reads; repeat\n                        saved runtime on resume/approval; no npm, fork or\n                        network\n  --python-environment PYTHON_ENVIRONMENT\n                        explicit trusted same-base venv outside workspace;\n                        bounded read-only dependencies; repeat on\n                        resume/approval; no automatic installation or\n                        network/fork grants\n  --mcp-config MCP_CONFIG\n                        explicit trusted stdio/Streamable HTTP MCP\n                        configuration outside workspace; external\n                        processes/services are not sandboxed\n  --model-config MODEL_CONFIG\n                        secret-free trusted model JSON outside workspace;\n                        routing flags must not conflict\n  --model MODEL\n  --base-url BASE_URL\n  --api-key-env API_KEY_ENV\n                        defaults to protocol-specific key environment variable\n  --allow-api           explicitly enable requests which may incur costs\n  --load-deepseek-key   load only the authorized ~/Downloads/API.txt first\n                        line for this process; requires --allow-api and\n                        official DeepSeek routing\n  --budget-ledger BUDGET_LEDGER\n                        existing original shared DeepSeek budget SQLite\n                        outside workspace; never initializes a missing ledger;\n                        repeat this path for relocated runtimes\n  --profile {local,coding}\n  --protocol {chat,responses,anthropic}\n  --stream\n  --stream-text         stream private assistant text to stderr; implies\n                        --stream; metadata events stay on stdout\n  --stream-tools        show bounded private native stdout/stderr on stderr;\n                        display is not tool completion\n  --thinking {enabled,disabled,adaptive}\n  --reasoning-effort REASONING_EFFORT\n  --ca-bundle CA_BUNDLE\n                        explicit trusted CA PEM; TLS verification remains\n                        enabled\n  --token-parameter {max_completion_tokens,max_tokens}\n  --no-parallel-parameter\n  --skill SKILL\n  --events              emit committed metadata events as JSON lines\n  --track-file-context  opt in for this new Coding task: bounded known-read\n                        file-version hints before sampling; saved for\n                        resume/fork, not a whole-project watcher\n  --no-auto-compact     disable saved automatic summaries for this new turn;\n                        original archive is retained\n  --max-steps MAX_STEPS\n  --max-seconds MAX_SECONDS\n  --model-timeout MODEL_TIMEOUT\n  --tool-timeout TOOL_TIMEOUT\n  --max-errors MAX_ERRORS\n  --max-model-retries MAX_MODEL_RETRIES\n  --max-output-tokens MAX_OUTPUT_TOKENS\n  --max-context-bytes MAX_CONTEXT_BYTES\n  --auto-compact-bytes AUTO_COMPACT_BYTES\n  --max-auto-compactions MAX_AUTO_COMPACTIONS\n  --max-cost-usd MAX_COST_USD\n  --input-price INPUT_PRICE\n  --output-price OUTPUT_PRICE\n"
+
+======================================================================
+FAIL: test_exact_command_approval_pipe_private_boundary_and_native_receipt (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend_native.py", line 84, in test_exact_command_approval_pipe_private_boundary_and_native_receipt
+    self.assertEqual(state['phase'],'completed',state.get('reason'))
+AssertionError: 'needs_confirmation' != 'completed'
+- needs_confirmation
++ completed
+ : tool_outcome_unknown
+
+======================================================================
+FAIL: test_real_engine_test_failure_patch_and_success_use_subprocesses (tests.dev.test_confined_backend_native.ConfinedBackendNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend_native.py", line 55, in test_real_engine_test_failure_patch_and_success_use_subprocesses
+    self.assertEqual(state['phase'],'completed',state.get('reason'))
+AssertionError: 'needs_confirmation' != 'completed'
+- needs_confirmation
++ completed
+ : tool_outcome_unknown
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.545s
+
+FAILED (failures=3, errors=2)

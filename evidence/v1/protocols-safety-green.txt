@@ -1,0 +1,8 @@
+test_anthropic_parallel_capability_can_be_omitted (tests.dev.test_model_protocols.ProtocolSafetyTests) ... ok
+test_malformed_anthropic_stream_usage_is_unknown (tests.dev.test_model_protocols.ProtocolSafetyTests) ... ok
+test_non_assistant_chat_message_cannot_be_promoted_to_assistant (tests.dev.test_model_protocols.ProtocolSafetyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

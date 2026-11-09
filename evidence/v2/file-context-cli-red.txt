@@ -1,0 +1,40 @@
+test_interactive_default_call_shape_and_saved_task_option_are_compatible (tests.dev.test_file_context_cli.FileContextCLITests) ... ERROR
+test_new_chat_opt_in_and_existing_chat_flag_rejection (tests.dev.test_file_context_cli.FileContextCLITests) ... FAIL
+test_run_opt_in_persists_actual_read_and_resume_needs_no_new_flag (tests.dev.test_file_context_cli.FileContextCLITests) ... FAIL
+
+======================================================================
+ERROR: test_interactive_default_call_shape_and_saved_task_option_are_compatible (tests.dev.test_file_context_cli.FileContextCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_cli.py", line 66, in test_interactive_default_call_shape_and_saved_task_option_are_compatible
+    chat_loop(engine, task_id=tid, track_file_context=True,
+TypeError: chat_loop() got an unexpected keyword argument 'track_file_context'
+
+======================================================================
+FAIL: test_new_chat_opt_in_and_existing_chat_flag_rejection (tests.dev.test_file_context_cli.FileContextCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_cli.py", line 48, in test_new_chat_opt_in_and_existing_chat_flag_rejection
+    self.assertEqual(code, 0, err)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: unrecognized arguments: --track-file-context
+
+
+======================================================================
+FAIL: test_run_opt_in_persists_actual_read_and_resume_needs_no_new_flag (tests.dev.test_file_context_cli.FileContextCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_cli.py", line 39, in test_run_opt_in_persists_actual_read_and_resume_needs_no_new_flag
+    self.assertEqual(code, 0, err)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: unrecognized arguments: --track-file-context
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.104s
+
+FAILED (failures=2, errors=1)

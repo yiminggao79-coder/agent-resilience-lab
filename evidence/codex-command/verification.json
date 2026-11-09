@@ -1,0 +1,72 @@
+{
+  "method": "Git blob SHA-1 over exact preserved bytes",
+  "upstream_executed": false,
+  "checks": [
+    {
+      "artifact": "evidence/codex-command/unified_exec-process_manager.rs",
+      "expected_blob_sha": "caa45622a2c826ae7a7c14c1edd2c849e8f81799",
+      "actual_blob_sha": "caa45622a2c826ae7a7c14c1edd2c849e8f81799",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/tools-orchestrator.rs",
+      "expected_blob_sha": "9ba96e57eea42bcd988b1d4d257d92149a50cc3a",
+      "actual_blob_sha": "9ba96e57eea42bcd988b1d4d257d92149a50cc3a",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/sandboxing-mod.rs",
+      "expected_blob_sha": "a5f61153d95ab305cd763daaeef14a23bb4861b1",
+      "actual_blob_sha": "a5f61153d95ab305cd763daaeef14a23bb4861b1",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/unified_exec-process.rs",
+      "expected_blob_sha": "f9afaaa41d5349e519ca45585bcd05954655dd4d",
+      "actual_blob_sha": "f9afaaa41d5349e519ca45585bcd05954655dd4d",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/sandboxing-lib.rs",
+      "expected_blob_sha": "70b3a812bb56127beb026ac978079b53e5795468",
+      "actual_blob_sha": "70b3a812bb56127beb026ac978079b53e5795468",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/tools-approvals.rs",
+      "expected_blob_sha": "2f63fe7070dfce9c4fe16b5d442564f84dc7d441",
+      "actual_blob_sha": "2f63fe7070dfce9c4fe16b5d442564f84dc7d441",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/sandboxing-seatbelt.rs",
+      "expected_blob_sha": "bca03f4f4ce518544230e12ddbad3085250b6430",
+      "actual_blob_sha": "bca03f4f4ce518544230e12ddbad3085250b6430",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/sandboxing-manager.rs",
+      "expected_blob_sha": "fa4d252d3ba8032ffce97a1e2a0abf27348f701a",
+      "actual_blob_sha": "fa4d252d3ba8032ffce97a1e2a0abf27348f701a",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/sandboxing-spawn.rs",
+      "expected_blob_sha": "86d2878fbdc022cd589ef0db31f453bfd790a44e",
+      "actual_blob_sha": "86d2878fbdc022cd589ef0db31f453bfd790a44e",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/sandboxing-seatbelt_base_policy.sbpl",
+      "expected_blob_sha": "2fca6a886e4f3ad5a5d8d8e6e6e88894fc8f0ed9",
+      "actual_blob_sha": "2fca6a886e4f3ad5a5d8d8e6e6e88894fc8f0ed9",
+      "match": true
+    },
+    {
+      "artifact": "evidence/codex-command/sandboxing-seatbelt_read_only_platform_defaults.sbpl",
+      "expected_blob_sha": "0714f2e6d747cba390d4f112286df8eba7148c55",
+      "actual_blob_sha": "0714f2e6d747cba390d4f112286df8eba7148c55",
+      "match": true
+    }
+  ]
+}

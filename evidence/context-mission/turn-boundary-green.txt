@@ -1,0 +1,101 @@
+test_automatic_intermediate_summary_advances_until_agent_view_fits (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_derived_ledger_yields_space_to_semantic_notes_without_losing_archive (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_full_fit_retains_the_existing_complete_projection (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_large_tool_result_is_previewed_with_a_retrievable_original_identity (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_malformed_or_already_consumed_prefix_does_not_create_a_fake_summary (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_new_natural_input_releases_completed_prior_turn_batch_for_summary (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_oversized_input_selects_largest_complete_fitting_prefix (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_oversized_single_batch_is_not_split_or_silently_truncated (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_previous_notes_consume_budget_and_keep_the_same_source_basis (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_runtime_advances_semantic_cursor_even_when_old_view_already_dropped_history (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_runtime_notices_do_not_release_current_tool_batch (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_successive_source_cursors_cover_without_gaps_or_replaying_prefix (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_summary_uses_explicit_turn_output_ceiling_without_hidden_1024_cap (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_utf8_byte_bound_and_indivisible_multi_call_batch (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_adversarial_summary_has_no_host_authority_or_tool_effect (tests.dev.test_compaction.CompactionTests) ... ok
+test_bounds_and_corrupt_prefix_reject_without_billable_call (tests.dev.test_compaction.CompactionTests) ... ok
+test_explicit_summary_preserves_archive_requirements_evidence_and_restart (tests.dev.test_compaction.CompactionTests) ... ok
+test_internal_summary_mutes_and_restores_wrapped_stream_callback (tests.dev.test_compaction.CompactionTests) ... ok
+test_invalid_public_role_is_sanitized_before_model (tests.dev.test_compaction.CompactionTests) ... ok
+test_invalid_summary_never_executes_and_keeps_prior_record (tests.dev.test_compaction.CompactionTests) ... ok
+test_known_model_failure_preserves_view_but_charges_unknown_usage (tests.dev.test_compaction.CompactionTests) ... ok
+test_malformed_completion_cannot_escape_accounting_and_recovery (tests.dev.test_compaction.CompactionTests) ... ok
+test_protocol_views_keep_complete_newest_batch (tests.dev.test_compaction.CompactionTests) ... ok
+test_rejects_pending_unknown_and_unpaired_histories_before_model (tests.dev.test_compaction.CompactionTests) ... ok
+test_store_failure_after_response_leaves_durable_pending_not_summary (tests.dev.test_compaction.CompactionTests) ... ok
+test_stream_callback_restored_on_unknown_transport_failure (tests.dev.test_compaction.CompactionTests) ... ok
+test_summary_can_recover_when_old_request_view_exceeds_limit (tests.dev.test_compaction.CompactionTests) ... ok
+test_summary_uses_shared_cost_reservation_and_rejected_usage_is_counted (tests.dev.test_compaction.CompactionTests) ... ok
+test_terminal_maintenance_summary_does_not_reopen_steering_admission (tests.dev.test_compaction.CompactionTests) ... ok
+test_unbounded_or_unknown_source_and_repeated_cursor_make_no_request (tests.dev.test_compaction.CompactionTests) ... ok
+test_unknown_request_is_not_replayed_on_restart (tests.dev.test_compaction.CompactionTests) ... ok
+test_valid_second_summary_advances_without_replaying_archived_native_blocks (tests.dev.test_compaction.CompactionTests) ... ok
+test_active_automatic_summary_accepts_feedback_without_treating_it_as_maintenance (tests.dev.test_auto_context.AutoContextTests) ... FAIL
+test_actual_cost_exceeded_by_summary_blocks_regular_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_advancing_source_is_bounded_and_allowance_resets_per_turn (tests.dev.test_auto_context.AutoContextTests) ... FAIL
+test_default_disabled_and_old_snapshot_has_no_extra_model_call (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_known_invalid_summary_falls_back_with_known_usage (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_large_archive_small_active_view_does_not_trigger (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_limits_validate_opt_in_threshold_and_attempt_cap (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_no_new_content_skips_and_oversized_summary_input_advances_fitting_prefixes (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_no_reduction_is_not_retried_for_same_prefix (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_old_view_overflow_is_rescued_or_fails_without_resend (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_one_attempt_cap_allows_tools_and_then_regular_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_opt_in_summary_precedes_decision_with_exact_archive_and_usage (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_queued_batch_and_recovering_partial_patch_finish_before_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_run_never_acquires_recursive_store_lock (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_shared_budget_refusal_does_not_fallback_to_paid_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_step_and_deadline_are_rechecked_after_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_storage_failure_keeps_started_attempt_and_resume_never_resends (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_summary_preflight_cost_refusal_allows_cheaper_valid_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_threshold_measures_active_view_and_triggers_at_boundary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unknown_summary_and_unknown_usage_pause_without_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unknown_usage_after_deadline_still_requires_confirmation (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unpaired_history_and_user_only_overflow_never_request_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_completed_batch_is_indivisible_and_facts_reference_all_results (tests.dev.test_history.ArchiveEvidenceTests) ... ok
+test_ledger_is_bounded_prioritizes_recent_changes_and_reports_omissions (tests.dev.test_history.ArchiveEvidenceTests) ... ok
+test_omitted_edit_and_failed_verification_survive_as_indexed_facts (tests.dev.test_history.ArchiveEvidenceTests) ... ok
+test_previews_reference_original_indices_and_exclude_private_fields (tests.dev.test_history.ArchiveEvidenceTests) ... ok
+test_reordered_result_batch_is_not_treated_as_completed (tests.dev.test_history.ArchiveEvidenceTests) ... ok
+test_user_turn_boundaries_and_pending_multi_call_group_are_preserved (tests.dev.test_history.ArchiveEvidenceTests) ... ok
+test_lookup_preserves_only_canonical_call_fields_and_caps_fragments (tests.dev.test_history.HistoryLookupTests) ... ok
+test_paginated_ascii_projection_reconstructs_exact_content_after_restart (tests.dev.test_history.HistoryLookupTests) ... ok
+test_confirmed_large_edit_receipt_survives_omission_of_recent_reads (tests.dev.test_history.LargeEditLedgerTests) ... ok
+test_model_can_recall_omitted_evidence_from_same_private_session (tests.dev.test_history_runtime.HistoryRuntimeTests) ... ok
+test_actual_observer_uses_stdin_not_argv_with_clean_environment (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_boolean_exit_codes_are_not_success_measurements (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_freeze_verification_detects_modified_file_and_added_file (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_injected_offline_turn_exercises_real_tools_and_keeps_session_history (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_missing_child_result_exports_pending_receipt_and_null_quality (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_no_api_mode_never_reads_suite_or_key_and_creates_no_trial (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_owned_runner_is_actually_killed_after_its_marker (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_packing_proof_uses_actual_eligible_input_and_installed_operation (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_quality_is_external_and_unknown_observation_does_not_become_zero (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_receipts_include_pre_kill_and_resume_without_inventing_unknown_usage (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_tool_and_runner_subprocess_environments_exclude_real_key_variables (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_unsafe_artifact_never_invokes_candidate_code (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_wrong_marker_owner_never_authorizes_signalling_another_process (tests.dev.test_context_mission.ContextMissionTests) ... ok
+
+======================================================================
+FAIL: test_active_automatic_summary_accepts_feedback_without_treating_it_as_maintenance (tests.dev.test_auto_context.AutoContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_auto_context.py", line 88, in test_active_automatic_summary_accepts_feedback_without_treating_it_as_maintenance
+    self.assertEqual(state['phase'], 'completed')
+AssertionError: 'needs_confirmation' != 'completed'
+- needs_confirmation
++ completed
+
+
+======================================================================
+FAIL: test_advancing_source_is_bounded_and_allowance_resets_per_turn (tests.dev.test_auto_context.AutoContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_auto_context.py", line 138, in test_advancing_source_is_bounded_and_allowance_resets_per_turn
+    self.assertEqual(state['semantic_context']['generation'], 3)
+AssertionError: 2 != 3
+
+----------------------------------------------------------------------
+Ran 77 tests in 8.021s
+
+FAILED (failures=2)

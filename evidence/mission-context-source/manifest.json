@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "read_date": "2026-11-09",
+  "retrieval": "Connected GitHub fetch_file, immutable ref; source bodies read, not executed.",
+  "scope": "Public source excerpts and attribution only; no private experiment, task, model, or credential material.",
+  "sources": [
+    {
+      "evidence_file": "compact-local.json",
+      "path": "codex-rs/core/src/compact.rs",
+      "git_blob_sha": "c75de9167c1b0226d303d5db69eb0046b94d94e9",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/compact.rs",
+      "inspected_line_ranges": [
+        [
+          264,
+          476
+        ],
+        [
+          625,
+          849
+        ],
+        [
+          856,
+          954
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          264,
+          407
+        ],
+        [
+          418,
+          476
+        ],
+        [
+          625,
+          656
+        ],
+        [
+          734,
+          848
+        ],
+        [
+          856,
+          954
+        ]
+      ],
+      "evidence_sha256": "6922980f5997de97bc71902f91a1d37b5b881d0b2f3228b81e5b58c167398ee7"
+    },
+    {
+      "evidence_file": "history-projection.json",
+      "path": "codex-rs/core/src/context_manager/history.rs",
+      "git_blob_sha": "3e8221ba33b70690fb1641fdae6d7a7dbcbf35c0",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/context_manager/history.rs",
+      "inspected_line_ranges": [
+        [
+          680,
+          737
+        ],
+        [
+          850,
+          945
+        ],
+        [
+          1170,
+          1189
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          704,
+          737
+        ],
+        [
+          857,
+          870
+        ],
+        [
+          1170,
+          1186
+        ]
+      ],
+      "evidence_sha256": "a8eb8bbbb5aa6cd69206a119062c21361f39e20974e2de1626af2c1ec9dec7db"
+    },
+    {
+      "evidence_file": "history-pairing.json",
+      "path": "codex-rs/core/src/context_manager/normalize.rs",
+      "git_blob_sha": "387bc8f75a2249be67efc44584b92585b6de57bb",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/context_manager/normalize.rs",
+      "inspected_line_ranges": [
+        [
+          1,
+          342
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          51,
+          68
+        ],
+        [
+          87,
+          139
+        ],
+        [
+          150,
+          169
+        ],
+        [
+          198,
+          241
+        ],
+        [
+          243,
+          342
+        ]
+      ],
+      "evidence_sha256": "5d6df3d49a2259caf1b9a4e0aadec457006b80d631b07d71abc20446d4a2b5c9"
+    },
+    {
+      "evidence_file": "remote-input.json",
+      "path": "codex-rs/core/src/compact_remote_v2_attempt.rs",
+      "git_blob_sha": "ce2063fc664ac813662fef9ddaf9ab82e5672c92",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/compact_remote_v2_attempt.rs",
+      "inspected_line_ranges": [
+        [
+          1,
+          48
+        ],
+        [
+          95,
+          180
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          95,
+          146
+        ]
+      ],
+      "evidence_sha256": "f838b0bbcdd752e4c20182c11a69d761edd13c1fbb18a5ca8b9016f1f0e519c3"
+    },
+    {
+      "evidence_file": "remote-trimming.json",
+      "path": "codex-rs/core/src/compact_remote_history.rs",
+      "git_blob_sha": "3a6f1500f3933ac893a46c0be2cf37bbbc1e07e5",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/compact_remote_history.rs",
+      "inspected_line_ranges": [
+        [
+          1,
+          213
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          77,
+          147
+        ],
+        [
+          149,
+          209
+        ]
+      ],
+      "evidence_sha256": "d8975dc3ec95647e00eeb7dfa140ea84320a7869fb3ed903d4e49a2de48cd38d"
+    },
+    {
+      "evidence_file": "installation.json",
+      "path": "codex-rs/core/src/session/mod.rs",
+      "git_blob_sha": "c52dd4e9c7b6ca1e834bac631c30d015cff7c557",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/mod.rs",
+      "inspected_line_ranges": [
+        [
+          4711,
+          4923
+        ],
+        [
+          5309,
+          5318
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          4778,
+          4806
+        ],
+        [
+          4830,
+          4923
+        ],
+        [
+          5310,
+          5318
+        ]
+      ],
+      "evidence_sha256": "65c4044efbcbcfb385e354e12b49413bea9979427540bbcb97d6b03812896ed1"
+    },
+    {
+      "evidence_file": "reconstruction.json",
+      "path": "codex-rs/core/src/session/rollout_reconstruction.rs",
+      "git_blob_sha": "930d410a6e10336d541dfb05323b6f1ae9f15c03",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/rollout_reconstruction.rs",
+      "inspected_line_ranges": [
+        [
+          1,
+          130
+        ],
+        [
+          161,
+          620
+        ]
+      ],
+      "excerpt_line_ranges": [
+        [
+          62,
+          93
+        ],
+        [
+          239,
+          263
+        ],
+        [
+          519,
+          598
+        ]
+      ],
+      "evidence_sha256": "622925bec47f6d7a74ce1ba049c9c5083c41453499c1d0dd4365115b152347d2"
+    }
+  ],
+  "attribution": [
+    {
+      "evidence_file": "LICENSE",
+      "path": "LICENSE",
+      "git_blob_sha": "4606e72e042564097e8780d66c1d4dcb611869bd",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/LICENSE",
+      "evidence_sha256": "d17f227e4df5da1600391338865ce0f3055211760a36688f816941d58232d8dc"
+    },
+    {
+      "evidence_file": "NOTICE",
+      "path": "NOTICE",
+      "git_blob_sha": "2805899d56d0332d175cfc613c67d45d6f006db7",
+      "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/NOTICE",
+      "evidence_sha256": "9d71575ecfd9a843fc1677b0efb08053c6ba9fd686a0de1a6f5382fd3c220915"
+    }
+  ],
+  "verification": {
+    "method": "JSON structure/range-length checks; SHA-256 of each exported file; LICENSE and NOTICE reconstructed Git blob SHA-1 equals fetched blob ID. No upstream tests executed.",
+    "excerpt_lines": 1202
+  }
+}

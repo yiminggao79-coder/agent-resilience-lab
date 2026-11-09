@@ -1,0 +1,74 @@
+test_changed_bytes_and_ordinary_mode_invalidate_old_intent (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ERROR
+test_default_denies_and_opt_in_binds_mode_image_and_scope (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ERROR
+test_no_hidden_parent_symlink_external_bare_or_special_mode_programs (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ERROR
+test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ERROR
+test_worker_forgery_and_version2_envelope_fail_before_launch (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ERROR
+
+======================================================================
+ERROR: test_changed_bytes_and_ordinary_mode_invalidate_old_intent (tests.dev.test_workspace_exec.WorkspaceExecTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 36, in test_changed_bytes_and_ordinary_mode_invalidate_old_intent
+    intent=commands.prepare_command(self.root,['./program'],allow_workspace_executables=True)
+TypeError: prepare_command() got an unexpected keyword argument 'allow_workspace_executables'
+
+======================================================================
+ERROR: test_default_denies_and_opt_in_binds_mode_image_and_scope (tests.dev.test_workspace_exec.WorkspaceExecTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 28, in test_default_denies_and_opt_in_binds_mode_image_and_scope
+    intent=commands.prepare_command(self.root,['./program'],allow_workspace_executables=True)
+TypeError: prepare_command() got an unexpected keyword argument 'allow_workspace_executables'
+
+======================================================================
+ERROR: test_no_hidden_parent_symlink_external_bare_or_special_mode_programs (tests.dev.test_workspace_exec.WorkspaceExecTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 46, in test_no_hidden_parent_symlink_external_bare_or_special_mode_programs
+    tools=CodingTools(self.root,allow_workspace_executables=True)
+TypeError: __init__() got an unexpected keyword argument 'allow_workspace_executables'
+
+======================================================================
+ERROR: test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore (tests.dev.test_workspace_exec.WorkspaceExecTests) (bad=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 57, in test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore
+    with self.subTest(bad=bad),self.assertRaises(ToolError):runtime_policy(self.root,allow_workspace_executables=bad)
+TypeError: runtime_policy() got an unexpected keyword argument 'allow_workspace_executables'
+
+======================================================================
+ERROR: test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore (tests.dev.test_workspace_exec.WorkspaceExecTests) (bad=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 57, in test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore
+    with self.subTest(bad=bad),self.assertRaises(ToolError):runtime_policy(self.root,allow_workspace_executables=bad)
+TypeError: runtime_policy() got an unexpected keyword argument 'allow_workspace_executables'
+
+======================================================================
+ERROR: test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore (tests.dev.test_workspace_exec.WorkspaceExecTests) (bad='true')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 57, in test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore
+    with self.subTest(bad=bad),self.assertRaises(ToolError):runtime_policy(self.root,allow_workspace_executables=bad)
+TypeError: runtime_policy() got an unexpected keyword argument 'allow_workspace_executables'
+
+======================================================================
+ERROR: test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore (tests.dev.test_workspace_exec.WorkspaceExecTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 58, in test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore
+    tools=CodingTools(self.root,allow_workspace_executables=True)
+TypeError: __init__() got an unexpected keyword argument 'allow_workspace_executables'
+
+======================================================================
+ERROR: test_worker_forgery_and_version2_envelope_fail_before_launch (tests.dev.test_workspace_exec.WorkspaceExecTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec.py", line 68, in test_worker_forgery_and_version2_envelope_fail_before_launch
+    tools=CodingTools(self.root,allow_workspace_executables=True)
+TypeError: __init__() got an unexpected keyword argument 'allow_workspace_executables'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.010s
+
+FAILED (errors=8)

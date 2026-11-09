@@ -1,0 +1,51 @@
+"""One consumed v4 regression for a general host capability fix; not fresh acceptance."""
+import argparse,sys,json,hashlib
+from pathlib import Path
+REPO=Path(__file__).resolve().parents[1];sys.path.insert(0,str(REPO))
+from scripts.context_mission import (load_suite,_run_case,export_candidate,atomic_json,
+    implementation_snapshot,digest_file,usage_totals,safe_path,_probe_backend,
+    experiment_settings,validate_frozen_runtime)
+from agent_lab.budget import BudgetLedger
+p=argparse.ArgumentParser();p.add_argument('--allow-api',action='store_true');p.add_argument('--prepaid-account',action='store_true')
+a=p.parse_args()
+if not(a.allow_api and a.prepaid_account):print('{"api_requests_sent":0,"mode":"preflight"}');sys.exit(0)
+suite=REPO/'evaluation/context_mission_v4';original=REPO/'evidence/context-mission/runs/3f9e42c7de554130/report.json'
+old_sha=digest_file(original);freeze,cases=load_suite(suite)
+validate_frozen_runtime(json.loads((suite/'manifest.json').read_text())['runtime_profile'],'thinking128k','deepseek-flash')
+snapshot=implementation_snapshot()
+if snapshot['runtime_dirty']:raise SystemExit('commit_runtime_first')
+ledger=BudgetLedger.open_existing(REPO/'.lab/paid-budget.sqlite')
+if ledger.report()['halted']:raise SystemExit('paid_requests_halted')
+protocol=REPO/experiment_settings('thinking128k')['protocol_file'];protocol_sha=digest_file(protocol)
+private=REPO/'.lab/git-capability-regression';private.mkdir(mode=0o700)
+output=REPO/'evidence/context-mission/git-capability-regression/report.json';output.parent.mkdir()
+if not _probe_backend(private/'backend-probe'):raise SystemExit('native_backend_unavailable')
+report={'kind':'consumed_general_git_capability_regression','implementation':snapshot,
+        'suite':'evaluation/context_mission_v4','freeze_sha256':freeze,'model':'deepseek-flash',
+        'protocol':'chat','stream':False,'thinking':'enabled','reasoning_effort':'low',
+        'experiment_profile':'thinking128k','runtime_protocol_sha256':protocol_sha,'cases':[],
+        'original_acceptance_run':'3f9e42c7de554130','original_report_sha256':old_sha,
+        'independent_acceptance':False,'one_regression_attempt':True,
+        'limitations':['Consumed suite; original formal complete0/2 remains unchanged.',
+                       'Only generic capability classification changed; resources/scoring/task text unchanged.',
+                       'No reference/expected answers enter model; no same-code resampling.']}
+try:
+    for case in cases:
+        result=_run_case(suite,case,private/case['id'],development=False,
+                         model_name='deepseek-flash',experiment_profile='thinking128k')
+        export_candidate(safe_path(suite,case['workspace_dir']),private/case['id'],output.parent/case['id'])
+        result['capability_feedback_events']=sum(e.get('error_category')=='capability_unavailable'
+            for t in result['turns'] for e in t.get('trace',[]))
+        report['cases'].append(result);atomic_json(output,report)
+        if ledger.report()['halted']:break
+finally:
+    report['runtime_unchanged']=implementation_snapshot()['source_sha256']==snapshot['source_sha256']
+    report['freeze_unchanged']=load_suite(suite)[0]==freeze
+    report['runtime_protocol_unchanged']=digest_file(protocol)==protocol_sha
+    report['original_report_unchanged']=digest_file(original)==old_sha
+    report['usage_totals']=usage_totals([r for c in report['cases'] for t in c['turns'] for r in t.get('model_receipts',[])])
+    report['regression_passed']=bool(len(report['cases'])==2 and all(c['complete'] for c in report['cases'])
+        and report['runtime_unchanged'] and report['freeze_unchanged']
+        and report['runtime_protocol_unchanged'] and report['original_report_unchanged'])
+    atomic_json(output,report)
+print(json.dumps({'report':str(output.relative_to(REPO)),'regression_passed':report['regression_passed']}))

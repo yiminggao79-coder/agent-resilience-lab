@@ -1,0 +1,93 @@
+{
+  "source_url": "https://github.com/langchain-ai/langgraph/blob/main/libs/langgraph/langgraph/pregel/_loop.py",
+  "modified_date": "2026-11-04T20:38:18Z",
+  "sha256": null,
+  "observations": [
+    {
+      "line": 463,
+      "text": "def put_writes("
+    },
+    {
+      "line": 652,
+      "text": "def tick(self) -> bool:"
+    },
+    {
+      "line": 923,
+      "text": "def _first("
+    },
+    {
+      "line": 1267,
+      "text": "def _put_checkpoint(self, metadata: CheckpointMetadata) -> None:"
+    },
+    {
+      "line": 1819,
+      "text": "def put_writes("
+    },
+    {
+      "line": 2075,
+      "text": "def put_writes("
+    }
+  ],
+  "excerpts": [
+    {
+      "start_line": 463,
+      "lines": [
+        "    def put_writes(",
+        "        self, task_id: str, writes: WritesT, *, cached: bool = False",
+        "    ) -> None:",
+        "        \"\"\"Put writes for a task, to be read by the next tick.\"\"\"",
+        "        if not writes:"
+      ]
+    },
+    {
+      "start_line": 652,
+      "lines": [
+        "    def tick(self) -> bool:",
+        "        \"\"\"Execute a single iteration of the Pregel loop.",
+        "",
+        "        Returns:",
+        "            True if more iterations are needed."
+      ]
+    },
+    {
+      "start_line": 923,
+      "lines": [
+        "    def _first(",
+        "        self, *, input_keys: str | Sequence[str], updated_channels: set[str] | None",
+        "    ) -> set[str] | None:",
+        "        self._stored_delta_writes = {",
+        "            (tid, ch)"
+      ]
+    },
+    {
+      "start_line": 1267,
+      "lines": [
+        "    def _put_checkpoint(self, metadata: CheckpointMetadata) -> None:",
+        "        # `is` (object identity) — not `==`. Three of four call sites pass a",
+        "        # fresh dict ({\"source\":\"input\"|\"loop\"|\"fork\"}); only",
+        "        # `_suppress_interrupt`(will rename to _on_loop_exit soon)",
+        "        # at exit reuses the existing `self.checkpoint_metadata` instance. So"
+      ]
+    },
+    {
+      "start_line": 1819,
+      "lines": [
+        "    def put_writes(",
+        "        self, task_id: str, writes: WritesT, *, cached: bool = False",
+        "    ) -> None:",
+        "        \"\"\"Put writes for a task, to be read by the next tick.\"\"\"",
+        "        super().put_writes(task_id, writes, cached=cached)"
+      ]
+    },
+    {
+      "start_line": 2075,
+      "lines": [
+        "    def put_writes(",
+        "        self, task_id: str, writes: WritesT, *, cached: bool = False",
+        "    ) -> None:",
+        "        \"\"\"Put writes for a task, to be read by the next tick.\"\"\"",
+        "        super().put_writes(task_id, writes, cached=cached)"
+      ]
+    }
+  ]
+}

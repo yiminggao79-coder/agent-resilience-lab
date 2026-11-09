@@ -1,0 +1,11 @@
+{
+  "kind": "offline_scripted_engine_with_real_native_node",
+  "approval_before_effect": true,
+  "phase": "completed",
+  "file_effect_verified": true,
+  "durable_job_quiescent": true,
+  "job_gate_reopened": true,
+  "synthetic_model_calls": 2,
+  "provider_requests": 0,
+  "real_llm_quality": "unmeasured"
+}

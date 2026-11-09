@@ -1,0 +1,17 @@
+[
+  {
+    "case": "single",
+    "exit_code": 0,
+    "stderr": ""
+  },
+  {
+    "case": "nested_allow_default",
+    "exit_code": 71,
+    "stderr": "sandbox-exec: sandbox_apply: Operation not permitted\n"
+  },
+  {
+    "case": "nested_reference_boundary",
+    "exit_code": 71,
+    "stderr": "sandbox-exec: sandbox_apply: Operation not permitted\n"
+  }
+]

@@ -1,0 +1,199 @@
+{
+  "repository": "openai/codex",
+  "commit": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "acquired_on": "2026-11-07",
+  "connector": "mcp__codex_apps__github_fetch_file",
+  "upstream_executed": false,
+  "body_traced_means": "Specific branches and short call chains read; does not imply every branch in the file was read.",
+  "files": [
+    {
+      "path": "codex-rs/core/src/session/turn.rs",
+      "blob_sha": "1fdf62faca3d396b4f1b6b7c64d879f99be7b2e9",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs",
+      "fetched_body": true,
+      "total_lines": 3841,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/session/session.rs",
+      "blob_sha": "2afcb80afe678d8773bcc54e8fa727539cf0405c",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/session.rs",
+      "fetched_body": true,
+      "total_lines": 2252,
+      "status": "schema/ownership fields inspected",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/protocol/src/protocol.rs",
+      "blob_sha": "58e3b3cf92cc02e55a1fd61d4aac6e080a9059c7",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/protocol/src/protocol.rs",
+      "fetched_body": true,
+      "total_lines": 6909,
+      "status": "schema/ownership fields inspected",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/codex-api/src/sse/responses.rs",
+      "blob_sha": "73463ed9b14cee3b580ecfca739ca8d32d82b69a",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/codex-api/src/sse/responses.rs",
+      "fetched_body": true,
+      "total_lines": 2099,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": true
+    },
+    {
+      "path": "codex-rs/core/src/tools/router.rs",
+      "blob_sha": "d21d1508e300376f0dae596e828a1d21aaa0a131",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/router.rs",
+      "fetched_body": true,
+      "total_lines": 483,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/stream_events_utils.rs",
+      "blob_sha": "ed3f20c3518060d65caf4dd5f1bbbc48a01f7c16",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/stream_events_utils.rs",
+      "fetched_body": true,
+      "total_lines": 641,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/tools/orchestrator.rs",
+      "blob_sha": "9ba96e57eea42bcd988b1d4d257d92149a50cc3a",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/orchestrator.rs",
+      "fetched_body": true,
+      "total_lines": 665,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/tools/runtimes/unified_exec.rs",
+      "blob_sha": "915bf0a3787d18906bcbf5884c73f9c81917c9b1",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/runtimes/unified_exec.rs",
+      "fetched_body": true,
+      "total_lines": 875,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": true
+    },
+    {
+      "path": "codex-rs/core/src/tools/handlers/apply_patch.rs",
+      "blob_sha": "a25682bbb4d5aa1f65625b8d5db4f90bc052f566",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/handlers/apply_patch.rs",
+      "fetched_body": true,
+      "total_lines": 641,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/tools/runtimes/apply_patch.rs",
+      "blob_sha": "bda1a9bb7420fc1384bf33d6066507cb4879083a",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tools/runtimes/apply_patch.rs",
+      "fetched_body": true,
+      "total_lines": 267,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/rollout/src/recorder.rs",
+      "blob_sha": "8faee09898de60d63f7873ae866ba767ac7da6eb",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/rollout/src/recorder.rs",
+      "fetched_body": true,
+      "total_lines": 2264,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/skills.rs",
+      "blob_sha": "5be89463e2a1e4235b50f38ce79eab6e8878d1ff",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/skills.rs",
+      "fetched_body": true,
+      "total_lines": 340,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/session/mcp_runtime.rs",
+      "blob_sha": "e257f193184d744a7a8dc5e45b087c3f24cb1704",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/mcp_runtime.rs",
+      "fetched_body": true,
+      "total_lines": 410,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/tui/src/chatwidget/turn_runtime.rs",
+      "blob_sha": "566668d8b477e6a44c43f7eb22ac91da736d46a5",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/tui/src/chatwidget/turn_runtime.rs",
+      "fetched_body": true,
+      "total_lines": 619,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/responses_retry.rs",
+      "blob_sha": "6a4214609c9f9d2ddb61026d17a232497bd792d9",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/responses_retry.rs",
+      "fetched_body": true,
+      "total_lines": 211,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/responses_retry_tests.rs",
+      "blob_sha": "65aa29397c5f5524116b0b9f932ab3719e1ed488",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/responses_retry_tests.rs",
+      "fetched_body": true,
+      "total_lines": 100,
+      "status": "test body read; not executed",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/utils/pty/src/process.rs",
+      "blob_sha": "4ad710f63fd8d2aa534bb6b1d2e21a5fa99b3cd5",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/utils/pty/src/process.rs",
+      "fetched_body": true,
+      "total_lines": 482,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/utils/pty/src/process_group_tests.rs",
+      "blob_sha": "a3c8f3c3d01203e70efef7213d10817ea39c5e4e",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/utils/pty/src/process_group_tests.rs",
+      "fetched_body": true,
+      "total_lines": 94,
+      "status": "test body read; not executed",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "LICENSE",
+      "blob_sha": "4606e72e042564097e8780d66c1d4dcb611869bd",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/LICENSE",
+      "fetched_body": true,
+      "total_lines": 201,
+      "status": "license read",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "codex-rs/core/src/tasks/mod.rs",
+      "blob_sha": "af0f10df1d7f444ccff7b5a97589ac98ef5d10d5",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/tasks/mod.rs",
+      "fetched_body": true,
+      "total_lines": 1184,
+      "status": "selected bodies traced; incomplete file coverage",
+      "test_bodies_also_read": false
+    },
+    {
+      "path": "NOTICE",
+      "blob_sha": "2805899d56d0332d175cfc613c67d45d6f006db7",
+      "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/NOTICE",
+      "fetched_body": true,
+      "total_lines": 6,
+      "status": "upstream attribution read; preserved verbatim",
+      "test_bodies_also_read": false
+    }
+  ]
+}

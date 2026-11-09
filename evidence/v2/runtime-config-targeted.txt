@@ -1,0 +1,24 @@
+test_config_rejects_workspace_direct_intermediate_alias_symlink_hardlink_fifo (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_default_runtime_check_has_legacy_none_and_no_hidden_writes (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_explicit_default_and_abbreviated_flags_conflict_before_config_read_or_store (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_invalid_config_fails_before_deepseek_key_loading_and_store (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_load_returns_existing_kwargs_not_source_path_or_new_authority (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_runtime_check_validates_without_store_key_model_or_subprocess (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_strict_version_fields_types_duplicate_and_bounded_regular_file (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_all_runtime_commands_advertise_explicit_config_and_check_never_creates_db (tests.acceptance.test_runtime_config_cli_process.RuntimeConfigCLIProcessTests) ... ok
+test_single_config_survives_approval_resume_fork_and_rejects_changed_grants (tests.acceptance.test_runtime_config_cli_process.RuntimeConfigCLIProcessTests) ... ok
+test_actual_invalid_node_selections_return_json_without_traceback_or_api (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... ok
+test_arbitrary_nonstring_and_unbounded_codes_cannot_escape (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... ok
+test_known_runtime_errors_are_fixed_for_coding_and_approval_factories (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... ok
+test_previous_generic_value_error_privacy_stays_compatible (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... ok
+test_cli_repeat_resource_and_named_read_on_approval_resume_fork (tests.acceptance.test_tool_resources_cli_process.ToolResourceCLIProcessTests) ... ok
+test_runtime_help_lists_read_scope_and_named_metadata (tests.acceptance.test_tool_resources_cli_process.ToolResourceCLIProcessTests) ... ok
+test_all_runtime_cli_commands_advertise_the_same_host_option (tests.acceptance.test_extra_executables_cli_process.ExtraExecutableCLIProcessTests) ... ok
+test_registered_runtime_is_repeated_on_approval_resume_and_fork (tests.acceptance.test_extra_executables_cli_process.ExtraExecutableCLIProcessTests) ... ok
+test_cli_scope_binds_approval_resume_and_session_fork (tests.acceptance.test_workspace_exec_cli_process.WorkspaceExecCLIProcessTests) ... ok
+test_runtime_cli_help_has_explicit_scope_and_primary_secondary_distinction (tests.acceptance.test_workspace_exec_cli_process.WorkspaceExecCLIProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 14.270s
+
+OK

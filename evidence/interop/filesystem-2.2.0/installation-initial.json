@@ -1,0 +1,13 @@
+{
+  "exit_code": 1,
+  "elapsed_seconds": 0.674,
+  "stdout": "",
+  "stderr": "Exit prior to config file resolving\ncause\ndouble-loading config \"/dev/null\" as \"global\", previously loaded as \"user\"\n",
+  "install": "/private/tmp/agentlab-official-mcp-205maypm/install",
+  "node": "/Users/yiming/.local/share/nodejs/node-v24.22.2-darwin-x64/bin/node",
+  "npm": "/Users/yiming/.local/share/nodejs/node-v24.22.2-darwin-x64/lib/node_modules/npm/bin/npm-cli.js",
+  "scripts_disabled": true,
+  "audit_disabled": true,
+  "user_global_config_disabled": true,
+  "provider_key_environment": false
+}

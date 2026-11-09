@@ -1,0 +1,1 @@
+{"timeout_observed": true, "native_pid_gone_before_return": true, "partial_effect_exists": true, "late_effect_exists": false, "model_requests": 0}

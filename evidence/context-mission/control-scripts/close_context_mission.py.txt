@@ -1,0 +1,184 @@
+"""Offline closure audit of immutable real reports; no model or credential use.
+
+This is an evidence cross-check, not an independent acceptance author or a new
+score definition. The pre-frozen Runner and original reports remain authoritative.
+"""
+import argparse
+import hashlib
+import json
+import re
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO))
+from agent_lab.compaction import SUMMARY_BOUNDARY
+from scripts.context_mission import (
+    continuity_proof, digest_file, implementation_snapshot, json_equal,
+    load_suite, safe_path, usage_totals,
+)
+
+p = argparse.ArgumentParser()
+p.add_argument('--acceptance-run', required=True)
+p.add_argument('--require-clean', action='store_true',
+               help='Final invocation after saving all local changes; no new output fields.')
+a = p.parse_args()
+if not re.fullmatch('[a-f0-9]{16}', a.acceptance_run):
+    raise SystemExit('invalid_run_identity')
+
+def read(path):
+    return json.loads(path.read_text())
+
+def check_report(path, expected_kind, expected_cases, turns):
+    sha = digest_file(path)
+    d = read(path)
+    assert d['kind'] == expected_kind
+    assert d['complete'] is True and len(d['cases']) == expected_cases
+    for key in ('runtime_unchanged', 'runtime_protocol_unchanged', 'freeze_unchanged'):
+        assert d[key] is True
+    assert not d['implementation']['runtime_dirty']
+    assert implementation_snapshot()['source_sha256'] == d['implementation']['source_sha256']
+    freeze, cases = load_suite(REPO / d['suite'])
+    assert freeze == d['freeze_sha256']
+    manifest_cases = {c['id']: c for c in cases}
+    results = []
+    for c in d['cases']:
+        spec = manifest_cases[c['case']]
+        assert c['complete'] is True and c['quality_passed'] is True and c['runtime_passed'] is True
+        assert len(c['turns']) == len(spec['turns']) == turns
+        assert len({t['pid'] for t in c['turns']}) == turns
+        assert len({t['session_id'] for t in c['turns']}) == 1
+        assert len({t['id'] for t in c['turns']}) == 1
+        assert len({t['turn_id'] for t in c['turns']}) == turns
+        for index, t in enumerate(c['turns']):
+            assert t['turn'] == index + 1 and t['phase'] == 'completed'
+            assert t['safe_to_observe'] is True
+            assert all(t[k] is True for k in ('immutable_files_unchanged', 'oracles_complete', 'oracle_matches', 'quality_passed'))
+            assert t['original_tests_exit_code'] == t['all_tests_exit_code'] == 0
+            assert len(t['observations']) == index + 1
+            for j, observation in enumerate(t['observations']):
+                assert observation['turn'] == j + 1 and observation['complete'] is True
+                assert json_equal(observation['observations'], spec['turns'][j]['oracle']['expected'])
+        trace = [e for t in c['turns'] for e in t['trace']]
+        assert continuity_proof(c['turns'], trace) == c['continuity_proof']
+        assert c['continuity_proof']['passed'] is True
+        # Also bind the exported final artifact to original protected file bytes.
+        initial = safe_path(REPO / d['suite'], spec['workspace_dir'])
+        candidate = path.parent / c['case'] / 'candidate'
+        assert all(digest_file(safe_path(initial, f)) == digest_file(safe_path(candidate, f))
+                   for f in spec['immutable_files'])
+        projection_path = path.parent / c['case'] / 'public-continuity-projections.json'
+        projection = read(projection_path)
+        assert projection['source_report_sha256'] == sha
+        assert projection['all_installed_note_texts_found'] is True
+        assert projection['native_protocol_fields_exported'] is False
+        assert len(projection['installed_notes']) == len(c['installed_summaries'])
+        bound = c['continuity_proof']['note']
+        coding = [x for x in projection['selected_decisions']
+                  if x['model_call_number'] == c['continuity_proof']['coding_model_call']]
+        assert len(coding) == 1 and coding[0]['resulting_tool_feedback']
+        visible = []
+        for m in coding[0]['public_request_projection']['messages']:
+            content = m.get('content')
+            if isinstance(content, str) and content.startswith(SUMMARY_BOUNDARY + '\n'):
+                visible.append(json.loads(content.split('\n', 1)[1]))
+        assert any(n.get('source_sha256') == bound['source_sha256']
+                   and n.get('covered_until') == bound['covered_until']
+                   and hashlib.sha256(n['summary'].encode()).hexdigest() == bound['summary_sha256']
+                   for n in visible)
+        assert any(n['installed_event']['summary_sha256'] == bound['summary_sha256']
+                   and hashlib.sha256(n['summary'].encode()).hexdigest() == bound['summary_sha256']
+                   for n in projection['installed_notes'])
+        results.append({'case': c['case'], 'completed_turns': turns,
+                        'cumulative_oracle_stage_comparisons': sum(range(1, turns + 1)),
+                        'automatic_notes': len(c['installed_summaries']),
+                        'one_persistent_session_distinct_turns_and_processes': True,
+                        'note_bound_to_actual_implementation_change': True,
+                        'protected_final_artifact_bytes_match': True,
+                        'projection_sha256': digest_file(projection_path)})
+    assert usage_totals([r for c in d['cases'] for t in c['turns'] for r in t['model_receipts']],
+                        model_name=d['model']) == d['usage_totals']
+    assert digest_file(path) == sha
+    return d, {'report': str(path.relative_to(REPO)), 'report_sha256': sha,
+               'cases': results, 'usage_totals': d['usage_totals']}
+
+base = REPO / 'evidence/context-mission'
+public, public_result = check_report(base / 'runs/14db69e0521544e5/report.json',
+                                    'real_context_mission_development', 1, 4)
+acceptance, acceptance_result = check_report(base / 'runs' / a.acceptance_run / 'report.json',
+                                            'real_context_mission_acceptance', 2, 4)
+assert acceptance['suite'] == 'evaluation/context_mission_v5'
+frozen = read(REPO / 'evidence/context_mission_v5/runtime-config-freeze.json')
+assert frozen['implementation']['source_sha256'] == acceptance['implementation']['source_sha256']
+assert frozen['suite_freeze_sha256'] == acceptance['freeze_sha256']
+assert frozen['runtime_protocol_sha256'] == acceptance['runtime_protocol_sha256']
+assert acceptance['runtime_protocol_sha256'] == digest_file(REPO / 'docs/context-mission-runtime-protocol-r7.md')
+assert acceptance['experiment_profile'] == 'thinking128k'
+assert acceptance['thinking'] == 'enabled' and acceptance['reasoning_effort'] == 'low'
+for c in acceptance['cases']:
+    for t in c['turns']:
+        for k, v in {'max_steps': 50, 'max_seconds': 900, 'max_output_tokens': 16384,
+                     'max_context_bytes': 131072, 'max_summary_input_bytes': 32000,
+                     'auto_compact_bytes': 104857, 'max_auto_compactions': 6,
+                     'model_timeout': 180, 'tool_timeout': 12}.items():
+            assert t['limits'][k] == v
+
+c = public['cases'][0]
+kill = c['kill_proof']
+assert kill['killed_returncode'] == -9
+assert kill['marker']['pid'] != kill['new_pid']
+assert all(kill[k] is True for k in ('different_pid', 'saved_summary_restored',
+           'saved_archive_restored', 'no_prior_operation_id_reexecuted', 'post_checkpoint_coding'))
+cursors = [n['covered_messages'] for n in c['installed_summaries']]
+assert len(cursors) >= 2 and cursors == sorted(set(cursors))
+assert any(x['proper_subprefix'] and x['request_bytes'] <= x['budget_bytes'] < x['full_request_bytes']
+           for t in c['turns'] for x in t['packing'])
+
+log = base / 'mission-suite-final.txt'
+receipt = read(base / 'final-suite-receipt.json')
+assert receipt['observed_exit_code'] == 0 and receipt['log_sha256'] == digest_file(log)
+assert receipt['source_sha256'] == acceptance['implementation']['source_sha256']
+assert receipt['scope_review_no_unresolved_major'] is True
+for row in receipt['review_artifacts']:
+    assert digest_file(safe_path(REPO, row['path'])) == row['sha256']
+text = log.read_text()
+ran = re.findall(r'^Ran (\d+) tests in ([0-9.]+)s$', text, re.M)
+assert len(ran) == 1 and re.search(r'^OK$', text, re.M)
+assert not re.search(r'^FAILED|^ERROR:|^FAIL:', text, re.M)
+assert 'test_oversized_input_selects_largest_complete_fitting_prefix' in text
+baseline_path = base / 'baseline-packing-review.json'
+baseline = read(baseline_path)
+assert baseline['runtime_commit'] == 'd47ecfa'
+assert baseline['full_prepare'] == 'compaction_context_limit'
+assert baseline['smaller_complete_prefix_fits'] is True
+
+out = {'kind': 'offline_mission_closure_crosscheck',
+       'api_requests_sent': 0, 'credentials_loaded': False,
+       'source_commit': acceptance['implementation']['commit'],
+       'source_sha256': acceptance['implementation']['source_sha256'],
+       'gates': {g: True for g in ('G1', 'G2', 'G3', 'G4', 'G5', 'G6')},
+       'baseline_reproduction': {'path': str(baseline_path.relative_to(REPO)),
+                                 'sha256': digest_file(baseline_path),
+                                 'scope': 'Offline fitting-prefix gap, not a measured real Coding failure.'},
+       'public_development': public_result, 'fresh_acceptance': acceptance_result,
+       'final_regression': {'tests': int(ran[0][0]), 'seconds': float(ran[0][1]),
+                            'log_sha256': digest_file(log), 'observed_exit_code': 0},
+       'scope_review': {'disposition': 'No unresolved major within this mission as reviewed by implementer.',
+                        'review_artifacts': receipt['review_artifacts'],
+                        'limitation': 'Not a machine proof of absence of defects; bounded independent reviews and explicit implementer disposition.'},
+       'limitations': ['Cross-check reuses the frozen Runner continuity function; it is not a second independent acceptance.',
+                      'Checks recorded stage observations against frozen expectations and final protected bytes, not a new live rerun.',
+                      'G1 baseline RED and source research/review remain separate retained artifacts.',
+                      'Final commit/save is verified separately with --require-clean and Git state; initial technical cross-check alone does not save repository changes.',
+                      'Costs are estimates, byte budgets are not provider token counts, finite same-AI role-separated tasks are not general Coding success rates.',
+                      'Only the tested ready checkpoint is covered, not arbitrary crash points or external exactly-once.']}
+target = base / 'final-report.json'
+if a.require_clean:
+    status = subprocess.check_output(['git', 'status', '--porcelain'], cwd=REPO,
+                                    stderr=subprocess.DEVNULL,
+                                    env={'PATH': os.defpath, 'LANG': 'C.UTF-8'})
+    assert status == b'', 'repository_not_saved'
+target.write_text(json.dumps(out, indent=2, allow_nan=False) + '\n')
+print(json.dumps({'closure_crosscheck': 'passed', 'gates': out['gates'], 'api_requests_sent': 0}))

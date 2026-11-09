@@ -1,0 +1,34 @@
+test_callback_failure_closes_without_echoing_arbitrary_exception (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_cancellable_nested_sse_ping_preserves_normal_result_and_controller_callback_thread (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_connected_slow_headers_are_cancelled_without_waiting_for_header_or_deadline (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_direct_client_predispatch_stop_does_not_send_or_report_success (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_existing_base_scope_cancels_dispatched_http_without_cross_thread_callback (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... /Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py:69: ResourceWarning: unclosed <socket.socket [closed] fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=6>
+  it = reversed(parts)
+Object allocated at (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/threading.py", lineno 930
+    self._bootstrap_inner()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/threading.py", lineno 973
+    self.run()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/threading.py", lineno 910
+    self._target(*self._args, **self._kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp_http.py", lineno 185
+    try:outcome['result']=self._io_blocking(packet,rid,deadline)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp_http.py", lineno 206
+    with self._exchange(packet,deadline) as (response,connection):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/contextlib.py", lineno 119
+    return next(self.gen)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp_http.py", lineno 108
+    connection.connect()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py", lineno 945
+    self.sock = self._create_connection(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socket.py", lineno 827
+    sock = socket(af, socktype, proto)
+ok
+test_existing_base_scope_cancels_dispatched_stdio_effect_and_preserves_unknown (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_interrupt_closes_client_without_a_new_http_delete (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_late_connect_worker_retains_abort_gate_after_controller_returns (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 4.034s
+
+OK

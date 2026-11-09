@@ -1,0 +1,20 @@
+{
+  "path": "codex-rs/protocol/src/models.rs",
+  "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/protocol/src/models.rs",
+  "body_ranges_read": [
+    [
+      1141,
+      1177
+    ]
+  ],
+  "whole_file_audited": false,
+  "upstream_pinned_source_executed": false,
+  "excerpts": [
+    {
+      "start": 1141,
+      "end": 1165,
+      "text": "    FunctionCall {\n        #[serde(default, skip_serializing_if = \"Option::is_none\")]\n        #[ts(optional)]\n        encrypted_content: Option<String>,\n        #[serde(default, skip_serializing_if = \"Option::is_none\")]\n        #[ts(optional)]\n        status: Option<String>,\n        #[serde(default, skip_serializing_if = \"Option::is_none\")]\n        #[ts(optional)]\n        id: Option<ResponseItemId>,\n        name: String,\n        #[serde(default, skip_serializing_if = \"Option::is_none\")]\n        #[ts(optional)]\n        namespace: Option<String>,\n        // The Responses API returns the function call arguments as a *string* that contains\n        // JSON, not as an already\u2011parsed object. We keep it as a raw string here and let\n        // Session::handle_function_call parse it into a Value.\n        arguments: String,\n        #[serde(default, skip_serializing_if = \"Option::is_none\")]\n        #[ts(optional)]\n        encrypted_function_args: Option<Vec<String>>,\n        call_id: String,\n        #[serde(default, skip_serializing_if = \"Option::is_none\")]\n        #[ts(optional)]\n        internal_chat_message_metadata_passthrough: Option<InternalChatMessageMetadataPassthrough>,"
+    }
+  ],
+  "computed_git_blob_sha1": "cdeac4a5988db1c4e7b10603530343c1507052d0"
+}

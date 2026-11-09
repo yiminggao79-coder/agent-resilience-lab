@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "manifest_schema_version": 1,
+  "status": "frozen_before_model_exposure",
+  "frozen_at_utc": "2026-11-08T18:17:27.191293+00:00",
+  "manifest_path": "evaluation/context_mission_v2/manifest.json",
+  "freeze_path": "evaluation/context_mission_v2/FREEZE.json",
+  "interface_path": "docs/context-mission-v2-acceptance-interface.md",
+  "manifest_sha256": "d3f924562887ad291d220643bb266feda501ccd4353278d1ae289d35f605f7ab",
+  "freeze_sha256": "5b2380ac4f72424d56d0b4c347233dde3edf1c0de1977be0b6cebd013fcc163a",
+  "inventory_sha256": "23afd03bfe0cff7be5bce747cd752207a1d24642bddba7aa47c7ccdf045055bb",
+  "interface_sha256": "3b4171f1ee8198f76eb6345b0ce545c948a392a3931648f938d010e839a187b1",
+  "validation_sha256": "2588cc3603bbbb26cd5453383de4c71b2e0004f2bbe71330982d01bc83f107a1",
+  "frozen_inventory_files": 34,
+  "cases": 2,
+  "turns_per_case": 3,
+  "turns": 6,
+  "protected_original_files": 4,
+  "protected_original_test_methods_per_case": [
+    10,
+    10
+  ],
+  "oracle_observations_per_case_stage": [
+    [
+      7,
+      7,
+      7
+    ],
+    [
+      7,
+      7,
+      7
+    ]
+  ],
+  "final_oracle_observations": 42,
+  "cumulative_reference_observations": 84,
+  "reference_stage_original_test_methods": 60,
+  "negative_controls": 26,
+  "offline_reference_stages_passed": 6,
+  "baselines_detected_by_original_tests": 2,
+  "all_offline_validation_passed": true,
+  "author_model_or_api_calls": 0,
+  "synthetic_provenance": true,
+  "fresh_domains_and_APIs": true,
+  "prior_suite_outcomes": "consumed_separate_preserved_not_regraded",
+  "authorship_independence": "role_separation_same_AI_environment_not_external_statistical_independence",
+  "live_runtime_gates": "not_measured_by_author_validation",
+  "limits": {
+    "max_model_calls_per_turn": 50,
+    "turn_timeout_seconds": 900,
+    "max_output_tokens": 4096,
+    "active_context_max_bytes": 48000
+  },
+  "verify_command": [
+    "python3",
+    "-B",
+    "evaluation/context_mission_v2/verify_freeze.py"
+  ],
+  "exposure_rule": "only_current_candidate_workspace_and_current_task_to_model_after_runtime_freeze_no_oracle_reference_author_files",
+  "original_score_rule": "every_stage_cumulative_pass_required_later_repairs_do_not_erase_earlier_failures",
+  "scope": "only_new_suite_new_public_interface_new_receipt_no_Git_commit"
+}

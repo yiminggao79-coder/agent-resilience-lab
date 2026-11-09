@@ -1,0 +1,16 @@
+test_anchor_revalidated_after_members_query (tests.dev.test_process_group.ProcessGroupTests) ... ok
+test_capacity_saturation_grows_and_stops_without_false_complete (tests.dev.test_process_group.ProcessGroupTests) ... ok
+test_changed_identity_parent_group_or_wait_state_forbids_target (tests.dev.test_process_group.ProcessGroupTests) ... ok
+test_no_empty_error_duplicate_or_foreign_list_becomes_quiet (tests.dev.test_process_group.ProcessGroupTests) ... ok
+test_no_group_access_after_reap_starts_even_if_wait_fails (tests.dev.test_process_group.ProcessGroupTests) ... ok
+test_nondefault_wait_policy_and_initial_nonowned_group_are_refused (tests.dev.test_process_group.ProcessGroupTests) ... ok
+test_other_members_even_zombies_are_not_accepted_as_finished (tests.dev.test_process_group.ProcessGroupTests) ... ok
+test_running_then_owned_zombie_singleton_is_narrow_predicate (tests.dev.test_process_group.ProcessGroupTests) ... ok
+test_capacity_retry_stops_before_query_when_reap_ownership_is_lost (tests.dev.test_process_group_review.ProcessGroupReviewTests) ... ok
+test_native_abi_errno_zero_and_saturation_never_become_empty_proof (tests.dev.test_process_group_review.ProcessGroupReviewTests) ... ok
+test_native_and_python_wait_policy_must_both_preserve_exclusive_wait (tests.dev.test_process_group_review.ProcessGroupReviewTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.006s
+
+OK

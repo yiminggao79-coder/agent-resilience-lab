@@ -1,0 +1,118 @@
+import copy
+import unittest
+
+from usage_report import report_usage
+
+
+WINDOW_START = "2025-01-01T00:00:00Z"
+WINDOW_END = "2025-01-02T00:00:00Z"
+DAY = 86400
+
+
+class IncludeIdleTests(unittest.TestCase):
+    def test_default_output_is_unchanged(self):
+        """Existing call sites must keep the three-key shape with no idle field."""
+        records = [
+            {"device": "pump", "start": "2025-01-01T10:00:00Z", "end": "2025-01-01T10:20:00Z"},
+        ]
+        default = report_usage(records, WINDOW_START, WINDOW_END)
+        explicit_false = report_usage(records, WINDOW_START, WINDOW_END, include_idle=False)
+        self.assertEqual(default, [{"device": "pump", "busy_seconds": 1200, "span_count": 1}])
+        self.assertEqual(explicit_false, default)
+        self.assertNotIn("idle_seconds", default[0])
+
+    def test_idle_is_window_minus_union_busy(self):
+        records = [
+            {"device": "fan", "start": "2025-01-01T10:00:00Z", "end": "2025-01-01T10:20:00Z"},
+            {"device": "fan", "start": "2025-01-01T12:00:00Z", "end": "2025-01-01T12:30:00Z"},
+            # Overlapping record must not be double-counted when computing idle.
+            {"device": "fan", "start": "2025-01-01T10:10:00Z", "end": "2025-01-01T10:15:00Z"},
+        ]
+        self.assertEqual(report_usage(records, WINDOW_START, WINDOW_END, include_idle=True), [
+            {
+                "device": "fan",
+                "busy_seconds": 3000,
+                "span_count": 2,
+                "idle_seconds": DAY - 3000,
+            },
+        ])
+
+    def test_busy_fully_covering_window_has_zero_idle(self):
+        records = [
+            {"device": "srv", "start": "2024-12-31T20:00:00Z", "end": "2025-01-02T05:00:00Z"},
+        ]
+        self.assertEqual(report_usage(records, WINDOW_START, WINDOW_END, include_idle=True), [
+            {"device": "srv", "busy_seconds": DAY, "span_count": 1, "idle_seconds": 0},
+        ])
+
+    def test_idle_respects_non_utc_offsets(self):
+        """Records in other offsets are compared as instants; window math is offset-free."""
+        records = [
+            # 01:00-02:00 at +02:00 == 23:00-00:00Z on 2024-12-31 -> fully before window.
+            {"device": "east", "start": "2025-01-01T01:00:00+02:00", "end": "2025-01-01T02:00:00+02:00"},
+            # 11:00-12:00 at +01:00 == 10:00-11:00Z -> 3600s busy inside the window.
+            {"device": "east", "start": "2025-01-01T11:00:00+01:00", "end": "2025-01-01T12:00:00+01:00"},
+            # Same instant expressed two ways must merge into one span, not double count.
+            {"device": "east", "start": "2025-01-01T10:30:00Z", "end": "2025-01-01T10:45:00Z"},
+            {"device": "east", "start": "2025-01-01T05:30:00-05:00", "end": "2025-01-01T05:45:00-05:00"},
+        ]
+        start = "2025-01-01T00:00:00+00:00"
+        end = "2025-01-02T00:00:00+00:00"
+        self.assertEqual(report_usage(records, start, end, include_idle=True), [
+            {
+                "device": "east",
+                "busy_seconds": 3600,
+                "span_count": 1,
+                "idle_seconds": DAY - 3600,
+            },
+        ])
+
+    def test_idle_across_day_boundary_window(self):
+        """Window spans midnight; busy time crosses it; idle uses the true window length."""
+        start = "2025-01-01T22:00:00Z"
+        end = "2025-01-02T02:00:00Z"
+        window_seconds = 4 * 3600
+        records = [
+            {"device": "night", "start": "2025-01-01T23:00:00Z", "end": "2025-01-02T00:30:00Z"},
+            # Touching continuation merges into the same span.
+            {"device": "night", "start": "2025-01-02T00:30:00Z", "end": "2025-01-02T01:00:00Z"},
+            # Extends past the window end and must be clipped.
+            {"device": "night", "start": "2025-01-02T01:30:00+00:00", "end": "2025-01-02T06:00:00+00:00"},
+        ]
+        self.assertEqual(report_usage(records, start, end, include_idle=True), [
+            {
+                "device": "night",
+                # 23:00-01:00Z merges to 7200s; 01:30-02:00Z clipped is 1800s.
+                "busy_seconds": 9000,
+                "span_count": 2,
+                "idle_seconds": window_seconds - 9000,
+            },
+        ])
+
+    def test_idle_per_device_and_omits_uncovered_devices(self):
+        records = [
+            {"device": "b", "start": "2025-01-01T10:00:00Z", "end": "2025-01-01T10:10:00Z"},
+            {"device": "A", "start": "2025-01-01T10:00:00Z", "end": "2025-01-01T10:30:00Z"},
+            # Empty / reversed records produce no coverage and no device entry.
+            {"device": "ghost", "start": "2025-01-01T10:00:00Z", "end": "2025-01-01T10:00:00Z"},
+            {"device": "ghost2", "start": "2025-01-01T10:10:00Z", "end": "2025-01-01T10:05:00Z"},
+        ]
+        self.assertEqual(report_usage(records, WINDOW_START, WINDOW_END, include_idle=True), [
+            {"device": "A", "busy_seconds": 1800, "span_count": 1, "idle_seconds": DAY - 1800},
+            {"device": "b", "busy_seconds": 600, "span_count": 1, "idle_seconds": DAY - 600},
+        ])
+
+    def test_include_idle_does_not_mutate_inputs(self):
+        records = [
+            {"device": "fan", "start": "2025-01-01T10:00:00Z", "end": "2025-01-01T10:20:00Z"},
+        ]
+        original = copy.deepcopy(records)
+        report_usage(records, WINDOW_START, WINDOW_END, include_idle=True)
+        self.assertEqual(records, original)
+
+    def test_include_idle_empty_input(self):
+        self.assertEqual(report_usage([], WINDOW_START, WINDOW_END, include_idle=True), [])
+
+
+if __name__ == "__main__":
+    unittest.main()

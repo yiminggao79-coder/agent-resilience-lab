@@ -1,0 +1,21 @@
+test_legacy_guidance_prefix_is_immutable_but_superseded_in_request_view (tests.dev.test_session_fork_context.SessionForkContextTests) ... 
+======================================================================
+FAIL: test_legacy_guidance_prefix_is_immutable_but_superseded_in_request_view (tests.dev.test_session_fork_context.SessionForkContextTests) (current_file=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_fork_context.py", line 28, in test_legacy_guidance_prefix_is_immutable_but_superseded_in_request_view
+    self.assertFalse(any(m.get('content')==old for m in view),'stale cached System guidance remains active')
+AssertionError: True is not false : stale cached System guidance remains active
+
+======================================================================
+FAIL: test_legacy_guidance_prefix_is_immutable_but_superseded_in_request_view (tests.dev.test_session_fork_context.SessionForkContextTests) (current_file=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_fork_context.py", line 28, in test_legacy_guidance_prefix_is_immutable_but_superseded_in_request_view
+    self.assertFalse(any(m.get('content')==old for m in view),'stale cached System guidance remains active')
+AssertionError: True is not false : stale cached System guidance remains active
+
+----------------------------------------------------------------------
+Ran 1 test in 0.071s
+
+FAILED (failures=2)

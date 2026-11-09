@@ -1,0 +1,8 @@
+{
+  "kind": "synthetic_cli_invalid_runtime_reproduction",
+  "exit_code": 1,
+  "traceback_present": true,
+  "structured_error_output": false,
+  "provider_requests": 0,
+  "workspace_user_files_created": false
+}

@@ -1,0 +1,43 @@
+test_callback_failure_closes_without_echoing_arbitrary_exception (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ERROR
+test_direct_client_predispatch_stop_does_not_send_or_report_success (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ERROR
+test_existing_base_scope_cancels_dispatched_http_without_cross_thread_callback (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... FAIL
+test_existing_base_scope_cancels_dispatched_stdio_effect_and_preserves_unknown (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ERROR
+
+======================================================================
+ERROR: test_callback_failure_closes_without_echoing_arbitrary_exception (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_active_cancel.py", line 74, in test_callback_failure_closes_without_echoing_arbitrary_exception
+    with client.cancellation_scope(fail):
+AttributeError: 'MCPHTTPClient' object has no attribute 'cancellation_scope'
+
+======================================================================
+ERROR: test_direct_client_predispatch_stop_does_not_send_or_report_success (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_active_cancel.py", line 63, in test_direct_client_predispatch_stop_does_not_send_or_report_success
+    with client.cancellation_scope(lambda:True):
+AttributeError: 'MCPHTTPClient' object has no attribute 'cancellation_scope'
+
+======================================================================
+ERROR: test_existing_base_scope_cancels_dispatched_stdio_effect_and_preserves_unknown (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_active_cancel.py", line 36, in test_existing_base_scope_cancels_dispatched_stdio_effect_and_preserves_unknown
+    with self.assertRaises(ToolCancelled) as caught:registry.execute(registry.prepare(wire,{}),4)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 269, in execute
+    raise UncertainEffect('mcp_outcome_unknown') from None
+agent_lab.tools.UncertainEffect: mcp_outcome_unknown
+
+======================================================================
+FAIL: test_existing_base_scope_cancels_dispatched_http_without_cross_thread_callback (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_active_cancel.py", line 53, in test_existing_base_scope_cancels_dispatched_http_without_cross_thread_callback
+    with self.assertRaises(ToolCancelled) as caught:registry.execute(registry.prepare(wire,{}),4)
+AssertionError: ToolCancelled not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 8.766s
+
+FAILED (failures=1, errors=3)

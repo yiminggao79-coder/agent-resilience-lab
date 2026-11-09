@@ -1,0 +1,55 @@
+test_malformed_git_calls_still_consume_three_invocation_errors (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_no_repository_after_green_tests_does_not_abort_before_model_observation (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_redirected_git_metadata_still_cannot_execute_or_read_outside (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_structured_error_string_cannot_forge_typed_capability_disposition (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_trusted_wire_tag_is_scoped_to_known_git_name_and_error_codes (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_unavailable_exception_cannot_turn_an_effectful_write_into_safe_feedback (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_diff_and_status_output_are_bounded (tests.dev.test_git_tools.GitToolTests) ... ok
+test_git_profile_denies_writes_hidden_reads_network_and_fork (tests.dev.test_git_tools.GitToolTests) ... ok
+test_helpers_and_ambient_configuration_are_not_executed (tests.dev.test_git_tools.GitToolTests) ... ok
+test_hidden_traversal_links_and_magic_pathspec_cannot_expose_source (tests.dev.test_git_tools.GitToolTests) ... ok
+test_nonzero_failure_and_missing_backend_are_explicit (tests.dev.test_git_tools.GitToolTests) ... ok
+test_registered_status_and_real_diff_after_write (tests.dev.test_git_tools.GitToolTests) ... ok
+test_repository_must_be_local_real_directory_without_redirects (tests.dev.test_git_tools.GitToolTests) ... ok
+test_status_filters_type_changed_links_without_hiding_visible_entries (tests.dev.test_git_tools.GitToolTests) ... ok
+test_status_never_updates_git_metadata (tests.dev.test_git_tools.GitToolTests) ... ok
+test_real_failed_test_and_two_bad_expressions_leave_room_for_code_repair (tests.dev.test_coding_failure_feedback.CodingFailureFeedbackTests) ... ok
+test_three_genuine_invalid_invocations_still_stop_before_more_model_calls (tests.dev.test_coding_failure_feedback.CodingFailureFeedbackTests) ... ok
+test_completed_is_not_automatically_task_success (tests.dev.test_engine.EngineTests) ... ok
+test_failed_model_request_without_usage_is_not_reported_as_zero (tests.dev.test_engine.EngineTests) ... ok
+test_invalid_limits_rejected (tests.dev.test_engine.EngineTests) ... ok
+test_invalid_tool_args_and_missing_file_can_be_corrected (tests.dev.test_engine.EngineTests) ... ok
+test_multi_tool_response_is_not_partially_executed (tests.dev.test_engine.EngineTests) ... ok
+test_multistep_real_tools_feed_actual_results_to_model (tests.dev.test_engine.EngineTests) ... ok
+test_repeated_tool_errors_stop (tests.dev.test_engine.EngineTests) ... ok
+test_retry_exhaustion_and_uncertain_request (tests.dev.test_engine.EngineTests) ... ok
+test_step_and_cost_caps_prevent_requests (tests.dev.test_engine.EngineTests) ... ok
+test_terminal_resume_does_not_repeat_model_or_tool (tests.dev.test_engine.EngineTests) ... ok
+test_unexpected_exception_is_safe_and_trace_does_not_leak (tests.dev.test_engine.EngineTests) ... ok
+test_unexpected_mutating_tool_error_does_not_invite_blind_retry (tests.dev.test_engine.EngineTests) ... ok
+test_usage_is_accumulated_and_missing_is_not_zero (tests.dev.test_engine.EngineTests) ... ok
+test_wrong_workspace_or_model_cannot_resume (tests.dev.test_engine.EngineTests) ... ok
+test_listing_and_search_have_finite_result_limits (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_patch_conflict_ambiguous_empty_and_changed_target_are_rejected (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_patch_prepare_is_pure_and_recovery_is_idempotent (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_patch_refuses_escape_binary_and_oversized_desired_content (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_recursive_listing_and_literal_search_exclude_hidden_and_links (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_test_execution_is_unsafe_and_legacy_tools_are_retained (tests.dev.test_coding_tools.CodingToolsTests) ... ok
+test_failed_process_exit_is_visible_without_private_output (tests.dev.test_trace_process_results.ProcessTraceTests) ... ok
+test_local_budget_refusal_does_not_erase_known_usage (tests.dev.test_trace_process_results.ProcessTraceTests) ... ok
+test_transport_metadata_is_bounded_and_unknown_usage_stays_unknown (tests.dev.test_trace_process_results.ProcessTraceTests) ... ok
+test_environment_policy_ignores_ambient_credentials_and_cannot_be_changed (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_exact_argv_and_workspace_bind_a_stable_json_intent (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_missing_backend_never_executes_project_code (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_rejects_invalid_commands_paths_and_ambient_executables (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_tampering_and_replaced_workspace_or_cwd_are_rejected (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_visible_hard_link_alias_cannot_bypass_private_file_scope (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_private_files_network_fork_and_directory_relocation_are_denied (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_real_command_can_import_project_and_report_exit (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_timeout_stops_effects_and_output_is_bounded (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_trusted_supervisor_keeps_lease_after_worker_death (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 79.988s
+
+OK

@@ -1,0 +1,39 @@
+{
+  "implementation": {
+    "commit": "d695eb83a96a2912d627d209d19860de2cd9fbdb",
+    "source_sha256": {
+      "agent_lab/__init__.py": "87694391bac3fe3725211549c30424eb870e57e38dbcc9a5299f6c19073f5574",
+      "agent_lab/__main__.py": "5030da637725193d36e1bd85975b8bca7ee5f0c92f4ae8baa39a225b1cea173a",
+      "agent_lab/budget.py": "c0b15f73a6697b9ebe9a94888d41e958298211ff905c44dca47f92fdcea8d98d",
+      "agent_lab/coding_tools.py": "2137f7c30e065dacfaa32cf8414cdc243f76438821f6b706d0c168f9cf6ba978",
+      "agent_lab/commands.py": "384befc0b8319a875b4166c63550e5844f6a08c6578b19cf45d784808ac1d2be",
+      "agent_lab/context.py": "daa324492b118bdaa93c3c828ecdb94bad3f11c08be1dd6f260570399db39392",
+      "agent_lab/engine.py": "6e6b7984507bdafd2140db043e94ba66e1894131c9ed0954e422d21457d10b2d",
+      "agent_lab/expression.py": "29afadc5fca5cc0b29bfa1eee6969ac773aefab8e9d27f45778c128780163572",
+      "agent_lab/git_tools.py": "7124fa5a8408d6f3c9cd35c946ea8948a66d80109e1050194b8fe35e24ea5199",
+      "agent_lab/history.py": "3616420a9cc98c2cf848fe630b0f0c5506234cb21665037a5c2046967cb16045",
+      "agent_lab/instructions.py": "055f07e89f1f009d58a7fb48d01ad88b6c6405412b890ff1aa02f2b25f35c2e6",
+      "agent_lab/interactive.py": "963faee48cb98c4bb40edc6a4f10f4713db96242e805419d09c9cbb45ea38678",
+      "agent_lab/mcp.py": "6c633ccefe230dbd423a4cf33a878bb789172bc2171778d62e3b8782adee068f",
+      "agent_lab/model.py": "f84df886275111422c66e43ccd48bf01b3370e1b1ab90d6a63ffa3800a41fba8",
+      "agent_lab/plan.py": "6c3cce46c83c01ecdbcfcd4d5ff37e20eedae8d7077dd5840a4d3c1b3954ad03",
+      "agent_lab/process_guard.py": "2cde8e970dad551260ee49994b461ee05675d203c0085d785c1d073ffaa08327",
+      "agent_lab/protocols.py": "530bb196456c7f6558605f7f1669f72ad6b8c9b8536dcc676af8224b04efe941",
+      "agent_lab/providers.py": "feb13a3ca6f6c4751817ac83f9db69429762c48a095bafda26369605484d3f64",
+      "agent_lab/registry.py": "641afa65d5b36922ff7db0aaf7ba6d0ef0dd5cfb6522ac6ae96165ce5c2b540a",
+      "agent_lab/sandbox.py": "eef257b6ea2e92b0deb58a77539cca14d01939827f364c26ffbe1a77022a155f",
+      "agent_lab/store.py": "d125e1093282e311fe477718ef48b30e0bf57f923f2d5ee2ae84529cd904c7f9",
+      "agent_lab/tools.py": "363b082bfc3772904014543bd5d257219a1d43555627c0095438597d2ebc7f68",
+      "scripts/deepseek_live.py": "f354c4d3a564ed336c37dce843c2cda6be21249209660fe22f14fc5b7c3f95ed",
+      "scripts/demo.py": "7488eb0e40961cdc6a904c1e6889d8be6aa09d8273b02a7553a89b320826b4b5",
+      "scripts/evaluate_acceptance.py": "eeceadaf3a9411db882b19ea6d096f6a7dc663e12a565f82cd9855588d9909c6",
+      "scripts/evaluate_coding.py": "4dbff58e27637ce4ba909b22007a027d5f86a224c8cced8f724d2801f20d31e4",
+      "scripts/evaluate_followup.py": "53b269745900bc22249bed92e455b99289702ea9b713e7482ceeb0e3bf17b177",
+      "scripts/evaluate_guidance.py": "9cafb37bc66b353b8e37b4532872395ee374392562102dd1c855f5a085214c74",
+      "scripts/evaluate_live.py": "68fd3e918fd61deef5b94024a139e91f75b91df906d3fdfdd2e347e423807faa"
+    },
+    "runtime_dirty": false
+  },
+  "basis": "Both runs executed consecutively after commit d695eb8 and before runtime edits; source sidecar recorded after experiment. Probe original JSON is preserved.",
+  "supplier_call_record": "20261107-174704-8407696d.json"
+}

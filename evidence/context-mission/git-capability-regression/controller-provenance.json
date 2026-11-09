@@ -1,0 +1,8 @@
+{
+  "retained_controller_sha256": "04a454dba28ca1a3868298d548ab2919e12fc3bef6b93bdee279a177f8804694",
+  "pre_run_committed_public_copy_sha256": "04a454dba28ca1a3868298d548ab2919e12fc3bef6b93bdee279a177f8804694",
+  "copies_equal": true,
+  "committed_source": "84e4456:evidence/context-mission/control-scripts/git-capability-regression.py.txt",
+  "recorded_after_closure": true,
+  "limitation": "Binds retained controller bytes to a pre-run committed copy; not an independent cryptographic execution attestation."
+}

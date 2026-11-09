@@ -1,0 +1,111 @@
+test_abort_waiting_batch_keeps_tail_unexecuted_and_blocks_followup (tests.dev.test_tool_batches.ToolBatchTests) ... ERROR
+test_accepted_queue_and_consumed_ids_survive_exit_before_first_preparation (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_corrupt_queued_state_rejected_before_model_or_effect (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_deadline_after_first_effect_stops_tail_without_fabricated_feedback (tests.dev.test_tool_batches.ToolBatchTests) ... FAIL
+test_dependent_batch_prepares_after_prior_results_and_preserves_native_message (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_each_command_waits_for_its_own_approval_and_denial_advances_tail (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_eight_calls_allowed_ninth_rejects_whole_response (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_error_limit_retains_unexecuted_queue_and_rejects_user_followup (tests.dev.test_tool_batches.ToolBatchTests) ... FAIL
+test_expired_recovery_confirms_first_effect_without_launching_tail (tests.dev.test_tool_batches.ToolBatchTests) ... FAIL
+test_feedback_storage_failure_reconciles_first_before_executing_tail (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_invalid_or_repeated_batch_ids_reject_all_before_any_effect (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_legacy_single_pending_snapshot_without_queue_remains_resumable (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_malformed_arguments_produce_one_ordered_error_then_run_remaining_calls (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_model_step_limit_does_not_cut_a_previously_accepted_batch (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_pending_call_cannot_also_appear_in_durable_queue (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_previously_consumed_id_rejects_entire_next_batch (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_sigkill_first_effect_then_fresh_process_recovery_preserves_order (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_uncertain_first_effect_pauses_entire_batch_without_running_tail (tests.dev.test_tool_batches.ToolBatchTests) ... ok
+test_abort_cannot_turn_unknown_model_outcome_into_safe_followup (tests.dev.test_sessions.SessionTests) ... ok
+test_abort_of_crashed_model_request_cannot_enable_followup (tests.dev.test_sessions.SessionTests) ... ok
+test_each_turn_gets_fresh_step_time_and_cost_budgets_with_explicit_totals (tests.dev.test_sessions.SessionTests) ... ok
+test_engine_preserves_native_and_reasoning_fields_for_tools_and_final (tests.dev.test_sessions.SessionTests) ... ok
+test_failed_followup_commit_preserves_old_turn_and_events (tests.dev.test_sessions.SessionTests) ... ok
+test_failed_turn_followup_resets_errors_retries_and_keeps_failure_record (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_does_not_hide_aborted_pending_tool (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_obeys_existing_workspace_and_database_locks (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_recovers_from_exhausted_retries_without_reusing_unknown_usage (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_rejects_active_or_uncertain_turn_without_modifying_state (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_rejects_unpaired_tool_transcript_even_without_pending (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_survives_reopen_preserves_full_history_and_turn_events (tests.dev.test_sessions.SessionTests) ... ok
+test_invalid_followup_and_phase_list_raise_value_error_without_mutation (tests.dev.test_sessions.SessionTests) ... ok
+test_legacy_snapshot_can_start_followup_without_losing_old_turn (tests.dev.test_sessions.SessionTests) ... ok
+test_provider_call_ids_remain_consumed_across_user_turns (tests.dev.test_sessions.SessionTests) ... ok
+test_resume_does_not_create_a_followup_or_reset_limits (tests.dev.test_sessions.SessionTests) ... ok
+test_unknown_prior_usage_stays_unknown_in_session_totals (tests.dev.test_sessions.SessionTests) ... ok
+test_workspace_model_and_profile_must_match_before_followup (tests.dev.test_sessions.SessionTests) ... ok
+test_actual_unknown_error_reason_and_flags_survive_stop_observation (tests.dev.test_stop.StopTests) ... ok
+test_current_tool_finishes_and_next_batch_tool_never_starts (tests.dev.test_stop.StopTests) ... ok
+test_explicit_ready_compaction_observes_stop_after_preserving_known_summary (tests.dev.test_stop.StopTests) ... ok
+test_idle_approval_can_be_stopped_without_model_or_command_and_new_turn_is_allowed (tests.dev.test_stop.StopTests) ... ok
+test_partial_patch_stops_after_confirmed_prefix_and_closes_one_result (tests.dev.test_stop.StopTests) ... ok
+test_stop_before_model_or_tool_claim_reloads_unclaimed_snapshot (tests.dev.test_stop.StopTests) ... ok
+test_stop_before_sampling_never_calls_model_and_observation_is_idempotent (tests.dev.test_stop.StopTests) ... ok
+test_stop_during_claimed_model_preserves_known_usage_and_cancels_unstarted_tools (tests.dev.test_stop.StopTests) ... ok
+test_stop_winning_model_final_commit_preserves_answer_and_usage_without_extra_sampling (tests.dev.test_stop.StopTests) ... ok
+test_stop_winning_recovery_claim_cannot_trigger_missing_file_effect (tests.dev.test_stop.StopTests) ... ok
+test_stopped_turn_cannot_start_explicit_compaction_or_discard_pending_user_feedback (tests.dev.test_stop.StopTests) ... ok
+test_unconfirmed_model_stop_keeps_usage_unknown_without_request (tests.dev.test_stop.StopTests) ... ok
+test_unconfirmed_running_tool_stop_never_calls_recover_or_adds_effect (tests.dev.test_stop.StopTests) ... ok
+test_cancel_without_persisted_stop_is_not_clean (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_cancelled_new_summary_preserves_previously_installed_record (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_clean_cancel_keeps_budget_reservation_unknown_across_reopen (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_delegate_wrapper_is_still_called (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_keyboard_interrupt_marks_model_usage_unknown (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_prior_unresolved_outcome_is_never_cleared (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_scoped_stop_discards_incomplete_response_but_retains_unknown_usage (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_summary_cancel_keeps_prior_context_and_restores_presentation (tests.dev.test_model_stop.ModelStopTests) ... ok
+
+======================================================================
+ERROR: test_abort_waiting_batch_keeps_tail_unexecuted_and_blocks_followup (tests.dev.test_tool_batches.ToolBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_batches.py", line 222, in test_abort_waiting_batch_keeps_tail_unexecuted_and_blocks_followup
+    aborted = engine.abort(task_id)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 1089, in abort
+    return self._stop(state, 'failed', 'user_aborted')
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 341, in _stop
+    self._save(state, 'terminated', {'phase': phase, 'code': code,
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 294, in _save
+    self.store.save(state, kind, metadata, **options)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/store.py", line 92, in save
+    raise ValueError('invalid_trace_metadata')
+ValueError: invalid_trace_metadata
+
+======================================================================
+FAIL: test_deadline_after_first_effect_stops_tail_without_fabricated_feedback (tests.dev.test_tool_batches.ToolBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_batches.py", line 183, in test_deadline_after_first_effect_stops_tail_without_fabricated_feedback
+    self.assertEqual(state['reason'], 'time_limit')
+AssertionError: 'internal_error' != 'time_limit'
+- internal_error
++ time_limit
+
+
+======================================================================
+FAIL: test_error_limit_retains_unexecuted_queue_and_rejects_user_followup (tests.dev.test_tool_batches.ToolBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_batches.py", line 166, in test_error_limit_retains_unexecuted_queue_and_rejects_user_followup
+    self.assertEqual(state['reason'], 'error_limit')
+AssertionError: 'internal_error' != 'error_limit'
+- internal_error
++ error_limit
+
+
+======================================================================
+FAIL: test_expired_recovery_confirms_first_effect_without_launching_tail (tests.dev.test_tool_batches.ToolBatchTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_batches.py", line 295, in test_expired_recovery_confirms_first_effect_without_launching_tail
+    self.assertEqual(resumed['reason'], 'time_limit')
+AssertionError: 'internal_error' != 'time_limit'
+- internal_error
++ time_limit
+
+
+----------------------------------------------------------------------
+Ran 57 tests in 10.203s
+
+FAILED (failures=3, errors=1)

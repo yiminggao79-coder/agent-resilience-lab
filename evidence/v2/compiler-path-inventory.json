@@ -1,0 +1,20 @@
+{
+  "kind": "host_readonly_path_inventory_not_agent_build",
+  "tools": {
+    "clang": {
+      "exit_code": 0,
+      "path": "/Library/Developer/CommandLineTools/usr/bin/clang",
+      "stderr_bytes": 284
+    },
+    "ld": {
+      "exit_code": 0,
+      "path": "/Library/Developer/CommandLineTools/usr/bin/ld",
+      "stderr_bytes": 284
+    },
+    "sdk": {
+      "exit_code": 0,
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "stderr_bytes": 284
+    }
+  }
+}

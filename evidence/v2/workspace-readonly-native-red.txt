@@ -1,0 +1,56 @@
+test_native_project_writes_denied_but_reads_and_private_scratch_work (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests) ... ERROR
+test_profile_refuses_overlapping_scratch_before_native_launch (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests) ... ERROR
+test_unittest_runs_with_project_readonly_and_external_temp_writable (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests) ... ERROR
+
+======================================================================
+ERROR: test_native_project_writes_denied_but_reads_and_private_scratch_work (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly_native.py", line 20, in setUp
+    self.tools=CodingTools(self.root,read_only_paths=['.'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 71, in __init__
+    self.read_only_policy = ReadOnlyPolicy(self.root, read_only_paths)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in __init__
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in <setcomp>
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 31, in _parts
+    raise ValueError('invalid_read_only_path')
+ValueError: invalid_read_only_path
+
+======================================================================
+ERROR: test_profile_refuses_overlapping_scratch_before_native_launch (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly_native.py", line 20, in setUp
+    self.tools=CodingTools(self.root,read_only_paths=['.'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 71, in __init__
+    self.read_only_policy = ReadOnlyPolicy(self.root, read_only_paths)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in __init__
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in <setcomp>
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 31, in _parts
+    raise ValueError('invalid_read_only_path')
+ValueError: invalid_read_only_path
+
+======================================================================
+ERROR: test_unittest_runs_with_project_readonly_and_external_temp_writable (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly_native.py", line 20, in setUp
+    self.tools=CodingTools(self.root,read_only_paths=['.'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/tools.py", line 71, in __init__
+    self.read_only_policy = ReadOnlyPolicy(self.root, read_only_paths)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in __init__
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 40, in <setcomp>
+    scopes = sorted({self._canonical(_parts(value)) for value in paths})
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/permissions.py", line 31, in _parts
+    raise ValueError('invalid_read_only_path')
+ValueError: invalid_read_only_path
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.016s
+
+FAILED (errors=3)

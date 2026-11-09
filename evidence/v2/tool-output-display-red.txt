@@ -1,0 +1,53 @@
+test_cli_opt_in_stderr_metadata_stdout_remain_separate (tests.dev.test_tool_output_display.ToolOutputDisplayTests) ... test_end_flushes_invalid_bytes_and_reports_incomplete_not_completion (tests.dev.test_tool_output_display.ToolOutputDisplayTests) ... ERROR
+test_incremental_unicode_and_terminal_controls_are_rendered_visibly (tests.dev.test_tool_output_display.ToolOutputDisplayTests) ... ERROR
+
+======================================================================
+ERROR: test_cli_opt_in_stderr_metadata_stdout_remain_separate (tests.dev.test_tool_output_display.ToolOutputDisplayTests) (enabled=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_display.py", line 61, in test_cli_opt_in_stderr_metadata_stdout_remain_separate
+    code=cli.main(argv)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 198, in main
+    if args.allow_api and model.api_key_env=='DEEPSEEK_API_KEY':
+AttributeError: 'ScriptedModel' object has no attribute 'api_key_env'
+
+======================================================================
+ERROR: test_cli_opt_in_stderr_metadata_stdout_remain_separate (tests.dev.test_tool_output_display.ToolOutputDisplayTests) (enabled=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_display.py", line 61, in test_cli_opt_in_stderr_metadata_stdout_remain_separate
+    code=cli.main(argv)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 84, in main
+    args = parser.parse_args(raw_argv)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/argparse.py", line 1823, in parse_args
+    self.error(msg % ' '.join(argv))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/argparse.py", line 2577, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/argparse.py", line 2564, in exit
+    _sys.exit(status)
+SystemExit: 2
+
+======================================================================
+ERROR: test_end_flushes_invalid_bytes_and_reports_incomplete_not_completion (tests.dev.test_tool_output_display.ToolOutputDisplayTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_display.py", line 43, in test_end_flushes_invalid_bytes_and_reports_incomplete_not_completion
+    target=io.StringIO();render=self.renderer(target)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_display.py", line 17, in renderer
+    from agent_lab.tool_display import ToolOutputDisplay
+ModuleNotFoundError: No module named 'agent_lab.tool_display'
+
+======================================================================
+ERROR: test_incremental_unicode_and_terminal_controls_are_rendered_visibly (tests.dev.test_tool_output_display.ToolOutputDisplayTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_display.py", line 27, in test_incremental_unicode_and_terminal_controls_are_rendered_visibly
+    target=io.StringIO();render=self.renderer(target)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_display.py", line 17, in renderer
+    from agent_lab.tool_display import ToolOutputDisplay
+ModuleNotFoundError: No module named 'agent_lab.tool_display'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.089s
+
+FAILED (errors=4)

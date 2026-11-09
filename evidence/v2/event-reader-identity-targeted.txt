@@ -1,0 +1,6 @@
+test_store_checked_identity_matches_open_and_rejects_replaced_path (tests.dev.test_event_reader_cli.EventReaderCLITests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+OK

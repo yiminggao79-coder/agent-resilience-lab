@@ -1,0 +1,23 @@
+{
+  "kind": "frozen_future_holdout_fixture_summary",
+  "suite": "evaluation/holdout_v3",
+  "case_count": 2,
+  "files_covered_by_freeze": 26,
+  "manifest_sha256": "ef018fc11e581db91c0568ac71ac721353da16680f5c4dea0e843bfd400e8962",
+  "freeze_sha256": "477e84d498331f2d69050d2bffe5d559b5c2c5a60f8782b0b10519ae67f5a915",
+  "validation_sha256": "e23330e5e1ccd6ca7cafe0878513de5881e8bdb4983069f43c8e8c54ada7c2cc",
+  "declared_runtime_commit": "324e457897914d5b6007a87a86829650da68c439",
+  "runtime_provenance": "Full commit supplied by coordinator; current workspace hashes are study-time provenance, not represented as pinned-tree hashes.",
+  "validation": {
+    "reference_passes": 2,
+    "baseline_rejections": 2,
+    "mutation_rejections": 12,
+    "oracle_inputs": 64,
+    "model_requests": 0,
+    "agent_harness_executed": false
+  },
+  "status": "frozen_unconsumed",
+  "independence": "Independently authored in the same AI environment; not external statistical independence.",
+  "root_disclosure": "Interface, counts, hashes, and validation only; case bodies/oracles/references withheld from implementation owner."
+}
+

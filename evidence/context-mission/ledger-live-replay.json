@@ -1,0 +1,15 @@
+{
+  "kind": "offline_replay_not_live_continuation",
+  "original_run": "0c24c3762b334738",
+  "archived_state_unchanged": true,
+  "record_not_installed": true,
+  "stats": {
+    "original_bytes": 73318,
+    "retained_bytes": 31716,
+    "pre_drop_bytes": 34514,
+    "shortened": 0,
+    "dropped_pairs": 0
+  },
+  "covered_until": 58,
+  "facts_omitted": 14
+}

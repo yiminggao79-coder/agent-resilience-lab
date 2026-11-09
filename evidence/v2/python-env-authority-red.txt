@@ -1,0 +1,157 @@
+test_byte_and_entry_caps_fail_without_unbounded_source_reads (tests.dev.test_python_environment.PythonEnvironmentTests) ... FAIL
+test_configuration_mismatch_and_retargeted_launcher_are_refused (tests.dev.test_python_environment.PythonEnvironmentTests) ... FAIL
+test_content_replacement_and_modes_change_bound_identity (tests.dev.test_python_environment.PythonEnvironmentTests) ... FAIL
+test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted (tests.dev.test_python_environment.PythonEnvironmentTests) ... test_targets_relative_alias_and_broad_overlap_are_rejected (tests.dev.test_python_environment.PythonEnvironmentTests) ... test_valid_manifest_keeps_launcher_base_config_and_tree_distinct (tests.dev.test_python_environment.PythonEnvironmentTests) ... FAIL
+
+======================================================================
+FAIL: test_byte_and_entry_caps_fail_without_unbounded_source_reads (tests.dev.test_python_environment.PythonEnvironmentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 69, in test_byte_and_entry_caps_fail_without_unbounded_source_reads
+    self.assertIsNotNone(environment_descriptor)
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_configuration_mismatch_and_retargeted_launcher_are_refused (tests.dev.test_python_environment.PythonEnvironmentTests) (text='home = /usr/local/bin\ninclude-system-site-packages = true\nversion = 3.9.7\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 48, in test_configuration_mismatch_and_retargeted_launcher_are_refused
+    with self.subTest(text=text),self.assertRaises(ToolError):self.descriptor()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_configuration_mismatch_and_retargeted_launcher_are_refused (tests.dev.test_python_environment.PythonEnvironmentTests) (text='home = /usr/local/bin\ninclude-system-site-packages = false\nhome = 3.9.7\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 48, in test_configuration_mismatch_and_retargeted_launcher_are_refused
+    with self.subTest(text=text),self.assertRaises(ToolError):self.descriptor()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_configuration_mismatch_and_retargeted_launcher_are_refused (tests.dev.test_python_environment.PythonEnvironmentTests) (text='home = /usr/local/bin\ninclude-system-site-packages = false\nversion = 1.0\nprevious = 3.9.7\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 48, in test_configuration_mismatch_and_retargeted_launcher_are_refused
+    with self.subTest(text=text),self.assertRaises(ToolError):self.descriptor()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_configuration_mismatch_and_retargeted_launcher_are_refused (tests.dev.test_python_environment.PythonEnvironmentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 51, in test_configuration_mismatch_and_retargeted_launcher_are_refused
+    with self.assertRaises(ToolError):self.descriptor()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_content_replacement_and_modes_change_bound_identity (tests.dev.test_python_environment.PythonEnvironmentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 53, in test_content_replacement_and_modes_change_bound_identity
+    initial=self.descriptor();info=self.module.stat();data=self.module.read_bytes()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted (tests.dev.test_python_environment.PythonEnvironmentTests) (kind='hidden')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 66, in test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted
+    with self.subTest(kind=kind),self.assertRaises(ToolError):self.descriptor()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted (tests.dev.test_python_environment.PythonEnvironmentTests) (kind='symlink')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 66, in test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted
+    with self.subTest(kind=kind),self.assertRaises(ToolError):self.descriptor()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted (tests.dev.test_python_environment.PythonEnvironmentTests) (kind='hardlink')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 66, in test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted
+    with self.subTest(kind=kind),self.assertRaises(ToolError):self.descriptor()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted (tests.dev.test_python_environment.PythonEnvironmentTests) (kind='fifo')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 66, in test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted
+    with self.subTest(kind=kind),self.assertRaises(ToolError):self.descriptor()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_targets_relative_alias_and_broad_overlap_are_rejected (tests.dev.test_python_environment.PythonEnvironmentTests) (selected='relative')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 42, in test_targets_relative_alias_and_broad_overlap_are_rejected
+    with self.subTest(selected=selected),self.assertRaises(ToolError):self.descriptor(selected,root)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_targets_relative_alias_and_broad_overlap_are_rejected (tests.dev.test_python_environment.PythonEnvironmentTests) (selected=PosixPath('/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpf8kdqds_/work/alias'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 42, in test_targets_relative_alias_and_broad_overlap_are_rejected
+    with self.subTest(selected=selected),self.assertRaises(ToolError):self.descriptor(selected,root)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_targets_relative_alias_and_broad_overlap_are_rejected (tests.dev.test_python_environment.PythonEnvironmentTests) (selected=PosixPath('/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpf8kdqds_/env-alias'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 42, in test_targets_relative_alias_and_broad_overlap_are_rejected
+    with self.subTest(selected=selected),self.assertRaises(ToolError):self.descriptor(selected,root)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_targets_relative_alias_and_broad_overlap_are_rejected (tests.dev.test_python_environment.PythonEnvironmentTests) (selected=PosixPath('/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpf8kdqds_/env'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 42, in test_targets_relative_alias_and_broad_overlap_are_rejected
+    with self.subTest(selected=selected),self.assertRaises(ToolError):self.descriptor(selected,root)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+======================================================================
+FAIL: test_valid_manifest_keeps_launcher_base_config_and_tree_distinct (tests.dev.test_python_environment.PythonEnvironmentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 28, in test_valid_manifest_keeps_launcher_base_config_and_tree_distinct
+    result=self.descriptor()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment.py", line 25, in descriptor
+    self.assertIsNotNone(environment_descriptor,'environment authority not implemented')
+AssertionError: unexpectedly None : environment authority not implemented
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.046s
+
+FAILED (failures=15)

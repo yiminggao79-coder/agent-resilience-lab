@@ -1,0 +1,14 @@
+test_anthropic_parallel_capability_can_be_omitted (tests.dev.test_model_protocols.ProtocolSafetyTests) ... FAIL
+
+======================================================================
+FAIL: test_anthropic_parallel_capability_can_be_omitted (tests.dev.test_model_protocols.ProtocolSafetyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model_protocols.py", line 215, in test_anthropic_parallel_capability_can_be_omitted
+    self.assertNotIn('disable_parallel_tool_use', body['tool_choice'])
+AssertionError: 'disable_parallel_tool_use' unexpectedly found in {'type': 'auto', 'disable_parallel_tool_use': True}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

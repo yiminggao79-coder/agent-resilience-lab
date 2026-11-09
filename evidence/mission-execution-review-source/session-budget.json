@@ -1,0 +1,26 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/session/rollout_budget.rs",
+  "git_blob_sha": "bc05663dc1628210533653ab106b59eab55fff94",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/rollout_budget.rs",
+  "inspected_line_ranges": [
+    [
+      1,
+      75
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 11,
+      "end_line": 39,
+      "text": "pub(super) async fn maybe_record_reminder(\n    sess: &Session,\n    turn_context: &TurnContext,\n    window_id: &str,\n) {\n    // Host runtimes own budget policy, including whether accounting is enabled.\n    if matches!(&sess.agent_runtime, AgentRuntimeServices::Host(_)) {\n        return;\n    }\n    let agent_control = &sess.services.agent_control;\n    let Some(reminder) = agent_control\n        .pending_budget_reminder(sess.thread_id(), window_id)\n        .await\n    else {\n        return;\n    };\n    let response_item = ContextualUserFragment::into(crate::context::RolloutBudgetContext {\n        remaining_tokens: reminder.remaining_tokens,\n    });\n    sess.record_conversation_items(\n        turn_context,\n        turn_context.model_info(),\n        std::slice::from_ref(&response_item),\n    )\n    .await;\n    agent_control\n        .mark_budget_reminder_delivered(sess.thread_id(), window_id, reminder)\n        .await;\n}\n"
+    },
+    {
+      "start_line": 41,
+      "end_line": 75,
+      "text": "impl Session {\n    pub(crate) async fn record_rollout_budget_usage(\n        &self,\n        turn_id: &str,\n        usage: &TokenUsage,\n    ) -> CodexResult<()> {\n        match &self.agent_runtime {\n            AgentRuntimeServices::Controller => {\n                self.services\n                    .agent_control\n                    .record_usage(usage.clone())\n                    .await\n            }\n            AgentRuntimeServices::Host(services) => {\n                let Some(accounting) = &services.usage_accounting else {\n                    return Ok(());\n                };\n                let decision = accounting\n                    .report_usage(AgentUsageReport {\n                        thread_id: self.thread_id(),\n                        turn_id: turn_id.to_owned(),\n                        usage: usage.clone(),\n                    })\n                    .await\n                    .map_err(|error| {\n                        CodexErr::Fatal(format!(\"Host usage accounting failed: {error}\"))\n                    })?;\n                match decision {\n                    UsageAccountingDecision::Continue => Ok(()),\n                    UsageAccountingDecision::Exhausted => Err(CodexErr::SessionBudgetExceeded),\n                }\n            }\n        }\n    }\n}\n"
+    }
+  ],
+  "notice": "Verbatim public-source excerpts in local JSON wrapper; source read, not executed. See LICENSE and NOTICE."
+}

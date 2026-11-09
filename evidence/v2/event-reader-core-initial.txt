@@ -1,0 +1,156 @@
+test_active_caller_transaction_is_not_committed_or_rolled_back (tests.dev.test_event_reader.EventReaderTests) ... ok
+test_exhausted_page_can_be_followed_by_newly_committed_rows (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+test_interleaved_global_seek_pages_do_not_lose_or_repeat_task_events (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+test_invalid_arguments_fingerprint_binding_and_stale_file_are_fixed (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+test_invalid_duplicate_nan_deep_and_oversize_metadata_never_escape (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+test_invalid_known_fields_unknown_fields_and_null_values_are_counted (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+test_metadata_is_nested_whitelisted_and_cannot_override_row_identity (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+test_raw_time_and_kind_are_sql_sanitized_and_bad_metadata_does_not_override_them (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+test_readonly_bytes_mode_schema_unchanged_and_storage_fault_fixed (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+test_sql_projection_bounds_python_memory_and_never_materializes_task_history (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+test_wal_page_is_one_snapshot_when_writer_appends_after_task_existence_read (tests.dev.test_event_reader.EventReaderTests) ... ERROR
+
+======================================================================
+ERROR: test_exhausted_page_can_be_followed_by_newly_committed_rows (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 59, in test_exhausted_page_can_be_followed_by_newly_committed_rows
+    empty = self.read(after=9)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+ERROR: test_interleaved_global_seek_pages_do_not_lose_or_repeat_task_events (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 41, in test_interleaved_global_seek_pages_do_not_lose_or_repeat_task_events
+    first = self.read(limit=2)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+ERROR: test_invalid_arguments_fingerprint_binding_and_stale_file_are_fixed (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 148, in test_invalid_arguments_fingerprint_binding_and_stale_file_are_fixed
+    self.read(expected_database='0' * 64)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+ERROR: test_invalid_duplicate_nan_deep_and_oversize_metadata_never_escape (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 99, in test_invalid_duplicate_nan_deep_and_oversize_metadata_never_escape
+    page = self.read()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+ERROR: test_invalid_known_fields_unknown_fields_and_null_values_are_counted (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 88, in test_invalid_known_fields_unknown_fields_and_null_values_are_counted
+    event = self.read()['events'][0]
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+ERROR: test_metadata_is_nested_whitelisted_and_cannot_override_row_identity (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 73, in test_metadata_is_nested_whitelisted_and_cannot_override_row_identity
+    event = self.read()['events'][0]
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+ERROR: test_raw_time_and_kind_are_sql_sanitized_and_bad_metadata_does_not_override_them (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 111, in test_raw_time_and_kind_are_sql_sanitized_and_bad_metadata_does_not_override_them
+    events = self.read()['events']
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+ERROR: test_readonly_bytes_mode_schema_unchanged_and_storage_fault_fixed (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 191, in test_readonly_bytes_mode_schema_unchanged_and_storage_fault_fixed
+    self.read()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+ERROR: test_sql_projection_bounds_python_memory_and_never_materializes_task_history (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 134, in test_sql_projection_bounds_python_memory_and_never_materializes_task_history
+    page = self.read()
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+ERROR: test_wal_page_is_one_snapshot_when_writer_appends_after_task_existence_read (tests.dev.test_event_reader.EventReaderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 180, in test_wal_page_is_one_snapshot_when_writer_appends_after_task_existence_read
+    page = self.read(limit=1)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_reader.py", line 36, in read
+    def read(self, **kwargs): return self.reader.read_events(self.store, TASK, **kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 115, in read_events
+    identity = _checked_identity(store)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 41, in _checked_identity
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.186s
+
+FAILED (errors=10)

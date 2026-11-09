@@ -1,0 +1,8 @@
+test_detached_response_is_closed_before_cancel_returns_even_when_retained (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_connected_slow_headers_are_cancelled_without_waiting_for_header_or_deadline (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+test_cancellable_nested_sse_ping_preserves_normal_result_and_controller_callback_thread (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.547s
+
+OK

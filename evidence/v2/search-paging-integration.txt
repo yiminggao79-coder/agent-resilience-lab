@@ -1,0 +1,34 @@
+test_argument_validation_and_own_canonical_cursor (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_binary_oversize_skips_and_no_result_is_scoped (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_cursor_binds_options_root_and_observed_content (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_hidden_links_hardlinks_specials_excluded_and_prefix_checked (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_many_skips_are_counted_with_only_20_examples (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_more_than_200_files_and_matches_reconstructs_without_duplicates (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_prefix_unicode_columns_literal_case_and_long_preview (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_read_and_tree_changes_rejected_and_content_hash_survives_frozen_metadata (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_response_cap_shrinks_page_and_advances_actual_count (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_search_coordinates_roundtrip_through_existing_read_lines (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_total_read_budget_timeout_and_io_errors_fail_without_partial_page (tests.dev.test_search_paging.SearchPagingTests) ... ok
+test_engine_feedback_contains_actual_search_result_without_bypassing_worker (tests.dev.test_search_paging_runtime.SearchPagingRuntimeTests) ... ok
+test_schema_is_additive_and_large_workspace_pages_reach_all_matches (tests.dev.test_search_paging_runtime.SearchPagingRuntimeTests) ... ok
+test_cli_exposes_protocol_profile_and_structured_events (tests.dev.test_coding_runtime.CodingRuntimeTests) ... ok
+test_coding_worker_routes_search_patch_and_instructions (tests.dev.test_coding_runtime.CodingRuntimeTests) ... ok
+test_large_repeated_read_continues_with_bounded_context (tests.dev.test_coding_runtime.CodingRuntimeTests) ... ok
+test_changes_require_restart_and_query_cannot_reuse_cursor (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_cursor_cannot_be_used_for_another_workspace (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_depth_overflow_and_invalid_visible_names_fail_explicitly (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_hidden_links_hardlinks_and_special_files_are_never_traversed (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_prefix_is_a_directory_subtree_and_empty_and_exact_last_page_end (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_real_worker_round_trip_and_read_only_schema (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_reconstructs_more_than_200_files_in_canonical_order (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_removed_prefix_invalidates_continuation (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_response_fits_serialized_envelope_even_for_escaped_names (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_scan_budget_fails_instead_of_skipping_entries (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_serialized_budget_includes_worker_print_newline (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_strict_arguments_and_malformed_cursors (tests.dev.test_discovery_pages.DiscoveryPagesTests) ... ok
+test_model_can_recall_omitted_evidence_from_same_private_session (tests.dev.test_history_runtime.HistoryRuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 4.544s
+
+OK

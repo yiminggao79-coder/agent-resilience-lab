@@ -1,0 +1,26 @@
+test_huge_numeric_arguments_have_fixed_validation_before_query (tests.dev.test_event_follow_review.EventFollowReviewTests) ... test_slow_consumer_and_sustained_writer_respect_deadline_and_page_cap (tests.dev.test_event_follow_review.EventFollowReviewTests) ... ok
+
+======================================================================
+ERROR: test_huge_numeric_arguments_have_fixed_validation_before_query (tests.dev.test_event_follow_review.EventFollowReviewTests) (options={'seconds': 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow_review.py", line 52, in test_huge_numeric_arguments_have_fixed_validation_before_query
+    list(self.reader.follow_events(self.store,reader_fixture.TASK,**options))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 151, in follow_events
+    if (type(seconds) not in (int, float) or not math.isfinite(seconds) or not 0 < seconds <= 30
+OverflowError: int too large to convert to float
+
+======================================================================
+ERROR: test_huge_numeric_arguments_have_fixed_validation_before_query (tests.dev.test_event_follow_review.EventFollowReviewTests) (options={'seconds': -100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow_review.py", line 52, in test_huge_numeric_arguments_have_fixed_validation_before_query
+    list(self.reader.follow_events(self.store,reader_fixture.TASK,**options))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/event_reader.py", line 151, in follow_events
+    if (type(seconds) not in (int, float) or not math.isfinite(seconds) or not 0 < seconds <= 30
+OverflowError: int too large to convert to float
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.059s
+
+FAILED (errors=2)

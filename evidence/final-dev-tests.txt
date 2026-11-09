@@ -1,0 +1,51 @@
+test_answer_is_explicit_private_output_not_part_of_status_or_trace (test_boundaries.BoundaryTests) ... ok
+test_cli_missing_key_fails_without_creating_task (test_boundaries.BoundaryTests) ... ok
+test_cli_status_trace_and_abort_do_not_require_api_key (test_boundaries.BoundaryTests) ... ok
+test_context_cap_prevents_model_call (test_boundaries.BoundaryTests) ... ok
+test_expired_deadline_prevents_tools_and_survives_resume (test_boundaries.BoundaryTests) ... ok
+test_file_tools_have_real_wall_timeout_and_mutations_are_uncertain (test_boundaries.BoundaryTests) ... ok
+test_missing_usage_under_cost_limit_stops_before_tool (test_boundaries.BoundaryTests) ... ok
+test_restricted_expression_hard_timeout (test_boundaries.BoundaryTests) ... ok
+test_expired_budget_still_reports_changed_inflight_target_as_unknown (test_crash.CrashTests) ... ok
+test_external_modification_after_kill_is_preserved (test_crash.CrashTests) ... ok
+test_kill_in_model_request_does_not_resubmit_unknown_paid_request (test_crash.CrashTests) ... ok
+test_sigkill_after_append_never_repeats_and_pauses (test_crash.CrashTests) ... ok
+test_sigkill_after_write_before_receipt_resumes_in_new_process (test_crash.CrashTests) ... ok
+test_completed_is_not_automatically_task_success (test_engine.EngineTests) ... ok
+test_failed_model_request_without_usage_is_not_reported_as_zero (test_engine.EngineTests) ... ok
+test_invalid_limits_rejected (test_engine.EngineTests) ... ok
+test_invalid_tool_args_and_missing_file_can_be_corrected (test_engine.EngineTests) ... ok
+test_multi_tool_response_is_not_partially_executed (test_engine.EngineTests) ... ok
+test_multistep_real_tools_feed_actual_results_to_model (test_engine.EngineTests) ... ok
+test_repeated_tool_errors_stop (test_engine.EngineTests) ... ok
+test_retry_exhaustion_and_uncertain_request (test_engine.EngineTests) ... ok
+test_step_and_cost_caps_prevent_requests (test_engine.EngineTests) ... ok
+test_terminal_resume_does_not_repeat_model_or_tool (test_engine.EngineTests) ... ok
+test_unexpected_exception_is_safe_and_trace_does_not_leak (test_engine.EngineTests) ... ok
+test_unexpected_mutating_tool_error_does_not_invite_blind_retry (test_engine.EngineTests) ... ok
+test_usage_is_accumulated_and_missing_is_not_zero (test_engine.EngineTests) ... ok
+test_wrong_workspace_or_model_cannot_resume (test_engine.EngineTests) ... ok
+test_http_status_classification (test_model.ModelTests) ... ok
+test_http_wall_timeout_and_redirect_refusal (test_model.ModelTests) ... ok
+test_invalid_json_shape_is_unknown_not_retryable (test_model.ModelTests) ... ok
+test_malformed_usage_is_unmeasured_instead_of_crashing (test_model.ModelTests) ... ok
+test_no_network_without_explicit_enable (test_model.ModelTests) ... ok
+test_provider_body_cannot_control_retry_policy_or_public_error_code (test_model.ModelTests) ... ok
+test_real_http_payload_tools_usage_and_key_environment (test_model.ModelTests) ... ok
+test_remote_http_and_credential_urls_rejected (test_model.ModelTests) ... ok
+test_database_inside_tool_root_is_rejected (test_tools_store.StoreTests) ... ok
+test_exclusive_workspace_and_database_locks (test_tools_store.StoreTests) ... ok
+test_snapshot_and_trace_survive_reopen_without_content_in_trace (test_tools_store.StoreTests) ... ok
+test_trace_rejects_arbitrary_payload (test_tools_store.StoreTests) ... ok
+test_append_never_replayed_after_unknown_outcome (test_tools_store.ToolsTests) ... ok
+test_changed_target_blocks_recovery (test_tools_store.ToolsTests) ... ok
+test_csv_stats_and_bad_data (test_tools_store.ToolsTests) ... ok
+test_expression_runs_in_restricted_child (test_tools_store.ToolsTests) ... ok
+test_path_boundaries_and_special_files (test_tools_store.ToolsTests) ... ok
+test_strict_arguments_and_size (test_tools_store.ToolsTests) ... ok
+test_write_read_and_verified_recovery (test_tools_store.ToolsTests) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 13.532s
+
+OK

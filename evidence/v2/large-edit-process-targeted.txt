@@ -1,0 +1,8 @@
+test_large_effect_followed_by_external_mode_change_pauses (tests.acceptance.test_large_edit_process.LargeEditProcessTests) ... ok
+test_large_effect_matching_hash_mode_reconciles_without_rebuilding_or_rewrite (tests.acceptance.test_large_edit_process.LargeEditProcessTests) ... {"kind": "large_edit_process_contract", "model_kind": "offline_protocol_double", "killed_pid": 47385, "kill_return_code": -9, "resumed_pid": 47398, "file_bytes": 210022, "phase": "completed", "intent_excludes_reconstructed_content": true, "content_mode_inode_mtime_unchanged": true}
+ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.671s
+
+OK

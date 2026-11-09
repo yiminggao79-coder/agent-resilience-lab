@@ -1,0 +1,12 @@
+test_profile_construction_does_not_repeat_command_executable_hash (tests.dev.test_confined_backend.ConfinedBackendTests) ... ok
+test_actual_js_import_write_and_two_file_same_process_test_runner (tests.dev.test_node_native.NodeNativeTests) ... ok
+test_cancel_joins_node_before_return_and_preserves_partial_effect (tests.dev.test_node_native.NodeNativeTests) ... ok
+test_private_files_child_process_and_network_are_denied_with_clean_env (tests.dev.test_node_native.NodeNativeTests) ... ok
+test_timeout_joins_native_before_late_effect_and_output_stays_bounded (tests.dev.test_node_native.NodeNativeTests) ... ok
+test_tools_worker_and_trusted_supervisor_execute_node_through_original_channel (tests.dev.test_node_native.NodeNativeTests) ... ok
+test_whole_root_readonly_and_external_scratch_survive_node_grant (tests.dev.test_node_native.NodeNativeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 16.652s
+
+OK

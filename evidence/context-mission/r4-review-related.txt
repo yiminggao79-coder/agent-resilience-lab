@@ -1,0 +1,55 @@
+test_existing_checkpoint_without_feature_marker_is_preserved (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+test_failed_tests_stay_failed_and_are_not_retried_by_review (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+test_known_test_then_stalled_reads_reaches_next_request_without_success_inference (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+test_mutation_after_tests_in_same_batch_invalidates_that_verification (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+test_new_turn_gets_new_allowance_without_rewriting_previous_notice (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+test_no_verification_and_stale_verification_after_edit_do_not_trigger (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+test_two_reviews_maximum_and_no_extra_model_requests (tests.dev.test_execution_review.ExecutionReviewTests) ... ok
+test_abort_cannot_turn_unknown_model_outcome_into_safe_followup (tests.dev.test_sessions.SessionTests) ... ok
+test_abort_of_crashed_model_request_cannot_enable_followup (tests.dev.test_sessions.SessionTests) ... ok
+test_each_turn_gets_fresh_step_time_and_cost_budgets_with_explicit_totals (tests.dev.test_sessions.SessionTests) ... ok
+test_engine_preserves_native_and_reasoning_fields_for_tools_and_final (tests.dev.test_sessions.SessionTests) ... ok
+test_failed_followup_commit_preserves_old_turn_and_events (tests.dev.test_sessions.SessionTests) ... ok
+test_failed_turn_followup_resets_errors_retries_and_keeps_failure_record (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_does_not_hide_aborted_pending_tool (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_obeys_existing_workspace_and_database_locks (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_recovers_from_exhausted_retries_without_reusing_unknown_usage (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_rejects_active_or_uncertain_turn_without_modifying_state (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_rejects_unpaired_tool_transcript_even_without_pending (tests.dev.test_sessions.SessionTests) ... ok
+test_followup_survives_reopen_preserves_full_history_and_turn_events (tests.dev.test_sessions.SessionTests) ... ok
+test_invalid_followup_and_phase_list_raise_value_error_without_mutation (tests.dev.test_sessions.SessionTests) ... ok
+test_legacy_snapshot_can_start_followup_without_losing_old_turn (tests.dev.test_sessions.SessionTests) ... ok
+test_provider_call_ids_remain_consumed_across_user_turns (tests.dev.test_sessions.SessionTests) ... ok
+test_resume_does_not_create_a_followup_or_reset_limits (tests.dev.test_sessions.SessionTests) ... ok
+test_unknown_prior_usage_stays_unknown_in_session_totals (tests.dev.test_sessions.SessionTests) ... ok
+test_workspace_model_and_profile_must_match_before_followup (tests.dev.test_sessions.SessionTests) ... ok
+test_active_automatic_summary_accepts_feedback_without_treating_it_as_maintenance (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_actual_cost_exceeded_by_summary_blocks_regular_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_advancing_source_is_bounded_and_allowance_resets_per_turn (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_default_disabled_and_old_snapshot_has_no_extra_model_call (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_known_invalid_summary_falls_back_with_known_usage (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_large_archive_small_active_view_does_not_trigger (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_limits_validate_opt_in_threshold_and_attempt_cap (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_no_new_content_skips_and_oversized_summary_input_advances_fitting_prefixes (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_no_reduction_is_not_retried_for_same_prefix (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_old_view_overflow_is_rescued_or_fails_without_resend (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_one_attempt_cap_allows_tools_and_then_regular_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_opt_in_summary_precedes_decision_with_exact_archive_and_usage (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_queued_batch_and_recovering_partial_patch_finish_before_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_run_never_acquires_recursive_store_lock (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_shared_budget_refusal_does_not_fallback_to_paid_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_step_and_deadline_are_rechecked_after_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_storage_failure_keeps_started_attempt_and_resume_never_resends (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_summary_preflight_cost_refusal_allows_cheaper_valid_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_threshold_measures_active_view_and_triggers_at_boundary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unknown_summary_and_unknown_usage_pause_without_decision (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unknown_usage_after_deadline_still_requires_confirmation (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_unpaired_history_and_user_only_overflow_never_request_summary (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_whole_group_omission_triggers_semantic_summary_below_watermark (tests.dev.test_auto_context.AutoContextTests) ... ok
+test_real_failed_test_and_two_bad_expressions_leave_room_for_code_repair (tests.dev.test_coding_failure_feedback.CodingFailureFeedbackTests) ... ok
+test_three_genuine_invalid_invocations_still_stop_before_more_model_calls (tests.dev.test_coding_failure_feedback.CodingFailureFeedbackTests) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 57.597s
+
+OK

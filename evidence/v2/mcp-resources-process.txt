@@ -1,0 +1,29 @@
+test_actual_resource_only_pagination_templates_and_multiple_contents (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_bad_catalog_cursor_and_entry_limit_close_without_truncated_success (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_engine_resource_approval_feedback_binary_projection_and_privacy (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_external_result_cannot_override_host_envelope (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_http_transport_reuses_resource_protocol_and_sse_without_new_credentials (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_invalid_resource_bodies_and_binary_encoding_are_rejected (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_local_bad_uri_and_cursor_fail_before_dispatch (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_local_wire_size_rejection_does_not_claim_dispatched_uncertainty (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_missing_and_malformed_capabilities_are_not_resource_support (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_read_timeout_and_new_registry_resume_do_not_repeat_external_request (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_resource_wait_honors_active_cancel_and_never_claims_quiescence (tests.dev.test_mcp_resources.MCPResourceTests) ... ok
+test_external_effect_before_response_remains_unknown_across_new_cli_processes (tests.acceptance.test_mcp_resource_cli_process.MCPResourceCLIProcessTests) ... FAIL
+
+======================================================================
+FAIL: test_external_effect_before_response_remains_unknown_across_new_cli_processes (tests.acceptance.test_mcp_resource_cli_process.MCPResourceCLIProcessTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_mcp_resource_cli_process.py", line 33, in test_external_effect_before_response_remains_unknown_across_new_cli_processes
+    approval=invoke(['approval',task,*workspace]);self.assertEqual(approval.returncode,0,approval.stderr);request=json.loads(approval.stdout)
+AssertionError: 2 != 0 : usage: -c [-h] [--db DB]
+          {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,runtime-check,providers,job-status,sessions}
+          ...
+-c: error: unrecognized arguments: --mcp-config /private/tmp/agentlab-resource-cli-g2okabrk/trusted/mcp.json
+
+
+----------------------------------------------------------------------
+Ran 12 tests in 2.552s
+
+FAILED (failures=1)

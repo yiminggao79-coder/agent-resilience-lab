@@ -1,0 +1,61 @@
+"""One preregistered consumed-task resource diagnostic, not independent acceptance."""
+import argparse,json,os,sys,time
+from pathlib import Path
+REPO=Path(__file__).resolve().parents[1];sys.path.insert(0,str(REPO))
+from agent_lab.budget import BudgetLedger,BudgetedModel,load_first_line_key
+from agent_lab.model import OpenAIModel
+from scripts.deepseek_live import RecordingModel
+from scripts.context_mission import execute_turn,judge_turn,export_candidate,atomic_json,usage_totals,implementation_snapshot
+from scripts.evaluate_acceptance import copy_project,digest_file
+p=argparse.ArgumentParser();p.add_argument('--allow-api',action='store_true');p.add_argument('--prepaid-account',action='store_true')
+a=p.parse_args()
+if not(a.allow_api and a.prepaid_account):print('{"api_requests_sent":0,"mode":"preflight"}');sys.exit(0)
+planpath=REPO/'evidence/context-mission/reasoning-resource-control-plan.json';plan=json.loads(planpath.read_text())
+original=REPO/'evidence/context-mission/runs/e41e0d1ecc2b4607/report.json'
+v3=REPO/'evidence/context-mission/runs/4df2f548d9214be5/report.json'
+assert digest_file(original)==plan['original_r4_report_sha256'] and digest_file(v3)==plan['original_v3_report_sha256']
+source=REPO/'.lab/context-mission/e41e0d1ecc2b4607/case_01/turn-2/all-tests'
+assert all(digest_file(source/n)==h for n,h in plan['source_files_sha256'].items())
+suite=REPO/'evaluation/context_mission_v3'
+case=next(c for c in json.loads((suite/'manifest.json').read_text())['cases'] if c['id']=='case_01')
+tasks=[(suite/t['task']).read_text() for t in case['turns']]
+task=('The first two requirements below are already implemented in this supplied project. Preserve them. '
+      'The active coding request is the third requirement. Implement it and verify the saved code.\n\n'
+      +'\n\n'.join('Requirement '+str(i+1)+':\n'+text for i,text in enumerate(tasks)))
+private=REPO/'.lab/reasoning-resource-control';private.mkdir(mode=0o700)
+output=REPO/'evidence/context-mission/reasoning-resource-control';output.mkdir()
+snapshot=implementation_snapshot();assert not snapshot['runtime_dirty']
+report={'kind':plan['kind'],'plan_sha256':digest_file(planpath),'script_sha256':digest_file(Path(__file__)),
+        'implementation':snapshot,'independent_acceptance':False,'conditions':[],'limitations':plan['limitations']}
+ledger=BudgetLedger.open_existing(REPO/'.lab/paid-budget.sqlite')
+for mode in plan['modes']:
+    if ledger.report()['halted']:break
+    phase=private/mode;phase.mkdir();root=phase/'project';copy_project(source,root)
+    hashes={n:digest_file(root/n) for n in case['immutable_files']}
+    config={'workspace':str(root),'db':str(phase/'tasks.sqlite'),'task':task,'action':'start',
+            'read_only_paths':case['immutable_files'],'receipt_dir':str(phase/'receipts'),
+            'limits':plan['limits'],'allow_api':True,'prepaid_account':True}
+    delegate=OpenAIModel('deepseek-flash','https://api.deepseek.com','DEEPSEEK_API_KEY',True,
+        protocol='chat',stream=False,token_parameter='max_tokens',parallel_parameter=False,
+        thinking='disabled' if mode=='disabled' else 'enabled',
+        reasoning_effort=None if mode=='disabled' else 'low',ca_bundle='/etc/ssl/cert.pem')
+    model=RecordingModel(BudgetedModel(delegate,ledger,prepaid_account=True),phase/'receipts')
+    previous=os.environ.get('DEEPSEEK_API_KEY');started=time.monotonic()
+    try:
+        load_first_line_key();assert os.environ['DEEPSEEK_API_KEY'] not in task
+        result=execute_turn(config,model=model)
+    finally:
+        if previous is None:os.environ.pop('DEEPSEEK_API_KEY',None)
+        else:os.environ['DEEPSEEK_API_KEY']=previous
+    judge=judge_turn(case,2,root,phase,hashes,result.get('safe_to_observe') is True)
+    row={'mode':mode,'elapsed_seconds':time.monotonic()-started,**result,**judge,
+         'usage_totals':usage_totals(result['model_receipts'])}
+    row['completed_and_quality_passed']=row.get('phase')=='completed' and row.get('quality_passed') is True
+    report['conditions'].append(row);atomic_json(output/'report.json',report)
+    if result.get('safe_to_observe') is True:export_candidate(source,phase,output/mode)
+    print(json.dumps({'mode':mode,'phase':row['phase'],'quality':row['quality_passed'],
+                      'model_calls':row['metrics']['model_calls']}),flush=True)
+report['runtime_unchanged']=implementation_snapshot()['source_sha256']==snapshot['source_sha256']
+report['original_reports_unchanged']=digest_file(original)==plan['original_r4_report_sha256'] and digest_file(v3)==plan['original_v3_report_sha256']
+report['source_snapshot_unchanged']=all(digest_file(source/n)==h for n,h in plan['source_files_sha256'].items())
+atomic_json(output/'report.json',report)

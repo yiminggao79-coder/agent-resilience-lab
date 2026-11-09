@@ -1,0 +1,11 @@
+{
+  "kind": "consumed_case_one_call_diagnostic_not_acceptance",
+  "directive": "For coding work, carry the current user request through implementation and relevant verification. Once enough context is available, make concrete code changes instead of repeatedly inspecting unchanged files. For substantial multi-step work, use update_plan to track completed and remaining work from actual feedback. Continue after compaction without restarting finished work. Reuse available read evidence when versions match; retrieve missing details as needed. If repeated tool calls add no information, change the approach or report a specific blocker. A summary or plan is not proof that code or tests succeeded. Stay within all host permissions.",
+  "input_request_sha256": "4724c6c64de1b7bc891e03370cdc057f36440ddd1df71a17a04987a93af08b8a",
+  "condition": "same request plus generic coding execution system guidance",
+  "max_requests": 1,
+  "prediction": "plan or coding action instead of another unchanged inspection; a read-only result does not support hypothesis",
+  "execute_tools": false,
+  "quality_passed": null,
+  "sources": "pinned template selection and execution contracts; original independent wording"
+}

@@ -1,0 +1,9 @@
+usage: evaluate_coding.py [-h] [--allow-api] [--model MODEL]
+                          [--base-url BASE_URL] [--api-key-env API_KEY_ENV]
+                          [--protocol {chat,responses,anthropic}] [--stream]
+                          [--token-parameter {max_tokens,max_completion_tokens}]
+                          [--no-parallel-parameter]
+                          [--case {add,normalize,all}] --max-cost-usd
+                          MAX_COST_USD --input-price INPUT_PRICE
+                          --output-price OUTPUT_PRICE --output OUTPUT
+evaluate_coding.py: error: requires explicit --allow-api, model, and configured key; never paste a key into task text

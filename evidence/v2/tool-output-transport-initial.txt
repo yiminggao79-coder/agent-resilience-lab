@@ -1,0 +1,27 @@
+test_backpressure_and_cap_drop_without_blocking_and_report_incomplete (tests.dev.test_tool_output_transport.OutputTransportTests) ... ok
+test_callback_failure_disables_display_and_keyboardinterrupt_propagates (tests.dev.test_tool_output_transport.OutputTransportTests) ... ok
+test_disabled_does_not_allocate_pipe_or_emit_end (tests.dev.test_tool_output_transport.OutputTransportTests) ... ok
+test_frame_is_atomic_bounded_and_small_chunk_flood_has_write_budget (tests.dev.test_tool_output_transport.OutputTransportTests) ... ok
+test_invalid_inherited_descriptor_rejected_and_closed_reader_is_harmless (tests.dev.test_tool_output_transport.OutputTransportTests) ... ok
+test_malformed_or_lost_frames_and_missing_end_are_incomplete (tests.dev.test_tool_output_transport.OutputTransportTests) ... ok
+test_raw_bytes_both_streams_and_single_complete_end (tests.dev.test_tool_output_transport.OutputTransportTests) ... ok
+test_real_sandbox_collector_displays_before_project_can_finish (tests.dev.test_tool_output_transport.OutputTransportTests) ... FAIL
+test_worker_only_forwards_noninheritable_fifo_and_does_not_send_end (tests.dev.test_tool_output_transport.OutputTransportTests) ... ok
+
+======================================================================
+FAIL: test_real_sandbox_collector_displays_before_project_can_finish (tests.dev.test_tool_output_transport.OutputTransportTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_transport.py", line 172, in test_real_sandbox_collector_displays_before_project_can_finish
+    self.assertEqual(proc.returncode, 0, stderr.decode(errors='replace'))
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "<string>", line 5, in <module>
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/sandbox.py", line 261, in _run_tests
+    raise ToolError('sandbox_unavailable')
+agent_lab.tools.ToolError: sandbox_unavailable
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.400s
+
+FAILED (failures=1)

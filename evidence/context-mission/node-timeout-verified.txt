@@ -1,0 +1,6 @@
+test_timeout_joins_native_before_late_effect_and_output_stays_bounded (tests.dev.test_node_native.NodeNativeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 11.366s
+
+OK

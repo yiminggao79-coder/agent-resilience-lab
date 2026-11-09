@@ -1,0 +1,15 @@
+test_anthropic_stream_needs_message_stop_and_complete_tool_input (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_anthropic_tools_and_feedback_are_translated (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_chat_stream_reassembles_arguments_only_after_done (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_chat_token_capability_is_explicit (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_responses_function_items_and_usage (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_responses_stream_requires_completed_response (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_truncation_refusal_and_bad_usage_never_authorize_partial_tool (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_chat_private_reasoning_and_request_id_are_preserved_canonically (tests.dev.test_model_protocols.ProtocolBoundaryTests) ... ok
+test_refusal_and_malformed_tool_arguments_are_rejected (tests.dev.test_model_protocols.ProtocolBoundaryTests) ... ok
+test_stream_rejects_unclosed_anthropic_block_and_chat_length (tests.dev.test_model_protocols.ProtocolBoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.003s
+
+OK

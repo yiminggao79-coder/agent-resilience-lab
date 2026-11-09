@@ -1,0 +1,69 @@
+{
+  "source_url": "https://github.com/langchain-ai/langgraph/blob/e5e37b5d70dbfd93c7006bd90a658c6179a95946/libs/checkpoint-sqlite/langgraph/checkpoint/sqlite/__init__.py",
+  "commit_pins": {
+    "codex": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+    "langgraph": "e5e37b5d70dbfd93c7006bd90a658c6179a95946",
+    "openhands": "4aae68ae53477d05010a509f1f1e3f02e61b1831"
+  },
+  "read_only": true,
+  "upstream_tests_executed": false,
+  "note": "Checkpoint history keys and task write identity in concrete SQLite schema.",
+  "excerpts": [
+    {
+      "start_line": 147,
+      "end_line": 168,
+      "lines": [
+        "            CREATE TABLE IF NOT EXISTS checkpoints (",
+        "                thread_id TEXT NOT NULL,",
+        "                checkpoint_ns TEXT NOT NULL DEFAULT '',",
+        "                checkpoint_id TEXT NOT NULL,",
+        "                parent_checkpoint_id TEXT,",
+        "                type TEXT,",
+        "                checkpoint BLOB,",
+        "                metadata BLOB,",
+        "                PRIMARY KEY (thread_id, checkpoint_ns, checkpoint_id)",
+        "            );",
+        "            CREATE TABLE IF NOT EXISTS writes (",
+        "                thread_id TEXT NOT NULL,",
+        "                checkpoint_ns TEXT NOT NULL DEFAULT '',",
+        "                checkpoint_id TEXT NOT NULL,",
+        "                task_id TEXT NOT NULL,",
+        "                task_path TEXT NOT NULL DEFAULT '',",
+        "                idx INTEGER NOT NULL,",
+        "                channel TEXT NOT NULL,",
+        "                type TEXT,",
+        "                value BLOB,",
+        "                PRIMARY KEY (thread_id, checkpoint_ns, checkpoint_id, task_id, idx)",
+        "            );"
+      ]
+    },
+    {
+      "start_line": 475,
+      "end_line": 496,
+      "lines": [
+        "        query = (",
+        "            \"INSERT OR REPLACE INTO writes (thread_id, checkpoint_ns, checkpoint_id, task_id, task_path, idx, channel, type, value) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)\"",
+        "            if all(w[0] in WRITES_IDX_MAP for w in writes)",
+        "            else \"INSERT OR IGNORE INTO writes (thread_id, checkpoint_ns, checkpoint_id, task_id, task_path, idx, channel, type, value) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)\"",
+        "        )",
+        "        with self.cursor() as cur:",
+        "            cur.executemany(",
+        "                query,",
+        "                [",
+        "                    (",
+        "                        str(config[\"configurable\"][\"thread_id\"]),",
+        "                        str(config[\"configurable\"][\"checkpoint_ns\"]),",
+        "                        str(config[\"configurable\"][\"checkpoint_id\"]),",
+        "                        task_id,",
+        "                        task_path,",
+        "                        WRITES_IDX_MAP.get(channel, idx),",
+        "                        channel,",
+        "                        *self.serde.dumps_typed(value),",
+        "                    )",
+        "                    for idx, (channel, value) in enumerate(writes)",
+        "                ],",
+        "            )"
+      ]
+    }
+  ]
+}

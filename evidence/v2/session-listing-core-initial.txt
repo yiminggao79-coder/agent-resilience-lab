@@ -1,0 +1,22 @@
+test_corrupt_mismatch_legacy_invalid_fields_and_noncanonical_row_ids (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_cursor_encoding_strict_duplicate_types_version_and_limits (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_cursor_is_bound_to_explicit_database_path_and_inode (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_filters_cursor_scope_and_newer_inserts_do_not_shift_anchor (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_huge_private_json_and_scalar_values_never_materialize_in_python (tests.dev.test_session_listing.SessionListingTests) ... FAIL
+test_keyset_ties_null_tail_and_exact_output_schema (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_legacy_readonly_database_bytes_mode_schema_and_single_read_transaction (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_storage_faults_are_fixed_and_do_not_expose_sql_or_path (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_timestamp_range_finiteness_and_boolean_are_sanitized (tests.dev.test_session_listing.SessionListingTests) ... ok
+
+======================================================================
+FAIL: test_huge_private_json_and_scalar_values_never_materialize_in_python (tests.dev.test_session_listing.SessionListingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing.py", line 97, in test_huge_private_json_and_scalar_values_never_materialize_in_python
+    self.assertIsNone(page['items'][0]['session_id'])
+AssertionError: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' is not None
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.482s
+
+FAILED (failures=1)

@@ -1,0 +1,35 @@
+{
+  "kind": "release_package_and_existing_offline_fixture",
+  "paid_api_requests": 0,
+  "wheel_sha256": "98971a023db9cd34bf476839365eb64b3040c72a2d0f0172a6f04de819f1f88e",
+  "wheel_entries": 55,
+  "runtime_source_files": 48,
+  "runtime_source_matches_checkout": true,
+  "license_text_matches_root": true,
+  "notice_matches_root": true,
+  "license_metadata": "Apache-2.0",
+  "license_archive_path": "agent_resilience_lab-0.1.0.dist-info/licenses/LICENSE",
+  "isolated_module_cli": true,
+  "console_cli": true,
+  "existing_native_fixture": {
+    "installed_version": "0.1.0",
+    "editable": false,
+    "runtime_inside_selected_venv": true,
+    "target_shadow_imported": false,
+    "engine_phase": "completed",
+    "native_test_exit_codes": [
+      1,
+      0
+    ],
+    "patch_exact_bytes_verified": true,
+    "native_job_quiescent": true,
+    "overlap_rejections": 3,
+    "missing_ledger_admission_cases": 2,
+    "credential_loader_calls": 0,
+    "provider_requests": 0
+  },
+  "offline_demo_artifact_verified": true,
+  "real_llm_result": null,
+  "helper_reused_unchanged": "scripts/validate_installed_runtime.py CHILD",
+  "limitation": "Release metadata layout checked separately: legacy helper expects flat dist-info and is not claimed to accept new license subdirectory. Deterministic fixture is not new real Agent capability evidence."
+}

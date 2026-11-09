@@ -1,0 +1,66 @@
+{
+  "version": 3,
+  "manifest_schema_version": 1,
+  "status": "frozen_before_model_exposure",
+  "frozen_at_utc": "2026-11-08T18:55:55.751028+00:00",
+  "manifest_path": "evaluation/context_mission_v3/manifest.json",
+  "freeze_path": "evaluation/context_mission_v3/FREEZE.json",
+  "interface_path": "docs/context-mission-v3-acceptance-interface.md",
+  "manifest_sha256": "a04212ecf3c7eb93f487c6ed9d1baba7506484f61303ecdddbd1dd2b724bb937",
+  "freeze_sha256": "92b919f33ec4b7ba90e22d55d708ae5ac1a6e1fcd7d7a653061ef8f5ad2056d8",
+  "inventory_sha256": "6ba2bc3ada1665b14bcd486a27944f415ac537bd76bce717298e5e8462d96f0b",
+  "interface_sha256": "33b5a33a198532ee3e3e512c7d2ace1d4074a0e3d5739feaa19f2a9afd1026c2",
+  "validation_sha256": "f9aac425a23f34ae9991348b64083e8c3f73c51f43baf7f603605dd4bd7f2ea2",
+  "frozen_inventory_files": 35,
+  "cases": 2,
+  "turns_per_case": 3,
+  "turns": 6,
+  "protected_original_files": 4,
+  "protected_original_test_methods_per_case": [
+    10,
+    10
+  ],
+  "oracle_observations_per_case_stage": [
+    [
+      7,
+      7,
+      7
+    ],
+    [
+      7,
+      7,
+      10
+    ]
+  ],
+  "final_oracle_observations": 45,
+  "cumulative_reference_observations": 87,
+  "reference_stage_original_test_methods": 60,
+  "negative_controls": 26,
+  "offline_reference_stages_passed": 6,
+  "baselines_detected_by_original_tests": 2,
+  "all_offline_validation_passed": true,
+  "author_live_model_or_api_calls": 0,
+  "synthetic_provenance": true,
+  "fresh_domains_and_APIs": true,
+  "difficulty_not_reduced_to_target_prior_outcomes": true,
+  "prior_suite_outcomes": "consumed_separate_original_scores_preserved_not_regraded",
+  "authorship_independence": "role_separation_same_AI_environment_not_external_statistical_independence",
+  "live_runtime_gates": "not_measured_by_author_validation_reference_success_not_real_model_success",
+  "model_condition": "Runner_default_Flash_non_thinking_exact_profile_recorded_by_Runner",
+  "limits": {
+    "max_model_calls_per_turn": 50,
+    "turn_timeout_seconds": 900,
+    "max_output_tokens": 4096,
+    "active_context_max_bytes": 48000,
+    "apply_to_every_turn": true
+  },
+  "verify_command": [
+    "python3",
+    "-B",
+    "evaluation/context_mission_v3/verify_freeze.py"
+  ],
+  "exposure_rule": "only_current_candidate_workspace_and_task_to_model_after_runtime_freeze_no_oracle_reference_author_files",
+  "original_score_rule": "each_stage_cumulative_pass_required_later_repairs_never_erase_earlier_failures",
+  "authoring_status": "final_version_stop_after_freeze",
+  "scope": "only_new_suite_new_public_interface_new_receipt_no_Git_commit"
+}

@@ -1,0 +1,9 @@
+test_failed_observation_is_durable_quarantine_not_a_cleanup_receipt (tests.acceptance.test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_sigkill_supervisor_keeps_quarantine_despite_later_guest_effects (tests.acceptance.test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_sigkill_worker_closes_owner_pipe_and_live_supervisor_confirms_drain (tests.acceptance.test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+test_success_receipt_is_durable_in_new_process (tests.acceptance.test_confined_collector_process.ConfinedCollectorProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 4.969s
+
+OK

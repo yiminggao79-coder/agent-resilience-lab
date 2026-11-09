@@ -1,0 +1,51 @@
+test_changed_host_endpoint_or_options_reject_saved_toolset (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ERROR
+test_readonly_and_mixed_transport_configuration_refuse_before_dispatch (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ok
+test_remote_authority_requires_exact_approval_then_private_feedback (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ERROR
+test_unknown_after_remote_effect_never_replays_on_repeated_resume (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests) ... ERROR
+
+======================================================================
+ERROR: test_changed_host_endpoint_or_options_reject_saved_toolset (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http_registry.py", line 65, in test_changed_host_endpoint_or_options_reject_saved_toolset
+    registry=self.registry(first)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http_registry.py", line 24, in registry
+    registry=MCPToolRegistry(CodingTools(self.root),self.config)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 113, in __init__
+    self.config_path, self._config_hash, self._specs = _read_config(config_path, self.root)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 78, in _read_config
+    raise ValueError('invalid_mcp_server_config')
+ValueError: invalid_mcp_server_config
+
+======================================================================
+ERROR: test_remote_authority_requires_exact_approval_then_private_feedback (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http_registry.py", line 35, in test_remote_authority_requires_exact_approval_then_private_feedback
+    registry=self.registry(server)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http_registry.py", line 24, in registry
+    registry=MCPToolRegistry(CodingTools(self.root),self.config)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 113, in __init__
+    self.config_path, self._config_hash, self._specs = _read_config(config_path, self.root)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 78, in _read_config
+    raise ValueError('invalid_mcp_server_config')
+ValueError: invalid_mcp_server_config
+
+======================================================================
+ERROR: test_unknown_after_remote_effect_never_replays_on_repeated_resume (tests.dev.test_mcp_http_registry.MCPHTTPRegistryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http_registry.py", line 53, in test_unknown_after_remote_effect_never_replays_on_repeated_resume
+    registry=self.registry(server,timeout=.2)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http_registry.py", line 24, in registry
+    registry=MCPToolRegistry(CodingTools(self.root),self.config)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 113, in __init__
+    self.config_path, self._config_hash, self._specs = _read_config(config_path, self.root)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/registry.py", line 78, in _read_config
+    raise ValueError('invalid_mcp_server_config')
+ValueError: invalid_mcp_server_config
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.589s
+
+FAILED (errors=3)

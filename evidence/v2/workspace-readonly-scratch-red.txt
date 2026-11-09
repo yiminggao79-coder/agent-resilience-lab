@@ -1,0 +1,29 @@
+test_profile_refuses_overlapping_scratch_before_native_launch (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests) ... 
+======================================================================
+FAIL: test_profile_refuses_overlapping_scratch_before_native_launch (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests) (scratch=PosixPath('/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpgm3plcw0/work'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly_native.py", line 75, in test_profile_refuses_overlapping_scratch_before_native_launch
+    sandbox._profile(self.root,scratch,read_only_paths=['.'])
+AssertionError: ToolError not raised
+
+======================================================================
+FAIL: test_profile_refuses_overlapping_scratch_before_native_launch (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests) (scratch=PosixPath('/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpgm3plcw0/work/scratch'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly_native.py", line 75, in test_profile_refuses_overlapping_scratch_before_native_launch
+    sandbox._profile(self.root,scratch,read_only_paths=['.'])
+AssertionError: ToolError not raised
+
+======================================================================
+FAIL: test_profile_refuses_overlapping_scratch_before_native_launch (tests.dev.test_workspace_readonly_native.WorkspaceReadonlyNativeTests) (scratch=PosixPath('/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpgm3plcw0'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_readonly_native.py", line 75, in test_profile_refuses_overlapping_scratch_before_native_launch
+    sandbox._profile(self.root,scratch,read_only_paths=['.'])
+AssertionError: ToolError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.039s
+
+FAILED (failures=3)

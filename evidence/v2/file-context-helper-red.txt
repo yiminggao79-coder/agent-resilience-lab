@@ -1,0 +1,95 @@
+test_deleted_and_unsafe_entries_are_reported_without_reading_aliases_or_fifo (tests.dev.test_file_context.FileContextTests) ... FAIL
+test_eight_max_size_reads_and_notice_size_are_bounded (tests.dev.test_file_context.FileContextTests) ... FAIL
+test_failed_other_and_aliased_tools_do_not_ingest_and_invalid_index_always_rejected (tests.dev.test_file_context.FileContextTests) ... FAIL
+test_final_filename_replacement_after_stable_fd_read_is_unavailable (tests.dev.test_file_context.FileContextTests) ... FAIL
+test_invalid_eligible_reads_and_lru_eviction_mark_sticky_coverage_without_fabrication (tests.dev.test_file_context.FileContextTests) ... FAIL
+test_new_record_exact_validation_and_pure_inputs (tests.dev.test_file_context.FileContextTests) ... FAIL
+test_oversize_current_file_marks_only_snapshot_coverage_and_recovers (tests.dev.test_file_context.FileContextTests) ... FAIL
+test_same_bytes_no_initial_notice_then_same_size_mtime_change_and_restoration (tests.dev.test_file_context.FileContextTests) ... FAIL
+test_signature_ignores_message_index_and_lru_order_but_not_new_read_baseline (tests.dev.test_file_context.FileContextTests) ... FAIL
+test_successful_builtin_reads_update_lru_and_never_mutate_input (tests.dev.test_file_context.FileContextTests) ... FAIL
+
+======================================================================
+FAIL: test_deleted_and_unsafe_entries_are_reported_without_reading_aliases_or_fifo (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+======================================================================
+FAIL: test_eight_max_size_reads_and_notice_size_are_bounded (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+======================================================================
+FAIL: test_failed_other_and_aliased_tools_do_not_ingest_and_invalid_index_always_rejected (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+======================================================================
+FAIL: test_final_filename_replacement_after_stable_fd_read_is_unavailable (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+======================================================================
+FAIL: test_invalid_eligible_reads_and_lru_eviction_mark_sticky_coverage_without_fabrication (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+======================================================================
+FAIL: test_new_record_exact_validation_and_pure_inputs (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+======================================================================
+FAIL: test_oversize_current_file_marks_only_snapshot_coverage_and_recovers (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+======================================================================
+FAIL: test_same_bytes_no_initial_notice_then_same_size_mtime_change_and_restoration (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+======================================================================
+FAIL: test_signature_ignores_message_index_and_lru_order_but_not_new_read_baseline (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+======================================================================
+FAIL: test_successful_builtin_reads_update_lru_and_never_mutate_input (tests.dev.test_file_context.FileContextTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context.py", line 21, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.file_context'), 'bounded known-read file context is missing')
+AssertionError: unexpectedly None : bounded known-read file context is missing
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.002s
+
+FAILED (failures=10)

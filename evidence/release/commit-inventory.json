@@ -1,0 +1,1572 @@
+{
+  "baseline": "dbe2b07f032d1dbb9b06eeadb5b312db61c8e3d8",
+  "commit_count": 93,
+  "scope": "Actual baseline ancestor history, newest release-document commits excluded; no rewritten dates or author metadata.",
+  "commits": [
+    {
+      "commit": "9b2753b02479d431e241f8059b3883f92525306a",
+      "parents": [],
+      "author_datetime": "2026-11-07T12:39:11+08:00",
+      "subject": "docs: record authorized scope, design decisions and implementation plan",
+      "changed_file_count": 10,
+      "changed_core_files": [
+        "agent_lab/__init__.py",
+        "tests/__init__.py",
+        "tests/acceptance/__init__.py",
+        "tests/dev/__init__.py"
+      ]
+    },
+    {
+      "commit": "3cd6ca005180e09f9ee9da3c9dbb7b760b567f61",
+      "parents": [
+        "9b2753b02479d431e241f8059b3883f92525306a"
+      ],
+      "author_datetime": "2026-11-07T12:42:36+08:00",
+      "subject": "feat: add bounded tools and atomic private task persistence",
+      "changed_file_count": 6,
+      "changed_core_files": [
+        "agent_lab/expression.py",
+        "agent_lab/store.py",
+        "agent_lab/tools.py",
+        "tests/dev/test_tools_store.py"
+      ]
+    },
+    {
+      "commit": "2d3f456b4555e59dd5925e62551959a9ffb59cf7",
+      "parents": [
+        "3cd6ca005180e09f9ee9da3c9dbb7b760b567f61"
+      ],
+      "author_datetime": "2026-11-07T12:46:06+08:00",
+      "subject": "feat: implement model-driven loop, budgets, recovery states and CLI",
+      "changed_file_count": 12,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/engine.py",
+        "agent_lab/model.py",
+        "tests/dev/test_engine.py",
+        "tests/dev/test_model.py",
+        "tests/support.py"
+      ]
+    },
+    {
+      "commit": "2fbb9fcc4a1795ace027d73f28ae73fdda6ae698",
+      "parents": [
+        "2d3f456b4555e59dd5925e62551959a9ffb59cf7"
+      ],
+      "author_datetime": "2026-11-07T12:49:32+08:00",
+      "subject": "test: prove SIGKILL recovery and close uncertain-outcome safety gaps",
+      "changed_file_count": 12,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/engine.py",
+        "agent_lab/tools.py",
+        "tests/crash_worker.py",
+        "tests/dev/test_boundaries.py",
+        "tests/dev/test_crash.py",
+        "tests/dev/test_engine.py",
+        "tests/dev/test_model.py"
+      ]
+    },
+    {
+      "commit": "5b9990bbb43a74cd0c6e8c153d77d0374e3fe979",
+      "parents": [
+        "2fbb9fcc4a1795ace027d73f28ae73fdda6ae698"
+      ],
+      "author_datetime": "2026-11-07T12:57:51+08:00",
+      "subject": "fix: bound tool workers and isolate provider protocol from trusted errors",
+      "changed_file_count": 26,
+      "changed_core_files": [
+        "agent_lab/engine.py",
+        "agent_lab/model.py",
+        "agent_lab/tools.py",
+        "scripts/demo.py",
+        "scripts/evaluate_live.py",
+        "tests/dev/test_boundaries.py",
+        "tests/dev/test_engine.py",
+        "tests/dev/test_model.py"
+      ]
+    },
+    {
+      "commit": "a6d915fa42c005b6e49688a873eaca506711b542",
+      "parents": [
+        "5b9990bbb43a74cd0c6e8c153d77d0374e3fe979"
+      ],
+      "author_datetime": "2026-11-07T13:02:37+08:00",
+      "subject": "test: record frozen independent acceptance and final reproducible evidence",
+      "changed_file_count": 16,
+      "changed_core_files": [
+        "tests/acceptance/__init__.py",
+        "tests/acceptance/crash_child.py",
+        "tests/acceptance/protocol_fixture.py",
+        "tests/acceptance/test_acceptance.py"
+      ]
+    },
+    {
+      "commit": "ae701de8225237c1224656b7174275df60d175de",
+      "parents": [
+        "a6d915fa42c005b6e49688a873eaca506711b542"
+      ],
+      "author_datetime": "2026-11-07T13:40:06+08:00",
+      "subject": "audit: reclassify V0 and record independent adversarial findings",
+      "changed_file_count": 32,
+      "changed_core_files": []
+    },
+    {
+      "commit": "eea2f6c5252f421c765c754c499e9c02dd8b0c0a",
+      "parents": [
+        "ae701de8225237c1224656b7174275df60d175de"
+      ],
+      "author_datetime": "2026-11-07T14:31:04+08:00",
+      "subject": "docs: adopt full Codex reference scope and coding runtime roadmap",
+      "changed_file_count": 3,
+      "changed_core_files": []
+    },
+    {
+      "commit": "10081c4226bb4915f6ce7e91a38be567f4f52845",
+      "parents": [
+        "eea2f6c5252f421c765c754c499e9c02dd8b0c0a"
+      ],
+      "author_datetime": "2026-11-07T14:48:20+08:00",
+      "subject": "feat: expand coding runtime with fenced execution, sandbox tests and streaming adapters",
+      "changed_file_count": 75,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/context.py",
+        "agent_lab/engine.py",
+        "agent_lab/instructions.py",
+        "agent_lab/model.py",
+        "agent_lab/process_guard.py",
+        "agent_lab/protocols.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/store.py",
+        "agent_lab/tools.py",
+        "scripts/evaluate_coding.py",
+        "tests/acceptance/protocol_fixture.py",
+        "tests/dev/test_coding_e2e.py",
+        "tests/dev/test_coding_runtime.py",
+        "tests/dev/test_coding_tools.py",
+        "tests/dev/test_engine.py",
+        "tests/dev/test_model_protocols.py",
+        "tests/dev/test_process_guard.py",
+        "tests/dev/test_project_context.py",
+        "tests/dev/test_runtime_v1.py",
+        "tests/dev/test_sandbox.py",
+        "tests/support.py"
+      ]
+    },
+    {
+      "commit": "f1ddc89297053705238b2b95cc4a5f26a87c37f9",
+      "parents": [
+        "10081c4226bb4915f6ce7e91a38be567f4f52845"
+      ],
+      "author_datetime": "2026-11-07T15:01:01+08:00",
+      "subject": "fix: preserve model repair feedback and validate coding outcomes outside candidate tests",
+      "changed_file_count": 24,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/model.py",
+        "agent_lab/protocols.py",
+        "agent_lab/sandbox.py",
+        "scripts/evaluate_coding.py",
+        "tests/dev/test_coding_e2e.py",
+        "tests/dev/test_model_protocols.py",
+        "tests/dev/test_review_v1.py"
+      ]
+    },
+    {
+      "commit": "ef001026b9354aec96c9c11b452a1954d39a2b74",
+      "parents": [
+        "f1ddc89297053705238b2b95cc4a5f26a87c37f9"
+      ],
+      "author_datetime": "2026-11-07T15:45:09+08:00",
+      "subject": "feat: persist coding sessions and supervised command approvals with paid API evidence",
+      "changed_file_count": 55,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/budget.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/commands.py",
+        "agent_lab/engine.py",
+        "agent_lab/model.py",
+        "agent_lab/protocols.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/store.py",
+        "agent_lab/tools.py",
+        "scripts/deepseek_live.py",
+        "tests/dev/test_approvals.py",
+        "tests/dev/test_budget.py",
+        "tests/dev/test_command_integration.py",
+        "tests/dev/test_commands.py",
+        "tests/dev/test_live_runner.py",
+        "tests/dev/test_model_protocols.py",
+        "tests/dev/test_session_cli.py",
+        "tests/dev/test_sessions.py",
+        "tests/dev/test_tls.py"
+      ]
+    },
+    {
+      "commit": "3cfbcd1fbfeaf7f5fb8c9ca56de909823233fd0e",
+      "parents": [
+        "ef001026b9354aec96c9c11b452a1954d39a2b74"
+      ],
+      "author_datetime": "2026-11-07T15:50:44+08:00",
+      "subject": "feat: add recoverable file operations and bounded MCP stdio client",
+      "changed_file_count": 13,
+      "changed_core_files": [
+        "agent_lab/coding_tools.py",
+        "agent_lab/mcp.py",
+        "tests/dev/test_file_operations.py",
+        "tests/dev/test_mcp.py",
+        "tests/fixtures/mcp_server.py"
+      ]
+    },
+    {
+      "commit": "90a5803d922975df1d47f15e073bc41178c9b887",
+      "parents": [
+        "3cfbcd1fbfeaf7f5fb8c9ca56de909823233fd0e"
+      ],
+      "author_datetime": "2026-11-07T16:33:02+08:00",
+      "subject": "feat: run serial tool batches with archive recall, interactive sessions, Git and MCP integration",
+      "changed_file_count": 65,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/budget.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/context.py",
+        "agent_lab/engine.py",
+        "agent_lab/git_tools.py",
+        "agent_lab/history.py",
+        "agent_lab/interactive.py",
+        "agent_lab/protocols.py",
+        "agent_lab/registry.py",
+        "agent_lab/sandbox.py",
+        "scripts/deepseek_live.py",
+        "scripts/evaluate_acceptance.py",
+        "tests/dev/test_acceptance_runner.py",
+        "tests/dev/test_budget.py",
+        "tests/dev/test_git_tools.py",
+        "tests/dev/test_history.py",
+        "tests/dev/test_history_runtime.py",
+        "tests/dev/test_interactive.py",
+        "tests/dev/test_live_runner.py",
+        "tests/dev/test_mcp_registry.py",
+        "tests/dev/test_provider_nulls.py",
+        "tests/dev/test_structured_oracle.py",
+        "tests/dev/test_tool_batches.py"
+      ]
+    },
+    {
+      "commit": "589aab6f38c43db8ff55f04bb9ddf9e9b2ab1e01",
+      "parents": [
+        "90a5803d922975df1d47f15e073bc41178c9b887"
+      ],
+      "author_datetime": "2026-11-07T16:55:24+08:00",
+      "subject": "test: preserve frozen task results and add real follow-up SIGKILL experiment",
+      "changed_file_count": 31,
+      "changed_core_files": [
+        "scripts/evaluate_followup.py",
+        "tests/dev/test_followup_experiment.py"
+      ]
+    },
+    {
+      "commit": "d695eb83a96a2912d627d209d19860de2cd9fbdb",
+      "parents": [
+        "589aab6f38c43db8ff55f04bb9ddf9e9b2ab1e01"
+      ],
+      "author_datetime": "2026-11-07T17:47:00+08:00",
+      "subject": "feat: stream private text and persist model plans with scoped project skills and provider configuration",
+      "changed_file_count": 50,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/budget.py",
+        "agent_lab/context.py",
+        "agent_lab/engine.py",
+        "agent_lab/instructions.py",
+        "agent_lab/interactive.py",
+        "agent_lab/model.py",
+        "agent_lab/plan.py",
+        "agent_lab/protocols.py",
+        "agent_lab/providers.py",
+        "agent_lab/store.py",
+        "scripts/deepseek_live.py",
+        "scripts/evaluate_guidance.py",
+        "tests/dev/test_budget.py",
+        "tests/dev/test_guidance_experiment.py",
+        "tests/dev/test_incremental_stream.py",
+        "tests/dev/test_instruction_scopes.py",
+        "tests/dev/test_live_runner.py",
+        "tests/dev/test_plan.py",
+        "tests/dev/test_provider_configs.py"
+      ]
+    },
+    {
+      "commit": "148f1bf08a27808d5e81d83e8eed15986776272f",
+      "parents": [
+        "d695eb83a96a2912d627d209d19860de2cd9fbdb"
+      ],
+      "author_datetime": "2026-11-07T17:52:01+08:00",
+      "subject": "test: preserve live skill behavior and expose private task plan inspection",
+      "changed_file_count": 21,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/interactive.py",
+        "tests/dev/test_plan_views.py"
+      ]
+    },
+    {
+      "commit": "4dbfaf0ed872f1be42cd79f39d004d849e6d04a6",
+      "parents": [
+        "148f1bf08a27808d5e81d83e8eed15986776272f"
+      ],
+      "author_datetime": "2026-11-07T18:07:03+08:00",
+      "subject": "feat: add provenance-bound semantic compaction and paginated project discovery",
+      "changed_file_count": 24,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/compaction.py",
+        "agent_lab/context.py",
+        "agent_lab/discovery.py",
+        "agent_lab/engine.py",
+        "agent_lab/interactive.py",
+        "scripts/evaluate_compaction.py",
+        "tests/dev/test_compaction.py",
+        "tests/dev/test_compaction_cli.py",
+        "tests/dev/test_compaction_experiment.py",
+        "tests/dev/test_discovery_pages.py"
+      ]
+    },
+    {
+      "commit": "96cd31dbfbca26a74fcd0d4a2992e991f5316988",
+      "parents": [
+        "4dbfaf0ed872f1be42cd79f39d004d849e6d04a6"
+      ],
+      "author_datetime": "2026-11-07T18:14:41+08:00",
+      "subject": "test: record real semantic continuation and preserve immutable-file gate failure",
+      "changed_file_count": 19,
+      "changed_core_files": []
+    },
+    {
+      "commit": "0d2c9d6e481a54a5d9fd280a2f5b5153d0816d77",
+      "parents": [
+        "96cd31dbfbca26a74fcd0d4a2992e991f5316988"
+      ],
+      "author_datetime": "2026-11-07T18:37:33+08:00",
+      "subject": "feat: enforce host read-only paths across managed execution and preserve native alias regression",
+      "changed_file_count": 33,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/commands.py",
+        "agent_lab/engine.py",
+        "agent_lab/interactive.py",
+        "agent_lab/permissions.py",
+        "agent_lab/registry.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/tools.py",
+        "scripts/evaluate_mcp.py",
+        "scripts/local_mcp_fixture.py",
+        "tests/dev/test_mcp_experiment.py",
+        "tests/dev/test_read_only_cli.py",
+        "tests/dev/test_read_only_policy.py"
+      ]
+    },
+    {
+      "commit": "198bb68fdc1d0ac659e561d3656b0b0f2caf3850",
+      "parents": [
+        "0d2c9d6e481a54a5d9fd280a2f5b5153d0816d77"
+      ],
+      "author_datetime": "2026-11-07T19:03:44+08:00",
+      "subject": "test: preserve real local MCP coding success and exact scoped approval evidence",
+      "changed_file_count": 13,
+      "changed_core_files": []
+    },
+    {
+      "commit": "587d82b93d4ae6161f90f70dc9e19bd551b8edc2",
+      "parents": [
+        "198bb68fdc1d0ac659e561d3656b0b0f2caf3850"
+      ],
+      "author_datetime": "2026-11-07T19:48:14+08:00",
+      "subject": "feat: checkpoint multi-file patch progress and preserve Responses reasoning continuation",
+      "changed_file_count": 36,
+      "changed_core_files": [
+        "agent_lab/coding_tools.py",
+        "agent_lab/engine.py",
+        "agent_lab/model.py",
+        "agent_lab/patching.py",
+        "agent_lab/protocols.py",
+        "agent_lab/tools.py",
+        "scripts/deepseek_live.py",
+        "scripts/evaluate_acceptance.py",
+        "scripts/evaluate_patch.py",
+        "tests/dev/test_live_runner.py",
+        "tests/dev/test_patch_experiment.py",
+        "tests/dev/test_patch_text.py",
+        "tests/dev/test_responses_continuation.py"
+      ]
+    },
+    {
+      "commit": "36a7b3c1c004df8e10e23da00a900361cf5d9a4c",
+      "parents": [
+        "587d82b93d4ae6161f90f70dc9e19bd551b8edc2"
+      ],
+      "author_datetime": "2026-11-07T20:02:03+08:00",
+      "subject": "test: freeze two independent v2 tasks after runtime implementation is fixed",
+      "changed_file_count": 17,
+      "changed_core_files": []
+    },
+    {
+      "commit": "771465e6e654cd7be2478d1fa167f998546af3f0",
+      "parents": [
+        "36a7b3c1c004df8e10e23da00a900361cf5d9a4c"
+      ],
+      "author_datetime": "2026-11-07T20:07:05+08:00",
+      "subject": "test: correct suite-relative freeze metadata and preserve real multi-file patch success",
+      "changed_file_count": 15,
+      "changed_core_files": []
+    },
+    {
+      "commit": "e6c1201af4a287aaa67156b9c554254ab1ae2fbc",
+      "parents": [
+        "771465e6e654cd7be2478d1fa167f998546af3f0"
+      ],
+      "author_datetime": "2026-11-07T20:43:31+08:00",
+      "subject": "Add bounded auto compaction and actionable failure diagnostics",
+      "changed_file_count": 43,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/engine.py",
+        "agent_lab/model.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/store.py",
+        "scripts/deepseek_live.py",
+        "scripts/evaluate_acceptance.py",
+        "tests/dev/test_acceptance_runner.py",
+        "tests/dev/test_auto_context.py",
+        "tests/dev/test_auto_context_cli.py",
+        "tests/dev/test_live_runner.py",
+        "tests/dev/test_test_discovery.py",
+        "tests/dev/test_tls.py",
+        "tests/dev/test_trace_process_results.py",
+        "tests/dev/test_transport_diagnostics.py"
+      ]
+    },
+    {
+      "commit": "dc25ec255df0fd94a98de16bfacc32a227433c9a",
+      "parents": [
+        "e6c1201af4a287aaa67156b9c554254ab1ae2fbc"
+      ],
+      "author_datetime": "2026-11-07T20:58:39+08:00",
+      "subject": "Persist same-turn steering with atomic application and closing gate",
+      "changed_file_count": 23,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/engine.py",
+        "agent_lab/store.py",
+        "tests/acceptance/steering_child.py",
+        "tests/acceptance/test_steering_process.py",
+        "tests/dev/test_auto_context.py",
+        "tests/dev/test_compaction.py",
+        "tests/dev/test_steering.py",
+        "tests/dev/test_steering_cli.py",
+        "tests/dev/test_steering_store.py"
+      ]
+    },
+    {
+      "commit": "7105c834df2262d7bb3b41281de71b36536727be",
+      "parents": [
+        "dc25ec255df0fd94a98de16bfacc32a227433c9a"
+      ],
+      "author_datetime": "2026-11-07T21:09:20+08:00",
+      "subject": "Add bounded content search pages with change-bound cursors",
+      "changed_file_count": 20,
+      "changed_core_files": [
+        "agent_lab/coding_tools.py",
+        "agent_lab/interactive.py",
+        "agent_lab/searching.py",
+        "tests/dev/test_history_runtime.py",
+        "tests/dev/test_search_paging.py",
+        "tests/dev/test_search_paging_runtime.py"
+      ]
+    },
+    {
+      "commit": "8ac0843a5bbe93d17cd7fb371e261d3b04692c9e",
+      "parents": [
+        "7105c834df2262d7bb3b41281de71b36536727be"
+      ],
+      "author_datetime": "2026-11-07T21:24:47+08:00",
+      "subject": "Preserve ordinary file modes across atomic edits and recovery",
+      "changed_file_count": 21,
+      "changed_core_files": [
+        "agent_lab/coding_tools.py",
+        "agent_lab/patching.py",
+        "agent_lab/tools.py",
+        "tests/acceptance/test_file_mode_process.py",
+        "tests/dev/test_file_modes.py"
+      ]
+    },
+    {
+      "commit": "e65e6c6a913394796be67c2733240fc8d0bc8777",
+      "parents": [
+        "8ac0843a5bbe93d17cd7fb371e261d3b04692c9e"
+      ],
+      "author_datetime": "2026-11-07T21:37:41+08:00",
+      "subject": "Add version-bound large file edits without full-content intents",
+      "changed_file_count": 23,
+      "changed_core_files": [
+        "agent_lab/coding_tools.py",
+        "agent_lab/context.py",
+        "agent_lab/editing.py",
+        "agent_lab/tools.py",
+        "scripts/deepseek_live.py",
+        "tests/acceptance/large_edit_child.py",
+        "tests/acceptance/test_large_edit_process.py",
+        "tests/dev/test_file_operations.py",
+        "tests/dev/test_history.py",
+        "tests/dev/test_large_edits.py",
+        "tests/dev/test_live_runner.py"
+      ]
+    },
+    {
+      "commit": "3ccb287f42b34baeec85ba740d676667408c8c15",
+      "parents": [
+        "e65e6c6a913394796be67c2733240fc8d0bc8777"
+      ],
+      "author_datetime": "2026-11-07T21:59:01+08:00",
+      "subject": "Inspect pending boundaries without migrating or modifying checkpoints",
+      "changed_file_count": 17,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/diagnostics.py",
+        "agent_lab/store.py",
+        "tests/dev/test_diagnostics.py",
+        "tests/dev/test_diagnostics_cli.py"
+      ]
+    },
+    {
+      "commit": "8e6803283eba97ec447a19a8e1e686e7eb7eddcc",
+      "parents": [
+        "3ccb287f42b34baeec85ba740d676667408c8c15"
+      ],
+      "author_datetime": "2026-11-07T22:57:05+08:00",
+      "subject": "Persist cooperative stop requests at atomic execution claim boundaries",
+      "changed_file_count": 30,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/engine.py",
+        "agent_lab/store.py",
+        "tests/acceptance/stop_child.py",
+        "tests/acceptance/test_stop_process.py",
+        "tests/dev/test_approvals.py",
+        "tests/dev/test_auto_context.py",
+        "tests/dev/test_compaction.py",
+        "tests/dev/test_patch_text.py",
+        "tests/dev/test_plan.py",
+        "tests/dev/test_stop.py",
+        "tests/dev/test_stop_cli.py",
+        "tests/dev/test_stop_store.py",
+        "tests/dev/test_tool_batches.py"
+      ]
+    },
+    {
+      "commit": "96b844be90cbc4cc66a3653230f06ca1a822f2df",
+      "parents": [
+        "8e6803283eba97ec447a19a8e1e686e7eb7eddcc"
+      ],
+      "author_datetime": "2026-11-07T23:22:21+08:00",
+      "subject": "Cancel scoped model requests and reclaim HTTP workers on owner death",
+      "changed_file_count": 26,
+      "changed_core_files": [
+        "agent_lab/context.py",
+        "agent_lab/engine.py",
+        "agent_lab/model.py",
+        "tests/acceptance/model_cancel_child.py",
+        "tests/acceptance/test_model_cancel_process.py",
+        "tests/dev/test_model_cancellation.py",
+        "tests/dev/test_model_stop.py"
+      ]
+    },
+    {
+      "commit": "4a8b77e3b15275e9ea777bc01cad09f7ebd1ba4b",
+      "parents": [
+        "96b844be90cbc4cc66a3653230f06ca1a822f2df"
+      ],
+      "author_datetime": "2026-11-07T23:31:39+08:00",
+      "subject": "Close known unstarted tool calls when ordinary limits terminate a Turn",
+      "changed_file_count": 22,
+      "changed_core_files": [
+        "agent_lab/engine.py",
+        "agent_lab/store.py",
+        "tests/dev/test_terminal_history.py",
+        "tests/dev/test_terminal_history_http.py",
+        "tests/dev/test_tool_batches.py"
+      ]
+    },
+    {
+      "commit": "46a056df909f1ee49e471f86e7dde7a8b5f8935a",
+      "parents": [
+        "4a8b77e3b15275e9ea777bc01cad09f7ebd1ba4b"
+      ],
+      "author_datetime": "2026-11-07T23:39:39+08:00",
+      "subject": "Align controlled deletion with bounded 2 MiB coding file views",
+      "changed_file_count": 18,
+      "changed_core_files": [
+        "agent_lab/coding_tools.py",
+        "tests/acceptance/test_large_delete_process.py",
+        "tests/dev/test_file_operations.py",
+        "tests/dev/test_large_delete.py"
+      ]
+    },
+    {
+      "commit": "cd55aacf747ef277828ac8069e05c42a34e2c12b",
+      "parents": [
+        "46a056df909f1ee49e471f86e7dde7a8b5f8935a"
+      ],
+      "author_datetime": "2026-11-08T00:01:51+08:00",
+      "subject": "Cancel managed native jobs through supervisor cleanup and retain unknown effects",
+      "changed_file_count": 25,
+      "changed_core_files": [
+        "agent_lab/engine.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/store.py",
+        "agent_lab/tool_control.py",
+        "agent_lab/tools.py",
+        "tests/acceptance/test_tool_cancel_process.py",
+        "tests/acceptance/tool_cancel_child.py",
+        "tests/dev/test_tool_cancellation.py",
+        "tests/dev/test_tool_stop.py"
+      ]
+    },
+    {
+      "commit": "7fe5bdb26a3b0f98cf6a3c431a81b344689ca414",
+      "parents": [
+        "cd55aacf747ef277828ac8069e05c42a34e2c12b"
+      ],
+      "author_datetime": "2026-11-08T00:34:02+08:00",
+      "subject": "Fork resolved session histories with fresh authority and explicit shared files",
+      "changed_file_count": 26,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/context.py",
+        "agent_lab/diagnostics.py",
+        "agent_lab/engine.py",
+        "tests/dev/test_session_fork.py",
+        "tests/dev/test_session_fork_cli.py",
+        "tests/dev/test_session_fork_context.py",
+        "tests/dev/test_session_fork_http.py"
+      ]
+    },
+    {
+      "commit": "bc46d1f8fe2b4b5f9b09fa17a74d09bef6ce2182",
+      "parents": [
+        "7fe5bdb26a3b0f98cf6a3c431a81b344689ca414"
+      ],
+      "author_datetime": "2026-11-08T02:10:39+08:00",
+      "subject": "Quarantine workspaces until native producers durably confirm quiescence",
+      "changed_file_count": 35,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/engine.py",
+        "agent_lab/native_job_runtime.py",
+        "agent_lab/native_jobs.py",
+        "agent_lab/process_guard.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/store.py",
+        "agent_lab/tools.py",
+        "tests/acceptance/native_job_child.py",
+        "tests/acceptance/test_native_job_quarantine_process.py",
+        "tests/dev/test_native_job_cli.py",
+        "tests/dev/test_native_job_runtime.py",
+        "tests/dev/test_native_jobs.py",
+        "tests/dev/test_native_jobs_races.py",
+        "tests/dev/test_trusted_runtime_boundary.py"
+      ]
+    },
+    {
+      "commit": "324e457897914d5b6007a87a86829650da68c439",
+      "parents": [
+        "bc46d1f8fe2b4b5f9b09fa17a74d09bef6ce2182"
+      ],
+      "author_datetime": "2026-11-08T02:29:21+08:00",
+      "subject": "Stream bounded private native tool output without granting completion authority",
+      "changed_file_count": 32,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/tool_display.py",
+        "agent_lab/tool_output.py",
+        "agent_lab/tools.py",
+        "tests/dev/test_tool_output_display.py",
+        "tests/dev/test_tool_output_parent.py",
+        "tests/dev/test_tool_output_review.py",
+        "tests/dev/test_tool_output_transport.py"
+      ]
+    },
+    {
+      "commit": "6b5e75bcdc122b22b0ce90ac845feec23169bb0d",
+      "parents": [
+        "324e457897914d5b6007a87a86829650da68c439"
+      ],
+      "author_datetime": "2026-11-08T02:48:09+08:00",
+      "subject": "Discover saved sessions with readonly scalar pages and connection-bound cursors",
+      "changed_file_count": 31,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/session_listing.py",
+        "agent_lab/store.py",
+        "tests/dev/test_session_listing.py",
+        "tests/dev/test_session_listing_cli.py",
+        "tests/dev/test_session_listing_edge.py",
+        "tests/dev/test_session_listing_review.py",
+        "tests/dev/test_store_connection_identity.py"
+      ]
+    },
+    {
+      "commit": "c6c218c3c5ee237aee69b390abf4bdfe5c58d3b3",
+      "parents": [
+        "6b5e75bcdc122b22b0ce90ac845feec23169bb0d"
+      ],
+      "author_datetime": "2026-11-08T02:49:17+08:00",
+      "subject": "Freeze two unconsumed V3 coding tasks with independently authored oracles",
+      "changed_file_count": 32,
+      "changed_core_files": []
+    },
+    {
+      "commit": "3ab9fe4cec0d94996845f168f6d01abc28ab4f82",
+      "parents": [
+        "c6c218c3c5ee237aee69b390abf4bdfe5c58d3b3"
+      ],
+      "author_datetime": "2026-11-08T03:23:27+08:00",
+      "subject": "Version acceptance quality scoring and durably fence possible holdout exposure",
+      "changed_file_count": 31,
+      "changed_core_files": [
+        "agent_lab/sandbox.py",
+        "scripts/evaluate_acceptance_v3.py",
+        "scripts/holdout_gate.py",
+        "tests/dev/test_acceptance_v3_cli.py",
+        "tests/dev/test_acceptance_v3_review.py",
+        "tests/dev/test_acceptance_v3_runner.py",
+        "tests/dev/test_holdout_gate.py"
+      ]
+    },
+    {
+      "commit": "df284be407f18c0bbab5efaa1aa4be0395366c12",
+      "parents": [
+        "3ab9fe4cec0d94996845f168f6d01abc28ab4f82"
+      ],
+      "author_datetime": "2026-11-08T04:10:59+08:00",
+      "subject": "Protect whole workspaces while retaining isolated native scratch and approval boundaries",
+      "changed_file_count": 29,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/permissions.py",
+        "agent_lab/sandbox.py",
+        "tests/dev/test_read_only_policy.py",
+        "tests/dev/test_workspace_readonly.py",
+        "tests/dev/test_workspace_readonly_cli.py",
+        "tests/dev/test_workspace_readonly_native.py",
+        "tests/dev/test_workspace_readonly_review.py"
+      ]
+    },
+    {
+      "commit": "e8dbf194f976d9f895c8a8bdfb53650ba2f6e4ba",
+      "parents": [
+        "df284be407f18c0bbab5efaa1aa4be0395366c12"
+      ],
+      "author_datetime": "2026-11-08T04:49:38+08:00",
+      "subject": "Page committed task events without loading private history or mutating storage",
+      "changed_file_count": 24,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/event_reader.py",
+        "agent_lab/store.py",
+        "tests/dev/test_event_reader.py",
+        "tests/dev/test_event_reader_cli.py",
+        "tests/dev/test_event_reader_review.py"
+      ]
+    },
+    {
+      "commit": "e7022fb0170817bb83289b28e0a1a71fcde315e8",
+      "parents": [
+        "e8dbf194f976d9f895c8a8bdfb53650ba2f6e4ba"
+      ],
+      "author_datetime": "2026-11-08T05:15:36+08:00",
+      "subject": "Admit explicit Node runtimes through bound command authority and managed native execution",
+      "changed_file_count": 48,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/command_runtime.py",
+        "agent_lab/commands.py",
+        "agent_lab/engine.py",
+        "agent_lab/registry.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/tools.py",
+        "tests/dev/test_node_authority.py",
+        "tests/dev/test_node_integration.py",
+        "tests/dev/test_node_native.py",
+        "tests/dev/test_node_review.py"
+      ]
+    },
+    {
+      "commit": "d20ea92e4abfc1eefb13b763ccf0a9f270c9dbc8",
+      "parents": [
+        "e7022fb0170817bb83289b28e0a1a71fcde315e8"
+      ],
+      "author_datetime": "2026-11-08T05:26:03+08:00",
+      "subject": "Follow committed metadata with bounded polling and explicit observation lifecycle",
+      "changed_file_count": 20,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/event_reader.py",
+        "tests/dev/test_event_follow.py",
+        "tests/dev/test_event_follow_cli.py",
+        "tests/dev/test_event_follow_review.py"
+      ]
+    },
+    {
+      "commit": "5fd05670b2bc010d687dec051d8d2d4981bfad90",
+      "parents": [
+        "d20ea92e4abfc1eefb13b763ccf0a9f270c9dbc8"
+      ],
+      "author_datetime": "2026-11-08T05:37:54+08:00",
+      "subject": "Contain runtime admission errors at the CLI without rendering private exceptions",
+      "changed_file_count": 17,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "tests/dev/test_cli_runtime_errors.py",
+        "tests/dev/test_cli_runtime_errors_review.py"
+      ]
+    },
+    {
+      "commit": "b517001a9399f62de28afae98ff0c7f04dcb7472",
+      "parents": [
+        "5fd05670b2bc010d687dec051d8d2d4981bfad90"
+      ],
+      "author_datetime": "2026-11-08T06:10:11+08:00",
+      "subject": "Track bounded file-read versions without promoting observations or rewriting history",
+      "changed_file_count": 35,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/context.py",
+        "agent_lab/engine.py",
+        "agent_lab/file_context.py",
+        "agent_lab/interactive.py",
+        "agent_lab/store.py",
+        "agent_lab/tools.py",
+        "tests/dev/test_file_context.py",
+        "tests/dev/test_file_context_cli.py",
+        "tests/dev/test_file_context_integration.py",
+        "tests/dev/test_file_context_restart.py",
+        "tests/dev/test_file_context_review.py"
+      ]
+    },
+    {
+      "commit": "cd6eac446382bc5a9a1d5166bf9b4116878df2eb",
+      "parents": [
+        "b517001a9399f62de28afae98ff0c7f04dcb7472"
+      ],
+      "author_datetime": "2026-11-08T06:47:25+08:00",
+      "subject": "Reuse existing cost authority when runtimes move instead of initializing empty ledgers",
+      "changed_file_count": 26,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/budget.py",
+        "scripts/probe_budget_relocation.py",
+        "tests/dev/test_budget_routing_cli.py",
+        "tests/dev/test_budget_routing_review.py",
+        "tests/dev/test_existing_budget.py",
+        "tests/dev/test_provider_configs.py"
+      ]
+    },
+    {
+      "commit": "58ac063a819dbdf40e686f232ff483b72e3c0b54",
+      "parents": [
+        "cd6eac446382bc5a9a1d5166bf9b4116878df2eb"
+      ],
+      "author_datetime": "2026-11-08T07:05:27+08:00",
+      "subject": "Validate noneditable runtime deployment and launch canonical guest interpreter",
+      "changed_file_count": 19,
+      "changed_core_files": [
+        "agent_lab/sandbox.py",
+        "scripts/validate_installed_runtime.py",
+        "tests/dev/test_venv_native.py"
+      ]
+    },
+    {
+      "commit": "9f7a971e0c0d7b4adf2543ba68c03488ca547043",
+      "parents": [
+        "58ac063a819dbdf40e686f232ff483b72e3c0b54"
+      ],
+      "author_datetime": "2026-11-08T07:25:26+08:00",
+      "subject": "Add approved Streamable HTTP MCP with bounded RPC completion and no effect replay",
+      "changed_file_count": 28,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/mcp.py",
+        "agent_lab/mcp_http.py",
+        "agent_lab/registry.py",
+        "tests/dev/test_mcp_http.py",
+        "tests/dev/test_mcp_http_registry.py",
+        "tests/dev/test_mcp_http_review.py",
+        "tests/fixtures/mcp_http_server.py"
+      ]
+    },
+    {
+      "commit": "e619f3301d82489f4caaffb6d1d54b2271e7a6a3",
+      "parents": [
+        "9f7a971e0c0d7b4adf2543ba68c03488ca547043"
+      ],
+      "author_datetime": "2026-11-08T08:00:45+08:00",
+      "subject": "Admit explicit same-base Python venvs with bound read-only dependencies",
+      "changed_file_count": 38,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/command_runtime.py",
+        "agent_lab/commands.py",
+        "agent_lab/python_environment.py",
+        "agent_lab/registry.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/tools.py",
+        "scripts/validate_python_environment.py",
+        "tests/dev/test_python_environment.py",
+        "tests/dev/test_python_environment_integration.py",
+        "tests/dev/test_python_environment_review.py"
+      ]
+    },
+    {
+      "commit": "18257309f896aa63480dfca853f775553482e986",
+      "parents": [
+        "e619f3301d82489f4caaffb6d1d54b2271e7a6a3"
+      ],
+      "author_datetime": "2026-11-08T08:16:06+08:00",
+      "subject": "Verify native Python entry and reject forced ENOSYS as current libuv compatibility path",
+      "changed_file_count": 14,
+      "changed_core_files": [
+        "scripts/probe_libuv_spawn_denial.py",
+        "scripts/probe_native_entry.py"
+      ]
+    },
+    {
+      "commit": "f280c426b91392a9da7d987689f6c216801a768b",
+      "parents": [
+        "18257309f896aa63480dfca853f775553482e986"
+      ],
+      "author_datetime": "2026-11-08T08:55:08+08:00",
+      "subject": "Observe owned unreaped groups and validate bounded fork drain without enabling production",
+      "changed_file_count": 27,
+      "changed_core_files": [
+        "agent_lab/process_group.py",
+        "scripts/probe_confined_group.py",
+        "scripts/probe_unreaped_group.py",
+        "tests/dev/test_process_group.py",
+        "tests/dev/test_process_group_review.py"
+      ]
+    },
+    {
+      "commit": "e51391d282c6ca148fc88ad648971ede9ffcddd2",
+      "parents": [
+        "f280c426b91392a9da7d987689f6c216801a768b"
+      ],
+      "author_datetime": "2026-11-08T09:21:17+08:00",
+      "subject": "Build private confined collector and verify bounded drain plus durable death boundaries",
+      "changed_file_count": 24,
+      "changed_core_files": [
+        "agent_lab/confined_collector.py",
+        "tests/acceptance/test_confined_collector_process.py",
+        "tests/dev/test_confined_collector.py",
+        "tests/dev/test_confined_collector_review.py"
+      ]
+    },
+    {
+      "commit": "277536390503ac9030b3ce46e1aa357b75c4b8fd",
+      "parents": [
+        "e51391d282c6ca148fc88ad648971ede9ffcddd2"
+      ],
+      "author_datetime": "2026-11-08T09:46:57+08:00",
+      "subject": "Integrate explicit confined backend through authority approvals and supervised coding execution",
+      "changed_file_count": 42,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/command_runtime.py",
+        "agent_lab/commands.py",
+        "agent_lab/confined_backend.py",
+        "agent_lab/python_environment.py",
+        "agent_lab/registry.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/tools.py",
+        "tests/acceptance/test_confined_backend_cancel_process.py",
+        "tests/acceptance/test_confined_backend_cli_process.py",
+        "tests/acceptance/tool_cancel_child.py",
+        "tests/dev/test_confined_backend.py",
+        "tests/dev/test_confined_backend_native.py"
+      ]
+    },
+    {
+      "commit": "575ff20edb7c711c63af8e6fb83fa6933f9be286",
+      "parents": [
+        "277536390503ac9030b3ce46e1aa357b75c4b8fd"
+      ],
+      "author_datetime": "2026-11-08T10:16:33+08:00",
+      "subject": "Register explicit host executables with bounded path admission and versioned supervision",
+      "changed_file_count": 40,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/command_runtime.py",
+        "agent_lab/commands.py",
+        "agent_lab/engine.py",
+        "agent_lab/executables.py",
+        "agent_lab/registry.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/tools.py",
+        "tests/acceptance/test_extra_executables_cli_process.py",
+        "tests/dev/test_extra_executables.py",
+        "tests/dev/test_extra_executables_native.py",
+        "tests/dev/test_extra_executables_review.py"
+      ]
+    },
+    {
+      "commit": "e9f9f573f8838c7970f4f86c45e1c9a02c906ffb",
+      "parents": [
+        "575ff20edb7c711c63af8e6fb83fa6933f9be286"
+      ],
+      "author_datetime": "2026-11-08T10:53:15+08:00",
+      "subject": "Bind explicit workspace executable scope and close shared test hardlink admission gap",
+      "changed_file_count": 43,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/command_runtime.py",
+        "agent_lab/commands.py",
+        "agent_lab/engine.py",
+        "agent_lab/registry.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/tools.py",
+        "agent_lab/workspace_exec.py",
+        "tests/acceptance/test_workspace_exec_cli_process.py",
+        "tests/dev/test_workspace_exec.py",
+        "tests/dev/test_workspace_exec_native.py",
+        "tests/dev/test_workspace_exec_review.py",
+        "tests/native_fixture.py"
+      ]
+    },
+    {
+      "commit": "d666453df9e05c6ad3969567efc85c017e3aac1c",
+      "parents": [
+        "e9f9f573f8838c7970f4f86c45e1c9a02c906ffb"
+      ],
+      "author_datetime": "2026-11-08T11:30:21+08:00",
+      "subject": "Bind readonly tool resources and verify sandbox compile repair pipeline",
+      "changed_file_count": 40,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/coding_tools.py",
+        "agent_lab/command_runtime.py",
+        "agent_lab/commands.py",
+        "agent_lab/engine.py",
+        "agent_lab/registry.py",
+        "agent_lab/sandbox.py",
+        "agent_lab/tool_resources.py",
+        "agent_lab/tools.py",
+        "scripts/probe_compiler_resources.py",
+        "tests/acceptance/test_tool_resources_cli_process.py",
+        "tests/dev/test_tool_resources.py",
+        "tests/dev/test_tool_resources_native.py"
+      ]
+    },
+    {
+      "commit": "edeec908d473541e2d43141a2d2f73c8d41e579c",
+      "parents": [
+        "d666453df9e05c6ad3969567efc85c017e3aac1c"
+      ],
+      "author_datetime": "2026-11-08T11:45:41+08:00",
+      "subject": "Reuse explicit Host runtime configuration across CLI execution and recovery",
+      "changed_file_count": 27,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/runtime_config.py",
+        "tests/acceptance/test_runtime_config_cli_process.py",
+        "tests/dev/test_runtime_config.py"
+      ]
+    },
+    {
+      "commit": "aa39b8746f9482ad73b8c3b3ed98c6f5f475e9c4",
+      "parents": [
+        "edeec908d473541e2d43141a2d2f73c8d41e579c"
+      ],
+      "author_datetime": "2026-11-08T12:00:32+08:00",
+      "subject": "Verify pinned official MCP filesystem interoperability and reproducible fixture",
+      "changed_file_count": 26,
+      "changed_core_files": [
+        "scripts/prepare_official_mcp.py",
+        "scripts/probe_official_mcp.py",
+        "tests/dev/test_official_mcp_report.py"
+      ]
+    },
+    {
+      "commit": "ae0ca0758d206c5cc9d3d67db764059b8593b716",
+      "parents": [
+        "aa39b8746f9482ad73b8c3b3ed98c6f5f475e9c4"
+      ],
+      "author_datetime": "2026-11-08T12:28:23+08:00",
+      "subject": "Interrupt MCP waits without claiming external quiescence or replaying effects",
+      "changed_file_count": 37,
+      "changed_core_files": [
+        "agent_lab/mcp.py",
+        "agent_lab/mcp_http.py",
+        "agent_lab/registry.py",
+        "agent_lab/tools.py",
+        "tests/acceptance/mcp_cancel_child.py",
+        "tests/acceptance/test_mcp_cancel_process.py",
+        "tests/dev/test_mcp_active_cancel.py",
+        "tests/fixtures/mcp_http_server.py"
+      ]
+    },
+    {
+      "commit": "43c4b77bda1e50d41f587f8d793b933331c44f00",
+      "parents": [
+        "ae0ca0758d206c5cc9d3d67db764059b8593b716"
+      ],
+      "author_datetime": "2026-11-08T13:15:31+08:00",
+      "subject": "Reuse skill resources and approval-bound Python source snapshots",
+      "changed_file_count": 39,
+      "changed_core_files": [
+        "agent_lab/context.py",
+        "agent_lab/engine.py",
+        "agent_lab/event_reader.py",
+        "agent_lab/history.py",
+        "agent_lab/skill_resources.py",
+        "agent_lab/store.py",
+        "tests/acceptance/test_skill_script_cli_process.py",
+        "tests/dev/test_skill_resources.py",
+        "tests/dev/test_skill_resources_native.py"
+      ]
+    },
+    {
+      "commit": "736aac6211616196946244b5e545f66a33c8cce0",
+      "parents": [
+        "43c4b77bda1e50d41f587f8d793b933331c44f00"
+      ],
+      "author_datetime": "2026-11-08T13:44:43+08:00",
+      "subject": "Add approved MCP resource discovery and context reads with safe failure boundaries",
+      "changed_file_count": 50,
+      "changed_core_files": [
+        "agent_lab/mcp.py",
+        "agent_lab/registry.py",
+        "scripts/probe_mcp_resources.py",
+        "tests/acceptance/test_mcp_resource_cli_process.py",
+        "tests/dev/test_mcp_resources.py",
+        "tests/dev/test_node_review.py",
+        "tests/fixtures/mcp_http_server.py",
+        "tests/fixtures/mcp_resource_server.py",
+        "tests/fixtures/mcp_sdk_resources.mjs"
+      ]
+    },
+    {
+      "commit": "c4408b9b5273014ad6e57c3fb3a07eb566b57709",
+      "parents": [
+        "736aac6211616196946244b5e545f66a33c8cce0"
+      ],
+      "author_datetime": "2026-11-08T14:48:08+08:00",
+      "subject": "Record installed Codex stream-boundary behavior with isolated MCP fixtures",
+      "changed_file_count": 49,
+      "changed_core_files": [
+        "scripts/probe_reference_cli.py",
+        "scripts/probe_reference_tool_boundary.py",
+        "scripts/reference_cli.py",
+        "scripts/reference_protocol.py",
+        "tests/dev/test_reference_cli_boundary.py",
+        "tests/dev/test_reference_probe_reports.py",
+        "tests/dev/test_reference_protocol_fixture.py",
+        "tests/fixtures/reference_mcp_server.py"
+      ]
+    },
+    {
+      "commit": "71c74150835d96a345571194cb45498d70aa3d42",
+      "parents": [
+        "c4408b9b5273014ad6e57c3fb3a07eb566b57709"
+      ],
+      "author_datetime": "2026-11-08T14:49:41+08:00",
+      "subject": "Enable explicit prepaid DeepSeek authorization while retaining usage and exhaustion guards",
+      "changed_file_count": 18,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/budget.py",
+        "agent_lab/engine.py",
+        "scripts/evaluate_acceptance_v3.py",
+        "tests/dev/test_prepaid_authorization.py"
+      ]
+    },
+    {
+      "commit": "1593232aa1311ac77cfefde0af979ac9ebd8e113",
+      "parents": [
+        "71c74150835d96a345571194cb45498d70aa3d42"
+      ],
+      "author_datetime": "2026-11-08T15:15:20+08:00",
+      "subject": "Validate live multi-turn coding and fix nullable Responses error handling",
+      "changed_file_count": 46,
+      "changed_core_files": [
+        "agent_lab/protocols.py",
+        "tests/dev/test_responses_continuation.py"
+      ]
+    },
+    {
+      "commit": "a6bbe6fd265f7653a6d660905b75399dbec4853d",
+      "parents": [
+        "1593232aa1311ac77cfefde0af979ac9ebd8e113"
+      ],
+      "author_datetime": "2026-11-08T15:27:08+08:00",
+      "subject": "Preserve live protocol failures and automatic compaction evidence after full regression",
+      "changed_file_count": 19,
+      "changed_core_files": []
+    },
+    {
+      "commit": "05cfa62a933fa0ac46083e401e16b21fb7075ba8",
+      "parents": [
+        "a6bbe6fd265f7653a6d660905b75399dbec4853d"
+      ],
+      "author_datetime": "2026-11-08T21:54:20+08:00",
+      "subject": "Record authorized frozen V3 acceptance with immutable model artifacts",
+      "changed_file_count": 30,
+      "changed_core_files": []
+    },
+    {
+      "commit": "8c11d9d3cb97ca9169456e60ac9a0d73457dc516",
+      "parents": [
+        "05cfa62a933fa0ac46083e401e16b21fb7075ba8"
+      ],
+      "author_datetime": "2026-11-08T22:08:11+08:00",
+      "subject": "Expose fixed protocol failure details without changing execution or retry boundaries",
+      "changed_file_count": 18,
+      "changed_core_files": [
+        "agent_lab/model.py",
+        "agent_lab/protocols.py",
+        "tests/dev/test_protocol_failure_details.py",
+        "tests/dev/test_transport_diagnostics.py"
+      ]
+    },
+    {
+      "commit": "d47ecfa4b7ab6c8f681ca51eb4dd7cedbf3ecde1",
+      "parents": [
+        "8c11d9d3cb97ca9169456e60ac9a0d73457dc516"
+      ],
+      "author_datetime": "2026-11-08T22:19:09+08:00",
+      "subject": "Record full diagnostic regression and authorized unchanged-input summary probe",
+      "changed_file_count": 10,
+      "changed_core_files": []
+    },
+    {
+      "commit": "03109afad909330fc40ec260cb4e15ddadb2ee99",
+      "parents": [
+        "d47ecfa4b7ab6c8f681ca51eb4dd7cedbf3ecde1"
+      ],
+      "author_datetime": "2026-11-09T00:31:48+08:00",
+      "subject": "Define autonomous context mission and fit semantic rollovers to complete input budgets",
+      "changed_file_count": 68,
+      "changed_core_files": [
+        "agent_lab/compaction.py",
+        "agent_lab/context.py",
+        "agent_lab/engine.py",
+        "agent_lab/store.py",
+        "tests/dev/test_auto_context.py",
+        "tests/dev/test_incremental_compaction.py"
+      ]
+    },
+    {
+      "commit": "fc8a09e40a52d8aaf7f93b394af45c6483f4e647",
+      "parents": [
+        "03109afad909330fc40ec260cb4e15ddadb2ee99"
+      ],
+      "author_datetime": "2026-11-09T00:54:28+08:00",
+      "subject": "Add real process context mission runner and freeze public multi-turn development checks",
+      "changed_file_count": 24,
+      "changed_core_files": [
+        "scripts/context_mission.py",
+        "tests/dev/test_context_mission.py"
+      ]
+    },
+    {
+      "commit": "591b5a4b5c36e35f1d6db4917650120c78a7fe2a",
+      "parents": [
+        "fc8a09e40a52d8aaf7f93b394af45c6483f4e647"
+      ],
+      "author_datetime": "2026-11-09T01:02:35+08:00",
+      "subject": "Allow bounded intermediate summary progress and preserve both process receipt segments",
+      "changed_file_count": 36,
+      "changed_core_files": [
+        "agent_lab/context.py",
+        "agent_lab/engine.py",
+        "scripts/context_mission.py",
+        "tests/dev/test_context_mission.py",
+        "tests/dev/test_incremental_compaction.py"
+      ]
+    },
+    {
+      "commit": "75c91547a31238dbd31d0b7346210ee16e6376e9",
+      "parents": [
+        "591b5a4b5c36e35f1d6db4917650120c78a7fe2a"
+      ],
+      "author_datetime": "2026-11-09T01:09:24+08:00",
+      "subject": "Fit derived evidence index after semantic rollover and retain receipts on missing child results",
+      "changed_file_count": 25,
+      "changed_core_files": [
+        "agent_lab/context.py",
+        "scripts/context_mission.py",
+        "tests/dev/test_context_mission.py",
+        "tests/dev/test_incremental_compaction.py"
+      ]
+    },
+    {
+      "commit": "3ee8fc5e6e59e26c70b4b35db69ac95a2e7b4aad",
+      "parents": [
+        "75c91547a31238dbd31d0b7346210ee16e6376e9"
+      ],
+      "author_datetime": "2026-11-09T01:15:22+08:00",
+      "subject": "Honor configured summary output ceiling after explicit real token truncation",
+      "changed_file_count": 22,
+      "changed_core_files": [
+        "agent_lab/engine.py",
+        "tests/dev/test_incremental_compaction.py"
+      ]
+    },
+    {
+      "commit": "0a7eee950d281ea14adcba9bd9613fe5aa29ad6d",
+      "parents": [
+        "3ee8fc5e6e59e26c70b4b35db69ac95a2e7b4aad"
+      ],
+      "author_datetime": "2026-11-09T01:20:48+08:00",
+      "subject": "Preserve transport and regression failures and require observed Node launch before timeout cleanup checks",
+      "changed_file_count": 17,
+      "changed_core_files": [
+        "tests/dev/test_node_native.py"
+      ]
+    },
+    {
+      "commit": "5a9c2c74d3279492106f2d555895766d252d24e2",
+      "parents": [
+        "0a7eee950d281ea14adcba9bd9613fe5aa29ad6d"
+      ],
+      "author_datetime": "2026-11-09T01:28:14+08:00",
+      "subject": "Release completed prior-input batches for incremental summaries and correct schema sizing evidence",
+      "changed_file_count": 23,
+      "changed_core_files": [
+        "agent_lab/compaction.py",
+        "tests/dev/test_auto_context.py",
+        "tests/dev/test_incremental_compaction.py"
+      ]
+    },
+    {
+      "commit": "29a06fd5e9ef3039db8095a54187254c7b4a6ed9",
+      "parents": [
+        "5a9c2c74d3279492106f2d555895766d252d24e2"
+      ],
+      "author_datetime": "2026-11-09T01:36:44+08:00",
+      "subject": "Adapt complete current tool result previews to remaining context space without hiding errors",
+      "changed_file_count": 23,
+      "changed_core_files": [
+        "agent_lab/context.py",
+        "tests/dev/test_incremental_compaction.py"
+      ]
+    },
+    {
+      "commit": "709bbfa936231547f4f60472ade0c7d3511b7ac7",
+      "parents": [
+        "29a06fd5e9ef3039db8095a54187254c7b4a6ed9"
+      ],
+      "author_datetime": "2026-11-09T01:49:25+08:00",
+      "subject": "Separate summary input from working context and record prospective experiment revision",
+      "changed_file_count": 38,
+      "changed_core_files": [
+        "agent_lab/__main__.py",
+        "agent_lab/engine.py",
+        "scripts/context_mission.py",
+        "tests/dev/test_context_mission.py",
+        "tests/dev/test_incremental_compaction.py"
+      ]
+    },
+    {
+      "commit": "73d00692d3a277fb93729266848e6185b1984d6d",
+      "parents": [
+        "709bbfa936231547f4f60472ade0c7d3511b7ac7"
+      ],
+      "author_datetime": "2026-11-09T01:54:15+08:00",
+      "subject": "Record real four-Turn R1 coding continuity and owned SIGKILL recovery before sealed acceptance",
+      "changed_file_count": 18,
+      "changed_core_files": []
+    },
+    {
+      "commit": "312df8fd44dc1d78d5c751bb172d8327eff51e5e",
+      "parents": [
+        "73d00692d3a277fb93729266848e6185b1984d6d"
+      ],
+      "author_datetime": "2026-11-09T02:17:05+08:00",
+      "subject": "Preserve sealed1 of2 outcome and fix same-version read-source notification duplication",
+      "changed_file_count": 49,
+      "changed_core_files": [
+        "agent_lab/file_context.py",
+        "tests/dev/test_file_context.py"
+      ]
+    },
+    {
+      "commit": "631a1d48a49ea9398cd5f43206205dd036a09f01",
+      "parents": [
+        "312df8fd44dc1d78d5c751bb172d8327eff51e5e"
+      ],
+      "author_datetime": "2026-11-09T02:20:31+08:00",
+      "subject": "Freeze fresh context acceptance v2 under unchanged quality gates after v1 consumption",
+      "changed_file_count": 36,
+      "changed_core_files": []
+    },
+    {
+      "commit": "4670264433e1eaa8667da2464b978eed4a40f5bf",
+      "parents": [
+        "631a1d48a49ea9398cd5f43206205dd036a09f01"
+      ],
+      "author_datetime": "2026-11-09T02:28:37+08:00",
+      "subject": "Record bounded model controls and honor selected official model and all-Turn acceptance budgets",
+      "changed_file_count": 21,
+      "changed_core_files": [
+        "scripts/context_mission.py",
+        "tests/dev/test_context_mission.py"
+      ]
+    },
+    {
+      "commit": "9e7eea242d1bc08e91572dbe90cef4f5cb8330fb",
+      "parents": [
+        "4670264433e1eaa8667da2464b978eed4a40f5bf"
+      ],
+      "author_datetime": "2026-11-09T02:34:12+08:00",
+      "subject": "Close bounded model diagnostics without superiority claims and fix fresh acceptance configuration",
+      "changed_file_count": 5,
+      "changed_core_files": []
+    },
+    {
+      "commit": "7ecd15f0e5dda51f34e049898d25aeab96c25d95",
+      "parents": [
+        "9e7eea242d1bc08e91572dbe90cef4f5cb8330fb"
+      ],
+      "author_datetime": "2026-11-09T03:42:08+08:00",
+      "subject": "Maintain semantic context across every Turn and freeze mutation-bound continuity acceptance",
+      "changed_file_count": 105,
+      "changed_core_files": [
+        "agent_lab/engine.py",
+        "agent_lab/store.py",
+        "scripts/context_mission.py",
+        "tests/dev/test_auto_context.py",
+        "tests/dev/test_coding_failure_feedback.py",
+        "tests/dev/test_context_mission.py"
+      ]
+    },
+    {
+      "commit": "dfd80538bee0426cd7578ee07f3cb0a3164851f4",
+      "parents": [
+        "7ecd15f0e5dda51f34e049898d25aeab96c25d95"
+      ],
+      "author_datetime": "2026-11-09T03:42:29+08:00",
+      "subject": "Pin prospective v3 runtime and continuity protocol before exposure",
+      "changed_file_count": 1,
+      "changed_core_files": []
+    },
+    {
+      "commit": "34c617c8b7d1efb19512eba568737f0aa81418c3",
+      "parents": [
+        "dfd80538bee0426cd7578ee07f3cb0a3164851f4"
+      ],
+      "author_datetime": "2026-11-09T03:57:46+08:00",
+      "subject": "Preserve frozen R2 outcomes and add bounded Coding execution guidance for diagnosis",
+      "changed_file_count": 55,
+      "changed_core_files": [
+        "agent_lab/engine.py"
+      ]
+    },
+    {
+      "commit": "fc9b4c3e2c9b5aa9f961f1180e5deb00d98e59f9",
+      "parents": [
+        "34c617c8b7d1efb19512eba568737f0aa81418c3"
+      ],
+      "author_datetime": "2026-11-09T04:20:44+08:00",
+      "subject": "Feed bounded execution and request-budget reviews back at resolved Coding boundaries",
+      "changed_file_count": 51,
+      "changed_core_files": [
+        "agent_lab/engine.py",
+        "tests/dev/test_execution_review.py"
+      ]
+    },
+    {
+      "commit": "f637164697a0e49806a2319ef1f288f18b131144",
+      "parents": [
+        "fc9b4c3e2c9b5aa9f961f1180e5deb00d98e59f9"
+      ],
+      "author_datetime": "2026-11-09T05:03:58+08:00",
+      "subject": "Declare practical Thinking experiment profile and enforce frozen acceptance admission",
+      "changed_file_count": 76,
+      "changed_core_files": [
+        "scripts/context_mission.py",
+        "tests/dev/test_context_mission.py"
+      ]
+    },
+    {
+      "commit": "02ac7231b978003d59fa528b242586b37d9d01ca",
+      "parents": [
+        "f637164697a0e49806a2319ef1f288f18b131144"
+      ],
+      "author_datetime": "2026-11-09T05:08:03+08:00",
+      "subject": "Freeze final four-Turn practical-profile acceptance and pre-exposure source evidence",
+      "changed_file_count": 55,
+      "changed_core_files": []
+    },
+    {
+      "commit": "84e4456884ae32c911e7f6f6b336ad72776060a6",
+      "parents": [
+        "02ac7231b978003d59fa528b242586b37d9d01ca"
+      ],
+      "author_datetime": "2026-11-09T12:07:42+08:00",
+      "subject": "Preserve typed Git capability failures across trusted worker without weakening invocation or effect guards",
+      "changed_file_count": 72,
+      "changed_core_files": [
+        "agent_lab/engine.py",
+        "agent_lab/git_tools.py",
+        "agent_lab/store.py",
+        "agent_lab/tools.py",
+        "scripts/context_mission.py",
+        "tests/dev/test_context_mission.py",
+        "tests/dev/test_git_availability.py"
+      ]
+    },
+    {
+      "commit": "e0d304057bb1d3c18062610928a4b6d355e9624c",
+      "parents": [
+        "84e4456884ae32c911e7f6f6b336ad72776060a6"
+      ],
+      "author_datetime": "2026-11-09T12:46:16+08:00",
+      "subject": "Record fixed-source live continuation regressions and final offline suite",
+      "changed_file_count": 61,
+      "changed_core_files": []
+    },
+    {
+      "commit": "e547109e87957bbe067f444350a611cf92db71a2",
+      "parents": [
+        "e0d304057bb1d3c18062610928a4b6d355e9624c"
+      ],
+      "author_datetime": "2026-11-09T12:49:25+08:00",
+      "subject": "Freeze new four-turn acceptance for fixed Git capability runtime",
+      "changed_file_count": 60,
+      "changed_core_files": []
+    },
+    {
+      "commit": "dbe2b07f032d1dbb9b06eeadb5b312db61c8e3d8",
+      "parents": [
+        "e547109e87957bbe067f444350a611cf92db71a2"
+      ],
+      "author_datetime": "2026-11-09T13:33:27+08:00",
+      "subject": "Close context mission with fresh four-turn coding acceptance and evidence",
+      "changed_file_count": 51,
+      "changed_core_files": []
+    }
+  ]
+}

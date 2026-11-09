@@ -1,0 +1,21 @@
+{
+  "binary": "/usr/bin/ruby",
+  "binary_sha256": "5dc31d7b1d8d634c9b82d629ee17447e6ec7b2d72eb7f868f4afe0de8ac80ce5",
+  "command_backend": "confined-fork",
+  "kind": "fixed_owned_native_tool_probe",
+  "model_kind": null,
+  "production_registered": false,
+  "profile_only_added": [
+    "literal process-exec",
+    "literal file-read",
+    "parent metadata"
+  ],
+  "result": {
+    "exit_code": 0,
+    "ok": true,
+    "stderr": "",
+    "stderr_truncated": false,
+    "stdout": "2.6.10\n",
+    "stdout_truncated": false
+  }
+}

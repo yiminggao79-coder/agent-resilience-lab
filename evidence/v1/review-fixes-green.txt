@@ -1,0 +1,28 @@
+test_assertion_monkeypatch_cannot_change_parent_value_comparison (tests.dev.test_review_v1.ReviewOracleTests) ... ok
+test_early_exit_cannot_count_as_successful_observation (tests.dev.test_review_v1.ReviewOracleTests) ... ok
+test_live_evaluator_rejects_zero_assertion_candidate_without_vendor_calls (tests.dev.test_review_v1.ReviewOracleTests) ... ok
+test_complete_bad_argument_json_returns_feedback_and_preserves_usage (tests.dev.test_review_v1.ReviewProtocolTests) ... ok
+test_anthropic_and_responses_streams_complete_and_fail_closed (tests.dev.test_model_protocols.ModelOtherStreamsHTTPTests) ... ok
+test_all_protocols_use_real_worker_and_protocol_headers (tests.dev.test_model_protocols.ModelProtocolHTTPTests) ... ok
+test_identity_changes_with_protocol_and_capabilities (tests.dev.test_model_protocols.ModelProtocolHTTPTests) ... ok
+test_response_size_limit_applies_to_stream (tests.dev.test_model_protocols.ModelProtocolHTTPTests) ... ok
+test_worker_stream_assembles_tool_and_rejects_incomplete_response (tests.dev.test_model_protocols.ModelProtocolHTTPTests) ... ok
+test_chat_private_reasoning_and_request_id_are_preserved_canonically (tests.dev.test_model_protocols.ProtocolBoundaryTests) ... ok
+test_refusal_is_rejected_and_complete_bad_arguments_reach_engine (tests.dev.test_model_protocols.ProtocolBoundaryTests) ... ok
+test_stream_rejects_unclosed_anthropic_block_and_chat_length (tests.dev.test_model_protocols.ProtocolBoundaryTests) ... ok
+test_anthropic_parallel_capability_can_be_omitted (tests.dev.test_model_protocols.ProtocolSafetyTests) ... ok
+test_malformed_anthropic_stream_usage_is_unknown (tests.dev.test_model_protocols.ProtocolSafetyTests) ... ok
+test_non_assistant_chat_message_cannot_be_promoted_to_assistant (tests.dev.test_model_protocols.ProtocolSafetyTests) ... ok
+test_anthropic_stream_needs_message_stop_and_complete_tool_input (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_anthropic_tools_and_feedback_are_translated (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_chat_stream_reassembles_arguments_only_after_done (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_chat_token_capability_is_explicit (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_responses_function_items_and_usage (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_responses_stream_requires_completed_response (tests.dev.test_model_protocols.ProtocolTests) ... ok
+test_truncation_refusal_and_bad_usage_never_authorize_partial_tool (tests.dev.test_model_protocols.ProtocolTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 5.509s
+
+OK
+{"report": "/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmprvd3sxrk/report.json", "task_success_rate": 0.0}

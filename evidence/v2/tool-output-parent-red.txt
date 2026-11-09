@@ -1,0 +1,50 @@
+test_callback_failure_disables_display_without_changing_tool_result (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... FAIL
+test_default_does_not_enable_output_channel_or_change_final_capture (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... FAIL
+test_output_callback_can_request_cancel_without_authorizing_success (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... FAIL
+test_real_command_barrier_both_streams_before_final_no_control_forgery (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... FAIL
+test_run_tests_display_is_private_and_result_uncommitted_at_barrier (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... FAIL
+
+======================================================================
+FAIL: test_callback_failure_disables_display_without_changing_tool_result (tests.dev.test_tool_output_parent.ToolOutputParentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_parent.py", line 83, in test_callback_failure_disables_display_without_changing_tool_result
+    self.assertTrue(hasattr(self.tools, 'on_output'))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_default_does_not_enable_output_channel_or_change_final_capture (tests.dev.test_tool_output_parent.ToolOutputParentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_parent.py", line 108, in test_default_does_not_enable_output_channel_or_change_final_capture
+    self.assertTrue(hasattr(self.tools, 'on_output'))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_output_callback_can_request_cancel_without_authorizing_success (tests.dev.test_tool_output_parent.ToolOutputParentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_parent.py", line 94, in test_output_callback_can_request_cancel_without_authorizing_success
+    self.assertTrue(hasattr(self.tools, 'on_output'))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_real_command_barrier_both_streams_before_final_no_control_forgery (tests.dev.test_tool_output_parent.ToolOutputParentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_parent.py", line 25, in test_real_command_barrier_both_streams_before_final_no_control_forgery
+    self.assertTrue(hasattr(self.tools, 'on_output'), 'private native callback is missing')
+AssertionError: False is not true : private native callback is missing
+
+======================================================================
+FAIL: test_run_tests_display_is_private_and_result_uncommitted_at_barrier (tests.dev.test_tool_output_parent.ToolOutputParentTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_parent.py", line 54, in test_run_tests_display_is_private_and_result_uncommitted_at_barrier
+    self.assertTrue(hasattr(self.tools, 'on_output'))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.016s
+
+FAILED (failures=5)

@@ -1,0 +1,21 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/git-utils/src/errors.rs",
+  "git_blob_sha": "41f7b6df495c4d3b316539ef8eef88713e92156f",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/git-utils/src/errors.rs",
+  "inspected_line_ranges": [
+    [
+      1,
+      35
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 8,
+      "end_line": 35,
+      "text": "/// Errors returned while managing git worktree snapshots.\n#[derive(Debug, Error)]\npub enum GitToolingError {\n    #[error(\"git command `{command}` failed with status {status}: {stderr}\")]\n    GitCommand {\n        command: String,\n        status: ExitStatus,\n        stderr: String,\n    },\n    #[error(\"git command `{command}` produced non-UTF-8 output\")]\n    GitOutputUtf8 {\n        command: String,\n        #[source]\n        source: FromUtf8Error,\n    },\n    #[error(\"{path:?} is not a git repository\")]\n    NotAGitRepository { path: PathBuf },\n    #[error(\"path {path:?} must be relative to the repository root\")]\n    NonRelativePath { path: PathBuf },\n    #[error(\"path {path:?} escapes the repository root\")]\n    PathEscapesRepository { path: PathBuf },\n    #[error(\"failed to process path inside worktree\")]\n    PathPrefix(#[from] std::path::StripPrefixError),\n    #[error(transparent)]\n    Walkdir(#[from] WalkdirError),\n    #[error(transparent)]\n    Io(#[from] std::io::Error),\n}\n"
+    }
+  ],
+  "notice": "Verbatim selected public-source excerpts in local JSON wrapper; source read, not executed. See LICENSE and NOTICE."
+}

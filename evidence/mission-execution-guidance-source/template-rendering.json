@@ -1,0 +1,21 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/prompts/src/model_instructions.rs",
+  "git_blob_sha": "a169e408b65ae96b8e8f70ca806cbe2ba8eb885e",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/prompts/src/model_instructions.rs",
+  "inspected_line_ranges": [
+    [
+      1,
+      21
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 1,
+      "end_line": 17,
+      "text": "//! Returns literal model instructions from the captured model metadata.\n//! Missing templates produce a warning; supplied empty templates remain valid input.\n\nuse crate::ResolvedModelMessages;\nuse codex_protocol::openai_models::ModelInfo;\n\n/// Renders base instructions from the caller's captured model, retaining missing-template warnings.\npub fn render_model_instructions(model_info: &ModelInfo) -> String {\n    let template = ResolvedModelMessages::from_model(model_info).instructions_template();\n    if template.is_none() {\n        tracing::warn!(\n            model = %model_info.slug,\n            \"Model has no instruction template; returning empty instructions.\"\n        );\n    }\n    template.unwrap_or_default().to_owned()\n}\n"
+    }
+  ],
+  "notice": "Selected verbatim public code excerpts in local wrapper; read, not executed. See LICENSE and NOTICE."
+}

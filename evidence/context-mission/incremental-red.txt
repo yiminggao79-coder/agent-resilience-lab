@@ -1,0 +1,53 @@
+test_full_fit_retains_the_existing_complete_projection (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_large_tool_result_is_previewed_with_a_retrievable_original_identity (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_malformed_or_already_consumed_prefix_does_not_create_a_fake_summary (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_oversized_input_selects_largest_complete_fitting_prefix (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ERROR
+test_oversized_single_batch_is_not_split_or_silently_truncated (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_previous_notes_consume_budget_and_keep_the_same_source_basis (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ERROR
+test_successive_source_cursors_cover_without_gaps_or_replaying_prefix (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ERROR
+test_utf8_byte_bound_and_indivisible_multi_call_batch (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ERROR
+
+======================================================================
+ERROR: test_oversized_input_selects_largest_complete_fitting_prefix (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 34, in test_oversized_input_selects_largest_complete_fitting_prefix
+    request, size, end = compaction.prepare(messages, None, 12500)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/compaction.py", line 116, in prepare
+    raise ValueError('compaction_context_limit')
+ValueError: compaction_context_limit
+
+======================================================================
+ERROR: test_previous_notes_consume_budget_and_keep_the_same_source_basis (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 74, in test_previous_notes_consume_budget_and_keep_the_same_source_basis
+    request, size, end = compaction.prepare(messages, old, 12500)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/compaction.py", line 116, in prepare
+    raise ValueError('compaction_context_limit')
+ValueError: compaction_context_limit
+
+======================================================================
+ERROR: test_successive_source_cursors_cover_without_gaps_or_replaying_prefix (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 57, in test_successive_source_cursors_cover_without_gaps_or_replaying_prefix
+    request, size, end = compaction.prepare(messages, previous, 12500)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/compaction.py", line 116, in prepare
+    raise ValueError('compaction_context_limit')
+ValueError: compaction_context_limit
+
+======================================================================
+ERROR: test_utf8_byte_bound_and_indivisible_multi_call_batch (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 90, in test_utf8_byte_bound_and_indivisible_multi_call_batch
+    request, size, end = compaction.prepare(messages, None, 14000)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/compaction.py", line 116, in prepare
+    raise ValueError('compaction_context_limit')
+ValueError: compaction_context_limit
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.011s
+
+FAILED (errors=4)

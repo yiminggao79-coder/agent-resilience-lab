@@ -1,0 +1,487 @@
+--- before/discipline.py
++++ after/discipline.py
+@@ -0,0 +1,59 @@
++"""Apply score decisions to copies of the original league records."""
++import results
++import scoring
++import ordering
++
++_REQUIRED = {
++    'void': ('match_id',),
++    'replace': ('match_id', 'home_goals', 'away_goals'),
++    'penalty': ('team', 'points'),
++}
++
++
++def _field(action, key):
++    if key not in action:
++        raise ValueError('missing action field: %s' % key)
++    return action[key]
++
++
++def _active_match(active, identity):
++    for index, row in enumerate(active):
++        if row['id'] == identity:
++            return index
++    raise ValueError('unknown active match id')
++
++
++def review(rows, actions, teams=()):
++    originals = results.matches(rows)
++    people = results.participants(originals, teams)
++    deductions = {team: 0 for team in people}
++    active = [dict(row) for row in originals]
++    for action in actions:
++        if not isinstance(action, dict):
++            raise ValueError('action must be a dictionary')
++        kind = action.get('kind')
++        if kind not in _REQUIRED:
++            raise ValueError('unknown action kind')
++        if kind == 'void':
++            index = _active_match(active, results.name(_field(action, 'match_id')))
++            active.pop(index)
++        elif kind == 'replace':
++            index = _active_match(active, results.name(_field(action, 'match_id')))
++            home_goals = results.number(_field(action, 'home_goals'))
++            away_goals = results.number(_field(action, 'away_goals'))
++            active[index]['home_goals'] = home_goals
++            active[index]['away_goals'] = away_goals
++        else:
++            team = results.name(_field(action, 'team'))
++            points = results.number(_field(action, 'points'))
++            if team not in deductions:
++                raise ValueError('unknown penalty team')
++            deductions[team] += points
++    standings = scoring.table(active, people)
++    for row in standings:
++        row['points'] -= deductions[row['team']]
++    return {
++        'matches': active,
++        'standings': ordering.rank(standings),
++        'penalties': dict(sorted(deductions.items())),
++    }
+--- before/ordering.py
++++ after/ordering.py
+@@ -1,4 +1,4 @@
+ """Deterministic standings order."""
+ def rank(rows):
+     return sorted((dict(row) for row in rows),
+-                  key=lambda row: (-row['points'], -row['goals_for'], -row['difference'], row['team']))
++                  key=lambda row: (-row['points'], -row['difference'], -row['goals_for'], row['team']))
+--- before/qualification.py
++++ after/qualification.py
+@@ -0,0 +1,80 @@
++"""Group qualification with automatic slots and wildcards."""
++from collections.abc import Mapping
++
++import results
++import scoring
++import ordering
++import discipline
++
++
++def _groups(groups):
++    if not isinstance(groups, Mapping) or not groups:
++        raise ValueError('groups must be a nonempty map')
++    mapping = {}
++    seen = set()
++    for key, teams in groups.items():
++        group = results.name(key)
++        if group in mapping:
++            raise ValueError('duplicate group name')
++        if not isinstance(teams, list) or not teams:
++            raise ValueError('group must be a nonempty list of teams')
++        listed = []
++        for team in teams:
++            team = results.name(team)
++            if team in seen:
++                raise ValueError('duplicate team membership')
++            seen.add(team)
++            listed.append(team)
++        mapping[group] = listed
++    return mapping
++
++
++def select(rows, actions, groups, slots=1, wildcards=0):
++    originals = results.matches(rows)
++    mapping = _groups(groups)
++    slots = results.number(slots, minimum=0)
++    wildcards = results.number(wildcards, minimum=0)
++
++    members = [team for teams in mapping.values() for team in teams]
++    needed = set(members)
++    for row in originals:
++        for team in (row['home'], row['away']):
++            if team not in needed:
++                raise ValueError('original match team is unassigned')
++
++    review = discipline.review(originals, actions, members)
++    active = review['matches']
++    deductions = review['penalties']
++
++    standings = {}
++    for group, teams in mapping.items():
++        inside = set(teams)
++        local = [row for row in active
++                 if row['home'] in inside and row['away'] in inside]
++        rows_out = scoring.table(local, teams)
++        for row in rows_out:
++            row['points'] -= deductions[row['team']]
++        standings[group] = ordering.rank(rows_out)
++
++    automatic, remaining = [], set(members)
++    for group in sorted(standings):
++        for row in standings[group][:slots]:
++            automatic.append(row['team'])
++            remaining.discard(row['team'])
++
++    local = [row for row in active
++             if row['home'] in remaining and row['away'] in remaining]
++    pool = scoring.table(local, sorted(remaining))
++    for row in pool:
++        row['points'] -= deductions[row['team']]
++    chosen = ordering.rank(pool)[:wildcards]
++    wild = [row['team'] for row in chosen]
++    for row in chosen:
++        remaining.discard(row['team'])
++
++    return {
++        'groups': standings,
++        'automatic': automatic,
++        'wildcards': wild,
++        'qualified': sorted(set(automatic) | set(wild)),
++    }
+--- before/scoring.py
++++ after/scoring.py
+@@ -20,7 +20,7 @@
+                 own['lost'] += 1
+             else:
+                 own['drawn'] += 1
+-                # Draw points are currently omitted.
++                own['points'] += 1
+         home['difference'] = home['goals_for'] - home['goals_against']
+         away['difference'] = away['goals_for'] - away['goals_against']
+     return list(totals.values())
+--- before/tests/test_discipline.py
++++ after/tests/test_discipline.py
+@@ -0,0 +1,103 @@
++import copy
++import unittest
++from discipline import review
++
++def match(identity='m', home='A', away='B', hg=1, ag=0):
++    return dict(id=identity, home=home, away=away, home_goals=hg, away_goals=ag)
++
++def by_team(rows):
++    return {row['team']: row for row in rows}
++
++class Discipline(unittest.TestCase):
++    def test_sequential_replace_and_void(self):
++        rows = [match('1', 'A', 'B', 1, 0), match('2', 'B', 'C', 2, 2), match('3', 'C', 'A', 0, 3)]
++        actions = [{'kind': 'replace', 'match_id': '1', 'home_goals': 0, 'away_goals': 1},
++                   {'kind': 'void', 'match_id': '2'},
++                   {'kind': 'replace', 'match_id': '3', 'home_goals': 1, 'away_goals': 1}]
++        out = review(rows, actions)
++        self.assertEqual([(m['id'], m['home_goals'], m['away_goals']) for m in out['matches']],
++                         [('1', 0, 1), ('3', 1, 1)])
++        table = by_team(out['standings'])
++        self.assertEqual((table['A']['played'], table['A']['points']), (2, 1))
++        self.assertEqual((table['B']['played'], table['B']['points']), (1, 3))
++        self.assertEqual((table['C']['played'], table['C']['points']), (1, 1))
++        self.assertEqual(sorted(out['penalties']), ['A', 'B', 'C'])
++        self.assertEqual(set(out['penalties'].values()), {0})
++
++    def test_voided_match_cannot_be_touched_again(self):
++        rows = [match('1')]
++        with self.assertRaises(ValueError):
++            review(rows, [{'kind': 'void', 'match_id': '1'},
++                          {'kind': 'void', 'match_id': '1'}])
++        with self.assertRaises(ValueError):
++            review(rows, [{'kind': 'void', 'match_id': '1'},
++                          {'kind': 'replace', 'match_id': '1', 'home_goals': 2, 'away_goals': 2}])
++
++    def test_repeated_penalties_accumulate_and_can_go_negative(self):
++        rows = [match('1', 'A', 'B', 1, 0)]
++        actions = [{'kind': 'penalty', 'team': 'B', 'points': 1},
++                   {'kind': 'penalty', 'team': 'B', 'points': 2},
++                   {'kind': 'penalty', 'team': 'A', 'points': 5}]
++        out = review(rows, actions)
++        table = by_team(out['standings'])
++        self.assertEqual(table['A']['points'], -2)
++        self.assertEqual(table['B']['points'], -3)
++        self.assertEqual(table['B']['difference'], -1)
++        self.assertEqual(out['penalties'], {'A': 5, 'B': 3})
++        self.assertEqual([r['team'] for r in out['standings']], ['A', 'B'])
++
++    def test_unplayed_participants_remain(self):
++        rows = [match('1', 'A', 'B', 1, 1)]
++        actions = [{'kind': 'void', 'match_id': '1'},
++                   {'kind': 'penalty', 'team': 'A', 'points': 2}]
++        out = review(rows, actions, ['Zed'])
++        self.assertEqual(out['matches'], [])
++        self.assertEqual(out['penalties'], {'A': 2, 'B': 0, 'Zed': 0})
++        table = by_team(out['standings'])
++        self.assertEqual(sorted(table), ['A', 'B', 'Zed'])
++        for team, row in table.items():
++            self.assertEqual((row['played'], row['difference']), (0, 0))
++            self.assertEqual(row['points'], -out['penalties'][team])
++        self.assertEqual([r['team'] for r in out['standings']], ['B', 'Zed', 'A'])
++
++    def test_validation_errors(self):
++        rows = [match('1', 'A', 'B', 1, 0)]
++        bad_actions = [
++            [{'kind': 'erase', 'match_id': '1'}],
++            [{'kind': 'void'}],
++            [{'kind': 'void', 'match_id': 'nope'}],
++            [{'kind': 'replace', 'match_id': '1', 'home_goals': 1}],
++            [{'kind': 'replace', 'match_id': 'nope', 'home_goals': 0, 'away_goals': 0}],
++            [{'kind': 'replace', 'match_id': '1', 'home_goals': True, 'away_goals': 0}],
++            [{'kind': 'replace', 'match_id': '1', 'home_goals': -1, 'away_goals': 0}],
++            [{'kind': 'replace', 'match_id': '1', 'home_goals': 1.0, 'away_goals': 0}],
++            [{'kind': 'penalty', 'team': 'A'}],
++            [{'kind': 'penalty', 'team': 'Q', 'points': 1}],
++            [{'kind': 'penalty', 'team': 'A', 'points': -1}],
++            [{'kind': 'penalty', 'team': 'A', 'points': False}],
++            [{'kind': 'penalty', 'team': ' A', 'points': 1}],
++            [{'kind': 'penalty', 'team': 'A', 'points': 1}, 'void'],
++        ]
++        for actions in bad_actions:
++            with self.assertRaises(ValueError):
++                review(rows, actions)
++        self.assertEqual(rows, [match('1', 'A', 'B', 1, 0)])
++
++    def test_caller_objects_untouched(self):
++        rows = [match('1', 'A', 'B', 3, 1)]
++        actions = [{'kind': 'replace', 'match_id': '1', 'home_goals': 0, 'away_goals': 2},
++                   {'kind': 'penalty', 'team': 'A', 'points': 1}]
++        teams = ['A']
++        rows_before, actions_before, teams_before = copy.deepcopy((rows, actions, teams))
++        out = review(rows, actions, teams)
++        self.assertEqual((rows, actions, teams), (rows_before, actions_before, teams_before))
++        self.assertIsNot(out['matches'][0], rows[0])
++        self.assertIsNot(out['standings'][0], out['matches'][0])
++
++        failing = copy.deepcopy(actions) + [{'kind': 'void', 'match_id': 'missing'}]
++        with self.assertRaises(ValueError):
++            review(rows, failing, teams)
++        self.assertEqual((rows, actions, teams), (rows_before, actions_before, teams_before))
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_league_rules.py
++++ after/tests/test_league_rules.py
+@@ -0,0 +1,97 @@
++import copy
++import unittest
++from results import matches
++from scoring import table
++from ordering import rank
++from presentation import season
++
++def match(identity='m', home='A', away='B', hg=1, ag=0):
++    return dict(id=identity, home=home, away=away, home_goals=hg, away_goals=ag)
++
++def by_team(rows):
++    return {row['team']: row for row in rows}
++
++class LeagueRules(unittest.TestCase):
++    def test_draw_row_consistent(self):
++        rows = by_team(table([match('d', 'A', 'B', 2, 2)]))
++        for team in ('A', 'B'):
++            row = rows[team]
++            self.assertEqual((row['played'], row['won'], row['drawn'], row['lost'], row['points']),
++                             (1, 0, 1, 0, 1))
++            self.assertEqual((row['goals_for'], row['goals_against'], row['difference']), (2, 2, 0))
++
++    def test_all_fields_consistent_over_mixed_season(self):
++        rows = by_team(table([match('1', 'A', 'B', 3, 0),
++                              match('2', 'B', 'C', 1, 1),
++                              match('3', 'C', 'A', 0, 2)]))
++        expected = {'A': (2, 2, 0, 0, 5, 0, 5, 6),
++                    'B': (2, 0, 1, 1, 1, 4, -3, 1),
++                    'C': (2, 0, 1, 1, 1, 3, -2, 1)}
++        for team, values in expected.items():
++            row = rows[team]
++            got = (row['played'], row['won'], row['drawn'], row['lost'],
++                   row['goals_for'], row['goals_against'], row['difference'], row['points'])
++            self.assertEqual(got, values, team)
++            self.assertEqual(row['played'], row['won'] + row['drawn'] + row['lost'])
++            self.assertEqual(row['difference'], row['goals_for'] - row['goals_against'])
++
++    def test_rank_points_then_difference_then_goals_then_name(self):
++        rows = [
++            dict(team='P', points=4, difference=5, goals_for=9),
++            dict(team='Q', points=6, difference=1, goals_for=2),
++            dict(team='A', points=4, difference=5, goals_for=9),
++            dict(team='R', points=4, difference=5, goals_for=1),
++            dict(team='S', points=4, difference=7, goals_for=0),
++        ]
++        self.assertEqual([row['team'] for row in rank(rows)], ['Q', 'S', 'A', 'P', 'R'])
++
++    def test_unplayed_team_gets_zero_row(self):
++        result = rank(table([match('x', 'A', 'B', 1, 0)], ['Z']))
++        # Z (0 pts, 0 diff, 0 GF) sorts above B (-1 diff) under the required
++        # points/difference/goals_for/name ordering; only the zero row is asserted.
++        self.assertIn('Z', [row['team'] for row in result])
++        zero = by_team(result)['Z']
++        self.assertEqual((zero['played'], zero['won'], zero['drawn'], zero['lost'],
++                          zero['goals_for'], zero['goals_against'], zero['difference'], zero['points']),
++                         (0, 0, 0, 0, 0, 0, 0, 0))
++
++    def test_summary_with_draws_and_registrations(self):
++        summary = season([match('1', 'A', 'B', 2, 2), match('2', 'B', 'C', 0, 3)], ['D'])['summary']
++        self.assertEqual(summary, {'games': 2, 'teams': 4, 'goals': 7})
++
++    def test_no_mutation_through_season(self):
++        rows = [match('1', 'A', 'B', 2, 2), match('2', 'C', 'D', 1, 3)]
++        teams = ['E', 'A']
++        before, teams_before = copy.deepcopy(rows), copy.deepcopy(teams)
++        result = season(rows, teams)
++        self.assertEqual(rows, before)
++        self.assertEqual(teams, teams_before)
++        result['standings'][0]['points'] = 999
++        result['standings'].reverse()
++        self.assertEqual(rows, before)
++        self.assertEqual(teams, teams_before)
++
++    def test_no_mutation_through_rank(self):
++        rows = table([match('1', 'A', 'B', 2, 2)], ['Z'])
++        before = copy.deepcopy(rows)
++        out = rank(rows)
++        self.assertEqual(rows, before)
++        for original, ranked in zip(sorted(rows, key=lambda r: r['team']), sorted(out, key=lambda r: r['team'])):
++            self.assertEqual(original, ranked)
++            self.assertIsNot(original, ranked)
++
++    def test_validation_preserved(self):
++        for bad in [match(home=' A'), match(away='B '), match(home=''), match(hg=True),
++                    match(ag=False), match(hg=-1), match(ag=1.0), match(identity='')]:
++            with self.assertRaises(ValueError):
++                table([bad])
++        with self.assertRaises(ValueError):
++            table([match('s', 'A', 'B'), dict(id=7, home='A', away='B', home_goals=0, away_goals=0)])
++        with self.assertRaises(ValueError):
++            table([], ['A', 'A'])
++        with self.assertRaises(ValueError):
++            table([], [' A'])
++        self.assertEqual(len(matches([])), 0)
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_qualification.py
++++ after/tests/test_qualification.py
+@@ -0,0 +1,114 @@
++"""Tests for group qualification."""
++import copy
++import unittest
++
++import qualification
++
++
++def match(identity, home, away, home_goals=0, away_goals=0):
++    return {'id': identity, 'home': home, 'away': away,
++            'home_goals': home_goals, 'away_goals': away_goals}
++
++
++class QualificationTests(unittest.TestCase):
++    def test_cross_group_matches_are_ignored(self):
++        rows = [match('1', 'A1', 'B1', 5, 0), match('2', 'A2', 'A1', 1, 0)]
++        groups = {'A': ['A1', 'A2'], 'B': ['B1']}
++        out = qualification.select(rows, [], groups, slots=1, wildcards=0)
++        a_rows = {row['team']: row for row in out['groups']['A']}
++        self.assertEqual(a_rows['A1']['played'], 1)
++        self.assertEqual(a_rows['A1']['points'], 0)
++        self.assertEqual(a_rows['A1']['goals_for'], 0)
++        self.assertEqual(a_rows['A2']['points'], 3)
++        self.assertEqual(out['automatic'], ['A2', 'B1'])
++        self.assertEqual(out['wildcards'], [])
++        self.assertEqual(out['qualified'], ['A2', 'B1'])
++
++    def test_penalty_changes_qualifier(self):
++        rows = [match('1', 'A1', 'A2', 1, 0), match('2', 'A3', 'A2', 1, 0)]
++        groups = {'A': ['A1', 'A2', 'A3']}
++        actions = [{'kind': 'penalty', 'team': 'A1', 'points': 4}]
++        out = qualification.select(rows, actions, groups)
++        order = [row['team'] for row in out['groups']['A']]
++        self.assertEqual(order, ['A3', 'A2', 'A1'])
++        self.assertEqual(out['automatic'], ['A3'])
++        self.assertEqual(out['qualified'], ['A3'])
++
++    def test_empty_schedules_give_zero_rows(self):
++        out = qualification.select([], [], {'A': ['A1', 'A2']}, slots=1, wildcards=1)
++        for name in ('A1', 'A2'):
++            row = [r for r in out['groups']['A'] if r['team'] == name][0]
++            self.assertEqual(row['played'], 0)
++            self.assertEqual(row['points'], 0)
++            self.assertEqual(row['difference'], 0)
++        self.assertEqual(out['automatic'], ['A1'])
++        self.assertEqual(out['wildcards'], ['A2'])
++        self.assertEqual(out['qualified'], ['A1', 'A2'])
++
++    def test_zero_slots(self):
++        rows = [match('1', 'A1', 'A2', 2, 0)]
++        out = qualification.select(rows, [], {'A': ['A1', 'A2']}, slots=0, wildcards=0)
++        self.assertEqual(out['automatic'], [])
++        self.assertEqual(out['wildcards'], [])
++        self.assertEqual(out['qualified'], [])
++
++    def test_duplicate_membership_rejected(self):
++        with self.assertRaises(ValueError):
++            qualification.select([], [], {'A': ['T'], 'B': ['T']})
++        with self.assertRaises(ValueError):
++            qualification.select([], [], {'A': ['T', 'T']})
++
++    def test_voided_match_still_requires_assignment(self):
++        rows = [match('1', 'A1', 'X1', 1, 0)]
++        actions = [{'kind': 'void', 'match_id': '1'}]
++        with self.assertRaises(ValueError):
++            qualification.select(rows, actions, {'A': ['A1']})
++
++    def test_invalid_slots(self):
++        groups = {'A': ['A1']}
++        for bad in (True, -1, 1.0, '1'):
++            with self.assertRaises(ValueError):
++                qualification.select([], [], groups, slots=bad)
++        with self.assertRaises(ValueError):
++            qualification.select([], [], groups, wildcards=False)
++        with self.assertRaises(ValueError):
++            qualification.select([], [], {})
++
++    def test_wildcards_rank_remaining_teams_together(self):
++        rows = [match('1', 'A1', 'A2', 3, 0),
++                match('2', 'B1', 'B2', 1, 0),
++                match('3', 'B1', 'B2', 1, 0)]
++        groups = {'A': ['A1', 'A2'], 'B': ['B1', 'B2']}
++        out = qualification.select(rows, [], groups, slots=1, wildcards=2)
++        self.assertEqual(out['automatic'], ['A1', 'B1'])
++        self.assertEqual(out['wildcards'], ['B2', 'A2'])
++        self.assertEqual(out['qualified'], ['A1', 'A2', 'B1', 'B2'])
++
++    def test_outputs_and_inputs_preserved(self):
++        rows = [match('1', 'A1', 'A2', 1, 0)]
++        actions = [{'kind': 'replace', 'match_id': '1', 'home_goals': 0, 'away_goals': 0}]
++        groups = {'A': ['A1', 'A2']}
++        before = copy.deepcopy((rows, actions, groups))
++        out = qualification.select(rows, actions, groups)
++        self.assertEqual((rows, actions, groups), before)
++        self.assertEqual(sorted(out), ['automatic', 'groups', 'qualified', 'wildcards'])
++        self.assertEqual(list(out['groups']), ['A'])
++
++    def test_bad_actions_raise_value_error(self):
++        rows = [match('1', 'A1', 'A2', 1, 0)]
++        groups = {'A': ['A1', 'A2']}
++        cases = [
++            [{'kind': 'void', 'match_id': '1'}, {'kind': 'replace', 'match_id': '1',
++                                                'home_goals': 1, 'away_goals': 1}],
++            [{'kind': 'penalty', 'team': 'Z', 'points': 1}],
++            [{'kind': 'bogus'}],
++        ]
++        for actions in cases:
++            before = copy.deepcopy(actions)
++            with self.assertRaises(ValueError):
++                qualification.select(rows, actions, groups)
++            self.assertEqual(actions, before)
++
++
++if __name__ == '__main__':
++    unittest.main()

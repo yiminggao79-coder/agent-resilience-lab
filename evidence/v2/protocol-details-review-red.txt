@@ -1,0 +1,21 @@
+test_anthropic_truncated_tool_json_retains_explicit_limit_reason (tests.dev.test_protocol_failure_details.ProtocolReasonTests) ... FAIL
+
+======================================================================
+FAIL: test_anthropic_truncated_tool_json_retains_explicit_limit_reason (tests.dev.test_protocol_failure_details.ProtocolReasonTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_protocol_failure_details.py", line 54, in test_anthropic_truncated_tool_json_retains_explicit_limit_reason
+    self.assertEqual(caught.exception.args, (expected,))
+AssertionError: Tuples differ: ('invalid_tool_arguments',) != ('output_token_limit',)
+
+First differing element 0:
+'invalid_tool_arguments'
+'output_token_limit'
+
+- ('invalid_tool_arguments',)
++ ('output_token_limit',)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

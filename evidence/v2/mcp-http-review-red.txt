@@ -1,0 +1,33 @@
+test_matching_final_sse_event_returns_before_later_event_in_same_chunk (tests.dev.test_mcp_http_review.MCPHTTPReviewTests) ... ERROR
+test_slow_http_headers_do_not_extend_total_tool_deadline (tests.dev.test_mcp_http_review.MCPHTTPReviewTests) ... FAIL
+
+======================================================================
+ERROR: test_matching_final_sse_event_returns_before_later_event_in_same_chunk (tests.dev.test_mcp_http_review.MCPHTTPReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http_review.py", line 21, in test_matching_final_sse_event_returns_before_later_event_in_same_chunk
+    self.assertEqual(client._sse(iter([chunk]),1,time.monotonic()+1),result)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp_http.py", line 171, in _sse
+    consume(bytes(line));line.clear();skip_lf=byte==13
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/mcp_http.py", line 158, in consume
+    self._io(reply+b'\n',None,deadline)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+agent_lab.mcp.MCPError: request_timeout
+
+======================================================================
+FAIL: test_slow_http_headers_do_not_extend_total_tool_deadline (tests.dev.test_mcp_http_review.MCPHTTPReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_http_review.py", line 54, in test_slow_http_headers_do_not_extend_total_tool_deadline
+    self.assertLess(elapsed,.5,'header drip replaced the total deadline with inactivity timeouts')
+AssertionError: 0.929087865 not less than 0.5 : header drip replaced the total deadline with inactivity timeouts
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.020s
+
+FAILED (failures=1, errors=1)

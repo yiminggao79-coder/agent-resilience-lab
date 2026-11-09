@@ -1,0 +1,150 @@
+{
+  "source_url": "https://github.com/openai/codex/blob/main/codex-rs/core/src/session/turn.rs",
+  "modified_date": "2026-11-06T07:43:44Z",
+  "observations": [
+    {
+      "line": 32,
+      "text": "use crate::hook_runtime::run_turn_stop_hooks;"
+    },
+    {
+      "line": 64,
+      "text": "use crate::tools::parallel::ToolCallRuntime;"
+    },
+    {
+      "line": 170,
+      "text": "async fn preserve_initial_input_during<T>("
+    },
+    {
+      "line": 217,
+      "text": "pub(crate) async fn run_turn("
+    },
+    {
+      "line": 341,
+      "text": "// run_turn owns the step used to seed context and make the first sampling request."
+    },
+    {
+      "line": 543,
+      "text": "loop {"
+    },
+    {
+      "line": 644,
+      "text": ".instrument(trace_span!(\"run_turn.prepare_sampling_request_input\"))"
+    },
+    {
+      "line": 663,
+      "text": "needs_follow_up: model_needs_follow_up,"
+    },
+    {
+      "line": 667,
+      "text": "if model_needs_follow_up {"
+    },
+    {
+      "line": 688,
+      "text": ".instrument(trace_span!(\"run_turn.collect_post_sampling_state\"))"
+    },
+    {
+      "line": 690,
+      "text": "let needs_follow_up = model_needs_follow_up || has_pending_input;"
+    },
+    {
+      "line": 697,
+      "text": "if needs_follow_up {"
+    },
+    {
+      "line": 718,
+      "text": "model_needs_follow_up,"
+    },
+    {
+      "line": 720,
+      "text": "needs_follow_up,"
+    },
+    {
+      "line": 740,
+      "text": "let candidate = if needs_follow_up {"
+    },
+    {
+      "line": 746,
+      "text": "&& needs_follow_up"
+    },
+    {
+      "line": 780,
+      "text": "can_drain_pending_input = !model_needs_follow_up"
+    },
+    {
+      "line": 805,
+      "text": "if !needs_follow_up {"
+    },
+    {
+      "line": 807,
+      "text": "let stop_outcome = run_turn_stop_hooks("
+    },
+    {
+      "line": 1015,
+      "text": "async fn turn_diff_display_roots(step_context: &StepContext) -> Vec<(String, PathUri)> {"
+    },
+    {
+      "line": 1038,
+      "text": "pub(crate) async fn run_hooks_and_record_inputs("
+    },
+    {
+      "line": 1156,
+      "text": "async fn required_mcp_servers_for_input("
+    },
+    {
+      "line": 1260,
+      "text": "async fn build_skills_and_plugins("
+    },
+    {
+      "line": 1419,
+      "text": "async fn build_extension_turn_input_items("
+    },
+    {
+      "line": 1480,
+      "text": "async fn track_turn_resolved_config_analytics("
+    },
+    {
+      "line": 1548,
+      "text": "async fn run_pre_sampling_compact("
+    },
+    {
+      "line": 1562,
+      "text": "// Pre-turn compaction runs before run_turn creates the normal sampling step."
+    },
+    {
+      "line": 1592,
+      "text": "async fn maybe_run_previous_model_inline_compact("
+    },
+    {
+      "line": 1683,
+      "text": "async fn run_auto_compact("
+    },
+    {
+      "line": 1863,
+      "text": "parallel_tool_calls: true,"
+    },
+    {
+      "line": 1891,
+      "text": "async fn run_sampling_request("
+    },
+    {
+      "line": 1911,
+      "text": "let tool_runtime = ToolCallRuntime::new("
+    },
+    {
+      "line": 1933,
+      "text": "let mut executed_tool_calls_by_output = HashMap::new();"
+    },
+    {
+      "line": 1934,
+      "text": "loop {"
+    },
+    {
+      "line": 1955,
+      "text": ".executed_tool_calls"
+    },
+    {
+      "line": 1956,
+      "text": ".attach_to_prompt(&mut prompt_input, &mut executed_tool_calls_by_output);"
+    }
+  ]
+}

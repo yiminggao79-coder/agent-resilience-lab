@@ -1,0 +1,17 @@
+test_disappearing_path_during_open_closes_both_constructor_connections (tests.dev.test_store_connection_identity.StoreConnectionIdentityTests) ... 
+======================================================================
+ERROR: test_disappearing_path_during_open_closes_both_constructor_connections (tests.dev.test_store_connection_identity.StoreConnectionIdentityTests) (readonly=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_store_connection_identity.py", line 25, in test_disappearing_path_during_open_closes_both_constructor_connections
+    (Store.open_readonly if readonly else Store)(path)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/store.py", line 87, in __init__
+    if _database_file_identity(self.path) != self._database_file_identity:
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/store.py", line 48, in _database_file_identity
+    info = os.stat(path, follow_symlinks=False)
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpdenle0_i/state.sqlite'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.012s
+
+FAILED (errors=1)

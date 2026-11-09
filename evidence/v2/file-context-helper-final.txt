@@ -1,0 +1,15 @@
+test_deleted_and_unsafe_entries_are_reported_without_reading_aliases_or_fifo (tests.dev.test_file_context.FileContextTests) ... ok
+test_eight_max_size_reads_and_notice_size_are_bounded (tests.dev.test_file_context.FileContextTests) ... ok
+test_failed_other_and_aliased_tools_do_not_ingest_and_invalid_index_always_rejected (tests.dev.test_file_context.FileContextTests) ... ok
+test_final_filename_replacement_after_stable_fd_read_is_unavailable (tests.dev.test_file_context.FileContextTests) ... ok
+test_invalid_eligible_reads_and_lru_eviction_mark_sticky_coverage_without_fabrication (tests.dev.test_file_context.FileContextTests) ... ok
+test_new_record_exact_validation_and_pure_inputs (tests.dev.test_file_context.FileContextTests) ... ok
+test_oversize_current_file_marks_only_snapshot_coverage_and_recovers (tests.dev.test_file_context.FileContextTests) ... ok
+test_same_bytes_no_initial_notice_then_same_size_mtime_change_and_restoration (tests.dev.test_file_context.FileContextTests) ... ok
+test_signature_ignores_message_index_and_lru_order_but_not_new_read_baseline (tests.dev.test_file_context.FileContextTests) ... ok
+test_successful_builtin_reads_update_lru_and_never_mutate_input (tests.dev.test_file_context.FileContextTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.184s
+
+OK

@@ -1,0 +1,733 @@
+{
+  "fixture_warning": "All model decisions synthetic; real tools, SQLite and files.",
+  "freeze": {
+    "frozen_commit": "5b9990bbb43a74cd0c6e8c153d77d0374e3fe979",
+    "matches": {
+      "agent_lab/__init__.py": true,
+      "agent_lab/__main__.py": true,
+      "agent_lab/engine.py": true,
+      "agent_lab/expression.py": true,
+      "agent_lab/model.py": true,
+      "agent_lab/store.py": true,
+      "agent_lab/tools.py": true,
+      "scripts/demo.py": true,
+      "scripts/evaluate_live.py": true
+    }
+  },
+  "receipt_failures": [
+    {
+      "operation": "write_file",
+      "fault": "before_commit_once",
+      "escaped": null,
+      "returned": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.15355396270751953
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07",
+          "reconciled": false
+        }
+      },
+      "durable_before_resume": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.15355396270751953
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07",
+          "reconciled": false
+        }
+      },
+      "trace_kinds": [
+        "created",
+        "model_started",
+        "model_finished",
+        "tool_started",
+        "terminated"
+      ],
+      "file_before_resume": "once\n",
+      "file_after_resume": "once\n",
+      "resumed": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.15355396270751953
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07",
+          "reconciled": false
+        }
+      },
+      "fixture_calls": 1
+    },
+    {
+      "operation": "write_file",
+      "fault": "after_commit_once",
+      "escaped": null,
+      "returned": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.16642999649047852
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07",
+          "reconciled": false
+        }
+      },
+      "durable_before_resume": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.16642999649047852
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07",
+          "reconciled": false
+        }
+      },
+      "trace_kinds": [
+        "created",
+        "model_started",
+        "model_finished",
+        "tool_started",
+        "tool_finished",
+        "terminated"
+      ],
+      "file_before_resume": "once\n",
+      "file_after_resume": "once\n",
+      "resumed": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.16642999649047852
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07",
+          "reconciled": false
+        }
+      },
+      "fixture_calls": 1
+    },
+    {
+      "operation": "write_file",
+      "fault": "sqlite_deny_once",
+      "escaped": null,
+      "returned": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.16275405883789062
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07",
+          "reconciled": false
+        }
+      },
+      "durable_before_resume": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.16275405883789062
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07",
+          "reconciled": false
+        }
+      },
+      "trace_kinds": [
+        "created",
+        "model_started",
+        "model_finished",
+        "tool_started",
+        "terminated"
+      ],
+      "file_before_resume": "once\n",
+      "file_after_resume": "once\n",
+      "resumed": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.16275405883789062
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07",
+          "reconciled": false
+        }
+      },
+      "fixture_calls": 1
+    },
+    {
+      "operation": "write_file",
+      "fault": "persistent_sqlite_readonly",
+      "escaped": {
+        "type": "OperationalError",
+        "text": "attempt to write a readonly database"
+      },
+      "returned": null,
+      "durable_before_resume": {
+        "phase": "tool_pending",
+        "reason": null,
+        "pending": {
+          "call_id": "independent-audit-call",
+          "status": "running",
+          "intent": {
+            "name": "write_file",
+            "args": {
+              "path": "effect.txt",
+              "content": "once\n"
+            },
+            "policy": "verify",
+            "before": null,
+            "desired": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+          }
+        },
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.07731032371520996
+        },
+        "last_message_role": "assistant",
+        "last_tool_feedback": null
+      },
+      "trace_kinds": [
+        "created",
+        "model_started",
+        "model_finished",
+        "tool_started"
+      ],
+      "file_before_resume": "once\n",
+      "file_after_resume": "once\n",
+      "resumed": {
+        "phase": "completed",
+        "reason": "model_finished",
+        "pending": null,
+        "metrics": {
+          "model_calls": 2,
+          "tool_attempts": 1,
+          "recoveries": 1,
+          "input_tokens": 4,
+          "output_tokens": 4,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.23441004753112793
+        },
+        "last_message_role": "assistant",
+        "last_tool_feedback": null
+      },
+      "fixture_calls": 2
+    },
+    {
+      "operation": "append_file",
+      "fault": "before_commit_once",
+      "escaped": null,
+      "returned": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.18636798858642578
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+        }
+      },
+      "durable_before_resume": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.18636798858642578
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+        }
+      },
+      "trace_kinds": [
+        "created",
+        "model_started",
+        "model_finished",
+        "tool_started",
+        "terminated"
+      ],
+      "file_before_resume": "once\n",
+      "file_after_resume": "once\n",
+      "resumed": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.18636798858642578
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+        }
+      },
+      "fixture_calls": 1
+    },
+    {
+      "operation": "append_file",
+      "fault": "after_commit_once",
+      "escaped": null,
+      "returned": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.16105413436889648
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+        }
+      },
+      "durable_before_resume": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.16105413436889648
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+        }
+      },
+      "trace_kinds": [
+        "created",
+        "model_started",
+        "model_finished",
+        "tool_started",
+        "tool_finished",
+        "terminated"
+      ],
+      "file_before_resume": "once\n",
+      "file_after_resume": "once\n",
+      "resumed": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.16105413436889648
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+        }
+      },
+      "fixture_calls": 1
+    },
+    {
+      "operation": "append_file",
+      "fault": "sqlite_deny_once",
+      "escaped": null,
+      "returned": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.15106701850891113
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+        }
+      },
+      "durable_before_resume": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.15106701850891113
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+        }
+      },
+      "trace_kinds": [
+        "created",
+        "model_started",
+        "model_finished",
+        "tool_started",
+        "terminated"
+      ],
+      "file_before_resume": "once\n",
+      "file_after_resume": "once\n",
+      "resumed": {
+        "phase": "failed",
+        "reason": "internal_error",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.15106701850891113
+        },
+        "last_message_role": "tool",
+        "last_tool_feedback": {
+          "ok": true,
+          "sha256": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+        }
+      },
+      "fixture_calls": 1
+    },
+    {
+      "operation": "append_file",
+      "fault": "persistent_sqlite_readonly",
+      "escaped": {
+        "type": "OperationalError",
+        "text": "attempt to write a readonly database"
+      },
+      "returned": null,
+      "durable_before_resume": {
+        "phase": "tool_pending",
+        "reason": null,
+        "pending": {
+          "call_id": "independent-audit-call",
+          "status": "running",
+          "intent": {
+            "name": "append_file",
+            "args": {
+              "path": "effect.txt",
+              "content": "once\n"
+            },
+            "policy": "unsafe",
+            "before": null,
+            "desired": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+          }
+        },
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.07618594169616699
+        },
+        "last_message_role": "assistant",
+        "last_tool_feedback": null
+      },
+      "trace_kinds": [
+        "created",
+        "model_started",
+        "model_finished",
+        "tool_started"
+      ],
+      "file_before_resume": "once\n",
+      "file_after_resume": "once\n",
+      "resumed": {
+        "phase": "needs_confirmation",
+        "reason": "tool_outcome_unknown",
+        "pending": {
+          "call_id": "independent-audit-call",
+          "status": "running",
+          "intent": {
+            "name": "append_file",
+            "args": {
+              "path": "effect.txt",
+              "content": "once\n"
+            },
+            "policy": "unsafe",
+            "before": null,
+            "desired": "ad06e72726f6d8ff00228160453949c1ceb89571c99332e4815f9edce2acad07"
+          }
+        },
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 1,
+          "recoveries": 1,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.23070597648620605
+        },
+        "last_message_role": "assistant",
+        "last_tool_feedback": null
+      },
+      "fixture_calls": 1
+    }
+  ],
+  "context_growth": {
+    "state": {
+      "phase": "failed",
+      "reason": "context_limit",
+      "pending": null,
+      "metrics": {
+        "model_calls": 4,
+        "tool_attempts": 4,
+        "recoveries": 0,
+        "input_tokens": 8,
+        "output_tokens": 8,
+        "cost_usd": null,
+        "reserved_usd": 0.0,
+        "elapsed_seconds": 0.6299037933349609
+      },
+      "last_message_role": "tool",
+      "last_tool_feedback": {
+        "ok": true,
+        "content_utf8_bytes": 65536,
+        "content_sha256": "1f8745f0d2d1387ec1af2211a3cf417b2e9e885e853472649c1d979d0e9370e3"
+      }
+    },
+    "message_bytes": 263857,
+    "fixture_calls": 4,
+    "resume_reason": "context_limit"
+  },
+  "state_validation": [
+    {
+      "case": "unknown_phase",
+      "result": {
+        "phase": "completed",
+        "reason": "model_finished",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 0,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.004030942916870117
+        },
+        "last_message_role": "assistant",
+        "last_tool_feedback": null
+      },
+      "fixture_calls": 1,
+      "durable_schema": 1
+    },
+    {
+      "case": "unsupported_schema_abort",
+      "result": {
+        "phase": "failed",
+        "reason": "user_aborted",
+        "pending": null,
+        "metrics": {
+          "model_calls": 0,
+          "tool_attempts": 0,
+          "recoveries": 0,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.002794027328491211
+        },
+        "last_message_role": "user",
+        "last_tool_feedback": null
+      },
+      "fixture_calls": 0,
+      "durable_schema": 999
+    },
+    {
+      "case": "changed_tools_schema",
+      "result": {
+        "phase": "completed",
+        "reason": "model_finished",
+        "pending": null,
+        "metrics": {
+          "model_calls": 1,
+          "tool_attempts": 0,
+          "recoveries": 0,
+          "input_tokens": 2,
+          "output_tokens": 2,
+          "cost_usd": null,
+          "reserved_usd": 0.0,
+          "elapsed_seconds": 0.0027179718017578125
+        },
+        "last_message_role": "assistant",
+        "last_tool_feedback": null
+      },
+      "fixture_calls": 1,
+      "durable_schema": 1
+    },
+    {
+      "case": "abort_completed",
+      "before": "completed",
+      "after": "failed",
+      "reason": "user_aborted",
+      "answer_before": {
+        "exit": 0,
+        "stdout": "{\n  \"answer\": \"Finished audit fixture\"\n}\n",
+        "stderr": ""
+      },
+      "answer_after": {
+        "exit": 2,
+        "stdout": "",
+        "stderr": "{\"error\": \"configuration_or_storage_error\"}\n"
+      }
+    }
+  ]
+}

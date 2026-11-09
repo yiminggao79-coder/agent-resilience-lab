@@ -1,0 +1,65 @@
+test_mutating_native_cancel_retains_unknown_effect_and_pending_after_local_cleanup (tests.dev.test_tool_stop.ToolStopTests) ... FAIL
+test_readonly_cancel_closes_result_and_unstarted_tail_without_fake_success (tests.dev.test_tool_stop.ToolStopTests) ... FAIL
+test_registry_style_base_wrapper_is_not_bypassed (tests.dev.test_tool_stop.ToolStopTests) ... FAIL
+test_unconfirmed_cancel_never_unlocks_even_readonly_execution (tests.dev.test_tool_stop.ToolStopTests) ... FAIL
+
+======================================================================
+FAIL: test_mutating_native_cancel_retains_unknown_effect_and_pending_after_local_cleanup (tests.dev.test_tool_stop.ToolStopTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_stop.py", line 49, in test_mutating_native_cancel_retains_unknown_effect_and_pending_after_local_cleanup
+    self.assertEqual((state['phase'],state['reason']),('needs_confirmation','tool_cancelled_effect_unknown'))
+AssertionError: Tuples differ: ('needs_confirmation', 'internal_error') != ('needs_confirmation', 'tool_cancelled_effect_unknown')
+
+First differing element 1:
+'internal_error'
+'tool_cancelled_effect_unknown'
+
+- ('needs_confirmation', 'internal_error')
++ ('needs_confirmation', 'tool_cancelled_effect_unknown')
+
+======================================================================
+FAIL: test_readonly_cancel_closes_result_and_unstarted_tail_without_fake_success (tests.dev.test_tool_stop.ToolStopTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_stop.py", line 68, in test_readonly_cancel_closes_result_and_unstarted_tail_without_fake_success
+    self.assertEqual((state['phase'],state['reason']),('failed','user_stop_requested'))
+AssertionError: Tuples differ: ('failed', 'internal_error') != ('failed', 'user_stop_requested')
+
+First differing element 1:
+'internal_error'
+'user_stop_requested'
+
+- ('failed', 'internal_error')
++ ('failed', 'user_stop_requested')
+
+======================================================================
+FAIL: test_registry_style_base_wrapper_is_not_bypassed (tests.dev.test_tool_stop.ToolStopTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_stop.py", line 95, in test_registry_style_base_wrapper_is_not_bypassed
+    self.assertEqual(state['reason'],'tool_cancelled_effect_unknown');self.assertEqual(tools.calls,1)
+AssertionError: 'internal_error' != 'tool_cancelled_effect_unknown'
+- internal_error
++ tool_cancelled_effect_unknown
+
+
+======================================================================
+FAIL: test_unconfirmed_cancel_never_unlocks_even_readonly_execution (tests.dev.test_tool_stop.ToolStopTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_stop.py", line 81, in test_unconfirmed_cancel_never_unlocks_even_readonly_execution
+    self.assertEqual((state['phase'],state['reason']),('needs_confirmation','tool_cancel_unconfirmed'))
+AssertionError: Tuples differ: ('failed', 'internal_error') != ('needs_confirmation', 'tool_cancel_unconfirmed')
+
+First differing element 0:
+'failed'
+'needs_confirmation'
+
+- ('failed', 'internal_error')
++ ('needs_confirmation', 'tool_cancel_unconfirmed')
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.500s
+
+FAILED (failures=4)

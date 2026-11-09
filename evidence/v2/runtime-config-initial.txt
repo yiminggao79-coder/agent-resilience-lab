@@ -1,0 +1,16 @@
+test_config_rejects_workspace_direct_intermediate_alias_symlink_hardlink_fifo (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_default_runtime_check_has_legacy_none_and_no_hidden_writes (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_explicit_default_and_abbreviated_flags_conflict_before_config_read_or_store (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_invalid_config_fails_before_deepseek_key_loading_and_store (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_load_returns_existing_kwargs_not_source_path_or_new_authority (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_runtime_check_validates_without_store_key_model_or_subprocess (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_strict_version_fields_types_duplicate_and_bounded_regular_file (tests.dev.test_runtime_config.RuntimeConfigTests) ... ok
+test_actual_invalid_node_selections_return_json_without_traceback_or_api (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... ok
+test_arbitrary_nonstring_and_unbounded_codes_cannot_escape (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... ok
+test_known_runtime_errors_are_fixed_for_coding_and_approval_factories (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... ok
+test_previous_generic_value_error_privacy_stays_compatible (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.227s
+
+OK

@@ -1,0 +1,14 @@
+test_caller_can_prove_no_model_observation_and_skip_judging (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... ERROR
+
+======================================================================
+ERROR: test_caller_can_prove_no_model_observation_and_skip_judging (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_runner.py", line 87, in test_caller_can_prove_no_model_observation_and_skip_judging
+    result=self.runner.run_case_v3(self.suite,self.case,self.base/'trial',ScriptedModel([final()]),
+TypeError: run_case_v3() got an unexpected keyword argument 'observation_allowed'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.019s
+
+FAILED (errors=1)

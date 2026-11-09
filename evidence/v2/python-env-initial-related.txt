@@ -1,0 +1,52 @@
+test_byte_and_entry_caps_fail_without_unbounded_source_reads (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_configuration_mismatch_and_retargeted_launcher_are_refused (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_content_replacement_and_modes_change_bound_identity (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_hidden_symlink_hardlink_and_special_package_entries_are_not_granted (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_targets_relative_alias_and_broad_overlap_are_rejected (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_valid_manifest_keeps_launcher_base_config_and_tree_distinct (tests.dev.test_python_environment.PythonEnvironmentTests) ... ok
+test_actual_approved_command_retains_venv_semantics (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests) ... ERROR
+test_actual_selected_dependency_unittest_and_quiescent_receipt (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests) ... ok
+test_cli_opt_in_reaches_state_without_model_network (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests) ... ERROR
+test_prepare_and_state_pin_selected_environment_and_changed_bytes_reject (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests) ... ok
+test_change_during_stream_hash_fails_closed (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_default_authority_and_aliases_are_unchanged_and_never_infer_environment (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_default_selected_binary_also_uses_bounded_descriptor_without_shape_change (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_explicit_alias_and_host_launcher_symlink_bind_canonical_runtime (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_hardlink_alias_into_workspace_is_not_an_admitted_runtime (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_nonregular_nonexecutable_and_oversize_are_rejected_before_open (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_streaming_descriptor_is_stable_bounded_and_has_only_existing_fields (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_whole_optional_grant_binds_python_commands_and_changed_grant_cannot_reuse_approval (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_workspace_paths_and_both_directions_of_launcher_alias_are_rejected (tests.dev.test_node_authority.NodeAuthorityTests) ... ok
+test_environment_policy_ignores_ambient_credentials_and_cannot_be_changed (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_exact_argv_and_workspace_bind_a_stable_json_intent (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_missing_backend_never_executes_project_code (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_rejects_invalid_commands_paths_and_ambient_executables (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_tampering_and_replaced_workspace_or_cwd_are_rejected (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_visible_hard_link_alias_cannot_bypass_private_file_scope (tests.dev.test_commands.CommandPreparationTests) ... ok
+test_private_files_network_fork_and_directory_relocation_are_denied (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_real_command_can_import_project_and_report_exit (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_timeout_stops_effects_and_output_is_bounded (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+test_trusted_supervisor_keeps_lease_after_worker_death (tests.dev.test_commands.ManagedCommandSandboxTests) ... ok
+
+======================================================================
+ERROR: test_actual_approved_command_retains_venv_semantics (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment_integration.py", line 86, in test_actual_approved_command_retains_venv_semantics
+    self.assertTrue(native_jobs.inspect_workspace(self.root,self.db)['local_quiescent'])
+KeyError: 'local_quiescent'
+
+======================================================================
+ERROR: test_cli_opt_in_reaches_state_without_model_network (tests.dev.test_python_environment_integration.PythonEnvironmentIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment_integration.py", line 50, in test_cli_opt_in_reaches_state_without_model_network
+    code=cli.main(['--db',str(self.db),'run','Synthetic CLI','--workspace',str(self.root),
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 246, in main
+    paid_route = args.allow_api and model.api_key_env == 'DEEPSEEK_API_KEY'
+AttributeError: 'ScriptedModel' object has no attribute 'api_key_env'
+
+----------------------------------------------------------------------
+Ran 29 tests in 4.764s
+
+FAILED (errors=2)

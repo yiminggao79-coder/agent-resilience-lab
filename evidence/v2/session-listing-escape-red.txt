@@ -1,0 +1,21 @@
+test_literal_backslash_u0000_workspace_is_distinct_from_actual_nul (tests.dev.test_session_listing_edge.SessionListingEscapeTests) ... FAIL
+
+======================================================================
+FAIL: test_literal_backslash_u0000_workspace_is_distinct_from_actual_nul (tests.dev.test_session_listing_edge.SessionListingEscapeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_session_listing_edge.py", line 22, in test_literal_backslash_u0000_workspace_is_distinct_from_actual_nul
+    self.assertEqual([item['task_id'] for item in page['items']],[tid])
+AssertionError: Lists differ: [] != ['11111111111111111111111111111111']
+
+Second list contains 1 additional elements.
+First extra element 0:
+'11111111111111111111111111111111'
+
+- []
++ ['11111111111111111111111111111111']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.020s
+
+FAILED (failures=1)

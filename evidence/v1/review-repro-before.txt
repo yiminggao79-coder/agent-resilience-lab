@@ -1,0 +1,10 @@
+completed_args_rejected: invalid_tool_arguments
+{"report": "/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/v1-review-report-llrze0_m/report.json", "task_success_rate": 1.0}
+evaluator_exit: 0
+{
+  "phase": "completed",
+  "public_tests_unchanged": true,
+  "independent_oracle_exit_code": 0,
+  "confirmed_coding_cycle": true,
+  "task_success": true
+}

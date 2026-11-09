@@ -1,0 +1,63 @@
+test_cli_stop_cancels_live_model_before_provider_final (tests.acceptance.test_model_cancel_process.ModelCancelProcessTests) ... test_runner_sigkill_reclaims_worker_without_waiting_for_provider (tests.acceptance.test_model_cancel_process.ModelCancelProcessTests) ... FAIL
+test_cancel_without_persisted_stop_is_not_clean (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_delegate_wrapper_is_still_called (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_keyboard_interrupt_marks_model_usage_unknown (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_prior_unresolved_outcome_is_never_cleared (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_scoped_stop_discards_incomplete_response_but_retains_unknown_usage (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_summary_cancel_keeps_prior_context_and_restores_presentation (tests.dev.test_model_stop.ModelStopTests) ... ok
+
+======================================================================
+FAIL: test_cli_stop_cancels_live_model_before_provider_final (tests.acceptance.test_model_cancel_process.ModelCancelProcessTests) (stream=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_model_cancel_process.py", line 66, in test_cli_stop_cancels_live_model_before_provider_final
+    self.assertEqual(list(self.root.iterdir()),[])
+AssertionError: Lists differ: [PosixPath('/var/folders/_t/dxnptwc95yd6zm[257 chars]ck')] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpt78hq6hf/work/.agent-lab.execution.lock')
+
++ []
+- [PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpt78hq6hf/work/.agent-lab.execution.lock'),
+-  PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpt78hq6hf/work/.agent-lab.generation'),
+-  PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpt78hq6hf/work/.agent-lab.lock')]
+
+======================================================================
+FAIL: test_cli_stop_cancels_live_model_before_provider_final (tests.acceptance.test_model_cancel_process.ModelCancelProcessTests) (stream=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_model_cancel_process.py", line 66, in test_cli_stop_cancels_live_model_before_provider_final
+    self.assertEqual(list(self.root.iterdir()),[])
+AssertionError: Lists differ: [PosixPath('/var/folders/_t/dxnptwc95yd6zm[257 chars]ck')] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpt78hq6hf/work/.agent-lab.execution.lock')
+
++ []
+- [PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpt78hq6hf/work/.agent-lab.execution.lock'),
+-  PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpt78hq6hf/work/.agent-lab.generation'),
+-  PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpt78hq6hf/work/.agent-lab.lock')]
+
+======================================================================
+FAIL: test_runner_sigkill_reclaims_worker_without_waiting_for_provider (tests.acceptance.test_model_cancel_process.ModelCancelProcessTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/acceptance/test_model_cancel_process.py", line 85, in test_runner_sigkill_reclaims_worker_without_waiting_for_provider
+    self.assertFalse(self.server.final_sent.is_set()); self.assertEqual(list(self.root.iterdir()),[])
+AssertionError: Lists differ: [PosixPath('/var/folders/_t/dxnptwc95yd6zm[257 chars]ck')] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpndcdzdv3/work/.agent-lab.execution.lock')
+
++ []
+- [PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpndcdzdv3/work/.agent-lab.execution.lock'),
+-  PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpndcdzdv3/work/.agent-lab.generation'),
+-  PosixPath('/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpndcdzdv3/work/.agent-lab.lock')]
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.284s
+
+FAILED (failures=3)

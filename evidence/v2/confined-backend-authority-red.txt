@@ -1,0 +1,77 @@
+test_all_commands_bind_backend_and_python_uses_native_entry (tests.dev.test_confined_backend.ConfinedBackendTests) ... FAIL
+test_backend_change_is_detected_with_cached_tools_before_prepare (tests.dev.test_confined_backend.ConfinedBackendTests) ... FAIL
+test_backend_checkpoint_approval_and_fork_require_same_config (tests.dev.test_confined_backend.ConfinedBackendTests) ... FAIL
+test_default_wire_unchanged_and_nondefault_binds_entry_and_cleanup (tests.dev.test_confined_backend.ConfinedBackendTests) ... FAIL
+test_native_entry_venv_is_admitted_wrapper_venv_is_not (tests.dev.test_confined_backend.ConfinedBackendTests) ... FAIL
+test_run_tests_intent_binds_full_runtime_and_rejects_tampering (tests.dev.test_confined_backend.ConfinedBackendTests) ... FAIL
+test_schemas_report_actual_backend_without_model_selector_parameter (tests.dev.test_confined_backend.ConfinedBackendTests) ... FAIL
+test_worker_forged_expected_policy_or_selector_fails_before_launch (tests.dev.test_confined_backend.ConfinedBackendTests) ... FAIL
+
+======================================================================
+FAIL: test_all_commands_bind_backend_and_python_uses_native_entry (tests.dev.test_confined_backend.ConfinedBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend.py", line 27, in setUp
+    self.assertIsNotNone(backend_descriptor, 'explicit backend authority not implemented')
+AssertionError: unexpectedly None : explicit backend authority not implemented
+
+======================================================================
+FAIL: test_backend_change_is_detected_with_cached_tools_before_prepare (tests.dev.test_confined_backend.ConfinedBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend.py", line 27, in setUp
+    self.assertIsNotNone(backend_descriptor, 'explicit backend authority not implemented')
+AssertionError: unexpectedly None : explicit backend authority not implemented
+
+======================================================================
+FAIL: test_backend_checkpoint_approval_and_fork_require_same_config (tests.dev.test_confined_backend.ConfinedBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend.py", line 27, in setUp
+    self.assertIsNotNone(backend_descriptor, 'explicit backend authority not implemented')
+AssertionError: unexpectedly None : explicit backend authority not implemented
+
+======================================================================
+FAIL: test_default_wire_unchanged_and_nondefault_binds_entry_and_cleanup (tests.dev.test_confined_backend.ConfinedBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend.py", line 27, in setUp
+    self.assertIsNotNone(backend_descriptor, 'explicit backend authority not implemented')
+AssertionError: unexpectedly None : explicit backend authority not implemented
+
+======================================================================
+FAIL: test_native_entry_venv_is_admitted_wrapper_venv_is_not (tests.dev.test_confined_backend.ConfinedBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend.py", line 27, in setUp
+    self.assertIsNotNone(backend_descriptor, 'explicit backend authority not implemented')
+AssertionError: unexpectedly None : explicit backend authority not implemented
+
+======================================================================
+FAIL: test_run_tests_intent_binds_full_runtime_and_rejects_tampering (tests.dev.test_confined_backend.ConfinedBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend.py", line 27, in setUp
+    self.assertIsNotNone(backend_descriptor, 'explicit backend authority not implemented')
+AssertionError: unexpectedly None : explicit backend authority not implemented
+
+======================================================================
+FAIL: test_schemas_report_actual_backend_without_model_selector_parameter (tests.dev.test_confined_backend.ConfinedBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend.py", line 27, in setUp
+    self.assertIsNotNone(backend_descriptor, 'explicit backend authority not implemented')
+AssertionError: unexpectedly None : explicit backend authority not implemented
+
+======================================================================
+FAIL: test_worker_forged_expected_policy_or_selector_fails_before_launch (tests.dev.test_confined_backend.ConfinedBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_backend.py", line 27, in setUp
+    self.assertIsNotNone(backend_descriptor, 'explicit backend authority not implemented')
+AssertionError: unexpectedly None : explicit backend authority not implemented
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+FAILED (failures=8)

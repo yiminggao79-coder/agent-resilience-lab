@@ -1,0 +1,19 @@
+test_all_commands_tests_and_cached_state_bind_file_content_and_resource_scope (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_default_shape_and_file_scope_hash_versus_directory_scope_identity (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_directory_data_is_explicitly_not_a_content_snapshot (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_forged_worker_and_missing_resume_configuration_are_refused (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_reject_home_coarse_workspace_alias_special_and_overlapping_scopes (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_safe_named_reads_are_explicit_and_cannot_write_or_wildcard (tests.dev.test_tool_resources.ToolResourceTests) ... ok
+test_actual_literal_and_directory_read_without_adjacent_private_write_or_handle_mutation (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... ok
+test_actual_unittest_resource_only_runtime_uses_extended_supervisor (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... ok
+test_engine_actual_sandbox_multifile_compile_link_fail_patch_rebuild_and_verify (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... ok
+test_resources_do_not_register_an_executable_or_rehash_during_profile_generation (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... ok
+test_strict_v3_supervisor_binds_grant_before_any_subprocess (tests.dev.test_tool_resources_native.ToolResourcesNativeTests) ... ok
+test_cli_repeat_resource_and_named_read_on_approval_resume_fork (tests.acceptance.test_tool_resources_cli_process.ToolResourceCLIProcessTests) ... ok
+test_runtime_help_lists_read_scope_and_named_metadata (tests.acceptance.test_tool_resources_cli_process.ToolResourceCLIProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 119.596s
+
+OK
+{"experiment": "sandbox_multifile_c_build_repair", "model_kind": "offline_scripted_protocol_double", "real_llm_success_rate": null, "command_exit_codes": [0, 0, 0, 1, 0, 0, 0], "exact_approvals": 7, "final_stdout": "result=5\n", "immutable_check_sha256": "11af63c120af261b42223a3c0fa75e77ef2e150e00b3369f0d91158f21d33441", "binary_sha256": "8bf3488c7d5f4164be6cc27448d5303a79994512545f6a046e709b186efe5c5f", "native_proof": "all_native_joined", "host_precompiled_fixture": false}

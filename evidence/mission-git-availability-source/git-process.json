@@ -1,0 +1,21 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/git-utils/src/git_process.rs",
+  "git_blob_sha": "80c3d1859921a1824cf3480a6ab6618b43f21b37",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/git-utils/src/git_process.rs",
+  "inspected_line_ranges": [
+    [
+      1,
+      97
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 32,
+      "end_line": 93,
+      "text": "fn spawn_git_command(command: &mut Command) -> Option<(Child, KillGitProcessTreeOnDrop)> {\n    scrub_non_inheritable_env_vars(command.as_std_mut());\n    #[cfg(unix)]\n    command.process_group(0);\n    command.kill_on_drop(true);\n\n    command\n        .stdin(Stdio::null())\n        .stdout(Stdio::piped())\n        .stderr(Stdio::piped());\n\n    #[cfg(windows)]\n    let (child, job) = JobObject::spawn_background(command).ok()?;\n    #[cfg(not(windows))]\n    let child = command.spawn().ok()?;\n\n    let process_tree = KillGitProcessTreeOnDrop {\n        #[cfg(unix)]\n        process_id: child.id()?,\n        #[cfg(windows)]\n        job,\n        #[cfg(unix)]\n        armed: true,\n    };\n\n    Some((child, process_tree))\n}\n\nasync fn wait_for_git_command_with_timeout_output(\n    child: Child,\n    process_tree: KillGitProcessTreeOnDrop,\n    timeout_duration: Duration,\n) -> Option<Output> {\n    #[cfg(unix)]\n    let mut process_tree = process_tree;\n\n    let result = timeout(timeout_duration, child.wait_with_output()).await;\n\n    match result {\n        Ok(Ok(output)) => {\n            #[cfg(windows)]\n            if let Some(job) = &process_tree.job {\n                job.preserve_descendants().ok()?;\n            }\n\n            #[cfg(unix)]\n            {\n                process_tree.armed = false;\n            }\n            Some(output)\n        }\n        _ => None,\n    }\n}\n\npub(crate) async fn run_git_command_with_timeout_output(\n    command: &mut Command,\n    timeout_duration: Duration,\n) -> Option<Output> {\n    let (child, process_tree) = spawn_git_command(command)?;\n    wait_for_git_command_with_timeout_output(child, process_tree, timeout_duration).await\n}\n"
+    }
+  ],
+  "notice": "Verbatim selected public-source excerpts in local JSON wrapper; source read, not executed. See LICENSE and NOTICE."
+}

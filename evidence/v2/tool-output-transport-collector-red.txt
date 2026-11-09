@@ -1,0 +1,14 @@
+test_real_sandbox_collector_displays_before_project_can_finish (tests.dev.test_tool_output_transport.OutputTransportTests) ... FAIL
+
+======================================================================
+FAIL: test_real_sandbox_collector_displays_before_project_can_finish (tests.dev.test_tool_output_transport.OutputTransportTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_tool_output_transport.py", line 174, in test_real_sandbox_collector_displays_before_project_can_finish
+    self.assertTrue(result['ok'], result)
+AssertionError: False is not true : {'ok': False, 'exit_code': 1, 'stdout': 'early-native-output\n', 'stderr': 'test_live (test_live.Live) ... early-error\nFAIL\n\n======================================================================\nFAIL: test_live (test_live.Live)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File "/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmp_zmvgpv1/test_live.py", line 9, in test_live\n    assert time.monotonic()<deadline,\'private output callback did not release barrier\'\nAssertionError: private output callback did not release barrier\n\n----------------------------------------------------------------------\nRan 1 test in 4.002s\n\nFAILED (failures=1)\n', 'stdout_truncated': False, 'stderr_truncated': False, 'test_start_dir': '.'}
+
+----------------------------------------------------------------------
+Ran 1 test in 4.235s
+
+FAILED (failures=1)

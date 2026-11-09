@@ -1,0 +1,42 @@
+{
+  "images": {
+    "/Library/Developer/CommandLineTools/usr/bin/ld": {
+      "bytes": 3373904,
+      "dependencies": [
+        "@rpath/libtapi.dylib (compatibility version 1.0.0, current version 1500.3.2)",
+        "/usr/lib/libcodedirectory.dylib (compatibility version 1.0.0, current version 1.0.0)",
+        "@rpath/libLTO.dylib (compatibility version 1.0.0, current version 4500.3.9)",
+        "@rpath/libswiftDemangle.dylib (compatibility version 1.0.0, current version 5.10.0)",
+        "/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.245.0)",
+        "/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.1)"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 284
+    },
+    "/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib": {
+      "bytes": 127951264,
+      "dependencies": [
+        "@rpath/libLTO.dylib (compatibility version 1.0.0, current version 4500.3.9)",
+        "/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)",
+        "/usr/lib/libncurses.5.4.dylib (compatibility version 5.4.0, current version 5.4.0)",
+        "/usr/lib/libresolv.9.dylib (compatibility version 1.0.0, current version 1.0.0)",
+        "/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.1)",
+        "/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.245.0)"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 284
+    },
+    "/Library/Developer/CommandLineTools/usr/lib/libtapi.dylib": {
+      "bytes": 655808,
+      "dependencies": [
+        "@rpath/libtapi.dylib (compatibility version 1.0.0, current version 1500.3.2)",
+        "/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1345.100.1)",
+        "/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)",
+        "/usr/lib/libc++.1.dylib (compatibility version 1.0.0, current version 1700.245.0)"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 284
+    }
+  },
+  "kind": "host_readonly_macho_dependency_inventory"
+}

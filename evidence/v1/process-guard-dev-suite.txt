@@ -1,0 +1,302 @@
+test_answer_is_explicit_private_output_not_part_of_status_or_trace (test_boundaries.BoundaryTests) ... ok
+test_cli_missing_key_fails_without_creating_task (test_boundaries.BoundaryTests) ... ok
+test_cli_status_trace_and_abort_do_not_require_api_key (test_boundaries.BoundaryTests) ... ok
+test_context_cap_prevents_model_call (test_boundaries.BoundaryTests) ... ok
+test_expired_deadline_prevents_tools_and_survives_resume (test_boundaries.BoundaryTests) ... ok
+test_file_tools_have_real_wall_timeout_and_mutations_are_uncertain (test_boundaries.BoundaryTests) ... ok
+test_missing_usage_under_cost_limit_stops_before_tool (test_boundaries.BoundaryTests) ... ok
+test_restricted_expression_hard_timeout (test_boundaries.BoundaryTests) ... ok
+test_listing_and_search_have_finite_result_limits (test_coding_tools.CodingToolsTests) ... FAIL
+test_patch_conflict_ambiguous_empty_and_changed_target_are_rejected (test_coding_tools.CodingToolsTests) ... FAIL
+test_patch_prepare_is_pure_and_recovery_is_idempotent (test_coding_tools.CodingToolsTests) ... FAIL
+test_patch_refuses_escape_binary_and_oversized_desired_content (test_coding_tools.CodingToolsTests) ... FAIL
+test_recursive_listing_and_literal_search_exclude_hidden_and_links (test_coding_tools.CodingToolsTests) ... FAIL
+test_test_execution_is_unsafe_and_legacy_tools_are_retained (test_coding_tools.CodingToolsTests) ... FAIL
+test_expired_budget_still_reports_changed_inflight_target_as_unknown (test_crash.CrashTests) ... ok
+test_external_modification_after_kill_is_preserved (test_crash.CrashTests) ... ok
+test_kill_in_model_request_does_not_resubmit_unknown_paid_request (test_crash.CrashTests) ... ok
+test_sigkill_after_append_never_repeats_and_pauses (test_crash.CrashTests) ... ok
+test_sigkill_after_write_before_receipt_resumes_in_new_process (test_crash.CrashTests) ... ok
+test_completed_is_not_automatically_task_success (test_engine.EngineTests) ... ok
+test_failed_model_request_without_usage_is_not_reported_as_zero (test_engine.EngineTests) ... ok
+test_invalid_limits_rejected (test_engine.EngineTests) ... ok
+test_invalid_tool_args_and_missing_file_can_be_corrected (test_engine.EngineTests) ... ok
+test_multi_tool_response_is_not_partially_executed (test_engine.EngineTests) ... ok
+test_multistep_real_tools_feed_actual_results_to_model (test_engine.EngineTests) ... ok
+test_repeated_tool_errors_stop (test_engine.EngineTests) ... ok
+test_retry_exhaustion_and_uncertain_request (test_engine.EngineTests) ... ok
+test_step_and_cost_caps_prevent_requests (test_engine.EngineTests) ... ok
+test_terminal_resume_does_not_repeat_model_or_tool (test_engine.EngineTests) ... ok
+test_unexpected_exception_is_safe_and_trace_does_not_leak (test_engine.EngineTests) ... ok
+test_unexpected_mutating_tool_error_does_not_invite_blind_retry (test_engine.EngineTests) ... ok
+test_usage_is_accumulated_and_missing_is_not_zero (test_engine.EngineTests) ... ok
+test_wrong_workspace_or_model_cannot_resume (test_engine.EngineTests) ... ok
+test_http_status_classification (test_model.ModelTests) ... ERROR
+test_http_wall_timeout_and_redirect_refusal (test_model.ModelTests) ... ERROR
+test_invalid_json_shape_is_unknown_not_retryable (test_model.ModelTests) ... ERROR
+test_malformed_usage_is_unmeasured_instead_of_crashing (test_model.ModelTests) ... ERROR
+test_no_network_without_explicit_enable (test_model.ModelTests) ... ERROR
+test_provider_body_cannot_control_retry_policy_or_public_error_code (test_model.ModelTests) ... ERROR
+test_real_http_payload_tools_usage_and_key_environment (test_model.ModelTests) ... ERROR
+test_remote_http_and_credential_urls_rejected (test_model.ModelTests) ... ERROR
+test_control_symlinks_are_never_followed (test_process_guard.ProcessGuardTests) ... ok
+test_executing_worker_blocks_rotation_and_another_worker (test_process_guard.ProcessGuardTests) ... ok
+test_generation_persists_privately_and_replaces_atomically (test_process_guard.ProcessGuardTests) ... ok
+test_late_worker_cannot_execute_after_generation_rotation (test_process_guard.ProcessGuardTests) ... ok
+test_lease_is_released_after_exception_and_worker_sigkill (test_process_guard.ProcessGuardTests) ... ok
+test_none_is_allowed_only_while_both_generations_are_absent (test_process_guard.ProcessGuardTests) ... ok
+test_sigkill_of_parent_does_not_release_child_owned_lease (test_process_guard.ProcessGuardTests) ... ok
+test_special_and_hardlinked_control_files_fail_closed (test_process_guard.ProcessGuardTests) ... ok
+test_abort_keeps_completed_history (test_runtime_v1.RuntimeV1Tests) ... ok
+test_duplicate_provider_call_id_cannot_append_twice (test_runtime_v1.RuntimeV1Tests) ... ok
+test_every_response_has_usage_event_even_invalid_tool_args (test_runtime_v1.RuntimeV1Tests) ... ok
+test_invalid_message_missing_usage_pauses_before_another_request (test_runtime_v1.RuntimeV1Tests) ... ok
+test_receipt_transient_sqlite_failure_continues_without_reexecuting_tool (test_runtime_v1.RuntimeV1Tests) ... ERROR
+test_save_event_is_idempotent_under_lost_commit_ack (test_runtime_v1.RuntimeV1Tests) ... ok
+test_storage_failure_does_not_mutate_pending_or_seal_failed (test_runtime_v1.RuntimeV1Tests) ... ok
+test_unknown_phase_is_rejected_without_model_call (test_runtime_v1.RuntimeV1Tests) ... FAIL
+test_denies_outside_read_write_network_and_control_mutation (test_sandbox.SandboxTests) ... FAIL
+test_output_collection_is_bounded_for_both_streams (test_sandbox.SandboxTests) ... FAIL
+test_real_unittest_runs_and_reports_failure_then_success (test_sandbox.SandboxTests) ... FAIL
+test_timeout_kills_descendant_before_late_write (test_sandbox.SandboxTests) ... FAIL
+test_unavailable_backend_never_executes_project (test_sandbox.SandboxTests) ... FAIL
+test_database_inside_tool_root_is_rejected (test_tools_store.StoreTests) ... ok
+test_exclusive_workspace_and_database_locks (test_tools_store.StoreTests) ... ok
+test_snapshot_and_trace_survive_reopen_without_content_in_trace (test_tools_store.StoreTests) ... ok
+test_trace_rejects_arbitrary_payload (test_tools_store.StoreTests) ... ok
+test_append_never_replayed_after_unknown_outcome (test_tools_store.ToolsTests) ... ok
+test_changed_target_blocks_recovery (test_tools_store.ToolsTests) ... ok
+test_csv_stats_and_bad_data (test_tools_store.ToolsTests) ... ok
+test_expression_runs_in_restricted_child (test_tools_store.ToolsTests) ... ok
+test_path_boundaries_and_special_files (test_tools_store.ToolsTests) ... ok
+test_strict_arguments_and_size (test_tools_store.ToolsTests) ... ok
+test_write_read_and_verified_recovery (test_tools_store.ToolsTests) ... ok
+
+======================================================================
+ERROR: test_http_status_classification (test_model.ModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 35, in setUp
+    self.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_http_wall_timeout_and_redirect_refusal (test_model.ModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 35, in setUp
+    self.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_invalid_json_shape_is_unknown_not_retryable (test_model.ModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 35, in setUp
+    self.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_malformed_usage_is_unmeasured_instead_of_crashing (test_model.ModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 35, in setUp
+    self.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_no_network_without_explicit_enable (test_model.ModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 35, in setUp
+    self.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_provider_body_cannot_control_retry_policy_or_public_error_code (test_model.ModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 35, in setUp
+    self.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_real_http_payload_tools_usage_and_key_environment (test_model.ModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 35, in setUp
+    self.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_remote_http_and_credential_urls_rejected (test_model.ModelTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model.py", line 35, in setUp
+    self.server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 452, in __init__
+    self.server_bind()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/server.py", line 138, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/socketserver.py", line 466, in server_bind
+    self.socket.bind(self.server_address)
+PermissionError: [Errno 1] Operation not permitted
+
+======================================================================
+ERROR: test_receipt_transient_sqlite_failure_continues_without_reexecuting_tool (test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 65, in test_receipt_transient_sqlite_failure_continues_without_reexecuting_tool
+    state = engine.run(tid)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 283, in run
+    self._tool(state, recovering=False)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 143, in _tool
+    self._feedback(state, result)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 115, in _feedback
+    self._save(candidate, 'tool_finished', metadata)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 92, in _save
+    raise StorageUnavailable('storage_unavailable') from None
+agent_lab.store.StorageUnavailable: storage_unavailable
+
+======================================================================
+FAIL: test_listing_and_search_have_finite_result_limits (test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_patch_conflict_ambiguous_empty_and_changed_target_are_rejected (test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_patch_prepare_is_pure_and_recovery_is_idempotent (test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_patch_refuses_escape_binary_and_oversized_desired_content (test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_recursive_listing_and_literal_search_exclude_hidden_and_links (test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_test_execution_is_unsafe_and_legacy_tools_are_retained (test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_unknown_phase_is_rejected_without_model_call (test_runtime_v1.RuntimeV1Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_runtime_v1.py", line 109, in test_unknown_phase_is_rejected_without_model_call
+    engine.run(tid)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_denies_outside_read_write_network_and_control_mutation (test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+======================================================================
+FAIL: test_output_collection_is_bounded_for_both_streams (test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+======================================================================
+FAIL: test_real_unittest_runs_and_reports_failure_then_success (test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+======================================================================
+FAIL: test_timeout_kills_descendant_before_late_write (test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+======================================================================
+FAIL: test_unavailable_backend_never_executes_project (test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+----------------------------------------------------------------------
+Ran 73 tests in 9.614s
+
+FAILED (failures=12, errors=9)

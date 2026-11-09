@@ -1,0 +1,57 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/unified_exec/process_manager.rs",
+  "git_blob_sha": "caa45622a2c826ae7a7c14c1edd2c849e8f81799",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/unified_exec/process_manager.rs",
+  "inspected_line_ranges": [
+    [
+      440,
+      540
+    ],
+    [
+      570,
+      640
+    ],
+    [
+      700,
+      880
+    ],
+    [
+      1295,
+      1370
+    ],
+    [
+      1480,
+      1585
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 518,
+      "end_line": 534,
+      "text": "    pub(crate) async fn exec_command(\n        &self,\n        request: ExecCommandRequest,\n        context: &UnifiedExecContext,\n    ) -> Result<ExecCommandToolOutput, UnifiedExecError> {\n        let result = self\n            .exec_command_inner(request, context, /*completion*/ None)\n            .await;\n        let outcome = match &result {\n            Ok(output) if output.process_id.is_some() => \"yielded\",\n            Ok(_) => \"exited\",\n            Err(_) if context.cancellation_token.is_cancelled() => \"cancelled\",\n            Err(_) => \"failed\",\n        };\n        tracing::Span::current().record(\"outcome\", outcome);\n        result\n    }\n"
+    },
+    {
+      "start_line": 711,
+      "end_line": 735,
+      "text": "        if let Some(message) = process.failure_message() {\n            let finish_result = finish_deferred_network_approval_for_session(\n                Some(&context.session),\n                deferred_network_approval.take(),\n            )\n            .await;\n            emit_failed_initial_exec_end_if_unstored(\n                process_stored,\n                process.sandbox_type(),\n                context,\n                &request,\n                cwd.clone(),\n                plugin_attribution.clone(),\n                Arc::clone(&output_buffer),\n                text.clone(),\n                message.clone(),\n                wall_time,\n            )\n            .await;\n            self.release_process_id(request.process_id).await;\n            if let Err(message) = finish_result {\n                return Err(fail_process_with_message(process.as_ref(), message));\n            }\n            return Err(UnifiedExecError::process_failed(message));\n        }\n"
+    },
+    {
+      "start_line": 737,
+      "end_line": 795,
+      "text": "        let (response_process_id, exit_code) = if process_stored {\n            let retention = if completion.is_some() {\n                OutputRetention::UntilExit\n            } else {\n                OutputRetention::UntilCollected\n            };\n            match self\n                .refresh_process_state(process_id, &process, retention)\n                .await\n            {\n                ProcessStatus::Alive {\n                    exit_code,\n                    process_id,\n                    ..\n                } => (Some(process_id), exit_code),\n                ProcessStatus::Exited { exit_code, entry } => {\n                    entry.process.cancellation_token().cancel();\n                    if let Err(message) =\n                        finish_deferred_network_approval_after_process_exit_for_session(\n                            Some(&context.session),\n                            deferred_network_approval.take(),\n                        )\n                        .await\n                    {\n                        return Err(fail_process_with_message(entry.process.as_ref(), message));\n                    }\n                    if !completion\n                        .as_ref()\n                        .is_some_and(|completion| completion.timed_out)\n                    {\n                        process\n                            .check_for_sandbox_denial_with_text(&text)\n                            .await\n                            .map_err(|err| {\n                                err.with_output_collection_metadata(\n                                    original_token_count,\n                                    output_omitted_bytes,\n                                )\n                            })?;\n                    }\n                    let metrics_sidecar = entry\n                        .plugin_metrics_sidecar\n                        .as_ref()\n                        .and_then(take_plugin_metrics_sidecar);\n                    finish_and_track_measurements(\n                        metrics_sidecar,\n                        exit_code.unwrap_or(-1),\n                        &context.session,\n                        &context.step_context.turn,\n                        &model_context,\n                        &context.call_id,\n                    )\n                    .await;\n                    (None, exit_code)\n                }\n                ProcessStatus::Unknown => {\n                    return Err(UnifiedExecError::UnknownProcessId { process_id });\n                }\n            }\n"
+    },
+    {
+      "start_line": 821,
+      "end_line": 874,
+      "text": "            let exit_code = process.exit_code();\n            let exit = exit_code.unwrap_or(-1);\n            initial_exec_command_guard\n                .finish_plugin_metrics(context, exit)\n                .await;\n            emit_exec_end_for_unified_exec(\n                process.sandbox_type(),\n                Arc::clone(&context.session),\n                Arc::clone(&context.step_context.turn),\n                Arc::clone(&context.step_context.settings.model_info),\n                context.call_id.clone(),\n                command.clone(),\n                cwd.clone(),\n                Some(process_id.to_string()),\n                plugin_attribution.clone(),\n                Arc::clone(&output_buffer),\n                text.clone(),\n                exit,\n                wall_time,\n                process.timed_out(),\n            )\n            .await;\n\n            self.release_process_id(request.process_id).await;\n            process\n                .check_for_sandbox_denial_with_text(&text)\n                .await\n                .map_err(|err| {\n                    err.with_output_collection_metadata(original_token_count, output_omitted_bytes)\n                })?;\n            (None, exit_code)\n        };\n\n        let response = ExecCommandToolOutput {\n            event_call_id: context.call_id.clone(),\n            chunk_id,\n            wall_time,\n            raw_output: collected,\n            truncation_policy: context\n                .step_context\n                .settings\n                .model_info\n                .truncation_policy\n                .into(),\n            max_output_tokens: prepared.max_output_tokens,\n            process_id: response_process_id,\n            exit_code,\n            original_token_count: Some(original_token_count),\n            hook_command: Some(prepared.hook_command.clone()),\n            tool_cwd: (!prepared.turn_environment.environment().is_remote())\n                .then(|| prepared.cwd.clone()),\n        };\n\n        Ok(response)\n"
+    },
+    {
+      "start_line": 1517,
+      "end_line": 1558,
+      "text": "        let mut orchestrator = ToolOrchestrator::new();\n        let mut runtime = UnifiedExecRuntime::new(self);\n        let exec_approval_requirement = prepared\n            .approval_requirement(&context.session, &context.step_context)\n            .await;\n        let req = UnifiedExecToolRequest {\n            prepared,\n            process_id: request.process_id,\n            env,\n            exec_server_env_config: Some(exec_server_env_config),\n            shell_snapshot,\n            explicit_env_overrides,\n            network: request.network.clone(),\n            exec_approval_requirement,\n        };\n        let tool_ctx = ToolCtx {\n            session: context.session.clone(),\n            step_context: Arc::clone(&context.step_context),\n            cancellation_token: context.cancellation_token.clone(),\n            call_id: context.call_id.clone(),\n            tool_name: ToolName::plain(\"exec_command\"),\n        };\n        let result = orchestrator\n            .run(&mut runtime, &req, &tool_ctx)\n            .await\n            .map(|result| (result.output, result.deferred_network_approval))\n            .map_err(|err| match err {\n                ToolError::Codex(err) => match err.details() {\n                    CodexErrorDetails::Sandbox(SandboxErr::Denied { output, .. }) => {\n                        let output = output.as_ref().clone();\n                        let message = if output.aggregated_output.text.is_empty() {\n                            let exit_code = output.exit_code;\n                            format!(\"Process exited with code {exit_code}\")\n                        } else {\n                            output.aggregated_output.text.clone()\n                        };\n                        UnifiedExecError::sandbox_denied(message, output)\n                    }\n                    _ => UnifiedExecError::create_process(format!(\"{err:?}\")),\n                },\n                other => UnifiedExecError::create_process(format!(\"{other:?}\")),\n            });\n"
+    }
+  ],
+  "notice": "Verbatim selected public-source excerpts in local JSON wrapper; read, not executed. See LICENSE and NOTICE."
+}

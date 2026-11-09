@@ -1,0 +1,6 @@
+{
+  "settings.json": "d66bc84e577205ba2d9ba02c241c17b12040e11fdd7f0877ec17c59eda8a05ba",
+  "quote.py": "b5772d322c5ec5991cfca79fc05e992f060d9b007e3300054bddd59c7179c999",
+  "tests/test_public.py": "6bd2317901dd2641e0badd0665beae36ee6f109f8e6b79bb15ec9b1ff9cb6b87",
+  "tests/test_regression_policy.py": "d80d13bd423735e26328099201382d1b657c38505d9da16e0de122d61bd4b7d4"
+}

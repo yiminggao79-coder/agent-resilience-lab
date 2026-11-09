@@ -1,0 +1,32 @@
+{
+  "kind": "frozen_v3_actual_run_summary",
+  "run_id": "20261108-214537-b2bdd182",
+  "runtime_commit": "a6bbe6fd265f7653a6d660905b75399dbec4853d",
+  "report_sha256": "769d9d5bbc39d2b42d40e68feee1dea88e4ca3027f4ab8daacea6460f67c3d54",
+  "suite_freeze_sha256": "477e84d498331f2d69050d2bffe5d559b5c2c5a60f8782b0b10519ae67f5a915",
+  "quality_measured": 2,
+  "quality_passes": 2,
+  "quality_unmeasured": 0,
+  "model": "deepseek-flash",
+  "protocol": "chat",
+  "stream": false,
+  "thinking": "disabled",
+  "model_requests": 22,
+  "tool_attempts": 33,
+  "input_tokens": 135420,
+  "output_tokens": 5384,
+  "summed_case_elapsed_seconds": 128.338573256,
+  "estimated_peak_cache_miss_cny": 0.313912,
+  "supplier_bill_cny": null,
+  "exposure_consumed": true,
+  "limitations": [
+    "Finite Python tasks; same AI environment, not external statistical independence.",
+    "Oracle bootstrap is not a tamperproof malicious-code judge.",
+    "Quality rate includes measured constraints only; missing observations remain null.",
+    "Possible exposure precedes delegate access, not proof of provider delivery.",
+    "Original and verification roots are distinct; uncertain artifacts are retained.",
+    "Two independently AI-authored frozen tasks in the same environment; not external statistical independence or a general success-rate estimate.",
+    "Artifacts contain only deliberately exported synthetic candidates and diffs; private checkpoints and raw receipts remain in .lab.",
+    "Hashes prove exported identity, not independent semantic correctness."
+  ]
+}

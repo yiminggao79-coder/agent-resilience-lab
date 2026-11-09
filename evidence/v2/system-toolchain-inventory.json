@@ -1,0 +1,39 @@
+{
+  "kind": "host_readonly_inventory_not_sandbox_execution",
+  "tools": {
+    "clang": {
+      "exit_code": 0,
+      "path": "/usr/bin/clang",
+      "stderr_bytes": 284,
+      "stdout_head": [
+        "Apple clang version 15.0.0 (clang-1500.3.9.4)",
+        "Target: x86_64-apple-darwin23.6.0"
+      ]
+    },
+    "make": {
+      "exit_code": 0,
+      "path": "/usr/bin/make",
+      "stderr_bytes": 282,
+      "stdout_head": [
+        "GNU Make 3.81",
+        "Copyright (C) 2006  Free Software Foundation, Inc."
+      ]
+    },
+    "perl": {
+      "exit_code": 0,
+      "path": "/usr/bin/perl",
+      "stderr_bytes": 0,
+      "stdout_head": [
+        "v5.34.1"
+      ]
+    },
+    "ruby": {
+      "exit_code": 0,
+      "path": "/usr/bin/ruby",
+      "stderr_bytes": 0,
+      "stdout_head": [
+        "ruby 2.6.10p210 (2022-04-12 revision 67958) [universal.x86_64-darwin23]"
+      ]
+    }
+  }
+}

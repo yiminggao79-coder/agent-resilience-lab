@@ -1,0 +1,32 @@
+test_complete_frames_normalize_in_our_existing_responses_adapter (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ERROR
+test_reference_command_keeps_normal_sandbox_and_uses_only_loopback_synthetic_provider (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ERROR
+test_request_admission_rejects_wrong_auth_path_and_excess_without_recording_body (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ERROR
+
+======================================================================
+ERROR: test_complete_frames_normalize_in_our_existing_responses_adapter (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_protocol_fixture.py", line 27, in test_complete_frames_normalize_in_our_existing_responses_adapter
+    from scripts.reference_protocol import response_events
+ModuleNotFoundError: No module named 'scripts.reference_protocol'
+
+======================================================================
+ERROR: test_reference_command_keeps_normal_sandbox_and_uses_only_loopback_synthetic_provider (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_protocol_fixture.py", line 36, in test_reference_command_keeps_normal_sandbox_and_uses_only_loopback_synthetic_provider
+    from scripts.reference_cli import reference_command
+ImportError: cannot import name 'reference_command' from 'scripts.reference_cli' (/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/scripts/reference_cli.py)
+
+======================================================================
+ERROR: test_request_admission_rejects_wrong_auth_path_and_excess_without_recording_body (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_protocol_fixture.py", line 13, in test_request_admission_rejects_wrong_auth_path_and_excess_without_recording_body
+    from scripts.reference_protocol import serving
+ModuleNotFoundError: No module named 'scripts.reference_protocol'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (errors=3)

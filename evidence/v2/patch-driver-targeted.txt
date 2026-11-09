@@ -1,0 +1,28 @@
+test_external_json_equality_does_not_accept_boolean_as_number (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... ok
+test_freeze_rejects_added_candidate_file (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... ok
+test_freeze_rejects_modified_evidence_before_model_use (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... ok
+test_implementation_snapshot_covers_imported_scoring_scripts (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... ok
+test_model_claim_cannot_pass_frozen_external_oracle (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... {"kind": "created", "phase": "ready"}
+{"kind": "model_started", "phase": "model_pending"}
+{"kind": "model_response", "phase": "model_pending"}
+{"kind": "model_finished", "phase": "completed"}
+ok
+test_unknown_execution_state_is_not_reported_as_observed_wrong_answer (tests.dev.test_acceptance_runner.AcceptanceRunnerTests) ... {"kind": "created", "phase": "ready"}
+{"kind": "model_started", "phase": "model_pending"}
+{"kind": "terminated", "phase": "needs_confirmation", "code": "transport_unknown"}
+ok
+test_generic_runner_enforces_host_read_only_scope_before_candidate_can_edit_tests (tests.dev.test_patch_experiment.ProtectedRunnerTests) ... ok
+test_patch_task_cannot_claim_interface_coverage_from_failed_tool_or_text (tests.dev.test_patch_experiment.ProtectedRunnerTests) ... ok
+test_coding_cycle_requires_successful_tests_after_last_edit (tests.dev.test_live_runner.LiveOracleTests) ... ok
+test_incomplete_and_short_observation_cannot_pass (tests.dev.test_live_runner.LiveOracleTests) ... ok
+test_latest_failed_or_malformed_test_result_invalidates_earlier_success (tests.dev.test_live_runner.LiveOracleTests) ... ok
+test_model_receipts_preserve_success_before_later_failure_without_raw_error (tests.dev.test_live_runner.LiveOracleTests) ... ok
+test_patch_text_requires_verification_after_its_last_potential_effect (tests.dev.test_live_runner.LiveOracleTests) ... ok
+test_possible_command_mutation_after_verification_invalidates_cycle (tests.dev.test_live_runner.LiveOracleTests) ... ok
+test_result_acceptance_ignores_model_claim_and_checks_function_values (tests.dev.test_live_runner.LiveOracleTests) ... ok
+test_stream_probe_receipts_contain_only_counts_hash_and_timings (tests.dev.test_live_runner.LiveOracleTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.258s
+
+OK

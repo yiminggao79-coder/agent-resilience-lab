@@ -1,0 +1,30 @@
+{
+  "kind": "release_only_precommit_verification",
+  "functional_baseline": "dbe2b07",
+  "runtime_source_content_commit": "84e4456",
+  "runtime_sources_unchanged": true,
+  "runtime_tests_original_evidence_unchanged": true,
+  "related_offline_tests": {
+    "count": 49,
+    "seconds": 10.385,
+    "observed_exit_code": 0,
+    "log_sha256": "0398a6a23ccecb9c0dd9226b769a74866fed028ad3cbae6a18f2bf9d68ec2713"
+  },
+  "previous_full_suite": {
+    "count": 1139,
+    "seconds": 877.967,
+    "rerun_this_release": false
+  },
+  "frozen_suite_files": 53,
+  "freeze_mismatches": 0,
+  "interview_numbered_questions": 27,
+  "missing_local_entry_doc_link_targets": 0,
+  "paid_model_requests": 0,
+  "publication_status": "BLOCKED_PUBLICATION",
+  "post_review_changes": "Continuation/status/checklist and verification metadata only; no technical/runtime changes.",
+  "limits": [
+    "No new real-model quality measured.",
+    "No source-similarity audit or independent native rerun by reviewer.",
+    "Full history privacy disposition and normal GitHub authentication remain required."
+  ]
+}

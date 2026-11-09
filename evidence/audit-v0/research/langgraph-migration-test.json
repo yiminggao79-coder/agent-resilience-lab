@@ -1,0 +1,60 @@
+{
+  "source_url": "https://github.com/langchain-ai/langgraph/blob/e5e37b5d70dbfd93c7006bd90a658c6179a95946/libs/checkpoint-sqlite/tests/test_writes_task_path_migration.py",
+  "commit_pins": {
+    "codex": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+    "langgraph": "e5e37b5d70dbfd93c7006bd90a658c6179a95946",
+    "openhands": "4aae68ae53477d05010a509f1f1e3f02e61b1831"
+  },
+  "read_only": true,
+  "upstream_tests_executed": false,
+  "note": "Tests repeatable schema migration, task_path persistence and nonblocking setup; not external-effect test.",
+  "excerpts": [
+    {
+      "start_line": 37,
+      "end_line": 64,
+      "lines": [
+        "def test_setup_migrates_legacy_writes_table_repeatably(legacy_db: Path) -> None:",
+        "    for _ in range(2):",
+        "        with SqliteSaver.from_conn_string(str(legacy_db)) as saver:",
+        "            saver.setup()",
+        "            rows = saver.conn.execute(",
+        "                \"SELECT task_id, task_path FROM writes\"",
+        "            ).fetchall()",
+        "            assert rows == [(\"old-task\", \"\")]",
+        "",
+        "",
+        "@pytest.mark.parametrize(\"fresh\", [True, False], ids=[\"fresh\", \"legacy\"])",
+        "def test_put_writes_persists_task_path(",
+        "    tmp_path: Path, legacy_db: Path, fresh: bool",
+        ") -> None:",
+        "    db = tmp_path / \"fresh.sqlite\" if fresh else legacy_db",
+        "    with SqliteSaver.from_conn_string(str(db)) as saver:",
+        "        config = saver.put(",
+        "            {\"configurable\": {\"thread_id\": \"t\", \"checkpoint_ns\": \"\"}},",
+        "            empty_checkpoint(),",
+        "            {},",
+        "            {},",
+        "        )",
+        "        saver.put_writes(config, [(\"ch\", \"v\")], \"task-1\", \"~__pregel_pull, node\")",
+        "        stored = saver.conn.execute(",
+        "            \"SELECT task_path FROM writes WHERE task_id = 'task-1'\"",
+        "        ).fetchall()",
+        "    assert stored == [(\"~__pregel_pull, node\",)]",
+        ""
+      ]
+    },
+    {
+      "start_line": 103,
+      "end_line": 109,
+      "lines": [
+        "def test_setup_does_not_wait_on_another_writer(busy_db: Path) -> None:",
+        "    with closing(sqlite3.connect(busy_db, timeout=0)) as conn:",
+        "        SqliteSaver(conn).setup()",
+        "",
+        "",
+        "async def test_async_setup_does_not_wait_on_another_writer(busy_db: Path) -> None:",
+        "    async with aiosqlite.connect(busy_db, timeout=0) as conn:"
+      ]
+    }
+  ]
+}

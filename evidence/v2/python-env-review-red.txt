@@ -1,0 +1,14 @@
+test_launcher_chain_cannot_route_through_workspace_directory_alias (tests.dev.test_python_environment_review.PythonEnvironmentReviewTests) ... FAIL
+
+======================================================================
+FAIL: test_launcher_chain_cannot_route_through_workspace_directory_alias (tests.dev.test_python_environment_review.PythonEnvironmentReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_python_environment_review.py", line 34, in test_launcher_chain_cannot_route_through_workspace_directory_alias
+    environment_descriptor(self.root,self.env)
+AssertionError: ToolError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.012s
+
+FAILED (failures=1)

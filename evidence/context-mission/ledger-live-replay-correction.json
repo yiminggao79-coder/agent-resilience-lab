@@ -1,0 +1,11 @@
+{
+  "corrects": "evidence/context-mission/ledger-live-replay.json",
+  "original_preserved": true,
+  "issue": "Root replay used CodingTools.schemas, omitting Engine._schemas runtime additions. Its31716byte view was not a full Engine request.",
+  "current_run": "b631f4ffc5d44c16",
+  "engine_schema_envelope_bytes": 13021,
+  "full_engine_old_eligible_minimum_bytes": 34611,
+  "budget_bytes": 32000,
+  "new_evidence": "Completed prior Turn newest batch remains protected forever without natural-input boundary release.",
+  "claims_live_success": false
+}

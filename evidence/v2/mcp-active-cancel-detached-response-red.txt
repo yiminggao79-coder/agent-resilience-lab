@@ -1,0 +1,14 @@
+test_detached_response_is_closed_before_cancel_returns_even_when_retained (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests) ... FAIL
+
+======================================================================
+FAIL: test_detached_response_is_closed_before_cancel_returns_even_when_retained (tests.dev.test_mcp_active_cancel.MCPActiveCancellationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_mcp_active_cancel.py", line 133, in test_detached_response_is_closed_before_cancel_returns_even_when_retained
+    self.assertTrue(captured[0].isclosed(),'detached response still owns its socket file until GC')
+AssertionError: False is not true : detached response still owns its socket file until GC
+
+----------------------------------------------------------------------
+Ran 1 test in 0.530s
+
+FAILED (failures=1)

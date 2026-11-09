@@ -1,0 +1,165 @@
+test_actual_invalid_node_selections_return_json_without_traceback_or_api (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... test_arbitrary_nonstring_and_unbounded_codes_cannot_escape (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... test_known_runtime_errors_are_fixed_for_coding_and_approval_factories (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... test_previous_generic_value_error_privacy_stays_compatible (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) ... ok
+
+======================================================================
+ERROR: test_arbitrary_nonstring_and_unbounded_codes_cannot_escape (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (kind='str')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 65, in test_arbitrary_nonstring_and_unbounded_codes_cannot_escape
+    status, out, err = self.call(ToolError(code))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 31, in call
+    code = main(['--db', str(self.db), *args, '--workspace', str(self.root)])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 209, in main
+    tools = CodingTools(args.workspace, **({'node_executable':args.node_executable} if getattr(args, 'node_executable', None) else {}),
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+agent_lab.tools.ToolError: PRIVATE_SYNTHETIC_SECRET
+control
+
+======================================================================
+ERROR: test_arbitrary_nonstring_and_unbounded_codes_cannot_escape (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (kind='dict')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 65, in test_arbitrary_nonstring_and_unbounded_codes_cannot_escape
+    status, out, err = self.call(ToolError(code))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 31, in call
+    code = main(['--db', str(self.db), *args, '--workspace', str(self.root)])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 209, in main
+    tools = CodingTools(args.workspace, **({'node_executable':args.node_executable} if getattr(args, 'node_executable', None) else {}),
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+agent_lab.tools.ToolError: {'secret': 'PRIVATE_SYNTHETIC_SECRET'}
+
+======================================================================
+ERROR: test_arbitrary_nonstring_and_unbounded_codes_cannot_escape (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (kind='str')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 65, in test_arbitrary_nonstring_and_unbounded_codes_cannot_escape
+    status, out, err = self.call(ToolError(code))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 31, in call
+    code = main(['--db', str(self.db), *args, '--workspace', str(self.root)])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 209, in main
+    tools = CodingTools(args.workspace, **({'node_executable':args.node_executable} if getattr(args, 'node_executable', None) else {}),
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+agent_lab.tools.ToolError: PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_PRIVATE_
+
+======================================================================
+ERROR: test_known_runtime_errors_are_fixed_for_coding_and_approval_factories (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (code='command_runtime_not_allowed', command='run')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 56, in test_known_runtime_errors_are_fixed_for_coding_and_approval_factories
+    status, out, err = self.call(ToolError(code), command)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 31, in call
+    code = main(['--db', str(self.db), *args, '--workspace', str(self.root)])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 209, in main
+    tools = CodingTools(args.workspace, **({'node_executable':args.node_executable} if getattr(args, 'node_executable', None) else {}),
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+agent_lab.tools.ToolError: command_runtime_not_allowed
+
+======================================================================
+ERROR: test_known_runtime_errors_are_fixed_for_coding_and_approval_factories (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (code='command_runtime_not_allowed', command='approval')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 56, in test_known_runtime_errors_are_fixed_for_coding_and_approval_factories
+    status, out, err = self.call(ToolError(code), command)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 31, in call
+    code = main(['--db', str(self.db), *args, '--workspace', str(self.root)])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 202, in main
+    engine = Engine(store, Tools(args.workspace, node_executable=args.node_executable,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+agent_lab.tools.ToolError: command_runtime_not_allowed
+
+======================================================================
+ERROR: test_known_runtime_errors_are_fixed_for_coding_and_approval_factories (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (code='command_runtime_changed', command='run')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 56, in test_known_runtime_errors_are_fixed_for_coding_and_approval_factories
+    status, out, err = self.call(ToolError(code), command)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 31, in call
+    code = main(['--db', str(self.db), *args, '--workspace', str(self.root)])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 209, in main
+    tools = CodingTools(args.workspace, **({'node_executable':args.node_executable} if getattr(args, 'node_executable', None) else {}),
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+agent_lab.tools.ToolError: command_runtime_changed
+
+======================================================================
+ERROR: test_known_runtime_errors_are_fixed_for_coding_and_approval_factories (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (code='command_runtime_changed', command='approval')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 56, in test_known_runtime_errors_are_fixed_for_coding_and_approval_factories
+    status, out, err = self.call(ToolError(code), command)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 31, in call
+    code = main(['--db', str(self.db), *args, '--workspace', str(self.root)])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 202, in main
+    engine = Engine(store, Tools(args.workspace, node_executable=args.node_executable,
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1093, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1097, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/unittest/mock.py", line 1152, in _execute_mock_call
+    raise effect
+agent_lab.tools.ToolError: command_runtime_changed
+
+======================================================================
+FAIL: test_actual_invalid_node_selections_return_json_without_traceback_or_api (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (selected=PosixPath('/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpoxb_q8ld/missing'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 43, in test_actual_invalid_node_selections_return_json_without_traceback_or_api
+    self.assertEqual(proc.returncode, 2)
+AssertionError: 1 != 2
+
+======================================================================
+FAIL: test_actual_invalid_node_selections_return_json_without_traceback_or_api (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (selected=PosixPath('/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpoxb_q8ld/nonexec'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 43, in test_actual_invalid_node_selections_return_json_without_traceback_or_api
+    self.assertEqual(proc.returncode, 2)
+AssertionError: 1 != 2
+
+======================================================================
+FAIL: test_actual_invalid_node_selections_return_json_without_traceback_or_api (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (selected=PosixPath('/private/var/folders/_t/dxnptwc95yd6zm397_52kvrc0000gp/T/tmpoxb_q8ld/work/node'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 43, in test_actual_invalid_node_selections_return_json_without_traceback_or_api
+    self.assertEqual(proc.returncode, 2)
+AssertionError: 1 != 2
+
+======================================================================
+FAIL: test_actual_invalid_node_selections_return_json_without_traceback_or_api (tests.dev.test_cli_runtime_errors.CLIRuntimeErrorTests) (selected=PosixPath('relative-node'))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_cli_runtime_errors.py", line 43, in test_actual_invalid_node_selections_return_json_without_traceback_or_api
+    self.assertEqual(proc.returncode, 2)
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.248s
+
+FAILED (failures=4, errors=7)

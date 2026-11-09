@@ -1,0 +1,138 @@
+{
+  "original_report_sha256": "75d5a4230aae95b2a85ab7d4fe6fcf4f0a8301c9a633c136ebbfc368e930a86d",
+  "grades_unchanged": true,
+  "records": [
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 1,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 3634,
+        "output_tokens": 62
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "d9192fbf4739a1e730d4aaf6b468cd7418a32b9fb20aaa466b2ba4572077653f",
+      "response_sha256": "1c6d268a21e9fd1a47c2d72a480fddc3ecf4ab3f8a7b612f7c0e48e739f8e092",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "list_files",
+        "project_rules"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 2,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 3826,
+        "output_tokens": 160
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "f66ad548d1893e0938207df1493607027d523fe3cc401a22b8aa0e778ec815a4",
+      "response_sha256": "b4868262edfacf7d8d58c66056625245ff0a53a46a59210c1f33bb6914d32407",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "read_file",
+        "read_file",
+        "read_file",
+        "read_file",
+        "read_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 3,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 5309,
+        "output_tokens": 75
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "b4ff396bed1c6dc2ff7a8f70c83783d492fe837ab8360db63cfa8b7e1ff75aa6",
+      "response_sha256": "25bd62b2bd3a175ec3f7051c25f99e9ef9fad4d8f26ff9fc5c0c304cdf29fef4",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "search_files",
+        "git_status"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 4,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 5461,
+        "output_tokens": 413
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "0ce8997615c51562e79e93ca2f5f44f5bbaa3c69dde0139edc6c8c7d27535ace",
+      "response_sha256": "f7c805c970994bc1c52f8af19c520566bdf5765e7fdd7b4615d165036e3b1385",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "write_file",
+        "write_file",
+        "write_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 5,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 6699,
+        "output_tokens": 813
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "339725fb264db2547a5bb63ddcf7c8c84fe2675847de85e6a0b338d40ffa291b",
+      "response_sha256": "55c98c6a61803e7faab43c745e8f022e3ddd7ad903a211407c51865d4520a77f",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "write_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 6,
+      "outcome": "complete",
+      "usage": {
+        "input_tokens": 7588,
+        "output_tokens": 198
+      },
+      "elapsed_seconds": null,
+      "request_sha256": "c95a2390b2c859664425341047c83de60bb2c51052c2510a7be555156805bb66",
+      "response_sha256": "c0cac31f54b18c70dacf7787a4afb62368a7738755487e46f1541660cb086574",
+      "finish_reason": "tool_calls",
+      "tools": [
+        "edit_file"
+      ]
+    },
+    {
+      "segment": "public-inventory/turn-1/first-receipts",
+      "index": 7,
+      "outcome": "error",
+      "usage": null,
+      "elapsed_seconds": null,
+      "request_sha256": "df2889655791dddd654ad69f5c4ef1e5fe0efb7afa4940779e08bad9a114428b",
+      "error_sha256": "2253613426c5f1acd9193ccf60ec258b018ed5836cb40690d1cade9a9138cc6c",
+      "error_code": "transport_unknown",
+      "http_status": null,
+      "diagnostic": [
+        "phase_open",
+        "peer_closed"
+      ]
+    }
+  ],
+  "usage_totals": {
+    "requests": 7,
+    "known_input_tokens": 32517,
+    "known_output_tokens": 1721,
+    "unknown_usage_requests": 1,
+    "known_peak_cache_miss_estimate_cny": 0.078802,
+    "pricing_cny_per_million": {
+      "input_peak_cache_miss": 2,
+      "output_peak": 8
+    },
+    "estimate_is_invoice": false
+  },
+  "limitation": "Elapsed times absent in original killed-process files remain null; no values inferred."
+}

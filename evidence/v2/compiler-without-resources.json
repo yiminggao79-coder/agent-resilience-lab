@@ -1,0 +1,26 @@
+{
+  "agent_build_success": false,
+  "kind": "native_compiler_attempt_without_resource_grant",
+  "model_kind": null,
+  "object_created": false,
+  "result": {
+    "exit_code": 1,
+    "ok": false,
+    "stderr": "clang: error: unable to execute command: posix_spawn failed: Operation not permitted\n",
+    "stderr_truncated": false,
+    "stdout": "",
+    "stdout_truncated": false
+  },
+  "tool_metadata": {
+    "clang": {
+      "bytes": 251484800,
+      "links": 1,
+      "path": "/Library/Developer/CommandLineTools/usr/bin/clang"
+    },
+    "ld": {
+      "bytes": 3373904,
+      "links": 1,
+      "path": "/Library/Developer/CommandLineTools/usr/bin/ld"
+    }
+  }
+}

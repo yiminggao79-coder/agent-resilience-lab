@@ -1,0 +1,23 @@
+test_model_cost_uses_selected_official_model_rates (tests.dev.test_context_mission.ContextMissionTests) ... ERROR
+test_independent_turns_honor_full_48k_protocol_and_one_selected_model (tests.dev.test_context_mission.ContextMissionTests) ... ERROR
+
+======================================================================
+ERROR: test_model_cost_uses_selected_official_model_rates (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 209, in test_model_cost_uses_selected_official_model_rates
+    result=self.module.usage_totals(records,model_name='deepseek-v4-pro')
+TypeError: usage_totals() got an unexpected keyword argument 'model_name'
+
+======================================================================
+ERROR: test_independent_turns_honor_full_48k_protocol_and_one_selected_model (tests.dev.test_context_mission.ContextMissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_context_mission.py", line 228, in test_independent_turns_honor_full_48k_protocol_and_one_selected_model
+    result=self.module._run_case(suite,case,base/'trial',model_name='deepseek-v4-pro')
+TypeError: _run_case() got an unexpected keyword argument 'model_name'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.126s
+
+FAILED (errors=2)

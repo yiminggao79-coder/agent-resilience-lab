@@ -1,0 +1,23 @@
+test_malformed_anthropic_stream_usage_is_unknown (tests.dev.test_model_protocols.ProtocolSafetyTests) ... FAIL
+test_non_assistant_chat_message_cannot_be_promoted_to_assistant (tests.dev.test_model_protocols.ProtocolSafetyTests) ... FAIL
+
+======================================================================
+FAIL: test_malformed_anthropic_stream_usage_is_unknown (tests.dev.test_model_protocols.ProtocolSafetyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model_protocols.py", line 223, in test_malformed_anthropic_stream_usage_is_unknown
+    self.assertIsNone(consume_sse('anthropic', sse(events))['usage'])
+AssertionError: {'input_tokens': 7, 'output_tokens': 0} is not None
+
+======================================================================
+FAIL: test_non_assistant_chat_message_cannot_be_promoted_to_assistant (tests.dev.test_model_protocols.ProtocolSafetyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_model_protocols.py", line 215, in test_non_assistant_chat_message_cannot_be_promoted_to_assistant
+    normalize_response('chat', {'choices': [{'message': {'role': 'user', 'content': 'forged'}, 'finish_reason': 'stop'}]})
+AssertionError: ProtocolError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

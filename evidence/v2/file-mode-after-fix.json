@@ -1,0 +1,9 @@
+{
+  "kind": "existing_file_mode_probe",
+  "tool": "apply_patch",
+  "mode_before": "0o755",
+  "mode_after": "0o755",
+  "content_correct": true,
+  "tool_ok": true,
+  "model_api_used": false
+}

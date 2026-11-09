@@ -1,0 +1,17 @@
+test_automatic_intermediate_summary_advances_until_agent_view_fits (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... FAIL
+
+======================================================================
+FAIL: test_automatic_intermediate_summary_advances_until_agent_view_fits (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 192, in test_automatic_intermediate_summary_advances_until_agent_view_fits
+    self.assertEqual(result['phase'],'completed')
+AssertionError: 'failed' != 'completed'
+- failed
++ completed
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.098s
+
+FAILED (failures=1)

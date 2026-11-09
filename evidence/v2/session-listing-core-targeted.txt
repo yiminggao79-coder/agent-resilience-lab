@@ -1,0 +1,15 @@
+test_caller_active_transaction_is_rejected_without_commit_or_rollback (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_corrupt_mismatch_legacy_invalid_fields_and_noncanonical_row_ids (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_cursor_encoding_strict_duplicate_types_version_and_limits (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_cursor_is_bound_to_explicit_database_path_and_inode (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_filters_cursor_scope_and_newer_inserts_do_not_shift_anchor (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_huge_private_json_and_scalar_values_never_materialize_in_python (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_keyset_ties_null_tail_and_exact_output_schema (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_legacy_readonly_database_bytes_mode_schema_and_single_read_transaction (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_storage_faults_are_fixed_and_do_not_expose_sql_or_path (tests.dev.test_session_listing.SessionListingTests) ... ok
+test_timestamp_range_finiteness_and_boolean_are_sanitized (tests.dev.test_session_listing.SessionListingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.454s
+
+OK

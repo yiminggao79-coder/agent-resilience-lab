@@ -1,0 +1,14 @@
+test_public_event_reader_retains_only_real_source_hashes_not_null_or_other_values (tests.dev.test_skill_resources.SkillResourceTests) ... FAIL
+
+======================================================================
+FAIL: test_public_event_reader_retains_only_real_source_hashes_not_null_or_other_values (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 129, in test_public_event_reader_retains_only_real_source_hashes_not_null_or_other_values
+    self.assertNotIn('source_sha256',row['metadata']);self.assertIn('filtered_metadata',row['diagnostics'])
+AssertionError: 'source_sha256' unexpectedly found in {'source_sha256': None}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.028s
+
+FAILED (failures=1)

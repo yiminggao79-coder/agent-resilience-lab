@@ -1,0 +1,145 @@
+--- before/intervals.py
++++ after/intervals.py
+@@ -1,9 +1,16 @@
+ def active_intervals(records, start, stop):
++    """Yield (room, left, right) for each reservation clipped to [start, stop).
++
++    Cancelled and zero-length reservations are skipped. A clipped span is only
++    yielded when it has positive length, so rooms with no overlap are omitted.
++    The input records are never modified.
++    """
+     for record in records:
+         if record.get("cancelled", False):
+             continue
+         left = max(start, record["start"])
+-        right = record["end"]
+-        if left < right and left < stop:
++        right = min(stop, record["end"])
++        if left < right:
+             yield record["room"], left, right
+ 
++
+--- before/tests/test_edge_cases.py
++++ after/tests/test_edge_cases.py
+@@ -0,0 +1,71 @@
++import unittest
++
++from report import summarize
++
++
++class OccupancyEdgeTests(unittest.TestCase):
++    def test_clipped_to_window(self):
++        records = [{"room": "a", "start": -5, "end": 100}]
++        self.assertEqual(summarize(records, 10, 20),
++                         [{"room": "a", "busy_minutes": 10, "peak": 1}])
++
++    def test_reservation_ending_before_window_omitted(self):
++        records = [{"room": "a", "start": 0, "end": 5},
++                   {"room": "b", "start": 0, "end": 10}]
++        self.assertEqual(summarize(records, 5, 15),
++                         [{"room": "b", "busy_minutes": 5, "peak": 1}])
++
++    def test_touching_intervals_do_not_overlap(self):
++        records = [{"room": "a", "start": 0, "end": 5},
++                   {"room": "a", "start": 5, "end": 10}]
++        self.assertEqual(summarize(records, 0, 10),
++                         [{"room": "a", "busy_minutes": 10, "peak": 1}])
++
++    def test_duplicates_count_as_separate_reservations(self):
++        records = [{"room": "a", "start": 0, "end": 5},
++                   {"room": "a", "start": 0, "end": 5},
++                   {"room": "a", "start": 0, "end": 5}]
++        self.assertEqual(summarize(records, 0, 10),
++                         [{"room": "a", "busy_minutes": 5, "peak": 3}])
++
++    def test_cancelled_and_zero_length_ignored(self):
++        records = [{"room": "a", "start": 0, "end": 5, "cancelled": True},
++                   {"room": "b", "start": 3, "end": 3},
++                   {"room": "c", "start": 3, "end": 3, "cancelled": False}]
++        self.assertEqual(summarize(records, 0, 10), [])
++
++    def test_nested_union_and_peak(self):
++        records = [{"room": "a", "start": 0, "end": 10},
++                   {"room": "a", "start": 2, "end": 4},
++                   {"room": "a", "start": 3, "end": 6},
++                   {"room": "a", "start": 9, "end": 12}]
++        self.assertEqual(summarize(records, 1, 11),
++                         [{"room": "a", "busy_minutes": 10, "peak": 3}])
++
++    def test_sorted_by_room(self):
++        records = [{"room": "west", "start": 0, "end": 2},
++                   {"room": "east", "start": 0, "end": 2},
++                   {"room": "North", "start": 0, "end": 2}]
++        self.assertEqual([e["room"] for e in summarize(records, 0, 10)],
++                         ["North", "east", "west"])
++
++    def test_cancelled_default_false(self):
++        records = [{"room": "a", "start": 0, "end": 5}]
++        self.assertEqual(summarize(records, 0, 5),
++                         [{"room": "a", "busy_minutes": 5, "peak": 1}])
++
++    def test_inputs_unchanged(self):
++        records = [{"room": "a", "start": 0, "end": 5},
++                   {"room": "a", "start": 3, "end": 8, "cancelled": False}]
++        snapshot = [dict(r) for r in records]
++        summarize(records, 1, 7)
++        self.assertEqual(records, snapshot)
++        self.assertEqual(records[0], {"room": "a", "start": 0, "end": 5})
++
++    def test_empty_window(self):
++        records = [{"room": "a", "start": 0, "end": 5}]
++        self.assertEqual(summarize(records, 3, 3), [])
++
++
++if __name__ == "__main__":
++    unittest.main()
+--- before/totals.py
++++ after/totals.py
+@@ -1,16 +1,42 @@
++def union_minutes(spans):
++    """Total length covered by the union of half-open [left, right) spans."""
++    total = 0
++    current_left = current_right = None
++    for left, right in sorted(spans):
++        if current_right is None:
++            current_left, current_right = left, right
++        elif left <= current_right:
++            current_right = max(current_right, right)
++        else:
++            total += current_right - current_left
++            current_left, current_right = left, right
++    if current_right is not None:
++        total += current_right - current_left
++    return total
++
++
+ def room_totals(intervals):
+     groups = {}
+     for room, left, right in intervals:
+-        groups.setdefault(room, []).append((left, right))
++        if left < right:
++            groups.setdefault(room, []).append((left, right))
+     result = []
+     for room, spans in groups.items():
+-        points = [(left, 1) for left, _ in spans]
+-        points += [(right, -1) for _, right in spans]
+-        points.sort(key=lambda point: (point[0], -point[1]))
++        points = []
++        for left, right in spans:
++            points.append((left, 1))
++            points.append((right, -1))
++        # At the same minute, ends (-1) are processed before starts (+1)
++        # because half-open intervals do not overlap at the boundary.
++        points.sort(key=lambda point: (point[0], point[1]))
+         active = peak = 0
+         for _, change in points:
+             active += change
+             peak = max(peak, active)
+-        result.append({"room": room, "busy_minutes": sum(b-a for a,b in spans), "peak": peak})
++        result.append({"room": room,
++                       "busy_minutes": union_minutes(spans),
++                       "peak": peak})
++    result.sort(key=lambda entry: entry["room"])
+     return result
+ 
++

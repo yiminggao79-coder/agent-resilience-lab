@@ -1,0 +1,8 @@
+test_absent_job_and_database_remain_absent_without_model (tests.dev.test_native_job_cli.NativeJobCLITests) ... ok
+test_claimed_job_metadata_is_readonly_and_omits_private_paths_or_worker_token (tests.dev.test_native_job_cli.NativeJobCLITests) ... ok
+test_foreign_database_is_not_followed_and_malformed_marker_does_not_echo_data (tests.dev.test_native_job_cli.NativeJobCLITests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.333s
+
+OK

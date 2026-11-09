@@ -1,0 +1,15 @@
+{
+  "kind": "offline_validation_of_actual_summary_probe",
+  "source_bound_summary_record_valid": true,
+  "summary_bytes": 3094,
+  "summary_sha256": "6696b4e3efb4e1b12cc1e869f725a52864e1c805ba259d0be83fd7c5d95ca6ea",
+  "source_sha256": "92c990453cfaa642faeb67cee3cfdaefa357839259e4a6244b181d4521f4fd0c",
+  "generation": 1,
+  "original_failed_task_unchanged": true,
+  "installed_into_original_task": false,
+  "coding_continuation_tested": false,
+  "semantic_quality_measured": false,
+  "api_requests_sent": 0,
+  "estimated_probe_peak_cache_miss_cny": 0.028466,
+  "supplier_bill_cny": null
+}

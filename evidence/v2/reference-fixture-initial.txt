@@ -1,0 +1,25 @@
+test_complete_frames_normalize_in_our_existing_responses_adapter (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ERROR
+test_reference_command_keeps_normal_sandbox_and_uses_only_loopback_synthetic_provider (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ok
+test_request_admission_rejects_wrong_auth_path_and_excess_without_recording_body (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests) ... ok
+test_actual_wrapper_denies_private_reads_and_second_endpoint_but_preserves_fixture_access (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+test_environment_is_explicit_empty_of_ambient_auth_and_preserves_real_home (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+test_only_numeric_valid_port_and_owned_private_scope_are_accepted (tests.dev.test_reference_cli_boundary.ReferenceBoundaryTests) ... ok
+
+======================================================================
+ERROR: test_complete_frames_normalize_in_our_existing_responses_adapter (tests.dev.test_reference_protocol_fixture.ReferenceFixtureTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_reference_protocol_fixture.py", line 31, in test_complete_frames_normalize_in_our_existing_responses_adapter
+    result=consume_sse('responses',events)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 535, in consume_sse
+    return parser(_events(lines), on_text)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 489, in _responses_stream
+    for event in events:
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/protocols.py", line 330, in _events
+    raise ProtocolError('invalid_sse')
+agent_lab.protocols.ProtocolError: invalid_sse
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.646s
+
+FAILED (errors=1)

@@ -1,0 +1,15 @@
+test_01_csv_report_matches_independent_data_oracle (test_acceptance.IndependentAcceptance) ... ok
+test_02_invalid_argument_feedback_allows_repair (test_acceptance.IndependentAcceptance) ... ok
+test_03_false_completion_does_not_establish_task_success (test_acceptance.IndependentAcceptance) ... ok
+test_04_paths_cannot_read_or_overwrite_outside_or_hidden_data (test_acceptance.IndependentAcceptance) ... ok
+test_05_step_budget_stops_before_another_model_decision (test_acceptance.IndependentAcceptance) ... ok
+test_06_missing_usage_with_cost_cap_pauses_before_mutation (test_acceptance.IndependentAcceptance) ... ok
+test_07_sigkill_write_reconciles_in_a_fresh_process (test_acceptance.IndependentAcceptance) ... ok
+test_08_sigkill_append_pauses_without_duplicate_bytes (test_acceptance.IndependentAcceptance) ... ok
+test_09_deadline_includes_time_before_resume (test_acceptance.IndependentAcceptance) ... ok
+test_10_public_cli_metadata_omits_private_task_and_file_data (test_acceptance.IndependentAcceptance) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 5.149s
+
+OK

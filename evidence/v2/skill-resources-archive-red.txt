@@ -1,0 +1,14 @@
+test_prepared_source_remains_recoverable_in_archive_after_source_removal_and_denial (tests.dev.test_skill_resources.SkillResourceTests) ... ERROR
+
+======================================================================
+ERROR: test_prepared_source_remains_recoverable_in_archive_after_source_removal_and_denial (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 94, in test_prepared_source_remains_recoverable_in_archive_after_source_removal_and_denial
+    from agent_lab.history import lookup
+ImportError: cannot import name 'lookup' from 'agent_lab.history' (/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/history.py)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (errors=1)

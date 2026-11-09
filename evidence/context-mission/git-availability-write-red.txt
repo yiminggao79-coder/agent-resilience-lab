@@ -1,0 +1,14 @@
+test_unavailable_exception_cannot_turn_an_effectful_write_into_safe_feedback (tests.dev.test_git_availability.GitAvailabilityTests) ... FAIL
+
+======================================================================
+FAIL: test_unavailable_exception_cannot_turn_an_effectful_write_into_safe_feedback (tests.dev.test_git_availability.GitAvailabilityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_git_availability.py", line 74, in test_unavailable_exception_cannot_turn_an_effectful_write_into_safe_feedback
+    self.assertIsNotNone(unavailable,'Missing trusted capability-unavailable exception')
+AssertionError: unexpectedly None : Missing trusted capability-unavailable exception
+
+----------------------------------------------------------------------
+Ran 1 test in 0.015s
+
+FAILED (failures=1)

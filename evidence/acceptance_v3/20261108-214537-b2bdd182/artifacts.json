@@ -1,0 +1,70 @@
+{
+  "case_01": {
+    "candidate_files": {
+      "README.md": {
+        "sha256": "08d7c992681d67097b26d02d0eaefdbea7afdf646f5df5cd1805ef6c139a84ab",
+        "bytes": 363
+      },
+      "acceptance_probe.py": {
+        "sha256": "3025b37684f319bf4d941cbc5b82b62beadbd66019c1e2af228b62785cbe8431",
+        "bytes": 274
+      },
+      "intervals.py": {
+        "sha256": "64c5d7b95e11b65bd06dc59fe5b41c9ae7f7c9864578510baad159c144ed83fb",
+        "bytes": 581
+      },
+      "report.py": {
+        "sha256": "0498dc9cd6e4f5c4fffab3fd15f53b7a59dbd8e2c3da993ef2d9d55285b1dc51",
+        "bytes": 173
+      },
+      "tests/test_edge_cases.py": {
+        "sha256": "dd5f2b622120fc26ec5ffc02b86aa6163c63595a793a7294cf7e00e8b71741e8",
+        "bytes": 3099
+      },
+      "tests/test_public.py": {
+        "sha256": "caacaf5faf13b7785a03bd83ee617c600704313ecf8c32c99043f84257f30b69",
+        "bytes": 453
+      },
+      "totals.py": {
+        "sha256": "c940db1e6649dfdbffef8ad0a7419c62fd0a016e0abd7fc3bf0b83a0540b0f8c",
+        "bytes": 1480
+      }
+    },
+    "diff_sha256": "2a3b73b59d01d9510096dc6a4f7ce1594483c7ece02ca143d375143fb70a4fa0",
+    "source_matches_private_candidate": true
+  },
+  "case_02": {
+    "candidate_files": {
+      "README.md": {
+        "sha256": "baa4dad86dc53cfab192c709e2e66c9be0c74c4146ec5925df4368211dfb3619",
+        "bytes": 313
+      },
+      "acceptance_probe.py": {
+        "sha256": "791551fc1316a261991d483a7dd13fc767cad4ea4c7569afc73f663ee3eddcad",
+        "bytes": 283
+      },
+      "graph.py": {
+        "sha256": "543d2266da52d1476c6d4a6f0de6e924b60d95cf66573d4049095366684775c0",
+        "bytes": 184
+      },
+      "planner.py": {
+        "sha256": "576c87e63d818a193066e4fb801333b54d7e830a17f0cea3d2bb3b737dd8bc72",
+        "bytes": 838
+      },
+      "tests/test_planner_extra.py": {
+        "sha256": "0dbfd1c9369efbb83d16b1746cbb8656533413d9d08bbd0438860322d23d4073",
+        "bytes": 2720
+      },
+      "tests/test_public.py": {
+        "sha256": "fedc9415dfcc68eed7292fcc5a925aaa6f37767583f88d4b843dbd817196913e",
+        "bytes": 796
+      },
+      "waves.py": {
+        "sha256": "fcf3a827892c0aaa981af382328d629344420001b0a7a78048a42038c7b24de2",
+        "bytes": 192
+      }
+    },
+    "diff_sha256": "81dfcd506e840f9e8f8d6bbb8080faeb69710c70114b90ad2d3f27ed9b8aa6da",
+    "source_matches_private_candidate": true
+  }
+}

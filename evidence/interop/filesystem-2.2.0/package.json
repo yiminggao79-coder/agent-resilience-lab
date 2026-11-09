@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@modelcontextprotocol/server-filesystem": "2.2.0"
+  }
+}

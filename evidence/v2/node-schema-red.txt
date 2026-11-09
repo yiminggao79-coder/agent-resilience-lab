@@ -1,0 +1,14 @@
+test_enabled_schema_discloses_node_without_changing_default_schema_or_paths (tests.dev.test_node_integration.NodeIntegrationTests) ... FAIL
+
+======================================================================
+FAIL: test_enabled_schema_discloses_node_without_changing_default_schema_or_paths (tests.dev.test_node_integration.NodeIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_integration.py", line 61, in test_enabled_schema_discloses_node_without_changing_default_schema_or_paths
+    self.assertIn('node:test', description)
+AssertionError: 'node:test' not found in 'Request an exact argv command in a visible workspace directory. Requires user approval. Fixed trusted executable aliases: python, sh, echo, cat, true, false. OS sandbox denies network, private paths and fork; shell pipelines/background children are unsupported.'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+FAILED (failures=1)

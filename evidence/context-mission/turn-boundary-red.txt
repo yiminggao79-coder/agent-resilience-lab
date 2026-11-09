@@ -1,0 +1,15 @@
+test_new_natural_input_releases_completed_prior_turn_batch_for_summary (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... FAIL
+test_runtime_notices_do_not_release_current_tool_batch (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+
+======================================================================
+FAIL: test_new_natural_input_releases_completed_prior_turn_batch_for_summary (tests.dev.test_incremental_compaction.IncrementalCompactionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_incremental_compaction.py", line 234, in test_new_natural_input_releases_completed_prior_turn_batch_for_summary
+    self.assertEqual(end,len(messages)-1)
+AssertionError: 6 != 9
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=1)

@@ -1,0 +1,31 @@
+test_malformed_git_calls_still_consume_three_invocation_errors (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_no_repository_after_green_tests_does_not_abort_before_model_observation (tests.dev.test_git_availability.GitAvailabilityTests) ... FAIL
+test_redirected_git_metadata_still_cannot_execute_or_read_outside (tests.dev.test_git_availability.GitAvailabilityTests) ... FAIL
+test_structured_error_string_cannot_forge_typed_capability_disposition (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+
+======================================================================
+FAIL: test_no_repository_after_green_tests_does_not_abort_before_model_observation (tests.dev.test_git_availability.GitAvailabilityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_git_availability.py", line 38, in test_no_repository_after_green_tests_does_not_abort_before_model_observation
+    self.assertEqual(result['phase'],'completed')
+AssertionError: 'failed' != 'completed'
+- failed
++ completed
+
+
+======================================================================
+FAIL: test_redirected_git_metadata_still_cannot_execute_or_read_outside (tests.dev.test_git_availability.GitAvailabilityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_git_availability.py", line 79, in test_redirected_git_metadata_still_cannot_execute_or_read_outside
+    self.assertEqual(result['phase'],'completed')
+AssertionError: 'failed' != 'completed'
+- failed
++ completed
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 4.413s
+
+FAILED (failures=2)

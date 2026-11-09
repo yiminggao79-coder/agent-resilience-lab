@@ -1,0 +1,29 @@
+{
+  "path": "codex-rs/codex-mcp/src/connection_manager/resources.rs",
+  "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/codex-mcp/src/connection_manager/resources.rs",
+  "body_ranges_read": [
+    [
+      1,
+      284
+    ]
+  ],
+  "upstream_executed": false,
+  "git_blob_sha1_computed_not_independently_compared": "c0e150dc6f7772a30c8ba439c5faefd573b22d86",
+  "excerpts": [
+    {
+      "start": 44,
+      "end": 90,
+      "text": "    /// Returns resources from servers selected by `include_server`.\n    pub async fn list_all_resources(\n        &self,\n        include_server: impl Fn(&str) -> bool,\n    ) -> HashMap<String, Vec<Resource>> {\n        let mut join_set = JoinSet::new();\n        for (server_name, view) in self\n            .servers\n            .iter()\n            .filter(|(server_name, _)| include_server(server_name))\n        {\n            let server_name = server_name.clone();\n            let Ok(client) = view.connection.client().await else {\n                continue;\n            };\n            let timeout = view.tool_timeout;\n            join_set.spawn(async move {\n                let resources = collect_paginated(\"resources/list\", timeout, |params| {\n                    let client = client.clone();\n                    async move {\n                        let response = client.list_resources(params, timeout).await?;\n                        Ok((response.resources, response.next_cursor))\n                    }\n                })\n                .await;\n                (server_name, resources)\n            });\n        }\n\n        let mut resources = HashMap::new();\n        while let Some(result) = join_set.join_next().await {\n            match result {\n                Ok((server_name, Ok(server_resources))) => {\n                    resources.insert(server_name, server_resources);\n                }\n                Ok((server_name, Err(error))) => {\n                    warn!(\"Failed to list resources for MCP server '{server_name}': {error:#}\");\n                }\n                Err(error) => {\n                    warn!(\"Task panic when listing resources for MCP server: {error:#}\");\n                }\n            }\n        }\n        resources\n    }\n\n    /// Returns resource templates from servers selected by `include_server`."
+    },
+    {
+      "start": 136,
+      "end": 202,
+      "text": "    pub async fn list_resources(\n        &self,\n        server: &str,\n        params: Option<PaginatedRequestParams>,\n    ) -> Result<ListResourcesResult> {\n        let (managed, timeout) = self.client_by_name(server).await?;\n        managed\n            .list_resources(params, timeout)\n            .await\n            .with_context(|| format!(\"resources/list failed for `{server}`\"))\n    }\n\n    pub async fn list_resource_templates(\n        &self,\n        server: &str,\n        params: Option<PaginatedRequestParams>,\n    ) -> Result<ListResourceTemplatesResult> {\n        let (managed, timeout) = self.client_by_name(server).await?;\n        managed\n            .list_resource_templates(params, timeout)\n            .await\n            .with_context(|| format!(\"resources/templates/list failed for `{server}`\"))\n    }\n\n    // Hosted Apps always returns an empty list. Resume discovery if it gains templates.\n    pub(crate) fn skips_resource_template_listing(&self, server: &str) -> bool {\n        self.contains_server(server)\n            && self\n                .config\n                .as_ref()\n                .and_then(|config| config.mcp_server_catalog.server(server))\n                .is_some_and(|registration| {\n                    registration\n                        .source()\n                        .is_host_owned_apps(server, registration.config())\n                })\n    }\n\n    pub async fn read_resource(\n        &self,\n        server: &str,\n        params: ReadResourceRequestParams,\n    ) -> Result<ReadResourceResult> {\n        let (managed, timeout) = self.client_by_name(server).await?;\n        let uri = params.uri.clone();\n        managed\n            .read_resource(params, timeout)\n            .await\n            .with_context(|| format!(\"resources/read failed for `{server}` ({uri})\"))\n    }\n\n    pub(crate) fn server_environment_id(&self, server: &str) -> Option<&str> {\n        self.servers\n            .get(server)\n            .map(|view| view.metadata.environment_id.as_str())\n    }\n\n    /// Returns the first Apps startup attempt only while its inventory is pending.\n    pub(crate) fn early_apps_discovery(\n        &self,\n    ) -> Option<(&Arc<McpServerConnection>, Option<Duration>)> {\n        if !self.config.as_ref()?.apps_early_resource_discovery {\n            return None;\n        }\n        let view = self.servers.get(CODEX_APPS_MCP_SERVER_NAME)?;\n        let connection = &view.connection;\n        if connection.initialized_apps.is_some()"
+    },
+    {
+      "start": 226,
+      "end": 242,
+      "text": "}\n\nimpl McpServerConnection {\n    /// Borrows the authenticated transport while startup owns its inventory. Discard the page\n    /// if startup fails or the runtime replaces its connection, auth scope, or resource generation.\n    pub(crate) async fn with_early_apps_client(\n        self: &Arc<Self>,\n        runtime: &McpRuntime,\n        timeout: Option<Duration>,\n        request: impl AsyncFnOnce(Arc<RmcpClient>, Option<Duration>) -> Result<ServerResult>,\n    ) -> Result<ServerResult> {\n        let auth = runtime.auth_cache_key_for_server(CODEX_APPS_MCP_SERVER_NAME);\n        let key = runtime\n            .resource_cache_key(CODEX_APPS_MCP_SERVER_NAME)\n            .context(\"Apps registration was removed\")?;\n        anyhow::ensure!(\n            key.connection.ptr_eq(&Arc::downgrade(self)),"
+    }
+  ]
+}

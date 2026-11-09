@@ -1,0 +1,17 @@
+[
+  {
+    "start_line": 315,
+    "end_line": 350,
+    "body": "impl ConfigLayerStack {\n    pub fn new(\n        layers: Vec<ConfigLayerEntry>,\n        requirements: ConfigRequirements,\n        requirements_toml: ConfigRequirementsToml,\n    ) -> std::io::Result<Self> {\n        validate_enabled_config_layers(&layers)?;\n        verify_layer_ordering(&layers)?;\n        let model_provider_requirements = Some(crate::model_provider_requirements::to_config(\n            &requirements_toml,\n        )?);\n        let stack = Self {\n            cloud_config_binding: None,\n            mcp_ema_cancellation: crate::McpEmaCancellation::default(),\n            applied_config_server: None,\n            model_provider_requirements,\n            layers,\n            requirements,\n            requirements_toml: Box::new(requirements_toml),\n            ignore_user_and_project_exec_policy_rules: false,\n            startup_warnings: None,\n            is_projectless: false,\n            project_trust: None,\n        };\n        stack.validate_project_mitm_profiles()?;\n        Ok(stack)\n    }\n\n    /// Recheck project provenance after combining layer snapshots as well as on initial load.\n    pub fn validate_project_mitm_profiles(&self) -> std::io::Result<()> {\n        crate::loader::validate_project_mitm_profiles(\n            self.layers_low_to_high()\n                .map(|layer| (&layer.name, &layer.config)),\n            self.requirements_toml\n                .permissions\n                .iter()"
+  },
+  {
+    "start_line": 650,
+    "end_line": 665,
+    "body": "    /// Returns the merged config-layer view.\n    ///\n    /// Required provider definitions replace local entries before deserialization.\n    /// Selection and other requirements are applied when constructing the final config.\n    pub fn effective_config(&self) -> TomlValue {\n        let mut merged = TomlValue::Table(toml::map::Map::new());\n        for layer in self.layers_low_to_high() {\n            merge_toml_values(&mut merged, &layer.config);\n        }\n        if let Some(requirements) = &self.model_provider_requirements {\n            crate::model_provider_requirements::apply(&mut merged, requirements);\n        }\n        merged\n    }\n\n    /// Required provider selection used when building the effective configuration."
+  },
+  {
+    "start_line": 724,
+    "end_line": 742,
+    "body": "        origins\n    }\n\n    /// Returns enabled config layers from lowest precedence to highest.\n    ///\n    /// Requirement sources are tracked separately and are not included here.\n    pub fn layers_low_to_high(&self) -> impl DoubleEndedIterator<Item = &ConfigLayerEntry> {\n        self.all_layers_low_to_high()\n            .filter(|layer| !layer.is_disabled())\n    }\n\n    /// Returns enabled config layers from highest precedence to lowest.\n    ///\n    /// Requirement sources are tracked separately and are not included here.\n    pub fn layers_high_to_low(&self) -> impl DoubleEndedIterator<Item = &ConfigLayerEntry> {\n        self.layers_low_to_high().rev()\n    }\n\n    /// Returns all config layers, including disabled layers, from lowest"
+  }
+]

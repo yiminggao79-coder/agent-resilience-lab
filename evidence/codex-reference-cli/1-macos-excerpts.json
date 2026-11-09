@@ -1,0 +1,25 @@
+{
+  "path": "codex-rs/config/src/loader/macos.rs",
+  "url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/config/src/loader/macos.rs",
+  "body_ranges_read": [
+    [
+      1,
+      240
+    ]
+  ],
+  "whole_file_audited": false,
+  "upstream_pinned_source_executed": false,
+  "excerpts": [
+    {
+      "start": 143,
+      "end": 165,
+      "text": "        return Err(io::Error::other(\n            \"Failed to synchronize managed preferences\",\n        ));\n    }\n    Ok(())\n}\n\nfn load_managed_preference(key_name: &str) -> io::Result<Option<String>> {\n    let key = CFString::new(key_name);\n    let application = CFString::new(MANAGED_PREFERENCES_APPLICATION_ID);\n    load_managed_preference_with(\n        key_name,\n        || preference_is_forced(&key, &application),\n        || copy_preference_value(&key, &application),\n    )\n}\n\nfn preference_is_forced(key: &CFString, application: &CFString) -> bool {\n    unsafe {\n        CFPreferencesAppValueIsForced(key.as_concrete_TypeRef(), application.as_concrete_TypeRef())\n            != 0\n    }\n}"
+    },
+    {
+      "start": 190,
+      "end": 223,
+      "text": "        return Ok(None);\n    }\n\n    let Some(value) = copy_value() else {\n        tracing::debug!(\n            \"Managed preferences for {MANAGED_PREFERENCES_APPLICATION_ID} key {key_name} not found\"\n        );\n        return Ok(None);\n    };\n\n    // Reject a user-default fallback if the preference stopped being forced\n    // during the read. These separate calls do not form an atomic snapshot.\n    if !is_forced() {\n        tracing::debug!(\n            \"Managed preference {MANAGED_PREFERENCES_APPLICATION_ID}:{key_name} is no longer forced after reading\"\n        );\n        return Ok(None);\n    }\n\n    let value = value.downcast::<CFString>().ok_or_else(|| {\n        io::Error::new(\n            io::ErrorKind::InvalidData,\n            format!(\n                \"Managed preference {MANAGED_PREFERENCES_APPLICATION_ID}:{key_name} must be a string\"\n            ),\n        )\n    })?;\n    Ok(Some(value.to_string()))\n}\n\nfn parse_managed_config_base64(\n    encoded: &str,\n    strict_config: bool,\n    base_dir: &Path,"
+    }
+  ],
+  "computed_git_blob_sha1": "592bb2570b7d611879f7b43326e0af00b351c116"
+}

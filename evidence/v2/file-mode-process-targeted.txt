@@ -1,0 +1,11 @@
+test_changed_mode_after_effect_is_not_silently_repaired_or_claimed_complete (tests.acceptance.test_file_mode_process.FileModeProcessTests) ... {"kind": "file_mode_process_contract", "model_kind": "offline_protocol_double", "killed_pid": 45661, "kill_return_code": -9, "resumed_pid": 45667, "phase": "needs_confirmation", "external_mode_preserved": "0o700"}
+ok
+test_matching_content_and_mode_reconcile_after_kill_without_rewrite (tests.acceptance.test_file_mode_process.FileModeProcessTests) ... {"kind": "file_mode_process_contract", "model_kind": "offline_protocol_double", "killed_pid": 45672, "kill_return_code": -9, "resumed_pid": 45680, "phase": "completed", "mode": "0o755", "inode_mtime_unchanged": true, "sha256_unchanged": true}
+ok
+test_move_destination_effect_survives_kill_then_source_is_deleted_after_mode_confirmation (tests.acceptance.test_file_mode_process.FileModeProcessTests) ... {"kind": "file_mode_process_contract", "model_kind": "offline_protocol_double", "scenario": "move_destination_before_cursor", "killed_pid": 45685, "kill_return_code": -9, "resumed_pid": 45692, "phase": "completed", "destination_mode": "0o755", "destination_inode_mtime_unchanged": true, "source_deleted_after_confirmation": true}
+ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.163s
+
+OK

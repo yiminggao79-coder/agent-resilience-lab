@@ -1,0 +1,17 @@
+{
+  "kind": "pre_mission_current_code_review_reproduction",
+  "runtime_commit": "d47ecfa",
+  "full_prepare": "compaction_context_limit",
+  "smaller_complete_prefix_fits": true,
+  "smaller_request_bytes": 13713,
+  "smaller_covered_until": 6,
+  "current_request_view": {
+    "original_bytes": 44178,
+    "retained_bytes": 20659,
+    "shortened": 0,
+    "dropped_pairs": 4
+  },
+  "complete_batches": 7,
+  "api_requests_sent": 0,
+  "interpretation": "A complete fitting subprefix exists but current semantic preparation rejects all old history; deterministic omission can still fit, not a measured Coding failure."
+}

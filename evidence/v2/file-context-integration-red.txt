@@ -1,0 +1,68 @@
+test_after_commit_save_failure_retries_notice_not_read_or_model (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ERROR
+test_continuation_dedupes_and_fork_rechecks_shared_disk_without_mutating_source (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ERROR
+test_external_same_size_mtime_change_is_not_a_new_read_and_precedes_sampling (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ERROR
+test_opt_in_record_does_not_fabricate_default_or_local_profile_reads (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ERROR
+test_read_file_sha_is_from_exact_returned_bytes_without_second_read (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ERROR
+test_semantic_prefix_and_copied_archive_stay_immutable_after_new_observation (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ERROR
+test_true_reread_updates_baseline_and_latest_view_supersedes_notice_history (tests.dev.test_file_context_integration.FileContextIntegrationTests) ... ERROR
+
+======================================================================
+ERROR: test_after_commit_save_failure_retries_notice_not_read_or_model (tests.dev.test_file_context_integration.FileContextIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_integration.py", line 125, in test_after_commit_save_failure_retries_notice_not_read_or_model
+    tid = engine.create('Read', track_file_context=True)
+TypeError: create() got an unexpected keyword argument 'track_file_context'
+
+======================================================================
+ERROR: test_continuation_dedupes_and_fork_rechecks_shared_disk_without_mutating_source (tests.dev.test_file_context_integration.FileContextIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_integration.py", line 99, in test_continuation_dedupes_and_fork_rechecks_shared_disk_without_mutating_source
+    tid = engine.create('First read', track_file_context=True); engine.run(tid)
+TypeError: create() got an unexpected keyword argument 'track_file_context'
+
+======================================================================
+ERROR: test_external_same_size_mtime_change_is_not_a_new_read_and_precedes_sampling (tests.dev.test_file_context_integration.FileContextIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_integration.py", line 61, in test_external_same_size_mtime_change_is_not_a_new_read_and_precedes_sampling
+    tid = engine.create('Read source', track_file_context=True); state = engine.run(tid)
+TypeError: create() got an unexpected keyword argument 'track_file_context'
+
+======================================================================
+ERROR: test_opt_in_record_does_not_fabricate_default_or_local_profile_reads (tests.dev.test_file_context_integration.FileContextIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_integration.py", line 47, in test_opt_in_record_does_not_fabricate_default_or_local_profile_reads
+    enabled = engine.create('Track future reads', track_file_context=True)
+TypeError: create() got an unexpected keyword argument 'track_file_context'
+
+======================================================================
+ERROR: test_read_file_sha_is_from_exact_returned_bytes_without_second_read (tests.dev.test_file_context_integration.FileContextIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_integration.py", line 40, in test_read_file_sha_is_from_exact_returned_bytes_without_second_read
+    self.assertEqual(result['sha256'], sha(b'OLD_PRIVATE_VALUE\n'))
+KeyError: 'sha256'
+
+======================================================================
+ERROR: test_semantic_prefix_and_copied_archive_stay_immutable_after_new_observation (tests.dev.test_file_context_integration.FileContextIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_integration.py", line 136, in test_semantic_prefix_and_copied_archive_stay_immutable_after_new_observation
+    tid = engine.create('First', track_file_context=True); before = engine.run(tid)
+TypeError: create() got an unexpected keyword argument 'track_file_context'
+
+======================================================================
+ERROR: test_true_reread_updates_baseline_and_latest_view_supersedes_notice_history (tests.dev.test_file_context_integration.FileContextIntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_file_context_integration.py", line 84, in test_true_reread_updates_baseline_and_latest_view_supersedes_notice_history
+    tid = engine.create('Read and re-read', track_file_context=True); state = engine.run(tid)
+TypeError: create() got an unexpected keyword argument 'track_file_context'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.218s
+
+FAILED (errors=7)

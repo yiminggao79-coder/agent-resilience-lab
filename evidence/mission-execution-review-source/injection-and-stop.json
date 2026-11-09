@@ -1,0 +1,44 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/session/turn.rs",
+  "git_blob_sha": "1fdf62faca3d396b4f1b6b7c64d879f99be7b2e9",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/turn.rs",
+  "inspected_line_ranges": [
+    [
+      550,
+      655
+    ],
+    [
+      736,
+      784
+    ],
+    [
+      800,
+      856
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 568,
+      "end_line": 576,
+      "text": "        // Input and turn-start injections are recorded before recovery can continue this turn.\n        turn_context.extension_data.insert(RecordedTurnInput);\n        let window_id = sess.current_window_id().await;\n        super::rollout_budget::maybe_record_reminder(\n            sess.as_ref(),\n            turn_context.as_ref(),\n            &window_id,\n        )\n        .await;\n"
+    },
+    {
+      "start_line": 637,
+      "end_line": 655,
+      "text": "            // Keep the override after accepted input so history truncation removes them together.\n            sess.record_reasoning_effort_override(step_context.as_ref())\n                .await;\n\n            // Construct the input that we will send to the model.\n            let sampling_request_input = sess\n                .clone_history()\n                .instrument(trace_span!(\"run_turn.prepare_sampling_request_input\"))\n                .await;\n\n            run_sampling_request(\n                Arc::clone(&sess),\n                Arc::clone(&step_context),\n                Arc::clone(&turn_context.extension_data),\n                Arc::clone(&turn_diff_tracker),\n                &mut client_session,\n                sampling_request_input,\n                cancellation_token.child_token(),\n            )\n"
+    },
+    {
+      "start_line": 750,
+      "end_line": 758,
+      "text": "                if auto_compaction_enabled {\n                    let allow_auto_compact_fallback = !should_roll_over && !token_limit_reached;\n                    super::token_budget::maybe_record(\n                        sess.as_ref(),\n                        turn_context.as_ref(),\n                        token_status.base_window_tokens_remaining,\n                        allow_auto_compact_fallback,\n                    )\n                    .await;\n"
+    },
+    {
+      "start_line": 805,
+      "end_line": 854,
+      "text": "                if !needs_follow_up {\n                    last_agent_message = sampling_request_last_agent_message;\n                    let stop_outcome = run_turn_stop_hooks(\n                        &sess,\n                        &step_context,\n                        stop_hook_active,\n                        last_agent_message.clone(),\n                    )\n                    .await;\n                    if matches!(\n                        turn_context.session_source,\n                        SessionSource::Internal(InternalSessionSource::MemoryConsolidation)\n                    ) && (stop_outcome.should_block || stop_outcome.should_stop)\n                    {\n                        // Do not feed managed rejections back into an unattended memory loop.\n                        return Err(CodexErr::InvalidRequest(\n                            \"Memory consolidation was rejected by a Stop hook.\".to_string(),\n                        ));\n                    }\n                    if stop_outcome.should_block {\n                        if let Some(hook_prompt_message) = build_hook_prompt_message(\n                            &stop_outcome.continuation_fragments,\n                            &sess.item_id_generator,\n                        ) {\n                            sess.record_response_item_and_emit_turn_item(\n                                &turn_context,\n                                &step_context.settings.model_info,\n                                hook_prompt_message,\n                            )\n                            .await;\n                            sess.input_queue\n                                .accept_mailbox_delivery_for_current_turn(\n                                    &sess.active_turn,\n                                    &turn_context.sub_id,\n                                )\n                                .await;\n                            stop_hook_active = true;\n                            continue;\n                        } else {\n                            sess.send_event(\n                                &turn_context,\n                                EventMsg::Warning(WarningEvent {\n                                    message: \"Stop hook requested continuation without a prompt; ignoring the block.\".to_string(),\n                                }),\n                            )\n                            .await;\n                        }\n                    }\n                    if stop_outcome.should_stop {\n                        break;\n"
+    }
+  ],
+  "notice": "Verbatim public-source excerpts in local JSON wrapper; source read, not executed. See LICENSE and NOTICE."
+}

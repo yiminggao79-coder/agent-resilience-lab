@@ -1,0 +1,77 @@
+test_control_symlinks_are_never_followed (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+test_executing_worker_blocks_rotation_and_another_worker (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+test_generation_persists_privately_and_replaces_atomically (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+test_late_worker_cannot_execute_after_generation_rotation (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+test_lease_is_released_after_exception_and_worker_sigkill (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+test_none_is_allowed_only_while_both_generations_are_absent (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+test_sigkill_of_parent_does_not_release_child_owned_lease (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+test_special_and_hardlinked_control_files_fail_closed (tests.dev.test_process_guard.ProcessGuardTests) ... FAIL
+
+======================================================================
+FAIL: test_control_symlinks_are_never_followed (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 66, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.process_guard'),
+AssertionError: unexpectedly None : the process guard feature is not implemented
+
+======================================================================
+FAIL: test_executing_worker_blocks_rotation_and_another_worker (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 66, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.process_guard'),
+AssertionError: unexpectedly None : the process guard feature is not implemented
+
+======================================================================
+FAIL: test_generation_persists_privately_and_replaces_atomically (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 66, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.process_guard'),
+AssertionError: unexpectedly None : the process guard feature is not implemented
+
+======================================================================
+FAIL: test_late_worker_cannot_execute_after_generation_rotation (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 66, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.process_guard'),
+AssertionError: unexpectedly None : the process guard feature is not implemented
+
+======================================================================
+FAIL: test_lease_is_released_after_exception_and_worker_sigkill (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 66, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.process_guard'),
+AssertionError: unexpectedly None : the process guard feature is not implemented
+
+======================================================================
+FAIL: test_none_is_allowed_only_while_both_generations_are_absent (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 66, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.process_guard'),
+AssertionError: unexpectedly None : the process guard feature is not implemented
+
+======================================================================
+FAIL: test_sigkill_of_parent_does_not_release_child_owned_lease (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 66, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.process_guard'),
+AssertionError: unexpectedly None : the process guard feature is not implemented
+
+======================================================================
+FAIL: test_special_and_hardlinked_control_files_fail_closed (tests.dev.test_process_guard.ProcessGuardTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_guard.py", line 66, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.process_guard'),
+AssertionError: unexpectedly None : the process guard feature is not implemented
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.002s
+
+FAILED (failures=8)

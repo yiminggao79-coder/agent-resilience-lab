@@ -1,0 +1,104 @@
+test_listing_and_search_have_finite_result_limits (tests.dev.test_coding_tools.CodingToolsTests) ... FAIL
+test_patch_conflict_ambiguous_empty_and_changed_target_are_rejected (tests.dev.test_coding_tools.CodingToolsTests) ... FAIL
+test_patch_prepare_is_pure_and_recovery_is_idempotent (tests.dev.test_coding_tools.CodingToolsTests) ... FAIL
+test_patch_refuses_escape_binary_and_oversized_desired_content (tests.dev.test_coding_tools.CodingToolsTests) ... FAIL
+test_recursive_listing_and_literal_search_exclude_hidden_and_links (tests.dev.test_coding_tools.CodingToolsTests) ... FAIL
+test_test_execution_is_unsafe_and_legacy_tools_are_retained (tests.dev.test_coding_tools.CodingToolsTests) ... FAIL
+test_denies_outside_read_write_network_and_control_mutation (tests.dev.test_sandbox.SandboxTests) ... FAIL
+test_output_collection_is_bounded_for_both_streams (tests.dev.test_sandbox.SandboxTests) ... FAIL
+test_real_unittest_runs_and_reports_failure_then_success (tests.dev.test_sandbox.SandboxTests) ... FAIL
+test_timeout_kills_descendant_before_late_write (tests.dev.test_sandbox.SandboxTests) ... FAIL
+test_unavailable_backend_never_executes_project (tests.dev.test_sandbox.SandboxTests) ... FAIL
+
+======================================================================
+FAIL: test_listing_and_search_have_finite_result_limits (tests.dev.test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_patch_conflict_ambiguous_empty_and_changed_target_are_rejected (tests.dev.test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_patch_prepare_is_pure_and_recovery_is_idempotent (tests.dev.test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_patch_refuses_escape_binary_and_oversized_desired_content (tests.dev.test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_recursive_listing_and_literal_search_exclude_hidden_and_links (tests.dev.test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_test_execution_is_unsafe_and_legacy_tools_are_retained (tests.dev.test_coding_tools.CodingToolsTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_coding_tools.py", line 16, in setUp
+    self.assertIsNotNone(CodingTools, 'coding profile is not implemented')
+AssertionError: unexpectedly None : coding profile is not implemented
+
+======================================================================
+FAIL: test_denies_outside_read_write_network_and_control_mutation (tests.dev.test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+======================================================================
+FAIL: test_output_collection_is_bounded_for_both_streams (tests.dev.test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+======================================================================
+FAIL: test_real_unittest_runs_and_reports_failure_then_success (tests.dev.test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+======================================================================
+FAIL: test_timeout_kills_descendant_before_late_write (tests.dev.test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+======================================================================
+FAIL: test_unavailable_backend_never_executes_project (tests.dev.test_sandbox.SandboxTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_sandbox.py", line 18, in setUp
+    self.assertIsNotNone(sandbox, 'OS test sandbox is not implemented')
+AssertionError: unexpectedly None : OS test sandbox is not implemented
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.002s
+
+FAILED (failures=11)

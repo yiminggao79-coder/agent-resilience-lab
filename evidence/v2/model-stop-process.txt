@@ -1,0 +1,16 @@
+test_cli_stop_cancels_live_model_before_provider_final (tests.acceptance.test_model_cancel_process.ModelCancelProcessTests) ... {"kind": "model_cancel_process_contract", "provider": "loopback_synthetic", "stream": true, "runner_pid": 54865, "worker_pid": 54867, "worker_nonrunning_before_final": true, "tools_accepted": false, "usage": "unknown"}
+{"kind": "model_cancel_process_contract", "provider": "loopback_synthetic", "stream": false, "runner_pid": 54871, "worker_pid": 54872, "worker_nonrunning_before_final": true, "tools_accepted": false, "usage": "unknown"}
+ok
+test_runner_sigkill_reclaims_worker_without_waiting_for_provider (tests.acceptance.test_model_cancel_process.ModelCancelProcessTests) ... {"kind": "model_worker_owner_death_contract", "provider": "loopback_synthetic", "killed_runner_pid": 54878, "worker_pid": 54879, "runner_return_code": -9, "worker_nonrunning_before_final": true, "checkpoint": "model_pending_unconfirmed"}
+ok
+test_cancel_without_persisted_stop_is_not_clean (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_delegate_wrapper_is_still_called (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_keyboard_interrupt_marks_model_usage_unknown (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_prior_unresolved_outcome_is_never_cleared (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_scoped_stop_discards_incomplete_response_but_retains_unknown_usage (tests.dev.test_model_stop.ModelStopTests) ... ok
+test_summary_cancel_keeps_prior_context_and_restores_presentation (tests.dev.test_model_stop.ModelStopTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.323s
+
+OK

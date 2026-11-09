@@ -1,0 +1,102 @@
+usage: __main__.py run [-h] --workspace WORKSPACE
+                       [--read-only-path READ_ONLY_PATH]
+                       [--node-executable NODE_EXECUTABLE]
+                       [--python-environment PYTHON_ENVIRONMENT]
+                       [--mcp-config MCP_CONFIG] [--model-config MODEL_CONFIG]
+                       [--model MODEL] [--base-url BASE_URL]
+                       [--api-key-env API_KEY_ENV] [--allow-api]
+                       [--load-deepseek-key] [--budget-ledger BUDGET_LEDGER]
+                       [--profile {local,coding}]
+                       [--protocol {chat,responses,anthropic}] [--stream]
+                       [--stream-text] [--stream-tools]
+                       [--thinking {enabled,disabled,adaptive}]
+                       [--reasoning-effort REASONING_EFFORT]
+                       [--ca-bundle CA_BUNDLE]
+                       [--token-parameter {max_completion_tokens,max_tokens}]
+                       [--no-parallel-parameter] [--skill SKILL] [--events]
+                       [--track-file-context] [--no-auto-compact]
+                       [--max-steps MAX_STEPS] [--max-seconds MAX_SECONDS]
+                       [--model-timeout MODEL_TIMEOUT]
+                       [--tool-timeout TOOL_TIMEOUT] [--max-errors MAX_ERRORS]
+                       [--max-model-retries MAX_MODEL_RETRIES]
+                       [--max-output-tokens MAX_OUTPUT_TOKENS]
+                       [--max-context-bytes MAX_CONTEXT_BYTES]
+                       [--auto-compact-bytes AUTO_COMPACT_BYTES]
+                       [--max-auto-compactions MAX_AUTO_COMPACTIONS]
+                       [--max-cost-usd MAX_COST_USD]
+                       [--input-price INPUT_PRICE]
+                       [--output-price OUTPUT_PRICE]
+                       task
+
+positional arguments:
+  task
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --workspace WORKSPACE
+  --read-only-path READ_ONLY_PATH
+                        host read-only file/subtree scope; exact '.' protects
+                        whole workspace; repeat saved scopes on resume
+  --node-executable NODE_EXECUTABLE
+                        explicit trusted absolute Node executable outside
+                        workspace; admits OS/hostname metadata reads; repeat
+                        saved runtime on resume/approval; no npm, fork or
+                        network
+  --python-environment PYTHON_ENVIRONMENT
+                        explicit trusted same-base venv outside workspace;
+                        bounded read-only dependencies; repeat on
+                        resume/approval; no automatic installation or
+                        network/fork grants
+  --mcp-config MCP_CONFIG
+                        explicit trusted stdio/Streamable HTTP MCP
+                        configuration outside workspace; external
+                        processes/services are not sandboxed
+  --model-config MODEL_CONFIG
+                        secret-free trusted model JSON outside workspace;
+                        routing flags must not conflict
+  --model MODEL
+  --base-url BASE_URL
+  --api-key-env API_KEY_ENV
+                        defaults to protocol-specific key environment variable
+  --allow-api           explicitly enable requests which may incur costs
+  --load-deepseek-key   load only the authorized ~/Downloads/API.txt first
+                        line for this process; requires --allow-api and
+                        official DeepSeek routing
+  --budget-ledger BUDGET_LEDGER
+                        existing original shared DeepSeek budget SQLite
+                        outside workspace; never initializes a missing ledger;
+                        repeat this path for relocated runtimes
+  --profile {local,coding}
+  --protocol {chat,responses,anthropic}
+  --stream
+  --stream-text         stream private assistant text to stderr; implies
+                        --stream; metadata events stay on stdout
+  --stream-tools        show bounded private native stdout/stderr on stderr;
+                        display is not tool completion
+  --thinking {enabled,disabled,adaptive}
+  --reasoning-effort REASONING_EFFORT
+  --ca-bundle CA_BUNDLE
+                        explicit trusted CA PEM; TLS verification remains
+                        enabled
+  --token-parameter {max_completion_tokens,max_tokens}
+  --no-parallel-parameter
+  --skill SKILL
+  --events              emit committed metadata events as JSON lines
+  --track-file-context  opt in for this new Coding task: bounded known-read
+                        file-version hints before sampling; saved for
+                        resume/fork, not a whole-project watcher
+  --no-auto-compact     disable saved automatic summaries for this new turn;
+                        original archive is retained
+  --max-steps MAX_STEPS
+  --max-seconds MAX_SECONDS
+  --model-timeout MODEL_TIMEOUT
+  --tool-timeout TOOL_TIMEOUT
+  --max-errors MAX_ERRORS
+  --max-model-retries MAX_MODEL_RETRIES
+  --max-output-tokens MAX_OUTPUT_TOKENS
+  --max-context-bytes MAX_CONTEXT_BYTES
+  --auto-compact-bytes AUTO_COMPACT_BYTES
+  --max-auto-compactions MAX_AUTO_COMPACTIONS
+  --max-cost-usd MAX_COST_USD
+  --input-price INPUT_PRICE
+  --output-price OUTPUT_PRICE

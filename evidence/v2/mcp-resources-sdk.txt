@@ -1,0 +1,22 @@
+{
+  "binary_metadata_only": true,
+  "cost_estimate_cny": null,
+  "elapsed_seconds": 1.305,
+  "exact_approvals": 4,
+  "experiment": "official_sdk_owned_resource_interoperability",
+  "external_server_is_command_sandboxed": false,
+  "fixture_sha256": "213be0e23b1ef338cd38065f8a22011d16811e2ae08a74da57ac760b7656c2e4",
+  "model_kind": "offline_scripted_protocol_double",
+  "package_lock_sha256": "bb0df3736a46c6328f744b2dc842f0cf2733e4bdeb3aa8464f196a3cd954de35",
+  "passed": true,
+  "phase": "completed",
+  "protocol_version": "2025-11-25",
+  "provider_requests": 0,
+  "published_server_product": false,
+  "real_llm_task_success_rate": null,
+  "real_tokens": null,
+  "sdk_version": "2.4.0",
+  "static_resources": 2,
+  "template_read": true,
+  "templates": 1
+}

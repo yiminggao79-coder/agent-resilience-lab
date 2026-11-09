@@ -1,0 +1,14 @@
+test_callback_failure_disables_display_without_changing_tool_result (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... ok
+test_default_does_not_enable_output_channel_or_change_final_capture (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... ok
+test_output_callback_can_request_cancel_without_authorizing_success (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... ok
+test_real_command_barrier_both_streams_before_final_no_control_forgery (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... ok
+test_run_tests_display_is_private_and_result_uncommitted_at_barrier (tests.dev.test_tool_output_parent.ToolOutputParentTests) ... ok
+test_cli_opt_in_stderr_metadata_stdout_remain_separate (tests.dev.test_tool_output_display.ToolOutputDisplayTests) ... ok
+test_complete_display_without_final_newline_leaves_next_prompt_on_new_line (tests.dev.test_tool_output_display.ToolOutputDisplayTests) ... ok
+test_end_flushes_invalid_bytes_and_reports_incomplete_not_completion (tests.dev.test_tool_output_display.ToolOutputDisplayTests) ... ok
+test_incremental_unicode_and_terminal_controls_are_rendered_visibly (tests.dev.test_tool_output_display.ToolOutputDisplayTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 3.369s
+
+OK

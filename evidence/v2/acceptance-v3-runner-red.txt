@@ -1,0 +1,77 @@
+test_budget_preflight_is_readonly_and_handles_real_remaining_upper_bound (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... FAIL
+test_correct_code_passes_without_prescribed_model_tool_sequence (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... FAIL
+test_failed_phase_is_observation_not_a_quality_gate_and_missing_stays_null (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... FAIL
+test_immutable_original_test_is_host_protected_from_model_writes (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... FAIL
+test_invalid_case_fails_before_model_or_candidate_execution (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... FAIL
+test_missing_oracle_execution_is_unmeasured_not_a_wrong_answer (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... FAIL
+test_model_self_claim_without_fix_is_measured_failure (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... FAIL
+test_unknown_effect_never_launches_candidate_observation (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests) ... FAIL
+
+======================================================================
+FAIL: test_budget_preflight_is_readonly_and_handles_real_remaining_upper_bound (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_runner.py", line 17, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.evaluate_acceptance_v3'),
+AssertionError: unexpectedly None : separately versioned V3 runner is missing
+
+======================================================================
+FAIL: test_correct_code_passes_without_prescribed_model_tool_sequence (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_runner.py", line 17, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.evaluate_acceptance_v3'),
+AssertionError: unexpectedly None : separately versioned V3 runner is missing
+
+======================================================================
+FAIL: test_failed_phase_is_observation_not_a_quality_gate_and_missing_stays_null (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_runner.py", line 17, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.evaluate_acceptance_v3'),
+AssertionError: unexpectedly None : separately versioned V3 runner is missing
+
+======================================================================
+FAIL: test_immutable_original_test_is_host_protected_from_model_writes (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_runner.py", line 17, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.evaluate_acceptance_v3'),
+AssertionError: unexpectedly None : separately versioned V3 runner is missing
+
+======================================================================
+FAIL: test_invalid_case_fails_before_model_or_candidate_execution (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_runner.py", line 17, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.evaluate_acceptance_v3'),
+AssertionError: unexpectedly None : separately versioned V3 runner is missing
+
+======================================================================
+FAIL: test_missing_oracle_execution_is_unmeasured_not_a_wrong_answer (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_runner.py", line 17, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.evaluate_acceptance_v3'),
+AssertionError: unexpectedly None : separately versioned V3 runner is missing
+
+======================================================================
+FAIL: test_model_self_claim_without_fix_is_measured_failure (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_runner.py", line 17, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.evaluate_acceptance_v3'),
+AssertionError: unexpectedly None : separately versioned V3 runner is missing
+
+======================================================================
+FAIL: test_unknown_effect_never_launches_candidate_observation (tests.dev.test_acceptance_v3_runner.AcceptanceV3RunnerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_runner.py", line 17, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('scripts.evaluate_acceptance_v3'),
+AssertionError: unexpectedly None : separately versioned V3 runner is missing
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.002s
+
+FAILED (failures=8)

@@ -1,0 +1,33 @@
+test_old_confirmation_read_then_publish_cannot_wash_new_active_quarantine (tests.dev.test_native_jobs_races.NativeJobRaceTests) ... FAIL
+test_old_matching_database_repair_cannot_wash_new_active_quarantine (tests.dev.test_native_jobs_races.NativeJobRaceTests) ... FAIL
+
+======================================================================
+FAIL: test_old_confirmation_read_then_publish_cannot_wash_new_active_quarantine (tests.dev.test_native_jobs_races.NativeJobRaceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_native_jobs_races.py", line 119, in test_old_confirmation_read_then_publish_cannot_wash_new_active_quarantine
+    self.assert_new_claim_still_quarantines(new)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_native_jobs_races.py", line 102, in assert_new_claim_still_quarantines
+    self.assertEqual(marker['job_id'], reference['job_id'],
+AssertionError: 'f1583529742f40ec96434fd086324935' != '68a1309b140d4eb484ec585447d82062'
+- f1583529742f40ec96434fd086324935
++ 68a1309b140d4eb484ec585447d82062
+ : old publication replaced the newer active marker
+
+======================================================================
+FAIL: test_old_matching_database_repair_cannot_wash_new_active_quarantine (tests.dev.test_native_jobs_races.NativeJobRaceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_native_jobs_races.py", line 131, in test_old_matching_database_repair_cannot_wash_new_active_quarantine
+    self.assert_new_claim_still_quarantines(new)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_native_jobs_races.py", line 102, in assert_new_claim_still_quarantines
+    self.assertEqual(marker['job_id'], reference['job_id'],
+AssertionError: 'f6e47574bf4549b89bcc787b7da4efb8' != '121a55ead2ea4ca3964ab26006078e42'
+- f6e47574bf4549b89bcc787b7da4efb8
++ 121a55ead2ea4ca3964ab26006078e42
+ : old publication replaced the newer active marker
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.064s
+
+FAILED (failures=2)

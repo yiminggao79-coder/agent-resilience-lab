@@ -1,0 +1,1057 @@
+--- before/boxes.py
++++ after/boxes.py
+@@ -0,0 +1,23 @@
++"""Owned carton-type records with integer scalar capacities."""
++from catalog import name, integer
++
++
++def validate(rows):
++    if not isinstance(rows, list):
++        raise ValueError('boxes must be a list')
++    output = []
++    seen = set()
++    for row in rows:
++        if not isinstance(row, dict):
++            raise ValueError('box must be a dictionary')
++        try:
++            code = name(row['code'])
++            max_weight = integer(row['max_weight'])
++            max_volume = integer(row['max_volume'])
++        except KeyError:
++            raise ValueError('missing box field') from None
++        if code in seen:
++            raise ValueError('duplicate box code')
++        seen.add(code)
++        output.append(dict(code=code, max_weight=max_weight, max_volume=max_volume))
++    return sorted(output, key=lambda box: (box['max_volume'], box['max_weight'], box['code']))
+--- before/dispatch.py
++++ after/dispatch.py
+@@ -0,0 +1,100 @@
++"""Stock-aware, whole-request dispatch over the restricted packer."""
++from boxes import validate as validate_boxes
++from catalog import integer, name, products
++from manifest import constrained
++from orders import quantities
++from policies import compile as compile_policy
++
++
++def _stock(values, entries):
++    if not isinstance(values, dict):
++        raise ValueError('stock must be a dictionary')
++    remaining = {sku: 0 for sku in entries}
++    for sku, quantity in values.items():
++        if not isinstance(sku, str) or sku not in entries:
++            raise ValueError('unknown stock sku')
++        remaining[sku] = integer(quantity, minimum=0)
++    return {sku: remaining[sku] for sku in sorted(remaining)}
++
++
++def _requests(records, entries):
++    if not isinstance(records, list):
++        raise ValueError('requests must be a list')
++    output = []
++    seen = set()
++    for record in records:
++        if not isinstance(record, dict):
++            raise ValueError('request must be a dictionary')
++        try:
++            request_id = name(record['id'])
++            destination = name(record['destination'])
++            lines = record['lines']
++        except KeyError:
++            raise ValueError('missing request field') from None
++        if request_id in seen:
++            raise ValueError('duplicate request id')
++        seen.add(request_id)
++
++        priority = record.get('priority', 0)
++        if type(priority) is not int:
++            raise ValueError('invalid priority')
++        counts = quantities(lines, entries)
++        output.append({
++            'id': request_id,
++            'destination': destination,
++            'priority': priority,
++            'counts': counts,
++        })
++    return output
++
++
++def allocate(catalog, stock, requests, boxes, policy=None):
++    """Allocate requests in priority order and return an owned dispatch report."""
++    entries = products(catalog)
++    initial_stock = _stock(stock, entries)
++    box_types = validate_boxes(boxes)
++    compile_policy(policy, entries, box_types)
++    parsed = _requests(requests, entries)
++
++    remaining = dict(initial_stock)
++    accepted = []
++    rejected = []
++    total_units = total_cartons = total_weight = total_volume = 0
++
++    for request in sorted(parsed, key=lambda item: -item['priority']):
++        counts = request['counts']
++        if any(remaining[sku] < quantity for sku, quantity in counts.items()):
++            rejected.append({'id': request['id'], 'reason': 'stock'})
++            continue
++
++        lines = [{'sku': sku, 'quantity': quantity}
++                 for sku, quantity in counts.items()]
++        try:
++            report = constrained(catalog, lines, boxes, policy)
++        except ValueError:
++            rejected.append({'id': request['id'], 'reason': 'unpackable'})
++            continue
++
++        for sku, quantity in counts.items():
++            remaining[sku] -= quantity
++        accepted.append({
++            'id': request['id'],
++            'destination': request['destination'],
++            'manifest': report,
++        })
++        total_units += report['totals']['units']
++        total_cartons += len(report['cartons'])
++        total_weight += report['totals']['weight']
++        total_volume += report['totals']['volume']
++
++    return {
++        'accepted': accepted,
++        'rejected': rejected,
++        'remaining': {sku: remaining[sku] for sku in sorted(entries)},
++        'totals': {
++            'units': total_units,
++            'cartons': total_cartons,
++            'weight': total_weight,
++            'volume': total_volume,
++        },
++    }
+--- before/manifest.py
++++ after/manifest.py
+@@ -1,10 +1,22 @@
+ """JSON-ready shipment measures."""
+ from catalog import products
+ from orders import quantities
++from packing import pack
+ def make(catalog,lines):
+     entries=products(catalog)
+     counts=quantities(lines,entries)
+     items=[{'sku':sku,'quantity':quantity,'weight':entries[sku]['weight']*quantity,
+             'volume':entries[sku]['volume']*quantity} for sku,quantity in counts.items()]
+-    return {'items':items,'totals':{'units':len(items),
++    return {'items':items,'totals':{'units':sum(item['quantity'] for item in items),
+             'weight':sum(item['weight'] for item in items),'volume':sum(item['volume'] for item in items)}}
++def packed(catalog,lines,boxes):
++    report=make(catalog,lines)
++    report['cartons']=pack(catalog,lines,boxes)
++    return report
++def constrained(catalog,lines,boxes,policy=None):
++    report=make(catalog,lines)
++    report['cartons']=pack(catalog,lines,boxes,policy)
++    return report
++def dispatch_report(catalog,stock,requests,boxes,policy=None):
++    from dispatch import allocate
++    return allocate(catalog,stock,requests,boxes,policy)
+--- before/orders.py
++++ after/orders.py
+@@ -8,6 +8,5 @@
+         try: sku,quantity=name(line['sku']),integer(line['quantity'])
+         except KeyError: raise ValueError('missing order field') from None
+         if sku not in products: raise ValueError('unknown sku')
+-        # Current implementation overwrites repeated SKU lines.
+-        output[sku]=quantity
++        output[sku]=output.get(sku,0)+quantity
+     return dict(sorted(output.items()))
+--- before/packing.py
++++ after/packing.py
+@@ -0,0 +1,91 @@
++"""Deterministic first-fit packing into scalar weight/volume cartons."""
++from boxes import validate as validate_boxes
++from catalog import products
++from orders import quantities
++from policies import compile as compile_policy
++
++
++def _carton_fits(carton, sku, weight, volume, rules):
++    box = carton["box"]
++    if (carton["weight"] + weight > box["max_weight"] or
++            carton["volume"] + volume > box["max_volume"]):
++        return False
++    if rules is None:
++        return True
++
++    max_units = rules["max_units"]
++    if max_units is not None and carton["units"] + 1 > max_units:
++        return False
++
++    fixed = rules["fixed_box"].get(sku)
++    if fixed is not None and box["code"] != fixed:
++        return False
++
++    incompatible = rules["incompatible"]
++    if any(frozenset((sku, other)) in incompatible
++           for other in carton["quantities"]):
++        return False
++    return True
++
++
++def _new_box_fits(box, sku, weight, volume, rules):
++    if weight > box["max_weight"] or volume > box["max_volume"]:
++        return False
++    if rules is None:
++        return True
++    fixed = rules["fixed_box"].get(sku)
++    return fixed is None or box["code"] == fixed
++
++
++def pack(catalog, lines, boxes, policy=None):
++    entries = products(catalog)
++    counts = quantities(lines, entries)
++    box_types = validate_boxes(boxes)
++    rules = None if policy is None else compile_policy(policy, entries, box_types)
++
++    # Process each indivisible unit by descending weight, descending volume,
++    # then ascending SKU.  Units of one SKU are interchangeable, so repeating
++    # the SKU in that order is equivalent to expanding them before sorting.
++    ordered_skus = sorted(
++        counts,
++        key=lambda sku: (-entries[sku]["weight"], -entries[sku]["volume"], sku),
++    )
++
++    cartons = []
++    for sku in ordered_skus:
++        weight = entries[sku]["weight"]
++        volume = entries[sku]["volume"]
++        for _ in range(counts[sku]):
++            for carton in cartons:
++                if _carton_fits(carton, sku, weight, volume, rules):
++                    carton["weight"] += weight
++                    carton["volume"] += volume
++                    carton["units"] += 1
++                    carton["quantities"][sku] = carton["quantities"].get(sku, 0) + 1
++                    break
++            else:
++                for box in box_types:
++                    if _new_box_fits(box, sku, weight, volume, rules):
++                        cartons.append({
++                            "box": box,
++                            "weight": weight,
++                            "volume": volume,
++                            "units": 1,
++                            "quantities": {sku: 1},
++                        })
++                        break
++                else:
++                    raise ValueError("unit does not fit any box")
++
++    return [
++        {
++            "box": carton["box"]["code"],
++            "items": [
++                {"sku": sku, "quantity": quantity}
++                for sku, quantity in sorted(carton["quantities"].items())
++            ],
++            "weight": carton["weight"],
++            "volume": carton["volume"],
++        }
++        for carton in cartons
++    ]
+--- before/policies.py
++++ after/policies.py
+@@ -0,0 +1,88 @@
++"""Validation and compilation of co-packing policies."""
++from boxes import validate as validate_boxes
++from catalog import products
++
++_KEYS = frozenset(("incompatible", "max_units", "fixed_box"))
++
++
++def _catalog_entries(catalog):
++    if catalog is None:
++        return None
++    if isinstance(catalog, dict):
++        return catalog
++    if isinstance(catalog, list):
++        return products(catalog)
++    raise ValueError("catalog must be product rows or a product mapping")
++
++
++def _box_codes(boxes):
++    if boxes is None:
++        return None
++    if isinstance(boxes, list):
++        return {box["code"] for box in validate_boxes(boxes)}
++    raise ValueError("boxes must be box rows")
++
++
++def compile(policy, catalog=None, boxes=None):
++    """Return an owned, normalized policy, or None for no policy.
++
++    ``catalog`` may be the raw catalog rows or the validated product mapping.
++    ``boxes`` may be raw box rows or already-validated box definitions.
++    """
++    if policy is None:
++        return None
++    if not isinstance(policy, dict):
++        raise ValueError("policy must be a dictionary or None")
++
++    unknown = set(policy) - _KEYS
++    if unknown:
++        raise ValueError("unknown policy key")
++
++    entries = _catalog_entries(catalog)
++    box_codes = _box_codes(boxes)
++
++    incompatible = set()
++    if "incompatible" in policy:
++        pairs = policy["incompatible"]
++        if not isinstance(pairs, list):
++            raise ValueError("incompatible must be a list")
++        for pair in pairs:
++            if not isinstance(pair, list) or len(pair) != 2:
++                raise ValueError("each incompatible entry must be a two-SKU list")
++            first, second = pair
++            if not isinstance(first, str) or not isinstance(second, str):
++                raise ValueError("incompatible SKUs must be strings")
++            if first == second:
++                raise ValueError("incompatible SKUs must be different")
++            if entries is not None and (first not in entries or second not in entries):
++                raise ValueError("incompatible SKU is not a known product")
++            incompatible.add(frozenset((first, second)))
++
++    max_units = policy.get("max_units")
++    if max_units is not None and (type(max_units) is not int or max_units <= 0):
++        raise ValueError("max_units must be a positive integer or None")
++
++    fixed_box = {}
++    if "fixed_box" in policy:
++        choices = policy["fixed_box"]
++        if not isinstance(choices, dict):
++            raise ValueError("fixed_box must be a dictionary")
++        for sku, code in choices.items():
++            if not isinstance(sku, str) or not isinstance(code, str):
++                raise ValueError("fixed_box SKU and box code must be strings")
++            if entries is not None and sku not in entries:
++                raise ValueError("fixed_box SKU is not a known product")
++            if box_codes is not None and code not in box_codes:
++                raise ValueError("fixed_box code is not a known box")
++            fixed_box[sku] = code
++
++    return {
++        "incompatible": incompatible,
++        "max_units": max_units,
++        "fixed_box": fixed_box,
++    }
++
++
++def validate(policy, catalog=None, boxes=None):
++    """Validate and compile a policy.  ``None`` remains ``None``."""
++    return compile(policy, catalog, boxes)
+--- before/tests/test_dispatch.py
++++ after/tests/test_dispatch.py
+@@ -0,0 +1,234 @@
++import copy
++import unittest
++
++from dispatch import allocate
++from manifest import constrained, dispatch_report
++
++CATALOG = [
++    {'sku': 'a', 'weight': 1, 'volume': 1},
++    {'sku': 'b', 'weight': 1, 'volume': 1},
++]
++BOXES = [{'code': 'box', 'max_weight': 10, 'max_volume': 10}]
++
++
++class DispatchOrderTests(unittest.TestCase):
++    def test_priorities_are_stable_and_accepted_keep_processing_order(self):
++        stock = {'a': 5, 'b': 5}
++        requests = [
++            {'id': 'low-first', 'destination': 'd1',
++             'lines': [{'sku': 'a', 'quantity': 1}]},
++            {'id': 'high-first', 'destination': 'd2', 'priority': 5,
++             'lines': [{'sku': 'a', 'quantity': 1}]},
++            {'id': 'low-second', 'destination': 'd3',
++             'lines': [{'sku': 'b', 'quantity': 1}]},
++            {'id': 'high-second', 'destination': 'd4', 'priority': 5,
++             'lines': [{'sku': 'b', 'quantity': 1}]},
++        ]
++
++        result = allocate(CATALOG, stock, requests, BOXES)
++
++        self.assertEqual(
++            [item['id'] for item in result['accepted']],
++            ['high-first', 'high-second', 'low-first', 'low-second'],
++        )
++        self.assertEqual(result['rejected'], [])
++        self.assertEqual(result['remaining'], {'a': 3, 'b': 3})
++        self.assertEqual(
++            result['totals'],
++            {'units': 4, 'cartons': 4, 'weight': 4, 'volume': 4},
++        )
++
++    def test_repeated_lines_reserve_the_whole_aggregated_quantity(self):
++        requests = [
++            {'id': 'too-many', 'destination': 'd', 'priority': 10,
++             'lines': [{'sku': 'a', 'quantity': 1},
++                       {'sku': 'a', 'quantity': 1}]},
++            {'id': 'exact', 'destination': 'd',
++             'lines': [{'sku': 'a', 'quantity': 1}]},
++            {'id': 'none-left', 'destination': 'd', 'priority': -1,
++             'lines': [{'sku': 'a', 'quantity': 1}]},
++        ]
++
++        result = allocate(CATALOG, {'a': 1}, requests, BOXES)
++
++        self.assertEqual([item['id'] for item in result['accepted']], ['exact'])
++        self.assertEqual(result['rejected'], [
++            {'id': 'too-many', 'reason': 'stock'},
++            {'id': 'none-left', 'reason': 'stock'},
++        ])
++        self.assertEqual(result['remaining'], {'a': 0, 'b': 0})
++        self.assertEqual(result['totals']['units'], 1)
++
++    def test_unpackable_request_consumes_no_stock(self):
++        catalog = [
++            {'sku': 'a', 'weight': 2, 'volume': 1},
++            {'sku': 'b', 'weight': 1, 'volume': 1},
++        ]
++        boxes = [
++            {'code': 'small', 'max_weight': 1, 'max_volume': 1},
++            {'code': 'big', 'max_weight': 10, 'max_volume': 10},
++        ]
++        policy = {'fixed_box': {'a': 'small'}}
++        requests = [
++            {'id': 'bad', 'destination': 'd', 'priority': 5,
++             'lines': [{'sku': 'a', 'quantity': 1}]},
++            {'id': 'good', 'destination': 'd',
++             'lines': [{'sku': 'b', 'quantity': 1}]},
++        ]
++
++        result = allocate(catalog, {'a': 1, 'b': 1}, requests, boxes, policy)
++
++        self.assertEqual([item['id'] for item in result['accepted']], ['good'])
++        self.assertEqual(result['rejected'], [{'id': 'bad', 'reason': 'unpackable'}])
++        self.assertEqual(result['remaining'], {'a': 1, 'b': 0})
++        self.assertEqual(result['accepted'][0]['manifest']['cartons'][0]['box'], 'small')
++        self.assertEqual(result['totals'],
++                         {'units': 1, 'cartons': 1, 'weight': 1, 'volume': 1})
++
++    def test_totals_accumulate_across_accepted_manifests(self):
++        catalog = [
++            {'sku': 'a', 'weight': 2, 'volume': 1},
++            {'sku': 'b', 'weight': 1, 'volume': 1},
++        ]
++        boxes = [{'code': 'one', 'max_weight': 2, 'max_volume': 1}]
++        requests = [
++            {'id': 'first', 'destination': 'd',
++             'lines': [{'sku': 'a', 'quantity': 1},
++                       {'sku': 'b', 'quantity': 2}]},
++            {'id': 'second', 'destination': 'd',
++             'lines': [{'sku': 'a', 'quantity': 1}]},
++        ]
++
++        result = allocate(catalog, {'a': 2, 'b': 2}, requests, boxes)
++
++        self.assertEqual(len(result['accepted']), 2)
++        self.assertEqual(result['totals'],
++                         {'units': 4, 'cartons': 4, 'weight': 6, 'volume': 4})
++        self.assertEqual(result['remaining'], {'a': 0, 'b': 0})
++
++
++class DispatchPolicyTests(unittest.TestCase):
++    def test_policy_restrictions_apply_to_each_accepted_manifest(self):
++        catalog = [
++            {'sku': 'a', 'weight': 1, 'volume': 1},
++            {'sku': 'b', 'weight': 1, 'volume': 1},
++            {'sku': 'c', 'weight': 1, 'volume': 1},
++        ]
++        boxes = [{'code': 'big', 'max_weight': 10, 'max_volume': 10}]
++        policy = {
++            'incompatible': [['a', 'b']],
++            'max_units': 2,
++        }
++        requests = [
++            {'id': 'mixed', 'destination': 'd',
++             'lines': [{'sku': 'a', 'quantity': 2},
++                       {'sku': 'b', 'quantity': 1},
++                       {'sku': 'c', 'quantity': 1}]},
++        ]
++
++        result = allocate(
++            catalog, {'a': 2, 'b': 1, 'c': 1}, requests, boxes, policy
++        )
++
++        self.assertEqual(result['rejected'], [])
++        manifest = result['accepted'][0]['manifest']
++        self.assertEqual(manifest['cartons'], [
++            {'box': 'big', 'items': [{'sku': 'a', 'quantity': 2}],
++             'weight': 2, 'volume': 2},
++            {'box': 'big', 'items': [{'sku': 'b', 'quantity': 1},
++                                      {'sku': 'c', 'quantity': 1}],
++             'weight': 2, 'volume': 2},
++        ])
++        self.assertEqual(result['totals'],
++                         {'units': 4, 'cartons': 2, 'weight': 4, 'volume': 4})
++
++    def test_manifest_dispatch_report_matches_allocate(self):
++        catalog = [
++            {'sku': 'a', 'weight': 2, 'volume': 1},
++            {'sku': 'b', 'weight': 1, 'volume': 1},
++        ]
++        boxes = [{'code': 'box', 'max_weight': 10, 'max_volume': 10}]
++        stock = {'a': 1}
++        requests = [
++            {'id': 'one', 'destination': 'd',
++             'lines': [{'sku': 'a', 'quantity': 1}]},
++        ]
++
++        result = dispatch_report(catalog, stock, requests, boxes)
++
++        self.assertEqual(result, allocate(catalog, stock, requests, boxes))
++        self.assertEqual(
++            result['accepted'][0]['manifest'],
++            constrained(catalog, requests[0]['lines'], boxes),
++        )
++
++
++class DispatchValidationTests(unittest.TestCase):
++    def test_malformed_late_request_rejects_the_whole_call(self):
++        valid = {'id': 'first', 'destination': 'd', 'lines': []}
++        bad_records = [
++            None,
++            {'destination': 'd', 'lines': []},
++            {'id': '  ', 'destination': 'd', 'lines': []},
++            {'id': 'x', 'destination': '', 'lines': []},
++            {'id': 'x', 'destination': ' d', 'lines': []},
++            {'id': 'x', 'destination': 'd'},
++            {'id': 'x', 'destination': 'd', 'lines': ['bad']},
++            {'id': 'x', 'destination': 'd',
++             'lines': [{'sku': 'z', 'quantity': 1}]},
++            {'id': 'x', 'destination': 'd',
++             'lines': [{'sku': 'a', 'quantity': 0}]},
++            {'id': 'x', 'destination': 'd', 'priority': True, 'lines': []},
++            {'id': 'first', 'destination': 'd', 'lines': []},
++        ]
++        stock = {'a': 1, 'b': 1}
++        stock_before = copy.deepcopy(stock)
++
++        for bad in bad_records:
++            with self.subTest(bad=bad):
++                requests = [valid, bad]
++                requests_before = copy.deepcopy(requests)
++                with self.assertRaises(ValueError):
++                    allocate(CATALOG, stock, requests, BOXES)
++                self.assertEqual(stock, stock_before)
++                self.assertEqual(requests, requests_before)
++
++    def test_all_inputs_are_validated_before_empty_processing(self):
++        cases = [
++            ([{'sku': 'a', 'weight': 1, 'volume': 1},
++              {'sku': 'a', 'weight': 2, 'volume': 2}], {}, [], None),
++            (CATALOG, {'unknown': 1}, [], None),
++            (CATALOG, {'a': -1}, [], None),
++            (CATALOG, {'a': True}, [], None),
++            (CATALOG, {'a': 1}, [{'code': 'x', 'max_weight': 0,
++                                  'max_volume': 1}], None),
++            (CATALOG, {'a': 1}, BOXES, {'max_units': 0}),
++        ]
++
++        for catalog, stock, boxes, policy in cases:
++            with self.subTest(stock=stock, boxes=boxes, policy=policy):
++                with self.assertRaises(ValueError):
++                    allocate(catalog, stock, [], boxes, policy)
++
++    def test_inputs_are_not_mutated_on_success(self):
++        stock = {'a': 2}
++        requests = [
++            {'id': 'one', 'destination': 'd', 'priority': 2,
++             'lines': [{'sku': 'a', 'quantity': 1}]},
++        ]
++        policy = {'max_units': 2}
++        stock_before = copy.deepcopy(stock)
++        requests_before = copy.deepcopy(requests)
++        policy_before = copy.deepcopy(policy)
++
++        result = allocate(CATALOG, stock, requests, BOXES, policy)
++        result['accepted'][0]['manifest']['items'][0]['quantity'] = 99
++        result['remaining']['a'] = 99
++
++        self.assertEqual(stock, stock_before)
++        self.assertEqual(requests, requests_before)
++        self.assertEqual(policy, policy_before)
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_packing.py
++++ after/tests/test_packing.py
+@@ -0,0 +1,160 @@
++import copy
++import unittest
++
++from boxes import validate as validate_boxes
++from manifest import make, packed
++from packing import pack
++
++CATALOG = [
++    {'sku': 'a', 'weight': 4, 'volume': 1},
++    {'sku': 'b', 'weight': 4, 'volume': 1},
++    {'sku': 'c', 'weight': 1, 'volume': 1},
++]
++
++
++class BoxValidationTests(unittest.TestCase):
++    def test_boxes_are_sorted_by_volume_then_weight_then_code(self):
++        rows = [
++            {'code': 'z', 'max_weight': 5, 'max_volume': 5},
++            {'code': 'a', 'max_weight': 5, 'max_volume': 5},
++            {'code': 'b', 'max_weight': 9, 'max_volume': 2},
++            {'code': 'c', 'max_weight': 4, 'max_volume': 5},
++        ]
++        self.assertEqual([box['code'] for box in validate_boxes(rows)], ['b', 'c', 'a', 'z'])
++
++    def test_invalid_box_definitions_are_rejected_even_if_unused(self):
++        cases = [
++            [None],
++            [{'code': 'x', 'max_weight': 1}],
++            [{'code': 'x', 'max_volume': 1}],
++            [{'code': ' x', 'max_weight': 1, 'max_volume': 1}],
++            [{'code': '', 'max_weight': 1, 'max_volume': 1}],
++            [{'code': 'x', 'max_weight': 0, 'max_volume': 1}],
++            [{'code': 'x', 'max_weight': 1, 'max_volume': True}],
++            [{'code': 'x', 'max_weight': True, 'max_volume': 1}],
++            [{'code': 'x', 'max_weight': 1, 'max_volume': 1},
++             {'code': 'x', 'max_weight': 2, 'max_volume': 2}],
++        ]
++        for rows in cases:
++            with self.subTest(rows=rows):
++                with self.assertRaises(ValueError):
++                    validate_boxes(rows)
++
++    def test_box_results_own_their_records(self):
++        rows = [{'code': 'x', 'max_weight': 1, 'max_volume': 1}]
++        result = validate_boxes(rows)
++        result[0]['max_weight'] = 99
++        self.assertEqual(rows[0]['max_weight'], 1)
++        self.assertIsNot(result[0], rows[0])
++
++
++class PackingTests(unittest.TestCase):
++    def test_first_fit_reuses_earliest_created_carton(self):
++        boxes = [{'code': 'big', 'max_weight': 5, 'max_volume': 10}]
++        cartons = pack(CATALOG, [{'sku': 'a', 'quantity': 1},
++                                 {'sku': 'b', 'quantity': 1},
++                                 {'sku': 'c', 'quantity': 1}], boxes)
++        self.assertEqual(cartons, [
++            {'box': 'big', 'items': [{'sku': 'a', 'quantity': 1},
++                                     {'sku': 'c', 'quantity': 1}],
++             'weight': 5, 'volume': 2},
++            {'box': 'big', 'items': [{'sku': 'b', 'quantity': 1}],
++             'weight': 4, 'volume': 1},
++        ])
++
++    def test_volume_limit_forces_new_carton(self):
++        catalog = [
++            {'sku': 'd', 'weight': 2, 'volume': 4},
++            {'sku': 'e', 'weight': 8, 'volume': 2},
++        ]
++        boxes = [{'code': 'box', 'max_weight': 10, 'max_volume': 5}]
++        cartons = pack(catalog, [{'sku': 'd', 'quantity': 1},
++                                 {'sku': 'e', 'quantity': 1}], boxes)
++        self.assertEqual([carton['items'] for carton in cartons], [
++            [{'sku': 'e', 'quantity': 1}],
++            [{'sku': 'd', 'quantity': 1}],
++        ])
++
++    def test_weight_limit_forces_new_carton(self):
++        catalog = [
++            {'sku': 'a', 'weight': 4, 'volume': 1},
++            {'sku': 'b', 'weight': 4, 'volume': 1},
++        ]
++        boxes = [{'code': 'box', 'max_weight': 5, 'max_volume': 100}]
++        cartons = pack(catalog, [{'sku': 'a', 'quantity': 1},
++                                 {'sku': 'b', 'quantity': 1}], boxes)
++        self.assertEqual([carton['items'] for carton in cartons], [
++            [{'sku': 'a', 'quantity': 1}],
++            [{'sku': 'b', 'quantity': 1}],
++        ])
++
++    def test_repeated_order_lines_expand_and_split_into_units(self):
++        catalog = [{'sku': 'a', 'weight': 2, 'volume': 1}]
++        lines = [{'sku': 'a', 'quantity': 2}, {'sku': 'a', 'quantity': 3}]
++        boxes = [{'code': 'pair', 'max_weight': 4, 'max_volume': 100}]
++        self.assertEqual(pack(catalog, lines, boxes), [
++            {'box': 'pair', 'items': [{'sku': 'a', 'quantity': 2}],
++             'weight': 4, 'volume': 2},
++            {'box': 'pair', 'items': [{'sku': 'a', 'quantity': 2}],
++             'weight': 4, 'volume': 2},
++            {'box': 'pair', 'items': [{'sku': 'a', 'quantity': 1}],
++             'weight': 2, 'volume': 1},
++        ])
++
++    def test_code_breaks_deterministic_box_ties(self):
++        catalog = [{'sku': 'a', 'weight': 1, 'volume': 1}]
++        boxes = [
++            {'code': 'z', 'max_weight': 5, 'max_volume': 5},
++            {'code': 'a', 'max_weight': 5, 'max_volume': 5},
++        ]
++        self.assertEqual([box['code'] for box in validate_boxes(boxes)], ['a', 'z'])
++        cartons = pack(catalog, [{'sku': 'a', 'quantity': 1}], boxes)
++        self.assertEqual(cartons[0]['box'], 'a')
++
++    def test_impossible_unit_raises(self):
++        catalog = [{'sku': 'a', 'weight': 5, 'volume': 5}]
++        boxes = [
++            {'code': 'light', 'max_weight': 4, 'max_volume': 100},
++            {'code': 'small', 'max_weight': 100, 'max_volume': 4},
++        ]
++        with self.assertRaises(ValueError):
++            pack(catalog, [{'sku': 'a', 'quantity': 1}], boxes)
++
++    def test_empty_boxes_are_legal_only_for_an_empty_order(self):
++        self.assertEqual(pack(CATALOG, [], []), [])
++        with self.assertRaises(ValueError):
++            pack(CATALOG, [{'sku': 'a', 'quantity': 1}], [])
++
++    def test_pack_does_not_mutate_or_share_inputs(self):
++        catalog = copy.deepcopy(CATALOG)
++        lines = [{'sku': 'a', 'quantity': 1}, {'sku': 'c', 'quantity': 1}]
++        boxes = [{'code': 'big', 'max_weight': 5, 'max_volume': 10}]
++        catalog_before = copy.deepcopy(catalog)
++        lines_before = copy.deepcopy(lines)
++        boxes_before = copy.deepcopy(boxes)
++        cartons = pack(catalog, lines, boxes)
++        self.assertEqual((catalog, lines, boxes), (catalog_before, lines_before, boxes_before))
++        cartons[0]['items'][0]['quantity'] = 999
++        self.assertEqual(lines, lines_before)
++
++
++class ManifestPackedTests(unittest.TestCase):
++    def test_packed_combines_report_and_cartons(self):
++        boxes = [{'code': 'big', 'max_weight': 5, 'max_volume': 10}]
++        lines = [{'sku': 'a', 'quantity': 1}, {'sku': 'b', 'quantity': 1}]
++        result = packed(CATALOG, lines, boxes)
++        expected_report = make(CATALOG, lines)
++        self.assertEqual(result['items'], expected_report['items'])
++        self.assertEqual(result['totals'], expected_report['totals'])
++        self.assertEqual(result['cartons'], pack(CATALOG, lines, boxes))
++
++    def test_packed_empty_order(self):
++        self.assertEqual(packed(CATALOG, [], []), {
++            'items': [],
++            'totals': {'units': 0, 'weight': 0, 'volume': 0},
++            'cartons': [],
++        })
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_policies.py
++++ after/tests/test_policies.py
+@@ -0,0 +1,169 @@
++import copy
++import unittest
++
++from manifest import constrained, packed
++
++CATALOG = [
++    {'sku': 'a', 'weight': 1, 'volume': 1},
++    {'sku': 'b', 'weight': 1, 'volume': 1},
++    {'sku': 'c', 'weight': 1, 'volume': 1},
++]
++BIG = [{'code': 'big', 'max_weight': 10, 'max_volume': 10}]
++
++
++class IncompatibleTests(unittest.TestCase):
++    def test_incompatible_pair_stays_in_separate_cartons(self):
++        result = constrained(
++            CATALOG,
++            [{'sku': 'a', 'quantity': 1},
++             {'sku': 'b', 'quantity': 1},
++             {'sku': 'c', 'quantity': 1}],
++            BIG,
++            {'incompatible': [['a', 'b']]},
++        )
++        self.assertEqual(result['cartons'], [
++            {'box': 'big', 'items': [
++                {'sku': 'a', 'quantity': 1},
++                {'sku': 'c', 'quantity': 1},
++            ], 'weight': 2, 'volume': 2},
++            {'box': 'big', 'items': [{'sku': 'b', 'quantity': 1}],
++             'weight': 1, 'volume': 1},
++        ])
++
++    def test_repeated_and_reversed_pairs_are_harmless(self):
++        result = constrained(
++            CATALOG,
++            [{'sku': 'a', 'quantity': 1}, {'sku': 'b', 'quantity': 1}],
++            BIG,
++            {'incompatible': [['a', 'b'], ['b', 'a'], ['a', 'b']]},
++        )
++        self.assertEqual(len(result['cartons']), 2)
++
++
++class UnitCapTests(unittest.TestCase):
++    def test_max_units_caps_the_total_units_in_a_carton(self):
++        result = constrained(
++            CATALOG,
++            [{'sku': 'a', 'quantity': 3}, {'sku': 'b', 'quantity': 1}],
++            BIG,
++            {'max_units': 2},
++        )
++        self.assertEqual(result['cartons'], [
++            {'box': 'big', 'items': [{'sku': 'a', 'quantity': 2}],
++             'weight': 2, 'volume': 2},
++            {'box': 'big', 'items': [
++                {'sku': 'a', 'quantity': 1},
++                {'sku': 'b', 'quantity': 1},
++            ], 'weight': 2, 'volume': 2},
++        ])
++
++
++class FixedBoxTests(unittest.TestCase):
++    def test_fixed_box_is_filtered_and_can_be_shared(self):
++        boxes = [
++            {'code': 'aaa', 'max_weight': 5, 'max_volume': 5},
++            {'code': 'z', 'max_weight': 5, 'max_volume': 5},
++        ]
++        result = constrained(
++            CATALOG,
++            [{'sku': 'a', 'quantity': 1}, {'sku': 'b', 'quantity': 1}],
++            boxes,
++            {'fixed_box': {'a': 'z'}},
++        )
++        self.assertEqual(result['cartons'], [
++            {'box': 'z', 'items': [
++                {'sku': 'a', 'quantity': 1},
++                {'sku': 'b', 'quantity': 1},
++            ], 'weight': 2, 'volume': 2},
++        ])
++
++    def test_incompatible_skus_fixed_to_same_box_use_two_cartons(self):
++        boxes = [{'code': 'shared', 'max_weight': 5, 'max_volume': 5}]
++        result = constrained(
++            CATALOG,
++            [{'sku': 'a', 'quantity': 1}, {'sku': 'b', 'quantity': 1}],
++            boxes,
++            {
++                'incompatible': [['a', 'b']],
++                'fixed_box': {'a': 'shared', 'b': 'shared'},
++            },
++        )
++        self.assertEqual(result['cartons'], [
++            {'box': 'shared', 'items': [{'sku': 'a', 'quantity': 1}],
++             'weight': 1, 'volume': 1},
++            {'box': 'shared', 'items': [{'sku': 'b', 'quantity': 1}],
++             'weight': 1, 'volume': 1},
++        ])
++
++
++class PolicyValidationTests(unittest.TestCase):
++    def test_invalid_policies_are_rejected_even_for_empty_orders(self):
++        cases = [
++            [],
++            42,
++            {'unknown': 1},
++            {'incompatible': 'a,b'},
++            {'incompatible': [['a']]},
++            {'incompatible': [['a', 'b', 'c']]},
++            {'incompatible': [['a', 'a']]},
++            {'incompatible': [[1, 'a']]},
++            {'incompatible': [['a', 'missing']]},
++            {'incompatible': [('a', 'b')]},
++            {'max_units': 0},
++            {'max_units': -1},
++            {'max_units': True},
++            {'max_units': 1.5},
++            {'max_units': '1'},
++            {'fixed_box': []},
++            {'fixed_box': {'missing': 'big'}},
++            {'fixed_box': {'a': 'missing'}},
++            {'fixed_box': {1: 'big'}},
++            {'fixed_box': {'a': 1}},
++        ]
++        for policy in cases:
++            with self.subTest(policy=policy):
++                with self.assertRaises(ValueError):
++                    constrained(CATALOG, [], BIG, policy)
++
++    def test_none_and_empty_policy_are_valid_for_empty_orders(self):
++        expected = {
++            'items': [],
++            'totals': {'units': 0, 'weight': 0, 'volume': 0},
++            'cartons': [],
++        }
++        self.assertEqual(constrained(CATALOG, [], BIG, None), expected)
++        self.assertEqual(constrained(CATALOG, [], BIG, {}), expected)
++
++    def test_packed_remains_unrestricted(self):
++        lines = [{'sku': 'a', 'quantity': 1}, {'sku': 'b', 'quantity': 1}]
++        self.assertEqual(packed(CATALOG, lines, BIG),
++                         constrained(CATALOG, lines, BIG, None))
++
++
++class PolicyOwnershipTests(unittest.TestCase):
++    def test_pack_does_not_mutate_policy_or_share_records(self):
++        lines = [{'sku': 'a', 'quantity': 2}, {'sku': 'b', 'quantity': 1}]
++        boxes = [{'code': 'big', 'max_weight': 10, 'max_volume': 10}]
++        policy = {
++            'incompatible': [['a', 'b']],
++            'max_units': 2,
++            'fixed_box': {'a': 'big'},
++        }
++        catalog_before = copy.deepcopy(CATALOG)
++        lines_before = copy.deepcopy(lines)
++        boxes_before = copy.deepcopy(boxes)
++        policy_before = copy.deepcopy(policy)
++
++        result = constrained(CATALOG, lines, boxes, policy)
++        self.assertEqual(CATALOG, catalog_before)
++        self.assertEqual(lines, lines_before)
++        self.assertEqual(boxes, boxes_before)
++        self.assertEqual(policy, policy_before)
++
++        result['cartons'][0]['items'][0]['quantity'] = 999
++        self.assertEqual(policy, policy_before)
++        self.assertEqual(lines, lines_before)
++
++
++if __name__ == '__main__':
++    unittest.main()
+--- before/tests/test_regressions.py
++++ after/tests/test_regressions.py
+@@ -0,0 +1,132 @@
++import copy
++import unittest
++
++from catalog import products
++from manifest import make
++from orders import quantities
++
++CATALOG = [
++    {'sku': 'a', 'weight': 4, 'volume': 2},
++    {'sku': 'b', 'weight': 2, 'volume': 3},
++]
++
++
++class AggregationRegressions(unittest.TestCase):
++    def test_repeated_lines_add_before_measuring(self):
++        lines = [
++            {'sku': 'a', 'quantity': 2},
++            {'sku': 'b', 'quantity': 1},
++            {'sku': 'a', 'quantity': 3},
++        ]
++        self.assertEqual(quantities(lines, products(CATALOG)), {'a': 5, 'b': 1})
++        result = make(CATALOG, lines)
++        self.assertEqual(result['items'], [
++            {'sku': 'a', 'quantity': 5, 'weight': 20, 'volume': 10},
++            {'sku': 'b', 'quantity': 1, 'weight': 2, 'volume': 3},
++        ])
++        self.assertEqual(result['totals'], {'units': 6, 'weight': 22, 'volume': 13})
++
++    def test_units_are_quantities_not_distinct_skus(self):
++        result = make(CATALOG, [{'sku': 'a', 'quantity': 2}, {'sku': 'a', 'quantity': 3}])
++        self.assertEqual(len(result['items']), 1)
++        self.assertEqual(result['totals']['units'], 5)
++
++    def test_empty_catalog_and_order(self):
++        self.assertEqual(products([]), {})
++        self.assertEqual(make([], []), {'items': [], 'totals': {'units': 0, 'weight': 0, 'volume': 0}})
++        self.assertEqual(make(CATALOG, []), {'items': [], 'totals': {'units': 0, 'weight': 0, 'volume': 0}})
++
++    def test_item_fields_are_exact_and_sorted(self):
++        result = make(CATALOG, [{'sku': 'b', 'quantity': 1}, {'sku': 'a', 'quantity': 1}])
++        self.assertEqual([item['sku'] for item in result['items']], ['a', 'b'])
++        for item in result['items']:
++            self.assertEqual(set(item), {'sku', 'quantity', 'weight', 'volume'})
++
++    def test_case_sensitive_skus(self):
++        catalog = [
++            {'sku': 'A', 'weight': 1, 'volume': 1},
++            {'sku': 'a', 'weight': 2, 'volume': 2},
++        ]
++        result = make(catalog, [{'sku': 'A', 'quantity': 1}, {'sku': 'a', 'quantity': 2}])
++        self.assertEqual([item['sku'] for item in result['items']], ['A', 'a'])
++        self.assertEqual(result['totals']['units'], 3)
++
++
++class ValidationRegressions(unittest.TestCase):
++    def test_invalid_unused_catalog_product_is_rejected(self):
++        invalid_catalog = CATALOG + [{'sku': 'unused', 'weight': 0, 'volume': 1}]
++        with self.assertRaises(ValueError):
++            make(invalid_catalog, [{'sku': 'a', 'quantity': 1}])
++
++    def test_malformed_catalog_records_are_rejected(self):
++        cases = [
++            [None],
++            [{'sku': 'x', 'weight': 1}],
++            [{'sku': 'x', 'volume': 1}],
++            [{'sku': ' x', 'weight': 1, 'volume': 1}],
++            [{'sku': '', 'weight': 1, 'volume': 1}],
++            [{'sku': 'x', 'weight': True, 'volume': 1}],
++            [{'sku': 'x', 'weight': 1, 'volume': False}],
++            [{'sku': 'x', 'weight': -1, 'volume': 1}],
++        ]
++        for catalog in cases:
++            with self.subTest(catalog=catalog):
++                with self.assertRaises(ValueError):
++                    products(catalog)
++
++    def test_duplicate_catalog_ids_are_rejected(self):
++        with self.assertRaises(ValueError):
++            products(CATALOG + [dict(CATALOG[0])])
++
++    def test_unknown_and_malformed_order_records_are_rejected(self):
++        cases = [
++            [None],
++            [{'sku': 'a'}],
++            [{'quantity': 1}],
++            [{'sku': 'a', 'quantity': 0}],
++            [{'sku': 'a', 'quantity': True}],
++            [{'sku': 'missing', 'quantity': 1}],
++        ]
++        for lines in cases:
++            with self.subTest(lines=lines):
++                with self.assertRaises(ValueError):
++                    make(CATALOG, lines)
++
++    def test_missing_and_nonpositive_product_fields_are_rejected(self):
++        cases = [
++            [{'weight': 1, 'volume': 1}],
++            [{'sku': 'x', 'volume': 1}],
++            [{'sku': 'x', 'weight': 1}],
++            [{'sku': 'x', 'weight': 0, 'volume': 1}],
++            [{'sku': 'x', 'weight': 1, 'volume': 0}],
++        ]
++        for catalog in cases:
++            with self.subTest(catalog=catalog):
++                with self.assertRaises(ValueError):
++                    products(catalog)
++
++
++class OwnershipRegressions(unittest.TestCase):
++    def test_inputs_are_not_mutated(self):
++        catalog = copy.deepcopy(CATALOG)
++        lines = [
++            {'sku': 'a', 'quantity': 2},
++            {'sku': 'a', 'quantity': 3},
++            {'sku': 'b', 'quantity': 1},
++        ]
++        catalog_before, lines_before = copy.deepcopy(catalog), copy.deepcopy(lines)
++        result = make(catalog, lines)
++        self.assertEqual(catalog, catalog_before)
++        self.assertEqual(lines, lines_before)
++        result['items'][0]['weight'] = 999
++        self.assertEqual(catalog, catalog_before)
++
++    def test_product_results_are_owned_copies(self):
++        result = products(CATALOG)
++        result['a']['weight'] = 999
++        self.assertEqual(CATALOG[0]['weight'], 4)
++        self.assertIsNot(result['a'], CATALOG[0])
++
++
++if __name__ == '__main__':
++    unittest.main()

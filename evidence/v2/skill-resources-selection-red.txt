@@ -1,0 +1,16 @@
+test_saved_host_selection_survives_a_new_engine_without_repeating_cli_skill (tests.dev.test_skill_resources.SkillResourceTests) ... ERROR
+
+======================================================================
+ERROR: test_saved_host_selection_survives_a_new_engine_without_repeating_cli_skill (tests.dev.test_skill_resources.SkillResourceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_skill_resources.py", line 88, in test_saved_host_selection_survives_a_new_engine_without_repeating_cli_skill
+    task=Engine(store,selected,None).create('Use explicitly selected owned helper')
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 163, in create
+    state = self._initial_state(task, limits, self.model.identity)
+AttributeError: 'NoneType' object has no attribute 'identity'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.017s
+
+FAILED (errors=1)

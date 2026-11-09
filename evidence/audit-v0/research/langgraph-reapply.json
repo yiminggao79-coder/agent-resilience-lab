@@ -1,0 +1,25 @@
+{
+  "source_url": "https://github.com/langchain-ai/langgraph/blob/e5e37b5d70dbfd93c7006bd90a658c6179a95946/libs/langgraph/langgraph/pregel/_loop.py",
+  "note": "Concrete restoration of succeeded task outputs, not external effects",
+  "upstream_tests_executed": false,
+  "excerpts": [
+    {
+      "start_line": 835,
+      "end_line": 846,
+      "lines": [
+        "    def _reapply_writes_to_succeeded_nodes(",
+        "        self, tasks: Mapping[str, PregelExecutableTask]",
+        "    ) -> None:",
+        "        \"\"\"Restore the output of finished tasks from checkpoint to in-memory tasks.",
+        "",
+        "        Unfinished (failed or interrupted) tasks keep empty writes, so the",
+        "        runner re-executes them or routes them to error handlers.",
+        "        \"\"\"",
+        "        for tid, status in read_task_statuses(self.checkpoint_pending_writes).items():",
+        "            if task := tasks.get(tid):",
+        "                task.writes.extend(status.output)",
+        "                self._reapplied_task_ids.add(tid)"
+      ]
+    }
+  ]
+}

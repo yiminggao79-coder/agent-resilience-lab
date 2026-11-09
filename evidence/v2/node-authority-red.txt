@@ -1,0 +1,86 @@
+test_change_during_stream_hash_fails_closed (tests.dev.test_node_authority.NodeAuthorityTests) ... FAIL
+test_default_authority_and_aliases_are_unchanged_and_never_infer_environment (tests.dev.test_node_authority.NodeAuthorityTests) ... FAIL
+test_default_selected_binary_also_uses_bounded_descriptor_without_shape_change (tests.dev.test_node_authority.NodeAuthorityTests) ... FAIL
+test_explicit_alias_and_host_launcher_symlink_bind_canonical_runtime (tests.dev.test_node_authority.NodeAuthorityTests) ... FAIL
+test_hardlink_alias_into_workspace_is_not_an_admitted_runtime (tests.dev.test_node_authority.NodeAuthorityTests) ... FAIL
+test_nonregular_nonexecutable_and_oversize_are_rejected_before_open (tests.dev.test_node_authority.NodeAuthorityTests) ... FAIL
+test_streaming_descriptor_is_stable_bounded_and_has_only_existing_fields (tests.dev.test_node_authority.NodeAuthorityTests) ... FAIL
+test_whole_optional_grant_binds_python_commands_and_changed_grant_cannot_reuse_approval (tests.dev.test_node_authority.NodeAuthorityTests) ... FAIL
+test_workspace_paths_and_both_directions_of_launcher_alias_are_rejected (tests.dev.test_node_authority.NodeAuthorityTests) ... FAIL
+
+======================================================================
+FAIL: test_change_during_stream_hash_fails_closed (tests.dev.test_node_authority.NodeAuthorityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_authority.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.command_runtime'),
+AssertionError: unexpectedly None : explicit command runtime authority is missing
+
+======================================================================
+FAIL: test_default_authority_and_aliases_are_unchanged_and_never_infer_environment (tests.dev.test_node_authority.NodeAuthorityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_authority.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.command_runtime'),
+AssertionError: unexpectedly None : explicit command runtime authority is missing
+
+======================================================================
+FAIL: test_default_selected_binary_also_uses_bounded_descriptor_without_shape_change (tests.dev.test_node_authority.NodeAuthorityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_authority.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.command_runtime'),
+AssertionError: unexpectedly None : explicit command runtime authority is missing
+
+======================================================================
+FAIL: test_explicit_alias_and_host_launcher_symlink_bind_canonical_runtime (tests.dev.test_node_authority.NodeAuthorityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_authority.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.command_runtime'),
+AssertionError: unexpectedly None : explicit command runtime authority is missing
+
+======================================================================
+FAIL: test_hardlink_alias_into_workspace_is_not_an_admitted_runtime (tests.dev.test_node_authority.NodeAuthorityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_authority.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.command_runtime'),
+AssertionError: unexpectedly None : explicit command runtime authority is missing
+
+======================================================================
+FAIL: test_nonregular_nonexecutable_and_oversize_are_rejected_before_open (tests.dev.test_node_authority.NodeAuthorityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_authority.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.command_runtime'),
+AssertionError: unexpectedly None : explicit command runtime authority is missing
+
+======================================================================
+FAIL: test_streaming_descriptor_is_stable_bounded_and_has_only_existing_fields (tests.dev.test_node_authority.NodeAuthorityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_authority.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.command_runtime'),
+AssertionError: unexpectedly None : explicit command runtime authority is missing
+
+======================================================================
+FAIL: test_whole_optional_grant_binds_python_commands_and_changed_grant_cannot_reuse_approval (tests.dev.test_node_authority.NodeAuthorityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_authority.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.command_runtime'),
+AssertionError: unexpectedly None : explicit command runtime authority is missing
+
+======================================================================
+FAIL: test_workspace_paths_and_both_directions_of_launcher_alias_are_rejected (tests.dev.test_node_authority.NodeAuthorityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_authority.py", line 20, in setUp
+    self.assertIsNotNone(importlib.util.find_spec('agent_lab.command_runtime'),
+AssertionError: unexpectedly None : explicit command runtime authority is missing
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+FAILED (failures=9)

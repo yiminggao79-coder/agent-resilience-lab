@@ -1,0 +1,38 @@
+import copy
+import unittest
+
+from allocation import allocate
+
+
+class AllocationEdgeTests(unittest.TestCase):
+    def test_arrival_order_and_case_sensitivity(self):
+        stock = {'A': 1, 'a': 5}
+        orders = [{'id': '1', 'items': [{'sku': 'A', 'qty': 1}]},
+                  {'id': '2', 'items': [{'sku': 'A', 'qty': 1}]},
+                  {'id': '3', 'items': [{'sku': 'a', 'qty': 5}]}]
+        result = allocate(stock, orders)
+        self.assertEqual(result, {'remaining': {'A': 0, 'a': 0},
+                                  'results': [{'id': '1', 'accepted': True},
+                                              {'id': '2', 'accepted': False},
+                                              {'id': '3', 'accepted': True}]})
+        self.assertEqual(stock, {'A': 1, 'a': 5})
+
+    def test_inputs_not_mutated_and_result_detached(self):
+        stock = {'A': 4, 'B': 0}
+        orders = [{'id': 'x', 'items': [{'sku': 'A', 'qty': 2}, {'sku': 'A', 'qty': 1}]}]
+        before = copy.deepcopy((stock, orders))
+        result = allocate(stock, orders)
+        self.assertEqual(result['remaining'], {'A': 1, 'B': 0})
+        self.assertEqual(result['results'], [{'id': 'x', 'accepted': True}])
+        self.assertEqual((stock, orders), before)
+        result['remaining']['A'] = 999
+        self.assertEqual(stock, {'A': 4, 'B': 0})
+
+    def test_each_row_exact_keys(self):
+        result = allocate({}, [{'id': 'e', 'items': []}])
+        self.assertEqual(result, {'remaining': {}, 'results': [{'id': 'e', 'accepted': True}]})
+        self.assertEqual(set(result['results'][0]), {'id', 'accepted'})
+
+
+if __name__ == '__main__':
+    unittest.main()

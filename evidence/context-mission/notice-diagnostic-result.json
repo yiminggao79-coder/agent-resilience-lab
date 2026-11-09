@@ -1,0 +1,67 @@
+{
+  "plan_sha256": "9cd710e842e6265c6dfa820b48014781cf1e8b0f2c4dd1f2ccd7df660d6de192",
+  "results": [
+    {
+      "condition": "unchanged_request",
+      "outcome": "complete",
+      "selected_tools": [
+        "read_lines",
+        "list_files"
+      ],
+      "tools_executed": 0,
+      "receipts": [
+        {
+          "index": 1,
+          "outcome": "complete",
+          "usage": {
+            "input_tokens": 12880,
+            "output_tokens": 84
+          },
+          "finish_reason": "tool_calls",
+          "tools": [
+            "read_lines",
+            "list_files"
+          ],
+          "elapsed_seconds": 2.3494136059999997
+        }
+      ]
+    },
+    {
+      "condition": "remove_only_last_file_context_user_notice",
+      "outcome": "complete",
+      "selected_tools": [
+        "read_lines"
+      ],
+      "tools_executed": 0,
+      "receipts": [
+        {
+          "index": 1,
+          "outcome": "complete",
+          "usage": {
+            "input_tokens": 11948,
+            "output_tokens": 72
+          },
+          "finish_reason": "tool_calls",
+          "tools": [
+            "read_lines"
+          ],
+          "elapsed_seconds": 2.2756064670000002
+        }
+      ]
+    }
+  ],
+  "usage_totals": {
+    "requests": 2,
+    "known_input_tokens": 24828,
+    "known_output_tokens": 156,
+    "unknown_usage_requests": 0,
+    "known_peak_cache_miss_estimate_cny": 0.050904,
+    "pricing_cny_per_million": {
+      "input_peak_cache_miss": 2,
+      "output_peak": 8
+    },
+    "estimate_is_invoice": false
+  },
+  "original_grade_unchanged": true,
+  "quality_passed": null
+}

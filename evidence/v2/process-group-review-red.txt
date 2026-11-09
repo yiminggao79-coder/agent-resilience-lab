@@ -1,0 +1,37 @@
+test_capacity_retry_stops_before_query_when_reap_ownership_is_lost (tests.dev.test_process_group_review.ProcessGroupReviewTests) ... test_native_abi_errno_zero_and_saturation_never_become_empty_proof (tests.dev.test_process_group_review.ProcessGroupReviewTests) ... ok
+test_native_and_python_wait_policy_must_both_preserve_exclusive_wait (tests.dev.test_process_group_review.ProcessGroupReviewTests) ... ok
+
+======================================================================
+FAIL: test_capacity_retry_stops_before_query_when_reap_ownership_is_lost (tests.dev.test_process_group_review.ProcessGroupReviewTests) (lost='marked')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group_review.py", line 52, in test_capacity_retry_stops_before_query_when_reap_ownership_is_lost
+    self.assertEqual(calls,[2],'group enumeration continued after ownership release')
+AssertionError: Lists differ: [2, 4] != [2]
+
+First list contains 1 additional elements.
+First extra element 1:
+4
+
+- [2, 4]
++ [2] : group enumeration continued after ownership release
+
+======================================================================
+FAIL: test_capacity_retry_stops_before_query_when_reap_ownership_is_lost (tests.dev.test_process_group_review.ProcessGroupReviewTests) (lost='returncode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_process_group_review.py", line 52, in test_capacity_retry_stops_before_query_when_reap_ownership_is_lost
+    self.assertEqual(calls,[2],'group enumeration continued after ownership release')
+AssertionError: Lists differ: [2, 4] != [2]
+
+First list contains 1 additional elements.
+First extra element 1:
+4
+
+- [2, 4]
++ [2] : group enumeration continued after ownership release
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+FAILED (failures=2)

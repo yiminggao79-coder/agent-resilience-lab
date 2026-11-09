@@ -1,0 +1,22 @@
+{
+  "kind": "research_libuv_spawn_denial_nofork",
+  "node_sha256": "bdcd4500054d48c9ec6058706795d91cac83e3e3eaced218434294d8f2fbf7fa",
+  "exit_code": -6,
+  "startup": {
+    "node": "v24.22.2",
+    "libuv": "1.52.1"
+  },
+  "body": null,
+  "libuv_enosys_assertion_observed": true,
+  "stderr_bytes": 108,
+  "stderr_sha256": "72efa5bb5817b28e86ccb524daf370b6c270bfb96bdeeeb5a5e4533d00aab9d5",
+  "stdout_truncated": false,
+  "profile_sha256": "36bd0b71e271998286e59d40e89d4f6d6b678f4b65788f1225df19815915a4ad",
+  "stdio_configuration": "pipe",
+  "production_policy_changed": false,
+  "fork_enabled": false,
+  "provider_requests": 0,
+  "credential_file_read": false,
+  "real_budget_opened": false,
+  "stock_npm_compatibility_proven": false
+}

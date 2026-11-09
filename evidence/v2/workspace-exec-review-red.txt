@@ -1,0 +1,14 @@
+test_tests_scope_cannot_execute_hidden_image_through_visible_hardlink (tests.dev.test_workspace_exec_review.WorkspaceExecReviewTests) ... FAIL
+
+======================================================================
+FAIL: test_tests_scope_cannot_execute_hidden_image_through_visible_hardlink (tests.dev.test_workspace_exec_review.WorkspaceExecReviewTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_workspace_exec_review.py", line 29, in test_tests_scope_cannot_execute_hidden_image_through_visible_hardlink
+    self.assertNotIn('HIDDEN_IMAGE_EXECUTED',result['stdout'])
+AssertionError: 'HIDDEN_IMAGE_EXECUTED' unexpectedly found in 'HIDDEN_IMAGE_EXECUTED\n'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.571s
+
+FAILED (failures=1)

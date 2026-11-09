@@ -1,0 +1,14 @@
+test_synthetic_stack_once_gate_and_changed_identity_are_distinct (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ERROR
+
+======================================================================
+ERROR: test_synthetic_stack_once_gate_and_changed_identity_are_distinct (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_acceptance_v3_cli.py", line 76, in test_synthetic_stack_once_gate_and_changed_identity_are_distinct
+    self.assertTrue(first['evaluation_valid'])
+KeyError: 'evaluation_valid'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.583s
+
+FAILED (errors=1)

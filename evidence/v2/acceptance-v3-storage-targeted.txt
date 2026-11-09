@@ -1,0 +1,6 @@
+test_budget_storage_fault_is_fixed_diagnostic_before_key_or_task (tests.dev.test_acceptance_v3_cli.AcceptanceV3CLITests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.008s
+
+OK

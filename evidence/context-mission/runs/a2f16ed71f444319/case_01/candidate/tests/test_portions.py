@@ -1,0 +1,96 @@
+import copy
+import unittest
+from portions import apportion
+from ledger import balances, records
+from views import statement
+
+
+class PortionsExtra(unittest.TestCase):
+    def test_conserves_cents_across_many_inputs(self):
+        for total in range(-25, 26):
+            for weights in ({'a': 1, 'b': 1, 'c': 1}, {'a': 1, 'b': 3},
+                            {'x': 5, 'y': 0, 'z': 2}, {'solo': 7}):
+                shares = apportion(total, weights)
+                self.assertEqual(sum(shares.values()), total)
+                self.assertEqual(list(shares), sorted(weights))
+                self.assertEqual(set(shares), set(weights))
+
+    def test_refund_is_exact_negation(self):
+        for total in (1, 5, 7, 10, 13, 100):
+            for weights in ({'a': 1, 'b': 1, 'c': 1}, {'a': 2, 'b': 3, 'c': 7},
+                            {'m': 1, 'n': 0, 'o': 4}):
+                positive = apportion(total, weights)
+                refund = apportion(-total, weights)
+                self.assertEqual(refund, {k: -v for k, v in positive.items()})
+
+    def test_zero_weight_members_present(self):
+        self.assertEqual(apportion(5, {'a': 0, 'b': 5, 'c': 0}),
+                         {'a': 0, 'b': 5, 'c': 0})
+
+    def test_largest_remainder_descending(self):
+        # quotas: a=10/3, b=10/3, c=10/3 all .333 -> ties ascending name
+        self.assertEqual(apportion(10, {'a': 1, 'b': 1, 'c': 1}),
+                         {'a': 4, 'b': 3, 'c': 3})
+        # quotas: a=1.428.., b=2.857.., c=2.714.., d=0
+        self.assertEqual(apportion(7, {'a': 1, 'b': 2, 'c': 2}),
+                         {'a': 1, 'b': 3, 'c': 3})
+
+    def test_zero_total(self):
+        self.assertEqual(apportion(0, {'a': 3, 'b': 0, 'c': 1}),
+                         {'a': 0, 'b': 0, 'c': 0})
+
+    def test_invalid_inputs(self):
+        for total, weights in ((False, {'a': 1}), (1.0, {'a': 1}), ('1', {'a': 1}),
+                               (1, {}), (1, {'a': True}), (1, {'a': 0}),
+                               (1, {'a': 1.5}), (1, {'': 1}), (1, {'a ': 1})):
+            with self.assertRaises(ValueError):
+                apportion(total, weights)
+
+    def test_does_not_mutate_weights(self):
+        weights = {'b': 1, 'a': 2}
+        before = copy.deepcopy(weights)
+        apportion(5, weights)
+        self.assertEqual(weights, before)
+
+
+def expense(identity='e', payer='a', amount=10, weights=None):
+    return dict(id=identity, payer=payer, amount=amount,
+                weights={'a': 1, 'b': 1, 'c': 1} if weights is None else weights)
+
+
+class BalancesExtra(unittest.TestCase):
+    def test_payer_outside_weights(self):
+        self.assertEqual(balances([expense(payer='z', amount=9)]),
+                         {'a': -3, 'b': -3, 'c': -3, 'z': 9})
+
+    def test_zero_weight_and_payer_balanced(self):
+        rows = [expense(identity='1', payer='z', amount=6, weights={'a': 2}),
+                expense(identity='2', payer='a', amount=6, weights={'a': 2})]
+        result = balances(rows)
+        self.assertEqual(result, {'a': 0, 'z': 0})
+        self.assertEqual(list(result), ['a', 'z'])
+
+    def test_refund_ledger_sums_zero(self):
+        rows = [expense(identity='1', payer='a', amount=10),
+                expense(identity='2', payer='b', amount=-5)]
+        result = balances(rows)
+        self.assertEqual(sum(result.values()), 0)
+        self.assertEqual(result, {'a': 10 - 4 + 2, 'b': -3 - 2, 'c': -3 + 2})
+
+    def test_statement_consistent(self):
+        rows = [expense(payer='x', amount=7, weights={'b': 1, 'c': 2, 'd': 0})]
+        stmt = statement(rows)
+        self.assertEqual(stmt, {'balances': {'b': -2, 'c': -5, 'd': 0, 'x': 7},
+                                'paid': {'x': 7}, 'spent': 7})
+        self.assertEqual(sum(stmt['balances'].values()), 0)
+
+    def test_callers_preserved(self):
+        rows = [expense()]
+        before = copy.deepcopy(rows)
+        balances(rows)
+        statement(rows)
+        self.assertEqual(rows, before)
+
+
+if __name__ == '__main__':
+    unittest.main()

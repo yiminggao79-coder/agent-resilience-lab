@@ -1,0 +1,12 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Reading additional input from stdin...\nError: failed to initialize in-process app-server client: Failed to synchronize managed preferences\n",
+  "timed_out": false,
+  "fixture_directory": "/private/tmp/agentlab-reference-final-rt_fqnsk",
+  "elapsed_seconds": 0.193,
+  "requests": 0,
+  "request_summaries": [],
+  "provider_requests": 0,
+  "real_llm_task_success_rate": null
+}

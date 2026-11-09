@@ -1,0 +1,15 @@
+test_changed_bytes_and_ordinary_mode_invalidate_old_intent (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ok
+test_default_denies_and_opt_in_binds_mode_image_and_scope (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ok
+test_no_hidden_parent_symlink_external_bare_or_special_mode_programs (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ok
+test_scope_is_typed_host_setting_and_binds_echo_tests_and_restore (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ok
+test_worker_forgery_and_version2_envelope_fail_before_launch (tests.dev.test_workspace_exec.WorkspaceExecTests) ... ok
+test_actual_compiled_image_requires_opt_in_approval_and_survives_readonly_root (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... ok
+test_cancel_drains_actual_native_fork_descendant_before_return (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... ok
+test_confined_unittest_can_spawn_workspace_compiled_program (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... ok
+test_native_program_private_readonly_network_hidden_and_nofork_boundaries (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... ok
+test_secondary_visible_programs_are_scope_granted_not_individually_pinned (tests.dev.test_workspace_exec_native.WorkspaceExecNativeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 4.975s
+
+OK

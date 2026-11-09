@@ -1,0 +1,77 @@
+test_finite_competing_births_do_not_survive_parent (tests.dev.test_confined_collector.ConfinedCollectorTests) ... FAIL
+test_invalid_limits_do_not_launch_or_register (tests.dev.test_confined_collector.ConfinedCollectorTests) ... FAIL
+test_native_fork_exec_pipeline_and_exit_status_without_poll (tests.dev.test_confined_collector.ConfinedCollectorTests) ... FAIL
+test_observation_failure_never_emits_join_or_cancel_success (tests.dev.test_confined_collector.ConfinedCollectorTests) ... FAIL
+test_parent_exit_and_closed_stdio_double_fork_are_drained (tests.dev.test_confined_collector.ConfinedCollectorTests) ... FAIL
+test_real_owner_eof_cancels_and_does_not_reach_guest (tests.dev.test_confined_collector.ConfinedCollectorTests) ... FAIL
+test_timeout_cleans_live_writer_before_error (tests.dev.test_confined_collector.ConfinedCollectorTests) ... FAIL
+test_two_flooded_streams_are_bounded_even_for_invalid_utf8 (tests.dev.test_confined_collector.ConfinedCollectorTests) ... FAIL
+
+======================================================================
+FAIL: test_finite_competing_births_do_not_survive_parent (tests.dev.test_confined_collector.ConfinedCollectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector.py", line 27, in setUp
+    self.assertIsNotNone(collect, 'candidate collector not implemented')
+AssertionError: unexpectedly None : candidate collector not implemented
+
+======================================================================
+FAIL: test_invalid_limits_do_not_launch_or_register (tests.dev.test_confined_collector.ConfinedCollectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector.py", line 27, in setUp
+    self.assertIsNotNone(collect, 'candidate collector not implemented')
+AssertionError: unexpectedly None : candidate collector not implemented
+
+======================================================================
+FAIL: test_native_fork_exec_pipeline_and_exit_status_without_poll (tests.dev.test_confined_collector.ConfinedCollectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector.py", line 27, in setUp
+    self.assertIsNotNone(collect, 'candidate collector not implemented')
+AssertionError: unexpectedly None : candidate collector not implemented
+
+======================================================================
+FAIL: test_observation_failure_never_emits_join_or_cancel_success (tests.dev.test_confined_collector.ConfinedCollectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector.py", line 27, in setUp
+    self.assertIsNotNone(collect, 'candidate collector not implemented')
+AssertionError: unexpectedly None : candidate collector not implemented
+
+======================================================================
+FAIL: test_parent_exit_and_closed_stdio_double_fork_are_drained (tests.dev.test_confined_collector.ConfinedCollectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector.py", line 27, in setUp
+    self.assertIsNotNone(collect, 'candidate collector not implemented')
+AssertionError: unexpectedly None : candidate collector not implemented
+
+======================================================================
+FAIL: test_real_owner_eof_cancels_and_does_not_reach_guest (tests.dev.test_confined_collector.ConfinedCollectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector.py", line 27, in setUp
+    self.assertIsNotNone(collect, 'candidate collector not implemented')
+AssertionError: unexpectedly None : candidate collector not implemented
+
+======================================================================
+FAIL: test_timeout_cleans_live_writer_before_error (tests.dev.test_confined_collector.ConfinedCollectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector.py", line 27, in setUp
+    self.assertIsNotNone(collect, 'candidate collector not implemented')
+AssertionError: unexpectedly None : candidate collector not implemented
+
+======================================================================
+FAIL: test_two_flooded_streams_are_bounded_even_for_invalid_utf8 (tests.dev.test_confined_collector.ConfinedCollectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_confined_collector.py", line 27, in setUp
+    self.assertIsNotNone(collect, 'candidate collector not implemented')
+AssertionError: unexpectedly None : candidate collector not implemented
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.002s
+
+FAILED (failures=8)

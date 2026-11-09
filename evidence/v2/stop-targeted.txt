@@ -1,0 +1,36 @@
+test_actual_unknown_error_reason_and_flags_survive_stop_observation (tests.dev.test_stop.StopTests) ... ok
+test_current_tool_finishes_and_next_batch_tool_never_starts (tests.dev.test_stop.StopTests) ... ok
+test_idle_approval_can_be_stopped_without_model_or_command_and_new_turn_is_allowed (tests.dev.test_stop.StopTests) ... ok
+test_partial_patch_stops_after_confirmed_prefix_and_closes_one_result (tests.dev.test_stop.StopTests) ... ok
+test_stop_before_model_or_tool_claim_reloads_unclaimed_snapshot (tests.dev.test_stop.StopTests) ... ok
+test_stop_before_sampling_never_calls_model_and_observation_is_idempotent (tests.dev.test_stop.StopTests) ... ok
+test_stop_during_claimed_model_preserves_known_usage_and_cancels_unstarted_tools (tests.dev.test_stop.StopTests) ... ok
+test_stop_winning_model_final_commit_preserves_answer_and_usage_without_extra_sampling (tests.dev.test_stop.StopTests) ... ok
+test_stop_winning_recovery_claim_cannot_trigger_missing_file_effect (tests.dev.test_stop.StopTests) ... ok
+test_stopped_turn_cannot_start_explicit_compaction_or_discard_pending_user_feedback (tests.dev.test_stop.StopTests) ... ok
+test_unconfirmed_model_stop_keeps_usage_unknown_without_request (tests.dev.test_stop.StopTests) ... ok
+test_unconfirmed_running_tool_stop_never_calls_recover_or_adds_effect (tests.dev.test_stop.StopTests) ... ok
+test_busy_runner_gets_durable_request_without_false_stop_confirmation (tests.dev.test_stop_cli.StopCLITests) ... ok
+test_idle_stop_observes_without_model_then_canonical_retry_and_readonly_status (tests.dev.test_stop_cli.StopCLITests) ... ok
+test_wrong_workspace_rejects_before_touching_other_root_and_missing_status_never_creates_db (tests.dev.test_stop_cli.StopCLITests) ... ok
+test_default_save_and_event_retry_stay_compatible (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_distinct_requests_for_one_active_turn_coalesce_without_event (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_exact_retry_terminal_and_cross_turn_id_conflict (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_legacy_readonly_lookup_has_no_creation_migration_or_chmod (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_observation_is_atomic_and_lost_ack_retry_deduplicates (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_observation_rejects_bad_turn_request_or_nonterminal_candidate (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_request_event_sql_failure_rolls_back_row_and_snapshot (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_request_is_queue_only_durable_metadata (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_scope_maintenance_and_terminal_admission (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_stop_before_claim_blocks_writes_but_claim_before_stop_is_durable (tests.dev.test_stop_store.StopStoreTests) ... ok
+test_kill_after_claim_before_effect_never_recovers_by_creating_file (tests.acceptance.test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "after_tool_claim", "killed_pid": 52093, "kill_return_code": -9, "resumed_pid": 52096, "phase": "needs_confirmation", "new_effects_after_stop": 0, "unknown_pending_preserved": true}
+ok
+test_kill_after_patch_effect_never_replays_or_executes_remaining_files (tests.acceptance.test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "after_patch_effect", "killed_pid": 52097, "kill_return_code": -9, "resumed_pid": 52101, "phase": "needs_confirmation", "new_effects_after_stop": 0, "unknown_pending_preserved": true}
+ok
+test_live_claimed_call_finishes_but_new_tools_never_start (tests.acceptance.test_stop_process.StopProcessTests) ... {"kind": "cooperative_stop_process_contract", "model_kind": "offline_protocol_double", "scenario": "claimed_call_finishes", "runner_pid": 52102, "stop_observed": true, "current_call_preempted": false, "new_file_effects": 0}
+ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 3.082s
+
+OK

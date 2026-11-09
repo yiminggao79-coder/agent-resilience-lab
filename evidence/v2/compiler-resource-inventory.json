@@ -1,0 +1,25 @@
+{
+  "clang_resource_query_exit": 0,
+  "kind": "readonly_sdk_metadata_inventory_not_resource_authorization",
+  "roots": {
+    "clang_resource": {
+      "entries": 270,
+      "multiple_link_files": 0,
+      "path": "/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0",
+      "regular_bytes": 75566465,
+      "scan_seconds": 0.025324,
+      "symlink_targets_outside_root": 0,
+      "symlinks": 1
+    },
+    "sdk": {
+      "entries": 47375,
+      "multiple_link_files": 0,
+      "path": "/Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk",
+      "regular_bytes": 617611114,
+      "scan_seconds": 4.213757,
+      "symlink_targets_outside_root": 0,
+      "symlinks": 5984
+    }
+  },
+  "sdk_version": "14.4"
+}

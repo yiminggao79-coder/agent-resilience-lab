@@ -1,0 +1,564 @@
+{
+  "kind": "adversarial_offline_harness_audit",
+  "real_model_tested": false,
+  "results": [
+    {
+      "case": "missing_usage_invalid_message",
+      "expectation": "pause after first response, no second request",
+      "meets_expectation": false,
+      "actual_model_fixture_calls": 2,
+      "phase": "needs_confirmation",
+      "reason": "usage_unknown",
+      "trace": [
+        {
+          "seq": 1,
+          "at": 1794029462.384863,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794029462.387275,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2348,
+          "reserved_usd": 0.007468
+        },
+        {
+          "seq": 3,
+          "at": 1794029462.3883991,
+          "kind": "model_protocol_error",
+          "duration_ms": 0.03379900000000102,
+          "model_calls": 1,
+          "code": "invalid_model_message"
+        },
+        {
+          "seq": 4,
+          "at": 1794029462.3898911,
+          "kind": "model_started",
+          "model_calls": 2,
+          "request_bytes": 2464,
+          "reserved_usd": 0.015052
+        },
+        {
+          "seq": 5,
+          "at": 1794029462.391077,
+          "kind": "terminated",
+          "phase": "needs_confirmation",
+          "code": "usage_unknown"
+        }
+      ]
+    },
+    {
+      "case": "duplicate_committed_call_identity",
+      "expectation": "same call identity applies at most once",
+      "meets_expectation": false,
+      "lines": 2,
+      "phase": "completed",
+      "terminal_resume_changed_file": false,
+      "scope": "This is a repeated model response, not proof of repeated recovery replay.",
+      "trace": [
+        {
+          "seq": 1,
+          "at": 1794029462.397464,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794029462.399446,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2348,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794029462.4781811,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.03738699999999984,
+          "model_calls": 1
+        },
+        {
+          "seq": 4,
+          "at": 1794029462.4794319,
+          "kind": "tool_started",
+          "tool": "append_file",
+          "attempt": 1
+        },
+        {
+          "seq": 5,
+          "at": 1794029462.5683148,
+          "kind": "tool_finished",
+          "tool": "append_file",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 88.66032000000001
+        },
+        {
+          "seq": 6,
+          "at": 1794029462.569612,
+          "kind": "model_started",
+          "model_calls": 2,
+          "request_bytes": 2736,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 7,
+          "at": 1794029462.655723,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.03813800000002088,
+          "model_calls": 2
+        },
+        {
+          "seq": 8,
+          "at": 1794029462.657494,
+          "kind": "tool_started",
+          "tool": "append_file",
+          "attempt": 2
+        },
+        {
+          "seq": 9,
+          "at": 1794029462.7350771,
+          "kind": "tool_finished",
+          "tool": "append_file",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 77.47777599999999
+        },
+        {
+          "seq": 10,
+          "at": 1794029462.736487,
+          "kind": "model_started",
+          "model_calls": 3,
+          "request_bytes": 3124,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 11,
+          "at": 1794029462.737498,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.032175999999994875,
+          "model_calls": 3,
+          "phase": "completed"
+        }
+      ]
+    },
+    {
+      "case": "invalid_arguments_trace_accounting",
+      "expectation": "trace response usage sum equals checkpoint usage",
+      "meets_expectation": false,
+      "checkpoint_input_tokens": 202,
+      "trace_input_tokens": 101,
+      "source": "synthetic usage only; no actual API accounting",
+      "trace": [
+        {
+          "seq": 1,
+          "at": 1794029462.7442439,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794029462.745787,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2348,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794029462.8244731,
+          "kind": "tool_finished",
+          "tool": "invalid",
+          "ok": false,
+          "code": "invalid_arguments",
+          "duration_ms": 77.45687100000004
+        },
+        {
+          "seq": 4,
+          "at": 1794029462.826489,
+          "kind": "model_started",
+          "model_calls": 2,
+          "request_bytes": 2623,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 5,
+          "at": 1794029462.8274739,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.02858199999999922,
+          "model_calls": 2,
+          "phase": "completed"
+        }
+      ]
+    },
+    {
+      "case": "alternating_failure_and_success_loop",
+      "expectation": "recognize a repeated no-progress pattern before exhausting all steps",
+      "meets_expectation": false,
+      "fixture_calls": 8,
+      "phase": "failed",
+      "reason": "step_limit",
+      "consecutive_errors": 0,
+      "scope": "No unbounded loop: max_steps still enforces a hard request-count bound.",
+      "trace": [
+        {
+          "seq": 1,
+          "at": 1794029462.8334022,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794029462.834744,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2348,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794029462.909226,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.03257999999994876,
+          "model_calls": 1
+        },
+        {
+          "seq": 4,
+          "at": 1794029462.911071,
+          "kind": "tool_started",
+          "tool": "read_file",
+          "attempt": 1
+        },
+        {
+          "seq": 5,
+          "at": 1794029462.980737,
+          "kind": "tool_finished",
+          "tool": "read_file",
+          "ok": false,
+          "code": "not_found",
+          "duration_ms": 69.5840339999999
+        },
+        {
+          "seq": 6,
+          "at": 1794029462.982723,
+          "kind": "model_started",
+          "model_calls": 2,
+          "request_bytes": 2625,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 7,
+          "at": 1794029463.056299,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.02873800000002813,
+          "model_calls": 2
+        },
+        {
+          "seq": 8,
+          "at": 1794029463.0578828,
+          "kind": "tool_started",
+          "tool": "list_files",
+          "attempt": 2
+        },
+        {
+          "seq": 9,
+          "at": 1794029463.130762,
+          "kind": "tool_finished",
+          "tool": "list_files",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 72.54169200000004
+        },
+        {
+          "seq": 10,
+          "at": 1794029463.132781,
+          "kind": "model_started",
+          "model_calls": 3,
+          "request_bytes": 2870,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 11,
+          "at": 1794029463.213372,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.030001000000057232,
+          "model_calls": 3
+        },
+        {
+          "seq": 12,
+          "at": 1794029463.214719,
+          "kind": "tool_started",
+          "tool": "read_file",
+          "attempt": 3
+        },
+        {
+          "seq": 13,
+          "at": 1794029463.2882612,
+          "kind": "tool_finished",
+          "tool": "read_file",
+          "ok": false,
+          "code": "not_found",
+          "duration_ms": 73.28674199999996
+        },
+        {
+          "seq": 14,
+          "at": 1794029463.2905622,
+          "kind": "model_started",
+          "model_calls": 4,
+          "request_bytes": 3147,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 15,
+          "at": 1794029463.366231,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.03050100000012712,
+          "model_calls": 4
+        },
+        {
+          "seq": 16,
+          "at": 1794029463.367456,
+          "kind": "tool_started",
+          "tool": "list_files",
+          "attempt": 4
+        },
+        {
+          "seq": 17,
+          "at": 1794029463.455189,
+          "kind": "tool_finished",
+          "tool": "list_files",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 87.2481329999999
+        },
+        {
+          "seq": 18,
+          "at": 1794029463.4574668,
+          "kind": "model_started",
+          "model_calls": 5,
+          "request_bytes": 3392,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 19,
+          "at": 1794029463.562506,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.09607799999988842,
+          "model_calls": 5
+        },
+        {
+          "seq": 20,
+          "at": 1794029463.563848,
+          "kind": "tool_started",
+          "tool": "read_file",
+          "attempt": 5
+        },
+        {
+          "seq": 21,
+          "at": 1794029463.635608,
+          "kind": "tool_finished",
+          "tool": "read_file",
+          "ok": false,
+          "code": "not_found",
+          "duration_ms": 71.56600999999996
+        },
+        {
+          "seq": 22,
+          "at": 1794029463.6376488,
+          "kind": "model_started",
+          "model_calls": 6,
+          "request_bytes": 3669,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 23,
+          "at": 1794029463.707537,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.029247000000065526,
+          "model_calls": 6
+        },
+        {
+          "seq": 24,
+          "at": 1794029463.7094212,
+          "kind": "tool_started",
+          "tool": "list_files",
+          "attempt": 6
+        },
+        {
+          "seq": 25,
+          "at": 1794029463.781039,
+          "kind": "tool_finished",
+          "tool": "list_files",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 71.46849
+        },
+        {
+          "seq": 26,
+          "at": 1794029463.783338,
+          "kind": "model_started",
+          "model_calls": 7,
+          "request_bytes": 3914,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 27,
+          "at": 1794029463.85516,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.030437000000160808,
+          "model_calls": 7
+        },
+        {
+          "seq": 28,
+          "at": 1794029463.857184,
+          "kind": "tool_started",
+          "tool": "read_file",
+          "attempt": 7
+        },
+        {
+          "seq": 29,
+          "at": 1794029463.933666,
+          "kind": "tool_finished",
+          "tool": "read_file",
+          "ok": false,
+          "code": "not_found",
+          "duration_ms": 76.41809300000003
+        },
+        {
+          "seq": 30,
+          "at": 1794029463.9353862,
+          "kind": "model_started",
+          "model_calls": 8,
+          "request_bytes": 4191,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 31,
+          "at": 1794029464.008756,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.034371000000144036,
+          "model_calls": 8
+        },
+        {
+          "seq": 32,
+          "at": 1794029464.010738,
+          "kind": "tool_started",
+          "tool": "list_files",
+          "attempt": 8
+        },
+        {
+          "seq": 33,
+          "at": 1794029464.0816388,
+          "kind": "tool_finished",
+          "tool": "list_files",
+          "ok": true,
+          "code": "ok",
+          "duration_ms": 70.76933900000016
+        },
+        {
+          "seq": 34,
+          "at": 1794029464.0834408,
+          "kind": "terminated",
+          "phase": "failed",
+          "code": "step_limit"
+        }
+      ]
+    },
+    {
+      "case": "orphan_tool_after_runner_sigkill",
+      "expectation": "old worker cannot produce later effects after runner restart",
+      "meets_expectation": false,
+      "real_runner_exit_code": -9,
+      "file_absent_at_resume": true,
+      "file_appeared_after_old_worker_continued": true,
+      "resumed_phase": "needs_confirmation",
+      "stored_phase_after_effect": "needs_confirmation",
+      "injection": "Popen observer stops real tools.py execute worker before stdin is consumed; parent receives SIGKILL; no production code changed",
+      "trace": [
+        {
+          "seq": 1,
+          "at": 1794029464.2268212,
+          "kind": "created",
+          "phase": "ready"
+        },
+        {
+          "seq": 2,
+          "at": 1794029464.2294872,
+          "kind": "model_started",
+          "model_calls": 1,
+          "request_bytes": 2327,
+          "reserved_usd": 0.0
+        },
+        {
+          "seq": 3,
+          "at": 1794029464.303427,
+          "kind": "model_finished",
+          "input_tokens": 101,
+          "output_tokens": 7,
+          "cost_usd": null,
+          "duration_ms": 0.046727999999995884,
+          "model_calls": 1
+        },
+        {
+          "seq": 4,
+          "at": 1794029464.3052921,
+          "kind": "tool_started",
+          "tool": "append_file",
+          "attempt": 1
+        },
+        {
+          "seq": 5,
+          "at": 1794029464.523094,
+          "kind": "tool_recovery",
+          "tool": "append_file",
+          "recovered": true
+        },
+        {
+          "seq": 6,
+          "at": 1794029464.609707,
+          "kind": "terminated",
+          "phase": "needs_confirmation",
+          "code": "tool_outcome_unknown"
+        }
+      ]
+    }
+  ]
+}

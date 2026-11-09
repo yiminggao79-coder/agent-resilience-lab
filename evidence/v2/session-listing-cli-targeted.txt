@@ -1,0 +1,9 @@
+test_invalid_cursor_limit_and_phase_are_fixed_errors_without_state_change (tests.dev.test_session_listing_cli.SessionListingCLITests) ... ok
+test_legacy_tasks_only_pagination_does_not_migrate_or_read_private_body (tests.dev.test_session_listing_cli.SessionListingCLITests) ... ok
+test_missing_database_does_not_create_parent_or_succeed_with_empty_list (tests.dev.test_session_listing_cli.SessionListingCLITests) ... ok
+test_readonly_cli_never_initializes_store_model_tools_or_workspace_lock (tests.dev.test_session_listing_cli.SessionListingCLITests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.146s
+
+OK

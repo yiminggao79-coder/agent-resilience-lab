@@ -1,0 +1,7 @@
+test_runtime_package_and_ancestor_workspace_are_rejected_before_any_controls (tests.dev.test_trusted_runtime_boundary.TrustedRuntimeBoundaryTests) ... ok
+test_separate_workspace_remains_usable (tests.dev.test_trusted_runtime_boundary.TrustedRuntimeBoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.196s
+
+OK

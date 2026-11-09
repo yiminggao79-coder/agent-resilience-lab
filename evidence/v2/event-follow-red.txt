@@ -1,0 +1,294 @@
+test_backlog_pages_have_no_duplicates_and_page_cap_bounds_continuous_events (tests.dev.test_event_follow.EventFollowTests) ... FAIL
+test_database_source_is_implicitly_pinned_after_first_page (tests.dev.test_event_follow.EventFollowTests) ... FAIL
+test_empty_observation_is_emitted_once_then_live_commit_is_visible (tests.dev.test_event_follow.EventFollowTests) ... FAIL
+test_empty_pages_do_not_imply_terminal_or_repeat_until_deadline (tests.dev.test_event_follow.EventFollowTests) ... FAIL
+test_follow_preserves_caller_owned_transaction (tests.dev.test_event_follow.EventFollowTests) ... FAIL
+test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) ... test_default_single_page_and_explicit_follow_format_remain_distinct (tests.dev.test_event_follow_cli.EventFollowCLITests) ... FAIL
+test_invalid_options_do_not_create_missing_database (tests.dev.test_event_follow_cli.EventFollowCLITests) ... ERROR
+test_keyboard_interrupt_closes_readonly_store_without_stopping_task (tests.dev.test_event_follow_cli.EventFollowCLITests) ... FAIL
+test_second_process_emits_before_exit_and_observes_a_subsequent_commit (tests.dev.test_event_follow_cli.EventFollowCLITests) ... ERROR
+
+======================================================================
+ERROR: test_invalid_options_do_not_create_missing_database (tests.dev.test_event_follow_cli.EventFollowCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow_cli.py", line 54, in test_invalid_options_do_not_create_missing_database
+    code = main(['--db', str(missing), 'events', TASK, '--follow-seconds', '.1'])
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/__main__.py", line 98, in main
+    args = parser.parse_args(raw_argv)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/argparse.py", line 1823, in parse_args
+    self.error(msg % ' '.join(argv))
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/argparse.py", line 2577, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/argparse.py", line 2564, in exit
+    _sys.exit(status)
+SystemExit: 2
+
+======================================================================
+ERROR: test_second_process_emits_before_exit_and_observes_a_subsequent_commit (tests.dev.test_event_follow_cli.EventFollowCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow_cli.py", line 84, in test_second_process_emits_before_exit_and_observes_a_subsequent_commit
+    first = json.loads(first_line)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+FAIL: test_backlog_pages_have_no_duplicates_and_page_cap_bounds_continuous_events (tests.dev.test_event_follow.EventFollowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 38, in test_backlog_pages_have_no_duplicates_and_page_cap_bounds_continuous_events
+    clock = Clock(); frames = self.collect(clock, limit=2, max_pages=2, seconds=30)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_database_source_is_implicitly_pinned_after_first_page (tests.dev.test_event_follow.EventFollowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 80, in test_database_source_is_implicitly_pinned_after_first_page
+    stream = self.follow(seconds=1); first = next(stream)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_empty_observation_is_emitted_once_then_live_commit_is_visible (tests.dev.test_event_follow.EventFollowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 50, in test_empty_observation_is_emitted_once_then_live_commit_is_visible
+    frames = self.collect(clock, after=7, seconds=.6)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_empty_pages_do_not_imply_terminal_or_repeat_until_deadline (tests.dev.test_event_follow.EventFollowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 60, in test_empty_pages_do_not_imply_terminal_or_repeat_until_deadline
+    frames = self.collect(seconds=.1)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_follow_preserves_caller_owned_transaction (tests.dev.test_event_follow.EventFollowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 91, in test_follow_preserves_caller_owned_transaction
+    with self.assertRaisesRegex(ValueError, '^invalid_event_query$'): self.collect(seconds=.1)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'seconds': 0})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'seconds': -1})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'seconds': 31})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'seconds': True})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'seconds': inf})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'seconds': nan})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'seconds': '1'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'max_pages': 0})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'max_pages': 101})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'max_pages': True})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'max_pages': 1.5})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 72, in test_invalid_follow_and_query_bounds_fail_before_read
+    with self.assertRaisesRegex(ValueError, '^invalid_event_follow$'): self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'after': -1})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 75, in test_invalid_follow_and_query_bounds_fail_before_read
+    self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'limit': 101})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 75, in test_invalid_follow_and_query_bounds_fail_before_read
+    self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_invalid_follow_and_query_bounds_fail_before_read (tests.dev.test_event_follow.EventFollowTests) (kwargs={'expected_database': 'bad'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 75, in test_invalid_follow_and_query_bounds_fail_before_read
+    self.collect(**kwargs)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 34, in collect
+    with patch.object(self.reader, 'time', clock, create=True): return list(self.follow(**kwargs))
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow.py", line 29, in follow
+    self.assertTrue(callable(function), 'bounded event follow is missing')
+AssertionError: False is not true : bounded event follow is missing
+
+======================================================================
+FAIL: test_default_single_page_and_explicit_follow_format_remain_distinct (tests.dev.test_event_follow_cli.EventFollowCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow_cli.py", line 40, in test_default_single_page_and_explicit_follow_format_remain_distinct
+    self.assertEqual(code, 0, err)
+AssertionError: 2 != 0 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: unrecognized arguments: --follow-seconds .01 --follow-max-pages 1
+
+
+======================================================================
+FAIL: test_keyboard_interrupt_closes_readonly_store_without_stopping_task (tests.dev.test_event_follow_cli.EventFollowCLITests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_event_follow_cli.py", line 69, in test_keyboard_interrupt_closes_readonly_store_without_stopping_task
+    self.assertEqual(code, 130, err)
+AssertionError: 2 != 130 : usage: python3 -m unittest [-h] [--db DB]
+                           {run,resume,continue,compact,turns,status,trace,answer,plan,policy,abort,approval,approve,deny,chat,steer,inputs,input-withdraw,pending,stop,stop-status,fork,events,providers,job-status,sessions}
+                           ...
+python3 -m unittest: error: unrecognized arguments: --follow-seconds 1
+
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.569s
+
+FAILED (failures=21, errors=2)

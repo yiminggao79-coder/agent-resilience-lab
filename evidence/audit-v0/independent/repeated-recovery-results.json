@@ -1,0 +1,173 @@
+[
+  {
+    "mode": "create_kill",
+    "returncode": -9,
+    "output": {
+      "task_id": "15419b624f3b44a39745971e60c140c5",
+      "window": "after_tool_effect",
+      "recovery_count": 0
+    },
+    "durable_phase": "tool_pending",
+    "pending": {
+      "call_id": "independent-audit-call",
+      "status": "running",
+      "intent": {
+        "name": "write_file",
+        "args": {
+          "path": "effect.txt",
+          "content": "one\n"
+        },
+        "policy": "verify",
+        "before": null,
+        "desired": "2c8b08da5ce60398e1f19af0e5dccc744df274b826abe585eaba68c525434806"
+      }
+    },
+    "mtime_ns": 1794029311575226719,
+    "file": "one\n",
+    "trace_kinds": [
+      "created",
+      "model_started",
+      "model_finished",
+      "tool_started"
+    ]
+  },
+  {
+    "mode": "recover_kill",
+    "returncode": -9,
+    "output": {
+      "task_id": "15419b624f3b44a39745971e60c140c5",
+      "window": "after_tool_effect",
+      "recovery_count": 1
+    },
+    "durable_phase": "tool_pending",
+    "pending": {
+      "call_id": "independent-audit-call",
+      "status": "running",
+      "intent": {
+        "name": "write_file",
+        "args": {
+          "path": "effect.txt",
+          "content": "one\n"
+        },
+        "policy": "verify",
+        "before": null,
+        "desired": "2c8b08da5ce60398e1f19af0e5dccc744df274b826abe585eaba68c525434806"
+      }
+    },
+    "mtime_ns": 1794029311575226719,
+    "file": "one\n",
+    "trace_kinds": [
+      "created",
+      "model_started",
+      "model_finished",
+      "tool_started",
+      "tool_recovery"
+    ]
+  },
+  {
+    "mode": "recover_kill",
+    "returncode": -9,
+    "output": {
+      "task_id": "15419b624f3b44a39745971e60c140c5",
+      "window": "after_tool_effect",
+      "recovery_count": 2
+    },
+    "durable_phase": "tool_pending",
+    "pending": {
+      "call_id": "independent-audit-call",
+      "status": "running",
+      "intent": {
+        "name": "write_file",
+        "args": {
+          "path": "effect.txt",
+          "content": "one\n"
+        },
+        "policy": "verify",
+        "before": null,
+        "desired": "2c8b08da5ce60398e1f19af0e5dccc744df274b826abe585eaba68c525434806"
+      }
+    },
+    "mtime_ns": 1794029311575226719,
+    "file": "one\n",
+    "trace_kinds": [
+      "created",
+      "model_started",
+      "model_finished",
+      "tool_started",
+      "tool_recovery",
+      "tool_recovery"
+    ]
+  },
+  {
+    "mode": "recover",
+    "returncode": 0,
+    "output": {
+      "task_id": "15419b624f3b44a39745971e60c140c5",
+      "phase": "completed",
+      "reason": "model_finished",
+      "fixture_calls": 1,
+      "metrics": {
+        "model_calls": 2,
+        "tool_attempts": 1,
+        "recoveries": 3,
+        "input_tokens": 4,
+        "output_tokens": 4,
+        "cost_usd": null,
+        "reserved_usd": 0.0,
+        "elapsed_seconds": 1.0620880126953125
+      }
+    },
+    "durable_phase": "completed",
+    "pending": null,
+    "mtime_ns": 1794029311575226719,
+    "file": "one\n",
+    "trace_kinds": [
+      "created",
+      "model_started",
+      "model_finished",
+      "tool_started",
+      "tool_recovery",
+      "tool_recovery",
+      "tool_recovery",
+      "tool_finished",
+      "model_started",
+      "model_finished"
+    ]
+  },
+  {
+    "mode": "recover",
+    "returncode": 0,
+    "output": {
+      "task_id": "15419b624f3b44a39745971e60c140c5",
+      "phase": "completed",
+      "reason": "model_finished",
+      "fixture_calls": 0,
+      "metrics": {
+        "model_calls": 2,
+        "tool_attempts": 1,
+        "recoveries": 3,
+        "input_tokens": 4,
+        "output_tokens": 4,
+        "cost_usd": null,
+        "reserved_usd": 0.0,
+        "elapsed_seconds": 1.0620880126953125
+      }
+    },
+    "durable_phase": "completed",
+    "pending": null,
+    "mtime_ns": 1794029311575226719,
+    "file": "one\n",
+    "trace_kinds": [
+      "created",
+      "model_started",
+      "model_finished",
+      "tool_started",
+      "tool_recovery",
+      "tool_recovery",
+      "tool_recovery",
+      "tool_finished",
+      "model_started",
+      "model_finished"
+    ]
+  }
+]

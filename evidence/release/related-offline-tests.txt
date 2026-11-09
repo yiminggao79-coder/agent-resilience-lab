@@ -1,0 +1,54 @@
+test_actual_observer_uses_stdin_not_argv_with_clean_environment (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_actual_tool_change_and_noop_have_distinct_note_bound_proofs (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_boolean_exit_codes_are_not_success_measurements (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_continuity_binds_installed_note_to_request_selecting_final_code_change (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_four_natural_turns_get_named_working_limits_without_fabricating_runtime_proof (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_freeze_verification_detects_modified_file_and_added_file (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_frozen_acceptance_cannot_bypass_exposure_admission_as_development (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_frozen_runtime_cannot_silently_use_a_different_resource_profile (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_implementation_snapshot_ignores_format_docs_and_tests_but_observes_code (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_independent_turns_honor_full_48k_protocol_and_one_selected_model (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_injected_offline_turn_exercises_real_tools_and_keeps_session_history (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_missing_child_result_exports_pending_receipt_and_null_quality (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_model_cost_uses_selected_official_model_rates (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_mutation_snapshot_reads_multiple_implementation_files_in_same_directory (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_named_profile_reaches_official_adapter_before_any_key_read (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_named_thinking_profile_preflight_never_reads_key_or_suite (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_no_api_mode_never_reads_suite_or_key_and_creates_no_trial (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_noop_docs_tests_and_unexecuted_code_cannot_count_as_implementation_change (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_owned_runner_is_actually_killed_after_its_marker (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_packing_proof_uses_actual_eligible_input_and_installed_operation (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_quality_is_external_and_unknown_observation_does_not_become_zero (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_receipts_include_pre_kill_and_resume_without_inventing_unknown_usage (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_rollover_watermark_preserves_working_space_instead_of_half_fixed_overhead (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_tool_and_runner_subprocess_environments_exclude_real_key_variables (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_unsafe_artifact_never_invokes_candidate_code (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_wrong_marker_owner_never_authorizes_signalling_another_process (tests.dev.test_context_mission.ContextMissionTests) ... ok
+test_automatic_intermediate_summary_advances_until_agent_view_fits (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_current_complete_batch_results_adapt_to_remaining_context_budget (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_derived_ledger_yields_space_to_semantic_notes_without_losing_archive (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_full_fit_retains_the_existing_complete_projection (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_large_tool_result_is_previewed_with_a_retrievable_original_identity (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_malformed_or_already_consumed_prefix_does_not_create_a_fake_summary (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_new_natural_input_releases_completed_prior_turn_batch_for_summary (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_oversized_input_selects_largest_complete_fitting_prefix (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_oversized_single_batch_is_not_split_or_silently_truncated (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_previous_notes_consume_budget_and_keep_the_same_source_basis (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_runtime_advances_semantic_cursor_even_when_old_view_already_dropped_history (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_runtime_notices_do_not_release_current_tool_batch (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_successive_source_cursors_cover_without_gaps_or_replaying_prefix (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_summary_input_budget_is_independent_of_larger_agent_working_window (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_summary_uses_explicit_turn_output_ceiling_without_hidden_1024_cap (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_utf8_byte_bound_and_indivisible_multi_call_batch (tests.dev.test_incremental_compaction.IncrementalCompactionTests) ... ok
+test_invalid_paths_are_not_masked_by_an_unavailable_repository (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_malformed_git_calls_still_consume_three_invocation_errors (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_no_repository_after_green_tests_does_not_abort_before_model_observation (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_redirected_git_metadata_still_cannot_execute_or_read_outside (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_structured_error_string_cannot_forge_typed_capability_disposition (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_trusted_wire_tag_is_scoped_to_known_git_name_and_error_codes (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+test_unavailable_exception_cannot_turn_an_effectful_write_into_safe_feedback (tests.dev.test_git_availability.GitAvailabilityTests) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 10.385s
+
+OK

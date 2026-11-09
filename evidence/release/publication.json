@@ -1,0 +1,23 @@
+{
+  "repository": {
+    "default_branch": "main",
+    "full_name": "yiminggao79-coder/agent-resilience-lab",
+    "html_url": "https://github.com/yiminggao79-coder/agent-resilience-lab",
+    "license": "Apache-2.0",
+    "private": false,
+    "visibility": "public"
+  },
+  "initial_code_push_commit": "24107f073cc57aca395cfd5c11a5254cbbbfd660",
+  "anonymous_git_read_succeeded": true,
+  "remote_main_matches_local": true,
+  "force_push": false,
+  "original_history_preserved": true,
+  "functional_baseline": "dbe2b07",
+  "private_state_tracked": false,
+  "history_commits_at_first_code_push": 97,
+  "history_blobs_scanned": 2739,
+  "current_key_exact_matches": 0,
+  "first_transport_attempt": "HTTP400, main remained absent; failure retained privately without raw credentials.",
+  "successful_transport": "Single per-commandHTTP/1.1 with64MiB postBuffer; TLS unchanged. No claim of isolated root cause.",
+  "final_version_reference": "refs/tags/v0.1.0 (to be created at final receipt commit; verify published tag rather than self-reference SHA)"
+}

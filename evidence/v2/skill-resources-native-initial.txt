@@ -1,0 +1,16 @@
+test_disabled_invocation_requires_host_selection_not_model_explicit_argument (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_engine_resource_result_uses_normal_read_feedback_and_metadata_trace_excludes_body (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_full_text_hash_and_procedural_boundary_without_changing_old_main_loader (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_invalid_text_and_oversize_fail_without_truncated_success (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_paths_links_and_nonregular_files_cannot_escape_skill_namespace (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_prepared_source_remains_recoverable_in_archive_after_source_removal_and_denial (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_saved_host_selection_survives_a_new_engine_without_repeating_cli_skill (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_script_preparation_is_existing_canonical_command_with_approved_source_snapshot (tests.dev.test_skill_resources.SkillResourceTests) ... ok
+test_real_script_approval_resource_reads_future_imports_and_sandbox_boundaries (tests.dev.test_skill_resources_native.SkillResourcesNativeTests) ... ok
+test_source_changed_after_preparation_does_not_retarget_approved_snapshot (tests.dev.test_skill_resources_native.SkillResourcesNativeTests) ... ok
+test_approval_and_new_cli_resume_use_persisted_source_not_changed_skill_file (tests.acceptance.test_skill_script_cli_process.SkillScriptCLIProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 3.290s
+
+OK

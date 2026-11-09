@@ -1,0 +1,42 @@
+test_abort_awaiting_approval_closes_current_and_tail_without_approval (tests.dev.test_terminal_history.TerminalHistoryTests) ... ERROR
+test_error_limit_closes_tail_durably_without_running_it_and_new_turn_works (tests.dev.test_terminal_history.TerminalHistoryTests) ... FAIL
+test_failed_terminal_save_leaves_original_queue_for_safe_reopen_and_one_receipt (tests.dev.test_terminal_history.TerminalHistoryTests) ... ok
+test_inconsistent_history_is_not_closed_or_unlocked (tests.dev.test_terminal_history.TerminalHistoryTests) ... ok
+test_planned_tool_deadline_has_no_side_effect_and_keeps_attempt_count_zero (tests.dev.test_terminal_history.TerminalHistoryTests) ... ok
+test_running_or_prior_unknown_is_never_classified_not_executed (tests.dev.test_terminal_history.TerminalHistoryTests) ... ok
+
+======================================================================
+ERROR: test_abort_awaiting_approval_closes_current_and_tail_without_approval (tests.dev.test_terminal_history.TerminalHistoryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_terminal_history.py", line 60, in test_abort_awaiting_approval_closes_current_and_tail_without_approval
+    self.assertEqual(engine.run(tid)['phase'],'awaiting_approval');state=engine.abort(tid)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 1089, in abort
+    return self._stop(state, 'failed', 'user_aborted')
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 341, in _stop
+    self._save(state, 'terminated', {'phase': phase, 'code': code,
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/engine.py", line 294, in _save
+    self.store.save(state, kind, metadata, **options)
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/agent_lab/store.py", line 92, in save
+    raise ValueError('invalid_trace_metadata')
+ValueError: invalid_trace_metadata
+
+======================================================================
+FAIL: test_error_limit_closes_tail_durably_without_running_it_and_new_turn_works (tests.dev.test_terminal_history.TerminalHistoryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_terminal_history.py", line 33, in test_error_limit_closes_tail_durably_without_running_it_and_new_turn_works
+    self.assertEqual((state['phase'],state['reason']),('failed','error_limit'))
+AssertionError: Tuples differ: ('failed', 'internal_error') != ('failed', 'error_limit')
+
+First differing element 1:
+'internal_error'
+'error_limit'
+
+- ('failed', 'internal_error')
++ ('failed', 'error_limit')
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.002s
+
+FAILED (failures=1, errors=1)

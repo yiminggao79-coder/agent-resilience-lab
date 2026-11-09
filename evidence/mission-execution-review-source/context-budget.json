@@ -1,0 +1,21 @@
+{
+  "repository": "openai/codex",
+  "ref": "e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9",
+  "path": "codex-rs/core/src/session/token_budget.rs",
+  "git_blob_sha": "6e77a57a3646464d646fa4d05343a2a0905b4f2e",
+  "source_url": "https://github.com/openai/codex/blob/e6bf88ae022cdab968e5a48d5cbeea4d2e304fc9/codex-rs/core/src/session/token_budget.rs",
+  "inspected_line_ranges": [
+    [
+      1,
+      222
+    ]
+  ],
+  "excerpts": [
+    {
+      "start_line": 159,
+      "end_line": 222,
+      "text": "pub(super) async fn maybe_record(\n    sess: &Session,\n    turn_context: &TurnContext,\n    base_window_tokens_remaining: Option<i64>,\n    allow_auto_compact_fallback: bool,\n) {\n    if !turn_context.config.features.enabled(Feature::TokenBudget) {\n        return;\n    }\n    let Some(base_window_tokens_remaining) = base_window_tokens_remaining else {\n        return;\n    };\n\n    let Some(config) = turn_context.config.token_budget.as_ref() else {\n        return;\n    };\n\n    if config\n        .reminder_threshold_tokens\n        .is_some_and(|threshold| base_window_tokens_remaining <= threshold)\n    {\n        let reminder_due = {\n            let mut state = sess.state.lock().await;\n            state.claim_token_budget_reminder()\n        };\n        if reminder_due {\n            let response_item =\n                ContextualUserFragment::into(crate::context::TokenBudgetReminder::new(\n                    &config.reminder_message_template,\n                    base_window_tokens_remaining,\n                ));\n            sess.record_conversation_items(\n                turn_context,\n                turn_context.model_info(),\n                std::slice::from_ref(&response_item),\n            )\n            .await;\n        }\n    }\n\n    if !allow_auto_compact_fallback || base_window_tokens_remaining != 0 {\n        return;\n    }\n    let Some(prompt) = config.auto_compact_fallback_prompt.as_deref() else {\n        return;\n    };\n\n    let fallback_due = {\n        let mut state = sess.state.lock().await;\n        state.claim_auto_compact_fallback()\n    };\n    if !fallback_due {\n        return;\n    }\n\n    let response_item =\n        ContextualUserFragment::into(crate::context::AutoCompactFallbackPrompt::new(prompt));\n    sess.record_conversation_items(\n        turn_context,\n        turn_context.model_info(),\n        std::slice::from_ref(&response_item),\n    )\n    .await;\n}\n"
+    }
+  ],
+  "notice": "Verbatim public-source excerpts in local JSON wrapper; source read, not executed. See LICENSE and NOTICE."
+}

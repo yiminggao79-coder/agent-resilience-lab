@@ -1,0 +1,14 @@
+test_timeout_joins_native_before_late_effect_and_output_stays_bounded (tests.dev.test_node_native.NodeNativeTests) ... FAIL
+
+======================================================================
+FAIL: test_timeout_joins_native_before_late_effect_and_output_stays_bounded (tests.dev.test_node_native.NodeNativeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yiming/Documents/Codex/2026-11-07-codex-agent-resilience-lab-2027-agent/tests/dev/test_node_native.py", line 84, in test_timeout_joins_native_before_late_effect_and_output_stays_bounded
+    self.assertTrue((self.root / 'started').exists())
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 2.561s
+
+FAILED (failures=1)

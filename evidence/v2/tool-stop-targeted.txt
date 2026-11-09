@@ -1,0 +1,9 @@
+test_mutating_native_cancel_retains_unknown_effect_and_pending_after_local_cleanup (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_readonly_cancel_closes_result_and_unstarted_tail_without_fake_success (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_registry_style_base_wrapper_is_not_bypassed (tests.dev.test_tool_stop.ToolStopTests) ... ok
+test_unconfirmed_cancel_never_unlocks_even_readonly_execution (tests.dev.test_tool_stop.ToolStopTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.523s
+
+OK
